@@ -249,8 +249,8 @@
                             <include>Defs_Settings_Button</include>
                             <label>$LOCALIZE[31313]</label>
                             <label2>$INFO[Skin.String(TransparencyLevel)]</label2>
-                            <onclick condition="!String.IsEqual(Skin.String(TransparencyLevel),$LOCALIZE[31316])">Skin.SetString(TransparencyLevel,$LOCALIZE[31316])</onclick>
-                            <onclick condition="String.IsEqual(Skin.String(TransparencyLevel),$LOCALIZE[31316])">Skin.SetString(TransparencyLevel,$LOCALIZE[571])</onclick>
+                            <onclick condition="!String.IsEqual(Skin.String(TransparencyLevel),$LOCALIZE[31000])">Skin.SetString(TransparencyLevel,$LOCALIZE[31000])</onclick>
+                            <onclick condition="String.IsEqual(Skin.String(TransparencyLevel),$LOCALIZE[31000])">Skin.SetString(TransparencyLevel,$LOCALIZE[31316])</onclick>
                         </control>
 
                         <control type="button" id="9552" description="Set overlaycolor ">
@@ -320,7 +320,7 @@
                             <onclick>Skin.Reset(DisableVignette)</onclick>
                             <onclick>Skin.Reset(EnableBlur)</onclick>
                             <onclick>Skin.Reset(OnlyBlurInfo)</onclick>
-                            <onclick>Skin.SetString(TransparencyLevel,$LOCALIZE[571])</onclick>
+                            <onclick>Skin.Reset(TransparencyLevel)</onclick>
                         </control>
 
                         <!-- ====== -->

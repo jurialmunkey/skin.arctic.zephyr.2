@@ -114,9 +114,9 @@
     </include>
 
     <variable name="Global_FanartDim">
-        <value condition="Skin.HasSetting(DisableVignette) + Skin.HasSetting(DisableOverlayColor) + String.IsEqual(Skin.String(TransparencyLevel),$LOCALIZE[31316])">FanartDim_Increased_Old</value>
+        <value condition="Skin.HasSetting(DisableVignette) + Skin.HasSetting(DisableOverlayColor) + !String.IsEqual(Skin.String(TransparencyLevel),$LOCALIZE[571])">FanartDim_Increased_Old</value>
         <value condition="Skin.HasSetting(DisableVignette) + Skin.HasSetting(DisableOverlayColor)">FanartDim_Default_Old</value>
-        <value condition="String.IsEqual(Skin.String(TransparencyLevel),$LOCALIZE[31316])">FanartDim_Increased</value>
+        <value condition="!String.IsEqual(Skin.String(TransparencyLevel),$LOCALIZE[31000])">FanartDim_Increased</value>
         <value>FanartDim_Default</value>
     </variable>
 
