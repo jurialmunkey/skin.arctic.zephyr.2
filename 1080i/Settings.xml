@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Foundation -->
+<window id="4">
+    <defaultcontrol always="true">300</defaultcontrol>
+    <onload condition="![Window.Previous(SettingsCategory.xml) | Window.Previous(SkinSettings.xml)] + String.IsEmpty(Window(Home).Property(MenuIconFocus))">ReplaceWindow(InterfaceSettings)</onload>
+    <onload condition="![Window.Previous(SettingsCategory.xml) | Window.Previous(SkinSettings.xml)] + !String.IsEmpty(Window(Home).Property(MenuIconFocus))">$INFO[Window(Home).Property(MenuIconFocus)]</onload>
+    <onload condition="Window.Previous(SettingsCategory.xml) | Window.Previous(SkinSettings.xml)">ReplaceWindow(Home)</onload>
+    <controls>
+    </controls>
+</window>

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Foundation -->
+<window id="129">
+    <defaultcontrol always="true">22</defaultcontrol>
+    <controls>
+
+        <include>Global_Overlay</include>
+
+        <control type="group">
+            <include content="Dialog_Standard_Group">
+                <param name="width" value="1400" />
+                <param name="height" value="900" />
+            </include>
+
+            <control type="label" id="2">
+                <include>Dialog_Standard_Header</include>
+                <label>21432</label>
+            </control>
+
+            <!-- Left Side -->
+            <control type="grouplist" description="Playlist Options" id="9000">
+                <usecontrolcoords>true</usecontrolcoords>
+                <orientation>vertical</orientation>
+                <onright>10</onright>
+                <ondown>8000</ondown>
+                <onleft>8000</onleft>
+                <left>20</left>
+                <width>670</width>
+                <top>100</top>
+                <bottom>126</bottom>
+                <itemgap>10</itemgap>
+
+                <control type="button" id="22" description="Playlist Type">
+                    <label>467</label>
+                    <include>Dialog_Standard_ListButton</include>
+                </control>
+
+                <control type="button" id="12" description="Edit Playlist Name">
+                    <label>21433</label>
+                    <include>Dialog_Standard_ListButton</include>
+                </control>
+
+                <control type="label" description="Options Label" id="9101">
+                    <label>33063</label>
+                    <include>Dialog_Standard_HintLabel</include>
+                </control>
+
+                <control type="button" id="16" description="Match">
+                    <label>21424</label>
+                    <include>Dialog_Standard_ListButton</include>
+                </control>
+
+                <control type="button" id="17" description="Limit">
+                    <label>21427</label>
+                    <include>Dialog_Standard_ListButton</include>
+                </control>
+
+                <control type="button" id="18" description="Sort Order">
+                    <label>21429</label>
+                    <include>Dialog_Standard_ListButton</include>
+                </control>
+
+                <control type="button" id="19" description="Sort Direction">
+                    <label>580</label>
+                    <include>Dialog_Standard_ListButton</include>
+                </control>
+
+                <control type="button" id="23" description="Group By">
+                    <label>21458</label>
+                    <include>Dialog_Standard_ListButton</include>
+                </control>
+
+                <control type="radiobutton" id="24" description="Mixed">
+                    <label>$LOCALIZE[467]: $LOCALIZE[21459]</label>
+                    <radioposx>615</radioposx>
+                    <include>Dialog_Standard_ListButton</include>
+                </control>
+            </control>
+
+            <!-- Right Side -->
+            <control type="group" description="Right Side">
+                <right>20</right>
+                <top>100</top>
+                <bottom>126</bottom>
+                <width>670</width>
+                <control type="image">
+                    <texture border="5" colordiffuse="dialog_fg_12">common/box.png</texture>
+                </control>
+                <control type="panel" id="10" description="Rules List">
+                    <orientation>vertical</orientation>
+                    <onleft>9000</onleft>
+                    <ondown>8000</ondown>
+                    <onright>8000</onright>
+                    <itemlayout width="670" height="76">
+                        <control type="label">
+                            <top>0</top>
+                            <bottom>10</bottom>
+                            <left>30</left>
+                            <right>30</right>
+                            <info>ListItem.Label</info>
+                        </control>
+                    </itemlayout>
+
+                    <focusedlayout width="670" height="76">
+                        <control type="image">
+                            <top>0</top>
+                            <bottom>10</bottom>
+                            <texture border="5" colordiffuse="$VAR[ColorHighlight]">common/box.png</texture>
+                        </control>
+
+                        <control type="label">
+                            <top>0</top>
+                            <bottom>10</bottom>
+                            <left>30</left>
+                            <right>30</right>
+                            <info>ListItem.Label</info>
+                            <textcolor>Selected</textcolor>
+                        </control>
+
+                    </focusedlayout>
+                </control>
+            </control>
+
+            <!-- Ok Cancel -->
+            <control type="grouplist" id="8000">
+                <onup>9000</onup>
+                <onleft>9000</onleft>
+                <onright>10</onright>
+                <include>Dialog_Standard_OkCancel_GroupList</include>
+
+                <control type="button" id="20" description="OK">
+                    <label>186</label>
+                    <include>Dialog_Standard_OkCancel</include>
+                </control>
+
+                <control type="button" id="21" description="Cancel">
+                    <label>222</label>
+                    <include>Dialog_Standard_OkCancel</include>
+                </control>
+
+            </control>
+
+        </control>
+
+    </controls>
+
+</window>

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+    <include name="Animation_FocusBounce">
+        <animation type="Focus" condition="!Skin.HasSetting(BounceAnimations)" reversible="false">
+            <effect type="zoom" end="110" time="75" tween="sine" easing="out" center="auto" />
+            <effect type="zoom" end="90.9090909" time="225" tween="sine" delay="100" easing="out" center="auto" />
+        </animation>
+    </include>
+
+    <include name="Animation_FocusBounce_Small">
+        <animation type="Focus" condition="!Skin.HasSetting(BounceAnimations)" reversible="false">
+            <effect type="zoom" end="105" time="75" tween="sine" easing="out" center="auto" />
+            <effect type="zoom" end="95.2380952" time="225" tween="sine" delay="100" easing="out" center="auto" />
+        </animation>
+    </include>
+
+    <include name="Animation_FocusBounce_Large">
+        <animation type="Focus" condition="!Skin.HasSetting(BounceAnimations)" reversible="false">
+            <effect type="zoom" end="115" time="75" tween="sine" easing="out" center="auto" />
+            <effect type="zoom" end="86.9565217" time="225" tween="sine" delay="100" easing="out" center="auto" />
+        </animation>
+    </include>
+
+
+
+    <include name="Animation_OSD_Notification">
+        <animation effect="slide" end="0,120" time="100" condition="[Window.IsActive(VideoOSD) | Window.IsActive(MusicOSD)] + ![Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml) | Window.IsVisible(DialogVideoInfo.xml)]">Conditional</animation>
+    </include>
+
+    <include name="Animation_Left">
+        <animation type="Visible" reversible="false">
+            <effect type="fade" start="0" end="100" time="300" tween="sine" easing="out"/>
+            <effect type="slide" start="-320" end="0" time="400" tween="cubic" easing="out" />
+        </animation>
+        <animation type="Hidden" reversible="false">
+            <effect type="fade" start="100" end="0" time="300" tween="sine" easing="out" />
+            <effect type="slide" start="0" end="-320" time="300" tween="cubic" easing="out" />
+        </animation>
+        <animation type="WindowOpen" reversible="false">
+            <effect type="fade" start="0" end="100" time="300" tween="sine" easing="out"/>
+            <effect type="slide" start="-320" end="0" time="400" tween="cubic" easing="out" />
+        </animation>
+        <animation type="WindowClose" reversible="false">
+            <effect type="fade" start="100" end="0" time="300" tween="sine" easing="out" />
+            <effect type="slide" start="0" end="-320" time="300" tween="cubic" easing="out" />
+        </animation>
+    </include>
+
+    <include name="Animation_Right">
+        <animation type="Visible" reversible="false">
+            <effect type="fade" start="0" end="100" time="300" tween="sine" easing="out"/>
+            <effect type="slide" start="320" end="0" time="400" tween="cubic" easing="out" />
+        </animation>
+        <animation type="Hidden" reversible="false">
+            <effect type="fade" start="100" end="0" time="300" tween="sine" easing="out" />
+            <effect type="slide" start="0" end="320" time="300" tween="cubic" easing="out" />
+        </animation>
+        <animation type="WindowOpen" reversible="false">
+            <effect type="fade" start="0" end="100" time="300" tween="sine" easing="out"/>
+            <effect type="slide" start="320" end="0" time="400" tween="cubic" easing="out" />
+        </animation>
+        <animation type="WindowClose" reversible="false">
+            <effect type="fade" start="100" end="0" time="300" tween="sine" easing="out" />
+            <effect type="slide" start="0" end="320" time="300" tween="cubic" easing="out" />
+        </animation>
+    </include>
+
+    <include name="Animation_Right_Delay">
+        <animation type="Visible" reversible="false">
+            <effect type="fade" start="0" end="100" time="300" delay="400" tween="sine" easing="out"/>
+            <effect type="slide" start="320" end="0" time="400" delay="400" tween="cubic" easing="out" />
+        </animation>
+        <animation type="Hidden" reversible="false">
+            <effect type="fade" start="100" end="0" time="300" tween="sine" easing="out" />
+            <effect type="slide" start="0" end="320" time="300" tween="cubic" easing="out" />
+        </animation>
+        <animation type="WindowOpen" reversible="false">
+            <effect type="fade" start="0" end="100" time="300" delay="400" tween="sine" easing="out"/>
+            <effect type="slide" start="320" end="0" time="400" delay="400" tween="cubic" easing="out" />
+        </animation>
+        <animation type="WindowClose" reversible="false">
+            <effect type="fade" start="100" end="0" time="300" tween="sine" easing="out" />
+            <effect type="slide" start="0" end="320" time="300" tween="cubic" easing="out" />
+        </animation>
+    </include>
+
+    <include name="Animation_FadeInOut">
+        <animation effect="fade" start="0" end="100" time="350" tween="cubic" easing="inout">Visible</animation>
+        <animation effect="fade" start="100" end="0" time="350" tween="cubic" easing="inout">Hidden</animation>
+    </include>
+
+    <include name="Animation_FadeIn">
+        <animation effect="fade" start="0" end="100" time="350" tween="cubic" easing="inout">Visible</animation>
+        <animation effect="fade" start="0" end="100" time="350" tween="cubic" easing="inout">WindowOpen</animation>
+    </include>
+    <include name="Animation_ZoomIn">
+        <animation type="WindowOpen" reversible="false">
+            <effect type="fade" start="0" end="100" time="300" tween="sine" easing="in" />
+            <effect type="zoom" start="80" end="100" time="300" center="auto" tween="quadratic" easing="out" />
+        </animation>
+        <animation type="Visible" reversible="false">
+            <effect type="fade" start="0" end="100" time="300" tween="sine" easing="in" />
+            <effect type="zoom" start="80" end="100" time="300" center="auto" tween="quadratic" easing="out" />
+        </animation>
+    </include>
+
+    <include name="Animation_FadeIn_Slide">
+        <animation type="Visible" reversible="false">
+            <effect type="fade" start="0" end="100" time="300" delay="150"/>
+            <effect type="slide" start="0,-48" end="0" center="auto" tween="back" easing="out" time="450" delay="150"/>
+        </animation>
+        <animation type="WindowOpen" reversible="false">
+            <effect type="fade" start="0" end="100" time="300" delay="150"/>
+            <effect type="slide" start="0,-48" end="0" center="auto" tween="back" easing="out" time="450" delay="150"/>
+        </animation>
+    </include>
+    <include name="Animation_FadeIn_SlideUp">
+        <animation type="Visible" reversible="false">
+            <effect type="fade" start="0" end="100" time="300" delay="150"/>
+            <effect type="slide" start="0,48" end="0" center="auto" tween="back" easing="out" time="450" delay="150"/>
+        </animation>
+        <animation type="WindowOpen" reversible="false">
+            <effect type="fade" start="0" end="100" time="300" delay="150"/>
+            <effect type="slide" start="0,48" end="0" center="auto" tween="back" easing="out" time="450" delay="150"/>
+        </animation>
+    </include>
+
+    <include name="Animation_FadeOut">
+        <animation effect="fade" end="0" start="100" time="150">Hidden</animation>
+        <animation effect="fade" end="0" start="100" time="150">WindowClose</animation>
+    </include>
+
+</includes>

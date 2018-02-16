@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Foundation -->
+<window id="0">
+    <defaultcontrol always="true">4000</defaultcontrol>
+    <onload condition="String.IsEmpty(Window(Home).Property(WidgetFocus)) | Window.Previous(MusicVisualisation.xml) | Window.Previous(VideoFullScreen.xml)">SetFocus(300)</onload>
+    <onload condition="!String.IsEmpty(Window(Home).Property(WidgetFocus)) + !Window.Previous(MusicVisualisation.xml) + !Window.Previous(VideoFullScreen.xml)">SetFocus(3000)</onload>
+    <onload>ClearProperty(WidgetLoading,Home)</onload>
+    <onload>ClearProperty(MenuFocus,Home)</onload>
+    <onload>RunScript(script.skinshortcuts,type=buildxml&amp;mainmenuID=300&amp;group=mainmenu|powermenu)</onload>
+    <onload condition="!Skin.HasSetting(SkinHelper.EnablePVRThumbs)">Skin.SetBool(SkinHelper.EnablePVRThumbs)</onload>
+    <onload condition="!Skin.HasSetting(SkinHelper.EnableMusicArt)">Skin.SetBool(SkinHelper.EnableMusicArt)</onload>
+    <onload>ClearProperty(HomeFocus,Home)</onload>
+    <onunload>ClearProperty(SkinHelper.WidgetContainer)</onunload>
+    <onload>AlarmClock(SkinSplashStarted,SetProperty(SkinSplashStarted,1,home),00:01,silent,false)</onload>
+
+    <controls>
+        <control type="list" id="9988">
+            <description>hidden container for playlist background</description>
+            <posx>-20</posx>
+            <posy>-20</posy>
+            <width>1</width>
+            <height>1</height>
+            <visible>true</visible>
+            <onup>50</onup>
+            <ondown>50</ondown>
+            <onleft>50</onleft>
+            <onright>50</onright>
+            <autoscroll time="10000">true</autoscroll>
+            <itemlayout width="1" height="1">
+            </itemlayout>
+            <focusedlayout height="1" width="1">
+            </focusedlayout>
+            <content>$INFO[Container(300).ListItem.Property(backgroundPlaylist)]</content>
+        </control>
+
+        <include>Global_Background</include>
+        <include>Widgets</include>
+        <include>Topbar</include>
+
+        <control type="button" id="4000">
+            <visible allowhiddenfocus="true">false</visible>
+            <width>1</width>
+            <height>1</height>
+            <onleft>300</onleft>
+            <onright>3000</onright>
+            <onfocus condition="String.IsEmpty(Window(Home).Property(WidgetFocus)) | Window.Previous(MusicVisualisation.xml) | Window.Previous(VideoFullScreen.xml)">SetFocus(300)</onfocus>
+            <onfocus condition="!String.IsEmpty(Window(Home).Property(WidgetFocus)) + !Window.Previous(MusicVisualisation.xml) + !Window.Previous(VideoFullScreen.xml)">SetFocus(3000)</onfocus>
+        </control>
+
+        <control type="scrollbar" id="9060">
+            <top>0</top>
+            <right>0</right>
+            <width>8</width>
+            <bottom>0</bottom>
+            <showonepage>true</showonepage>
+            <orientation>vertical</orientation>
+            <texturesliderbackground colordiffuse="main_fg_12">common/white.png</texturesliderbackground>
+            <texturesliderbar colordiffuse="main_fg_30">common/white.png</texturesliderbar>
+            <texturesliderbarfocus colordiffuse="$VAR[ColorHighlight]">common/white.png</texturesliderbarfocus>
+            <animation effect="fade" start="100" end="0" time="400" condition="!Control.HasFocus(9060) + !Container.Scrolling">Conditional</animation>
+            <include>Animation_FadeIn</include>
+            <include>Animation_FadeOut</include>
+            <include>Defs_InfoDialog_Visible</include>
+        </control>
+
+        <!-- Splash -->
+        <control type="image" description="Background">
+            <include>Dimensions_Fullscreen</include>
+            <texture colordiffuse="ff000000">common/white.png</texture>
+            <visible>String.IsEmpty(Window(Home).Property(SkinSplashStarted)) | Integer.IsEqual(Container(300).NumItems,0) | Container(300).IsUpdating</visible>
+            <animation effect="fade" start="100" end="0" delay="600" time="600" tween="quadratic">Hidden</animation>
+            <visible>String.IsEmpty(Skin.String(StartupPlaylist))</visible>
+        </control>
+        <control type="image" description="Background">
+            <include>Dimensions_Fullscreen</include>
+            <texture>special://skin/fanart.jpg</texture>
+            <visible>String.IsEmpty(Window(Home).Property(SkinSplashStarted)) | Integer.IsEqual(Container(300).NumItems,0) | Container(300).IsUpdating</visible>
+            <animation effect="fade" start="100" end="0" time="600" tween="quadratic">Hidden</animation>
+            <visible>String.IsEmpty(Skin.String(StartupPlaylist))</visible>
+        </control>
+        <control type="group">
+            <top>600</top>
+            <visible>String.IsEmpty(Skin.String(StartupPlaylist))</visible>
+            <visible>String.IsEmpty(Window(Home).Property(SkinSplashStarted)) | Integer.IsEqual(Container(300).NumItems,0) | Container(300).IsUpdating</visible>
+            <animation effect="fade" start="100" end="0" time="600" tween="quadratic">Hidden</animation>
+            <include content="Defs_BusySpinner">
+                <param name="label" value="$LOCALIZE[31348]..." />
+            </include>
+        </control>
+
+    </controls>
+</window>

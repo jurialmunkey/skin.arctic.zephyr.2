@@ -1,0 +1,877 @@
+<window>
+    <defaultcontrol always="true">300</defaultcontrol>
+    <include>Defs_Settings_OnLoad</include>
+    <onunload>RunScript(script.skinshortcuts,type=buildxml&amp;mainmenuID=300&amp;group=mainmenu|powermenu)</onunload>
+    <onunload condition="System.HasAddon(script.colorbox)">SetProperty(NINE_manual_set,"var=main,set=$INFO[Skin.String(colorbox_main)]|var=comp,set=$INFO[Skin.String(colorbox_comp)]|var=quality,set=$INFO[Skin.String(colorbox_quality)]|var=blursize,set=$INFO[Skin.String(colorbox_blursize)]|var=bitsize,set=$INFO[Skin.String(colorbox_bitsize)]|var=pixelsize,set=$INFO[Skin.String(colorbox_pixelsize)]|var=black,set=$INFO[Skin.String(colorbox_black)]|var=white,set=$INFO[Skin.String(colorbox_white)]|var=blend,set=$INFO[Skin.String(colorbox_blend)]|var=desat,set=$INFO[Skin.String(colorbox_desat)]",home)</onunload> 
+    <controls>
+
+        <include>Global_Background</include>
+        <include>View_Layout</include>
+
+        <control type="group">
+            <include>Dialog_Settings_Panel</include>
+            <control type="group">
+                <control type="label">
+                    <left>view_pad</left>
+                    <height>80</height>
+                    <label>$LOCALIZE[10039] $LOCALIZE[5]</label>
+                    <font>font_button</font>
+                    <textcolor>main_fg_30</textcolor>
+                </control>
+
+                <control type="group">
+                    <top>80</top>
+                    <height>800</height>
+
+                    <!-- Left Gradient Fade -->
+                    <control type="image">
+                        <top>0</top>
+                        <height>80</height>
+                        <width>450</width>
+                        <texture colordiffuse="$VAR[ColorHighlight]">common/white.png</texture>
+                        <visible>![Control.HasFocus(3901) | Control.HasFocus(3902) | Control.HasFocus(3903) | Control.HasFocus(300)] + !Control.HasFocus(302)</visible>
+                        <animation effect="slide" end="0,80" condition="Integer.IsGreater(Container(9100).Position,0)">Conditional</animation>
+                        <animation effect="slide" end="0,80" condition="Integer.IsGreater(Container(9100).Position,1)">Conditional</animation>
+                        <animation effect="slide" end="0,80" condition="Integer.IsGreater(Container(9100).Position,2)">Conditional</animation>
+                        <animation effect="slide" end="0,80" condition="Integer.IsGreater(Container(9100).Position,3)">Conditional</animation>
+                        <animation effect="slide" end="0,80" condition="Integer.IsGreater(Container(9100).Position,4)">Conditional</animation>
+                        <animation effect="slide" end="0,80" condition="Integer.IsGreater(Container(9100).Position,5)">Conditional</animation>
+                        <animation effect="slide" end="0,80" condition="Integer.IsGreater(Container(9100).Position,6)">Conditional</animation>
+                        <animation effect="slide" end="0,80" condition="Integer.IsGreater(Container(9100).Position,7)">Conditional</animation>
+                        <animation effect="slide" end="0,80" condition="Integer.IsGreater(Container(9100).Position,8)">Conditional</animation>
+                    </control>
+
+                    <!-- Right Gradient Fade -->
+                    <control type="image">
+                        <top>0</top>
+                        <left>450</left>
+                        <height>80</height>
+                        <right>0</right>
+                        <texture colordiffuse="$VAR[ColorHighlight]">common/white.png</texture>
+                        <visible>ControlGroup(9200).HasFocus()</visible>
+                        <animation effect="slide" end="0,80" condition="Integer.IsGreater(Container(9200).Position,0)">Conditional</animation>
+                        <animation effect="slide" end="0,80" condition="Integer.IsGreater(Container(9200).Position,1)">Conditional</animation>
+                        <animation effect="slide" end="0,80" condition="Integer.IsGreater(Container(9200).Position,2)">Conditional</animation>
+                        <animation effect="slide" end="0,80" condition="Integer.IsGreater(Container(9200).Position,3)">Conditional</animation>
+                        <animation effect="slide" end="0,80" condition="Integer.IsGreater(Container(9200).Position,4)">Conditional</animation>
+                        <animation effect="slide" end="0,80" condition="Integer.IsGreater(Container(9200).Position,5)">Conditional</animation>
+                        <animation effect="slide" end="0,80" condition="Integer.IsGreater(Container(9200).Position,6)">Conditional</animation>
+                        <animation effect="slide" end="0,80" condition="Integer.IsGreater(Container(9200).Position,7)">Conditional</animation>
+                        <animation effect="slide" end="0,80" condition="Integer.IsGreater(Container(9200).Position,8)">Conditional</animation>
+                    </control>
+
+                    <!-- Left Group -->
+                    <control type="grouplist" id="9100">
+                        <description>Button Area</description>
+                        <width>450</width>
+                        <top>0</top>
+                        <bottom>0</bottom>
+                        <itemgap>0</itemgap>
+                        <include>Defs_Settings_OnLeft</include>
+                        <onright>9200</onright>
+                        <orientation>vertical</orientation>
+                        <control type="togglebutton" id="9101" description="Home">
+                            <onfocus>SetProperty(CurrentFocus,$NUMBER[9101])</onfocus>
+                            <usealttexture>![Control.HasFocus(3901) | Control.HasFocus(3902) | Control.HasFocus(3903) | Control.HasFocus(300)] + !Control.HasFocus(302) + Integer.IsEqual(Window.Property(CurrentFocus),9101)</usealttexture>
+                            <alttexturenofocus colordiffuse="$VAR[Defs_Settings_ColorHighlight]">common/gradient-diffuse-horizontal.png</alttexturenofocus>
+                            <width>450</width>
+                            <include>Defs_Settings_Button</include>
+                            <label>10000</label>
+                        </control>
+                        <control type="togglebutton" id="9102" description="Background">
+                            <onfocus>SetProperty(CurrentFocus,$NUMBER[9102])</onfocus>
+                            <usealttexture>![Control.HasFocus(3901) | Control.HasFocus(3902) | Control.HasFocus(3903) | Control.HasFocus(300)] + !Control.HasFocus(302) + Integer.IsEqual(Window.Property(CurrentFocus),9102)</usealttexture>
+                            <alttexturenofocus colordiffuse="$VAR[Defs_Settings_ColorHighlight]">common/gradient-diffuse-horizontal.png</alttexturenofocus>
+                            <width>450</width>
+                            <include>Defs_Settings_Button</include>
+                            <label>31110</label>
+                        </control>
+
+                        <control type="togglebutton" id="9109" description="Background Effects">
+                            <onfocus>SetProperty(CurrentFocus,$NUMBER[9109])</onfocus>
+                            <usealttexture>![Control.HasFocus(3901) | Control.HasFocus(3902) | Control.HasFocus(3903) | Control.HasFocus(300)] + !Control.HasFocus(302) + Integer.IsEqual(Window.Property(CurrentFocus),9109)</usealttexture>
+                            <alttexturenofocus colordiffuse="$VAR[Defs_Settings_ColorHighlight]">common/gradient-diffuse-horizontal.png</alttexturenofocus>
+                            <width>450</width>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31339]</label>
+                        </control>
+
+                        <control type="togglebutton" id="9105" description="Colors">
+                            <onfocus>SetProperty(CurrentFocus,$NUMBER[9105])</onfocus>
+                            <usealttexture>![Control.HasFocus(3901) | Control.HasFocus(3902) | Control.HasFocus(3903) | Control.HasFocus(300)] + !Control.HasFocus(302) + Integer.IsEqual(Window.Property(CurrentFocus),9105)</usealttexture>
+                            <alttexturenofocus colordiffuse="$VAR[Defs_Settings_ColorHighlight]">common/gradient-diffuse-horizontal.png</alttexturenofocus>
+                            <width>450</width>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31021]</label>
+                        </control>
+
+                        <control type="togglebutton" id="9104" description="Artwork">
+                            <onfocus>SetProperty(CurrentFocus,$NUMBER[9104])</onfocus>
+                            <usealttexture>![Control.HasFocus(3901) | Control.HasFocus(3902) | Control.HasFocus(3903) | Control.HasFocus(300)] + !Control.HasFocus(302) + Integer.IsEqual(Window.Property(CurrentFocus),9104)</usealttexture>
+                            <alttexturenofocus colordiffuse="$VAR[Defs_Settings_ColorHighlight]">common/gradient-diffuse-horizontal.png</alttexturenofocus>
+                            <width>450</width>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31203]</label>
+                        </control>
+
+                        <control type="togglebutton" id="9107" description="Miscellaneous">
+                            <onfocus>SetProperty(CurrentFocus,$NUMBER[9107])</onfocus>
+                            <usealttexture>![Control.HasFocus(3901) | Control.HasFocus(3902) | Control.HasFocus(3903) | Control.HasFocus(300)] + !Control.HasFocus(302) + Integer.IsEqual(Window.Property(CurrentFocus),9107)</usealttexture>
+                            <alttexturenofocus colordiffuse="$VAR[Defs_Settings_ColorHighlight]">common/gradient-diffuse-horizontal.png</alttexturenofocus>
+                            <width>450</width>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31024]</label>
+                        </control>
+
+                        <control type="togglebutton" id="9103" description="OSD">
+                            <onfocus>SetProperty(CurrentFocus,$NUMBER[9103])</onfocus>
+                            <usealttexture>![Control.HasFocus(3901) | Control.HasFocus(3902) | Control.HasFocus(3903) | Control.HasFocus(300)] + !Control.HasFocus(302) + Integer.IsEqual(Window.Property(CurrentFocus),9103)</usealttexture>
+                            <alttexturenofocus colordiffuse="$VAR[Defs_Settings_ColorHighlight]">common/gradient-diffuse-horizontal.png</alttexturenofocus>
+                            <width>450</width>
+                            <include>Defs_Settings_Button</include>
+                            <label>31270</label>
+                        </control>
+
+                        <control type="togglebutton" id="9108" description="Dependencies">
+                            <onfocus>SetProperty(CurrentFocus,$NUMBER[9108])</onfocus>
+                            <usealttexture>![Control.HasFocus(3901) | Control.HasFocus(3902) | Control.HasFocus(3903) | Control.HasFocus(300)] + !Control.HasFocus(302) + Integer.IsEqual(Window.Property(CurrentFocus),9108)</usealttexture>
+                            <alttexturenofocus colordiffuse="$VAR[Defs_Settings_ColorHighlight]">common/gradient-diffuse-horizontal.png</alttexturenofocus>
+                            <width>450</width>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[24996]</label>
+                        </control>
+
+                        <control type="togglebutton" id="9106" description="Reset Backup">
+                            <onfocus>SetProperty(CurrentFocus,$NUMBER[9106])</onfocus>
+                            <usealttexture>![Control.HasFocus(3901) | Control.HasFocus(3902) | Control.HasFocus(3903) | Control.HasFocus(300)] + !Control.HasFocus(302) + Integer.IsEqual(Window.Property(CurrentFocus),9106)</usealttexture>
+                            <alttexturenofocus colordiffuse="$VAR[Defs_Settings_ColorHighlight]">common/gradient-diffuse-horizontal.png</alttexturenofocus>
+                            <width>450</width>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31030]</label>
+                        </control>
+                    </control>
+
+
+                    <!-- Right Group -->
+                    <control type="grouplist" id="9200">
+                        <description>Control Area</description>
+                        <left>450</left>
+                        <right>0</right>
+                        <top>0</top>
+                        <bottom>80</bottom>
+                        <itemgap>0</itemgap>
+                        <onleft>9100</onleft>
+                        <include>Defs_Settings_OnRight</include>
+                        <orientation>vertical</orientation>
+                        <scrolltime>0</scrolltime>
+                        <!-- ==== -->
+                        <!-- Home -->
+                        <!-- ==== -->
+                        <control type="button" id="9211" description="Customise Home">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9101)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31109]</label>
+                            <onclick>RunScript(script.skinshortcuts,type=manage&amp;group=mainmenu)</onclick>
+                        </control>
+                        <control type="radiobutton" id="9312" description="Display text labels on landscape widgets">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9101)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31291]</label>
+                            <selected>!Skin.HasSetting(WidgetLabels)</selected>
+                            <onclick>Skin.ToggleSetting(WidgetLabels)</onclick>
+                        </control>
+                        <control type="radiobutton" id="9317" description="Touch / Mouse enabled widgets">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9101)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31364]</label>
+                            <selected>Skin.HasSetting(MouseMode)</selected>
+                            <onclick>Skin.ToggleSetting(MouseMode)</onclick>
+                            <onclick>ReloadSkin()</onclick>
+                        </control>
+                        <control type="button" id="9518" description="Widget Item Limit">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9101)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31342]</label>
+                            <label2>$VAR[Label_WidgetItemLimit]</label2>
+                            <onclick condition="String.IsEmpty(Skin.String(HomeWidgetItemLimit)) | String.IsEqual(Skin.String(HomeWidgetItemLimit),10)">Skin.SetString(HomeWidgetItemLimit,$NUMBER[25])</onclick>
+                            <onclick condition="String.IsEqual(Skin.String(HomeWidgetItemLimit),25)">Skin.SetString(HomeWidgetItemLimit,$NUMBER[50])</onclick>
+                            <onclick condition="String.IsEqual(Skin.String(HomeWidgetItemLimit),50)">Skin.SetString(HomeWidgetItemLimit,$LOCALIZE[21428])</onclick>
+                            <onclick condition="String.IsEqual(Skin.String(HomeWidgetItemLimit),$LOCALIZE[21428])">Skin.SetString(HomeWidgetItemLimit,$NUMBER[10])</onclick>
+                        </control>
+
+                        
+
+                        <!-- ========== -->
+                        <!-- Background -->
+                        <!-- ========== -->
+                        <control type="radiobutton" id="9221" description="No fanart">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9102)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31121]</label>
+                            <selected>!Skin.HasSetting(NoFanart)</selected>
+                            <onclick>Skin.ToggleSetting(NoFanart)</onclick>
+                        </control>
+
+                        <control type="button" id="9222" description="Set Fallback Image">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9102)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>31150</label>
+                            <label2>$INFO[Skin.String(fanart.fallback)]</label2>
+                            <onclick condition="!System.HasAddon(script.toolbox)">InstallAddon(script.toolbox)</onclick>
+                            <onclick>SetProperty(Dialog.1.Label,$LOCALIZE[16018])</onclick>
+                            <onclick>SetProperty(Dialog.1.BuiltIn,Skin.Reset(fanart.fallback))</onclick>
+                            <onclick>SetProperty(Dialog.2.Label,$LOCALIZE[31271])</onclick>
+                            <onclick>SetProperty(Dialog.2.BuiltIn,Skin.SetImage(fanart.fallback))</onclick>
+                            <onclick>RunScript(script.toolbox,info=selectdialog,header=$LOCALIZE[31150])</onclick>
+                        </control>
+
+                        <control type="radiobutton" id="9223" description="Show video in background">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9102)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>31111</label>
+                            <selected>Skin.HasSetting(global.showvideo)</selected>
+                            <onclick>Skin.ToggleSetting(global.showvideo)</onclick>
+                        </control>
+
+                        <control type="radiobutton" id="9224" description="Show vis in background">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9102)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>31172</label>
+                            <selected>Skin.HasSetting(global.showvisualisation)</selected>
+                            <onclick>Skin.ToggleSetting(global.showvisualisation)</onclick>
+                        </control>
+
+                        <!-- ================== -->
+                        <!-- Background Effects -->
+                        <!-- ================== -->
+                        <control type="button" id="9346" description="Transparent background">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9109)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31313]</label>
+                            <label2>$INFO[Skin.String(TransparencyLevel)]</label2>
+                            <onclick condition="!String.IsEqual(Skin.String(TransparencyLevel),$LOCALIZE[31316])">Skin.SetString(TransparencyLevel,$LOCALIZE[31316])</onclick>
+                            <onclick condition="String.IsEqual(Skin.String(TransparencyLevel),$LOCALIZE[31316])">Skin.SetString(TransparencyLevel,$LOCALIZE[571])</onclick>
+                        </control>
+
+                        <control type="button" id="9552" description="Set overlaycolor ">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9109)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31273]</label>
+                            <label2>$VAR[Label_OverlayColor]</label2>
+                            <onclick condition="Skin.HasSetting(DisableOverlayColor)">Skin.ToggleSetting(DisableOverlayColor)</onclick>
+                            <onclick condition="!System.HasAddon(script.skin.helper.colorpicker)">InstallAddon(script.skin.helper.colorpicker)</onclick>
+                            <onclick>RunScript(script.skin.helper.colorpicker,skinstring=overlaycolor.name)</onclick>
+                            <enable>!Skin.HasSetting(MatchOverlayColors)</enable>
+                        </control>
+
+                        <control type="radiobutton" id="9457" description="Disable color overlay">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9109)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31336]</label>
+                            <selected>!Skin.HasSetting(DisableOverlayColor)</selected>
+                            <onclick>Skin.ToggleSetting(DisableOverlayColor)</onclick>
+                        </control>
+
+                        <control type="radiobutton" id="9458" description="Disable color overlay">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9109)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31338]</label>
+                            <selected>!Skin.HasSetting(DisableVignette)</selected>
+                            <enable>Skin.HasSetting(DisableOverlayColor)</enable>
+                            <onclick>Skin.ToggleSetting(DisableVignette)</onclick>
+                        </control>
+
+                        <control type="radiobutton" id="9227" description="Blur background fanart">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9109)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31275]</label>
+                            <selected>Skin.HasSetting(EnableBlur)</selected>
+                            <onclick condition="!System.HasAddon(script.colorbox)">InstallAddon(script.colorbox)</onclick>
+                            <onclick condition="System.HasAddon(script.colorbox) + !Skin.HasSetting(EnableBlur)">SetProperty(FIVE_daemon_set,blur,home)</onclick>
+                            <onclick condition="System.HasAddon(script.colorbox) + !Skin.HasSetting(EnableBlur)">RunScript(script.colorbox,daemon=True)</onclick>
+                            <onclick condition="System.HasAddon(script.colorbox) + !Skin.HasSetting(EnableBlur)">AlarmClock(nms1,SetProperty(NINE_manual_set,"var=quality,set=$INFO[Skin.String(colorbox_quality)]|var=blursize,set=$INFO[Skin.String(colorbox_blursize)]|var=bitsize,set=$INFO[Skin.String(colorbox_bitsize)]|var=pixelsize,set=$INFO[Skin.String(colorbox_pixelsize)]|var=black,set=$INFO[Skin.String(colorbox_black)]|var=white,set=$INFO[Skin.String(colorbox_white)]",home),00:05,true)</onclick>
+                            <onclick condition="System.HasAddon(script.colorbox)">Skin.ToggleSetting(EnableBlur)</onclick>
+                        </control>
+
+                        <control type="radiobutton" id="9327" description="Only blur video info">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9109)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31154]</label>
+                            <selected>Skin.HasSetting(OnlyBlurInfo)</selected>
+                            <onclick>Skin.ToggleSetting(OnlyBlurInfo)</onclick>
+                            <enable>Skin.HasSetting(EnableBlur) + System.HasAddon(script.colorbox)</enable>
+                        </control>
+
+                        <control type="button" id="9367" description="Color Box Advanced Settings">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9109)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31330]</label>
+                            <onclick>ActivateWindow(1116)</onclick>
+                            <enable>Skin.HasSetting(EnableBlur) + System.HasAddon(script.colorbox)</enable>
+                        </control>
+
+                        <control type="button" id="9654">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9109)</visible>
+                            <label>$LOCALIZE[31321]</label>
+                            <include>Defs_Settings_Button</include>
+                            <onclick>Skin.Reset(overlaycolor.name)</onclick>
+                            <onclick>Skin.Reset(MatchOverlayColors)</onclick>
+                            <onclick>Skin.Reset(DisableOverlayColor)</onclick>
+                            <onclick>Skin.Reset(DisableVignette)</onclick>
+                            <onclick>Skin.Reset(EnableBlur)</onclick>
+                            <onclick>Skin.Reset(OnlyBlurInfo)</onclick>
+                            <onclick>Skin.SetString(TransparencyLevel,$LOCALIZE[571])</onclick>
+                        </control>
+
+                        <!-- ====== -->
+                        <!-- Colors -->
+                        <!-- ====== -->
+                        <control type="button" id="9251" description="Color Highlight">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9105)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <enable>!Skin.HasSetting(CycleColors)</enable>
+                            <label>31286</label>
+                            <label2>$INFO[Skin.String(focuscolor.name)]</label2>
+                            <onclick condition="!System.HasAddon(script.skin.helper.colorpicker)">InstallAddon(script.skin.helper.colorpicker)</onclick>
+                            <onclick>RunScript(script.skin.helper.colorpicker,skinstring=focuscolor.name)</onclick>
+                        </control>
+                        <control type="button" id="9253" description="Color Highlight">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9105)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <enable>!Skin.HasSetting(CycleColors)</enable>
+                            <label>$LOCALIZE[31250]</label>
+                            <label2>$INFO[Skin.String(gradientcolor.name)]</label2>
+                            <onclick condition="!System.HasAddon(script.skin.helper.colorpicker)">InstallAddon(script.skin.helper.colorpicker)</onclick>
+                            <onclick>RunScript(script.skin.helper.colorpicker,skinstring=gradientcolor.name)</onclick>
+                        </control>
+                        <control type="button" id="9252" description="Set overlaycolor ">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9105)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31273]</label>
+                            <label2>$VAR[Label_OverlayColor]</label2>
+                            <onclick condition="Skin.HasSetting(DisableOverlayColor)">Skin.ToggleSetting(DisableOverlayColor)</onclick>
+                            <onclick condition="!System.HasAddon(script.skin.helper.colorpicker)">InstallAddon(script.skin.helper.colorpicker)</onclick>
+                            <onclick>RunScript(script.skin.helper.colorpicker,skinstring=overlaycolor.name)</onclick>
+                            <enable>!Skin.HasSetting(MatchOverlayColors)</enable>
+                        </control>
+
+                        <control type="radiobutton" id="9337" description="Enable color matching">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9105)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31288]</label>
+                            <selected>Skin.HasSetting(MatchColors)</selected>
+                            <onclick condition="!System.HasAddon(script.colorbox)">InstallAddon(script.colorbox)</onclick>
+                            <onclick condition="System.HasAddon(script.colorbox) + !Skin.HasSetting(MatchColors)">SetProperty(SEVEN_daemon_set,True,home)</onclick>
+                            <onclick condition="System.HasAddon(script.colorbox) + !Skin.HasSetting(MatchColors)">RunScript(script.colorbox,daemon=True)</onclick>
+                            <onclick condition="System.HasAddon(script.colorbox) + !Skin.HasSetting(MatchColors)">AlarmClock(nms1,SetProperty(NINE_manual_set,"var=main,set=$INFO[Skin.String(colorbox_main)]|var=comp,set=$INFO[Skin.String(colorbox_comp)]|var=quality,set=$INFO[Skin.String(colorbox_quality)]|var=blursize,set=$INFO[Skin.String(colorbox_blursize)]|var=bitsize,set=$INFO[Skin.String(colorbox_bitsize)]|var=pixelsize,set=$INFO[Skin.String(colorbox_pixelsize)]|var=black,set=$INFO[Skin.String(colorbox_black)]|var=white,set=$INFO[Skin.String(colorbox_white)]",home),00:05,true)</onclick>
+                            <onclick condition="System.HasAddon(script.colorbox)">Skin.ToggleSetting(MatchColors)</onclick>
+                        </control>
+
+                        <control type="radiobutton" id="9456" description="Match overlay">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9105)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31335]</label>
+                            <selected>Skin.HasSetting(MatchOverlayColors)</selected>
+                            <onclick condition="!System.HasAddon(script.colorbox)">InstallAddon(script.colorbox)</onclick>
+                            <onclick condition="System.HasAddon(script.colorbox) + !Skin.HasSetting(MatchOverlayColors)">SetProperty(SEVEN_daemon_set,True,home)</onclick>
+                            <onclick condition="System.HasAddon(script.colorbox) + !Skin.HasSetting(MatchOverlayColors)">RunScript(script.colorbox,daemon=True)</onclick>
+                            <onclick condition="System.HasAddon(script.colorbox) + !Skin.HasSetting(MatchOverlayColors)">AlarmClock(nms1,SetProperty(NINE_manual_set,"var=main,set=$INFO[Skin.String(colorbox_main)]|var=comp,set=$INFO[Skin.String(colorbox_comp)]|var=quality,set=$INFO[Skin.String(colorbox_quality)]|var=blursize,set=$INFO[Skin.String(colorbox_blursize)]|var=bitsize,set=$INFO[Skin.String(colorbox_bitsize)]|var=pixelsize,set=$INFO[Skin.String(colorbox_pixelsize)]|var=black,set=$INFO[Skin.String(colorbox_black)]|var=white,set=$INFO[Skin.String(colorbox_white)]",home),00:05,true)</onclick>
+                            <onclick condition="System.HasAddon(script.colorbox)">Skin.ToggleSetting(MatchOverlayColors)</onclick>
+                            <enable>!Skin.HasSetting(DisableOverlayColor)</enable>
+                        </control>
+
+                        <control type="radiobutton" id="9338" description="Enable color cycling">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9105)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31305]</label>
+                            <selected>Skin.HasSetting(CycleColors)</selected>
+                            <onclick condition="!System.HasAddon(script.colorbox)">InstallAddon(script.colorbox)</onclick>
+                            <onclick condition="System.HasAddon(script.colorbox) + !Skin.HasSetting(CycleColors)">SetProperty(SEVEN_daemon_set,True,home)</onclick>
+                            <onclick condition="System.HasAddon(script.colorbox) + !Skin.HasSetting(CycleColors)">RunScript(script.colorbox,daemon=True)</onclick>
+                            <onclick condition="System.HasAddon(script.colorbox) + !Skin.HasSetting(CycleColors)">AlarmClock(nms1,SetProperty(NINE_manual_set,"var=main,set=$INFO[Skin.String(colorbox_main)]|var=comp,set=$INFO[Skin.String(colorbox_comp)]|var=quality,set=$INFO[Skin.String(colorbox_quality)]|var=blursize,set=$INFO[Skin.String(colorbox_blursize)]|var=bitsize,set=$INFO[Skin.String(colorbox_bitsize)]|var=pixelsize,set=$INFO[Skin.String(colorbox_pixelsize)]|var=black,set=$INFO[Skin.String(colorbox_black)]|var=white,set=$INFO[Skin.String(colorbox_white)]",home),00:05,true)</onclick>
+                            <onclick condition="System.HasAddon(script.colorbox)">Skin.ToggleSetting(CycleColors)</onclick>
+                        </control>
+
+                        <control type="button" id="9254">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9105)</visible>
+                            <label>$LOCALIZE[31321]</label>
+                            <include>Defs_Settings_Button</include>
+                            <onclick>Skin.Reset(focuscolor.name)</onclick>
+                            <onclick>Skin.Reset(gradientcolor.name)</onclick>
+                            <onclick>Skin.Reset(overlaycolor.name)</onclick>
+                            <onclick>Skin.Reset(CycleColors)</onclick>
+                            <onclick>Skin.Reset(MatchColors)</onclick>
+                            <onclick>Skin.Reset(MatchOverlayColors)</onclick>
+                            <onclick>Skin.Reset(DisableOverlayColor)</onclick>
+                            <onclick>Skin.Reset(DisableVignette)</onclick>
+                        </control>
+                        
+                        <!-- ================= -->
+                        <!-- Video / Music OSD -->
+                        <!-- ================= -->
+                        <control type="radiobutton" id="9231" description="Show Fanart">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9103)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>31121</label>
+                            <selected>Skin.HasSetting(musicvis.fanartfallback)</selected>
+                            <enable>Skin.HasSetting(ArtistSlideShow.Disabled)</enable>
+                            <onclick>Skin.ToggleSetting(musicvis.fanartfallback)</onclick>
+                        </control>
+                        <control type="radiobutton" id="9232" description="Show slideshow in background">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9103)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>31118</label>
+                            <selected>!Skin.HasSetting(ArtistSlideShow.Disabled)</selected>
+                            <onclick>Skin.ToggleSetting(ArtistSlideShow.Disabled)</onclick>
+                        </control>
+                        <control type="radiobutton" id="9233" description="Show slideshow in background">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9103)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>31119</label>
+                            <selected>Skin.HasSetting(OSDVisualisation.ShowFanart)</selected>
+                            <onclick>Skin.ToggleSetting(OSDVisualisation.ShowFanart)</onclick>
+                            <enable>Skin.HasSetting(musicvis.fanartfallback) | [!Skin.HasSetting(ArtistSlideShow.Disabled) + System.HasAddon(script.artistslideshow)]</enable>
+                        </control>
+                        <control type="radiobutton" id="9236" description="Colour overlay">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9103)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31087]</label>
+                            <selected>!Skin.HasSetting(HideOSDDiffuseColors)</selected>
+                            <onclick>Skin.ToggleSetting(HideOSDDiffuseColors)</onclick>
+                        </control>
+                        <control type="radiobutton" id="9237" description="Scrolling Text">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9103)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31088]</label>
+                            <selected>!Skin.HasSetting(HideOSDScrollingText)</selected>
+                            <onclick>Skin.ToggleSetting(HideOSDScrollingText)</onclick>
+                        </control>
+                        <control type="radiobutton" id="9234" description="Animate Artist slideshow">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9103)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>31120</label>
+                            <selected>Skin.HasSetting(ArtistSlideshow.Animate)</selected>
+                            <onclick>Skin.ToggleSetting(ArtistSlideshow.Animate)</onclick>
+                            <enable>Skin.HasSetting(musicvis.fanartfallback) | !Skin.HasSetting(ArtistSlideShow.Disabled)</enable>
+                        </control>
+                        <control type="radiobutton" id="9239" description="Show detailed info on pause">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9103)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31145]</label>
+                            <selected>Skin.HasSetting(ShowInfoPaused)</selected>
+                            <onclick>Skin.ToggleSetting(ShowInfoPaused)</onclick>
+                            <onclick>Skin.Reset(DisableOSDInfo)</onclick>
+                        </control>
+                        <control type="radiobutton" id="9248" description="Only show seekbar on pressing info">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9103)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31201]</label>
+                            <selected>Skin.HasSetting(DisableOSDInfo)</selected>
+                            <onclick>Skin.ToggleSetting(DisableOSDInfo)</onclick>
+                            <onclick>Skin.Reset(ShowInfoPaused)</onclick>
+                        </control>
+                        <control type="radiobutton" id="9680" description="Show clearart">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9103)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31258]</label>
+                            <selected>Skin.HasSetting(ShowOSDClearArt)</selected>
+                            <onclick>Skin.ToggleSetting(ShowOSDClearArt)</onclick>
+                        </control>
+
+                        <control type="radiobutton" id="9238" description="Media Flags">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9103)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31130]</label>
+                            <selected>Skin.HasSetting(ShowOSDVideoCodec)</selected>
+                            <onclick>Skin.ToggleSetting(ShowOSDVideoCodec)</onclick>
+                        </control>
+                        <control type="radiobutton" id="9267" description="Hide sub blade">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9103)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31186]</label>
+                            <selected>!Skin.HasSetting(OSDHideSubmenu)</selected>
+                            <onclick>Skin.ToggleSetting(OSDHideSubmenu)</onclick>
+                        </control>
+                        <control type="radiobutton" id="9299" description="AutoMusicVis">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9103)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31158]</label>
+                            <selected>Skin.HasSetting(AutoMusicVis)</selected>
+                            <onclick>Skin.ToggleSetting(AutoMusicVis)</onclick>
+                        </control>
+                        
+                        <control type="radiobutton" id="9235" description="Dont pause on information">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9103)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31079]</label>
+                            <selected>!Skin.HasSetting(DontPauseOSD)</selected>
+                            <onclick>Skin.ToggleSetting(DontPauseOSD)</onclick>
+                        </control>
+
+                        <control type="radiobutton" id="9399" description="Musicvideo auto info">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9103)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31314]</label>
+                            <selected>!Skin.HasSetting(DisableMusicVideoAutoInfo)</selected>
+                            <onclick>Skin.ToggleSetting(DisableMusicVideoAutoInfo)</onclick>
+                            <visible>!Skin.HasSetting(BigMusicVis)</visible>
+                        </control>
+                        
+                        <control type="radiobutton" id="9287" description="Larger statusbar font">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9103)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31253]</label>
+                            <selected>Skin.HasSetting(LargeStatusbarFont)</selected>
+                            <onclick>Skin.ToggleSetting(LargeStatusbarFont)</onclick>
+                        </control>
+                        
+
+                        <!-- ======= -->
+                        <!-- Artwork -->
+                        <!-- ======= -->
+                        <control type="button" id="9241">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9104)</visible>
+                            <label>$LOCALIZE[31013]</label>
+                            <label2>$INFO[Skin.String(weather.icons.name)]</label2>
+                            <include>Defs_Settings_Button</include>
+                            <onclick>RunScript(script.image.resource.select,property=weather.icons&amp;type=resource.images.weathericons)</onclick>
+                        </control>
+                        
+                        <control type="togglebutton" id="9225" description="Install Weather Fanart">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9104)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31008]</label>
+                            <altlabel>$LOCALIZE[31010]</altlabel>
+                            <usealttexture>System.HasAddon(resource.images.weatherfanart.multi)</usealttexture>
+                            <enable>!System.HasAddon(resource.images.weatherfanart.multi)</enable>
+                            <onclick condition="!System.HasAddon(resource.images.weatherfanart.multi)">InstallAddon(resource.images.weatherfanart.multi)</onclick>
+                        </control>
+                        
+                        <control type="radiobutton" id="9244">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9104)</visible>
+                            <label>$LOCALIZE[31022]</label>
+                            <include>Defs_Settings_Button</include>
+                            <selected>Skin.HasSetting(SkinHelper.EnableAnimatedPosters)</selected>
+                            <onclick>Skin.ToggleSetting(SkinHelper.EnableAnimatedPosters)</onclick>
+                        </control>
+
+                        <control type="radiobutton" id="9245">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9104)</visible>
+                            <label>$LOCALIZE[31255]</label>
+                            <onclick>Skin.ToggleSetting(DisableFakeLandscapeArt)</onclick>
+                            <selected>!Skin.HasSetting(DisableFakeLandscapeArt)</selected>
+                            <include>Defs_Settings_Button</include>
+                        </control>
+
+                        <!-- ============= -->
+                        <!-- Miscellaneous -->
+                        <!-- ============= -->
+                        <control type="button" id="9271" description="Startup Video">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9107)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>31168</label>
+                            <label2>$INFO[Skin.String(StartupPlaylist)]</label2>
+                            <onclick condition="String.IsEmpty(Skin.String(StartupPlaylist))">Skin.SetFile(StartupPlaylist,.mp4|.avi|.mkv|.xvid|.wmv|.mov|.xsp|.mp3|.wma|.flac|.m3u)</onclick>
+                            <onclick condition="!String.IsEmpty(Skin.String(StartupPlaylist))">Skin.Reset(StartupPlaylist)</onclick>
+                        </control>
+
+                        <control type="button" id="9274" description="Customise Shutdown Menu">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9107)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31027]</label>
+                            <onclick>RunScript(script.skinshortcuts,type=manage&amp;group=powermenu)</onclick>
+                        </control>
+
+                        <control type="radiobutton" id="9273" description="Kiosk Mode">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9107)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>31199</label>
+                            <selected>Skin.HasSetting(global.kioskmode)</selected>
+                            <onclick>Skin.ToggleSetting(global.kioskmode)</onclick>
+                        </control>
+
+                        <!-- <control type="radiobutton" id="9280" description="Use hours and minutes">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9107)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31090]</label>
+                            <selected>Skin.HasSetting(UseHoursMinutes)</selected>
+                            <onclick>Skin.ToggleSetting(UseHoursMinutes)</onclick>
+                        </control> -->
+
+                        <control type="radiobutton" id="9332" description="Use genre colors">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9107)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31056]</label>
+                            <selected>!Skin.HasSetting(PVRGuideGenreColors)</selected>
+                            <onclick>Skin.ToggleSetting(PVRGuideGenreColors)</onclick>
+                        </control>
+
+                        <control type="radiobutton" id="9278" description="Enable bounce animations">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9107)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31192]</label>
+                            <selected>!Skin.HasSetting(BounceAnimations)</selected>
+                            <onclick>Skin.ToggleSetting(BounceAnimations)</onclick>
+                        </control>
+
+                        <!-- ============ -->
+                        <!-- Dependencies -->
+                        <!-- ============ -->
+                        <control type="radiobutton" id="9281">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9108)</visible>
+                            <label>script.skin.helper.service</label>
+                            <label2>$INFO[System.AddonVersion(script.skin.helper.service)]        </label2>
+                            <onclick condition="!System.HasAddon(script.skin.helper.service)">InstallAddon(script.skin.helper.service)</onclick>
+                            <onclick condition="System.HasAddon(script.skin.helper.service)">Addon.OpenSettings(script.skin.helper.service)</onclick>
+                            <selected>System.HasAddon(script.skin.helper.service)</selected>
+                            <include>Defs_Settings_Button</include>
+                        </control>
+                        <control type="radiobutton" id="9282">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9108)</visible>
+                            <label>script.skin.helper.widgets</label>
+                            <label2>$INFO[System.AddonVersion(script.skin.helper.widgets)]        </label2>
+                            <onclick condition="!System.HasAddon(script.skin.helper.widgets)">InstallAddon(script.skin.helper.widgets)</onclick>
+                            <onclick condition="System.HasAddon(script.skin.helper.widgets)">Addon.OpenSettings(script.skin.helper.widgets)</onclick>
+                            <selected>System.HasAddon(script.skin.helper.widgets)</selected>
+                            <include>Defs_Settings_Button</include>
+                        </control>
+                        <control type="radiobutton" id="9283">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9108)</visible>
+                            <label>script.skin.helper.colorpicker</label>
+                            <label2>$INFO[System.AddonVersion(script.skin.helper.colorpicker)]        </label2>
+                            <onclick condition="!System.HasAddon(script.skin.helper.colorpicker)">InstallAddon(script.skin.helper.colorpicker)</onclick>
+                            <onclick condition="System.HasAddon(script.skin.helper.colorpicker)">Addon.OpenSettings(script.skin.helper.colorpicker)</onclick>
+                            <selected>System.HasAddon(script.skin.helper.colorpicker)</selected>
+                            <include>Defs_Settings_Button</include>
+                        </control>
+                        <control type="radiobutton" id="9284">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9108)</visible>
+                            <label>script.skin.helper.backgrounds</label>
+                            <label2>$INFO[System.AddonVersion(script.skin.helper.backgrounds)]        </label2>
+                            <onclick condition="!System.HasAddon(script.skin.helper.backgrounds)">InstallAddon(script.skin.helper.backgrounds)</onclick>
+                            <onclick condition="System.HasAddon(script.skin.helper.backgrounds)">Addon.OpenSettings(script.skin.helper.backgrounds)</onclick>
+                            <selected>System.HasAddon(script.skin.helper.backgrounds)</selected>
+                            <include>Defs_Settings_Button</include>
+                        </control>
+                        <control type="radiobutton" id="9297">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9108)</visible>
+                            <label>script.skin.helper.skinbackup</label>
+                            <label2>$INFO[System.AddonVersion(script.skin.helper.skinbackup)]        </label2>
+                            <onclick condition="!System.HasAddon(script.skin.helper.skinbackup)">InstallAddon(script.skin.helper.skinbackup)</onclick>
+                            <onclick condition="System.HasAddon(script.skin.helper.skinbackup)">Addon.OpenSettings(script.skin.helper.skinbackup)</onclick>
+                            <selected>System.HasAddon(script.skin.helper.skinbackup)</selected>
+                            <include>Defs_Settings_Button</include>
+                        </control>
+                        <control type="radiobutton" id="9444">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9108)</visible>
+                            <label>script.module.metadatautils</label>
+                            <label2>$INFO[System.AddonVersion(script.module.metadatautils)]        </label2>
+                            <onclick condition="!System.HasAddon(script.module.metadatautils)">InstallAddon(script.module.metadatautils)</onclick>
+                            <onclick condition="System.HasAddon(script.module.metadatautils)">Addon.OpenSettings(script.module.metadatautils)</onclick>
+                            <selected>System.HasAddon(script.module.metadatautils)</selected>
+                            <include>Defs_Settings_Button</include>
+                        </control>
+                        <control type="radiobutton" id="9298">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9108)</visible>
+                            <label>script.toolbox</label>
+                            <label2>$INFO[System.AddonVersion(script.toolbox)]        </label2>
+                            <onclick condition="!System.HasAddon(script.toolbox)">InstallAddon(script.toolbox)</onclick>
+                            <onclick condition="System.HasAddon(script.toolbox)">Addon.OpenSettings(script.toolbox)</onclick>
+                            <selected>System.HasAddon(script.toolbox)</selected>
+                            <include>Defs_Settings_Button</include>
+                        </control>
+                        <control type="radiobutton" id="9398">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9108)</visible>
+                            <label>script.colorbox</label>
+                            <label2>$INFO[System.AddonVersion(script.colorbox)]        </label2>
+                            <onclick condition="!System.HasAddon(script.colorbox)">InstallAddon(script.colorbox)</onclick>
+                            <onclick condition="System.HasAddon(script.colorbox)">Addon.OpenSettings(script.colorbox)</onclick>
+                            <selected>System.HasAddon(script.colorbox)</selected>
+                            <include>Defs_Settings_Button</include>
+                        </control>
+                        <control type="radiobutton" id="9285">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9108)</visible>
+                            <label>script.extendedinfo</label>
+                            <label2>$INFO[System.AddonVersion(script.extendedinfo)]        </label2>
+                            <onclick condition="!System.HasAddon(script.extendedinfo)">InstallAddon(script.extendedinfo)</onclick>
+                            <onclick condition="System.HasAddon(script.extendedinfo)">Addon.OpenSettings(script.extendedinfo)</onclick>
+                            <selected>System.HasAddon(script.extendedinfo)</selected>
+                            <include>Defs_Settings_Button</include>
+                        </control>
+                        <control type="radiobutton" id="9286">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9108)</visible>
+                            <label>script.skinshortcuts</label>
+                            <label2>$INFO[System.AddonVersion(script.skinshortcuts)]        </label2>
+                            <onclick condition="!System.HasAddon(script.skinshortcuts)">InstallAddon(script.skinshortcuts)</onclick>
+                            <onclick condition="System.HasAddon(script.skinshortcuts)">Addon.OpenSettings(script.skinshortcuts)</onclick>
+                            <selected>System.HasAddon(script.skinshortcuts)</selected>
+                            <include>Defs_Settings_Button</include>
+                        </control>
+                        <control type="radiobutton" id="9293">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9108)</visible>
+                            <label>script.artwork.downloader</label>
+                            <label2>$INFO[System.AddonVersion(script.artwork.downloader)]        </label2>
+                            <onclick condition="!System.HasAddon(script.artwork.downloader)">InstallAddon(script.artwork.downloader)</onclick>
+                            <onclick condition="System.HasAddon(script.artwork.downloader)">Addon.OpenSettings(script.artwork.downloader)</onclick>
+                            <selected>System.HasAddon(script.artwork.downloader)</selected>
+                            <include>Defs_Settings_Button</include>
+                        </control>
+                        <control type="radiobutton" id="9294">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9108)</visible>
+                            <label>script.cu.lrclyrics</label>
+                            <label2>$INFO[System.AddonVersion(script.cu.lrclyrics)]        </label2>
+                            <onclick condition="!System.HasAddon(script.cu.lrclyrics)">InstallAddon(script.cu.lrclyrics)</onclick>
+                            <onclick condition="System.HasAddon(script.cu.lrclyrics)">Addon.OpenSettings(script.cu.lrclyrics)</onclick>
+                            <selected>System.HasAddon(script.cu.lrclyrics)</selected>
+                            <include>Defs_Settings_Button</include>
+                        </control>
+                        <control type="radiobutton" id="9295">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9108)</visible>
+                            <label>script.artistslideshow</label>
+                            <label2>$INFO[System.AddonVersion(script.artistslideshow)]        </label2>
+                            <onclick condition="!System.HasAddon(script.artistslideshow)">InstallAddon(script.artistslideshow)</onclick>
+                            <onclick condition="System.HasAddon(script.artistslideshow)">Addon.OpenSettings(script.artistslideshow)</onclick>
+                            <selected>System.HasAddon(script.artistslideshow)</selected>
+                            <include>Defs_Settings_Button</include>
+                        </control>
+                        <control type="radiobutton" id="9292">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9108)</visible>
+                            <label>script.globalsearch</label>
+                            <label2>$INFO[System.AddonVersion(script.globalsearch)]        </label2>
+                            <onclick condition="!System.HasAddon(script.globalsearch)">InstallAddon(script.globalsearch)</onclick>
+                            <onclick condition="System.HasAddon(script.globalsearch)">Addon.OpenSettings(script.globalsearch)</onclick>
+                            <selected>System.HasAddon(script.globalsearch)</selected>
+                            <include>Defs_Settings_Button</include>
+                        </control>
+                        <control type="radiobutton" id="9296">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9108)</visible>
+                            <label>script.tv.show.next.aired</label>
+                            <label2>$INFO[System.AddonVersion(script.tv.show.next.aired)]        </label2>
+                            <onclick condition="!System.HasAddon(script.tv.show.next.aired)">InstallAddon(script.tv.show.next.aired)</onclick>
+                            <onclick condition="System.HasAddon(script.tv.show.next.aired)">Addon.OpenSettings(script.tv.show.next.aired)</onclick>
+                            <selected>System.HasAddon(script.tv.show.next.aired)</selected>
+                            <include>Defs_Settings_Button</include>
+                        </control>
+                        <control type="radiobutton" id="9288">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9108)</visible>
+                            <label>plugin.program.autocompletion</label>
+                            <label2>$INFO[System.AddonVersion(plugin.program.autocompletion)]        </label2>
+                            <onclick condition="!System.HasAddon(plugin.program.autocompletion)">InstallAddon(plugin.program.autocompletion)</onclick>
+                            <onclick condition="System.HasAddon(plugin.program.autocompletion)">Addon.OpenSettings(plugin.program.autocompletion)</onclick>
+                            <selected>System.HasAddon(plugin.program.autocompletion)</selected>
+                            <include>Defs_Settings_Button</include>
+                        </control>
+                        <control type="radiobutton" id="9289">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9108)</visible>
+                            <label>resource.images.studios.white</label>
+                            <label2>$INFO[System.AddonVersion(resource.images.studios.white)]        </label2>
+                            <onclick condition="!System.HasAddon(resource.images.studios.white)">InstallAddon(resource.images.studios.white)</onclick>
+                            <onclick condition="System.HasAddon(resource.images.studios.white)">Addon.OpenSettings(resource.images.studios.white)</onclick>
+                            <selected>System.HasAddon(resource.images.studios.white)</selected>
+                            <include>Defs_Settings_Button</include>
+                        </control>
+                        <control type="radiobutton" id="9310">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9108)</visible>
+                            <label>resource.images.moviecountryicons.maps</label>
+                            <label2>$INFO[System.AddonVersion(resource.images.moviecountryicons.maps)]        </label2>
+                            <onclick condition="!System.HasAddon(resource.images.moviecountryicons.maps)">InstallAddon(resource.images.moviecountryicons.maps)</onclick>
+                            <onclick condition="System.HasAddon(resource.images.moviecountryicons.maps)">Addon.OpenSettings(resource.images.moviecountryicons.maps)</onclick>
+                            <selected>System.HasAddon(resource.images.moviecountryicons.maps)</selected>
+                            <include>Defs_Settings_Button</include>
+                        </control>
+                        <control type="radiobutton" id="9290">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9108)</visible>
+                            <label>resource.images.moviegenreicons.transparent</label>
+                            <label2>$INFO[System.AddonVersion(resource.images.moviegenreicons.transparent)]        </label2>
+                            <onclick condition="!System.HasAddon(resource.images.moviegenreicons.transparent)">InstallAddon(resource.images.moviegenreicons.transparent)</onclick>
+                            <onclick condition="System.HasAddon(resource.images.moviegenreicons.transparent)">Addon.OpenSettings(resource.images.moviegenreicons.transparent)</onclick>
+                            <selected>System.HasAddon(resource.images.moviegenreicons.transparent)</selected>
+                            <include>Defs_Settings_Button</include>
+                        </control>
+                        <control type="radiobutton" id="9291">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9108)</visible>
+                            <label>resource.images.weatherfanart.multi</label>
+                            <label2>$INFO[System.AddonVersion(resource.images.weatherfanart.multi)]        </label2>
+                            <onclick condition="!System.HasAddon(resource.images.weatherfanart.multi)">InstallAddon(resource.images.weatherfanart.multi)</onclick>
+                            <onclick condition="System.HasAddon(resource.images.weatherfanart.multi)">Addon.OpenSettings(resource.images.weatherfanart.multi)</onclick>
+                            <selected>System.HasAddon(resource.images.weatherfanart.multi)</selected>
+                            <include>Defs_Settings_Button</include>
+                        </control>
+                        <control type="radiobutton" id="9259">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9108)</visible>
+                            <label>resource.images.weathericons.white</label>
+                            <label2>$INFO[System.AddonVersion(resource.images.weathericons.white)]        </label2>
+                            <onclick condition="!System.HasAddon(resource.images.weathericons.white)">InstallAddon(resource.images.weathericons.white)</onclick>
+                            <onclick condition="System.HasAddon(resource.images.weathericons.white)">Addon.OpenSettings(resource.images.weathericons.white)</onclick>
+                            <selected>System.HasAddon(resource.images.weathericons.white)</selected>
+                            <include>Defs_Settings_Button</include>
+                        </control>
+
+                        <!-- ================ -->
+                        <!-- Backup / Restore -->
+                        <!-- ================ -->
+                        <control type="button" id="9261" description="Backup">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9106)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31031]</label>
+                            <onclick>RunScript(script.skin.helper.skinbackup,action=backup)</onclick>
+                        </control>
+                        <control type="button" id="9262" description="Restore">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9106)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31032]</label>
+                            <onclick>RunScript(script.skin.helper.skinbackup,action=restore)</onclick>
+                        </control>
+                        <control type="button" id="9263" description="Backup Restore Settings">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9106)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31034]</label>
+                            <onclick condition="!System.HasAddon(script.skin.helper.skinbackup)">InstallAddon(script.skin.helper.skinbackup)</onclick>
+                            <onclick condition="System.HasAddon(script.skin.helper.skinbackup)">Addon.OpenSettings(script.skin.helper.skinbackup)</onclick>
+                        </control>
+                        <control type="button" id="9264" description="Reset">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9106)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31028]</label>
+                            <onclick>Skin.ResetSettings</onclick>
+                            <onclick>RunScript(script.skinshortcuts,type=resetall)</onclick>
+                        </control>
+                    </control>
+
+
+
+                    <!-- Lines -->
+                    <include>Defs_Settings_Line</include>
+
+                    <!-- Arrows -->
+                    <include content="Defs_Settings_Arrows">
+                        <param name="id" value="9200" />
+                    </include>
+                </control>
+                <!-- Info -->
+                <control type="grouplist">
+                    <left>view_pad</left>
+                    <right>view_pad</right>
+                    <top>806</top>
+                    <bottom>0</bottom>
+                    <orientation>vertical</orientation>
+                    <itemgap>0</itemgap>
+                    <control type="label">
+                        <height>50</height>
+                        <label>$LOCALIZE[19033]</label>
+                        <font>font_button</font>
+                        <textcolor>main_fg_30</textcolor>
+                    </control>
+                    <control type="textbox">
+                        <height>64</height>
+                        <label fallback="19055">$VAR[Label_SkinSettings_Info]</label>
+                        <font>font_tiny</font>
+                        <textcolor>main_fg_70</textcolor>
+                    </control>
+                </control>
+            </control>
+        </control>
+
+        <include>Topbar</include>
+    </controls>
+</window>

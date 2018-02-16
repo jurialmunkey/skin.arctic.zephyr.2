@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Foundation -->
+<window id="115">
+    <defaultcontrol always="true">901</defaultcontrol>
+    <zorder>0</zorder>
+    <visible>[VideoPlayer.IsFullscreen | Window.IsVisible(MusicVisualisation.xml)]</visible>
+    <controls>
+        <control type="group">
+            <visible>!Integer.IsEqual(Player.CacheLevel,100)</visible>
+            <visible>!Player.Seeking + !Player.DisplayAfterSeek</visible>
+            <visible>Player.Caching</visible>
+            <include>Global_Overlay</include>
+            <control type="group">
+                <height>170</height>
+                <width>720</width>
+                <centerleft>50%</centerleft>
+                <centertop>50%</centertop>
+                <control type="image">
+                    <description>Busy animation</description>
+                    <centerleft>50%</centerleft>
+                    <top>0</top>
+                    <width>100</width>
+                    <height>100</height>
+                    <texture>dialog/loading-back-dl.png</texture>
+                    <aspectratio>keep</aspectratio>
+                </control>
+                <control type="image">
+                    <centerleft>50%</centerleft>
+                    <top>0</top>
+                    <width>100</width>
+                    <height>100</height>
+                    <texture colordiffuse="$VAR[ColorHighlight2]">$INFO[Player.CacheLevel,progress/circle/p,.png]</texture>
+                    <aspectratio align="center">keep</aspectratio>
+                </control>
+                <control type="image">
+                    <centerleft>50%</centerleft>
+                    <top>0</top>
+                    <width>100</width>
+                    <height>100</height>
+                    <texture colordiffuse="$VAR[ColorHighlight]">$INFO[Player.CacheLevel,progress/circle/p,.png]</texture>
+                    <aspectratio align="center">keep</aspectratio>
+                    <include content="Defs_Progress_Colorfade">
+                        <param name="id" value="6655" />
+                    </include>
+                </control>
+                <control type="label" id="6655">
+                    <description>Busy label</description>
+                    <centerleft>50%</centerleft>
+                    <bottom>0</bottom>
+                    <width>720</width>
+                    <height>100</height>
+                    <aligny>center</aligny>
+                    <align>center</align>
+                    <label>$LOCALIZE[439] $INFO[Player.CacheLevel,, %]</label>
+                    <textcolor>ffededed</textcolor>
+                </control>
+            </control>
+        </control>
+
+        <control type="image">
+            <right>0</right>
+            <top>0</top>
+            <width>1920</width>
+            <height>600</height>
+            <texture>common/vignette-corner.png</texture>
+            <include>Animation_FadeIn</include>
+            <include>Animation_FadeOut</include>
+            <visible>[Window.IsVisible(DialogVolumeBar.xml) + !Player.Muted] | Window.IsVisible(DialogNotification.xml) | [Window.IsVisible(DialogBusy.xml) + Skin.HasSetting(MinimalBusyLoader)]</visible>
+            <visible>![Player.ShowInfo | Window.IsVisible(script-cu-lrclyrics-main.xml) | !String.IsEmpty(Window(Home).Property(OSDInfo)) | Player.ShowInfo | Window.IsActive(DialogFullScreenInfo.xml) | [Player.Paused + Skin.HasSetting(ShowInfoPaused)]]</visible>
+            <visible>[VideoPlayer.IsFullscreen | Window.IsVisible(MusicVisualisation.xml)]</visible>
+        </control>
+
+        
+
+        <include condition="Window.IsVisible(MusicVisualisation.xml) + Skin.HasSetting(BigMusicVis)">OSD_Music_Seekbar</include>
+        <include condition="Window.IsVisible(VideoFullScreen.xml)">OSD_Video_Seekbar</include>
+        <include condition="Window.IsVisible(VideoFullScreen.xml)" content="OSD_Music_Info">
+            <param name="player" value="VideoPlayer" />
+            <param name="rating" value="VideoPlayer.Rating" />
+            <param name="artwork" value="VideoPlayer.Cover" />
+        </include>
+    </controls>
+
+</window>

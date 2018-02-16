@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Foundation -->
+<window id="10140">
+    <defaultcontrol always="true">9</defaultcontrol>
+
+
+    <controls>
+
+        <include>Global_Overlay</include>
+
+        <control type="group">
+            <include content="Dialog_Standard_Group">
+                <param name="width" value="1820" />
+                <param name="height" value="956" />
+            </include>
+
+            <control type="label" id="20">
+                <include>Dialog_Standard_Header</include>
+            </control>
+
+            <control type="grouplist" id="9">
+                <description>button area</description>
+                <left>20</left>
+                <top>110</top>
+                <width>400</width>
+                <bottom>20</bottom>
+                <itemgap>10</itemgap>
+                <onleft>30</onleft>
+                <onright>2</onright>
+                <onup>9</onup>
+                <ondown>9</ondown>
+            </control>
+
+            <control type="grouplist" id="2">
+                <description>control area</description>
+                <left>440</left>
+                <top>110</top>
+                <width>940</width>
+                <bottom>20</bottom>
+                <itemgap>10</itemgap>
+                <onup>2</onup>
+                <ondown>2</ondown>
+                <onright>9001</onright>
+                <onleft>9</onleft>
+                <usecontrolcoords>true</usecontrolcoords>
+            </control>
+
+            <control type="togglebutton" id="13">
+                <description>Default Category Button</description>
+                <width>400</width>
+                <include>Dialog_Standard_ListButton</include>
+            </control>
+
+            <control type="button" id="3">
+                <description>Default Button</description>
+                <include>Dialog_Standard_ListButton</include>
+            </control>
+
+            <control type="radiobutton" id="4">
+                <description>Default RadioButton</description>
+                <radioposx>885</radioposx>
+                <textwidth>835</textwidth>
+                <include>Dialog_Standard_ListButton</include>
+            </control>
+
+            <control type="spincontrolex" id="5">
+                <description>Default spincontrolex</description>
+                <reverse>true</reverse>
+                <include>Dialog_Standard_ListButton</include>
+            </control>
+
+            <control type="label" id="7">
+                <include>Dialog_Standard_HintLabel</include>
+            </control>
+
+            <control type="image" id="6">
+                <description>Default Seperator</description>
+                <visible>false</visible>
+            </control>
+
+            <control type="sliderex" id="8">
+                <description>Default Slider</description>
+                <width>969</width>
+                <include>Dialog_Standard_ListButton</include>
+            </control>
+
+            <control type="image">
+                <right>20</right>
+                <bottom>20</bottom>
+                <width>400</width>
+                <height>400</height>
+                <texture>$VAR[Image_AddonImage]</texture>
+                <aspectratio align="center" aligny="bottom">keep</aspectratio>
+            </control>
+
+            <!-- Ok Cancel -->
+            <control type="grouplist" id="9001">
+                <onleft>2</onleft>
+                <right>20</right>
+                <orientation>vertical</orientation>
+                <itemgap>10</itemgap>
+                <width>400</width>
+                <top>110</top>
+                <control type="button" id="10" description="OK">
+                    <label>186</label>
+                    <height>66</height>
+                    <width>400</width>
+                    <include>Dialog_Standard_OkCancel</include>
+                </control>
+
+                <control type="button" id="11" description="Cancel">
+                    <label>222</label>
+                    <height>66</height>
+                    <width>400</width>
+                    <include>Dialog_Standard_OkCancel</include>
+                </control>
+
+                <control type="button" id="12" description="Cancel">
+                    <label>409</label>
+                    <height>66</height>
+                    <width>400</width>
+                    <include>Dialog_Standard_OkCancel</include>
+                </control>
+
+            </control>
+
+        </control>
+
+    </controls>
+
+</window>

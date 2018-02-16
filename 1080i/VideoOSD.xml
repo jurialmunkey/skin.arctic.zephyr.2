@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Foundation -->
+<window id="2901">
+    <onload condition="!Player.PauseEnabled + String.IsEmpty(Window(Home).Property(OSDViewMode))">SetFocus(15)</onload>
+    <onload condition="Player.PauseEnabled + String.IsEmpty(Window(Home).Property(OSDViewMode))">SetFocus(14)</onload>
+    <onload condition="!String.IsEmpty(Window(Home).Property(OSDViewMode))">SetFocus(9003)</onload>
+    <onload condition="!String.IsEmpty(Window(Home).Property(OSDViewMode))">ClearProperty(OSDViewMode,Home)</onload>
+    <onunload>ClearProperty(OSDInfo,Home)</onunload>
+    <onunload condition="!String.IsEmpty(Window(Home).Property(OSDExtendedInfo)) + Player.Paused">Play</onunload>
+    <onunload condition="!String.IsEmpty(Window(Home).Property(OSDExtendedInfo))">ClearProperty(OSDExtendedInfo,Home)</onunload>
+    <onload condition="String.Contains(Player.Art(thumb),ytimg)">RunScript(script.skin.helper.service,action=stripstring,splitchar=/,string=$INFO[Window(Home).Property(ThumbSplit1)],output=ThumbSplit2,index=0)</onload>
+    <controls>
+
+        <control type="group">
+            <include condition="String.IsEmpty(Window(Home).Property(OSDViewMode))">Animation_FadeIn</include>
+            <visible>!Window.IsVisible(DialogSlider.xml)</visible>
+            <animation effect="fade" start="100" end="0" time="200" condition="Control.HasFocus(9605)">Conditional</animation>
+            <!-- Mini Blade -->
+            <control type="group">
+                <include>Topbar_SubMenu_Group_Content</include>
+                <control type="panel" id="9003">
+                    <height>40</height>
+                    <left>0</left>
+                    <right>0</right>
+                    <ondown condition="String.IsEmpty(Window(Home).Property(OSDInfo))">SetProperty(OSDInfo,1,Home)</ondown>
+                    <ondown condition="!String.IsEmpty(Window(Home).Property(OSDInfo))">ClearProperty(OSDInfo,Home)</ondown>
+                    <onup>9000</onup>
+                    <orientation>horizontal</orientation>
+                    <itemlayout height="40" width="320">
+                        <control type="label">
+                            <left>20</left>
+                            <right>20</right>
+                            <height>40</height>
+                            <label>$INFO[ListItem.Label]</label>
+                            <aligny>center</aligny>
+                            <align>center</align>
+                            <font>font_osd_submenu</font>
+                            <textcolor>panel_fg_70</textcolor>
+                        </control>
+                    </itemlayout>
+                    <focusedlayout height="40" width="320">
+                        <control type="image">
+                            <texture colordiffuse="$VAR[ColorHighlight]">common/white.png</texture>
+                        </control>
+                        <control type="label">
+                            <left>20</left>
+                            <right>20</right>
+                            <height>40</height>
+                            <label>$INFO[ListItem.Label]</label>
+                            <aligny>center</aligny>
+                            <align>center</align>
+                            <font>font_osd_submenu</font>
+                            <textcolor>Selected</textcolor>
+                        </control>
+                    </focusedlayout>
+                    <content>
+                        <item>
+                            <icon/>
+                            <label>$LOCALIZE[287] $LOCALIZE[305] $INFO[VideoPlayer.SubtitlesLanguage]</label>
+                            <onclick>NextSubtitle</onclick>
+                            <visible>VideoPlayer.SubtitlesEnabled</visible>
+                        </item>
+                        <item>
+                            <icon/>
+                            <label>$LOCALIZE[287] $LOCALIZE[13106]</label>
+                            <onclick>NextSubtitle</onclick>
+                            <visible>!VideoPlayer.SubtitlesEnabled</visible>
+                        </item>
+                        <item>
+                            <icon />
+                            <label>$LOCALIZE[287] $LOCALIZE[33003]</label>
+                            <onclick>Close</onclick>
+                            <onclick>ActivateWindow(SubtitleSearch)</onclick>
+                        </item>
+                        <item>
+                            <icon/>
+                            <label>22006</label>
+                            <onclick>subtitledelay</onclick>
+                        </item>
+                        <item>
+                            <icon/>
+                            <label>297</label>
+                            <onclick>audiodelay</onclick>
+                        </item>
+                        <item>
+                            <icon/>
+                            <label>$INFO[VideoPlayer.AudioCodec,[UPPERCASE],[/UPPERCASE]] $INFO[VideoPlayer.AudioChannels]ch $INFO[VideoPlayer.AudioLanguage,[UPPERCASE],[/UPPERCASE]]</label>
+                            <onclick>AudioNextLanguage</onclick>
+                        </item>
+                        
+                        <item>
+                            <icon/>
+                            <label>629</label>
+                            <onclick>Close</onclick>
+                            <onclick>aspectratio</onclick>
+                            <onclick>SetProperty(OSDViewMode,1,Home)</onclick>
+                            <onclick>OSD</onclick>
+                        </item>
+                        
+
+                    </content>
+                </control>
+            </control>
+
+            <!-- Main Blade -->
+            <control type="group">
+                <include>Topbar_MainMenu_Group</include>
+                <control type="grouplist" id="9001">
+                    <align>left</align>
+                    <left>0</left>
+                    <height>100%</height>
+                    <itemgap>0</itemgap>
+                    <width>690</width>
+                    <onup condition="String.IsEmpty(Window(Home).Property(OSDInfo))">SetProperty(OSDInfo,1,Home)</onup>
+                    <onup condition="!String.IsEmpty(Window(Home).Property(OSDInfo))">ClearProperty(OSDInfo,Home)</onup>
+                    <onright>11</onright>
+                    <onleft>6</onleft>
+                    <ondown>9003</ondown>
+                    <orientation>horizontal</orientation>
+                    <usecontrolcoords>true</usecontrolcoords>
+                    <include>OSD_Controls_Video_Left</include>
+                </control>
+                <control type="grouplist" id="9000">
+                    <align>center</align>
+                    <height>100%</height>
+                    <itemgap>32</itemgap>
+                    <onleft>3</onleft>
+                    <onright>4</onright>
+                    <ondown>9003</ondown>
+                    <onup condition="String.IsEmpty(Window(Home).Property(OSDInfo))">SetProperty(OSDInfo,1,Home)</onup>
+                    <onup condition="!String.IsEmpty(Window(Home).Property(OSDInfo))">ClearProperty(OSDInfo,Home)</onup>
+                    <orientation>horizontal</orientation>
+                    <usecontrolcoords>true</usecontrolcoords>
+                    <include>OSD_Controls</include>
+                </control>
+                <control type="grouplist" id="9002">
+                    <align>right</align>
+                    <right>0</right>
+                    <height>100%</height>
+                    <itemgap>0</itemgap>
+                    <width>690</width>
+                    <onleft>17</onleft>
+                    <onright>1</onright>
+                    <ondown>9003</ondown>
+                    <onup condition="String.IsEmpty(Window(Home).Property(OSDInfo))">SetProperty(OSDInfo,1,Home)</onup>
+                    <onup condition="!String.IsEmpty(Window(Home).Property(OSDInfo))">ClearProperty(OSDInfo,Home)</onup>
+                    <orientation>horizontal</orientation>
+                    <usecontrolcoords>true</usecontrolcoords>
+                    <include condition="!VideoPlayer.Content(LiveTV)">OSD_Controls_Video_Right</include>
+                    <include condition="VideoPlayer.Content(LiveTV)">OSD_Controls_LiveTV_Right</include>
+                </control>
+                <include>Topbar_MainMenu_Lines</include>
+            </control>
+        </control>
+
+        <include condition="System.HasAddon(plugin.video.youtube)">Object_Youtube_Recommended</include>
+
+        
+
+        <control type="slider">
+            <bottom>0</bottom>
+            <height>48</height>
+            <width>100%</width>
+            <texturesliderbar/>
+            <textureslidernib/>
+            <textureslidernibfocus/>
+            <info>Player.Progress</info>
+            <action>seek</action>
+        </control>
+
+        <control type="group">
+            <include condition="String.IsEmpty(Window(Home).Property(OSDViewMode))">Animation_FadeIn</include>
+            <visible>Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml) | Window.IsVisible(DialogVideoInfo.xml)</visible>
+            <include>Global_Background</include>
+            <include>Topbar</include>
+        </control>
+
+    </controls>
+
+</window>

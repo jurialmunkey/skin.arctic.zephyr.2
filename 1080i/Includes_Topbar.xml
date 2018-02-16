@@ -1,0 +1,562 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+    <!-- ====== -->
+    <!-- Common -->
+    <!-- ====== -->
+    <include name="Topbar_HomeMenu_Item">
+        <control type="togglebutton">
+            <width>auto</width>
+            <align>left</align>
+            <height>view_pad</height>
+            <onfocus>SetFocus(300,$PARAM[pos])</onfocus>
+            <onclick>$INFO[Container(300).ListItemAbsolute($PARAM[pos]).Property(path)]</onclick>
+            <usealttexture>Control.HasFocus(300) + String.IsEqual(Container(300).ListItemAbsolute($PARAM[pos]).Label,Container(300).ListItem.Label)</usealttexture>
+            <font>font_topbar_small</font>
+            <textcolor>Selected</textcolor>
+            <textoffsetx>1</textoffsetx>
+            <animation effect="fade" start="100" end="33" condition="!String.IsEqual(Container(300).ListItemAbsolute($PARAM[pos]).Label,Container(300).ListItem.Label)">Conditional</animation>
+            <texturenofocus />
+            <texturefocus colordiffuse="$VAR[ColorHighlight]" border="8">common/underline2.png</texturefocus>
+            <alttexturenofocus colordiffuse="$VAR[ColorHighlight]" border="8">common/underline2.png</alttexturenofocus>
+            <alttexturefocus colordiffuse="$VAR[ColorHighlight]" border="8">common/underline2.png</alttexturefocus>
+            <label>$INFO[Container(300).ListItemAbsolute($PARAM[pos]).Label]</label>
+            <visible>!String.IsEqual(Container(300).ListItemAbsolute($PARAM[pos]).Label,Container(300).ListItem.Label)</visible>
+        </control>
+        <control type="togglebutton">
+            <width>auto</width>
+            <align>left</align>
+            <height>view_pad</height>
+            <onfocus>SetFocus(300,$PARAM[pos])</onfocus>
+            <onclick>$INFO[Container(300).ListItemAbsolute($PARAM[pos]).Property(path)]</onclick>
+            <usealttexture>Control.HasFocus(300) + String.IsEqual(Container(300).ListItemAbsolute($PARAM[pos]).Label,Container(300).ListItem.Label)</usealttexture>
+            <font>font_topbar</font>
+            <textcolor>Selected</textcolor>
+            <textoffsetx>1</textoffsetx>
+            <animation effect="fade" start="100" end="33" condition="!String.IsEqual(Container(300).ListItemAbsolute($PARAM[pos]).Label,Container(300).ListItem.Label)">Conditional</animation>
+            <texturenofocus />
+            <texturefocus colordiffuse="$VAR[ColorHighlight]" border="8">common/underline2.png</texturefocus>
+            <alttexturenofocus colordiffuse="$VAR[ColorHighlight]" border="8">common/underline2.png</alttexturenofocus>
+            <alttexturefocus colordiffuse="$VAR[ColorHighlight]" border="8">common/underline2.png</alttexturefocus>
+            <label>$INFO[Container(300).ListItemAbsolute($PARAM[pos]).Label]</label>
+            <visible>String.IsEqual(Container(300).ListItemAbsolute($PARAM[pos]).Label,Container(300).ListItem.Label)</visible>
+        </control>
+    </include>
+
+    <include name="Topbar_HomeMenu_Item_Gradient">
+        <control type="togglebutton">
+            <width>auto</width>
+            <align>left</align>
+            <height>view_pad</height>
+            <onfocus>SetFocus(300,$PARAM[pos])</onfocus>
+            <onclick>$INFO[Container(300).ListItemAbsolute($PARAM[pos]).Property(path)]</onclick>
+            <usealttexture>Control.HasFocus(300) + String.IsEqual(Container(300).ListItemAbsolute($PARAM[pos]).Label,Container(300).ListItem.Label)</usealttexture>
+            <font>font_topbar_small</font>
+            <textcolor>00ffffff</textcolor>
+            <textoffsetx>1</textoffsetx>
+            <animation effect="fade" start="100" end="33" condition="!String.IsEqual(Container(300).ListItemAbsolute($PARAM[pos]).Label,Container(300).ListItem.Label)">Conditional</animation>
+            <texturenofocus />
+            <texturefocus colordiffuse="$VAR[ColorHighlight]" border="8">common/underline2.png</texturefocus>
+            <alttexturenofocus colordiffuse="$VAR[ColorHighlight]" border="8">common/underline2.png</alttexturenofocus>
+            <alttexturefocus colordiffuse="$VAR[ColorHighlight]" border="8">common/underline2.png</alttexturefocus>
+            <label>$INFO[Container(300).ListItemAbsolute($PARAM[pos]).Label]</label>
+            <visible>!String.IsEqual(Container(300).ListItemAbsolute($PARAM[pos]).Label,Container(300).ListItem.Label)</visible>
+        </control>
+        <control type="togglebutton">
+            <width>auto</width>
+            <align>left</align>
+            <height>view_pad</height>
+            <onfocus>SetFocus(300,$PARAM[pos])</onfocus>
+            <onclick>$INFO[Container(300).ListItemAbsolute($PARAM[pos]).Property(path)]</onclick>
+            <usealttexture>Control.HasFocus(300) + String.IsEqual(Container(300).ListItemAbsolute($PARAM[pos]).Label,Container(300).ListItem.Label)</usealttexture>
+            <font>font_topbar</font>
+            <textcolor>00ffffff</textcolor>
+            <textoffsetx>1</textoffsetx>
+            <animation effect="fade" start="100" end="33" condition="!String.IsEqual(Container(300).ListItemAbsolute($PARAM[pos]).Label,Container(300).ListItem.Label)">Conditional</animation>
+            <texturenofocus />
+            <texturefocus colordiffuse="$VAR[ColorHighlight2]" border="8" diffuse="common/gradient-diffuse-horizontal.png">common/underline2.png</texturefocus>
+            <alttexturenofocus colordiffuse="$VAR[ColorHighlight2]" border="8" diffuse="common/gradient-diffuse-horizontal.png">common/underline2.png</alttexturenofocus>
+            <alttexturefocus colordiffuse="$VAR[ColorHighlight2]" border="8" diffuse="common/gradient-diffuse-horizontal.png">common/underline2.png</alttexturefocus>
+            <label>$INFO[Container(300).ListItemAbsolute($PARAM[pos]).Label]</label>
+            <visible>String.IsEqual(Container(300).ListItemAbsolute($PARAM[pos]).Label,Container(300).ListItem.Label)</visible>
+        </control>
+    </include>
+
+    <include name="Topbar">
+        <control type="group">
+            <visible>!$EXP[Exp_Info_Visible]</visible>
+            <!-- Darker bar when scrolling home -->
+            <control type="image">
+                <height>240</height>
+                <texture>common/gradient-top.png</texture>
+                <visible>Container(330).HasPrevious + Window.IsVisible(Home)</visible>
+                <animation effect="fade" start="0" end="100" time="200" reversible="false">Visible</animation>
+                <animation effect="fade" end="0" start="100" time="1000" reversible="false">Hidden</animation>
+                <animation effect="fade" end="0" start="100" time="350" reversible="false">WindowClose</animation>
+                <animation effect="fade" start="0" end="100" time="200" reversible="false">WindowOpen</animation>
+            </control>
+            <control type="group">
+                <top>30</top>
+                <animation type="Conditional" condition="Control.IsVisible(430)" reversible="false">
+                    <effect type="slide" end="0,20" time="60" tween="sine" />
+                    <effect type="slide" end="0,-20" time="180" tween="sine" delay="80" />
+                </animation>
+                <control type="group">
+                    <height>view_pad</height>
+                    <!-- Left Info -->
+                    <control type="grouplist">
+                        <itemgap>0</itemgap>
+                        <left>view_pad</left>
+                        <align>left</align>
+                        <orientation>horizontal</orientation>
+                        <usecontrolcoords>true</usecontrolcoords>
+                        <visible>!Control.HasFocus(8001)</visible>
+                        <control type="label">
+                            <top>0</top>
+                            <width>auto</width>
+                            <font>font_topbar</font>
+                            <textcolor>main_fg_100</textcolor>
+                            <label>$VAR[Label_Header_Content]</label>
+                            <visible>!Window.IsVisible(Home) | Window.IsVisible(script-script.extendedinfo-VideoList.xml)</visible>
+                            <visible>!Control.HasFocus(300)</visible>
+                        </control>
+                        <control type="label">
+                            <top>0</top>
+                            <width>auto</width>
+                            <font>font_topbar</font>
+                            <textcolor>main_fg_100</textcolor>
+                            <label>$INFO[Container(300).ListItem.Label]</label>
+                            <visible>!Window.IsVisible(Home)</visible>
+                            <visible>Control.HasFocus(300)</visible>
+                        </control>
+                    </control>
+                    
+                    <include condition="!Window.IsVisible(Home)">Topbar_Menu</include>
+                    <include condition="Window.IsVisible(MyVideoNav.xml) | Window.IsVisible(MyMusicNav.xml)">Object_AlphabetStrip</include>
+
+                    <!-- Right Info -->
+                    <control type="grouplist">
+                        <visible>!Window.IsVisible(DialogNotification.xml)</visible>
+                        <visible>!Window.IsVisible(DialogExtendedProgressBar.xml)</visible>
+                        <visible>!Window.IsVisible(DialogVolumeBar.xml) | Player.Muted</visible>
+                        <right>view_pad</right>
+                        <align>right</align>
+                        <orientation>horizontal</orientation>
+                        <itemgap>0</itemgap>
+                        <width>700</width>
+                        <usecontrolcoords>true</usecontrolcoords>
+                        <control type="group">
+                            <width>view_pad</width>
+                            <control type="multiimage">
+                                <centertop>50%</centertop>
+                                <imagepath colordiffuse="$VAR[ColorHighlight]">eq</imagepath>
+                                <width>40</width>
+                                <height>23</height>
+                                <fadetime>50</fadetime>
+                                <timeperimage>50</timeperimage>
+                                <visible>[String.IsEmpty(Window(10025).Property(PlayingBackgroundMedia)) + Player.HasMedia]</visible>
+                                <visible>!Player.Paused + !Player.Caching</visible>
+                                <visible>![Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml) | Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(DialogAddonInfo.xml)]</visible>
+                            </control>
+                            <control type="image">
+                                <centertop>50%</centertop>
+                                <centerleft>50%</centerleft>
+                                <texture colordiffuse="main_fg_100">osd/pause.png</texture>
+                                <width>32</width>
+                                <height>32</height>
+                                <fadetime>50</fadetime>
+                                <visible>[String.IsEmpty(Window(10025).Property(PlayingBackgroundMedia)) + Player.HasMedia]</visible>
+                                <visible>Player.Paused + !Player.Caching</visible>
+                                <visible>![Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml) | Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(DialogAddonInfo.xml)]</visible>
+                            </control>
+                            <control type="image">
+                                <centertop>50%</centertop>
+                                <left>-16</left>
+                                <texture colordiffuse="main_fg_100">special://skin/extras/icons/download.png</texture>
+                                <width>64</width>
+                                <height>64</height>
+                                <fadetime>50</fadetime>
+                                <visible>Player.Caching</visible>
+                                <visible>[String.IsEmpty(Window(10025).Property(PlayingBackgroundMedia)) + Player.HasMedia]</visible>
+                                <!-- <visible>Player.Caching</visible> -->
+                                <visible>![Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml) | Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(DialogAddonInfo.xml)]</visible>
+                            </control>
+                            <visible>Player.HasMedia</visible>
+                        </control>
+                        <control type="label">
+                            <width max="350">auto</width>
+                            <font>font_small</font>
+                            <textcolor>main_fg_100</textcolor>
+                            <label>$INFO[Player.Title]</label>
+                            <visible>Player.HasMedia</visible>
+                            <visible>[String.IsEmpty(Window(10025).Property(PlayingBackgroundMedia)) + Player.HasMedia]</visible>
+                            <visible>![Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml) | Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(DialogAddonInfo.xml)]</visible>
+                        </control>
+                        <control type="label">
+                            <width>auto</width>
+                            <font>font_small</font>
+                            <textcolor>$VAR[ColorHighlight]</textcolor>
+                            <label>  |  </label>
+                            <visible>Player.HasMedia</visible>
+                        </control>
+                        <control type="group">
+                            <width>view_pad</width>
+                            <control type="image">
+                                <centertop>50%</centertop>
+                                <height>40</height>
+                                <aspectratio>keep</aspectratio>
+                                <texture colordiffuse="main_fg_100">$INFO[Weather.FanartCode,resource://resource.images.weathericons.white/,.png]</texture>
+                            </control>
+                            <visible>Weather.IsFetched</visible>
+                            <visible>!Player.HasMedia</visible>
+                        </control>
+                        <control type="label">
+                            <width>auto</width>
+                            <font>font_small</font>
+                            <textcolor>main_fg_100</textcolor>
+                            <label>$INFO[Weather.Temperature]</label>
+                            <visible>Weather.IsFetched</visible>
+                            <visible>!Player.HasMedia</visible>
+                        </control>
+                        <control type="label">
+                            <width>auto</width>
+                            <font>font_small</font>
+                            <textcolor>$VAR[ColorHighlight]</textcolor>
+                            <label>  |  </label>
+                            <visible>!String.IsEmpty(Weather.Temperature)</visible>
+                            <visible>Weather.IsFetched</visible>
+                            <visible>!Player.HasMedia</visible>
+                        </control>
+                        <control type="label">
+                            <width>auto</width>
+                            <font>font_small</font>
+                            <textcolor>main_fg_100</textcolor>
+                            <label>$INFO[System.Time]</label>
+                        </control>
+                        <control type="image">
+                            <centertop>50%</centertop>
+                            <aspectratio align="right">keep</aspectratio>
+                            <texture colordiffuse="main_fg_100">special://skin/extras/icons/mute.png</texture>
+                            <width>74</width>
+                            <height>74</height>
+                            <fadetime>50</fadetime>
+                            <visible>Player.Muted</visible>
+                        </control>
+                    </control>
+                </control>
+                <control type="grouplist">
+                    <itemgap>30</itemgap>
+                    <height>view_pad</height>
+                    <left>view_pad</left>
+                    <orientation>horizontal</orientation>
+                    <visible>Window.IsVisible(Home) + !$EXP[Exp_Info_Visible]</visible>
+                    <include content="Topbar_HomeMenu_Item">
+                        <param name="pos" value="0" />
+                    </include>
+                    <include content="Topbar_HomeMenu_Item">
+                        <param name="pos" value="1" />
+                    </include>
+                    <include content="Topbar_HomeMenu_Item">
+                        <param name="pos" value="2" />
+                    </include>
+                    <include content="Topbar_HomeMenu_Item">
+                        <param name="pos" value="3" />
+                    </include>
+                    <include content="Topbar_HomeMenu_Item">
+                        <param name="pos" value="4" />
+                    </include>
+                    <include content="Topbar_HomeMenu_Item">
+                        <param name="pos" value="5" />
+                    </include>
+                    <include content="Topbar_HomeMenu_Item">
+                        <param name="pos" value="6" />
+                    </include>
+                    <include content="Topbar_HomeMenu_Item">
+                        <param name="pos" value="7" />
+                    </include>
+                    <include content="Topbar_HomeMenu_Item">
+                        <param name="pos" value="8" />
+                    </include>
+                    <include content="Topbar_HomeMenu_Item">
+                        <param name="pos" value="9" />
+                    </include>
+                    <include content="Topbar_HomeMenu_Item">
+                        <param name="pos" value="10" />
+                    </include>
+                    <include content="Topbar_HomeMenu_Item">
+                        <param name="pos" value="11" />
+                    </include>
+                    <include content="Topbar_HomeMenu_Item">
+                        <param name="pos" value="12" />
+                    </include>
+                </control>
+                <control type="grouplist">
+                    <itemgap>30</itemgap>
+                    <height>view_pad</height>
+                    <left>view_pad</left>
+                    <orientation>horizontal</orientation>
+                    <visible>Window.IsVisible(Home) + !$EXP[Exp_Info_Visible]</visible>
+                    <include content="Topbar_HomeMenu_Item_Gradient">
+                        <param name="pos" value="0" />
+                    </include>
+                    <include content="Topbar_HomeMenu_Item_Gradient">
+                        <param name="pos" value="1" />
+                    </include>
+                    <include content="Topbar_HomeMenu_Item_Gradient">
+                        <param name="pos" value="2" />
+                    </include>
+                    <include content="Topbar_HomeMenu_Item_Gradient">
+                        <param name="pos" value="3" />
+                    </include>
+                    <include content="Topbar_HomeMenu_Item_Gradient">
+                        <param name="pos" value="4" />
+                    </include>
+                    <include content="Topbar_HomeMenu_Item_Gradient">
+                        <param name="pos" value="5" />
+                    </include>
+                    <include content="Topbar_HomeMenu_Item_Gradient">
+                        <param name="pos" value="6" />
+                    </include>
+                    <include content="Topbar_HomeMenu_Item_Gradient">
+                        <param name="pos" value="7" />
+                    </include>
+                    <include content="Topbar_HomeMenu_Item_Gradient">
+                        <param name="pos" value="8" />
+                    </include>
+                    <include content="Topbar_HomeMenu_Item_Gradient">
+                        <param name="pos" value="9" />
+                    </include>
+                    <include content="Topbar_HomeMenu_Item_Gradient">
+                        <param name="pos" value="10" />
+                    </include>
+                    <include content="Topbar_HomeMenu_Item_Gradient">
+                        <param name="pos" value="11" />
+                    </include>
+                    <include content="Topbar_HomeMenu_Item_Gradient">
+                        <param name="pos" value="12" />
+                    </include>
+                </control>
+            </control>
+        </control>
+    </include>
+
+    <include name="Topbar_Info">
+        <control type="group">
+            <control type="group">
+                <top>30</top>
+                <control type="group">
+                    <height>view_pad</height>
+                    <!-- Left Info -->
+                    <control type="grouplist">
+                        <itemgap>0</itemgap>
+                        <left>view_pad</left>
+                        <align>left</align>
+                        <orientation>horizontal</orientation>
+                        <usecontrolcoords>true</usecontrolcoords>
+                        <control type="label">
+                            <top>0</top>
+                            <width>auto</width>
+                            <font>font_topbar</font>
+                            <textcolor>main_fg_100</textcolor>
+                            <label>$VAR[Label_Header_Content]</label>
+                            <visible>!Control.HasFocus(300)</visible>
+                        </control>
+                        <control type="label">
+                            <top>0</top>
+                            <width>auto</width>
+                            <font>font_topbar</font>
+                            <textcolor>main_fg_100</textcolor>
+                            <label>$INFO[Container(300).ListItem.Label]</label>
+                            <visible>Control.HasFocus(300)</visible>
+                        </control>
+                    </control>
+                
+                    <!-- Right Info -->
+                    <control type="grouplist">
+                        <right>view_pad</right>
+                        <align>right</align>
+                        <orientation>horizontal</orientation>
+                        <itemgap>0</itemgap>
+                        <visible>!Window.IsVisible(DialogNotification.xml)</visible>
+                        <visible>!Window.IsVisible(DialogExtendedProgressBar.xml)</visible>
+                        <visible>!Window.IsVisible(DialogVolumeBar.xml) | Player.Muted</visible>
+                        <control type="group">
+                            <width>view_pad</width>
+                            <control type="image">
+                                <centertop>50%</centertop>
+                                <height>40</height>
+                                <aspectratio>keep</aspectratio>
+                                <texture colordiffuse="main_fg_100">$INFO[Weather.FanartCode,resource://resource.images.weathericons.white/,.png]</texture>
+                            </control>
+                            <visible>Weather.IsFetched</visible>
+                        </control>
+                        <control type="label">
+                            <width>auto</width>
+                            <font>font_small</font>
+                            <textcolor>main_fg_100</textcolor>
+                            <label>$INFO[Weather.Temperature]</label>
+                            <visible>Weather.IsFetched</visible>
+                        </control>
+                        <control type="label">
+                            <width>auto</width>
+                            <font>font_small</font>
+                            <textcolor>$VAR[ColorHighlight]</textcolor>
+                            <label>  |  </label>
+                            <visible>!String.IsEmpty(Weather.Temperature)</visible>
+                            <visible>Weather.IsFetched</visible>
+                        </control>
+                        <control type="label">
+                            <width>auto</width>
+                            <font>font_small</font>
+                            <textcolor>main_fg_100</textcolor>
+                            <label>$INFO[System.Time]</label>
+                        </control>
+                    </control>
+                </control>
+            </control>
+        </control>
+    </include>
+
+    <include name="Topbar_Menu">
+        <control type="list" id="300">
+            <include>Topbar_Menu_Layout</include>
+            <include condition="Window.IsVisible(Home) + !Window.IsVisible(script-globalsearch-main.xml)">Home_MainMenu_Items</include>
+            <include condition="[Window.IsVisible(MyPVRChannels.xml) | Window.IsVisible(MyPVRGuide.xml) | Window.IsVisible(MyPVRRecordings.xml) | Window.IsVisible(MyPVRTimers.xml) | Window.IsVisible(MyPVRSearch.xml) | Window.IsVisible(AddonBrowser.xml) | Window.IsVisible(MyPrograms.xml) | Window.IsVisible(MyPics.xml) | Window.IsVisible(MyMusicNav.xml) | Window.IsVisible(MyVideoNav.xml)] + !Window.IsVisible(script-globalsearch-main.xml)">Home_MainMenu_OptionsItems</include>
+            <include condition="Window.IsVisible(MyPlaylist.xml) + !Window.IsVisible(script-globalsearch-main.xml)">Home_MainMenu_PlaylistItems</include>
+            <include condition="[Window.IsVisible(SettingsSystemInfo.xml) | Window.IsVisible(Settings.xml) | Window.IsVisible(SettingsCategory.xml) | Window.IsVisible(SkinSettings.xml) | Window.IsVisible(SettingsProfile.xml)] + !Window.IsVisible(script-globalsearch-main.xml)">Home_MainMenu_SettingsItems</include>
+            <include condition="[Window.IsVisible(script-NextAired-TVGuide.xml) | Window.IsVisible(script-NextAired-TVGuide2.xml)] + !Window.IsVisible(script-globalsearch-main.xml)">Home_MainMenu_NextAired</include>
+            <include condition="Window.IsVisible(script-globalsearch-main.xml)">Home_MainMenu_GlobalSearch</include>
+            <include condition="Window.IsVisible(weather)">Home_MainMenu_InfoItems_Weather</include>
+        </control>
+    </include>
+
+    <include name="Topbar_Menu_Layout">
+        <animation effect="fade" start="0" end="100" time="350" tween="cubic" easing="inout" reversible="false">Visible</animation>
+        <animation effect="fade" start="100" end="0" time="350" tween="cubic" easing="inout" reversible="false">Hidden</animation>
+        <animation effect="slide" end="35" condition="Integer.IsLess(Container(300).NumItems,11)">Conditional</animation>
+        <animation effect="slide" end="35" condition="Integer.IsLess(Container(300).NumItems,10)">Conditional</animation>
+        <animation effect="slide" end="35" condition="Integer.IsLess(Container(300).NumItems,9)">Conditional</animation>
+        <animation effect="slide" end="35" condition="Integer.IsLess(Container(300).NumItems,8)">Conditional</animation>
+        <animation effect="slide" end="35" condition="Integer.IsLess(Container(300).NumItems,7)">Conditional</animation>
+        <animation effect="slide" end="35" condition="Integer.IsLess(Container(300).NumItems,6)">Conditional</animation>
+        <animation effect="slide" end="35" condition="Integer.IsLess(Container(300).NumItems,5)">Conditional</animation>
+        <animation effect="slide" end="35" condition="Integer.IsLess(Container(300).NumItems,4)">Conditional</animation>
+        <animation effect="slide" end="35" condition="Integer.IsLess(Container(300).NumItems,3)">Conditional</animation>
+        <animation effect="slide" end="35" condition="Integer.IsLess(Container(300).NumItems,2)">Conditional</animation>
+        <animation effect="slide" end="35" condition="Integer.IsLess(Container(300).NumItems,1)">Conditional</animation>
+        <visible allowhiddenfocus="true">Control.HasFocus(300)</visible>
+        <width>770</width>
+        <focusposition>5</focusposition>
+        <movement>5</movement>
+        <centerleft>50%</centerleft>
+        <orientation>horizontal</orientation>
+        <ondown condition="Window.IsVisible(SettingsCategory.xml)">3</ondown>
+        <ondown condition="Window.IsVisible(SettingsProfile.xml)">4</ondown>
+        <ondown condition="Window.IsVisible(SettingsSystemInfo.xml)">95</ondown>
+        <ondown condition="Window.IsVisible(SkinSettings.xml)">9100</ondown>
+        <ondown>50</ondown>
+        <height>120</height>
+        <itemlayout width="70" height="view_pad">
+            <control type="image">
+                <centerleft>50%</centerleft>
+                <width>view_pad</width>
+                <texture colordiffuse="main_fg_30">$INFO[ListItem.Icon]</texture>
+            </control>
+        </itemlayout>
+        <focusedlayout width="70" height="view_pad">
+            <control type="button">
+                <visible allowhiddenfocus="true">false</visible>
+                <onfocus condition="!Window.IsActive(InterfaceSettings) + String.IsEqual(Container(300).ListItem.Property(path),ReplaceWindow(InterfaceSettings))">ReplaceWindow(InterfaceSettings)</onfocus>
+                <onfocus condition="!Window.IsActive(SkinSettings) + String.IsEqual(Container(300).ListItem.Property(path),ReplaceWindow(SkinSettings))">ReplaceWindow(SkinSettings)</onfocus>
+                <onfocus condition="!Window.IsActive(MediaSettings) + String.IsEqual(Container(300).ListItem.Property(path),ReplaceWindow(MediaSettings))">ReplaceWindow(MediaSettings)</onfocus>
+                <onfocus condition="!Window.IsActive(PlayerSettings) + String.IsEqual(Container(300).ListItem.Property(path),ReplaceWindow(PlayerSettings))">ReplaceWindow(PlayerSettings)</onfocus>
+                <onfocus condition="!Window.IsActive(SystemSettings) + String.IsEqual(Container(300).ListItem.Property(path),ReplaceWindow(SystemSettings))">ReplaceWindow(SystemSettings)</onfocus>
+                <onfocus condition="!Window.IsActive(servicesettings) + String.IsEqual(Container(300).ListItem.Property(path),ReplaceWindow(servicesettings))">ReplaceWindow(servicesettings)</onfocus>
+                <onfocus condition="!Window.IsActive(pvrsettings) + String.IsEqual(Container(300).ListItem.Property(path),ReplaceWindow(pvrsettings))">ReplaceWindow(pvrsettings)</onfocus>
+                <onfocus condition="!Window.IsActive(systeminfo) + String.IsEqual(Container(300).ListItem.Property(path),ReplaceWindow(systeminfo))">ReplaceWindow(systeminfo)</onfocus>
+                <onfocus condition="!Window.IsActive(Profiles) + String.IsEqual(Container(300).ListItem.Property(path),ReplaceWindow(Profiles))">ReplaceWindow(Profiles)</onfocus>
+            </control>
+            <control type="image">
+                <visible>!Control.HasFocus(300)</visible>
+                <centerleft>50%</centerleft>
+                <width>view_pad</width>
+                <texture colordiffuse="main_fg_30">$INFO[ListItem.Icon]</texture>
+            </control>
+            <control type="group">
+                <visible>Control.HasFocus(300)</visible>
+                <control type="group">
+                    <centerleft>50%</centerleft>
+                    <width>view_pad</width>
+                    <control type="image">
+                        <texture colordiffuse="$VAR[ColorHighlight]">common/white.png</texture>
+                        <bottom>0</bottom>
+                        <height>6</height>
+                    </control>
+                    <control type="image">
+                        <texture colordiffuse="$VAR[ColorHighlight2]">common/gradient-diffuse-horizontal.png</texture>
+                        <bottom>0</bottom>
+                        <height>6</height>
+                    </control>
+                    <control type="image">
+                        <texture colordiffuse="Selected">$INFO[ListItem.Icon]</texture>
+                    </control>
+                </control>
+            </control>
+        </focusedlayout>
+    </include>
+
+    <include name="Topbar_MainMenu_Group">
+        <top>0</top>
+        <left>0</left>
+        <right>0</right>
+        <height>80</height>
+        <control type="image">
+            <bottom>-24</bottom>
+            <height>24</height>
+            <width>100%</width>
+            <texture flipy="false">common/shadow-line-24px.png</texture>
+        </control>
+        <control type="image">
+            <bottom>0</bottom>
+            <top>0</top>
+            <texture>common/gradient-solid.png</texture>
+        </control>   
+    </include>
+
+    <include name="Topbar_MainMenu_Lines">
+        <control type="image">
+            <top>0</top>
+            <height>1</height>
+            <texture colordiffuse="PixelLines">common/white.png</texture>
+        </control>
+        <control type="image">
+            <bottom>0</bottom>
+            <height>1</height>
+            <texture colordiffuse="ff080808">common/white.png</texture>
+            <animation effect="fade" start="100" end="25" condition="true">Conditional</animation>
+        </control>
+    </include>
+
+    <!-- ======= -->
+    <!-- SubMenu -->
+    <!-- ======= -->
+
+
+    <include name="Topbar_SubMenu_Group_Content">
+        <top>80</top>
+        <left>0</left>
+        <right>0</right>
+        <height>40</height>
+        <control type="image">
+            <bottom>-24</bottom>
+            <height>24</height>
+            <width>100%</width>
+            <texture flipy="false">common/shadow-line-24px.png</texture>
+        </control>
+        <control type="image">
+            <top>-100</top>
+            <bottom>0</bottom>
+            <texture colordiffuse="panel_bg">common/white.png</texture>
+        </control>
+    </include>
+
+</includes>

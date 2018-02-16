@@ -1,0 +1,586 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+
+    <!-- ==================== -->
+    <!-- Notification Dialogs -->
+    <!-- ==================== -->
+    <include name="Dialog_Notification_Group">
+        <right>view_pad</right>
+        <centertop>50%</centertop>
+        <height>80</height>
+        <width>540</width>
+        <include>Animation_FadeIn_Slide</include>
+        <include>Animation_FadeOut</include>
+    </include>
+
+    <include name="Dialog_Notification_Icon">
+        <right>0</right>
+        <centertop>50%</centertop>
+        <width>60</width>
+        <height>60</height>
+    </include>
+
+    <include name="Dialog_Notification_MainLabel">
+        <right>80</right>
+        <left>0</left>
+        <centertop>33%</centertop>
+        <height>30</height>
+        <aligny>center</aligny>
+        <align>right</align>
+        <font>font_notification</font>
+        <textcolor>main_fg_100</textcolor>
+        <shadowcolor>main_bg_30</shadowcolor>
+    </include>
+
+
+    <include name="Dialog_Notification_SubLabel">
+        <right>80</right>
+        <left>0</left>
+        <centerbottom>33%</centerbottom>
+        <height>30</height>
+        <align>right</align>
+        <textcolor>main_fg_70</textcolor>
+        <shadowcolor>main_bg_30</shadowcolor>
+        <font>font_statusbar</font>                
+        <aligny>center</aligny>
+    </include>
+
+    <!-- ================ -->
+    <!-- Standard Dialogs -->
+    <!-- ================ -->
+
+    <include name="Dialog_Standard_Group">
+        <param name="width" default="1080" />
+        <param name="height" default="900" />
+        <definition>
+            <centerleft>50%</centerleft>
+            <centertop>50%</centertop>
+            <width>$PARAM[width]</width>
+            <height>$PARAM[height]</height>
+            <include>Animation_FadeIn_Slide</include>
+            <control type="image">
+                <include>Defs_Shadow_Opaque</include>
+                <texture border="16" colordiffuse="dialog_bg_100">common/rounded-dialog.png</texture>
+            </control>
+        </definition>
+    </include>
+
+    <include name="Dialog_Standard_List_Left">
+        <left>0</left>
+        <top>120</top>
+        <width>700</width>
+        <height>690</height>
+    </include>
+
+    <include name="Dialog_Standard_List_Left_Icon">
+        <left>32</left>
+        <top>12</top>
+        <width>111</width>
+        <height>111</height>
+        <aspectratio scalediffuse="false">keep</aspectratio>
+        <texture fallback="DefaultAddonNone.png" background="true">$INFO[Listitem.Icon]</texture>
+    </include>
+
+    <include name="Dialog_Standard_List_Left_Label">
+        <top>-18</top>
+        <left>170</left>
+        <right>30</right>
+        <height>135</height>
+        <font>font_small_bold</font>
+        <textcolor>dialog_fg_70</textcolor>
+        <info>ListItem.Label</info>
+    </include>
+
+    <include name="Dialog_Standard_List_Left_Label2">
+        <left>170</left>
+        <top>18</top>
+        <width>496</width>
+        <height>135</height>
+        <font>font_tiny</font>
+        <textcolor>dialog_fg_70</textcolor>
+        <label>$INFO[ListItem.Label2]</label>
+    </include>
+
+    <include name="Dialog_Standard_Right_Buttons">
+        <width>300</width>
+        <height>70</height>
+        <align>center</align>
+        <font>font_button</font>
+        <textcolor>dialog_fg_70</textcolor>
+        <texturefocus colordiffuse="$VAR[ColorHighlight]" border="5">common/box.png</texturefocus>
+    </include>
+
+    <include name="Dialog_Standard_Right_Grouplist">
+        <top>120</top>
+        <width>300</width>
+        <itemgap>0</itemgap>
+        <centerright>190</centerright>
+        <orientation>vertical</orientation>
+    </include>
+
+    <include name="Dialog_Standard_Header">
+        <left>20</left>
+        <right>20</right>
+        <top>15</top>
+        <height>70</height>
+        <font>font_medium_bold</font>
+        <align>center</align>
+        <textcolor>dialog_fg_70</textcolor>
+    </include>
+
+    <include name="Dialog_Standard_ListButton">
+        <align>left</align>
+        <height>66</height>
+        <texturenofocus colordiffuse="dialog_fg_12" border="8">common/box.png</texturenofocus>
+        <texturefocus colordiffuse="$VAR[ColorHighlight]" border="8">common/box.png</texturefocus>
+    </include>
+
+    <include name="Dialog_Standard_OkCancel">
+        <align>center</align>
+        <font>font_button</font>
+        <width>300</width>
+        <texturenofocus colordiffuse="dialog_fg_12" border="8">common/box.png</texturenofocus>
+        <texturefocus colordiffuse="$VAR[ColorHighlight]" border="8">common/box.png</texturefocus>
+    </include>
+
+    <include name="Dialog_Standard_OkCancel_GroupList">
+        <bottom>20</bottom>
+        <left>20</left>
+        <right>20</right>
+        <align>center</align>
+        <itemgap>20</itemgap>
+        <orientation>horizontal</orientation>
+        <height>66</height>
+    </include>
+
+    <include name="Dialog_Standard_HintLabel">
+        <top>33</top>
+        <height>33</height>
+        <font>font_tiny</font>
+        <textcolor>dialog_fg_70</textcolor>
+    </include>
+
+    <!-- ============ -->
+    <!-- Info Dialogs -->
+    <!-- ============ -->
+
+    <include name="Dialog_Info_Buttons">
+        <width>320</width>
+        <font>font_button</font>
+        <texturefocus colordiffuse="$VAR[ColorHighlight]" border="5">common/box.png</texturefocus>
+        <texturenofocus colordiffuse="dialog_fg_12" border="5">common/box.png</texturenofocus>
+        <onfocus>ClearProperty(FocusedList,Home)</onfocus>
+    </include>
+
+    <include name="Dialog_Info_Details_Grouplist">
+        <left>910</left>
+        <right>sidepad</right>
+        <top>106</top>
+        <orientation>vertical</orientation>
+        <usecontrolcoords>true</usecontrolcoords>
+    </include>
+
+    <!-- Ok Cancel Progress Yes No Dialog -->
+    <include name="Dialog_Confirm">
+        <param name="header_id" default="1" />
+        <param name="textbox_id" default="9" />
+        <param name="header_label" default="" />
+        <param name="textbox_label" default="" />
+        <definition>
+            <centerleft>50%</centerleft>
+            <top>360</top>
+            <width>900</width>
+            <include>Animation_FadeIn_Slide</include>
+            <control type="image">
+                <left>-46</left>
+                <right>-46</right>
+                <top>-46</top>
+                <height>476</height>
+                <bordertexture border="32">common/dark-shadow-24.png</bordertexture>
+                <bordersize>24</bordersize>
+                <texture border="16" colordiffuse="dialog_bg_100">common/rounded-dialog.png</texture>
+            </control>
+
+            <control type="label" id="$PARAM[header_id]">
+                <description>Heading</description>
+                <left>15</left>
+                <right>15</right>
+                <height>55</height>
+                <font>font_medium_bold</font>
+                <align>left</align>
+                <label>$PARAM[header_label]</label>
+            </control>
+            
+            <control type="textbox" id="$PARAM[textbox_id]">
+                <description>Line 1</description>
+                <left>15</left>
+                <right>15</right>
+                <top>108</top>
+                <height>300</height>
+                <label>$PARAM[textbox_label]</label>
+            </control>
+        </definition>
+    </include>
+
+    <!-- =========== -->
+    <!-- Custom List -->
+    <!-- =========== -->
+    <include name="Dialog_Custom_List">
+        <param name="id" default="9000" />
+        <param name="cancelid" default="9001" />
+        <param name="content" default="true" />
+        <param name="header" default="$INFO[Window(Home).Property(CustomInfoList.Title)]" />
+        <param name="cancelaction" default="Close" />
+        <param name="visible" default="!Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) + !Window.IsVisible(script-script.extendedinfo-DialogInfo.xml)" />
+        <param name="label2" default="ListItem.Label2" />
+        <definition>
+            <control type="group">
+            <include>Global_Overlay</include>
+            <visible>$PARAM[visible]</visible>
+                <control type="group">
+                    <include>Dialog_Standard_Group</include>
+                    <animation type="Conditional" reversible="false" condition="!Container($PARAM[id]).IsUpdating">
+                        <effect type="fade" start="0" end="100" time="300" delay="150"/>
+                        <effect type="slide" start="0,-200" end="0" center="auto" tween="cubic" easing="out" time="450" delay="150"/>
+                    </animation>
+                    <animation effect="fade" start="100" end="0" time="0" reversible="false" condition="Container($PARAM[id]).IsUpdating">Conditional</animation>
+                    <animation type="Visible" reversible="false">
+                        <effect type="fade" start="0" end="100" time="300" delay="150"/>
+                        <effect type="slide" start="0,-200" end="0" center="auto" tween="cubic" easing="out" time="450" delay="150"/>
+                    </animation>
+                    <animation effect="fade" start="100" end="0" time="0" reversible="false">Hidden</animation>
+                    <control type="label">
+                        <include>Dialog_Standard_Header</include>
+                        <label>$PARAM[header]</label>
+                    </control>
+
+                    <control type="panel" id="$PARAM[id]">
+                        <include>Dialog_Standard_List_Left</include>
+                        <onleft>$PARAM[cancelid]</onleft>
+                        <onright>$PARAM[cancelid]</onright>
+                        <onup>$PARAM[id]</onup>
+                        <ondown>$PARAM[id]</ondown>
+                        <itemlayout height="138" width="700">
+                            <control type="image">
+                                <include>Dialog_Standard_List_Left_Icon</include>
+                            </control>
+                            <control type="label">
+                                <animation effect="slide" end="0,18" condition="String.IsEmpty($PARAM[label2])">Conditional</animation>
+                                <include>Dialog_Standard_List_Left_Label</include>
+                            </control>
+                            <control type="label">
+                                <label>$INFO[$PARAM[label2]]</label>
+                                <include>Dialog_Standard_List_Left_Label2</include>
+                            </control>
+                        </itemlayout>
+                        <focusedlayout height="138" width="700">
+                            <control type="image">
+                                <width>100%</width>
+                                <height>135</height>
+                                <texture border="5" colordiffuse="$VAR[ColorHighlight]">common/white.png</texture>
+                            </control>
+                            <control type="image">
+                                <include>Dialog_Standard_List_Left_Icon</include>
+                            </control>
+                            <control type="label">
+                                <textcolor>Selected</textcolor>
+                                <selectedcolor>Selected</selectedcolor>
+                                <animation effect="slide" end="0,18" condition="String.IsEmpty($PARAM[label2])">Conditional</animation>
+                                <include>Dialog_Standard_List_Left_Label</include>
+                            </control>
+                            <control type="label">
+                                <textcolor>Selected</textcolor>
+                                <selectedcolor>Selected</selectedcolor>
+                                <label>$INFO[$PARAM[label2]]</label>
+                                <include>Dialog_Standard_List_Left_Label2</include>
+                            </control>
+                        </focusedlayout>
+                        <include condition="$PARAM[content]">Dialog_Custom_Content</include>
+                    </control>
+
+                    <!-- Buttons -->
+                    <control type="grouplist">
+                        <include>Dialog_Standard_Right_Grouplist</include>
+                        <control type="button" id="$PARAM[cancelid]">
+                            <onleft>$PARAM[id]</onleft>
+                            <onright>$PARAM[id]</onright>
+                            <label>222</label>
+                            <onclick>$PARAM[cancelaction]</onclick>
+                            <include>Dialog_Standard_Right_Buttons</include>
+                        </control>
+                    </control>
+
+                    <!-- Big Image -->
+                    <control type="group">
+                        <centerright>190</centerright>
+                        <top>357</top>
+                        <width>300</width>
+                        <height>450</height>
+                        <control type="image">
+                            <texture>$INFO[Container($PARAM[id]).ListItem.Icon]</texture>
+                            <aspectratio align="center" aligny="bottom">keep</aspectratio>
+                        </control>
+                    </control>
+
+                    <!-- Separator -->
+                    <control type="image">
+                        <left>699</left>
+                        <top>120</top>
+                        <height>687</height>
+                        <width>1</width>
+                        <texture colordiffuse="dialog_fg_12">common/white.png</texture>
+                    </control>
+                </control>
+
+                <control type="group">
+                    <visible>Container($PARAM[id]).IsUpdating</visible>
+                    <visible>!Window.IsVisible(DialogBusy.xml)</visible>
+                    <include>Animation_FadeIn</include>
+                    <include>Animation_FadeOut</include>
+                    <include>Global_Overlay</include>
+                    <control type="image">
+                        <description>Busy animation</description>
+                        <centerleft>50%</centerleft>
+                        <centertop>47%</centertop>
+                        <width>100</width>
+                        <height>100</height>
+                        <texture>dialog/loading-back.png</texture>
+                        <aspectratio>keep</aspectratio>
+                    </control>
+                    <control type="group">
+                        <description>Busy animation</description>
+                        <centerleft>50%</centerleft>
+                        <centertop>47%</centertop>
+                        <width>100</width>
+                        <height>100</height>
+                        <animation effect="rotate" condition="true" start="0" end="360" loop="true" time="1000" center="auto">Conditional</animation>
+                        <control type="image">
+                            <texture colordiffuse="$VAR[ColorHighlight]">dialog/loading-spinner.png</texture>
+                            <aspectratio>keep</aspectratio>
+                        </control>
+                        <control type="image">
+                            <texture colordiffuse="$VAR[ColorHighlight2]">dialog/loading-spinner.png</texture>
+                            <aspectratio>keep</aspectratio>
+                            <animation effect="fade" condition="true" start="0" end="75" pulse="true" time="1000">Conditional</animation>
+                        </control>
+                    </control>
+                    <control type="label">
+                        <description>Busy label</description>
+                        <centerleft>50%</centerleft>
+                        <centertop>53%</centertop>
+                        <width>720</width>
+                        <height>108</height>
+                        <aligny>center</aligny>
+                        <align>center</align>
+                        <label>$LOCALIZE[20186]...</label>
+                        <textcolor>ffededed</textcolor>
+                    </control>
+                </control>
+            </control>
+        </definition>
+    </include>
+
+    <include name="Dialog_VideoInfo_BusyIndicator">
+        <control type="group">
+            <top>-50</top>
+            <visible>Container($PARAM[id]).IsUpdating</visible>
+            <visible>Control.IsVisible($PARAM[id])</visible>
+            <visible>!Window.IsVisible(DialogBusy.xml)</visible>
+            <include>Animation_FadeIn</include>
+            <control type="image">
+                <description>Busy animation</description>
+                <centerleft>50%</centerleft>
+                <centertop>42%</centertop>
+                <width>100</width>
+                <height>100</height>
+                <texture>dialog/loading-back.png</texture>
+                <aspectratio>keep</aspectratio>
+            </control>
+            <control type="group">
+                <description>Busy animation</description>
+                <centerleft>50%</centerleft>
+                <centertop>42%</centertop>
+                <width>100</width>
+                <height>100</height>
+                <animation effect="rotate" condition="true" start="0" end="360" loop="true" time="1000" center="auto">Conditional</animation>
+                <control type="image">
+                    <texture colordiffuse="$VAR[ColorHighlight]">dialog/loading-spinner.png</texture>
+                    <aspectratio>keep</aspectratio>
+                </control>
+                <control type="image">
+                    <texture colordiffuse="$VAR[ColorHighlight2]">dialog/loading-spinner.png</texture>
+                    <aspectratio>keep</aspectratio>
+                    <animation effect="fade" condition="true" start="0" end="75" pulse="true" time="1000">Conditional</animation>
+                </control>
+            </control>
+            <control type="label">
+                <description>Busy label</description>
+                <centerleft>50%</centerleft>
+                <centertop>58%</centertop>
+                <width>720</width>
+                <height>108</height>
+                <aligny>center</aligny>
+                <align>center</align>
+                <label>$LOCALIZE[20186]...</label>
+                <textcolor>ffededed</textcolor>
+            </control>
+        </control>
+    </include>
+
+    <include name="Dialog_Custom_Content"><content target="$INFO[Window(Home).Property(CustomInfoList.Target)]">$INFO[Window(Home).Property(CustomInfoList.Content)]</content></include>
+
+    <!-- ============== -->
+    <!-- Settings Panel -->
+    <!-- ============== -->
+    <include name="Dialog_Settings_Panel">
+        <animation type="WindowOpen" reversible="false" condition="!Window.Previous(SettingsCategory.xml) + !Window.Previous(SkinSettings.xml) + !Window.Previous(SettingsProfile.xml) + !Window.Previous(SettingsSystemInfo.xml)">
+            <effect type="fade" start="0" end="100" time="300" tween="sine" easing="out"/>
+            <effect type="slide" start="320" end="0" time="400" tween="cubic" easing="out" />
+        </animation>
+        <animation type="WindowClose" reversible="false" condition="!Window.Next(SettingsCategory.xml) + !Window.Next(SkinSettings.xml) + !Window.Next(SettingsProfile.xml) + !Window.Next(SettingsSystemInfo.xml)">
+            <effect type="fade" start="100" end="0" time="300" tween="sine" easing="out" />
+            <effect type="slide" start="0" end="320" time="300" tween="cubic" easing="out" />
+        </animation>
+        <left>0</left>
+        <right>0</right>
+        <top>view_top</top>
+        <bottom>0</bottom>
+    </include>
+
+    <!-- =============== -->
+    <!-- PVR Info Dialog -->
+    <!-- =============== -->
+    <include name="Dialog_PVRInfo_Guide">
+        <include>Global_Overlay</include>
+        <control type="group">
+            <include content="Dialog_Standard_Group">
+                <param name="width" value="1400" />
+                <param name="height" value="650" />
+            </include>
+
+            <control type="label" id="2">
+                <include>Dialog_Standard_Header</include>
+                <label>$INFO[ListItem.EpgEventTitle]$INFO[ListItem.EpisodeName, - ,]</label>
+            </control>
+            <control type="grouplist">
+                <left>30</left>
+                <top>100</top>
+                <right>60</right>
+                <include>Dialog_Info_Details_Grouplist</include>
+                <!-- Start Time -->
+                <control type="group">
+                    <height>50</height>
+                    <control type="label">
+                        <left>0</left>
+                        <width>160</width>
+                        <align>right</align>
+                        <textcolor>dialog_fg_30</textcolor>
+                        <font>font_small</font>
+                        <label>19126</label>
+                        <aligny>top</aligny>
+                    </control>
+                    <control type="label">
+                        <left>176</left>
+                        <textcolor>dialog_fg_70</textcolor>
+                        <font>font_small</font>
+                        <aligny>top</aligny>
+                        <label fallback="19055">$INFO[ListItem.StartDate] - $INFO[ListItem.StartTime]</label>
+                    </control>
+                </control>
+                <!-- End Time -->
+                <control type="group">
+                    <height>50</height>
+                    <control type="label">
+                        <left>0</left>
+                        <width>160</width>
+                        <align>right</align>
+                        <textcolor>dialog_fg_30</textcolor>
+                        <font>font_small</font>
+                        <label>19127</label>
+                        <aligny>top</aligny>
+                    </control>
+                    <control type="label">
+                        <left>176</left>
+                        <textcolor>dialog_fg_70</textcolor>
+                        <font>font_small</font>
+                        <aligny>top</aligny>
+                        <label fallback="19055">$INFO[ListItem.EndDate] - $INFO[ListItem.EndTime]</label>
+                    </control>
+                </control>
+                <!-- Channel Name -->
+                <control type="group">
+                    <height>50</height>
+                    <control type="label">
+                        <left>0</left>
+                        <width>160</width>
+                        <align>right</align>
+                        <textcolor>dialog_fg_30</textcolor>
+                        <font>font_small</font>
+                        <label>19029</label>
+                        <aligny>top</aligny>
+                    </control>
+                    <control type="label">
+                        <left>176</left>
+                        <textcolor>dialog_fg_70</textcolor>
+                        <font>font_small</font>
+                        <aligny>top</aligny>
+                        <label fallback="19055">$INFO[ListItem.ChannelName]$INFO[ListItem.ChannelNumber, (,)]</label>
+                    </control>
+                </control>
+                <!-- Plot -->
+                <control type="group">
+                    <height>250</height>
+                    <control type="label">
+                        <left>0</left>
+                        <width>160</width>
+                        <align>right</align>
+                        <textcolor>dialog_fg_30</textcolor>
+                        <font>font_small</font>
+                        <label>21821</label>
+                        <aligny>top</aligny>
+                    </control>
+                    <control type="textbox">
+                        <left>176</left>
+                        <textcolor>dialog_fg_70</textcolor>
+                        <font>font_plotbox</font>
+                        <aligny>top</aligny>
+                        <label fallback="19055">$INFO[ListItem.Plot]</label>
+                    </control>
+                </control>
+            </control>
+            <!-- Buttons -->
+            <control type="grouplist" id="9000">
+                <left>30</left>
+                <right>30</right>
+                <align>center</align>
+                <bottom>20</bottom>
+                <height>60</height>
+                <orientation>horizontal</orientation>
+                <itemgap>14</itemgap>
+                <control type="button" id="4">
+                    <label>19003</label>
+                    <include>Dialog_Info_Buttons</include>
+                    <visible>Window.IsActive(PVRGuideInfo)</visible>
+                </control>
+                <control type="button" id="5">
+                    <label>19165</label>
+                    <include>Dialog_Info_Buttons</include>
+                    <visible>Window.IsActive(PVRGuideInfo)</visible>
+                </control>
+                <control type="button" id="6">
+                    <include>Dialog_Info_Buttons</include>
+                    <visible>Window.IsActive(PVRGuideInfo)</visible>
+                </control>
+                <control type="button" id="7">
+                    <label>186</label>
+                    <include>Dialog_Info_Buttons</include>
+                </control>
+                <control type="button" id="8">
+                    <label>19687</label>
+                    <include>Dialog_Info_Buttons</include>
+                    <visible>Window.IsActive(PVRGuideInfo)</visible>
+                </control>
+            </control>
+        </control>
+    </include>
+</includes>

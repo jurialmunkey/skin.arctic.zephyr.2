@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Foundation -->
+<window id="129">
+    <defaultcontrol always="true">9000</defaultcontrol>
+
+
+    <controls>
+
+        <include>Global_Overlay</include>
+
+        <control type="group">
+            <include>Animation_ZoomIn</include>
+            <include content="Dialog_Standard_Group">
+                <param name="width" value="980" />
+                <param name="height" value="490" />
+            </include>
+
+            <control type="label" id="2">
+                <include>Dialog_Standard_Header</include>
+                <label>21421</label>
+            </control>
+
+            <control type="grouplist" id="9000">
+                <top>100</top>
+                <bottom>126</bottom>
+                <left>20</left>
+                <right>20</right>
+                <itemgap>10</itemgap>
+                <orientation>vertical</orientation>
+                <ondown>8000</ondown>
+                <control type="label" id="9001">
+                    <label>21422</label>
+                    <include>Dialog_Standard_HintLabel</include>
+                </control>
+                <control type="button" id="15">
+                    <include>Dialog_Standard_ListButton</include>
+                </control>
+                <control type="button" id="16">
+                    <include>Dialog_Standard_ListButton</include>
+                </control>
+                <control type="edit" id="17">
+                    <include>Dialog_Standard_ListButton</include>
+                </control>
+            </control>
+
+            <control type="grouplist" id="8000">
+                <onup>9000</onup>
+                <include>Dialog_Standard_OkCancel_GroupList</include>
+                <control type="button" id="18" description="OK">
+                    <label>186</label>
+                    <include>Dialog_Standard_OkCancel</include>
+                </control>
+                <control type="button" id="19" description="Cancel">
+                    <label>222</label>
+                    <include>Dialog_Standard_OkCancel</include>
+                </control>
+                <control type="button" id="20" description="Browse">
+                    <label>1024</label>
+                    <include>Dialog_Standard_OkCancel</include>
+                </control>
+            </control>
+        </control>
+    </controls>
+
+</window>

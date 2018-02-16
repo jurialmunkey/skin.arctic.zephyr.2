@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+
+    <variable name="Image_OSD_Artwork">
+        <value condition="!String.IsEmpty(Player.Art(tvshow.poster))">$INFO[Player.Art(tvshow.poster)]</value>
+        <value>$INFO[VideoPlayer.Cover]</value>
+    </variable>
+
+    <variable name="Image_ArtistFanartVis">
+        <value condition="!Skin.HasSetting(ArtistSlideShow.Disabled) + !String.IsEmpty(Window(Home).Property(SkinHelper.Player.Art.ExtraFanArt))">$INFO[Window(Home).Property(SkinHelper.Player.Art.ExtraFanArt)]</value>
+        <value condition="System.HasAddon(script.artistslideshow) + !Skin.HasSetting(ArtistSlideShow.Disabled) + !String.IsEmpty(Window(Visualisation).Property(ArtistSlideshow))">$INFO[Window(Visualisation).Property(ArtistSlideshow)]</value>
+        <value condition="[!System.HasAddon(script.artistslideshow) | Skin.HasSetting(ArtistSlideShow.Disabled)] + Skin.HasSetting(musicvis.fanartfallback) + !String.IsEmpty(Player.Art(fanart))">$INFO[Player.Art(fanart)]</value>
+        <value>common/null.png</value>
+    </variable>
+
+    <variable name="Image_AutoUpdate">
+        <value condition="String.Contains(Control.GetLabel(13),*)">special://skin/extras/icons/antenna-on.png</value>
+        <value>special://skin/extras/icons/antenna.png</value>
+    </variable>
+
+    <variable name="Image_HDSD">
+        <value condition="String.IsEqual(ListItem.VideoResolution,4K) | Integer.IsEqual(ListItem.VideoResolution,2160)">flags/4k.png</value>
+        <value condition="Integer.IsGreater(ListItem.VideoResolution,719)">flags/hd.png</value>
+        <value condition="!String.IsEmpty(ListItem.VideoResolution)">flags/sd.png</value>
+        <value condition="ListItem.IsCollection">flags/sets.png</value>
+        <value>flags/web.png</value>
+    </variable>
+
+    <variable name="Image_AddonImage">
+        <value condition="!String.IsEmpty(Container.PluginName) + !String.EndsWith(ListItem.Icon,icon.png)">special://home/addons/$INFO[Container.PluginName]/icon.png</value>
+        <value condition="String.EndsWith(ListItem.Icon,icon.png)">$INFO[ListItem.Icon]</value>
+    </variable>
+
+    <variable name="Image_Player_Clearart">
+        <value condition="!String.IsEmpty(Player.Art(tvshow.clearart))">$INFO[Player.Art(tvshow.clearart)]</value>
+        <value condition="!String.IsEmpty(Player.Art(clearart))">$INFO[Player.Art(clearart)]</value>
+        <value condition="!String.IsEmpty(Player.Art(tvshow.clearlogo))">$INFO[Player.Art(tvshow.clearlogo)]</value>
+        <value condition="!String.IsEmpty(Player.Art(clearlogo))">$INFO[Player.Art(clearlogo)]</value>
+    </variable>
+
+    <variable name="Image_Clearlogo">
+        <value condition="!String.IsEmpty(ListItem.Art(tvshow.clearlogo))">$INFO[ListItem.Art(tvshow.clearlogo)]</value>
+        <value condition="!String.IsEmpty(ListItem.Art(clearlogo))">$INFO[ListItem.Art(clearlogo)]</value>
+        <value condition="!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Art.ClearLogo))">$INFO[Window(Home).Property(SkinHelper.ListItem.Art.ClearLogo)]</value>
+    </variable>
+
+    <variable name="Image_DiscArt">
+        <value condition="!String.IsEmpty(ListItem.Art(discart))">$INFO[ListItem.Art(discart)]</value>
+        <value condition="!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Art.DiscArt))">$INFO[Window(Home).Property(SkinHelper.ListItem.Art.DiscArt)]</value>
+    </variable>
+
+    <variable name="Image_Watched">
+        <value condition="System.Setting(hidewatched)">special://skin/extras/icons/watched-hide.png</value>
+        <value>special://skin/extras/icons/watched-show.png</value>
+    </variable>
+    <variable name="Image_Filtered">
+        <value condition="Container.Filtered">special://skin/extras/icons/filter-on.png</value>
+        <value>special://skin/extras/icons/filter-off.png</value>
+    </variable>
+
+    <variable name="Image_GenreIcons">
+        <value>$VAR[Image_GenreIcons_Path]$INFO[ListItem.Label,,.png]</value>
+    </variable>
+
+    <variable name="Image_GenreIcons_Path">
+        <value condition="System.HasAddon(resource.images.moviegenreicons.horizon)">resource://resource.images.moviegenreicons.horizon/</value>
+        <value condition="System.HasAddon(resource.images.moviegenreicons.transparent)">resource://resource.images.moviegenreicons.transparent/</value>
+    </variable>
+
+    <variable name="Image_FallbackIcon">
+        <value condition="String.Contains(ListItem.Icon,Default)">$INFO[ListItem.Icon]</value>
+        <value condition="String.Contains(ListItem.ActualIcon,Default)">$INFO[ListItem.ActualIcon]</value>
+    </variable>
+
+    <variable name="Image_Overlay_List">
+        <value condition="ListItem.IsPlaying">indicator/play.png</value>
+        <value condition="ListItem.IsResumable + Integer.IsGreater(ListItem.PercentPlayed,66)">indicator/inprogress-75.png</value>
+        <value condition="ListItem.IsResumable + Integer.IsGreater(ListItem.PercentPlayed,33)">indicator/inprogress-50.png</value>
+        <value condition="ListItem.IsResumable">indicator/inprogress-25.png</value>
+        <value condition="String.IsEqual(ListItem.Overlay,OverlayWatched.png)">indicator/checkmark.png</value>
+        <value condition="[String.StartsWith(ListItem.Overlay,OverlayUnwatched.png) + [[Container.Content(movies) + [String.IsEqual(Window(Home).Property(LatestMovie.1.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.2.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.3.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.4.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.5.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.6.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.7.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.8.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.9.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.10.Title),ListItem.Label)]] | [[Container.Content(tvshows)] + [String.IsEqual(Window(Home).Property(LatestEpisode.1.ShowTitle),ListItem.TvShowTitle) | String.IsEqual(Window(Home).Property(LatestEpisode.2.ShowTitle),ListItem.TvShowTitle) | String.IsEqual(Window(Home).Property(LatestEpisode.3.ShowTitle),ListItem.TvShowTitle) | String.IsEqual(Window(Home).Property(LatestEpisode.4.ShowTitle),ListItem.TvShowTitle) | String.IsEqual(Window(Home).Property(LatestEpisode.5.ShowTitle),ListItem.TvShowTitle) | String.IsEqual(Window(Home).Property(LatestEpisode.6.ShowTitle),ListItem.TvShowTitle) | String.IsEqual(Window(Home).Property(LatestEpisode.7.ShowTitle),ListItem.TvShowTitle) | String.IsEqual(Window(Home).Property(LatestEpisode.8.ShowTitle),ListItem.TvShowTitle) | String.IsEqual(Window(Home).Property(LatestEpisode.9.ShowTitle),ListItem.TvShowTitle) | String.IsEqual(Window(Home).Property(LatestEpisode.10.ShowTitle),ListItem.TvShowTitle)]] | [Container.Content(episodes) + [String.IsEqual(Window(Home).Property(LatestEpisode.1.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.2.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.3.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.4.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.5.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.6.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.7.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.8.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.9.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.10.EpisodeTitle),ListItem.Title)]]]]">indicator/new.png</value>
+        <value condition="[Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) | Window.IsVisible(script-script.extendedinfo-VideoList.xml)]+ !String.IsEmpty(ListItem.DBID)">indicator/library.png</value>
+        <value condition="ListItem.IsCollection">indicator/movieset.png</value>
+        <value condition="String.IsEqual(ListItem.Overlay,OverlayUnwatched.png)">indicator/library.png</value>
+    </variable>
+
+    <variable name="Image_Overlay">
+        <value condition="ListItem.IsPlaying">indicator/play.png</value>
+        <value condition="ListItem.IsResumable + Integer.IsGreater(ListItem.PercentPlayed,66)">indicator/inprogress-75.png</value>
+        <value condition="ListItem.IsResumable + Integer.IsGreater(ListItem.PercentPlayed,33)">indicator/inprogress-50.png</value>
+        <value condition="ListItem.IsResumable">indicator/inprogress-25.png</value>
+        <value condition="String.IsEqual(ListItem.Overlay,OverlayWatched.png)">indicator/checkmark.png</value>
+        <value condition="[String.StartsWith(ListItem.Overlay,OverlayUnwatched.png) + [[Container.Content(movies) + [String.IsEqual(Window(Home).Property(LatestMovie.1.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.2.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.3.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.4.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.5.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.6.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.7.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.8.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.9.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.10.Title),ListItem.Label)]] | [[Container.Content(tvshows)] + [String.IsEqual(Window(Home).Property(LatestEpisode.1.ShowTitle),ListItem.TvShowTitle) | String.IsEqual(Window(Home).Property(LatestEpisode.2.ShowTitle),ListItem.TvShowTitle) | String.IsEqual(Window(Home).Property(LatestEpisode.3.ShowTitle),ListItem.TvShowTitle) | String.IsEqual(Window(Home).Property(LatestEpisode.4.ShowTitle),ListItem.TvShowTitle) | String.IsEqual(Window(Home).Property(LatestEpisode.5.ShowTitle),ListItem.TvShowTitle) | String.IsEqual(Window(Home).Property(LatestEpisode.6.ShowTitle),ListItem.TvShowTitle) | String.IsEqual(Window(Home).Property(LatestEpisode.7.ShowTitle),ListItem.TvShowTitle) | String.IsEqual(Window(Home).Property(LatestEpisode.8.ShowTitle),ListItem.TvShowTitle) | String.IsEqual(Window(Home).Property(LatestEpisode.9.ShowTitle),ListItem.TvShowTitle) | String.IsEqual(Window(Home).Property(LatestEpisode.10.ShowTitle),ListItem.TvShowTitle)]] | [Container.Content(episodes) + [String.IsEqual(Window(Home).Property(LatestEpisode.1.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.2.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.3.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.4.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.5.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.6.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.7.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.8.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.9.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.10.EpisodeTitle),ListItem.Title)]]]]">indicator/new.png</value>
+        <value condition="[Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) | Window.IsVisible(script-script.extendedinfo-VideoList.xml)]+ !String.IsEmpty(ListItem.DBID)">indicator/library.png</value>
+        <value condition="ListItem.IsCollection">indicator/movieset.png</value>
+    </variable>
+    <variable name="Image_Overlay_Corner">
+        <value condition="[Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) | Window.IsVisible(script-script.extendedinfo-VideoList.xml)]+ !String.IsEmpty(ListItem.DBID)">indicator/corner.png</value>
+        <value condition="ListItem.IsPlaying">indicator/corner.png</value>
+        <value condition="ListItem.IsResumable">indicator/corner.png</value>
+        <value condition="String.IsEqual(ListItem.Overlay,OverlayWatched.png)">indicator/corner.png</value>
+        <value condition="[String.StartsWith(ListItem.Overlay,OverlayUnwatched.png) + [[Container.Content(movies) + [String.IsEqual(Window(Home).Property(LatestMovie.1.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.2.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.3.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.4.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.5.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.6.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.7.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.8.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.9.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.10.Title),ListItem.Label)]] | [[Container.Content(tvshows)] + [String.IsEqual(Window(Home).Property(LatestEpisode.1.ShowTitle),ListItem.TvShowTitle) | String.IsEqual(Window(Home).Property(LatestEpisode.2.ShowTitle),ListItem.TvShowTitle) | String.IsEqual(Window(Home).Property(LatestEpisode.3.ShowTitle),ListItem.TvShowTitle) | String.IsEqual(Window(Home).Property(LatestEpisode.4.ShowTitle),ListItem.TvShowTitle) | String.IsEqual(Window(Home).Property(LatestEpisode.5.ShowTitle),ListItem.TvShowTitle) | String.IsEqual(Window(Home).Property(LatestEpisode.6.ShowTitle),ListItem.TvShowTitle) | String.IsEqual(Window(Home).Property(LatestEpisode.7.ShowTitle),ListItem.TvShowTitle) | String.IsEqual(Window(Home).Property(LatestEpisode.8.ShowTitle),ListItem.TvShowTitle) | String.IsEqual(Window(Home).Property(LatestEpisode.9.ShowTitle),ListItem.TvShowTitle) | String.IsEqual(Window(Home).Property(LatestEpisode.10.ShowTitle),ListItem.TvShowTitle)]] | [Container.Content(episodes) + [String.IsEqual(Window(Home).Property(LatestEpisode.1.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.2.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.3.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.4.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.5.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.6.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.7.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.8.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.9.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.10.EpisodeTitle),ListItem.Title)]]]]">indicator/corner.png</value>
+        <value condition="ListItem.IsCollection">indicator/corner.png</value>
+        <value condition="Integer.IsGreater(ListItem.Property(UnWatchedEpisodes),0) + [Container.Content(tvshows) | Container.Content(seasons) | Window.IsVisible(Home)]">indicator/corner.png</value>
+    </variable>
+
+    <variable name="Image_Poster">
+        <value condition="Skin.HasSetting(SkinHelper.EnableAnimatedPosters) + !String.IsEmpty(ListItem.Art(animatedposter))">$INFO[ListItem.Art(animatedposter)]</value>
+        <value condition="Skin.HasSetting(SkinHelper.EnableAnimatedPosters) + !String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Art.AnimatedPoster))">$INFO[Window(Home).Property(SkinHelper.ListItem.Art.AnimatedPoster)]</value>
+        <value condition="[Container.Content(seasons) | Container.Content(episodes)] + !String.IsEmpty(ListItem.Art(season.poster))">$INFO[ListItem.Art(season.poster)]</value>
+        <value condition="Container.Content(seasons) + !String.IsEmpty(ListItem.Icon)">$INFO[ListItem.Icon]</value>
+        <value condition="!String.IsEmpty(ListItem.Art(tvshow.poster))">$INFO[ListItem.Art(tvshow.poster)]</value>
+        <value condition="!String.IsEmpty(ListItem.Art(poster))">$INFO[ListItem.Art(poster)]</value>
+        <value>$INFO[ListItem.Icon]</value>
+    </variable>
+
+    <variable name="Image_Poster_Color">
+        <value condition="Skin.HasSetting(CycleColors) + !Skin.HasSetting(MatchColors)">special://skin/extras/colorspin/</value>
+        <value condition="[Container.Content(seasons) | Container.Content(episodes)] + !String.IsEmpty(ListItem.Art(season.poster))">$INFO[ListItem.Art(season.poster)]</value>
+        <value condition="Container.Content(seasons) + !String.IsEmpty(ListItem.Icon)">$INFO[ListItem.Icon]</value>
+        <value condition="!String.IsEmpty(ListItem.Art(tvshow.poster))">$INFO[ListItem.Art(tvshow.poster)]</value>
+        <value condition="!String.IsEmpty(ListItem.Art(poster))">$INFO[ListItem.Art(poster)]</value>
+        <value condition="!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Art.Poster))">$INFO[Window(Home).Property(SkinHelper.ListItem.Art.Poster)]</value>
+        <value condition="!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Art.AlbumThumb))">$INFO[Window(Home).Property(SkinHelper.ListItem.Art.AlbumThumb)]</value>
+        <value condition="!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Art.ArtistThumb))">$INFO[Window(Home).Property(SkinHelper.ListItem.Art.ArtistThumb)]</value>
+        <value condition="!String.IsEmpty(ListItem.Icon)">$INFO[ListItem.Icon]</value>
+        <value condition="Skin.HasSetting(CycleColors)">special://skin/extras/colorspin/</value>
+    </variable>
+
+    <variable name="Image_Banner">
+        <value condition="!String.IsEmpty(ListItem.Art(tvshow.banner))">$INFO[ListItem.Art(tvshow.banner)]</value>
+        <value condition="!String.IsEmpty(ListItem.Art(banner))">$INFO[ListItem.Art(banner)]</value>
+        <value condition="!String.IsEmpty(ListItem.Art(fanart))">$INFO[ListItem.Art(fanart)]</value>
+        <value>$INFO[ListItem.Icon]</value>
+    </variable>
+
+    <variable name="Image_Fanart">
+        <value condition="!String.IsEmpty(ListItem.Art(thumb)) + !String.IsEmpty(ListItem.TvShowTitle) + Window.IsVisible(MyPlaylist.xml)">$INFO[ListItem.Art(thumb)]</value>
+        <value condition="Skin.HasSetting(SkinHelper.EnableAnimatedPosters) + !String.IsEmpty(ListItem.Art(animatedfanart)) + ![Container.Content(videos) | Container.Content(episodes)] + !Window.IsVisible(home)">$INFO[ListItem.Art(animatedfanart)]</value>
+        <value condition="!String.IsEmpty(ListItem.Art(season.landscape)) + ![Container.Content(videos) | Container.Content(episodes)] + !Window.IsVisible(home) + !Control.IsVisible(59)">$INFO[ListItem.Art(season.landscape)]</value>
+        <value condition="!String.IsEmpty(ListItem.Art(tvshow.landscape)) + ![Container.Content(videos) | Container.Content(episodes)] + !Window.IsVisible(home) + !Control.IsVisible(59)">$INFO[ListItem.Art(tvshow.landscape)]</value>
+        <value condition="!String.IsEmpty(ListItem.Art(landscape)) + ![Container.Content(videos) | Container.Content(episodes)] + !Window.IsVisible(home) + !Control.IsVisible(59)">$INFO[ListItem.Art(landscape)]</value>
+        <value condition="!String.IsEmpty(ListItem.Art(fanart)) + ![Container.Content(videos) | Container.Content(episodes)] + !Window.IsVisible(home)">$INFO[ListItem.Art(fanart)]</value>
+        <value condition="!String.IsEmpty(ListItem.Art(fanart)) + Window.IsVisible(home) + [String.IsEqual(ListItem.Label,ListItem.TvShowTitle) | String.IsEmpty(ListItem.TvShowTitle) | Skin.HasSetting(PreferFanartHome) | !String.IsEmpty(ListItem.Property(airday))]">$INFO[ListItem.Art(fanart)]</value>
+        <value condition="!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Art.Fanart)) + [Control.IsVisible(551) | Control.IsVisible(557) | Control.IsVisible(57)] + !Container.Content(episodes) + !Container.Content(videos)">$INFO[Window(Home).Property(SkinHelper.ListItem.Art.Fanart)]</value>
+        <value condition="!String.IsEmpty(ListItem.Thumb)">$INFO[ListItem.Thumb]</value>
+        <value condition="!String.IsEmpty(ListItem.Art(thumb))">$INFO[ListItem.Art(thumb)]</value>
+        <value>$INFO[ListItem.Icon]</value>
+    </variable>
+
+    <variable name="Image_Statusbar_Icon">
+        <value condition="Player.Muted">special://skin/extras/icons/mute.png</value>
+        <value condition="Window.IsVisible(DialogButtonMenu.xml)">special://skin/extras/icons/power.png</value>
+        <value condition="Window.IsVisible(DialogFavourites.xml)">special://skin/extras/icons/favourites.png</value>
+        <value condition="Window.IsVisible(EventLog.xml)">special://skin/extras/icons/antenna.png</value>
+        <value condition="Player.HasAudio + [Window.IsVisible(fullscreenvideo) | Window.IsVisible(visualisation) | Window.IsVisible(home)]">special://skin/extras/icons/songs.png</value>
+        <value condition="Player.HasVideo + VideoPlayer.Content(livetv) + [Window.IsVisible(fullscreenvideo) | Window.IsVisible(visualisation) | Window.IsVisible(home)]">special://skin/extras/icons/livetv.png</value>
+        <value condition="Player.HasVideo + VideoPlayer.Content(movies) + [Window.IsVisible(fullscreenvideo) | Window.IsVisible(visualisation) | Window.IsVisible(home)]">special://skin/extras/icons/film.png</value>
+        <value condition="Player.HasVideo + VideoPlayer.Content(episodes) + [Window.IsVisible(fullscreenvideo) | Window.IsVisible(visualisation) | Window.IsVisible(home)]">special://skin/extras/icons/tv.png</value>
+        <value condition="Player.HasVideo + [Window.IsVisible(fullscreenvideo) | Window.IsVisible(visualisation) | Window.IsVisible(home)]">special://skin/extras/icons/eye.png</value>
+        <value condition="Window.IsVisible(script-script.extendedinfo-YoutubeList.xml)">special://skin/extras/icons/youtube.png</value>
+        <value condition="Window.IsVisible(script-NextAired-TVGuide.xml) | Window.IsVisible(script-NextAired-TVGuide2.xml)">special://skin/extras/icons/tvguide.png</value>
+        <value condition="String.StartsWith(Container.FolderPath,sources://)">special://skin/extras/icons/files.png</value>
+        <value condition="String.StartsWith(Container.FolderPath,special://videoplaylists/)">special://skin/extras/icons/playlist.png</value>
+        <value condition="String.IsEqual(Container.FolderPath,special://profile/playlists/)">special://skin/extras/icons/playlist.png</value>
+        <value condition="String.IsEqual(Container.FolderPath,special://profile/playlists/video/)">special://skin/extras/icons/playlist.png</value>
+        <value condition="String.IsEqual(Container.FolderPath,special://profile/playlists/music/)">special://skin/extras/icons/playlist.png</value>
+        <value condition="String.IsEqual(Container.FolderPath,special://profile/playlists/mixed/)">special://skin/extras/icons/playlist.png</value>
+        <value condition="Window.IsVisible(MyMusicPlaylistEditor.xml) | Window.IsVisible(MyMusicNav.xml) | Window.IsVisible(MyMusicSongs.xml)">special://skin/extras/icons/songs.png</value>
+        <value condition="String.StartsWith(Container.FolderPath,library://video/movies/)">special://skin/extras/icons/film.png</value>
+        <value condition="String.StartsWith(Container.FolderPath,library://video/tvshows/)">special://skin/extras/icons/tv.png</value>
+        <value condition="String.StartsWith(Container.FolderPath,videodb://movies/)">special://skin/extras/icons/film.png</value>
+        <value condition="String.StartsWith(Container.FolderPath,videodb://tvshows/)">special://skin/extras/icons/tv.png</value>
+        <value condition="String.StartsWith(Container.FolderPath,plugin://)">special://skin/extras/icons/video-addons.png</value>
+        <value condition="Container.Content(movies)">special://skin/extras/icons/film.png</value>
+        <value condition="Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)">special://skin/extras/icons/tv.png</value>
+        <value condition="Container.Content(songs)">special://skin/extras/icons/songs.png</value>
+        <value condition="Container.Content(livetv)">special://skin/extras/icons/livetv.png</value>
+        <value condition="Container.Content(files)">special://skin/extras/icons/files.png</value>
+        <value condition="Container.Content(plugins)">special://skin/extras/icons/video-addons.png</value>
+        <value condition="Container.Content(addons)">special://skin/extras/icons/addons.png</value>
+        <value condition="String.StartsWith(Container.FolderPath,videodb://musicvideos/)">special://skin/extras/icons/musicvideo.png</value>
+        <value condition="Window.IsVisible(Custom_SetCustomColor.xml)">special://skin/extras/icons/wand.png</value>
+        <value condition="Window.IsVisible(MyPVRChannels.xml) | Window.IsVisible(MyPVRSearch.xml) | Window.IsVisible(MyPVRTimers.xml) | Window.IsVisible(MyPVRGuide.xml) | Window.IsVisible(MyPVRRecordings.xml)">special://skin/extras/icons/livetv.png</value>
+        <value condition="Window.IsVisible(MyMusicPlaylistEditor.xml) | Window.IsVisible(MyMusicNav.xml) | Window.IsVisible(MyMusicSongs.xml)">special://skin/extras/icons/songs.png</value>
+        <value condition="Window.IsVisible(MyPics.xml)">special://skin/extras/icons/pictures.png</value>
+        <value condition="Window.IsVisible(MyPrograms.xml) | Window.IsVisible(AddonBrowser.xml)">special://skin/extras/icons/addons.png</value>
+        <value condition="Window.IsVisible(weather)">special://skin/extras/icons/sun.png</value>
+        <value condition="Window.IsVisible(SettingsSystemInfo.xml) | Window.IsVisible(SettingsCategory.xml) | Window.IsVisible(settings) | Window.IsVisible(SkinSettings.xml)">special://skin/extras/icons/settings.png</value>
+        <value condition="Window.IsVisible(MyMusicPlaylist.xml)">special://skin/extras/icons/playlist.png</value>
+        <value condition="Window.IsVisible(FileManager.xml)">special://skin/extras/icons/database.png</value>
+        <value condition="Window.IsVisible(Home.xml)">special://skin/extras/icons/home.png</value>
+        <value condition="Window.IsVisible(MyVideoNav.xml)">special://skin/extras/icons/video-addons.png</value>
+        <value>special://skin/extras/icons/artist.png</value>
+    </variable>
+</includes>

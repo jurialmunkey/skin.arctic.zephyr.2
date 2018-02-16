@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window id="20">
+    <defaultcontrol always="true">50</defaultcontrol>
+    <menucontrol>300</menucontrol>
+    <onload>ClearProperty(MenuFocus,Home)</onload>
+    <views>50,51,52,53,54,55,56,57,58,59,500,501</views>
+    <controls>
+        <include>Global_Background</include>
+        <include>View_Layout</include>
+        <include>Topbar</include>
+
+        <!-- Hidden Buttons -->
+        <include>Defs_Options_StandardButtons</include>
+        <control type="button" id="5">
+            <description>Settings</description>
+            <label>5</label>
+            <include>Defs_Hidden_Button</include>
+        </control>
+        <control type="button" id="9">
+            <description>Check for updates</description>
+            <label>24034</label>
+            <include>Defs_Hidden_Button</include>
+        </control>
+        <control type="radiobutton" id="6">
+            <description>Notifications</description>
+            <label>25000</label>
+            <include>Defs_Hidden_Button</include>
+        </control>
+        
+    </controls>
+
+</window>

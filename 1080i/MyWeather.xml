@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Foundation -->
+<window id="2600">
+    <defaultcontrol always="true">50</defaultcontrol>
+    <menucontrol>300</menucontrol>
+    <controls>
+
+        <include>Global_Background</include>
+        <include>View_Layout</include>
+        <include>Topbar</include>
+        
+        <control type="group">
+            <include>Animation_Right</include>
+            <include>Weather</include>
+        </control>
+
+        <control type="button" id="50">
+            <onleft>300</onleft>
+            <onup>300</onup>
+            <ondown>300</ondown>
+            <onright>300</onright>
+            <onclick>Weather.LocationNext</onclick>
+            <onback>300</onback>
+            <include>Defs_Hidden_Button</include>
+        </control>
+
+        <!-- Refresh -->
+        <control type="button" id="2">
+            <onleft>300</onleft>
+            <onup>300</onup>
+            <ondown>300</ondown>
+            <onright>300</onright>
+            <onclick>SetFocus(300)</onclick>
+            <onfocus>300</onfocus>
+            <description>Refresh</description>
+            <label>$LOCALIZE[184]</label>
+            <include>Defs_Hidden_Button</include>
+        </control>
+        <!-- Change Location -->
+        <control type="button" id="9002">
+            <label>$LOCALIZE[31217]</label>
+            <onclick>Weather.LocationNext</onclick>
+            <include>Defs_Hidden_Button</include>
+        </control>
+        <!-- Weather Settings -->
+        <control type="button" id="9004">
+            <label>10140</label>
+            <onclick>Addon.OpenSettings($INFO[Weather.Plugin])</onclick>
+            <include>Defs_Hidden_Button</include>
+        </control>
+        <!-- Settings -->
+        <control type="button" id="9005">
+            <label>5</label>
+            <onclick>ActivateWindow(ServiceSettings,weather)</onclick>
+            <include>Defs_Hidden_Button</include>
+        </control>
+        <!-- Weather Icons -->
+        <control type="button" id="9006">
+            <label>$LOCALIZE[536]</label>
+            <include>Defs_Hidden_Button</include>
+            <onclick>RunScript(script.image.resource.select,property=weather.icons&amp;type=resource.images.weathericons)</onclick>
+        </control>
+        <!-- Weather Fanart -->
+        <control type="togglebutton" id="9007">
+            <label>$LOCALIZE[31008]</label>
+            <altlabel>$LOCALIZE[31012]</altlabel>
+            <include>Defs_Hidden_Button</include>
+            <usealttexture>System.HasAddon(resource.images.weatherfanart.multi)</usealttexture>
+            <enable>!System.HasAddon(resource.images.weatherfanart.multi)</enable>
+            <onclick condition="!System.HasAddon(resource.images.weatherfanart.multi)">InstallAddon(resource.images.weatherfanart.multi)</onclick>
+        </control>
+    </controls>
+
+</window>

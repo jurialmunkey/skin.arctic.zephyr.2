@@ -1,0 +1,1170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+    <include name="View_Posters">
+        <param name="listtype" default="fixedlist" />
+        <definition>
+            <!-- Standard Wall -->
+            <control type="group">
+                <visible>Control.IsVisible(51)</visible>
+                <control type="group">
+                    <include>View_Pad</include>
+                    <control type="panel" id="51">
+                        <left>-70</left>
+                        <right>-10</right>
+                        <bottom>-10</bottom>
+                        <top>-10</top>
+                        <visible>Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(actors)</visible>
+                        <include>View_NotTheseWindows</include>
+                        <viewtype label="$LOCALIZE[31358]">icon</viewtype>
+                        <include content="View_Forced">
+                            <param name="string" value="$LOCALIZE[31358]" />
+                        </include>
+                        <include content="View_Posters_Layout">
+                            <param name="id" value="51" />
+                            <param name="orientation" value="vertical" />
+                            <param name="posters" default="true" />
+                        </include>
+                    </control>
+                </control>
+                <include>Object_Scrollbar_Vert</include>
+            </control>
+
+            <!-- Landscape Wall -->
+            <control type="group">
+                <visible>Control.IsVisible(52)</visible>
+                <control type="group">
+                    <include>View_Pad</include>
+                    <control type="panel" id="52">
+                        <left>-70</left>
+                        <right>-10</right>
+                        <bottom>20</bottom>
+                        <top>-10</top>
+                        <include>View_NotTheseWindows</include>
+                        <visible>Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(videos) | Container.Content(artists) | Container.Content(images)</visible>
+                        <viewtype label="$LOCALIZE[31359]">icon</viewtype>
+                        <include content="View_Forced">
+                            <param name="string" value="$LOCALIZE[31359]" />
+                        </include>
+                        <include content="View_Posters_Layout">
+                            <param name="id" value="52" />
+                            <param name="orientation" value="vertical" />
+                            <param name="landscape_small" default="true" />
+                        </include>
+                    </control>
+                </control>
+                <include>Object_Scrollbar_Vert</include>
+            </control>
+
+            <!-- Square Wall -->
+            <control type="group">
+                <visible>Control.IsVisible(53)</visible>
+                <control type="group">
+                    <include>View_Pad</include>
+                    <control type="panel" id="53">
+                        <left>-70</left>
+                        <right>-10</right>
+                        <bottom>20</bottom>
+                        <top>-10</top>
+                        <visible>!Container.Content(movies) + !Container.Content(tvshows) + !Container.Content(seasons) + !Container.Content(songs) + !Container.Content(videos) + !Container.Content(episodes) + !Container.Content(sets) + !Container.Content(actors) + !Container.Content(images)</visible>
+                        <include>View_NotTheseWindows</include>
+                        <viewtype label="$LOCALIZE[31360]">icon</viewtype>
+                        <include content="View_Forced">
+                            <param name="string" value="$LOCALIZE[31360]" />
+                        </include>
+                        <include content="View_Posters_Layout">
+                            <param name="id" value="53" />
+                            <param name="orientation" value="vertical" />
+                            <param name="square_small" default="true" />
+                        </include>
+                    </control>
+                </control>
+                <include>Object_Scrollbar_Vert</include>
+            </control>
+
+            <!-- Banner Wall -->
+            <control type="group">
+                <visible>Control.IsVisible(54)</visible>
+                <control type="group">
+                    <include>View_Pad</include>
+                    <control type="panel" id="54">
+                        <left>-70</left>
+                        <right>-10</right>
+                        <bottom>50</bottom>
+                        <top>-10</top>
+                        <visible>Container.Content(tvshows)</visible>
+                        <include>View_NotTheseWindows</include>
+                        <viewtype label="$LOCALIZE[31370]">icon</viewtype>
+                        <include content="View_Forced">
+                            <param name="string" value="$LOCALIZE[31370]" />
+                        </include>
+                        <include content="View_Posters_Layout">
+                            <param name="id" value="54" />
+                            <param name="orientation" value="vertical" />
+                            <param name="banner" default="true" />
+                        </include>
+                    </control>
+                </control>
+                <include>Object_Scrollbar_Vert</include>
+            </control>
+
+            <!-- Showcase -->
+            <control type="group">
+                <visible>Control.IsVisible(55)</visible>
+                <control type="group">
+                    <include>View_Pad</include>
+                    <control type="$PARAM[listtype]" id="55">
+                        <bottom>-10</bottom>
+                        <right>-70</right>
+                        <left>-70</left>
+                        <height>500</height>
+                        <height>poster_height</height>
+                        <focusposition>0</focusposition>
+                        <movement>6</movement>
+                        <viewtype label="$LOCALIZE[31161]">showcase</viewtype>
+                        <onup>300</onup>
+                        <ondown condition="Control.IsVisible(60)">60</ondown>
+                        <onleft>55</onleft>
+                        <onright>55</onright>
+                        <include content="View_Forced">
+                            <param name="string" value="$LOCALIZE[31161]" />
+                        </include>
+                        <visible>Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons)</visible>
+                        <include>View_NotTheseWindows</include>
+                        <include content="View_Posters_Layout">
+                            <param name="id" value="55" />
+                            <param name="orientation" value="horizontal" />
+                            <param name="posters" default="true" />
+                        </include>
+                    </control>
+                    <include content="Object_Info">
+                        <param name="id" value="55" />
+                        <param name="width" value="1654" />
+                        <param name="discart" value="true" />
+                        <param name="hdsd_flag" value="true" />
+                        <param name="plot_height" value="170" />
+                    </include>
+                </control>
+
+                <include>Object_Scrollbar_Horz</include>
+            </control>
+
+            <!-- Landscape Showcase -->
+            <control type="group">
+                <visible>Control.IsVisible(56)</visible>
+                <control type="group">
+                    <include>View_Pad</include>
+                    <control type="$PARAM[listtype]" id="56">
+                        <bottom>-10</bottom>
+                        <right>-70</right>
+                        <left>-70</left>
+                        <height>470</height>
+                        <focusposition>0</focusposition>
+                        <movement>2</movement>
+                        <viewtype label="$LOCALIZE[31361]">showcase</viewtype>
+                        <onup>300</onup>
+                        <ondown condition="Control.IsVisible(60)">60</ondown>
+                        <onleft>56</onleft>
+                        <onright>56</onright>
+                        <include content="View_Forced">
+                            <param name="string" value="$LOCALIZE[31361]" />
+                        </include>
+                        <visible>Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(videos) | Container.Content(artists)</visible>
+                        <include>View_NotTheseWindows</include>
+                        <include content="View_Posters_Layout">
+                            <param name="id" value="56" />
+                            <param name="orientation" value="horizontal" />
+                            <param name="landscape" default="true" />
+                        </include>
+                    </control>
+                    <include content="Object_Info">
+                        <param name="id" value="56" />
+                        <param name="width" value="1654" />
+                        <param name="discart" value="true" />
+                        <param name="hdsd_flag" value="true" />
+                        <param name="plot_height" value="170" />
+                    </include>
+                </control>
+
+                <include>Object_Scrollbar_Horz</include>
+            </control>
+
+            <!-- Square Showcase -->
+            <control type="group">
+                <visible>Control.IsVisible(57)</visible>
+                <control type="group">
+                    <include>View_Pad</include>
+                    <control type="$PARAM[listtype]" id="57">
+                        <bottom>-10</bottom>
+                        <right>-70</right>
+                        <left>-70</left>
+                        <height>484</height>
+                        <focusposition>0</focusposition>
+                        <movement>4</movement>
+                        <viewtype label="$LOCALIZE[31362]">showcase</viewtype>
+                        <onup>300</onup>
+                        <ondown condition="Control.IsVisible(60)">60</ondown>
+                        <onleft>57</onleft>
+                        <onright>57</onright>
+                        <include content="View_Forced">
+                            <param name="string" value="$LOCALIZE[31362]" />
+                        </include>
+                        <visible>Container.Content(artists) | Container.Content(albums)</visible>
+                        <include>View_NotTheseWindows</include>
+                        <include content="View_Posters_Layout">
+                            <param name="id" value="57" />
+                            <param name="orientation" value="horizontal" />
+                            <param name="square" default="true" />
+                        </include>
+                    </control>
+                    <include content="Object_Info">
+                        <param name="id" value="57" />
+                        <param name="width" value="1654" />
+                        <param name="discart" value="true" />
+                        <param name="hdsd_flag" value="true" />
+                        <param name="plot_height" value="170" />
+                    </include>
+                </control>
+
+                <include>Object_Scrollbar_Horz</include>
+            </control>
+
+            <!-- Poster Big -->
+            <control type="group">
+                <visible>Control.IsVisible(58)</visible>
+                <control type="group">
+                    <include>View_Pad</include>
+                    <control type="wraplist" id="58">
+                        <!-- <bottom>-10</bottom> -->
+                        <top>50</top>
+                        <right>-70</right>
+                        <left>570</left>
+                        <preloaditems>0</preloaditems>
+                        <!-- <height>500</height> -->
+                        <height>poster_height</height>
+                        <focusposition>-1</focusposition>
+                        <movement>0</movement>
+                        <viewtype label="$LOCALIZE[31363]">icon</viewtype>
+                        <onup>300</onup>
+                        <ondown condition="Control.IsVisible(60)">60</ondown>
+                        <onleft>58</onleft>
+                        <onright>58</onright>
+                        <include content="View_Forced">
+                            <param name="string" value="$LOCALIZE[31363]" />
+                        </include>
+                        <visible>Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons)</visible>
+                        <include>View_NotTheseWindows</include>
+                        <include content="View_Posters_Layout">
+                            <param name="id" value="58" />
+                            <param name="orientation" value="horizontal" />
+                            <param name="posters_big" default="true" />
+                        </include>
+                    </control>
+                    <control type="group">
+                        <!-- <visible>![Container(58).OnNext | Container(58).OnPrevious]</visible>
+                        <animation effect="fade" start="0" end="100" delay="600" time="400" reversible="false">Visible</animation> -->
+                        <control type="group">
+                            <left>640</left>
+                            <height>230</height>
+                            <include content="Object_Info">
+                                <param name="id" value="58" />
+                                <param name="width" value="1654" />
+                                <param name="discart" value="true" />
+                                <param name="hdsd_flag" value="true" />
+                                <param name="plot_height" value="0" />
+                            </include>
+                        </control>
+                        <control type="group">
+                            <left>640</left>
+                            <right>-40</right>
+                            <height>80</height>
+                            <bottom>view_pad</bottom>
+                            <include content="Object_Flags">
+                                <param name="container" value="" />
+                                <param name="directory" value="color" />
+                                <param name="align" value="left" />
+                            </include>
+                        </control>
+                        <!-- <control type="label">
+                            <left>640</left>
+                            <height>80</height>
+                            <bottom>50</bottom>
+                            <align>left</align>
+                            <label fallback="19055">$VAR[Label_Tagline]</label>
+                            <height>$PARAM[plot_height]</height>
+                            <aligny>top</aligny>
+                            <textcolor>main_fg_70</textcolor>
+                            <font>font_plotbox</font>
+                        </control> -->
+                    </control>
+                </control>
+                <include>View_Library_Poster</include>
+                <include>Object_Scrollbar_Horz</include>
+            </control>
+
+
+            <!-- Lovefilm -->
+            <control type="group">
+                <visible>Control.IsVisible(59)</visible>
+                <control type="group">
+                    <left>view_pad</left>
+                    <right>view_pad</right>
+                    <top>view_pad</top>
+                    <bottom>view_pad</bottom>
+                    <control type="image">
+                        <left>-10</left>
+                        <right>-10</right>
+                        <bottom>-10</bottom>
+                        <top>-10</top>
+                        <bordersize>10</bordersize>
+                        <include>Defs_Shadow_Small</include>
+                        <texture colordiffuse="PosterBack" border="10">diffuse/box.png</texture>
+                    </control>
+                    <control type="wraplist" id="59">
+                        <visible>Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(artists)</visible>
+                        <include>View_NotTheseWindows</include>
+                        <viewtype label="$LOCALIZE[31231]">icon</viewtype>
+                        <include content="View_Forced">
+                            <param name="string" value="$LOCALIZE[31231]" />
+                        </include>
+                        <orientation>horizontal</orientation>
+                        <focusposition>0</focusposition>
+                        <preloaditems>2</preloaditems>
+                        <right>0</right>
+                        <left>0</left>
+                        <top>0</top>
+                        <bottom>0</bottom>
+                        <onup>300</onup>
+                        <ondown condition="Control.IsVisible(8000)">8000</ondown>
+                        <ondown condition="!Control.IsVisible(8000)">300</ondown>
+                        <pagecontrol>60</pagecontrol>
+                        <scrolltime tween="cubic">400</scrolltime>
+                        <itemlayout width="1800" height="900">
+                            <control type="image">
+                                <aspectratio scalediffuse="false">center</aspectratio>
+                                <texture background="true" diffuse="diffuse/lovefilm.png">$INFO[ListItem.ActualIcon]</texture>
+                                <visible>String.IsEmpty(ListItem.Art(fanart))</visible>
+                            </control>
+                            <control type="image">
+                                <aspectratio scalediffuse="false">scale</aspectratio>
+                                <texture background="true" diffuse="diffuse/lovefilm.png">$INFO[ListItem.Art(fanart)]</texture>
+                            </control>
+                        </itemlayout>
+                        <focusedlayout width="1800" height="900">
+                            <control type="image">
+                                <aspectratio scalediffuse="false">center</aspectratio>
+                                <texture background="true" diffuse="diffuse/lovefilm.png">$INFO[ListItem.ActualIcon]</texture>
+                                <visible>String.IsEmpty(ListItem.Art(fanart))</visible>
+                            </control>
+                            <control type="image">
+                                <aspectratio scalediffuse="false">scale</aspectratio>
+                                <texture background="true" diffuse="diffuse/lovefilm.png">$INFO[ListItem.Art(fanart)]</texture>
+                            </control>
+                        </focusedlayout>
+                    </control>
+                    <control type="group">
+                        <height>205</height>
+                        <bottom>0</bottom>
+                        <control type="image">
+                            <top>-300</top>
+                            <aspectratio scalediffuse="false">stretch</aspectratio>
+                            <texture diffuse="diffuse/lovefilm.png">common/gradient-dim.png</texture>
+                        </control>
+                        <control type="group">
+                            <left>40</left>
+                            <right>40</right>
+                            <bottom>30</bottom>
+                            <include content="Object_Info">
+                                <param name="plot_height" value="300" />
+                                <param name="id" value="59" />
+                                <param name="width" value="1068" />
+                                <param name="discart" value="false" />
+                                <param name="hdsd_flag" value="true" />
+                            </include>
+                        </control>
+                    </control>
+                    <control type="group">
+                        <left>-10</left>
+                        <right>-10</right>
+                        <bottom>-10</bottom>
+                        <top>-10</top>
+                        <include>View_WatchedOverlay</include>
+                    </control>
+                    <control type="image">
+                        <texture colordiffuse="PixelLines" border="20">common/outline.png</texture>
+                    </control>
+                    <control type="group">
+                        <left>-10</left>
+                        <right>-10</right>
+                        <bottom>-10</bottom>
+                        <top>-10</top>
+                        <visible>Control.HasFocus(59)</visible>
+                        <include>View_Selectbox</include>
+                    </control>
+                </control>
+                <include>Object_Scrollbar_Horz</include>
+            </control>
+        </definition>
+    </include>
+
+    <include name="View_Posters_Layout">
+        <param name="id" default="51" />
+        <param name="setfanart" default="false" />
+        <param name="orientation" default="vertical" />
+        <param name="top_offset" default="0" />
+        <param name="bottom_offset" default="0" />
+        <param name="posters" default="false" />
+        <param name="posters_big" default="false" />
+        <param name="square" default="false" />
+        <param name="square_small" default="false" />
+        <param name="landscape" default="false" />
+        <param name="landscape_small" default="false" />
+        <param name="banner" default="false" />
+        <param name="submenu" default="false" />
+        <param name="text" default="true" />
+        <definition>
+            <focusposition>3</focusposition>
+            <movement>3</movement>
+            <orientation>$PARAM[orientation]</orientation>
+            <include condition="!Window.IsVisible(DialogVideoInfo.xml)">View_Movement_Horizontal</include>
+            <preloaditems>2</preloaditems>
+            <pagecontrol>60</pagecontrol>
+            <scrolltime tween="quadratic">400</scrolltime>
+            <onfocus>SetProperty(ViewType,Posters,Home)</onfocus>
+            <itemlayout width="260" height="480" condition="$PARAM[posters]">
+                <control type="group">
+                    <left>view_pad</left>
+                    <right>-view_pad</right>
+                    <top>$PARAM[top_offset]</top>
+                    <bottom>$PARAM[bottom_offset]</bottom>
+                    <control type="group">
+                        <height>380</height>
+                        <include>View_Posters_Itemlayout_Artwork</include>
+                    </control>
+                    <include condition="$PARAM[text]">View_Posters_Text</include>
+                </control>
+            </itemlayout>
+            <focusedlayout width="260" height="480" condition="$PARAM[posters]">
+                <include content="View_Position_Button">
+                    <param name="id" value="$PARAM[id]" />
+                    <param name="setfanart" value="$PARAM[setfanart]" />
+                </include>
+                <control type="group">
+                    <top>$PARAM[top_offset]</top>
+                    <bottom>$PARAM[bottom_offset]</bottom>
+                    <left>view_pad</left>
+                    <right>-view_pad</right>
+                    <include>Animation_FocusBounce</include>
+                    <control type="group">
+                        <height>380</height>
+                        <include>View_Posters_Focusedlayout_Artwork</include>
+                        <!-- Highlight -->
+                        <control type="group">
+                            <visible>Control.HasFocus($PARAM[id])</visible>
+                            <include>View_Selectbox</include>
+                        </control>
+                    </control>
+                    <include condition="$PARAM[text]">View_Posters_Text</include>
+                </control>
+            </focusedlayout>
+            <itemlayout width="400" condition="$PARAM[posters_big]">
+                <control type="group">
+                    <left>view_pad</left>
+                    <right>-view_pad</right>
+                    <top>$PARAM[top_offset]</top>
+                    <bottom>$PARAM[bottom_offset]</bottom>
+                    <control type="group">
+                        <top>205</top>
+                        <height>560</height>
+                        <width>380</width>
+                        <include>View_Posters_Itemlayout_Artwork</include>
+                    </control>
+                </control>
+            </itemlayout>
+            <focusedlayout width="400" condition="$PARAM[posters_big]">
+                <include content="View_Position_Button">
+                    <param name="id" value="$PARAM[id]" />
+                    <param name="setfanart" value="$PARAM[setfanart]" />
+                </include>
+                <control type="group">
+                    <left>view_pad</left>
+                    <right>-view_pad</right>
+                    <top>$PARAM[top_offset]</top>
+                    <bottom>$PARAM[bottom_offset]</bottom>
+                    <control type="group">
+                        <top>205</top>
+                        <height>560</height>
+                        <width>380</width>
+                        <include>View_Posters_Itemlayout_Artwork</include>
+                    </control>
+                </control>
+            </focusedlayout>
+            <itemlayout width="606.66" height="480" condition="$PARAM[landscape]">
+                <control type="group">
+                    <left>view_pad</left>
+                    <right>-view_pad</right>
+                    <top>$PARAM[top_offset]</top>
+                    <bottom>$PARAM[bottom_offset]</bottom>
+                    <control type="group">
+                        <height>350</height>
+                        <include>View_Landscape_Artwork</include>
+                    </control>
+                    <include condition="$PARAM[text]">View_Landscape_Text</include>
+                </control>
+            </itemlayout>
+            <focusedlayout width="606.66" height="480" condition="$PARAM[landscape]">
+                <include content="View_Position_Button">
+                    <param name="id" value="$PARAM[id]" />
+                    <param name="setfanart" value="$PARAM[setfanart]" />
+                </include>
+                <control type="group">
+                    <top>$PARAM[top_offset]</top>
+                    <bottom>$PARAM[bottom_offset]</bottom>
+                    <left>view_pad</left>
+                    <right>-view_pad</right>
+                    <include>Animation_FocusBounce</include>
+                    <control type="group">
+                        <height>350</height>
+                        <include>View_Landscape_Artwork</include>
+                        <!-- Highlight -->
+                        <control type="group">
+                            <visible>Control.HasFocus($PARAM[id])</visible>
+                            <include>View_Selectbox</include>
+                        </control>
+                    </control>
+                    <include condition="$PARAM[text]">View_Landscape_Text</include>
+                </control>
+            </focusedlayout>
+            <itemlayout width="455" height="315" condition="$PARAM[landscape_small]">
+                <control type="group">
+                    <left>view_pad</left>
+                    <right>-view_pad</right>
+                    <top>$PARAM[top_offset]</top>
+                    <bottom>$PARAM[bottom_offset]</bottom>
+                    <control type="group">
+                        <height>264.69</height>
+                        <include>View_Landscape_Artwork</include>
+                    </control>
+                    <control type="label">
+                        <label>$INFO[ListItem.Label]</label>
+                        <align>left</align>
+                        <aligny>top</aligny>
+                        <font>font_statusbar</font>
+                        <textcolor>main_fg_100</textcolor>
+                        <left>10</left>
+                        <right>10</right>
+                        <top>265</top>
+                    </control>
+                    <control type="label">
+                        <label>$INFO[ListItem.Label2]</label>
+                        <align>right</align>
+                        <aligny>top</aligny>
+                        <font>font_statusbar</font>
+                        <textcolor>main_fg_70</textcolor>
+                        <left>10</left>
+                        <right>10</right>
+                        <top>265</top>
+                    </control>
+                </control>
+            </itemlayout>
+            <focusedlayout width="455" height="315" condition="$PARAM[landscape_small]">
+                <include content="View_Position_Button">
+                    <param name="id" value="$PARAM[id]" />
+                    <param name="setfanart" value="$PARAM[setfanart]" />
+                </include>
+                <control type="group">
+                    <top>$PARAM[top_offset]</top>
+                    <bottom>$PARAM[bottom_offset]</bottom>
+                    <left>view_pad</left>
+                    <right>-view_pad</right>
+                    <include>Animation_FocusBounce</include>
+                    <control type="group">
+                        <height>264.69</height>
+                        <include>View_Landscape_Artwork</include>
+                        <!-- Highlight -->
+                        <control type="group">
+                            <visible>Control.HasFocus($PARAM[id])</visible>
+                            <include>View_Selectbox</include>
+                        </control>
+                    </control>
+                    <control type="label">
+                        <label>$INFO[ListItem.Label]</label>
+                        <align>left</align>
+                        <aligny>top</aligny>
+                        <font>font_statusbar</font>
+                        <textcolor>main_fg_100</textcolor>
+                        <left>10</left>
+                        <right>10</right>
+                        <top>265</top>
+                    </control>
+                    <control type="label">
+                        <label>$INFO[ListItem.Label2]</label>
+                        <align>right</align>
+                        <aligny>top</aligny>
+                        <font>font_statusbar</font>
+                        <textcolor>main_fg_70</textcolor>
+                        <left>10</left>
+                        <right>10</right>
+                        <top>265</top>
+                    </control>
+                </control>
+            </focusedlayout>
+            <itemlayout width="910" height="230" condition="$PARAM[banner]">
+                <control type="group">
+                    <left>view_pad</left>
+                    <right>-view_pad</right>
+                    <top>$PARAM[top_offset]</top>
+                    <bottom>$PARAM[bottom_offset]</bottom>
+                    <control type="group">
+                        <height>185</height>
+                        <control type="image">
+                            <bordersize>10</bordersize>
+                            <include>Defs_Shadow_Small</include>
+                            <texture colordiffuse="PosterBack" border="10">diffuse/box.png</texture>
+                        </control>
+                        <control type="image">
+                            <bordersize>10</bordersize>
+                            <aspectratio aligny="center" scalediffuse="false">scale</aspectratio>
+                            <texture background="true" diffuse="diffuse/banner.png">$VAR[Image_Banner]</texture>
+                        </control>
+                        <include>View_WatchedOverlay</include>
+                        <control type="image">
+                            <bordersize>10</bordersize>
+                            <texture colordiffuse="PixelLines" border="20">common/outline.png</texture>
+                        </control>
+                    </control>
+                    <control type="label">
+                        <label>$INFO[ListItem.Label]</label>
+                        <align>left</align>
+                        <aligny>top</aligny>
+                        <font>font_statusbar</font>
+                        <textcolor>main_fg_100</textcolor>
+                        <left>10</left>
+                        <right>10</right>
+                        <top>185</top>
+                    </control>
+                    <control type="label">
+                        <label>$INFO[ListItem.Label2]</label>
+                        <align>right</align>
+                        <aligny>top</aligny>
+                        <font>font_statusbar</font>
+                        <textcolor>main_fg_70</textcolor>
+                        <left>10</left>
+                        <right>10</right>
+                        <top>185</top>
+                    </control>
+                </control>
+            </itemlayout>
+            <focusedlayout width="910" height="230" condition="$PARAM[banner]">
+                <include content="View_Position_Button">
+                    <param name="id" value="$PARAM[id]" />
+                    <param name="setfanart" value="$PARAM[setfanart]" />
+                </include>
+                <control type="group">
+                    <top>$PARAM[top_offset]</top>
+                    <bottom>$PARAM[bottom_offset]</bottom>
+                    <left>view_pad</left>
+                    <right>-view_pad</right>
+                    <include>Animation_FocusBounce_Small</include>
+                    <control type="group">
+                        <height>185</height>
+                        <control type="image">
+                            <bordersize>10</bordersize>
+                            <include>Defs_Shadow_Small</include>
+                            <texture colordiffuse="PosterBack" border="10">diffuse/box.png</texture>
+                        </control>
+                        <control type="image">
+                            <bordersize>10</bordersize>
+                            <aspectratio aligny="center" scalediffuse="false">scale</aspectratio>
+                            <texture background="true" diffuse="diffuse/banner.png">$VAR[Image_Banner]</texture>
+                        </control>
+                        <include>View_WatchedOverlay</include>
+                        <control type="image">
+                            <bordersize>10</bordersize>
+                            <texture colordiffuse="PixelLines" border="20">common/outline.png</texture>
+                        </control>
+                        <!-- Highlight -->
+                        <control type="group">
+                            <visible>Control.HasFocus($PARAM[id])</visible>
+                            <include>View_Selectbox</include>
+                        </control>
+                    </control>
+                    <control type="label">
+                        <label>$INFO[ListItem.Label]</label>
+                        <align>left</align>
+                        <aligny>top</aligny>
+                        <font>font_statusbar</font>
+                        <textcolor>main_fg_100</textcolor>
+                        <left>10</left>
+                        <right>10</right>
+                        <top>185</top>
+                    </control>
+                    <control type="label">
+                        <label>$INFO[ListItem.Label2]</label>
+                        <align>right</align>
+                        <aligny>top</aligny>
+                        <font>font_statusbar</font>
+                        <textcolor>main_fg_70</textcolor>
+                        <left>10</left>
+                        <right>10</right>
+                        <top>185</top>
+                    </control>
+                </control>
+            </focusedlayout>
+            <itemlayout width="364" height="480" condition="$PARAM[square]">
+                <control type="group">
+                    <left>view_pad</left>
+                    <right>-view_pad</right>
+                    <top>$PARAM[top_offset]</top>
+                    <bottom>$PARAM[bottom_offset]</bottom>
+                    <control type="group">
+                        <height>364</height>
+                        <include>View_Posters_Itemlayout_Artwork</include>
+                    </control>
+                    <control type="label">
+                        <label>$INFO[ListItem.Label]</label>
+                        <align>center</align>
+                        <aligny>top</aligny>
+                        <font>font_statusbar</font>
+                        <textcolor>main_fg_100</textcolor>
+                        <left>10</left>
+                        <right>10</right>
+                        <top>369</top>
+                        <height>30</height>
+                        <visible>$PARAM[text]</visible>
+                    </control>
+                    <control type="label">
+                        <label>$INFO[ListItem.Label2]</label>
+                        <align>center</align>
+                        <aligny>top</aligny>
+                        <font>font_statusbar</font>
+                        <textcolor>main_fg_30</textcolor>
+                        <left>10</left>
+                        <right>10</right>
+                        <top>399</top>
+                        <height>30</height>
+                        <visible>$PARAM[text]</visible>
+                    </control>
+                </control>
+            </itemlayout>
+            <focusedlayout width="364" height="480" condition="$PARAM[square]">
+                <include content="View_Position_Button">
+                    <param name="id" value="$PARAM[id]" />
+                    <param name="setfanart" value="$PARAM[setfanart]" />
+                </include>
+                <control type="group">
+                    <top>$PARAM[top_offset]</top>
+                    <bottom>$PARAM[bottom_offset]</bottom>
+                    <left>view_pad</left>
+                    <right>-view_pad</right>
+                    <include>Animation_FocusBounce</include>
+                    <control type="group">
+                        <height>364</height>
+                        <include>View_Posters_Focusedlayout_Artwork</include>
+                        <!-- Highlight -->
+                        <control type="group">
+                            <visible>Control.HasFocus($PARAM[id])</visible>
+                            <include>View_Selectbox</include>
+                        </control>
+                    </control>
+                    <control type="label">
+                        <label>$INFO[ListItem.Label]</label>
+                        <align>center</align>
+                        <aligny>top</aligny>
+                        <font>font_statusbar</font>
+                        <textcolor>main_fg_100</textcolor>
+                        <left>10</left>
+                        <right>10</right>
+                        <top>369</top>
+                        <height>30</height>
+                        <visible>$PARAM[text]</visible>
+                    </control>
+                    <control type="label">
+                        <label>$INFO[ListItem.Label2]</label>
+                        <align>center</align>
+                        <aligny>top</aligny>
+                        <font>font_statusbar</font>
+                        <textcolor>main_fg_30</textcolor>
+                        <left>10</left>
+                        <right>10</right>
+                        <top>399</top>
+                        <height>30</height>
+                        <visible>$PARAM[text]</visible>
+                    </control>
+                </control>
+            </focusedlayout>
+            <itemlayout width="260" height="315" condition="$PARAM[square_small]">
+                <control type="group">
+                    <left>view_pad</left>
+                    <right>-view_pad</right>
+                    <top>$PARAM[top_offset]</top>
+                    <bottom>$PARAM[bottom_offset]</bottom>
+                    <control type="group">
+                        <height>260</height>
+                        <include>View_Posters_Itemlayout_Artwork</include>
+                    </control>
+                    <control type="label">
+                        <label>$INFO[ListItem.Label]</label>
+                        <align>center</align>
+                        <aligny>top</aligny>
+                        <font>font_statusbar</font>
+                        <textcolor>main_fg_100</textcolor>
+                        <left>10</left>
+                        <right>10</right>
+                        <bottom>20</bottom>
+                        <height>30</height>
+                        <visible>$PARAM[text]</visible>
+                    </control>
+                </control>
+            </itemlayout>
+            <focusedlayout width="260" height="315" condition="$PARAM[square_small]">
+                <include content="View_Position_Button">
+                    <param name="id" value="$PARAM[id]" />
+                    <param name="setfanart" value="$PARAM[setfanart]" />
+                </include>
+                <control type="group">
+                    <top>$PARAM[top_offset]</top>
+                    <bottom>$PARAM[bottom_offset]</bottom>
+                    <left>view_pad</left>
+                    <right>-view_pad</right>
+                    <include>Animation_FocusBounce</include>
+                    <control type="group">
+                        <height>260</height>
+                        <include>View_Posters_Focusedlayout_Artwork</include>
+                        <!-- Highlight -->
+                        <control type="group">
+                            <visible>Control.HasFocus($PARAM[id])</visible>
+                            <include>View_Selectbox</include>
+                        </control>
+                    </control>
+                    <control type="label">
+                        <label>$INFO[ListItem.Label]</label>
+                        <align>center</align>
+                        <aligny>top</aligny>
+                        <font>font_statusbar</font>
+                        <textcolor>main_fg_100</textcolor>
+                        <left>10</left>
+                        <right>10</right>
+                        <bottom>20</bottom>
+                        <height>30</height>
+                        <visible>$PARAM[text]</visible>
+                    </control>
+                </control>
+            </focusedlayout>
+            <itemlayout width="130" height="130" condition="$PARAM[submenu]">
+                <control type="group">
+                    <left>view_pad</left>
+                    <right>-view_pad</right>
+                    <top>$PARAM[top_offset]</top>
+                    <bottom>$PARAM[bottom_offset]</bottom>
+                    <control type="group">
+                        <control type="image">
+                            <bordersize>10</bordersize>
+                            <include>Defs_Shadow_Small</include>
+                            <texture colordiffuse="PosterBack">common/white.png</texture>
+                        </control>
+                        <control type="image">
+                            <bordersize>10</bordersize>
+                            <texture background="true" colordiffuse="main_fg_70">$INFO[ListItem.Icon]</texture>
+                            <visible>String.Contains(ListItem.Icon,special://skin/extras/icons/)</visible>
+                        </control>
+                        <control type="image">
+                            <bordersize>10</bordersize>
+                            <texture background="true">$INFO[ListItem.Icon]</texture>
+                            <visible>!String.Contains(ListItem.Icon,special://skin/extras/icons/)</visible>
+                        </control>
+                        <control type="image">
+                            <bordersize>10</bordersize>
+                            <texture colordiffuse="PixelLines" border="20">common/outline.png</texture>
+                        </control>
+                    </control>
+                </control>
+            </itemlayout>
+            <focusedlayout width="130" height="130" condition="$PARAM[submenu]">
+                <control type="group">
+                    <left>view_pad</left>
+                    <right>-view_pad</right>
+                    <top>$PARAM[top_offset]</top>
+                    <bottom>$PARAM[bottom_offset]</bottom>
+                    <control type="group">
+                        <visible>!Control.HasFocus($PARAM[id])</visible>
+                        <control type="image">
+                            <bordersize>10</bordersize>
+                            <include>Defs_Shadow_Small</include>
+                            <texture colordiffuse="PosterBack">common/white.png</texture>
+                        </control>
+                        <control type="image">
+                            <bordersize>10</bordersize>
+                            <texture background="true" colordiffuse="main_fg_70">$INFO[ListItem.Icon]</texture>
+                            <visible>String.Contains(ListItem.Icon,special://skin/extras/icons/)</visible>
+                        </control>
+                        <control type="image">
+                            <bordersize>10</bordersize>
+                            <texture background="true">$INFO[ListItem.Icon]</texture>
+                            <visible>!String.Contains(ListItem.Icon,special://skin/extras/icons/)</visible>
+                        </control>
+                        <control type="image">
+                            <bordersize>10</bordersize>
+                            <texture colordiffuse="PixelLines" border="20">common/outline.png</texture>
+                        </control>
+                    </control>
+                    <control type="group">
+                        <visible>Control.HasFocus($PARAM[id])</visible>
+                        <control type="image">
+                            <bordersize>10</bordersize>
+                            <include>Defs_Shadow_Small</include>
+                            <texture colordiffuse="PosterBack">common/white.png</texture>
+                        </control>
+                        <control type="image">
+                            <bordersize>10</bordersize>
+                            <texture background="true" colordiffuse="Selected">$INFO[ListItem.Icon]</texture>
+                            <visible>String.Contains(ListItem.Icon,special://skin/extras/icons/)</visible>
+                        </control>
+                        <control type="image">
+                            <bordersize>10</bordersize>
+                            <texture background="true">$INFO[ListItem.Icon]</texture>
+                            <visible>!String.Contains(ListItem.Icon,special://skin/extras/icons/)</visible>
+                        </control>
+                        <control type="image">
+                            <bordersize>10</bordersize>
+                            <texture colordiffuse="PixelLines" border="20">common/outline.png</texture>
+                        </control>
+                        <control type="group">
+                            <include>View_Selectbox</include>
+                        </control>
+                    </control>
+                </control>
+            </focusedlayout>
+        </definition>
+    </include>
+
+    <include name="View_Landscape_Text">
+        <control type="label">
+            <label>$INFO[ListItem.Label]</label>
+            <align>left</align>
+            <aligny>top</aligny>
+            <font>font_statusbar</font>
+            <textcolor>main_fg_100</textcolor>
+            <left>10</left>
+            <right>10</right>
+            <top>355</top>
+        </control>
+        <control type="label">
+            <label>$INFO[ListItem.Label2]</label>
+            <align>right</align>
+            <aligny>top</aligny>
+            <font>font_statusbar</font>
+            <textcolor>main_fg_70</textcolor>
+            <left>10</left>
+            <right>10</right>
+            <top>355</top>
+        </control>
+        <control type="label">
+            <label>$INFO[ListItem.Genre]</label>
+            <align>left</align>
+            <aligny>top</aligny>
+            <font>font_statusbar</font>
+            <textcolor>main_fg_30</textcolor>
+            <left>10</left>
+            <right>10</right>
+            <top>385</top>
+        </control>
+        <control type="label">
+            <label>$INFO[ListItem.Premiered]</label>
+            <align>right</align>
+            <aligny>top</aligny>
+            <font>font_statusbar</font>
+            <textcolor>main_fg_30</textcolor>
+            <left>10</left>
+            <right>10</right>
+            <top>385</top>
+        </control>
+    </include>
+    <include name="View_Landscape_Artwork">
+        <control type="image">
+            <bordersize>10</bordersize>
+            <include>Defs_Shadow_Small</include>
+            <texture colordiffuse="PosterBack" border="10">diffuse/box.png</texture>
+        </control>
+        <control type="image">
+            <bordersize>10</bordersize>
+            <aspectratio aligny="center" scalediffuse="false">scale</aspectratio>
+            <texture background="true" diffuse="diffuse/landscape.png">$VAR[Image_Fanart]</texture>
+        </control>
+        <control type="image">
+            <bottom>20</bottom>
+            <left>75</left>
+            <right>75</right>
+            <aspectratio aligny="bottom">keep</aspectratio>
+            <texture background="true">$VAR[Image_Clearlogo]</texture>
+            <visible>!Skin.HasSetting(DisableFakeLandscapeArt)</visible>
+            <visible>String.IsEmpty(ListItem.Art(landscape)) + String.IsEmpty(ListItem.Art(tvshow.landscape)) + String.IsEmpty(ListItem.Art(season.landscape))</visible>
+            <visible>Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons)</visible>
+        </control>
+        <include>View_WatchedOverlay</include>
+        <control type="image">
+            <bordersize>10</bordersize>
+            <texture colordiffuse="PixelLines" border="20">common/outline.png</texture>
+        </control>
+    </include>
+    <include name="View_Posters_Text">
+        <control type="label">
+            <label>$INFO[ListItem.Label]</label>
+            <align>center</align>
+            <aligny>top</aligny>
+            <font>font_statusbar</font>
+            <textcolor>main_fg_100</textcolor>
+            <left>10</left>
+            <right>10</right>
+            <top>385</top>
+        </control>
+        <control type="label">
+            <label>$INFO[ListItem.Year]</label>
+            <align>center</align>
+            <aligny>top</aligny>
+            <font>font_statusbar</font>
+            <textcolor>main_fg_30</textcolor>
+            <left>10</left>
+            <right>10</right>
+            <top>415</top>
+        </control>
+    </include>
+    <include name="View_Posters_Itemlayout_Artwork">
+        <control type="group" description="ParentFolder and DefaultIcon">
+            <visible>ListItem.IsParentFolder | String.StartsWith(ListItem.Icon,Default) | ![!String.IsEmpty(ListItem.Art(poster)) | !String.IsEmpty(ListItem.Art(tvshow.poster)) | !String.IsEmpty(ListItem.Art(season.poster))] | Container.Content(musicvideos)</visible>
+            <control type="image">
+                <bordersize>10</bordersize>
+                <include>Defs_Shadow_Small</include>
+                <texture colordiffuse="PosterBack" border="10">diffuse/box.png</texture>
+            </control>
+            <control type="image">
+                <bordersize>10</bordersize>
+                <aspectratio aligny="center" scalediffuse="false">keep</aspectratio>
+                <texture colordiffuse="main_fg_70" background="true" diffuse="diffuse/widgetposter.png">$INFO[ListItem.Icon]</texture>
+                <visible>String.StartsWith(ListItem.Icon,Default)</visible>
+                <visible>![[Container.Content(genres) | [Container.Content(addons) + String.Contains(Container.FolderPath,Genres)]] | Container.Content(studios) | Container.Content(years) | Container.Content(directors) | Container.Content(countries) | Container.Content(tags) | Container.Content(playlists)] | ListItem.IsParentFolder</visible>
+            </control>
+            <control type="image">
+                <bordersize>10</bordersize>
+                <aspectratio aligny="center" scalediffuse="false">scale</aspectratio>
+                <texture background="true" diffuse="diffuse/widgetposter.png">$INFO[ListItem.Icon]</texture>
+                <visible>!String.StartsWith(ListItem.Icon,Default) + !ListItem.IsParentFolder</visible>
+                <visible>![[Container.Content(genres) | [Container.Content(addons) + String.Contains(Container.FolderPath,Genres)]] | Container.Content(studios) | Container.Content(years) | Container.Content(directors) | Container.Content(countries) | Container.Content(tags) | Container.Content(playlists)]</visible>
+            </control>
+            <control type="image">
+                <bordersize>70</bordersize>
+                <aspectratio aligny="center" scalediffuse="false">keep</aspectratio>
+                <texture background="true" colordiffuse="main_fg_70" fallback="DefaultGenres.png" diffuse="diffuse/widgetposter.png">$VAR[Image_GenreIcons]</texture>
+                <visible>[Container.Content(genres) | [Container.Content(addons) + String.Contains(Container.FolderPath,Genres)]] + !ListItem.IsParentFolder</visible>
+            </control>
+            <control type="image">
+                <bordersize>10</bordersize>
+                <aspectratio aligny="center" scalediffuse="false">keep</aspectratio>
+                <texture background="true" colordiffuse="main_fg_70" fallback="DefaultStudios.png" diffuse="diffuse/widgetposter.png">$INFO[ListItem.Label,resource://resource.images.studios.white/,.png]</texture>
+                <visible>Container.Content(studios) + !ListItem.IsParentFolder</visible>
+            </control>
+            <control type="image">
+                <bordersize>10</bordersize>
+                <aspectratio aligny="center" scalediffuse="false">keep</aspectratio>
+                <texture background="true" colordiffuse="main_fg_30" diffuse="diffuse/widgetposter.png">$INFO[ListItem.Label,resource://resource.images.moviecountryicons.maps/,.png]</texture>
+                <visible>Container.Content(countries) + !ListItem.IsParentFolder</visible>
+            </control>
+            <control type="textbox">
+                <left>20</left>
+                <right>20</right>
+                <align>center</align>
+                <aligny>center</aligny>
+                <font>font_poster_text</font>
+                <textcolor>main_fg_70</textcolor>
+                <label>$INFO[ListItem.Label]</label>
+                <visible>!ListItem.IsParentFolder</visible>
+                <visible>Container.Content(years) | Container.Content(directors) | Container.Content(countries) | Container.Content(tags) | Container.Content(playlists)</visible>
+            </control>
+        </control>
+        <control type="image" description="Poster">
+            <bordersize>10</bordersize>
+            <include>Defs_Shadow_Small</include>
+            <aspectratio scalediffuse="false">scale</aspectratio>
+            <texture fallback="DefaultAddonNone.png" background="true" diffuse="diffuse/widgetposter.png">$VAR[Image_Poster]</texture>
+            <visible>!ListItem.IsParentFolder</visible>
+            <visible>!String.StartsWith(ListItem.Icon,Default)</visible>
+            <visible>[!String.IsEmpty(ListItem.Art(poster)) | !String.IsEmpty(ListItem.Art(tvshow.poster)) | !String.IsEmpty(ListItem.Art(season.poster))]</visible>
+            <visible>!Container.Content(musicvideos)</visible>
+        </control>
+        <include>View_WatchedOverlay</include>
+        <control type="image">
+            <bordersize>10</bordersize>
+            <texture colordiffuse="PixelLines" border="20">common/outline.png</texture>
+        </control>
+    </include>
+
+    <include name="View_Posters_Focusedlayout_Artwork">
+        <control type="group" description="ParentFolder and DefaultIcon">
+            <visible>ListItem.IsParentFolder | String.StartsWith(ListItem.Icon,Default) | Container.Content(musicvideos) | ![!String.IsEmpty(ListItem.Art(poster)) | !String.IsEmpty(ListItem.Art(tvshow.poster)) | !String.IsEmpty(ListItem.Art(season.poster))]</visible>
+            <control type="image">
+                <bordersize>10</bordersize>
+                <include>Defs_Shadow_Small</include>
+                <texture colordiffuse="PosterBack" border="10">diffuse/box.png</texture>
+            </control>
+            <control type="image">
+                <bordersize>10</bordersize>
+                <aspectratio aligny="center" scalediffuse="false">keep</aspectratio>
+                <texture colordiffuse="Selected" background="true" diffuse="diffuse/widgetposter.png">$INFO[ListItem.Icon]</texture>
+                <visible>String.StartsWith(ListItem.Icon,Default)</visible>
+                <visible>![[Container.Content(genres) | [Container.Content(addons) + String.Contains(Container.FolderPath,Genres)]] | Container.Content(studios) | Container.Content(years) | Container.Content(directors) | Container.Content(countries) | Container.Content(tags) | Container.Content(playlists)] | ListItem.IsParentFolder</visible>
+            </control>
+            <control type="image">
+                <bordersize>10</bordersize>
+                <aspectratio aligny="center" scalediffuse="false">scale</aspectratio>
+                <texture background="true" diffuse="diffuse/widgetposter.png">$INFO[ListItem.Icon]</texture>
+                <visible>!String.StartsWith(ListItem.Icon,Default) + !ListItem.IsParentFolder</visible>
+                <visible>![[Container.Content(genres) | [Container.Content(addons) + String.Contains(Container.FolderPath,Genres)]] | Container.Content(studios) | Container.Content(years) | Container.Content(directors) | Container.Content(countries) | Container.Content(tags) | Container.Content(playlists)]</visible>
+            </control>
+            <control type="image">
+                <bordersize>70</bordersize>
+                <aspectratio aligny="center" scalediffuse="false">keep</aspectratio>
+                <texture background="true" colordiffuse="Selected" fallback="DefaultGenres.png" diffuse="diffuse/widgetposter.png">$VAR[Image_GenreIcons]</texture>
+                <visible>[Container.Content(genres) | [Container.Content(addons) + String.Contains(Container.FolderPath,Genres)]] + !ListItem.IsParentFolder</visible>
+            </control>
+            <control type="image">
+                <bordersize>10</bordersize>
+                <aspectratio aligny="center" scalediffuse="false">keep</aspectratio>
+                <texture background="true" colordiffuse="Selected" fallback="DefaultStudios.png" diffuse="diffuse/widgetposter.png">$INFO[ListItem.Label,resource://resource.images.studios.white/,.png]</texture>
+                <visible>Container.Content(studios) + !ListItem.IsParentFolder</visible>
+            </control>
+            <control type="image">
+                <bordersize>10</bordersize>
+                <aspectratio aligny="center" scalediffuse="false">keep</aspectratio>
+                <texture background="true" colordiffuse="main_fg_30" diffuse="diffuse/widgetposter.png">$INFO[ListItem.Label,resource://resource.images.moviecountryicons.maps/,.png]</texture>
+                <visible>Container.Content(countries) + !ListItem.IsParentFolder</visible>
+            </control>
+            <control type="textbox">
+                <left>20</left>
+                <right>20</right>
+                <align>center</align>
+                <aligny>center</aligny>
+                <font>font_poster_text</font>
+                <textcolor>Selected</textcolor>
+                <label>$INFO[ListItem.Label]</label>
+                <visible>!ListItem.IsParentFolder</visible>
+                <visible>Container.Content(years) | Container.Content(directors) | Container.Content(countries) | Container.Content(tags) | Container.Content(playlists)</visible>
+            </control>
+        </control>
+        <control type="image" description="Poster">
+            <bordersize>10</bordersize>
+            <include>Defs_Shadow_Small</include>
+            <aspectratio scalediffuse="false">scale</aspectratio>
+            <texture fallback="DefaultAddonNone.png" background="true" diffuse="diffuse/widgetposter.png">$VAR[Image_Poster]</texture>
+            <visible>!ListItem.IsParentFolder</visible>
+            <visible>!String.StartsWith(ListItem.Icon,Default)</visible>
+            <visible>[!String.IsEmpty(ListItem.Art(poster)) | !String.IsEmpty(ListItem.Art(tvshow.poster)) | !String.IsEmpty(ListItem.Art(season.poster))]</visible>
+            <visible>!Container.Content(musicvideos)</visible>
+        </control>
+        <include>View_WatchedOverlay</include>
+        <control type="image">
+            <bordersize>10</bordersize>
+            <texture colordiffuse="PixelLines" border="20">common/outline.png</texture>
+        </control>
+        
+    </include>
+</includes>
+

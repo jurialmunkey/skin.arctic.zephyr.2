@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window type="dialog">
+    <onload condition="Library.IsScanningVideo + Skin.HasSetting(UpdateArt.Enabled)">SetProperty(UpdateArt,1)</onload>
+    <onunload condition="!String.IsEmpty(Window.Property(UpdateArt)) + Skin.HasSetting(UpdateArt.Enabled)">XBMC.RunScript(script.artwork.downloader,mode=custom,silent=true,landscape,clearlogo,clearart)</onunload>
+    <onunload condition="!String.IsEmpty(Window.Property(UpdateArt)) + Skin.HasSetting(UpdateArt.Enabled)">ClearProperty(UpdateArt)</onunload>
+    <controls>
+        <control type="group">
+            <height>view_top</height>
+            <control type="group">
+                <include>Dialog_Notification_Group</include>
+                <visible>!Window.IsVisible(DialogNotification.xml)</visible>
+                <visible>!Window.IsVisible(DialogVolumeBar.xml) | Player.Muted</visible>
+                <visible>!Window.IsVisible(fullscreenvideo)</visible>
+                <visible>!Window.IsVisible(visualisation)</visible>
+                <visible>!Window.IsVisible(Startup.xml)</visible>
+                <control type="group">
+                    <control type="group">
+                        <include>Dialog_Notification_Icon</include>
+                        <control type="image" description="Back">
+                            <centerleft>50%</centerleft>
+                            <centertop>50%</centertop>
+                            <width>80</width>
+                            <height>80</height>
+                            <aspectratio align="center" aligny="center">keep</aspectratio>
+                            <texture>dialog/loading-back-busy.png</texture>
+                            <colordiffuse>panel_fg_100</colordiffuse>
+                            <animation effect="fade" start="0" end="100" time="150">VisibleChange</animation>
+                        </control>
+                        <control type="image">
+                            <centerleft>50%</centerleft>
+                            <centertop>50%</centertop>
+                            <width>80</width>
+                            <height>80</height>
+                            <texture colordiffuse="$VAR[ColorHighlight2]">$INFO[Control.GetLabel(32),progress/circle/p,.png]</texture>
+                            <aspectratio align="center">keep</aspectratio>
+                        </control>
+                        <control type="image">
+                            <centerleft>50%</centerleft>
+                            <centertop>50%</centertop>
+                            <width>80</width>
+                            <height>80</height>
+                            <texture colordiffuse="$VAR[ColorHighlight]">$INFO[Control.GetLabel(32),progress/circle/p,.png]</texture>
+                            <aspectratio align="center">keep</aspectratio>
+                            <include content="Defs_Progress_Colorfade">
+                                <param name="id" value="32" />
+                            </include>
+                        </control>
+                    </control>
+
+                    <control type="label" id="30">
+                        <include>Dialog_Notification_SubLabel</include>
+                    </control>
+                    <control type="label" id="31">
+                        <include>Dialog_Notification_MainLabel</include>
+                    </control>
+                </control>
+            </control>
+        </control>
+        <control type="progress" id="32">
+            <left>-2000</left>
+            <width>100</width>
+            <height>1</height>
+            <info>Player.Progress</info>
+            <animation effect="fade" start="0" end="0" condition="true">Conditional</animation>
+        </control>
+    </controls>
+</window>

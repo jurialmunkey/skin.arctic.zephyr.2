@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Foundation -->
+<window id="2005">
+    <onload>ClearProperty(ViewType,Home)</onload>
+    <onload>ClearProperty(ThumbSplit1,Home)</onload>
+    <onload>ClearProperty(ThumbSplit2,Home)</onload>
+    <onload condition="String.Contains(Player.Art(thumb),ytimg)">RunScript(script.skin.helper.service,action=stripstring,splitchar=/vi/,string=$INFO[Player.Art(thumb)],output=ThumbSplit1,index=1)</onload>
+    <onload condition="String.Contains(Player.Art(thumb),ytimg)">AlarmClock(setfo,SetFocus(9606),00:01,silent)</onload>
+    <controls>
+
+        <control type="button" id="9606">
+            <onfocus>RunScript(script.skin.helper.service,action=stripstring,splitchar=/,string=$INFO[Window(Home).Property(ThumbSplit1)],output=ThumbSplit2,index=0)</onfocus>
+            <width>1</width>
+            <height>1</height>
+            <left>-1000</left>
+        </control>
+        <control type="group" id="0">
+            <left>0</left>
+            <include>Animation_FadeIn</include>
+            <visible>Control.IsVisible(10) | Control.IsVisible(11) | Control.IsVisible(12)</visible>
+            <control type="image">
+                <width>1920</width>
+                <height>445</height>
+                <texture colordiffuse="OSDBack" flipy="false">common/white.png</texture>
+            </control>
+            <control type="grouplist">
+                <left>20</left>
+                <top>140</top>
+                <orientation>vertical</orientation>
+                <control type="label" id="10">
+                    <description>row 1 label</description>
+                    <width>auto</width>
+                    <height>75</height>
+                    <align>left</align>
+                    <aligny>top</aligny>
+                    <textcolor>panel_fg_100</textcolor>
+                </control>
+                <control type="label" id="11">
+                    <description>row 2 label</description>
+                    <height>75</height>
+                    <width>auto</width>
+                    <align>left</align>
+                    <aligny>top</aligny>
+                    <textcolor>panel_fg_100</textcolor>
+                </control>
+                <control type="label" id="12">
+                    <description>row 3 label</description>
+                    <width>auto</width>
+                    <height>75</height>
+                    <align>left</align>
+                    <aligny>top</aligny>
+                    <textcolor>panel_fg_100</textcolor>
+                </control>
+            </control>
+        </control>
+
+        
+
+    </controls>
+
+</window>

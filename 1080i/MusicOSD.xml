@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Foundation -->
+<window id="120">
+    <onload condition="!Player.PauseEnabled">SetFocus(15)</onload>
+    <onload condition="Player.PauseEnabled">SetFocus(14)</onload>
+    <onload>SetProperty(ShowTopbar,1,Home)</onload>
+    <onunload>SetProperty(ShowTopbar,0,Home)</onunload>
+    <controls>
+        <control type="group">
+            <include>Animation_FadeIn</include>
+            <include>Animation_FadeOut</include>
+            <!-- Mini Blade -->
+            <control type="group">
+                <include>Topbar_SubMenu_Group_Content</include>
+                <control type="panel" id="9003">
+                    <height>40</height>
+                    <left>0</left>
+                    <right>0</right>
+                    <onup>9000</onup>
+                    <ondown>Action(Info)</ondown>
+                    <orientation>horizontal</orientation>
+                    <itemlayout height="40" width="384">
+                        <control type="label">
+                            <left>20</left>
+                            <right>20</right>
+                            <height>40</height>
+                            <label>$INFO[ListItem.Label]</label>
+                            <aligny>center</aligny>
+                            <align>center</align>
+                            <font>font_osd_submenu</font>
+                            <textcolor>panel_fg_70</textcolor>
+                        </control>
+                    </itemlayout>
+                    <focusedlayout height="40" width="384">
+                        <control type="image">
+                            <texture colordiffuse="$VAR[ColorHighlight]">common/white.png</texture>
+                        </control>
+                        <control type="label">
+                            <left>20</left>
+                            <right>20</right>
+                            <height>40</height>
+                            <label>$INFO[ListItem.Label]</label>
+                            <aligny>center</aligny>
+                            <align>center</align>
+                            <font>font_osd_submenu</font>
+                            <textcolor>Selected</textcolor>
+                        </control>
+                    </focusedlayout>
+                    <content>
+                        <!-- Show artist slideshow -->
+                        <item>
+                            <label>$LOCALIZE[108]: $LOCALIZE[16041]</label>
+                            <visible>System.HasAddon(script.artistslideshow)</visible>
+                            <visible>!Skin.HasSetting(ArtistSlideShow.Disabled)</visible>
+                            <onclick>Skin.ToggleSetting(ArtistSlideShow.Disabled)</onclick>
+                        </item>
+                        <item>
+                            <label>$LOCALIZE[108]: $LOCALIZE[16039]</label>
+                            <visible>System.HasAddon(script.artistslideshow)</visible>
+                            <visible>Skin.HasSetting(ArtistSlideShow.Disabled)</visible>
+                            <onclick>Skin.ToggleSetting(ArtistSlideShow.Disabled)</onclick>
+                        </item>
+
+                        <!-- Visualisation -->
+                        <item>
+                            <label>$LOCALIZE[250]: $LOCALIZE[16041]</label>
+                            <visible>Skin.HasSetting(OSDVisualisation.ShowFanart)</visible>
+                            <onclick>Skin.ToggleSetting(OSDVisualisation.ShowFanart)</onclick>
+                            <visible>Skin.HasSetting(musicvis.fanartfallback) | [!Skin.HasSetting(ArtistSlideShow.Disabled) + System.HasAddon(script.artistslideshow)]</visible>
+                        </item>
+                        <item>
+                            <label>$LOCALIZE[250]: $LOCALIZE[16039]</label>
+                            <visible>!Skin.HasSetting(OSDVisualisation.ShowFanart)</visible>
+                            <onclick>Skin.ToggleSetting(OSDVisualisation.ShowFanart)</onclick>
+                            <visible>Skin.HasSetting(musicvis.fanartfallback) | [!Skin.HasSetting(ArtistSlideShow.Disabled) + System.HasAddon(script.artistslideshow)]</visible>
+                        </item>
+
+                        <!-- Animate -->
+                        <item>
+                            <label>$LOCALIZE[20079]: $LOCALIZE[16041]</label>
+                            <visible>Skin.HasSetting(ArtistSlideshow.Animate)</visible>
+                            <onclick>Skin.ToggleSetting(ArtistSlideshow.Animate)</onclick>
+                            <visible>Skin.HasSetting(musicvis.fanartfallback) | [!Skin.HasSetting(ArtistSlideShow.Disabled) + System.HasAddon(script.artistslideshow)]</visible>
+                        </item>
+                        <item>
+                            <label>$LOCALIZE[20079]: $LOCALIZE[16039]</label>
+                            <visible>!Skin.HasSetting(ArtistSlideshow.Animate)</visible>
+                            <onclick>Skin.ToggleSetting(ArtistSlideshow.Animate)</onclick>
+                            <visible>Skin.HasSetting(musicvis.fanartfallback) | [!Skin.HasSetting(ArtistSlideShow.Disabled) + System.HasAddon(script.artistslideshow)]</visible>
+                        </item>
+
+                        <!-- Colour overlay -->
+                        <item>
+                            <label>$LOCALIZE[31131]: $LOCALIZE[16041]</label>
+                            <visible>!Skin.HasSetting(HideOSDDiffuseColors)</visible>
+                            <onclick>Skin.ToggleSetting(HideOSDDiffuseColors)</onclick>
+                        </item>
+                        <item>
+                            <label>$LOCALIZE[31131]: $LOCALIZE[16039]</label>
+                            <visible>Skin.HasSetting(HideOSDDiffuseColors)</visible>
+                            <onclick>Skin.ToggleSetting(HideOSDDiffuseColors)</onclick>
+                        </item>
+
+                        <!-- Scroll text overlay -->
+                        <item>
+                            <label>$LOCALIZE[31142]: $LOCALIZE[16041]</label>
+                            <visible>!Skin.HasSetting(HideOSDScrollingText)</visible>
+                            <onclick>Skin.ToggleSetting(HideOSDScrollingText)</onclick>
+                        </item>
+                        <item>
+                            <label>$LOCALIZE[31142]: $LOCALIZE[16039]</label>
+                            <visible>Skin.HasSetting(HideOSDScrollingText)</visible>
+                            <onclick>Skin.ToggleSetting(HideOSDScrollingText)</onclick>
+                        </item>
+
+                        <!-- Show Fanart -->
+                        <!-- <item>
+                            <label>$LOCALIZE[20445]: $LOCALIZE[16041]</label>
+                            <visible>Skin.HasSetting(musicvis.fanartfallback)</visible>
+                            <visible>!System.HasAddon(script.artistslideshow) | Skin.HasSetting(ArtistSlideShow.Disabled)</visible>
+                            <onclick>Skin.ToggleSetting(musicvis.fanartfallback)</onclick>
+                        </item>
+                        <item>
+                            <label>$LOCALIZE[20445]: $LOCALIZE[16039]</label>
+                            <visible>!Skin.HasSetting(musicvis.fanartfallback)</visible>
+                            <visible>!System.HasAddon(script.artistslideshow) | Skin.HasSetting(ArtistSlideShow.Disabled)</visible>
+                            <onclick>Skin.ToggleSetting(musicvis.fanartfallback)</onclick>
+                        </item> -->
+                    </content>
+                </control>
+            </control>
+
+            <!-- Main Blade -->
+            <control type="group">
+                <include>Topbar_MainMenu_Group</include>
+                <control type="grouplist" id="9001">
+                    <align>left</align>
+                    <left>0</left>
+                    <height>100%</height>
+                    <itemgap>0</itemgap>
+                    <width>690</width>
+                    <onright>11</onright>
+                    <onleft>6</onleft>
+                    <ondown>9003</ondown>
+                    <onup>Action(Info)</onup>
+                    <orientation>horizontal</orientation>
+                    <usecontrolcoords>true</usecontrolcoords>
+                    <include>OSD_Controls_Music_Left</include>
+                </control>
+                <control type="grouplist" id="9000">
+                    <align>center</align>
+                    <height>100%</height>
+                    <itemgap>32</itemgap>
+                    <onleft>3</onleft>
+                    <onup>Action(Info)</onup>
+                    <onright>4</onright>
+                    <ondown>9003</ondown>
+                    <orientation>horizontal</orientation>
+                    <usecontrolcoords>true</usecontrolcoords>
+                    <include>OSD_Controls</include>
+                </control>
+                <control type="grouplist" id="9002">
+                    <align>right</align>
+                    <right>0</right>
+                    <height>100%</height>
+                    <itemgap>0</itemgap>
+                    <width>690</width>
+                    <onleft>17</onleft>
+                    <onright>1</onright>
+                    <onup>Action(Info)</onup>
+                    <ondown>9003</ondown>
+                    <orientation>horizontal</orientation>
+                    <usecontrolcoords>true</usecontrolcoords>
+                    <include>OSD_Controls_Music_Right</include>
+                </control>
+                <include>Topbar_MainMenu_Lines</include>
+            </control>
+        </control>
+
+        <control type="slider">
+            <bottom>0</bottom>
+            <height>48</height>
+            <width>100%</width>
+            <texturesliderbar/>
+            <textureslidernib/>
+            <textureslidernibfocus/>
+            <info>Player.Progress</info>
+            <action>seek</action>
+            <visible>Skin.HasSetting(BigMusicVis)</visible>
+        </control>
+        <control type="slider">
+            <bottom>58</bottom>
+            <left>398</left>
+            <height>24</height>
+            <width>564</width>
+            <texturesliderbar/>
+            <textureslidernib/>
+            <textureslidernibfocus/>
+            <info>Player.Progress</info>
+            <action>seek</action>
+            <visible>!Skin.HasSetting(BigMusicVis)</visible>
+        </control>
+
+    </controls>
+
+</window>

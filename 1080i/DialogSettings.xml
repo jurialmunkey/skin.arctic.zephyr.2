@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+
+    <controls>
+        <control type="group">
+            <animation effect="fade" start="100" end="0" time="400" condition="Window.IsVisible(SliderDialog)">Conditional</animation>
+            <include>Global_Overlay</include>
+        </control>
+        <control type="group">
+            <animation effect="fade" start="100" end="0" time="400" condition="Window.IsVisible(SliderDialog)">Conditional</animation>
+            <include content="Dialog_Standard_Group">
+                <param name="width" value="1100" />
+                <param name="height" value="900" />
+            </include>
+
+            <control type="label" id="2">
+                <description>Header Label</description>
+                <include>Dialog_Standard_Header</include>
+            </control>
+
+            <control type="grouplist" id="5">
+                <description>Control Area</description>
+                <left>20</left>
+                <right>20</right>
+                <top>100</top>
+                <height>674</height>
+                <itemgap>10</itemgap>
+                <orientation>vertical</orientation>
+                <pagecontrol>60</pagecontrol>
+                <onleft>8000</onleft>
+                <onright>8000</onright>
+                <onup>8000</onup>
+                <ondown>8000</ondown>
+            </control>
+
+            <control type="grouplist" id="8000">
+                <include>Dialog_Standard_OkCancel_GroupList</include>
+                <onup>5</onup>
+                <ondown>5</ondown>
+                <control type="button" id="28">
+                    <description>OK</description>
+                    <include>Dialog_Standard_OkCancel</include>
+                </control>
+                <control type="button" id="29">
+                    <description>Defaults</description>
+                    <include>Dialog_Standard_OkCancel</include>
+                </control>
+                <control type="button" id="30">
+                    <description>Defaults</description>
+                    <include>Dialog_Standard_OkCancel</include>
+                </control>
+            </control>
+
+            <control type="button" id="7">
+                <description>Default Button</description>
+                <include>Dialog_Standard_ListButton</include>
+            </control>
+
+            <control type="radiobutton" id="8">
+                <description>Default RadioButton</description>
+                <radioposx>1010</radioposx>
+                <include>Dialog_Standard_ListButton</include>
+            </control>
+
+            <control type="spincontrolex" id="9">
+                <description>Default spincontrolex</description>
+                <include>Dialog_Standard_ListButton</include>
+            </control>
+
+            <control type="image" id="11">
+                <visible>false</visible>
+            </control>
+
+            <control type="edit" id="12">
+                <description>Default Button</description>
+                <include>Dialog_Standard_ListButton</include>
+            </control>
+
+            <control type="sliderex" id="13">
+                <description>Default Slider</description>
+                <include>Dialog_Standard_ListButton</include>
+            </control>
+
+            <control type="label" id="14">
+                <description>Default Button</description>
+                <include>Dialog_Standard_HintLabel</include>
+            </control>
+        </control>
+
+    </controls>
+
+</window>

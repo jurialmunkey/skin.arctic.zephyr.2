@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Foundation -->
+<window type="dialog" id="134">
+    <defaultcontrol always="true">450</defaultcontrol>
+
+
+    <controls>
+
+        <include>Global_Overlay</include>
+
+        <control type="group">
+            <width>1540</width>
+            <height>890</height>
+            <include>Dialog_Standard_Group</include>
+
+            <!-- Header -->
+            <control type="label" id="1">
+                <include>Dialog_Standard_Header</include>
+                <label>1036</label>
+            </control>
+
+            <control type="panel" id="450">
+                <top>90</top>
+                <left>20</left>
+                <right>20</right>
+                <bottom>20</bottom>
+                <orientation>vertical</orientation>
+
+                <itemlayout height="390" width="300">
+                    <control type="group">
+                        <left>10</left>
+                        <right>10</right>
+                        <top>10</top>
+                        <control type="group">
+                            <bottom>100</bottom>
+                            <control type="image">
+                                <texture border="5" colordiffuse="dialog_fg_12">common/box.png</texture>
+                            </control>
+                            <control type="image">
+                                <left>10</left>
+                                <right>10</right>
+                                <top>10</top>
+                                <bottom>10</bottom>
+                                <aspectratio>keep</aspectratio>
+                                <texture fallback="DefaultAddon.png">$INFO[ListItem.Icon]</texture>
+                            </control>
+                        </control>
+                        <control type="textbox">
+                            <left>20</left>
+                            <right>20</right>
+                            <bottom>10</bottom>
+                            <height>80</height>
+                            <align>center</align>
+                            <font>font_tiny</font>
+                            <label>$INFO[ListItem.Label]$INFO[ListItem.Label2, ,]</label>
+                        </control>
+                    </control>
+                </itemlayout>
+                <focusedlayout height="390" width="300">
+                    <control type="group">
+                        <left>10</left>
+                        <right>10</right>
+                        <top>10</top>
+                        <control type="group">
+                            <bottom>100</bottom>
+                            <control type="image">
+                                <texture border="5" colordiffuse="$VAR[ColorHighlight]">common/box.png</texture>
+                            </control>
+                            <control type="image">
+                                <left>10</left>
+                                <right>10</right>
+                                <top>10</top>
+                                <bottom>10</bottom>
+                                <aspectratio>keep</aspectratio>
+                                <texture fallback="DefaultAddon.png">$INFO[ListItem.Icon]</texture>
+                            </control>
+                        </control>
+                        <control type="textbox">
+                            <left>20</left>
+                            <right>20</right>
+                            <bottom>10</bottom>
+                            <height>80</height>
+                            <align>center</align>
+                            <font>font_tiny</font>
+                            <label>$INFO[ListItem.Label]$INFO[ListItem.Label2, ,]</label>
+                        </control>
+                    </control>
+                </focusedlayout>
+            </control>
+
+        </control>
+
+    </controls>
+
+</window>

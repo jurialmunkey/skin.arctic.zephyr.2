@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Foundation -->
+<window>
+    <defaultcontrol allways="true">50</defaultcontrol>
+
+
+    <controls>
+
+        <include>Global_Background</include>
+        <include>Topbar</include>
+
+        <control type="label" id="12">
+            <visible>false</visible>
+        </control>
+
+        <control type="label" id="101">
+            <visible>false</visible>
+        </control>
+        <control type="group">
+            <include>Dialog_Settings_Panel</include>
+            <control type="group">
+                <description>Left panel</description>
+                <left>sidepad</left>
+                <top>sidepad</top>
+                <height>640</height>
+                <width>870</width>
+
+                <control type="label">
+                    <description>Header Label</description>
+                    <top>5</top>
+                    <left>30</left>
+                    <right>30</right>
+                    <align>left</align>
+                    <height>66</height>
+                    <font>font_tiny_bold</font>
+                    <textcolor>panel_fg_70</textcolor>
+                    <label>$LOCALIZE[2]$INFO[Control.GetLabel(12),  -  ,]</label>
+                </control>
+
+                <control type="list" id="50">
+                    <description>Left File List</description>
+                    <left>15</left>
+                    <bottom>15</bottom>
+                    <right>15</right>
+                    <height>552</height>
+                    <onleft>9000</onleft>
+                    <onright>100</onright>
+                    <onup>50</onup>
+                    <ondown>50</ondown>
+
+                    <itemlayout height="69" width="840">
+
+
+
+                        <control type="label">
+                            <left>30</left>
+                            <width max="840">auto</width>
+                            <align>left</align>
+                            <textcolor>panel_fg_70</textcolor>
+                            <info>ListItem.Label</info>
+                        </control>
+
+                        <control type="label">
+                            <right>30</right>
+                            <width max="840">auto</width>
+                            <align>right</align>
+                            <font>font_tiny</font>
+                            <textcolor>panel_fg_70</textcolor>
+                            <info>ListItem.Label2</info>
+                        </control>
+
+                    </itemlayout>
+
+                    <focusedlayout height="69" width="840">
+
+                        <control type="image">
+                            <width>100%</width>
+                            <height>66</height>
+                            <texture border="5" colordiffuse="$VAR[ColorHighlight]">common/box.png</texture>
+                            <animation effect="fade" start="100" end="0" condition="!Control.HasFocus(50)">Conditional</animation>
+                        </control>
+
+                        <control type="label">
+                            <left>30</left>
+                            <width max="840">auto</width>
+                            <align>left</align>
+                            <textcolor>Selected</textcolor>
+                            <selectedcolor>Selected</selectedcolor>
+                            <info>ListItem.Label</info>
+                        </control>
+
+                        <control type="label">
+                            <right>30</right>
+                            <width max="840">auto</width>
+                            <align>right</align>
+                            <textcolor>Selected</textcolor>
+                            <font>font_tiny</font>
+                            <info>ListItem.Label2</info>
+                        </control>
+
+                    </focusedlayout>
+
+                </control>
+            </control>
+            <control type="group">
+                <description>Right panel</description>
+                <right>sidepad</right>
+                <top>sidepad</top>
+                <height>640</height>
+                <width>870</width>
+                <control type="label">
+                    <description>Header Label</description>
+                    <top>5</top>
+                    <left>30</left>
+                    <right>30</right>
+                    <align>left</align>
+                    <height>66</height>
+                    <font>font_tiny_bold</font>
+                    <textcolor>panel_fg_70</textcolor>
+                    <label>$LOCALIZE[559]$INFO[Control.GetLabel(101),  -  ,]</label>
+                </control>
+
+                <control type="list" id="100">
+                    <description>Left File List</description>
+                    <left>15</left>
+                    <bottom>15</bottom>
+                    <right>15</right>
+                    <height>552</height>
+                    <onleft>50</onleft>
+                    <onright>9000</onright>
+                    <onup>100</onup>
+                    <ondown>100</ondown>
+
+                    <itemlayout height="69" width="840">
+
+
+
+                        <control type="label">
+                            <left>30</left>
+                            <width max="840">auto</width>
+                            <align>left</align>
+                            <textcolor>panel_fg_70</textcolor>
+                            <info>ListItem.Label</info>
+                        </control>
+
+                        <control type="label">
+                            <right>30</right>
+                            <width max="840">auto</width>
+                            <align>right</align>
+                            <font>font_tiny</font>
+                            <textcolor>panel_fg_70</textcolor>
+                            <info>ListItem.Label2</info>
+                        </control>
+
+                    </itemlayout>
+
+                    <focusedlayout height="69" width="840">
+
+                        <control type="image">
+                            <width>100%</width>
+                            <height>66</height>
+                            <texture border="5" colordiffuse="$VAR[ColorHighlight]">common/box.png</texture>
+                            <animation effect="fade" start="100" end="0" condition="!Control.HasFocus(100)">Conditional</animation>
+                        </control>
+
+                        <control type="label">
+                            <left>30</left>
+                            <width max="840">auto</width>
+                            <align>left</align>
+                            <textcolor>Selected</textcolor>
+                            <info>ListItem.Label</info>
+                        </control>
+
+                        <control type="label">
+                            <right>30</right>
+                            <width max="840">auto</width>
+                            <align>right</align>
+                            <textcolor>Selected</textcolor>
+                            <font>font_tiny</font>
+                            <info>ListItem.Label2</info>
+                        </control>
+
+                    </focusedlayout>
+
+                </control>
+            </control>
+        </control>
+        <control type="group">
+            <include>Animation_FadeIn</include>
+            <include>Animation_FadeOut</include>
+            <visible>ControlGroup(9000).HasFocus()</visible>
+            <include>Global_Overlay</include>
+        </control>
+        <control type="group">
+            <include>Defs_9000_Background</include>
+            <control type="grouplist" id="9000">
+                <usecontrolcoords>true</usecontrolcoords>
+                <include>Defs_9000_Grouplist</include>
+
+                <control type="button" id="6">
+                    <label>502</label>
+                    <description>Open</description>
+                    <include>Defs_Context_Button</include>
+                </control>
+                <control type="button" id="7">
+                    <label>190</label>
+                    <description>Save</description>
+                    <include>Defs_Context_Button</include>
+                </control>
+                <control type="button" id="8">
+                    <label>192</label>
+                    <description>Clear</description>
+                    <include>Defs_Context_Button</include>
+                </control>
+
+            </control>
+        </control>
+        <include>Statusbar</include>
+        
+
+
+    </controls>
+
+</window>

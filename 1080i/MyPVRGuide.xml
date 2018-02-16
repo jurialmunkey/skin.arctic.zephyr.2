@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+    <menucontrol>300</menucontrol>
+    <background>0</background>
+    <defaultcontrol always="true">10</defaultcontrol>
+    <onload>ClearProperty(MenuFocus,Home)</onload>
+    <views>10</views>
+
+    <controls>
+        <include>Global_Background</include>
+        <include>View_Layout</include>
+        
+        <control type="label" id="29"><visible>false</visible></control>
+        
+        <include>View_PVRGuide</include>
+
+        <include>Topbar</include>
+
+        <include>Defs_Options_StandardButtons</include>
+        <control type="button" id="28">
+            <description>Groups</description>
+            <include>Defs_Hidden_Button</include>
+        </control>
+    </controls>
+</window>

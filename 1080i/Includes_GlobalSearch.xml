@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+    <include name="GlobalSearch_Group">
+        <param name="visible" default="true" />
+        <param name="width" default="285" />
+        <param name="square" default="false" />
+        <definition>
+            <control type="group" id="$PARAM[groupid]">
+                <top>-60</top>
+                <height>40</height>
+                <control type="grouplist" id="89$PARAM[listid]">
+                    <left>42</left>
+                    <height>40</height>
+                    <top>60</top>
+                    <visible>$PARAM[visible]</visible>
+                    <visible>Integer.IsGreater(Container($PARAM[listid]).NumItems) | Container.IsUpdating($PARAM[listid])</visible>
+                    <orientation>horizontal</orientation>
+                    <usecontrolcoords>true</usecontrolcoords>
+                    <itemgap>16</itemgap>
+                    <control type="image">
+                        <width>16</width>
+                        <height>100%</height>
+                        <aspectratio aligny="center">keep</aspectratio>
+                        <texture colordiffuse="main_fg_30">common/cube-16.png</texture>
+                    </control>
+                    <control type="label">
+                        <left>2</left>
+                        <textcolor>main_fg_100</textcolor>
+                        <label>$PARAM[label]</label>
+                        <include>Statusbar_Menubar_Items</include>
+                    </control>
+                    <control type="image">
+                        <texture colordiffuse="$VAR[ColorHighlight]">common/white.png</texture>
+                        <width>3</width>
+                        <top>10</top>
+                        <bottom>8</bottom>
+                        <visible>Control.HasFocus($PARAM[listid])</visible>
+                    </control>
+                    <control type="label">
+                        <textcolor>main_fg_70</textcolor>
+                        <label>$INFO[Container($PARAM[listid]).ListItem.Property(TvShowTitle),,  -  ]$INFO[Container($PARAM[listid]).ListItem.Property(Season),,x]$INFO[Container($PARAM[listid]).ListItem.Property(Episode),,. ]$INFO[Container($PARAM[listid]).ListItem.Label]</label>
+                        <include>Statusbar_Menubar_Items</include>
+                        <visible>Control.HasFocus($PARAM[listid])</visible>
+                        <visible>!String.IsEmpty(Container($PARAM[listid]).ListItem.Property(TvShowTitle))</visible>
+                    </control>
+                    <control type="label">
+                        <textcolor>main_fg_70</textcolor>
+                        <label>$INFO[Container($PARAM[listid]).ListItem.Property(Artist),,  -  ]$INFO[Container($PARAM[listid]).ListItem.Label]</label>
+                        <include>Statusbar_Menubar_Items</include>
+                        <visible>Control.HasFocus($PARAM[listid])</visible>
+                        <visible>String.IsEmpty(Container($PARAM[listid]).ListItem.Property(TvShowTitle))</visible>
+                    </control>
+                </control>
+            </control>
+            <control type="panel" id="$PARAM[listid]">
+                <left>0</left>
+                <right>0</right>
+                <top>-20</top>
+                <height>490</height>
+                <orientation>horizontal</orientation>
+                <visible>$PARAM[visible]</visible>
+                <visible>Integer.IsGreater(Container($PARAM[listid]).NumItems) | Container.IsUpdating($PARAM[listid])</visible>
+                <itemlayout width="$PARAM[width]" height="490">
+                    <control type="group">
+                        <left>30</left>
+                        <right>-10</right>
+                        <top>80</top>
+                        <height>387.5</height>
+                        <control type="image">
+                            <bordersize>10</bordersize>
+                            <include>Defs_Shadow_Small</include>
+                            <aspectratio scalediffuse="false">scale</aspectratio>
+                            <texture colordiffuse="PosterBack">common/white.png</texture>
+                        </control>
+                        <control type="image">
+                            <bordersize>10</bordersize>
+                            <texture colordiffuse="main_bg_70">common/white.png</texture>
+                        </control>
+                        <control type="image">
+                            <bordersize>10</bordersize>
+                            <aspectratio>scale</aspectratio>
+                            <visible>!$PARAM[square]</visible>
+                            <texture background="true">$INFO[ListItem.Icon]</texture>
+                        </control>
+                        <control type="image">
+                            <bordersize>10</bordersize>
+                            <height>265</height>
+                            <aspectratio>scale</aspectratio>
+                            <visible>$PARAM[square]</visible>
+                            <texture background="true">$INFO[ListItem.Icon]</texture>
+                        </control>
+                        <control type="group">
+                            <visible>$PARAM[square]</visible>
+                            <top>255</top>
+                            <left>10</left>
+                            <right>10</right>
+                            <bottom>10</bottom>
+                            <control type="image">
+                                <texture colordiffuse="PosterBack">common/white.png</texture>
+                            </control>
+                            <control type="textbox">
+                                <top>5</top>
+                                <bottom>5</bottom>
+                                <left>20</left>
+                                <right>20</right>
+                                <align>center</align>
+                                <aligny>center</aligny>
+                                <font>font_tiny</font>
+                                <textcolor>main_fg_70</textcolor>
+                                <label>$INFO[ListItem.Label]</label>
+                            </control>
+                        </control>
+                    </control>
+                </itemlayout>
+                <focusedlayout width="$PARAM[width]" height="490">
+                    <control type="group">
+                        <left>30</left>
+                        <right>-10</right>
+                        <top>80</top>
+                        <height>387.5</height>
+                        <include>Animation_FocusBounce_Small</include>
+                        <control type="image">
+                            <bordersize>10</bordersize>
+                            <include>Defs_Shadow_Small</include>
+                            <aspectratio scalediffuse="false">scale</aspectratio>
+                            <texture colordiffuse="PosterBack">common/white.png</texture>
+                        </control>
+                        <control type="image">
+                            <bordersize>10</bordersize>
+                            <texture colordiffuse="main_bg_70">common/white.png</texture>
+                        </control>
+                        <control type="image">
+                            <bordersize>10</bordersize>
+                            <aspectratio>scale</aspectratio>
+                            <visible>!$PARAM[square]</visible>
+                            <texture background="true">$INFO[ListItem.Icon]</texture>
+                        </control>
+                        <control type="image">
+                            <bordersize>10</bordersize>
+                            <height>265</height>
+                            <aspectratio>scale</aspectratio>
+                            <visible>$PARAM[square]</visible>
+                            <texture background="true">$INFO[ListItem.Icon]</texture>
+                        </control>
+                        <control type="group">
+                            <visible>$PARAM[square]</visible>
+                            <top>255</top>
+                            <left>10</left>
+                            <right>10</right>
+                            <bottom>10</bottom>
+                            <control type="image">
+                                <texture colordiffuse="PosterBack">common/white.png</texture>
+                            </control>
+                            <control type="textbox">
+                                <top>5</top>
+                                <bottom>5</bottom>
+                                <left>20</left>
+                                <right>20</right>
+                                <align>center</align>
+                                <aligny>center</aligny>
+                                <font>font_tiny</font>
+                                <textcolor>Selected</textcolor>
+                                <label>$INFO[ListItem.Label]</label>
+                            </control>
+                        </control>
+                        <!-- Highlight -->
+                        <control type="group">
+                            <visible>Control.HasFocus($PARAM[listid])</visible>
+                            <include>View_Selectbox</include>
+                        </control>
+                    </control>
+                </focusedlayout>
+            </control>
+            
+        </definition>
+    </include>
+</includes>

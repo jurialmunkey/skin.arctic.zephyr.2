@@ -1,0 +1,868 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+
+    <!-- ================== -->
+    <!-- View Mode IDs      -->
+    <!-- 50  List           -->
+    <!-- 51  Icons          -->
+    <!-- 52  Showcase       -->
+    <!-- 53  Landscape      -->
+    <!-- 54  Details List   -->
+    <!-- 55  Info List      -->
+    <!-- 56  Showcase 2     -->
+    <!-- 57  Media Info 2   -->
+    <!-- 58  Banner         -->
+    <!-- 59  Lovefilme      -->
+    <!-- 551 Icons Info     -->
+    <!-- 553 Landscape List -->
+    <!-- 557 Media Info     -->
+    <!-- 558 Banner Info    -->
+    <!-- ================== -->
+
+
+    <include name="View_Layout">
+        <control type="group">
+            <include>View_Group</include>
+            <include>View_Content</include>
+        </control>
+    </include>
+
+    <include name="View_Group">
+        <top>view_pad</top>
+    </include>
+
+    <include name="View_Pad">
+        <left>view_pad</left>
+        <right>view_pad</right>
+        <top>view_pad</top>
+    </include>
+
+    <include name="View_NotTheseWindows">
+        <visible>![Window.IsVisible(MyPVRChannels.xml) | Window.IsVisible(MyPVRGuide.xml) | Window.IsVisible(MyPVRRecordings.xml) | Window.IsVisible(MyPVRTimers.xml) | Window.IsVisible(MyPVRSearch.xml) | Window.IsVisible(MyPlaylist.xml)]</visible>
+    </include>
+
+    <include name="View_Library">
+        <control type="group">
+            <include>Animation_Right</include>
+            <include>Defs_InfoDialog_Visible</include>
+            <control type="group">
+                
+                <include condition="![Window.IsVisible(MyPVRChannels.xml) | Window.IsVisible(MyPVRRecordings.xml) | Window.IsVisible(MyPVRTimers.xml) | Window.IsVisible(MyPVRSearch.xml)]">View_List</include>
+
+                <include condition="![Window.IsVisible(MyPVRChannels.xml) | Window.IsVisible(MyPVRRecordings.xml) | Window.IsVisible(MyPVRTimers.xml) | Window.IsVisible(MyPVRSearch.xml)]">View_Posters</include>
+
+                <include condition="[Window.IsVisible(MyPVRChannels.xml) | Window.IsVisible(MyPVRRecordings.xml) | Window.IsVisible(MyPVRTimers.xml) | Window.IsVisible(MyPVRSearch.xml)]">View_List_PVR</include>
+            </control>
+        </control>
+    </include>
+
+    <include name="View_Content">
+        <control type="group">
+            <!-- Library Views -->
+            <control type="group">
+                <include condition="Window.IsVisible(MyPlaylist.xml) | Window.IsVisible(MyVideoNav.xml) | Window.IsVisible(MyMusicNav.xml) | Window.IsVisible(AddonBrowser.xml) | Window.IsVisible(MyPics.xml) | Window.IsVisible(MyPrograms.xml) | [Window.IsVisible(MyPVRChannels.xml) | Window.IsVisible(MyPVRRecordings.xml) | Window.IsVisible(MyPVRTimers.xml) | Window.IsVisible(MyPVRSearch.xml)]">View_Library</include>
+            </control>
+
+            <!-- Library Poster -->
+            <control type="group">
+                <control type="group">
+                    <visible>Window.IsVisible(MyPlaylist.xml) | Window.IsVisible(MyVideoNav.xml) | Window.IsVisible(MyMusicNav.xml) | Window.IsVisible(AddonBrowser.xml) | Window.IsVisible(MyPics.xml) | Window.IsVisible(MyPrograms.xml)</visible>
+                    <include>Animation_Left</include>
+                    <visible>![Window.IsVisible(DialogAddonInfo.xml) | Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml)]</visible>
+                    <visible>!Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) + !Window.IsVisible(script-script.extendedinfo-DialogInfo.xml)</visible>
+                    <control type="group">
+                        <visible>Control.IsVisible(50) | Control.IsVisible(501)</visible>
+                        <include>View_Library_Poster</include>
+                    </control>
+
+                    <control type="group">
+                        <visible>Control.IsVisible(500)</visible>
+                        <include>View_Library_Info</include>
+                    </control>
+                </control>
+            </control>
+            
+        </control>
+    </include>
+
+    <include name="View_Library_Info">
+        <control type="group">
+            <left>view_pad</left>
+            <top>view_pad</top>
+            <height>poster_height</height>
+            <width>800</width>
+            
+            <control type="group">
+                <height>450</height>
+                <control type="group">
+                    <width>800</width>
+                    <control type="group">
+                        <left>-10</left>
+                        <right>-10</right>
+                        <bottom>-10</bottom>
+                        <top>-10</top>
+                        <control type="image">
+                            <bordersize>10</bordersize>
+                            <include>Defs_Shadow_Small</include>
+                            <texture colordiffuse="PosterBack" border="10">diffuse/box.png</texture>
+                        </control>
+                        <control type="image">
+                            <bordersize>10</bordersize>
+                            <aspectratio aligny="center" scalediffuse="false">scale</aspectratio>
+                            <texture background="true" diffuse="diffuse/mediainfo.png">$VAR[Image_Fanart]</texture>
+                        </control>
+                        <control type="image">
+                            <bottom>40</bottom>
+                            <left>125</left>
+                            <right>125</right>
+                            <height>150</height>
+                            <aspectratio aligny="bottom">keep</aspectratio>
+                            <texture background="true">$VAR[Image_Clearlogo]</texture>
+                            <visible>!Skin.HasSetting(DisableFakeLandscapeArt)</visible>
+                            <visible>String.IsEmpty(ListItem.Art(landscape)) + String.IsEmpty(ListItem.Art(tvshow.landscape)) + String.IsEmpty(ListItem.Art(season.landscape))</visible>
+                            <visible>Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons)</visible>
+                        </control>
+                    </control>
+                    <control type="image">
+                        <texture colordiffuse="PixelLines" border="20">common/outline.png</texture>
+                    </control>
+                </control>
+            </control>
+            <control type="group">
+                <top>490</top>
+                <include content="Object_Info">
+                    <param name="id" value="500" />
+                    <param name="width" value="1654" />
+                    <param name="discart" value="true" />
+                    <param name="hdsd_flag" value="true" />
+                    <param name="plot_height" value="130" />
+                    <param name="imdbvotes" value="false" />
+                </include>
+            </control>
+        </control>
+    </include>
+
+    <include name="View_Library_Poster">
+
+        <!-- Music List -->
+        <control type="group">
+            <visible>[Container.Content(musicvideos) | Container.Content(images) | Container.Content(artists) | Container.Content(albums) | Container.Content(addons) | Container.Content(songs) | Window.IsVisible(DialogAddonInfo.xml) | Window.IsVisible(DialogMusicInfo.xml)]</visible>
+            <left>view_pad</left>
+            <right>view_pad</right>
+            <top>view_pad</top>
+            <control type="group">
+                <width>poster_width</width>
+                <height>poster_height</height>
+                <control type="group">
+                    <control type="group">
+                        <height>poster_width</height>
+                        <control type="group">
+                            <left>-10</left>
+                            <right>-10</right>
+                            <bottom>-10</bottom>
+                            <top>-10</top>
+                            <control type="image">
+                                <bordersize>10</bordersize>
+                                <include>Defs_Shadow_Small</include>
+                                <texture colordiffuse="PosterBack" border="10">diffuse/box.png</texture>
+                            </control>
+                        </control>
+                        <include content="Object_BigPoster">
+                            <param name="discart" value="false" />
+                            <param name="width" value="poster_width" />
+                            <param name="height" value="poster_width" />
+                            <param name="aspect" value="scale" />
+                        </include>
+                        <control type="image">
+                            <texture colordiffuse="PixelLines" border="20">common/outline.png</texture>
+                        </control>
+                    </control>
+                    <control type="group">
+                        <top>620</top>
+                        <control type="grouplist">
+                            <top>20</top>
+                            <left>0</left>
+                            <right>0</right>
+                            <align>top</align>
+                            <usecontrolcoords>true</usecontrolcoords>
+                            <orientation>vertical</orientation>
+                            <control type="label">
+                                <aligny>top</aligny>
+                                <align>center</align>
+                                <height>50</height>
+                                <font>font_title</font>
+                                <textcolor>main_fg_100</textcolor>
+                                <label>$VAR[Label_MainTitle]</label>
+                            </control>
+                            <control type="label">
+                                <label>$VAR[Label_SubTitle]</label>
+                                <height>40</height>
+                                <aligny>top</aligny>
+                                <align>center</align>
+                                <textcolor>$VAR[ColorHighlight]</textcolor>
+                                <font>font_small</font>
+                            </control>
+                            <control type="textbox">
+                                <top>20</top>
+                                <label>$INFO[ListItem.AddonSummary]</label>
+                                <height>80</height>
+                                <aligny>center</aligny>
+                                <align>center</align>
+                                <textcolor>main_fg_70</textcolor>
+                                <font>font_small</font>
+                                <visible>[!Window.IsVisible(MyMusicNav.xml) | Window.IsVisible(DialogAddonInfo.xml)] + !String.IsEmpty(ListItem.AddonSummary)</visible>
+                            </control>
+                            <control type="group">
+                                <left>-15</left>
+                                <right>-15</right>
+                                <top>-15</top>
+                                <include content="Object_StarRating_Music">
+                                    <param name="align" value="center" />
+                                    <param name="visible" value="[Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(MyMusicNav.xml) | Window.IsVisible(musicplaylist) | Container.Content(musicvideos)] + String.IsEmpty(ListItem.UserRating)" />
+                                </include>
+                                <include content="Object_StarRating">
+                                    <param name="align" value="center" />
+                                    <param name="visible" value="[Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(MyMusicNav.xml) | Window.IsVisible(musicplaylist) | Container.Content(musicvideos)] + !String.IsEmpty(ListItem.UserRating)" />
+                                    <param name="rating_prop" value="ListItem.UserRating" />
+                                </include>
+                            </control>
+                        </control>
+                    </control>
+                </control>
+            </control>
+        </control>
+
+        <!-- Large Poster -->
+        <control type="group">
+            <visible>![Container.Content(musicvideos) | Container.Content(images) | Container.Content(artists) | Container.Content(albums) | Container.Content(addons) | Container.Content(songs) | Window.IsVisible(DialogAddonInfo.xml) | Window.IsVisible(DialogMusicInfo.xml)]</visible>
+            <left>view_pad</left>
+            <bottom>view_pad</bottom>
+            <top>view_pad</top>
+            <control type="group">
+                <width>poster_width</width>
+                <height>900</height>
+                <control type="group">
+                    <left>-10</left>
+                    <right>-10</right>
+                    <bottom>-10</bottom>
+                    <top>-10</top>
+                    <control type="image">
+                        <bordersize>10</bordersize>
+                        <include>Defs_Shadow_Small</include>
+                        <texture colordiffuse="PosterBack" border="20">diffuse/box.png</texture>
+                    </control>
+                </control>
+                <include content="Object_BigPoster">
+                    <param name="discart" value="false" />
+                </include>
+                <control type="group">
+                    <top>-10</top>
+                    <right>-10</right>
+                    <visible>Control.IsVisible(58)</visible>
+                    <include>View_WatchedOverlay</include>
+                </control>
+                <control type="image">
+                    <texture colordiffuse="PixelLines" border="20">common/outline.png</texture>
+                </control>
+                <control type="group">
+                    <left>-10</left>
+                    <right>-10</right>
+                    <bottom>-10</bottom>
+                    <top>-10</top>
+                    <visible>Control.HasFocus(58)</visible>
+                    <include>View_Selectbox</include>
+                </control>
+            </control>
+        </control>
+        
+    </include>
+
+    <include name="View_WatchedOverlay">
+        <control type="image">
+            <top>10</top>
+            <right>10</right>
+            <width>48</width>
+            <height>48</height>
+            <texture colordiffuse="ff000000" border="10">$VAR[Image_Overlay_Corner]</texture>
+        </control>
+        <control type="image">
+            <top>11</top>
+            <right>11</right>
+            <width>24</width>
+            <height>24</height>
+            <texture>$VAR[Image_Overlay]</texture>
+        </control>
+        <control type="label">
+            <top>10</top>
+            <right>10</right>
+            <width>28</width>
+            <height>28</height>
+            <font>font_unwatched</font>
+            <align>center</align>
+            <textcolor>ffcccccc</textcolor>
+            <label>$INFO[ListItem.Property(UnWatchedEpisodes)]</label>
+            <include>View_UnwatchedEpisodes_Visible</include>
+        </control>
+    </include>
+
+    <include name="View_WatchedOverlay_Focus">
+        <control type="image">
+            <top>10</top>
+            <right>10</right>
+            <width>48</width>
+            <height>48</height>
+            <texture colordiffuse="$VAR[ColorHighlight]" border="10">$VAR[Image_Overlay_Corner]</texture>
+        </control>
+        <control type="image">
+            <top>11</top>
+            <right>11</right>
+            <width>24</width>
+            <height>24</height>
+            <texture colordiffuse="ff000000">$VAR[Image_Overlay]</texture>
+        </control>
+        <control type="label">
+            <top>10</top>
+            <right>10</right>
+            <width>28</width>
+            <height>28</height>
+            <font>font_unwatched</font>
+            <align>center</align>
+            <textcolor>Selected</textcolor>
+            <label>$INFO[ListItem.Property(UnWatchedEpisodes)]</label>
+            <include>View_UnwatchedEpisodes_Visible</include>
+        </control>
+    </include>
+
+    <include name="View_UnwatchedEpisodes_Visible">
+        <visible>Integer.IsGreater(ListItem.Property(UnWatchedEpisodes),0) + [Container.Content(tvshows) | Container.Content(seasons) | Window.IsVisible(Home)]</visible>
+        <visible>![[[Container.Content(movies) + [String.IsEqual(Window(Home).Property(LatestMovie.1.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.2.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.3.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.4.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.5.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.6.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.7.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.8.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.9.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.10.Title),ListItem.Label)]] | [[Container.Content(tvshows)] + [String.IsEqual(Window(Home).Property(LatestEpisode.1.ShowTitle),ListItem.TvShowTitle) | String.IsEqual(Window(Home).Property(LatestEpisode.2.ShowTitle),ListItem.TvShowTitle) | String.IsEqual(Window(Home).Property(LatestEpisode.3.ShowTitle),ListItem.TvShowTitle) | String.IsEqual(Window(Home).Property(LatestEpisode.4.ShowTitle),ListItem.TvShowTitle) | String.IsEqual(Window(Home).Property(LatestEpisode.5.ShowTitle),ListItem.TvShowTitle) | String.IsEqual(Window(Home).Property(LatestEpisode.6.ShowTitle),ListItem.TvShowTitle) | String.IsEqual(Window(Home).Property(LatestEpisode.7.ShowTitle),ListItem.TvShowTitle) | String.IsEqual(Window(Home).Property(LatestEpisode.8.ShowTitle),ListItem.TvShowTitle) | String.IsEqual(Window(Home).Property(LatestEpisode.9.ShowTitle),ListItem.TvShowTitle) | String.IsEqual(Window(Home).Property(LatestEpisode.10.ShowTitle),ListItem.TvShowTitle)]] | [Container.Content(episodes) + [String.IsEqual(Window(Home).Property(LatestEpisode.1.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.2.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.3.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.4.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.5.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.6.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.7.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.8.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.9.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.10.EpisodeTitle),ListItem.Title)]]]]</visible>
+        <visible>!ListItem.IsCollection</visible>
+    </include>
+
+    <include name="View_Selectbox">
+        <animation type="Focus" condition="Skin.HasSetting(BounceAnimations)">
+            <effect type="zoom" start="95" end="100" time="150" tween="sine" easing="inout" center="auto" />
+            <effect type="fade" start="0" end="100" time="150" tween="sine" easing="in" />
+        </animation>
+        <animation type="Unfocus" condition="Skin.HasSetting(BounceAnimations)">
+            <effect type="zoom" start="100" end="95" time="150" tween="sine" easing="inout" center="auto" />
+            <effect type="fade" start="100" end="0" time="150" tween="sine" easing="out" />
+        </animation>
+        <include>View_WatchedOverlay_Focus</include>
+        <control type="group">
+            <left>3</left>
+            <top>3</top>
+            <right>3</right>
+            <bottom>3</bottom>
+            <control type="image">
+                <texture colordiffuse="$VAR[ColorHighlight]" border="20">common/selectbox.png</texture>
+            </control>
+            <control type="image">
+                <texture colordiffuse="$VAR[ColorHighlight2]" border="20">common/gradient-diffuse-selectbox.png</texture>
+            </control>
+        </control>
+    </include>
+
+
+    <include name="View_Position_Button">
+        <control type="button">
+            <visible allowhiddenfocus="true">false</visible>
+            <onfocus condition="[String.IsEqual(ListItem.SortLetter,N) | String.IsEqual(ListItem.SortLetter,O) | String.IsEqual(ListItem.SortLetter,P) | String.IsEqual(ListItem.SortLetter,Q) | String.IsEqual(ListItem.SortLetter,R) | String.IsEqual(ListItem.SortLetter,S) | String.IsEqual(ListItem.SortLetter,T) | String.IsEqual(ListItem.SortLetter,U) | String.IsEqual(ListItem.SortLetter,V) | String.IsEqual(ListItem.SortLetter,W) | String.IsEqual(ListItem.SortLetter,X) | String.IsEqual(ListItem.SortLetter,Y) | String.IsEqual(ListItem.SortLetter,Z)] + Container(8001).HasNext">Control.Message(8099,pagedown)</onfocus>
+            <onfocus condition="![String.IsEqual(ListItem.SortLetter,N) | String.IsEqual(ListItem.SortLetter,O) | String.IsEqual(ListItem.SortLetter,P) | String.IsEqual(ListItem.SortLetter,Q) | String.IsEqual(ListItem.SortLetter,R) | String.IsEqual(ListItem.SortLetter,S) | String.IsEqual(ListItem.SortLetter,T) | String.IsEqual(ListItem.SortLetter,U) | String.IsEqual(ListItem.SortLetter,V) | String.IsEqual(ListItem.SortLetter,W) | String.IsEqual(ListItem.SortLetter,X) | String.IsEqual(ListItem.SortLetter,Y) | String.IsEqual(ListItem.SortLetter,Z)] + Container(8001).HasPrevious">Control.Message(8099,pageup)</onfocus>
+        </control>
+    </include>
+
+    <include name="View_Actor_Layout">
+        <param name="id" default="9501" />
+        <param name="label2" default="$INFO[ListItem.Label2]"/>
+        <param name="infolabel" default="true" />
+        <param name="itemwidth" default="widget_poster_width" />
+        <param name="itemheight" default="widget_poster_height" />
+        <param name="episodelayout" default="false" />
+        <param name="textonly" default="false" />
+        <param name="aspect" default="scale" />
+        <definition>
+            <left>-10</left>
+            <right>-10</right>
+            <top>70</top>
+            <focusposition>0</focusposition>
+            <movement>6</movement>
+            <description>Plugin Content Widget</description>
+            <height>$PARAM[itemheight]</height>
+            <orientation>vertical</orientation>
+            <onfocus>ClearProperty(MenuFocus,Home)</onfocus>
+            <include condition="!Window.IsVisible(DialogVideoInfo.xml)">View_Movement_Horizontal</include>
+            <preloaditems>2</preloaditems>
+            <pagecontrol>60</pagecontrol>
+            <onfocus>SetProperty(ViewType,Square,Home)</onfocus>
+            <scrolltime tween="quadratic">400</scrolltime>
+            <itemlayout width="$PARAM[itemwidth]" height="$PARAM[itemheight]">
+                <control type="group">
+                    
+                    <control type="image">
+                        <bordersize>10</bordersize>
+                        <include>Defs_Shadow_Small</include>
+                        <texture colordiffuse="PosterBack" border="10">diffuse/box.png</texture>
+                    </control>
+
+                    <!-- Poster -->
+                    <control type="image">
+                        <left>10</left>
+                        <right>10</right>
+                        <top>10</top>
+                        <bottom>10</bottom>
+                        <aspectratio scalediffuse="false">$PARAM[aspect]</aspectratio>
+                        <texture fallback="DefaultArtist.png" background="true" diffuse="diffuse/widgetposter.png">$VAR[Image_Poster]</texture>
+                        <visible>!$PARAM[episodelayout]</visible>
+                        <visible>!$PARAM[textonly]</visible>
+                    </control>
+                    <control type="image">
+                        <left>10</left>
+                        <right>10</right>
+                        <top>10</top>
+                        <bottom>10</bottom>
+                        <aspectratio scalediffuse="false">$PARAM[aspect]</aspectratio>
+                        <texture fallback="DefaultArtist.png" background="true" diffuse="diffuse/widgetposter.png">$INFO[ListItem.Art(thumb)]</texture>
+                        <visible>$PARAM[episodelayout]</visible>
+                        <visible>!$PARAM[textonly]</visible>
+                    </control>
+                    <control type="image">
+                        <left>10</left>
+                        <right>10</right>
+                        <height>100</height>
+                        <bottom>10</bottom>
+                        <texture colordiffuse="bf000000" diffuse="diffuse/widgetposter.png">common/gradient-actor.png</texture>
+                        <visible>$PARAM[infolabel]</visible>
+                        <visible>!$PARAM[textonly]</visible>
+                    </control>
+                    <control type="label">
+                        <left>20</left>
+                        <right>20</right>
+                        <height>30</height>
+                        <bottom>42</bottom>
+                        <align>left</align>
+                        <aligny>center</aligny>
+                        <font>font_statusbar</font>
+                        <textcolor>main_fg_100</textcolor>
+                        <label>$INFO[ListItem.Label]</label>
+                        <visible>$PARAM[infolabel]</visible>
+                        <visible>!$PARAM[textonly]</visible>
+                    </control>
+                    <control type="label">
+                        <left>20</left>
+                        <right>20</right>
+                        <height>30</height>
+                        <bottom>18</bottom>
+                        <align>left</align>
+                        <aligny>center</aligny>
+                        <font>font_statusbar</font>
+                        <textcolor>main_fg_70</textcolor>
+                        <label>$PARAM[label2]</label>
+                        <visible>$PARAM[infolabel]</visible>
+                        <visible>!$PARAM[textonly]</visible>
+                    </control>
+                    <control type="textbox">
+                        <left>20</left>
+                        <right>20</right>
+                        <top>20</top>
+                        <bottom>20</bottom>
+                        <align>center</align>
+                        <aligny>center</aligny>
+                        <font>font_tiny</font>
+                        <textcolor>main_fg_70</textcolor>
+                        <label>$INFO[ListItem.Label]</label>
+                        <visible>$PARAM[textonly]</visible>
+                    </control>
+                    <control type="image">
+                        <bordersize>10</bordersize>
+                        <texture colordiffuse="PixelLines" border="20">common/outline.png</texture>
+                    </control>
+                    <include>View_WatchedOverlay</include>
+                </control>
+            </itemlayout>
+            <focusedlayout width="$PARAM[itemwidth]" height="$PARAM[itemheight]">
+                <control type="group">
+                    
+                    <include>Animation_FocusBounce</include>
+                    <control type="image">
+                        <bordersize>10</bordersize>
+                        <include>Defs_Shadow_Small</include>
+                        <texture colordiffuse="PosterBack" border="10">diffuse/box.png</texture>
+                    </control>
+
+                    <!-- Poster -->
+                    <control type="image">
+                        <left>10</left>
+                        <right>10</right>
+                        <top>10</top>
+                        <bottom>10</bottom>
+                        <aspectratio scalediffuse="false">$PARAM[aspect]</aspectratio>
+                        <texture fallback="DefaultArtist.png" background="true" diffuse="diffuse/widgetposter.png">$VAR[Image_Poster]</texture>
+                        <visible>!$PARAM[episodelayout]</visible>
+                        <visible>!$PARAM[textonly]</visible>
+                    </control>
+                    <control type="image">
+                        <left>10</left>
+                        <right>10</right>
+                        <top>10</top>
+                        <bottom>10</bottom>
+                        <aspectratio scalediffuse="false">$PARAM[aspect]</aspectratio>
+                        <texture fallback="DefaultArtist.png" background="true" diffuse="diffuse/widgetposter.png">$INFO[ListItem.Art(thumb)]</texture>
+                        <visible>!$PARAM[textonly]</visible>
+                        <visible>$PARAM[episodelayout]</visible>
+                    </control>
+                    <control type="image">
+                        <left>10</left>
+                        <right>10</right>
+                        <height>100</height>
+                        <bottom>10</bottom>
+                        <visible>$PARAM[infolabel]</visible>
+                        <texture colordiffuse="bf000000">common/gradient-actor.png</texture>
+                        <visible>!$PARAM[textonly]</visible>
+                    </control>
+                    <control type="label">
+                        <left>20</left>
+                        <right>20</right>
+                        <height>30</height>
+                        <bottom>42</bottom>
+                        <align>left</align>
+                        <aligny>center</aligny>
+                        <font>font_statusbar</font>
+                        <textcolor>main_fg_100</textcolor>
+                        <label>$INFO[ListItem.Label]</label>
+                        <visible>$PARAM[infolabel]</visible>
+                        <visible>!$PARAM[textonly]</visible>
+                    </control>
+                    <control type="label">
+                        <left>20</left>
+                        <right>20</right>
+                        <height>30</height>
+                        <bottom>18</bottom>
+                        <align>left</align>
+                        <aligny>center</aligny>
+                        <font>font_statusbar</font>
+                        <textcolor>main_fg_70</textcolor>
+                        <label>$PARAM[label2]</label>
+                        <visible>$PARAM[infolabel]</visible>
+                        <visible>!$PARAM[textonly]</visible>
+                    </control>
+                    <control type="textbox">
+                        <left>20</left>
+                        <right>20</right>
+                        <top>20</top>
+                        <bottom>20</bottom>
+                        <align>center</align>
+                        <aligny>center</aligny>
+                        <font>font_tiny</font>
+                        <textcolor>Selected</textcolor>
+                        <label>$INFO[ListItem.Label]</label>
+                        <visible>$PARAM[textonly]</visible>
+                    </control>
+                    <control type="image">
+                        <bordersize>10</bordersize>
+                        <texture colordiffuse="PixelLines" border="20">common/outline.png</texture>
+                    </control>
+                    <include>View_WatchedOverlay</include>
+                    <!-- Highlight -->
+                    <control type="group">
+                        <visible>Control.HasFocus($PARAM[id])</visible>
+                        <include>View_Selectbox</include>
+                    </control>
+                    
+                </control>
+            </focusedlayout>
+        </definition>
+    </include>
+
+    <include name="View_Movement_Horizontal">
+        <onright condition="Control.IsVisible(60)">60</onright>
+        <onright condition="!Control.IsVisible(8000) + !Control.IsVisible(60)">300</onright>
+        <onleft>300</onleft>
+    </include>
+
+    <include name="View_Forced">
+        <onfocus>ClearProperty(MenuFocus,Home)</onfocus>
+        <visible>[Container.Content(movies) + [String.IsEqual(Skin.String(Skin.ForcedView.movies),$PARAM[string]) | String.IsEmpty(Skin.String(Skin.ForcedView.movies))]] | [Container.Content(sets) + [String.IsEqual(Skin.String(Skin.ForcedView.sets),$PARAM[string]) | String.IsEmpty(Skin.String(Skin.ForcedView.sets))]] | [Container.Content(tvshows) + [String.IsEqual(Skin.String(Skin.ForcedView.tvshows),$PARAM[string]) | String.IsEmpty(Skin.String(Skin.ForcedView.tvshows))]] | [Container.Content(seasons) + [String.IsEqual(Skin.String(Skin.ForcedView.seasons),$PARAM[string]) | String.IsEmpty(Skin.String(Skin.ForcedView.seasons))]] | [Container.Content(episodes) + [String.IsEqual(Skin.String(Skin.ForcedView.episodes),$PARAM[string]) | String.IsEmpty(Skin.String(Skin.ForcedView.episodes))]] | [Container.Content(actors) + [String.IsEqual(Skin.String(Skin.ForcedView.actors),$PARAM[string]) | String.IsEmpty(Skin.String(Skin.ForcedView.actors))]] | [Container.Content(artists) + [String.IsEqual(Skin.String(Skin.ForcedView.artists),$PARAM[string]) | String.IsEmpty(Skin.String(Skin.ForcedView.artists))]] | [Container.Content(albums) + [String.IsEqual(Skin.String(Skin.ForcedView.albums),$PARAM[string]) | String.IsEmpty(Skin.String(Skin.ForcedView.albums))]] | [Container.Content(songs) + [String.IsEqual(Skin.String(Skin.ForcedView.songs),$PARAM[string]) | String.IsEmpty(Skin.String(Skin.ForcedView.songs))]] | [Container.Content(addons) + [String.IsEqual(Skin.String(Skin.ForcedView.addons),$PARAM[string]) | String.IsEmpty(Skin.String(Skin.ForcedView.addons))]] | [Container.Content(genres) + [String.IsEqual(Skin.String(Skin.ForcedView.genres),$PARAM[string]) | String.IsEmpty(Skin.String(Skin.ForcedView.genres))]] | [Container.Content(images) + [String.IsEqual(Skin.String(Skin.ForcedView.images),$PARAM[string]) | String.IsEmpty(Skin.String(Skin.ForcedView.images))]] | [Container.Content(videos) + [String.IsEqual(Skin.String(Skin.ForcedView.videos),$PARAM[string]) | String.IsEmpty(Skin.String(Skin.ForcedView.videos))]] | [Container.Content() + [String.IsEqual(Skin.String(Skin.ForcedView.),$PARAM[string]) | String.IsEmpty(Skin.String(Skin.ForcedView.))]] | [Container.Content(tags) + [String.IsEqual(Skin.String(Skin.ForcedView.tags),$PARAM[string]) | String.IsEmpty(Skin.String(Skin.ForcedView.tags))]] | [Container.Content(years) + [String.IsEqual(Skin.String(Skin.ForcedView.years),$PARAM[string]) | String.IsEmpty(Skin.String(Skin.ForcedView.years))]] | [Container.Content(countries) + [String.IsEqual(Skin.String(Skin.ForcedView.countries),$PARAM[string]) | String.IsEmpty(Skin.String(Skin.ForcedView.countries))]] | [Container.Content(studios) + [String.IsEqual(Skin.String(Skin.ForcedView.studios),$PARAM[string]) | String.IsEmpty(Skin.String(Skin.ForcedView.studios))]] | [Container.Content(playlists) + [String.IsEqual(Skin.String(Skin.ForcedView.playlists),$PARAM[string]) | String.IsEmpty(Skin.String(Skin.ForcedView.playlists))]] | [Container.Content(musicvideos) + [String.IsEqual(Skin.String(Skin.ForcedView.musicvideos),$PARAM[string]) | String.IsEmpty(Skin.String(Skin.ForcedView.musicvideos))]] | [Container.Content(directors) + [String.IsEqual(Skin.String(Skin.ForcedView.directors),$PARAM[string]) | String.IsEmpty(Skin.String(Skin.ForcedView.directors))]] | [Container.Content(files) + [String.IsEqual(Skin.String(Skin.ForcedView.files),$PARAM[string]) | String.IsEmpty(Skin.String(Skin.ForcedView.files))]] | [Container.Content(mixed) + [String.IsEqual(Skin.String(Skin.ForcedView.mixed),$PARAM[string]) | String.IsEmpty(Skin.String(Skin.ForcedView.mixed))]] | [Container.Content(unknown) + [String.IsEqual(Skin.String(Skin.ForcedView.unknown),$PARAM[string]) | String.IsEmpty(Skin.String(Skin.ForcedView.unknown))]] | [!Container.Content(movies) + !Container.Content(sets) + !Container.Content(tvshows) + !Container.Content(seasons) + !Container.Content(episodes) + !Container.Content(actors) + !Container.Content(artists) + !Container.Content(albums) + !Container.Content(songs) + !Container.Content(addons) + !Container.Content(genres) + !Container.Content(images) + !Container.Content(videos) + !Container.Content() + !Container.Content(tags) + !Container.Content(years) + !Container.Content(countries) + !Container.Content(studios) + !Container.Content(playlists) + !Container.Content(musicvideos) + !Container.Content(directors) + !Container.Content(files) + !Container.Content(mixed) + !Container.Content(unknown)] | Window.IsVisible(MyPlaylist.xml)</visible>
+    </include>
+
+    <include name="View_PVRGuide">
+        <control type="group" id="50">
+            <control type="group">
+                <visible>Control.IsVisible(10)</visible>
+                <include>Animation_Right</include>
+                <control type="group">
+                    <height>814</height>
+                    <right>view_pad</right>
+                    <left>view_pad</left>
+                    <bottom>view_pad</bottom>
+                    <control type="image">
+                        <left>-10</left>
+                        <right>-10</right>
+                        <top>-10</top>
+                        <bottom>-10</bottom>
+                        <bordersize>10</bordersize>
+                        <include>Defs_Shadow_Small</include>
+                        <texture colordiffuse="PosterBack">common/white.png</texture>
+                    </control>
+                </control>
+                <control type="epggrid" id="10" description="EPG">
+                    <left>view_pad</left>
+                    <bottom>view_pad</bottom>
+                    <width>1796</width>
+                    <height>888</height>
+                    <onleft>28</onleft>
+                    <viewtype label="19069">list</viewtype>
+                    <onleft>9400</onleft>
+                    <progresstexture border="5" colordiffuse="bf777777">pvr/progressline-full.png</progresstexture>
+                    <scrolltime tween="quadratic">300</scrolltime>
+                    <timeblocks>28</timeblocks>
+                    <rulerunit>6</rulerunit>
+                    <rulerlayout height="74" width="262">
+                        <control type="label" id="2">
+                            <posx>0</posx>
+                            <posy>46</posy>
+                            <width>262</width>
+                            <align>left</align>
+                            <aligny>top</aligny>
+                            <font>font_epg_timeline</font>
+                            <label>$INFO[ListItem.Label]</label>
+                            <textcolor>main_fg_30</textcolor>
+                        </control>
+                    </rulerlayout>
+                    <channellayout height="listitem_height" width="524">
+                        <control type="image">
+                            <left>0</left>
+                            <right>1</right>
+                            <top>1</top>
+                            <texture>common/selected.png</texture>
+                            <aspectratio aligny="top">center</aspectratio>
+                            <animation effect="fade" start="100" end="10" condition="true">Conditional</animation>
+                            <visible>ListItem.IsPlaying</visible>
+                        </control>
+                        <!-- <control type="image">
+                            <left>0</left>
+                            <right>0</right>
+                            <height>4</height>
+                            <bottom>-4</bottom>
+                            <texture colordiffuse="PixelLines">common/white.png</texture>
+                        </control>
+                        <control type="image">
+                            <right>0</right>
+                            <width>4</width>
+                            <top>4</top>
+                            <texture colordiffuse="PixelLines">common/white.png</texture>
+                        </control> -->
+                        <control type="label">
+                            <posx>90</posx>
+                            <width>250</width>
+                            <aligny>center</aligny>
+                            <height>listitem_height</height>
+                            <font>font_tiny_bold_uppercase</font>
+                            <textcolor>main_fg_70</textcolor>
+                            <label>$INFO[ListItem.ChannelName]</label>
+                        </control>
+                        <control type="label">
+                            <centerleft>45</centerleft>
+                            <width>90</width>
+                            <align>center</align>
+                            <aligny>center</aligny>
+                            <height>listitem_height</height>
+                            <textcolor>main_fg_70</textcolor>
+                            <font>font_tiny_bold_uppercase</font>
+                            <label>$INFO[ListItem.ChannelNumberLabel]</label>
+                        </control>
+                        <control type="image">
+                            <top>10</top>
+                            <right>10</right>
+                            <width>140</width>
+                            <height>70</height>
+                            <texture>$INFO[ListItem.Icon]</texture>
+                            <aspectratio aligny="center" align="right">keep</aspectratio>
+                        </control>
+                    </channellayout>
+                    <focusedchannellayout height="listitem_height" width="524"> 
+                        <control type="group">
+                            <left>0</left>
+                            <right>4</right>
+                            <top>4</top>
+                            <control type="image">
+                                <texture colordiffuse="$VAR[ColorHighlight]">common/white.png</texture>
+                            </control>
+                            <control type="image">
+                                <texture colordiffuse="$VAR[ColorHighlight2]">common/gradient-diffuse-horizontal.png</texture>
+                            </control>
+                            <control type="image">
+                                <texture>common/selected.png</texture>
+                                <aspectratio aligny="top">center</aspectratio>
+                                <animation effect="fade" start="100" end="20" condition="true">Conditional</animation>
+                                <visible>ListItem.IsPlaying</visible>
+                            </control>
+                        </control>
+                        <!-- <control type="image">
+                            <left>0</left>
+                            <right>0</right>
+                            <height>4</height>
+                            <bottom>-4</bottom>
+                            <texture colordiffuse="PixelLines">common/white.png</texture>
+                        </control>
+                        <control type="image">
+                            <right>0</right>
+                            <width>4</width>
+                            <top>4</top>
+                            <texture colordiffuse="PixelLines">common/white.png</texture>
+                        </control> -->
+                        <control type="label">
+                            <posx>90</posx>
+                            <width>250</width>
+                            <aligny>center</aligny>
+                            <height>listitem_height</height>
+                            <selectedcolor>Selected</selectedcolor>
+                            <textcolor>Selected</textcolor>
+                            <font>font_tiny_bold_uppercase</font>
+                            <label>$INFO[ListItem.ChannelName]</label>
+                        </control>
+                        <control type="label">
+                            <centerleft>45</centerleft>
+                            <width>90</width>
+                            <align>center</align>
+                            <aligny>center</aligny>
+                            <selectedcolor>Selected</selectedcolor>
+                            <height>listitem_height</height>
+                            <textcolor>Selected</textcolor>
+                            <font>font_tiny_bold_uppercase</font>
+                            <label>$INFO[ListItem.ChannelNumberLabel]</label>
+                        </control>
+                        <control type="image">
+                            <top>10</top>
+                            <right>10</right>
+                            <width>140</width>
+                            <height>70</height>
+                            <texture>$INFO[ListItem.Icon]</texture>
+                            <aspectratio aligny="center" align="right">keep</aspectratio>
+                        </control>
+                    </focusedchannellayout>
+                    <itemlayout height="listitem_height" width="262">
+                        <control type="image" id="2">
+                            <left>0</left>
+                            <width>258</width>
+                            <top>4</top>
+                            <texture colordiffuse="main_fg_12">common/white.png</texture>
+                            <visible>Skin.HasSetting(PVRGuideGenreColors)</visible>
+                        </control>
+                        <control type="image" id="2">
+                            <left>0</left>
+                            <width>258</width>
+                            <top>4</top>
+                            <texture colordiffuse="BBffffff" fallback="pvrgenre/0.png">pvrgenre/$INFO[ListItem.Property(GenreType)].png</texture>
+                            <visible>!Skin.HasSetting(PVRGuideGenreColors)</visible>
+                        </control>
+                        <control type="image">
+                            <top>5</top>
+                            <width>24</width>
+                            <height>24</height>
+                            <texture colordiffuse="ff000000">indicator/new.png</texture>
+                            <visible>ListItem.HasTimer</visible>
+                        </control>
+                        <control type="image">
+                            <top>5</top>
+                            <width>24</width>
+                            <height>24</height>
+                            <texture colordiffuse="ff000000">indicator/checkmark.png</texture>
+                            <visible>ListItem.IsRecording</visible>
+                        </control>
+                        <control type="label" id="1">
+                            <left>20</left>
+                            <width>218</width>
+                            <centertop>35%</centertop>
+                            <textcolor>main_fg_100</textcolor>
+                            <textoffsetx>0</textoffsetx>
+                            <font>font_tiny_bold_uppercase</font>
+                            <label>$INFO[ListItem.Label]</label>
+                        </control>
+                        <control type="label" id="1">
+                            <left>20</left>
+                            <width>218</width>
+                            <centerbottom>35%</centerbottom>
+                            <textcolor>main_fg_70</textcolor>
+                            <textoffsetx>0</textoffsetx>
+                            <font>font_statusbar</font>
+                            <label>$INFO[ListItem.Genre,[UPPERCASE],[/UPPERCASE]]</label>
+                        </control>
+                    </itemlayout>
+                    <focusedlayout height="listitem_height" width="262">
+                        <control type="image" id="2">
+                            <left>0</left>
+                            <width>258</width>
+                            <top>4</top>
+                            <texture colordiffuse="main_fg_12">common/white.png</texture>
+                            <visible>Skin.HasSetting(PVRGuideGenreColors)</visible>
+                        </control>
+                        <control type="image" id="2">
+                            <left>0</left>
+                            <width>258</width>
+                            <top>4</top>
+                            <texture colordiffuse="BBffffff" fallback="pvrgenre/0.png">pvrgenre/$INFO[ListItem.Property(GenreType)].png</texture>
+                            <visible>!Skin.HasSetting(PVRGuideGenreColors)</visible>
+                        </control>
+
+                        <control type="image" id="2">
+                            <left>0</left>
+                            <width>258</width>
+                            <top>4</top>
+                            <texture colordiffuse="$VAR[ColorHighlight]">common/white.png</texture>
+                        </control>
+                        <control type="image" id="2">
+                            <left>0</left>
+                            <width>258</width>
+                            <top>4</top>
+                            <texture colordiffuse="$VAR[ColorHighlight2]">common/gradient-diffuse-horizontal.png</texture>
+                        </control>
+                        <control type="image">
+                            <top>5</top>
+                            <width>24</width>
+                            <height>24</height>
+                            <texture colordiffuse="ff000000">indicator/new.png</texture>
+                            <visible>ListItem.HasTimer</visible>
+                        </control>
+                        <control type="image">
+                            <top>5</top>
+                            <width>24</width>
+                            <height>24</height>
+                            <texture colordiffuse="ff000000">indicator/checkmark.png</texture>
+                            <visible>ListItem.IsRecording</visible>
+                        </control>
+                        
+                        <control type="label" id="1">
+                            <left>20</left>
+                            <width>218</width>
+                            <centertop>35%</centertop>
+                            <textcolor>Selected</textcolor>
+                            <textoffsetx>0</textoffsetx>
+                            <font>font_tiny_bold_uppercase</font>
+                            <label>$INFO[ListItem.Label]</label>
+                        </control>
+                        <control type="label" id="1">
+                            <left>20</left>
+                            <width>218</width>
+                            <centerbottom>35%</centerbottom>
+                            <textcolor>Selected</textcolor>
+                            <textoffsetx>0</textoffsetx>
+                            <font>font_statusbar</font>
+                            <label>$INFO[ListItem.Genre,[UPPERCASE],[/UPPERCASE]]</label>
+                        </control>
+                    </focusedlayout>
+                </control>
+                <control type="image">
+                    <height>814</height>
+                    <right>view_pad</right>
+                    <left>view_pad</left>
+                    <bottom>view_pad</bottom>
+                    <texture colordiffuse="PixelLines" border="20">common/outline.png</texture>
+                </control>
+                
+            </control>
+        </control>
+    </include>
+
+</includes>
+

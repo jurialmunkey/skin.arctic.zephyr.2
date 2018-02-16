@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+    
+    <include name="Weather">
+        <control type="grouplist">
+            <left>view_pad</left>
+            <right>view_pad</right>
+            <top>180</top>
+            <height>332</height>
+            <orientation>horizontal</orientation>
+            <itemgap>0</itemgap>
+            <include>Animation_FadeIn</include>
+            <include>Animation_FadeOut</include>
+            <control type="group">
+                <width>360</width>
+                <control type="image">
+                    <top>0</top>
+                    <centerleft>50%</centerleft>
+                    <width>256</width>
+                    <height>256</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$INFO[Window(weather).Property(Current.ConditionIcon)]</texture>
+                    <visible>String.IsEmpty(Skin.String(weather.icons.path))</visible>
+                </control>
+                <control type="image">
+                    <top>0</top>
+                    <centerleft>50%</centerleft>
+                    <width>256</width>
+                    <height>256</height>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <texture>$INFO[Skin.String(weather.icons.path),,/]$INFO[Window(weather).Property(Current.FanartCode),,.png]</texture>
+                    <visible>!String.IsEmpty(Skin.String(weather.icons.path)) + !String.Contains(Skin.String(weather.icons.path),animated)</visible>
+                </control>
+                <control type="multiimage">
+                    <top>0</top>
+                    <centerleft>50%</centerleft>
+                    <width>256</width>
+                    <height>256</height>
+                    <timeperimage>50</timeperimage>
+                    <aspectratio align="center" aligny="center">keep</aspectratio>
+                    <fadetime>10</fadetime>
+                    <imagepath>$INFO[Skin.String(weather.icons.path),,/]$INFO[Window(weather).Property(Current.FanartCode)]</imagepath>
+                    <visible>!String.IsEmpty(Skin.String(weather.icons.path)) + String.Contains(Skin.String(weather.icons.path),animated)</visible>
+                </control>
+            </control>
+            <control type="group">
+                <width>360</width>
+                <control type="label">
+                    <top>0</top>
+                    <centerleft>50%</centerleft>
+                    <height>256</height>
+                    <width>320</width>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <font>font_weather_currenttemp</font>
+                    <textcolor>main_fg_100</textcolor>
+                    <label fallback="N/A">$INFO[Window(Weather).Property(Current.Temperature),[B],[/B]°]</label>
+                </control>
+            </control>
+            <control type="group">
+                <width>360</width>
+                <control type="grouplist">
+                    <top>32</top>
+                    <left>80</left>
+                    <width>260</width>
+                    <itemgap>0</itemgap>
+                    <usecontrolcoords>true</usecontrolcoords>
+                    <orientation>vertical</orientation>
+                    <control type="button">
+                        <height>48</height>
+                        <font>font_small</font>
+                        <align>left</align>
+                        <textoffsetx>0</textoffsetx>
+                        <width>auto</width>
+                        <texturenofocus border="8" colordiffuse="main_fg_30">common/underline.png</texturenofocus>
+                        <textcolor>main_fg_70</textcolor>
+                        <label>$LOCALIZE[31003]</label>
+                    </control>
+                    <control type="label">
+                        <height>32</height>
+                        <aligny>top</aligny>
+                        <font>font_small</font>
+                        <textcolor>main_fg_100</textcolor>
+                        <label>$INFO[Window(Weather).Property(Current.Condition)]</label>
+                    </control>
+                    <control type="button">
+                        <top>24</top>
+                        <height>48</height>
+                        <font>font_small</font>
+                        <align>left</align>
+                        <textoffsetx>0</textoffsetx>
+                        <width>auto</width>
+                        <texturenofocus border="8" colordiffuse="main_fg_30">common/underline.png</texturenofocus>
+                        <textcolor>main_fg_70</textcolor>
+                        <label>$LOCALIZE[402]$INFO[Window(Weather).Property(Current.FeelsLike), ,°]</label>
+                    </control>
+                    <control type="label">
+                        <height>32</height>
+                        <aligny>top</aligny>
+                        <font>font_small</font>
+                        <textcolor>main_fg_100</textcolor>
+                        <label>$INFO[Window(Weather).Property(Current.Humidity),, [LOWERCASE]$LOCALIZE[406][/LOWERCASE]]</label>
+                    </control>
+                </control>
+            </control>
+            <control type="group">
+                <width>360</width>
+                <control type="grouplist">
+                    <top>32</top>
+                    <left>80</left>
+                    <width>260</width>
+                    <itemgap>0</itemgap>
+                    <usecontrolcoords>true</usecontrolcoords>
+                    <orientation>vertical</orientation>
+                    <control type="button">
+                        <height>48</height>
+                        <font>font_small</font>
+                        <align>left</align>
+                        <textoffsetx>0</textoffsetx>
+                        <width>auto</width>
+                        <texturenofocus border="8" colordiffuse="main_fg_30">common/underline.png</texturenofocus>
+                        <textcolor>main_fg_70</textcolor>
+                        <label>$VAR[Weather_Sunrise]</label>
+                    </control>
+                    <control type="label">
+                        <height>32</height>
+                        <aligny>top</aligny>
+                        <font>font_small</font>
+                        <textcolor>main_fg_100</textcolor>
+                        <label>$INFO[Window(Weather).Property(Current.DewPoint),$LOCALIZE[405] ,°]</label>
+                    </control>
+                    <control type="button">
+                        <top>24</top>
+                        <height>48</height>
+                        <font>font_small</font>
+                        <align>left</align>
+                        <textoffsetx>0</textoffsetx>
+                        <width>auto</width>
+                        <texturenofocus border="8" colordiffuse="main_fg_30">common/underline.png</texturenofocus>
+                        <textcolor>main_fg_70</textcolor>
+                        <label>$VAR[Weather_Sunset]</label>
+                    </control>
+                    <control type="label">
+                        <height>32</height>
+                        <aligny>top</aligny>
+                        <font>font_small</font>
+                        <textcolor>main_fg_100</textcolor>
+                        <label>$VAR[Weather_LowTemp,$LOCALIZE[391] ,]$VAR[Weather_HighTemp,  -  $LOCALIZE[393] ,]</label>
+                    </control>
+                </control>
+            </control>
+            <control type="group">
+                <width>360</width>
+                <control type="grouplist">
+                    <top>32</top>
+                    <left>80</left>
+                    <width>260</width>
+                    <itemgap>0</itemgap>
+                    <usecontrolcoords>true</usecontrolcoords>
+                    <orientation>vertical</orientation>
+                    <include>Animation_FadeIn</include>
+                    <include>Animation_FadeOut</include>
+                    <control type="button">
+                        <height>48</height>
+                        <font>font_small</font>
+                        <align>left</align>
+                        <textoffsetx>0</textoffsetx>
+                        <width>auto</width>
+                        <texturenofocus border="8" colordiffuse="main_fg_30">common/underline.png</texturenofocus>
+                        <textcolor>main_fg_70</textcolor>
+                        <label>$LOCALIZE[383]</label>
+                    </control>
+                    <control type="label">
+                        <height>32</height>
+                        <aligny>top</aligny>
+                        <font>font_small</font>
+                        <textcolor>main_fg_100</textcolor>
+                        <label>$INFO[Window(Weather).Property(Current.Wind)]</label>
+                    </control>
+                    <control type="button">
+                        <top>24</top>
+                        <height>48</height>
+                        <font>font_small</font>
+                        <align>left</align>
+                        <textoffsetx>0</textoffsetx>
+                        <width>auto</width>
+                        <texturenofocus border="8" colordiffuse="main_fg_30">common/underline.png</texturenofocus>
+                        <textcolor>main_fg_70</textcolor>
+                        <label>$VAR[Weather_UVIndex_Label]</label>
+                    </control>
+                    <control type="label">
+                        <height>32</height>
+                        <aligny>top</aligny>
+                        <font>font_small</font>
+                        <textcolor>main_fg_100</textcolor>
+                        <label>$VAR[Weather_UVIndex_Info]</label>
+                    </control>
+                </control>
+            </control>      
+        </control>
+        <control type="grouplist">
+            <left>view_pad</left>
+            <right>view_pad</right>
+            <orientation>horizontal</orientation>
+            <itemgap>0</itemgap>
+            <bottom>view_pad</bottom>
+            <height>520</height>
+            <include>Animation_FadeIn</include>
+            <include>Animation_FadeOut</include>
+            <align>left</align>
+            <include content="Weather_DailyForecast">
+                <param name="day" value="Day0" />
+                <param name="label" value="$INFO[Window(Weather).Property(Day0.Title)]" />
+            </include>
+            <include content="Weather_DailyForecast">
+                <param name="day" value="Day1" />
+                <param name="label" value="$INFO[Window(Weather).Property(Day1.Title)]" />
+            </include>
+            <include content="Weather_DailyForecast">
+                <param name="day" value="Day2" />
+                <param name="label" value="$INFO[Window(Weather).Property(Day2.Title)]" />
+            </include>
+            <include content="Weather_DailyForecast">
+                <param name="day" value="Day3" />
+                <param name="label" value="$INFO[Window(Weather).Property(Day3.Title)]" />
+            </include>
+            <include content="Weather_DailyForecast">
+                <param name="day" value="Day4" />
+                <param name="label" value="$INFO[Window(Weather).Property(Day4.Title)]" />
+            </include>
+        </control>
+    </include>
+
+    <include name="Weather_DailyForecast">
+        <control type="group">
+            <width>360</width>
+            <control type="image">
+                <centerleft>50%</centerleft>
+                <top>10</top>
+                <height>256</height>
+                <width>256</width>
+                <aspectratio align="center" aligny="center">keep</aspectratio>
+                <texture>$INFO[Window(weather).Property($PARAM[day].OutlookIcon)]</texture>
+                <visible>String.IsEmpty(Skin.String(weather.icons.path))</visible>
+            </control>
+            <control type="image">
+                <centerleft>50%</centerleft>
+                <top>10</top>
+                <height>256</height>
+                <width>256</width>
+                <aspectratio align="center" aligny="center">keep</aspectratio>
+                <texture>$INFO[Skin.String(weather.icons.path),,/]$INFO[Window(weather).Property($PARAM[day].FanartCode),,.png]</texture>
+                <visible>!String.IsEmpty(Skin.String(weather.icons.path)) + !String.Contains(Skin.String(weather.icons.path),animated)</visible>
+            </control>
+            <control type="multiimage">
+                <centerleft>50%</centerleft>
+                <top>10</top>
+                <height>256</height>
+                <width>256</width>
+                <timeperimage>50</timeperimage>
+                <aspectratio align="center" aligny="center">keep</aspectratio>
+                <fadetime>10</fadetime>
+                <imagepath>$INFO[Skin.String(weather.icons.path),,/]$INFO[Window(weather).Property($PARAM[day].FanartCode)]</imagepath>
+                <visible>!String.IsEmpty(Skin.String(weather.icons.path)) + String.Contains(Skin.String(weather.icons.path),animated)</visible>
+            </control>
+            <control type="label">
+                <top>300</top>
+                <height>40</height>
+                <left>20</left>
+                <right>20</right>
+                <align>center</align>
+                <font>font_small</font>
+                <textcolor>panel_fg_100</textcolor>
+                <label fallback="161">$PARAM[label]</label>
+            </control>
+            <control type="label">
+                <centertop>75%</centertop>
+                <left>0</left>
+                <right>0</right>
+                <align>center</align>
+                <font>font_topbar</font>
+                <textcolor>panel_fg_100</textcolor>
+                <label fallback="N/A">$INFO[Window(Weather).Property($PARAM[day].HighTemp),[B],[/B]°]$INFO[Window(Weather).Property($PARAM[day].LowTemp), ,°]</label>
+            </control>
+            <control type="textbox">
+                <bottom>10</bottom>
+                <height>80</height>
+                <left>20</left>
+                <right>20</right>
+                <align>center</align>
+                <aligny>top</aligny>
+                <font>font_small</font>
+                <textcolor>panel_fg_100</textcolor>
+                <label fallback="161">$INFO[Window(Weather).Property($PARAM[day].Outlook),[CAPITALIZE],[/CAPITALIZE]]</label>
+            </control>
+        </control>
+    </include>
+
+    <variable name="Weather_Sunrise">
+        <value condition="!String.IsEmpty(Window(Weather).Property(Current.Sunrise))">$INFO[Window(Weather).Property(Current.Sunrise),$LOCALIZE[31005] ,]</value>
+        <value condition="!String.IsEmpty(Window(Weather).Property(Today.Sunrise))">$INFO[Window(Weather).Property(Today.Sunrise),$LOCALIZE[31005] ,]</value>
+    </variable>
+
+    <variable name="Weather_Sunset">
+        <value condition="!String.IsEmpty(Window(Weather).Property(Current.Sunset))">$INFO[Window(Weather).Property(Current.Sunset),$LOCALIZE[31004] ,]</value>
+        <value condition="!String.IsEmpty(Window(Weather).Property(Today.Sunset))">$INFO[Window(Weather).Property(Today.Sunset),$LOCALIZE[31004] ,]</value>
+    </variable>
+
+    <variable name="Weather_LowTemp">
+        <value condition="!String.IsEmpty(Window(Weather).Property(Current.LowTemp))">$INFO[Window(Weather).Property(Current.LowTemp),,°]</value>
+        <value condition="!String.IsEmpty(Window(Weather).Property(Day0.LowTemp))">$INFO[Window(Weather).Property(Day0.LowTemp),,°]</value>
+    </variable>
+    <variable name="Weather_HighTemp">
+        <value condition="!String.IsEmpty(Window(Weather).Property(Current.HighTemp))">$INFO[Window(Weather).Property(Current.HighTemp),,°]</value>
+        <value condition="!String.IsEmpty(Window(Weather).Property(Day0.HighTemp))">$INFO[Window(Weather).Property(Day0.HighTemp),,°]</value>
+    </variable>
+
+    <variable name="Weather_UVIndex_Label">
+        <value condition="!String.IsEmpty(Window(Weather).Property(Current.UVIndex))">$LOCALIZE[403]</value>
+        <value condition="!String.IsEmpty(Window(Weather).Property(Current.Precipitation))">$INFO[Window(Weather).Property(Current.Precipitation),$LOCALIZE[1448] ,]</value>
+    </variable>
+
+    <variable name="Weather_UVIndex_Info">
+        <value condition="!String.IsEmpty(Window(Weather).Property(Current.UVIndex))">$INFO[Window(Weather).Property(Current.UVIndex)]</value>
+        <value condition="!String.IsEmpty(Window(Weather).Property(Current.Cloudiness))">$INFO[Window(Weather).Property(Current.Cloudiness),$LOCALIZE[31068] ,]</value>
+    </variable>
+</includes>

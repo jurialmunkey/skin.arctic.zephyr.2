@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window id="605">
+    <defaultcontrol always="true">20</defaultcontrol>
+    <controls>
+        <include>Global_Overlay</include>
+        <control type="group">
+            <include content="Dialog_Standard_Group">
+                <param name="width" value="1400" />
+                <param name="height" value="950" />
+            </include>
+
+            <control type="label" id="2">
+                <include>Dialog_Standard_Header</include>
+                <label>19142</label>
+            </control>
+
+            <control type="edit" id="9">
+                <description>Search</description>
+                <left>20</left>
+                <right>20</right>
+                <top>124</top>
+                <height>66</height>
+                <align>left</align>
+                <ondown>8001</ondown>
+                <texturefocus colordiffuse="$VAR[ColorHighlight]" border="5">common/box.png</texturefocus>
+                <texturenofocus colordiffuse="dialog_fg_12" border="5">common/box.png</texturenofocus>
+                <label>19133</label>
+            </control>
+            <control type="textbox">
+                <description>Search help</description>
+                <top>80</top>
+                <left>30</left>
+                <right>30</right>
+                <height>74</height>
+                <align>justify</align>
+                <label>$LOCALIZE[19001] $LOCALIZE[19002]</label>
+                <font>font_tiny</font>
+            </control>
+
+            <!-- Left Side -->
+            <control type="grouplist" description="Playlist Options" id="8001">
+                <usecontrolcoords>true</usecontrolcoords>
+                <orientation>vertical</orientation>
+                <onright>8002</onright>
+                <ondown>8000</ondown>
+                <onleft>8000</onleft>
+                <onup>9</onup>
+                <left>20</left>
+                <width>675</width>
+                <top>200</top>
+                <bottom>126</bottom>
+                <itemgap>10</itemgap>
+                <control type="radiobutton" id="10" description="Include Description">
+                    <radioposx>620</radioposx>
+                    <include>Dialog_Standard_ListButton</include>
+                    <label>19134</label>
+                </control>
+                <control type="radiobutton" id="11" description="Casesensitive">
+                    <radioposx>620</radioposx>
+                    <include>Dialog_Standard_ListButton</include>
+                    <label>19135</label>
+                </control>
+                <control type="edit" id="14" description="Start Date">
+                    <include>Dialog_Standard_ListButton</include>
+                    <label>19128</label>
+                </control>
+                <control type="edit" id="15" description="Stop Date">
+                    <include>Dialog_Standard_ListButton</include>
+                    <label>19129</label>
+                </control>
+                <control type="spincontrolex" id="18" description="Genre">
+                    <include>Dialog_Standard_ListButton</include>
+                    <label>515</label>
+                </control>
+                <control type="radiobutton" id="20" description="unknowngenre">
+                    <radioposx>620</radioposx>
+                    <include>Dialog_Standard_ListButton</include>
+                    <label>19132</label>
+                </control>
+                <control type="radiobutton" id="22" description="ftaonly">
+                    <radioposx>620</radioposx>
+                    <include>Dialog_Standard_ListButton</include>
+                    <label>19123</label>
+                </control>
+                <control type="radiobutton" id="24" description="ignoretimers">
+                    <radioposx>620</radioposx>
+                    <include>Dialog_Standard_ListButton</include>
+                    <label>19124</label>
+                </control>
+            </control>
+
+            <!-- Right Side -->
+            <control type="grouplist" description="Playlist Options" id="8002">
+                <usecontrolcoords>true</usecontrolcoords>
+                <orientation>vertical</orientation>
+                <onright>8000</onright>
+                <ondown>8000</ondown>
+                <onleft>8001</onleft>
+                <onup>9</onup>
+                <right>20</right>
+                <width>675</width>
+                <top>200</top>
+                <bottom>126</bottom>
+                <itemgap>10</itemgap>
+                <control type="spincontrolex" id="12" description="minduration">
+                    <include>Dialog_Standard_ListButton</include>
+                    <label>19130</label>
+                </control>
+                <control type="spincontrolex" id="13" description="maxdur">
+                    <include>Dialog_Standard_ListButton</include>
+                    <label>19131</label>
+                </control>
+                <control type="edit" id="16" description="Start Time">
+                    <include>Dialog_Standard_ListButton</include>
+                    <label>19126</label>
+                </control>
+                <control type="edit" id="17" description="Stop Time">
+                    <include>Dialog_Standard_ListButton</include>
+                    <label>19127</label>
+                </control>
+                <control type="radiobutton" id="19" description="avoidrepeats">
+                    <radioposx>620</radioposx>
+                    <include>Dialog_Standard_ListButton</include>
+                    <label>19121</label>
+                </control>
+                <control type="spincontrolex" id="21" description="groups">
+                    <include>Dialog_Standard_ListButton</include>
+                    <label>19141</label>
+                </control>
+                <control type="spincontrolex" id="23" description="channels">
+                    <include>Dialog_Standard_ListButton</include>
+                    <label>19148</label>
+                </control>
+                <control type="radiobutton" id="27" description="ignrec">
+                    <radioposx>620</radioposx>
+                    <include>Dialog_Standard_ListButton</include>
+                    <label>19125</label>
+                </control>
+            </control>
+
+            <!-- Ok Cancel -->
+            <control type="grouplist" id="8000">
+                <onup>8001</onup>
+                <onleft>8001</onleft>
+                <onright>8002</onright>
+                <include>Dialog_Standard_OkCancel_GroupList</include>
+
+                <control type="button" id="26">
+                    <description>Search</description>
+                    <label>137</label>
+                    <include>Dialog_Standard_OkCancel</include>
+                </control>
+                <control type="button" id="25">
+                    <description>Cancel</description>
+                    <label>$LOCALIZE[222]</label>
+                    <include>Dialog_Standard_OkCancel</include>
+                </control>
+                <control type="button" id="28">
+                    <description>Defaults</description>
+                    <label>$LOCALIZE[409]</label>
+                    <include>Dialog_Standard_OkCancel</include>
+                </control>
+
+            </control>
+        </control>
+    </controls>
+</window>

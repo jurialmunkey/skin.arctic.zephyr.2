@@ -1,0 +1,598 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+    <include name="Home_MainMenu_SettingsItems">
+        <content>
+            <item id="1">
+                <label>$LOCALIZE[14206] $LOCALIZE[5]</label>
+                <icon>special://skin/extras/icons/skinsettings.png</icon>
+                <onclick>ReplaceWindow(InterfaceSettings)</onclick>
+                <property name="path">ReplaceWindow(InterfaceSettings)</property>
+                <property name="altpath">ActivateWindow(InterfaceSettings)</property>
+            </item>
+            <item id="4">
+                <label>$LOCALIZE[166] $LOCALIZE[5]</label>
+                <icon>special://skin/extras/icons/paintbrush.png</icon>
+                <onclick>ReplaceWindow(SkinSettings)</onclick>
+                <property name="path">ReplaceWindow(SkinSettings)</property>
+                <property name="altpath">ActivateWindow(SkinSettings)</property>
+            </item>
+            <item id="2">
+                <label>$LOCALIZE[14211] $LOCALIZE[5]</label>
+                <icon>special://skin/extras/icons/tags.png</icon>
+                <onclick>ReplaceWindow(MediaSettings)</onclick>
+                <property name="path">ReplaceWindow(MediaSettings)</property>
+                <property name="altpath">ActivateWindow(MediaSettings)</property>
+            </item>
+            <item id="3">
+                <label>$LOCALIZE[14200] $LOCALIZE[5]</label>
+                <icon>special://skin/extras/icons/equalizer.png</icon>
+                <onclick>ReplaceWindow(PlayerSettings)</onclick>
+                <property name="path">ReplaceWindow(PlayerSettings)</property>
+                <property name="altpath">ActivateWindow(PlayerSettings)</property>
+            </item>
+            <item id="5">
+                <label>$LOCALIZE[13000] $LOCALIZE[5]</label>
+                <icon>special://skin/extras/icons/configure.png</icon>
+                <onclick>ReplaceWindow(SystemSettings)</onclick>
+                <property name="path">ReplaceWindow(SystemSettings)</property>
+                <property name="altpath">ActivateWindow(SystemSettings)</property>
+            </item>
+            <item id="6">
+                <label>$LOCALIZE[14036] $LOCALIZE[5]</label>
+                <icon>special://skin/extras/icons/network.png</icon>
+                <onclick>ReplaceWindow(servicesettings)</onclick>
+                <property name="path">ReplaceWindow(servicesettings)</property>
+                <property name="altpath">ActivateWindow(servicesettings)</property>
+            </item>
+            <item id="10">
+                <label>$LOCALIZE[31294] $LOCALIZE[5]</label>
+                <icon>special://skin/extras/icons/livetv.png</icon>
+                <onclick>ReplaceWindow(pvrsettings)</onclick>
+                <property name="path">ReplaceWindow(pvrsettings)</property>
+                <property name="altpath">ActivateWindow(pvrsettings)</property>
+            </item>
+            <item id="9">
+                <label>$LOCALIZE[130] $LOCALIZE[5]</label>
+                <icon>special://skin/extras/icons/sysinfo.png</icon>
+                <onclick>ReplaceWindow(systeminfo)</onclick>
+                <property name="path">ReplaceWindow(systeminfo)</property>
+                <property name="altpath">ActivateWindow(systeminfo)</property>
+            </item>
+            <item id="7">
+                <label>$LOCALIZE[13200] $LOCALIZE[5]</label>
+                <icon>special://skin/extras/icons/actor.png</icon>
+                <onclick>ReplaceWindow(Profiles)</onclick>
+                <property name="path">ReplaceWindow(Profiles)</property>
+                <property name="altpath">ActivateWindow(Profiles)</property>
+            </item>
+        </content>
+    </include>
+
+    <include name="Home_MainMenu_InfoItems">
+        <content>
+            <!-- Play -->
+            <item>
+                <label>$INFO[Control.GetLabel(8)]</label>
+                <icon>special://skin/extras/icons/play3.png</icon>
+                <onclick>SendClick(8)</onclick>
+                <visible>Control.IsEnabled(8)</visible>
+            </item>
+            <!-- CinemaVision -->
+            <item>
+                 <label>$LOCALIZE[31315]</label>
+                 <icon>special://skin/extras/icons/cinemavision.png</icon>
+                 <onclick>Dialog.Close(MovieInformation)</onclick>
+                 <onclick>RunScript(script.cinemavision,experience)</onclick>
+                 <visible>System.HasAddon(script.cinemavision) + [String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season) | String.IsEqual(ListItem.DBType,episode)]</visible>
+            </item> 
+            <!-- Trailer -->
+            <item>
+                <label>$INFO[Control.GetLabel(11)]</label>
+                <icon>special://skin/extras/icons/video.png</icon>
+                <!-- <onclick>SendClick(11)</onclick> -->
+                <onclick>SetFocus(9503)</onclick>
+                <onclick>SetProperty(TrailerPlaying,1,Home)</onclick>
+                <onclick>PlayMedia($INFO[ListItem.Trailer],false,1)</onclick>
+                <visible>Control.IsEnabled(11)</visible>
+                <visible>!String.IsEmpty(ListItem.Trailer)</visible>
+            </item>
+            <!-- Plot -->
+            <item>
+                <label>Plot</label>
+                <icon>special://skin/extras/icons/quote.png</icon>
+                <onclick>SetFocus(9601)</onclick>
+            </item>
+            <!-- Info -->
+            <item>
+                <label>$LOCALIZE[31285]</label>
+                <icon>special://skin/extras/icons/infobubble.png</icon>
+                <onclick>SetFocus(9005)</onclick>
+                <onclick>Select</onclick>
+                <visible>Control.IsEnabled(9005)</visible>
+            </item>
+            <!-- User Rating -->
+            <item>
+                <label>$LOCALIZE[31310]$INFO[ListItem.UserRating,: ,]</label>
+                <icon>special://skin/extras/icons/award.png</icon>
+                <onclick>SendClick(7)</onclick>
+                <visible>Control.IsEnabled(7)</visible>
+            </item>
+            <!-- Art -->
+            <item>
+                <label>$INFO[Control.GetLabel(10)]</label>
+                <icon>special://skin/extras/icons/paintbrush.png</icon>
+                <onclick>SendClick(10)</onclick>
+                <visible>Control.IsEnabled(10)</visible>
+                <visible>!Skin.HasSetting(global.kioskmode)</visible>
+            </item>
+            <!-- Art Downloader -->
+            <item>
+                <label>$INFO[Control.GetLabel(9001)]</label>
+                <icon>special://skin/extras/icons/paintbucket3.png</icon>
+                <onclick>SetFocus(9001)</onclick>
+                <onclick>Select</onclick>
+                <onclick>SetFocus(300)</onclick>
+                <visible>Control.IsEnabled(9001)</visible>
+                <visible>!Skin.HasSetting(global.kioskmode)</visible>
+            </item>
+            <!-- Refresh -->
+            <item>
+                <label>$INFO[Control.GetLabel(6)]</label>
+                <icon>special://skin/extras/icons/update.png</icon>
+                <onclick>SendClick(6)</onclick>
+                <visible>Control.IsEnabled(6)</visible>
+                <visible>!Skin.HasSetting(global.kioskmode)</visible>
+            </item>
+        </content>
+    </include>
+
+    <include name="Home_MainMenu_InfoItems_Weather">
+        <content>
+            <!-- Next -->
+            <item>
+                <label>$LOCALIZE[31217]</label>
+                <icon>special://skin/extras/icons/sort-up.png</icon>
+                <onclick>SetFocus(50)</onclick>
+                <onclick>Weather.LocationNext</onclick>
+            </item>
+            <!-- Refresh -->
+            <item>
+                <label>$INFO[Control.GetLabel(2)]</label>
+                <icon>special://skin/extras/icons/update.png</icon>
+                <onclick>SetFocus(50)</onclick>
+                <onclick>SendClick(2)</onclick>
+                <visible>Control.IsEnabled(2)</visible>
+            </item>
+            
+            <!-- Settings -->
+            <item>
+                <label>$INFO[Control.GetLabel(9004)]</label>
+                <icon>special://skin/extras/icons/sun.png</icon>
+                <onclick>SetFocus(50)</onclick>
+                <onclick>Addon.OpenSettings($INFO[Weather.Plugin])</onclick>
+                <visible>Control.IsEnabled(9004)</visible>
+            </item>
+            <!-- Settings -->
+            <item>
+                <label>$INFO[Control.GetLabel(9005)]</label>
+                <icon>special://skin/extras/icons/settings.png</icon>
+                <onclick>SetFocus(50)</onclick>
+                <onclick>ActivateWindow(ServiceSettings,weather)</onclick>
+                <visible>Control.IsEnabled(9005)</visible>
+            </item>
+            <!-- Icons -->
+            <item>
+                <label>$INFO[Control.GetLabel(9006)]</label>
+                <icon>special://skin/extras/icons/paintbrush.png</icon>
+                <onclick>RunScript(script.image.resource.select,property=weather.icons&amp;type=resource.images.weathericons)</onclick>
+                <visible>Control.IsEnabled(9006)</visible>
+            </item>
+            <!-- Fanart -->
+            <item>
+                <label>$INFO[Control.GetLabel(9007)]</label>
+                <icon>special://skin/extras/icons/pictures.png</icon>
+                <onclick condition="!System.HasAddon(resource.images.weatherfanart.multi)">InstallAddon(resource.images.weatherfanart.multi)</onclick>
+                <visible>Control.IsEnabled(9007)</visible>
+            </item>
+        </content>
+    </include>
+
+    <include name="Home_MainMenu_ExtInfoItems">
+        <content>
+            <!-- Trakt -->
+            <item>
+                <label>$INFO[Control.GetLabel(9009)]</label>
+                <icon>special://skin/extras/icons/addtile.png</icon>
+                <onclick>SendClick(9009)</onclick>
+                <visible>Control.IsEnabled(9009)</visible>
+            </item>
+            <!-- Manage -->
+            <item>
+                <label>$INFO[Control.GetLabel(445)]</label>
+                <icon>special://skin/extras/icons/configure.png</icon>
+                <onclick>SendClick(445)</onclick>
+                <visible>Control.IsEnabled(445)</visible>
+            </item>
+        </content>
+    </include>
+
+    <include name="Home_MainMenu_InfoItems_Addons">
+        <content>
+            <!-- use -->
+            <item>
+                <label>$INFO[Control.GetLabel(12)]</label>
+                <icon>special://skin/extras/icons/play3.png</icon>
+                <onclick>SendClick(12)</onclick>
+                <visible>Control.IsEnabled(12)</visible>
+            </item>
+            <!-- enable -->
+            <item>
+                <label>$INFO[Control.GetLabel(7)]</label>
+                <icon>special://skin/extras/icons/enabled.png</icon>
+                <onclick>SendClick(7)</onclick>
+                <visible>Control.IsEnabled(7)</visible>
+                <visible>String.IsEqual(Control.GetLabel(7),$LOCALIZE[24021])</visible>
+                <visible>!Skin.HasSetting(global.kioskmode)</visible>
+            </item>
+            <item>
+                <label>$INFO[Control.GetLabel(7)]</label>
+                <icon>special://skin/extras/icons/error.png</icon>
+                <onclick>SendClick(7)</onclick>
+                <visible>Control.IsEnabled(7)</visible>
+                <visible>!String.IsEqual(Control.GetLabel(7),$LOCALIZE[24021])</visible>
+                <visible>!Skin.HasSetting(global.kioskmode)</visible>
+            </item>
+            <!-- uninstall -->
+            <item>
+                <label>$INFO[Control.GetLabel(6)]</label>
+                <icon>special://skin/extras/icons/download.png</icon>
+                <onclick>SendClick(6)</onclick>
+                <visible>Control.IsEnabled(6)</visible>
+                <visible>!Skin.HasSetting(global.kioskmode)</visible>
+            </item>
+            <!--Update -->
+            <item>
+                <label>$INFO[Control.GetLabel(8)]</label>
+                <icon>special://skin/extras/icons/update.png</icon>
+                <onclick>SendClick(8)</onclick>
+                <visible>Control.IsEnabled(8)</visible>
+                <visible>!Skin.HasSetting(global.kioskmode)</visible>
+            </item>
+            <!-- settings -->
+            <item>
+                <label>$INFO[Control.GetLabel(9)]</label>
+                <icon>special://skin/extras/icons/settings.png</icon>
+                <onclick>SendClick(9)</onclick>
+                <visible>Control.IsEnabled(9)</visible>
+                <visible>!Skin.HasSetting(global.kioskmode)</visible>
+            </item>
+            <!-- Auto Update -->
+            <item>
+                <label>$INFO[Control.GetLabel(13)]</label>
+                <icon>$VAR[Image_AutoUpdate]</icon>
+                <onclick>SetFocus(13)</onclick>
+                <onclick>Select</onclick>
+                <onclick>SetFocus(300)</onclick>
+                <visible>Control.IsEnabled(13)</visible>
+                <visible>!Skin.HasSetting(global.kioskmode)</visible>
+            </item>
+        </content>
+    </include>
+
+
+    <variable name="Home_View_Locked">
+        <value condition="[Container.Content() + !String.IsEmpty(Skin.String(Skin.ForcedView.))] | [Container.Content(tags) + !String.IsEmpty(Skin.String(Skin.ForcedView.tags))] | [Container.Content(years) + !String.IsEmpty(Skin.String(Skin.ForcedView.years))] | [Container.Content(genres) + !String.IsEmpty(Skin.String(Skin.ForcedView.genres))] | [Container.Content(countries) + !String.IsEmpty(Skin.String(Skin.ForcedView.countries))] | [Container.Content(studios) + !String.IsEmpty(Skin.String(Skin.ForcedView.studios))] | [Container.Content(playlists) + !String.IsEmpty(Skin.String(Skin.ForcedView.playlists))] | [Container.Content(movies) + !String.IsEmpty(Skin.String(Skin.ForcedView.movies))] | [Container.Content(sets) + !String.IsEmpty(Skin.String(Skin.ForcedView.sets))] | [Container.Content(tvshows) + !String.IsEmpty(Skin.String(Skin.ForcedView.tvshows))] | [Container.Content(seasons) + !String.IsEmpty(Skin.String(Skin.ForcedView.seasons))] | [Container.Content(episodes) + !String.IsEmpty(Skin.String(Skin.ForcedView.episodes))] | [Container.Content(artists) + !String.IsEmpty(Skin.String(Skin.ForcedView.artists))] | [Container.Content(albums) + !String.IsEmpty(Skin.String(Skin.ForcedView.albums))] | [Container.Content(songs) + !String.IsEmpty(Skin.String(Skin.ForcedView.songs))] | [Container.Content(musicvideos) + !String.IsEmpty(Skin.String(Skin.ForcedView.musicvideos))] | [Container.Content(addons) + !String.IsEmpty(Skin.String(Skin.ForcedView.addons))] | [Container.Content(actors) + !String.IsEmpty(Skin.String(Skin.ForcedView.actors))] | [Container.Content(directors) + !String.IsEmpty(Skin.String(Skin.ForcedView.directors))] | [Container.Content(files) + !String.IsEmpty(Skin.String(Skin.ForcedView.files))] | [Container.Content(mixed) + !String.IsEmpty(Skin.String(Skin.ForcedView.mixed))] | [Container.Content(images) + !String.IsEmpty(Skin.String(Skin.ForcedView.images))] | [Container.Content(games) + !String.IsEmpty(Skin.String(Skin.ForcedView.games))] | [Container.Content(unknown) + !String.IsEmpty(Skin.String(Skin.ForcedView.unknown))] | [Container.Content(videos) + !String.IsEmpty(Skin.String(Skin.ForcedView.videos))]">special://skin/extras/icons/locked.png</value>
+        <value>special://skin/extras/icons/unlocked.png</value>
+    </variable>
+    <variable name="Home_View_Locked_Label">
+        <value condition="[Container.Content() + !String.IsEmpty(Skin.String(Skin.ForcedView.))] | [Container.Content(tags) + !String.IsEmpty(Skin.String(Skin.ForcedView.tags))] | [Container.Content(years) + !String.IsEmpty(Skin.String(Skin.ForcedView.years))] | [Container.Content(genres) + !String.IsEmpty(Skin.String(Skin.ForcedView.genres))] | [Container.Content(countries) + !String.IsEmpty(Skin.String(Skin.ForcedView.countries))] | [Container.Content(studios) + !String.IsEmpty(Skin.String(Skin.ForcedView.studios))] | [Container.Content(playlists) + !String.IsEmpty(Skin.String(Skin.ForcedView.playlists))] | [Container.Content(movies) + !String.IsEmpty(Skin.String(Skin.ForcedView.movies))] | [Container.Content(sets) + !String.IsEmpty(Skin.String(Skin.ForcedView.sets))] | [Container.Content(tvshows) + !String.IsEmpty(Skin.String(Skin.ForcedView.tvshows))] | [Container.Content(seasons) + !String.IsEmpty(Skin.String(Skin.ForcedView.seasons))] | [Container.Content(episodes) + !String.IsEmpty(Skin.String(Skin.ForcedView.episodes))] | [Container.Content(artists) + !String.IsEmpty(Skin.String(Skin.ForcedView.artists))] | [Container.Content(albums) + !String.IsEmpty(Skin.String(Skin.ForcedView.albums))] | [Container.Content(songs) + !String.IsEmpty(Skin.String(Skin.ForcedView.songs))] | [Container.Content(musicvideos) + !String.IsEmpty(Skin.String(Skin.ForcedView.musicvideos))] | [Container.Content(addons) + !String.IsEmpty(Skin.String(Skin.ForcedView.addons))] | [Container.Content(actors) + !String.IsEmpty(Skin.String(Skin.ForcedView.actors))] | [Container.Content(directors) + !String.IsEmpty(Skin.String(Skin.ForcedView.directors))] | [Container.Content(files) + !String.IsEmpty(Skin.String(Skin.ForcedView.files))] | [Container.Content(mixed) + !String.IsEmpty(Skin.String(Skin.ForcedView.mixed))] | [Container.Content(images) + !String.IsEmpty(Skin.String(Skin.ForcedView.images))] | [Container.Content(games) + !String.IsEmpty(Skin.String(Skin.ForcedView.games))] | [Container.Content(unknown) + !String.IsEmpty(Skin.String(Skin.ForcedView.unknown))] | [Container.Content(videos) + !String.IsEmpty(Skin.String(Skin.ForcedView.videos))]">$LOCALIZE[31180]</value>
+        <value>$LOCALIZE[31179]</value>
+    </variable>
+
+    <include name="Home_View_LockUnlock">
+        <onclick condition="[Container.Content() + !String.IsEmpty(Skin.String(Skin.ForcedView.))]">Skin.Reset(Skin.ForcedView.)</onclick>
+        <onclick condition="[Container.Content(tags) + !String.IsEmpty(Skin.String(Skin.ForcedView.tags))]">Skin.Reset(Skin.ForcedView.tags)</onclick>
+        <onclick condition="[Container.Content(years) + !String.IsEmpty(Skin.String(Skin.ForcedView.years))]">Skin.Reset(Skin.ForcedView.years)</onclick>
+        <onclick condition="[Container.Content(genres) + !String.IsEmpty(Skin.String(Skin.ForcedView.genres))]">Skin.Reset(Skin.ForcedView.genres)</onclick>
+        <onclick condition="[Container.Content(countries) + !String.IsEmpty(Skin.String(Skin.ForcedView.countries))]">Skin.Reset(Skin.ForcedView.countries)</onclick>
+        <onclick condition="[Container.Content(studios) + !String.IsEmpty(Skin.String(Skin.ForcedView.studios))]">Skin.Reset(Skin.ForcedView.studios)</onclick>
+        <onclick condition="[Container.Content(playlists) + !String.IsEmpty(Skin.String(Skin.ForcedView.playlists))]">Skin.Reset(Skin.ForcedView.playlists)</onclick>
+        <onclick condition="[Container.Content(movies) + !String.IsEmpty(Skin.String(Skin.ForcedView.movies))]">Skin.Reset(Skin.ForcedView.movies)</onclick>
+        <onclick condition="[Container.Content(sets) + !String.IsEmpty(Skin.String(Skin.ForcedView.sets))]">Skin.Reset(Skin.ForcedView.sets)</onclick>
+        <onclick condition="[Container.Content(tvshows) + !String.IsEmpty(Skin.String(Skin.ForcedView.tvshows))]">Skin.Reset(Skin.ForcedView.tvshows)</onclick>
+        <onclick condition="[Container.Content(seasons) + !String.IsEmpty(Skin.String(Skin.ForcedView.seasons))]">Skin.Reset(Skin.ForcedView.seasons)</onclick>
+        <onclick condition="[Container.Content(episodes) + !String.IsEmpty(Skin.String(Skin.ForcedView.episodes))]">Skin.Reset(Skin.ForcedView.episodes)</onclick>
+        <onclick condition="[Container.Content(artists) + !String.IsEmpty(Skin.String(Skin.ForcedView.artists))]">Skin.Reset(Skin.ForcedView.artists)</onclick>
+        <onclick condition="[Container.Content(albums) + !String.IsEmpty(Skin.String(Skin.ForcedView.albums))]">Skin.Reset(Skin.ForcedView.albums)</onclick>
+        <onclick condition="[Container.Content(songs) + !String.IsEmpty(Skin.String(Skin.ForcedView.songs))]">Skin.Reset(Skin.ForcedView.songs)</onclick>
+        <onclick condition="[Container.Content(musicvideos) + !String.IsEmpty(Skin.String(Skin.ForcedView.musicvideos))]">Skin.Reset(Skin.ForcedView.musicvideos)</onclick>
+        <onclick condition="[Container.Content(addons) + !String.IsEmpty(Skin.String(Skin.ForcedView.addons))]">Skin.Reset(Skin.ForcedView.addons)</onclick>
+        <onclick condition="[Container.Content(actors) + !String.IsEmpty(Skin.String(Skin.ForcedView.actors))]">Skin.Reset(Skin.ForcedView.actors)</onclick>
+        <onclick condition="[Container.Content(directors) + !String.IsEmpty(Skin.String(Skin.ForcedView.directors))]">Skin.Reset(Skin.ForcedView.directors)</onclick>
+        <onclick condition="[Container.Content(files) + !String.IsEmpty(Skin.String(Skin.ForcedView.files))]">Skin.Reset(Skin.ForcedView.files)</onclick>
+        <onclick condition="[Container.Content(mixed) + !String.IsEmpty(Skin.String(Skin.ForcedView.mixed))]">Skin.Reset(Skin.ForcedView.mixed)</onclick>
+        <onclick condition="[Container.Content(images) + !String.IsEmpty(Skin.String(Skin.ForcedView.images))]">Skin.Reset(Skin.ForcedView.images)</onclick>
+        <onclick condition="[Container.Content(games) + !String.IsEmpty(Skin.String(Skin.ForcedView.games))]">Skin.Reset(Skin.ForcedView.games)</onclick>
+        <onclick condition="[Container.Content(unknown) + !String.IsEmpty(Skin.String(Skin.ForcedView.unknown))]">Skin.Reset(Skin.ForcedView.unknown)</onclick>
+        <onclick condition="[Container.Content(videos) + !String.IsEmpty(Skin.String(Skin.ForcedView.videos))]">Skin.Reset(Skin.ForcedView.videos)</onclick>
+    </include>
+    <include name="Home_MainMenu_OptionsItems">
+        <content>
+            <!-- Group -->
+            <item>
+                <label>$INFO[Control.GetLabel(28)]</label>
+                <icon>special://skin/extras/icons/years.png</icon>
+                <onclick>SendClick(28)</onclick>
+                <visible>Control.IsEnabled(28)</visible>
+            </item>
+            <!-- Viewmode -->
+            <item>
+                <label>$INFO[Container.Viewmode,$LOCALIZE[582]: ,]</label>
+                <icon>special://skin/extras/icons/viewmode.png</icon>
+                <include>Home_View_LockUnlock</include>
+                <onclick>Container.NextViewMode</onclick>
+                <visible>Control.IsEnabled(2)</visible>
+                <visible>Window.IsVisible(MyVideoNav.xml) | Window.IsVisible(MyMusicNav.xml) | Window.IsVisible(AddonBrowser.xml) | Window.IsVisible(MyPics.xml) | Window.IsVisible(MyPrograms.xml)</visible>
+                <visible>!Skin.HasSetting(global.kioskmode)</visible>
+            </item>
+            <!-- Lock viewmode -->
+            <item>
+                <label>$VAR[Home_View_Locked_Label,,: ]$INFO[Container.Content,[CAPITALIZE],[/CAPITALIZE]]</label>
+                <icon>$VAR[Home_View_Locked]</icon>
+                <include>Home_View_LockUnlock</include>
+                <onclick condition="[Container.Content() + String.IsEmpty(Skin.String(Skin.ForcedView.))]">AlarmClock(setviewlock,Skin.SetString(Skin.ForcedView.$INFO[Container.Content],$INFO[Container.Viewmode]),00:01,silent)</onclick>
+                <onclick condition="[Container.Content(tags) + String.IsEmpty(Skin.String(Skin.ForcedView.tags))]">AlarmClock(setviewlock,Skin.SetString(Skin.ForcedView.$INFO[Container.Content],$INFO[Container.Viewmode]),00:01,silent)</onclick>
+                <onclick condition="[Container.Content(years) + String.IsEmpty(Skin.String(Skin.ForcedView.years))]">AlarmClock(setviewlock,Skin.SetString(Skin.ForcedView.$INFO[Container.Content],$INFO[Container.Viewmode]),00:01,silent)</onclick>
+                <onclick condition="[Container.Content(genres) + String.IsEmpty(Skin.String(Skin.ForcedView.genres))]">AlarmClock(setviewlock,Skin.SetString(Skin.ForcedView.$INFO[Container.Content],$INFO[Container.Viewmode]),00:01,silent)</onclick>
+                <onclick condition="[Container.Content(countries) + String.IsEmpty(Skin.String(Skin.ForcedView.countries))]">AlarmClock(setviewlock,Skin.SetString(Skin.ForcedView.$INFO[Container.Content],$INFO[Container.Viewmode]),00:01,silent)</onclick>
+                <onclick condition="[Container.Content(studios) + String.IsEmpty(Skin.String(Skin.ForcedView.studios))]">AlarmClock(setviewlock,Skin.SetString(Skin.ForcedView.$INFO[Container.Content],$INFO[Container.Viewmode]),00:01,silent)</onclick>
+                <onclick condition="[Container.Content(playlists) + String.IsEmpty(Skin.String(Skin.ForcedView.playlists))]">AlarmClock(setviewlock,Skin.SetString(Skin.ForcedView.$INFO[Container.Content],$INFO[Container.Viewmode]),00:01,silent)</onclick>
+                <onclick condition="[Container.Content(movies) + String.IsEmpty(Skin.String(Skin.ForcedView.movies))]">AlarmClock(setviewlock,Skin.SetString(Skin.ForcedView.$INFO[Container.Content],$INFO[Container.Viewmode]),00:01,silent)</onclick>
+                <onclick condition="[Container.Content(sets) + String.IsEmpty(Skin.String(Skin.ForcedView.sets))]">AlarmClock(setviewlock,Skin.SetString(Skin.ForcedView.$INFO[Container.Content],$INFO[Container.Viewmode]),00:01,silent)</onclick>
+                <onclick condition="[Container.Content(tvshows) + String.IsEmpty(Skin.String(Skin.ForcedView.tvshows))]">AlarmClock(setviewlock,Skin.SetString(Skin.ForcedView.$INFO[Container.Content],$INFO[Container.Viewmode]),00:01,silent)</onclick>
+                <onclick condition="[Container.Content(seasons) + String.IsEmpty(Skin.String(Skin.ForcedView.seasons))]">AlarmClock(setviewlock,Skin.SetString(Skin.ForcedView.$INFO[Container.Content],$INFO[Container.Viewmode]),00:01,silent)</onclick>
+                <onclick condition="[Container.Content(episodes) + String.IsEmpty(Skin.String(Skin.ForcedView.episodes))]">AlarmClock(setviewlock,Skin.SetString(Skin.ForcedView.$INFO[Container.Content],$INFO[Container.Viewmode]),00:01,silent)</onclick>
+                <onclick condition="[Container.Content(artists) + String.IsEmpty(Skin.String(Skin.ForcedView.artists))]">AlarmClock(setviewlock,Skin.SetString(Skin.ForcedView.$INFO[Container.Content],$INFO[Container.Viewmode]),00:01,silent)</onclick>
+                <onclick condition="[Container.Content(albums) + String.IsEmpty(Skin.String(Skin.ForcedView.albums))]">AlarmClock(setviewlock,Skin.SetString(Skin.ForcedView.$INFO[Container.Content],$INFO[Container.Viewmode]),00:01,silent)</onclick>
+                <onclick condition="[Container.Content(songs) + String.IsEmpty(Skin.String(Skin.ForcedView.songs))]">AlarmClock(setviewlock,Skin.SetString(Skin.ForcedView.$INFO[Container.Content],$INFO[Container.Viewmode]),00:01,silent)</onclick>
+                <onclick condition="[Container.Content(musicvideos) + String.IsEmpty(Skin.String(Skin.ForcedView.musicvideos))]">AlarmClock(setviewlock,Skin.SetString(Skin.ForcedView.$INFO[Container.Content],$INFO[Container.Viewmode]),00:01,silent)</onclick>
+                <onclick condition="[Container.Content(addons) + String.IsEmpty(Skin.String(Skin.ForcedView.addons))]">AlarmClock(setviewlock,Skin.SetString(Skin.ForcedView.$INFO[Container.Content],$INFO[Container.Viewmode]),00:01,silent)</onclick>
+                <onclick condition="[Container.Content(actors) + String.IsEmpty(Skin.String(Skin.ForcedView.actors))]">AlarmClock(setviewlock,Skin.SetString(Skin.ForcedView.$INFO[Container.Content],$INFO[Container.Viewmode]),00:01,silent)</onclick>
+                <onclick condition="[Container.Content(directors) + String.IsEmpty(Skin.String(Skin.ForcedView.directors))]">AlarmClock(setviewlock,Skin.SetString(Skin.ForcedView.$INFO[Container.Content],$INFO[Container.Viewmode]),00:01,silent)</onclick>
+                <onclick condition="[Container.Content(files) + String.IsEmpty(Skin.String(Skin.ForcedView.files))]">AlarmClock(setviewlock,Skin.SetString(Skin.ForcedView.$INFO[Container.Content],$INFO[Container.Viewmode]),00:01,silent)</onclick>
+                <onclick condition="[Container.Content(mixed) + String.IsEmpty(Skin.String(Skin.ForcedView.mixed))]">AlarmClock(setviewlock,Skin.SetString(Skin.ForcedView.$INFO[Container.Content],$INFO[Container.Viewmode]),00:01,silent)</onclick>
+                <onclick condition="[Container.Content(images) + String.IsEmpty(Skin.String(Skin.ForcedView.images))]">AlarmClock(setviewlock,Skin.SetString(Skin.ForcedView.$INFO[Container.Content],$INFO[Container.Viewmode]),00:01,silent)</onclick>
+                <onclick condition="[Container.Content(games) + String.IsEmpty(Skin.String(Skin.ForcedView.games))]">AlarmClock(setviewlock,Skin.SetString(Skin.ForcedView.$INFO[Container.Content],$INFO[Container.Viewmode]),00:01,silent)</onclick>
+                <onclick condition="[Container.Content(unknown) + String.IsEmpty(Skin.String(Skin.ForcedView.unknown))]">AlarmClock(setviewlock,Skin.SetString(Skin.ForcedView.$INFO[Container.Content],$INFO[Container.Viewmode]),00:01,silent)</onclick>
+                <onclick condition="[Container.Content(videos) + String.IsEmpty(Skin.String(Skin.ForcedView.videos))]">AlarmClock(setviewlock,Skin.SetString(Skin.ForcedView.$INFO[Container.Content],$INFO[Container.Viewmode]),00:01,silent)</onclick>
+                <visible>Window.IsVisible(MyVideoNav.xml) | Window.IsVisible(MyMusicNav.xml) | Window.IsVisible(AddonBrowser.xml) | Window.IsVisible(MyPics.xml) | Window.IsVisible(MyPrograms.xml)</visible>
+                <visible>!Skin.HasSetting(global.kioskmode)</visible>
+            </item>
+            <!-- Sort -->
+            <item>
+                <label>$INFO[Control.GetLabel(3)]</label>
+                <icon>special://skin/extras/icons/sort2.png</icon>
+                <onclick>SendClick(3)</onclick>
+                <visible>Control.IsEnabled(3)</visible>
+            </item>
+            <!-- Ascend Descend -->
+            <item>
+                <label>$INFO[Control.GetLabel(4),$LOCALIZE[31239]: ,]</label>
+                <icon>special://skin/extras/icons/sort.png</icon>
+                <onclick>SendClick(4)</onclick>
+                <visible>Control.IsEnabled(4)</visible>
+            </item>
+            <!-- Search -->
+            <item>
+                <label>$LOCALIZE[137]</label>
+                <icon>special://skin/extras/icons/search.png</icon>
+                <onclick>SendClick(8)</onclick>
+                <!-- <onclick>SetFocus(50)</onclick> -->
+                <!-- <onclick>RunScript(script.globalsearch)</onclick> -->
+                <visible>!String.Contains(Container.FolderPath,plugin://) + Control.IsEnabled(8)</visible>
+            </item>
+            <!-- Filter -->
+            <item>
+                <label>$LOCALIZE[587]: $VAR[Label_Filtered]</label>
+                <icon>$VAR[Image_Filtered]</icon>
+                <onclick>Filter</onclick>
+                <visible>Container.CanFilterAdvanced</visible>
+            </item>
+            <!-- Hide Watched -->
+            <item>
+                <label>$INFO[Control.GetLabel(14)]</label>
+                <icon>$VAR[Image_Watched]</icon>
+                <onclick>SendClick(14)</onclick>
+                <visible>Control.IsEnabled(14)</visible>
+            </item>
+            
+            <!-- Notifications -->
+            <item>
+                <label>$INFO[Control.GetLabel(6)]</label>
+                <icon>special://skin/extras/icons/infobubble.png</icon>
+                <onclick>SetFocus(6)</onclick>
+                <onclick>Select</onclick>
+                <onclick>SetFocus(300)</onclick>
+                <visible>Control.IsEnabled(6)</visible>
+                <visible>!Skin.HasSetting(global.kioskmode)</visible>
+            </item>
+            <!-- Extra Fanart -->
+            <item>
+                <label>$VAR[Label_ExtraFanart]</label>
+                <icon>special://skin/extras/icons/filebox.png</icon>
+                <onclick>Skin.ToggleSetting(SkinHelper.EnableExtraFanart)</onclick>
+                <visible>Control.IsEnabled(6005)</visible>
+                <visible>!Skin.HasSetting(global.kioskmode)</visible>
+            </item>
+
+            <!-- Settings -->
+            <item>
+                <label>$INFO[Control.GetLabel(5)]</label>
+                <icon>special://skin/extras/icons/settings.png</icon>
+                <onclick>SendClick(5)</onclick>
+                <visible>Control.IsEnabled(5)</visible>
+                <visible>!Skin.HasSetting(global.kioskmode)</visible>
+            </item>
+            <!-- Update -->
+            <item>
+                <label>$INFO[Control.GetLabel(20)]</label>
+                <icon>special://skin/extras/icons/update.png</icon>
+                <onclick>SendClick(20)</onclick>
+                <visible>Control.IsEnabled(20)</visible>
+                <visible>!Skin.HasSetting(global.kioskmode)</visible>
+            </item>
+            <!-- Check Updates -->
+            <item>
+                <label>$INFO[Control.GetLabel(9)]</label>
+                <icon>special://skin/extras/icons/update.png</icon>
+                <onclick>SendClick(9)</onclick>
+                <visible>Control.IsEnabled(9)</visible>
+                <visible>!Skin.HasSetting(global.kioskmode)</visible>
+            </item>
+            
+            <!-- Playlist -->
+            <item>
+                <icon>special://skin/extras/icons/playlist.png</icon>
+                <label>13350</label>
+                <onclick condition="Integer.IsGreater(Playlist.Length(video),0)">ActivateWindow(VideoPlaylist)</onclick>
+                <onclick condition="Integer.IsGreater(Playlist.Length(music),0)">ActivateWindow(MusicPlaylist)</onclick>
+                <visible>Integer.IsGreater(Playlist.Length(music),0) | Integer.IsGreater(Playlist.Length(video),0)</visible>
+            </item>
+            <!-- Fullscreen -->
+            <item>
+                <icon>special://skin/extras/icons/fullscreen.png</icon>
+                <label>$LOCALIZE[31023]</label>
+                <visible>Player.HasMedia</visible>
+                <onclick>Fullscreen</onclick>
+            </item>
+            <!-- Addon settings -->
+            <item>
+                <icon>special://skin/extras/icons/settings.png</icon>
+                <label>$LOCALIZE[10140]</label>
+                <onclick>Addon.OpenSettings($INFO[Container.PluginName])</onclick>
+                <visible>!String.IsEmpty(Container.PluginName)</visible>
+                <visible>!Skin.HasSetting(global.kioskmode)</visible>
+            </item>
+            <!-- Get More -->
+            <item>
+                <icon>special://skin/extras/icons/download.png</icon>
+                <label>$LOCALIZE[21452]</label>
+                <onclick>ActivateWindow(addonbrowser,addons://more/video/,return)</onclick>
+                <visible>Container.Content(addons) + !String.Contains(Container.FolderPath,addons://)</visible>
+                <visible>!Skin.HasSetting(global.kioskmode)</visible>
+            </item>
+            
+        </content>
+    </include>
+
+    <include name="Home_MainMenu_NextAired">
+        <content>
+            <item>
+                <icon>special://skin/extras/icons/settings.png</icon>
+                <label>$LOCALIZE[10140]</label>
+                <onclick>Addon.OpenSettings(script.tv.show.next.aired)</onclick>
+                <visible>!Skin.HasSetting(global.kioskmode)</visible>
+            </item>
+        </content>
+    </include>
+
+    <include name="Home_MainMenu_GlobalSearch">
+        <content>
+            <item>
+                <icon>special://skin/extras/icons/search.png</icon>
+                <label>$LOCALIZE[137]</label>
+                <onclick>SendClick(198)</onclick>
+            </item>
+        </content>
+    </include>
+
+
+    <include name="Home_MainMenu_PlaylistItems">
+        <content>
+            <!-- Sort -->
+            <item>
+                <label>$INFO[Control.GetLabel(3)]</label>
+                <icon>special://skin/extras/icons/sort2.png</icon>
+                <onclick>SendClick(3)</onclick>
+                <visible>Control.IsEnabled(3)</visible>
+            </item>
+            <!-- Ascend Descend -->
+            <item>
+                <label>$INFO[Control.GetLabel(4)]</label>
+                <icon>special://skin/extras/icons/sort.png</icon>
+                <onclick>SendClick(4)</onclick>
+                <visible>Control.IsEnabled(4)</visible>
+            </item>
+            <!-- Save -->
+            <item>
+                <label>$INFO[Control.GetLabel(21)]</label>
+                <icon>special://skin/extras/icons/files.png</icon>
+                <onclick>SendClick(21)</onclick>
+                <visible>Control.IsEnabled(21)</visible>
+            </item>
+            <!-- Clear -->
+            <item>
+                <label>$INFO[Control.GetLabel(22)]</label>
+                <icon>special://skin/extras/icons/error.png</icon>
+                <onclick>SendClick(22)</onclick>
+                <visible>Control.IsEnabled(22)</visible>
+            </item>
+            <!-- Play -->
+            <item>
+                <label>$INFO[Control.GetLabel(23)]</label>
+                <icon>special://skin/extras/icons/play3.png</icon>
+                <onclick>SendClick(23)</onclick>
+                <visible>Control.IsEnabled(23)</visible>
+            </item>
+            <!-- Repeat -->
+            <item>
+                <label>$INFO[Control.GetLabel(26)]</label>
+                <icon>special://skin/extras/icons/repeat.png</icon>
+                <onclick>SendClick(26)</onclick>
+                <visible>Control.IsEnabled(26)</visible>
+            </item>
+            <!-- Shuffle -->
+            <item>
+                <label>$INFO[Control.GetLabel(20)]</label>
+                <icon>special://skin/extras/icons/shuffle.png</icon>
+                <onclick>SendClick(20)</onclick>
+                <visible>Control.IsEnabled(20)</visible>
+            </item>
+            <!-- Fullscreen -->
+            <item>
+                <icon>special://skin/extras/icons/fullscreen.png</icon>
+                <label>$LOCALIZE[31023]</label>
+                <visible>Player.HasMedia</visible>
+                <onclick>Fullscreen</onclick>
+            </item>
+        </content>
+    </include>
+
+
+    <expression name="Home_SwitchFocusButton_Expression">!Window.Next(programs) + !Window.Next(pictures) + !Window.Next(filemanager) + !Window.Next(settings) + !Window.Next(systeminfo) + !Window.Next(testpattern) + !Window.Next(screencalibration) + !Window.Next(SettingsCategory.xml) + !Window.Next(MyVideoNav.xml) + !Window.Next(MyMusicNav.xml) + !Window.Next(MyPlaylist.xml) + !Window.Next(loginscreen) + !Window.Next(profiles) + !Window.Next(skinsetting) + !Window.Next(addonbrowser) + !Window.Next(eventlog) + !Window.Next(favourites) + !Window.Next(MyPVRChannels.xml) + !Window.Next(MyPVRRecordings.xml) + !Window.Next(MyPVRTimers.xml) + !Window.Next(MyPVRSearch.xml) + !Window.Next(MyPVRGuide.xml) + !Window.Next(MyGames.xml) + !Window.Next(VideoFullScreen.xml) + !Window.Next(MyWeather.xml) + !Window.Next(SlideShow.xml) + !Window.Next(Startup.xml) + !Window.Next(MusicVisualisation.xml)</expression>
+
+    <include name="Home_MainMenu_Items">
+        <content><include>skinshortcuts-mainmenu</include></content>
+    </include>
+
+    <include name="Home_SubMenu_Items">
+        <content><include>skinshortcuts-submenu</include></content>
+    </include>
+
+    <!-- <include name="Home_OnClick">
+        <onclick>ClearProperty(MenuFocus,Home)</onclick>
+        <onclick>$INFO[ListItem.Property(path)]</onclick>
+        <onback condition="Window.IsVisible(SkinSettings.xml)">SetFocus(9100)</onback>
+        <onback condition="Window.IsVisible(SkinSettings.xml)">Close</onback>
+        <onback condition="Window.IsVisible(SettingsCategory.xml)">SetFocus(3)</onback>
+        <onback condition="Window.IsVisible(SettingsCategory.xml)">Close</onback>
+    </include>
+
+    <include name="Home_OnFocus">
+        <onunfocus>ClearProperty(MenuFocus,Home)</onunfocus>
+        <onfocus>SetProperty(MenuFocus,1,Home)</onfocus>
+        <onfocus>ClearProperty(WidgetFocus,Home)</onfocus>
+        <onfocus>ClearProperty(WidgetLoading,Home)</onfocus>
+        <onfocus>AlarmClock(SetLoad,SetProperty(WidgetLoading,1,Home),00:00,silent)</onfocus>
+    </include> -->
+</includes>
