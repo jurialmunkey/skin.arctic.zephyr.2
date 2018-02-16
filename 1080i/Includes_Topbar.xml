@@ -88,7 +88,7 @@
             <control type="image">
                 <height>240</height>
                 <texture>common/gradient-top.png</texture>
-                <visible>Container(330).HasPrevious + Window.IsVisible(Home)</visible>
+                <visible>Window.IsVisible(Home) + [Container(330).HasPrevious | ![[String.IsEqual(Container(300).ListItem.Property(widget),Weather) | !String.IsEmpty(Container(300).ListItem.Property(widgetPath)) | !String.IsEmpty(Container(300).ListItem.Property(widgetPath.Widget1)) | !String.IsEmpty(Container(300).ListItem.Property(widgetPath.Widget2)) | !String.IsEmpty(Container(300).ListItem.Property(widgetPath.Widget3)) | !String.IsEmpty(Container(300).ListItem.Property(widgetPath.Widget4)) | !String.IsEmpty(Container(300).ListItem.Property(widgetPath.Widget5)) | !String.IsEmpty(Container(300).ListItem.Property(widgetPath.Widget6)) | !String.IsEmpty(Container(300).ListItem.Property(widgetPath.Widget7)) | !String.IsEmpty(Container(300).ListItem.Property(widgetPath.Widget8)) | [String.IsEmpty(Container(300).ListItem.Property(Background)) + String.IsEmpty(Container(300).ListItem.Property(backgroundPlaylist)) + String.IsEmpty(Skin.String(home.slideshowpath))] | [String.IsEqual(Container(300).ListItem.Property(hasSubmenu),True) + !Skin.HasSetting(DisableWidgetCategories)]]]]</visible>
                 <animation effect="fade" start="0" end="100" time="200" reversible="false">Visible</animation>
                 <animation effect="fade" end="0" start="100" time="1000" reversible="false">Hidden</animation>
                 <animation effect="fade" end="0" start="100" time="350" reversible="false">WindowClose</animation>
