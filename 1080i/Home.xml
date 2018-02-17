@@ -6,7 +6,7 @@
     <onload condition="!String.IsEmpty(Window(Home).Property(WidgetFocus)) + !Window.Previous(MusicVisualisation.xml) + !Window.Previous(VideoFullScreen.xml)">SetFocus(3000)</onload>
     <onload>ClearProperty(WidgetLoading,Home)</onload>
     <onload>ClearProperty(MenuFocus,Home)</onload>
-    <onload>RunScript(script.skinshortcuts,type=buildxml&amp;mainmenuID=300&amp;group=mainmenu|powermenu)</onload>
+    <onload>RunScript(script.skinshortcuts,type=buildxml&amp;mainmenuID=300&amp;mode=single&amp;group=mainmenu|powermenu)</onload>
     <onload condition="!Skin.HasSetting(SkinHelper.EnablePVRThumbs)">Skin.SetBool(SkinHelper.EnablePVRThumbs)</onload>
     <onload condition="!Skin.HasSetting(SkinHelper.EnableMusicArt)">Skin.SetBool(SkinHelper.EnableMusicArt)</onload>
     <onload>ClearProperty(HomeFocus,Home)</onload>
