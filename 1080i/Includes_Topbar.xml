@@ -131,7 +131,7 @@
                     </control>
                     
                     <include condition="!Window.IsVisible(Home)">Topbar_Menu</include>
-                    <include condition="Window.IsVisible(MyVideoNav.xml) | Window.IsVisible(MyMusicNav.xml)">Object_AlphabetStrip</include>
+                    <include condition="[Window.IsVisible(MyVideoNav.xml) | Window.IsVisible(MyMusicNav.xml)] + Skin.HasSetting(AlphabetStrip)">Object_AlphabetStrip</include>
 
                     <!-- Right Info -->
                     <control type="grouplist">
