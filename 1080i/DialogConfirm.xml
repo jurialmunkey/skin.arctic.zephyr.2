@@ -36,12 +36,27 @@
             </control>
             <control type="progress" id="20">
                 <description>Progressbar</description>
-                <left>10</left>
-                <right>10</right>
+                <left>12</left>
+                <right>12</right>
                 <top>260</top>
-                <height>32</height>
+                <height>24</height>
                 <info>System.Progressbar</info>
-                <texturebg colordiffuse="dialog_fg_12">progress/back.png</texturebg>
+                <texturebg colordiffuse="dialog_fg_30">progress/back.png</texturebg>
+            </control>
+            <control type="progress">
+                <description>Progressbar</description>
+                <left>12</left>
+                <right>12</right>
+                <top>260</top>
+                <height>24</height>
+                <info>System.Progressbar</info>
+                <texturebg colordiffuse="00ffffff">progress/back.png</texturebg>
+                <lefttexture colordiffuse="00ffffff">progress/left.png</lefttexture>
+                <midtexture colordiffuse="$VAR[ColorHighlight2]" diffuse="progress/diffuse.png">progress/mid.png</midtexture>
+                <righttexture colordiffuse="$VAR[ColorHighlight2]" diffuse="progress/diffuse-end.png">progress/right.png</righttexture>
+                <include content="Defs_Progress_Colorfade">
+                    <param name="id" value="20" />
+                </include>
             </control>
 
         </control>
