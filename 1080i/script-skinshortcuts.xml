@@ -21,7 +21,7 @@
             <centerleft>50%</centerleft>
             <centertop>50%</centertop>
             <width>1880</width>
-            <height>864</height>
+            <height>726</height>
             <control type="image">
                 <include>Defs_Shadow_Opaque</include>
                 <texture border="16" colordiffuse="dialog_bg_100">common/rounded-dialog.png</texture>
@@ -75,42 +75,6 @@
                 <visible>String.IsEqual(Window.Property(groupname),mainmenu)</visible>
                 <visible>String.IsEmpty(Window.Property(SetWidgets))</visible>
             </control>
-
-            <!-- Hint about important stuff -->
-            <control type="image">
-                <bottom>0</bottom>
-                <left>600</left>
-                <width>128</width>
-                <height>153</height>
-                <aspectratio>keep</aspectratio>
-                <texture colordiffuse="dialog_fg_70">special://skin/extras/icons/info.png</texture>
-            </control>
-            <control type="grouplist">
-                <height>153</height>
-                <bottom>0</bottom>
-                <right>15</right>
-                <width>1140</width>
-                <itemgap>0</itemgap>
-                <align>center</align>
-                <orientation>vertical</orientation>
-                <control type="label">
-                    <description>Widgets</description>
-                    <height>50</height>
-                    <label>$LOCALIZE[31320]</label>
-                    <font>font_small_bold</font>
-                    <align>left</align>
-                    <textcolor>dialog_fg_70</textcolor>
-                </control>
-                <control type="textbox">
-                    <description>Widgets</description>
-                    <height>auto</height>
-                    <label>$LOCALIZE[31254]</label>
-                    <font>font_tiny</font>
-                    <align>left</align>
-                    <textcolor>dialog_fg_70</textcolor>
-                </control>
-            </control>
-
 
             <!-- Shortcuts List -->
             <control type="list" id="211">
@@ -210,7 +174,6 @@
                 <animation effect="slide" end="0,69" condition="Integer.IsGreater(Container(211).Position,10)">Conditional</animation>
                 <animation effect="slide" end="0,69" condition="Integer.IsGreater(Container(211).Position,11)">Conditional</animation>
                 <control type="button" id="302" description="Delete">
-                    <include>Defs_SkinShortcuts_SetStrings</include>
                     <width>64</width>
                     <height>64</height>
                     <font/>
@@ -219,7 +182,6 @@
                     <onback condition="!String.IsEmpty(Window.Property(SetWidgets))">AlarmClock(reopen,RunScript(script.skinshortcuts,type=manage&amp;group=mainmenu),00:00,silent)</onback>
                 </control>
                 <control type="button" id="301" description="Add">
-                    <include>Defs_SkinShortcuts_SetStrings</include>
                     <width>64</width>
                     <height>64</height>
                     <font/>
@@ -229,7 +191,6 @@
                     <onback condition="!String.IsEmpty(Window.Property(SetWidgets))">AlarmClock(reopen,RunScript(script.skinshortcuts,type=manage&amp;group=mainmenu),00:00,silent)</onback>
                 </control>
                 <control type="button" id="303" description="Up">
-                    <include>Defs_SkinShortcuts_SetStrings</include>
                     <width>64</width>
                     <height>64</height>
                     <font/>
@@ -238,7 +199,6 @@
                     <onback condition="!String.IsEmpty(Window.Property(SetWidgets))">AlarmClock(reopen,RunScript(script.skinshortcuts,type=manage&amp;group=mainmenu),00:00,silent)</onback>
                 </control>
                 <control type="button" id="304" description="Down">
-                    <include>Defs_SkinShortcuts_SetStrings</include>
                     <width>64</width>
                     <height>64</height>
                     <font/>
@@ -265,7 +225,6 @@
                 <itemgap>3</itemgap>
                 
                 <control type="button" id="401" description="Alt chooser">
-                    <include>Defs_SkinShortcuts_SetStrings</include>
                     <width>100%</width>
                     <height>66</height>
                     <texturenofocus colordiffuse="dialog_fg_12" border="5">common/box.png</texturenofocus>
@@ -273,7 +232,6 @@
                     <include>Dialog_Standard_Right_Buttons</include>
                 </control>
                 <control type="button" id="307" description="Custom">
-                    <include>Defs_SkinShortcuts_SetStrings</include>
                     <width>100%</width>
                     <height>66</height>
                     <label>31267</label>
@@ -283,7 +241,6 @@
                     <include>Dialog_Standard_Right_Buttons</include>
                 </control>
                 <control type="button" id="305" description="Set Label">
-                    <include>Defs_SkinShortcuts_SetStrings</include>
                     <width>100%</width>
                     <height>66</height>
                     <label>31268</label>
@@ -294,7 +251,6 @@
                 </control>
 
                 <control type="button" id="306" description="Browse for Thumb">
-                    <include>Defs_SkinShortcuts_SetStrings</include>
                     <width>100%</width>
                     <height>66</height>
                     <label>31181</label>
@@ -303,7 +259,6 @@
                     <include>Dialog_Standard_Right_Buttons</include>
                 </control>
                 <control type="button" id="405" description="Set Submenu">
-                    <include>Defs_SkinShortcuts_SetStrings</include>
                     <width>100%</width>
                     <height>66</height>
                     <label>31112</label>
@@ -314,7 +269,6 @@
                 </control>
 
                 <control type="button" id="9901" description="Widgets">
-                    <include>Defs_SkinShortcuts_SetStrings</include>
                     <width>100%</width>
                     <label>$LOCALIZE[31247]</label>
                     <height>66</height>
@@ -328,7 +282,6 @@
                 </control>
 
                 <control type="button" id="310" description="Background">
-                    <include>Defs_SkinShortcuts_SetStrings</include>
                     <width>100%</width>
                     <height>66</height>
                     <label>31110</label>
@@ -340,7 +293,6 @@
                 </control>
 
                 <control type="button" id="308" description="Reset">
-                    <include>Defs_SkinShortcuts_SetStrings</include>
                     <width>100%</width>
                     <height>66</height>
                     <texturenofocus colordiffuse="dialog_fg_12" border="5">common/box.png</texturenofocus>
@@ -349,15 +301,14 @@
                 </control>
 
                 <control type="button" id="9900" description="Save Changes">
-                    <include>Defs_SkinShortcuts_SetStrings</include>
                     <include>Defs_SkinShortcuts_SetStrings_OnClick</include>
                     <width>100%</width>
-                    <label>$LOCALIZE[31197]</label>
+                    <label>$LOCALIZE[31019]</label>
                     <height>66</height>
                     <texturenofocus colordiffuse="dialog_fg_12" border="5">common/box.png</texturenofocus>
                     <align>left</align>
                     <include>Dialog_Standard_Right_Buttons</include>
-                    <visible>String.IsEqual(Window.Property(groupname),mainmenu)</visible>
+                    <!-- <visible>String.IsEqual(Window.Property(groupname),mainmenu)</visible> -->
                 </control>
             </control>
 
@@ -375,7 +326,6 @@
                 <orientation>vertical</orientation>
                 <itemgap>3</itemgap>
                 <control type="togglebutton" id="312" description="Widget">
-                    <include>Defs_SkinShortcuts_SetStrings</include>
                     <width>100%</width>
                     <height>66</height>
                     <usealttexture>ControlGroup(9300).HasFocus(312) + ControlGroup(9400).HasFocus()</usealttexture>
@@ -424,18 +374,19 @@
                 </include>
             </control>
 
-            <control type="button" id="9777" description="Widget">
+            <control type="button" id="9777" description="Close">
                 <top>642</top>
                 <width>1250</width>
                 <right>15</right>
                 <visible>ControlGroup(9300).HasFocus() | ControlGroup(9400).HasFocus() | Control.HasFocus(9777) | !String.IsEmpty(Window.Property(SetWidgets))</visible>
-                <onup>SetFocus(3127)</onup>
-                <onup>AlarmClock(MoveList,SetFocus(9400),00:00,silent)</onup>
+                <onup condition="!String.IsEqual(Container(211).ListItem.Property(widget),Weather) + !String.IsEqual(Container(211).ListItem.Property(widget),Settings)">SetFocus(3127)</onup>
+                <onup condition="!String.IsEqual(Container(211).ListItem.Property(widget),Weather) + !String.IsEqual(Container(211).ListItem.Property(widget),Settings)">AlarmClock(MoveList,SetFocus(9400),00:00,silent)</onup>
+                <onup condition="String.IsEqual(Container(211).ListItem.Property(widget),Weather) | String.IsEqual(Container(211).ListItem.Property(widget),Settings)">SetFocus(312)</onup>
+                <onup condition="String.IsEqual(Container(211).ListItem.Property(widget),Weather) | String.IsEqual(Container(211).ListItem.Property(widget),Settings)">AlarmClock(MoveList,SetFocus(9400),00:00,silent)</onup>
                 <ondown>SetFocus(312)</ondown>
                 <ondown>AlarmClock(MoveList,SetFocus(9400),00:00,silent)</ondown>
-                <include>Defs_SkinShortcuts_SetStrings</include>
                 <height>66</height>
-                <label>$LOCALIZE[31197]</label>
+                <label>$LOCALIZE[31019]</label>
                 <texturenofocus colordiffuse="dialog_fg_12" border="5">common/box.png</texturenofocus>
                 <align>left</align>
                 <include>Dialog_Standard_Right_Buttons</include>
@@ -460,10 +411,10 @@
                 <onup condition="!Integer.IsEqual(Container(9300).Position,0)">Up</onup>
                 <onup condition="!Integer.IsEqual(Container(9300).Position,0)">AlarmClock(MoveList,SetFocus(9400),00:00,silent)</onup>
                 <onup condition="Integer.IsEqual(Container(9300).Position,0)">SetFocus(9777)</onup>
-                <ondown condition="!Integer.IsEqual(Container(9300).Position,7)">SetFocus(9300)</ondown>
-                <ondown condition="!Integer.IsEqual(Container(9300).Position,7)">Down</ondown>
-                <ondown condition="!Integer.IsEqual(Container(9300).Position,7)">AlarmClock(MoveList,SetFocus(9400),00:00,silent)</ondown>
-                <ondown condition="Integer.IsEqual(Container(9300).Position,7)">SetFocus(9777)</ondown>
+                <ondown condition="!Integer.IsEqual(Container(9300).Position,7) + !String.IsEqual(Container(211).ListItem.Property(widget),Weather) + !String.IsEqual(Container(211).ListItem.Property(widget),Settings)">SetFocus(9300)</ondown>
+                <ondown condition="!Integer.IsEqual(Container(9300).Position,7) + !String.IsEqual(Container(211).ListItem.Property(widget),Weather) + !String.IsEqual(Container(211).ListItem.Property(widget),Settings)">Down</ondown>
+                <ondown condition="!Integer.IsEqual(Container(9300).Position,7) + !String.IsEqual(Container(211).ListItem.Property(widget),Weather) + !String.IsEqual(Container(211).ListItem.Property(widget),Settings)">AlarmClock(MoveList,SetFocus(9400),00:00,silent)</ondown>
+                <ondown condition="Integer.IsEqual(Container(9300).Position,7) | String.IsEqual(Container(211).ListItem.Property(widget),Weather) | String.IsEqual(Container(211).ListItem.Property(widget),Settings)">SetFocus(9777)</ondown>
                 <orientation>horizontal</orientation>
                 <animation effect="slide" end="0,69" condition="Integer.IsGreater(Container(9300).Position,0)">Conditional</animation>
                 <animation effect="slide" end="0,69" condition="Integer.IsGreater(Container(9300).Position,1)">Conditional</animation>
@@ -478,7 +429,6 @@
                 <animation effect="slide" end="0,69" condition="Integer.IsGreater(Container(9300).Position,10)">Conditional</animation>
                 <animation effect="slide" end="0,69" condition="Integer.IsGreater(Container(9300).Position,11)">Conditional</animation>
                 <control type="button" id="9401" description="Configure">
-                    <include>Defs_SkinShortcuts_SetStrings</include>
                     <width>64</width>
                     <height>64</height>
                     <font />
@@ -494,7 +444,6 @@
                     <onback condition="!String.IsEmpty(Window.Property(SetWidgets))">AlarmClock(reopen,RunScript(script.skinshortcuts,type=manage&amp;group=mainmenu),00:00,silent)</onback>
                 </control>
                 <control type="button" id="9402" description="Rename">
-                    <include>Defs_SkinShortcuts_SetStrings</include>
                     <width>64</width>
                     <height>64</height>
                     <font />
@@ -506,7 +455,6 @@
                     <onback condition="!String.IsEmpty(Window.Property(SetWidgets))">AlarmClock(reopen,RunScript(script.skinshortcuts,type=manage&amp;group=mainmenu),00:00,silent)</onback>
                 </control>
                 <control type="button" id="9403" description="Aspect">
-                    <include>Defs_SkinShortcuts_SetStrings</include>
                     <width>64</width>
                     <height>64</height>
                     <font />
@@ -524,7 +472,6 @@
                     <onback condition="!String.IsEmpty(Window.Property(SetWidgets))">AlarmClock(reopen,RunScript(script.skinshortcuts,type=manage&amp;group=mainmenu),00:00,silent)</onback>
                 </control>
                 <control type="button" id="9404" description="Sort">
-                    <include>Defs_SkinShortcuts_SetStrings</include>
                     <width>64</width>
                     <height>64</height>
                     <font />
@@ -536,7 +483,6 @@
                     <onback condition="!String.IsEmpty(Window.Property(SetWidgets))">AlarmClock(reopen,RunScript(script.skinshortcuts,type=manage&amp;group=mainmenu),00:00,silent)</onback>
                 </control>
                 <control type="button" id="9405" description="Direction">
-                    <include>Defs_SkinShortcuts_SetStrings</include>
                     <width>64</width>
                     <height>64</height>
                     <font />

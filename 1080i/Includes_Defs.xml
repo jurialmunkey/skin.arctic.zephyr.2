@@ -71,12 +71,7 @@
         <ondown>noop</ondown> -->
     </include>
 
-    <include name="Defs_SkinShortcuts_SetStrings">
-        <onback condition="String.IsEqual(Window.Property(groupname),mainmenu)">Skin.SetString(HomeNumItems,$INFO[Container(211).NumItems])</onback>
-    </include>
-
     <include name="Defs_SkinShortcuts_SetStrings_OnClick">
-        <onclick>Skin.SetString(HomeNumItems,$INFO[Container(211).NumItems])</onclick>
         <onclick condition="String.IsEmpty(Window.Property(SetWidgets))">Close</onclick>
     </include>
 
@@ -84,7 +79,6 @@
         <param name="visible" default="true" />
         <definition>
             <control type="togglebutton" id="312$PARAM[num]" description="Widget">
-                <include>Defs_SkinShortcuts_SetStrings</include>
                 <width>100%</width>
                 <height>66</height>
                 <usealttexture>ControlGroup(9300).HasFocus(312$PARAM[num]) + ControlGroup(9400).HasFocus()</usealttexture>
