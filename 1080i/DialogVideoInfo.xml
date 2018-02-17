@@ -298,8 +298,8 @@
                 <include content="Object_VideoInfo_CastList" condition="Container.Content(movies) | Container.Content(sets)">
                     <param name="onup" value="9500" />
                     <param name="id" value="9501" />
-                    <param name="ondown" value="9502" />
-                    <param name="label" value="$INFO[ListItem.Director,$LOCALIZE[31351],]" />
+                    <param name="ondown" value="9504" />
+                    <param name="label" value="$INFO[ListItem.Director,$LOCALIZE[31016] ,]" />
                     <param name="content" value="plugin://script.extendedinfo?info=personmovies&amp;&amp;person=$INFO[ListItem.Director]" />
                     <param name="infolabel" value="false" />
                     <param name="include_onclick" value="true" />
@@ -309,10 +309,22 @@
                 <!-- Similar Movies -->
                 <include content="Object_VideoInfo_CastList" condition="Container.Content(movies) | Container.Content(sets)">
                     <param name="onup" value="9501" />
-                    <param name="id" value="9502" />
-                    <param name="ondown" value="9503" />
+                    <param name="id" value="9504" />
+                    <param name="ondown" value="9502" />
                     <param name="label" value="$INFO[ListItem.Title,$LOCALIZE[31350],]" />
                     <param name="content" value="plugin://script.skin.helper.widgets/?action=similar&amp;mediatype=movies&amp;imdbid=$INFO[ListItem.IMDBNumber]" />
+                    <param name="infolabel" value="false" />
+                    <param name="include_onclick" value="true" />
+                    <param name="onclick" value="RunScript(script.extendedinfo,info=extendedinfo,name=$INFO[ListItem.Label],imdb_id=$INFO[ListItem.IMDBNumber])" />
+                </include>
+
+                <!-- Studio Movies -->
+                <include content="Object_VideoInfo_CastList" condition="Container.Content(movies) | Container.Content(sets)">
+                    <param name="onup" value="9504" />
+                    <param name="id" value="9502" />
+                    <param name="ondown" value="9503" />
+                    <param name="label" value="$INFO[ListItem.Studio,$LOCALIZE[31025] ,]" />
+                    <param name="content" value="plugin://script.extendedinfo?info=studio&amp;&amp;studio=$INFO[ListItem.Studio]" />
                     <param name="infolabel" value="false" />
                     <param name="include_onclick" value="true" />
                     <param name="onclick" value="RunScript(script.extendedinfo,info=extendedinfo,name=$INFO[ListItem.Label],imdb_id=$INFO[ListItem.IMDBNumber])" />
