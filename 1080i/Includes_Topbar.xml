@@ -138,7 +138,7 @@
                         <visible>!Window.IsVisible(DialogNotification.xml)</visible>
                         <visible>!Window.IsVisible(DialogExtendedProgressBar.xml)</visible>
                         <visible>!Window.IsVisible(DialogVolumeBar.xml) | Player.Muted</visible>
-                        <visible>Skin.HasSetting(MinimalBusyLoader) + !Window.IsVisible(DialogBusy.xml)</visible>
+                        <visible>!Skin.HasSetting(MinimalBusyLoader) | [Skin.HasSetting(MinimalBusyLoader) + !Window.IsVisible(DialogBusy.xml)]</visible>
                         <right>view_pad</right>
                         <align>right</align>
                         <orientation>horizontal</orientation>
