@@ -99,11 +99,11 @@
                     </control>
 
                     <control type="textbox" id="30">
-                        <left>490</left>
+                        <left>510</left>
                         <top>0</top>
-                        <right>40</right>
+                        <right>view_pad</right>
                         <description>Label 2</description>
-                        <font>font_plotbox</font>
+                        <font>font_small_mono</font>
                         <height>800</height>
                         <include>Defs_Settings_Button</include>
                     </control>
@@ -117,7 +117,7 @@
                         <usecontrolcoords>true</usecontrolcoords>
 
                         <control type="label">
-                            <left>40</left>
+                            <left>view_pad</left>
                             <aligny>top</aligny>
                             <height>50</height>
                             <label fallback="19055">$INFO[system.memory(used.percent),$LOCALIZE[31104]: ,]</label>
@@ -128,16 +128,16 @@
                         <control type="progress" id="24">
                             <description>Memory BAR</description>
                             <top>0</top>
-                            <left>40</left>
+                            <left>57</left>
                             <height>24</height>
-                            <width>400</width>
+                            <width>406</width>
                             <info>system.memory(used)</info>
                             <include>Defs_Settings_Button</include>
                             <visible>!Control.IsVisible(30)</visible>
                         </control>
                         <control type="label">
-                            <top>-80</top>
-                            <left>460</left>
+                            <top>-74</top>
+                            <left>500</left>
                             <aligny>top</aligny>
                             <height>50</height>
                             <label fallback="19055">$INFO[System.CPUUsage,$LOCALIZE[13271] ,]</label>
@@ -148,9 +148,9 @@
                         <control type="progress" id="22">
                             <top>0</top>
                             <description>CPU BAR</description>
-                            <left>460</left>
+                            <left>497</left>
                             <height>24</height>
-                            <right>40</right>
+                            <right>57</right>
                             <info>System.CPUUsage</info>
                             <include>Defs_Settings_Button</include>
                             <visible>!Control.IsVisible(30)</visible>
