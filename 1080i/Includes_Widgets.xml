@@ -364,7 +364,7 @@
             <control type="group" id="331" description="Spacer"> 
                 <height>widget_spacer_top</height>
             </control>
-            <include content="Widget">
+            <include content="Widget" condition="!Skin.HasSetting(HideSubmenuWidget)">
                 <param name="id" value="302" />
                 <param name="submenu" value="true" />
                 <param name="aspect" value="$LOCALIZE[31263]" />

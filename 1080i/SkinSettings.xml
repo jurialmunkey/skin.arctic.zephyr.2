@@ -198,6 +198,13 @@
                             <onclick condition="String.IsEqual(Skin.String(HomeWidgetItemLimit),50)">Skin.SetString(HomeWidgetItemLimit,$LOCALIZE[21428])</onclick>
                             <onclick condition="String.IsEqual(Skin.String(HomeWidgetItemLimit),$LOCALIZE[21428])">Skin.SetString(HomeWidgetItemLimit,$NUMBER[10])</onclick>
                         </control>
+                        <control type="radiobutton" id="9587" description="Display categories widget">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9101)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31002]</label>
+                            <selected>!Skin.HasSetting(HideSubmenuWidget)</selected>
+                            <onclick>Skin.ToggleSetting(HideSubmenuWidget)</onclick>
+                        </control>
 
                         
 
