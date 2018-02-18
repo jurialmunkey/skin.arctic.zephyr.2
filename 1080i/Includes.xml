@@ -9,7 +9,7 @@
     <include file="Includes_Dialog.xml" />
     <include file="Includes_Global.xml" />
     <include file="Includes_GlobalSearch.xml" />
-    <include file="Includes_Home.xml" />
+    <include file="Includes_Items.xml" />
     <include file="Includes_Images.xml" />
     <include file="Includes_Labels.xml" />
     <include file="Includes_NextAired.xml" />
@@ -32,13 +32,11 @@
     <include condition="!Skin.HasSetting(MouseMode)" file="Constants_Home_NoMouse.xml" />
 
     <variable name="ColorHighlight">
-
         <value condition="[Skin.HasSetting(CycleColors) | Skin.HasSetting(MatchColors)] + !String.IsEqual(Window(home).Property(SEVEN_daemon_set),None) + !String.IsEmpty(Window(home).Property(ImageColorSEVEN)) + !String.IsEqual(Window(home).Property(ImageColorSEVEN),ffffffff) + !String.IsEqual(Window(home).Property(ImageColorSEVEN),ff000000)">$INFO[Window(home).Property(ImageColorSEVEN)]</value>
         <value condition="!String.IsEmpty(Skin.String(focuscolor.name))">$INFO[Skin.String(focuscolor.name)]</value>
         <value>Highlight</value>
     </variable>
     <variable name="ColorHighlight2">
-
         <value condition="[Skin.HasSetting(CycleColors) | Skin.HasSetting(MatchColors)] + !String.IsEqual(Window(home).Property(SEVEN_daemon_set),None) + !String.IsEmpty(Window(home).Property(ImageCColorSEVEN)) + !String.IsEqual(Window(home).Property(ImageCColorSEVEN),ffffffff) + !String.IsEqual(Window(home).Property(ImageCColorSEVEN),ff000000)">$INFO[Window(home).Property(ImageCColorSEVEN)]</value>
         <value condition="!String.IsEmpty(Skin.String(gradientcolor.name))">$INFO[Skin.String(gradientcolor.name)]</value>
         <value>GradientHighlight</value>

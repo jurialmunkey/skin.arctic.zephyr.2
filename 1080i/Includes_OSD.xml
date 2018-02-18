@@ -1,6 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
 
+    <include name="OSD_MainMenu_Group">
+        <top>0</top>
+        <left>0</left>
+        <right>0</right>
+        <height>80</height>
+        <control type="image">
+            <bottom>-24</bottom>
+            <height>24</height>
+            <width>100%</width>
+            <texture flipy="false">common/shadow-line-24px.png</texture>
+        </control>
+        <control type="image">
+            <bottom>0</bottom>
+            <top>0</top>
+            <texture>common/gradient-solid.png</texture>
+        </control>   
+    </include>
+
+    <include name="OSD_MainMenu_Lines">
+        <control type="image">
+            <top>0</top>
+            <height>1</height>
+            <texture colordiffuse="PixelLines">common/white.png</texture>
+        </control>
+        <control type="image">
+            <bottom>0</bottom>
+            <height>1</height>
+            <texture colordiffuse="ff080808">common/white.png</texture>
+            <animation effect="fade" start="100" end="25" condition="true">Conditional</animation>
+        </control>
+    </include>
+
+    <include name="OSD_SubMenu_Group">
+        <top>80</top>
+        <left>0</left>
+        <right>0</right>
+        <height>40</height>
+        <control type="image">
+            <bottom>-24</bottom>
+            <height>24</height>
+            <width>100%</width>
+            <texture flipy="false">common/shadow-line-24px.png</texture>
+        </control>
+        <control type="image">
+            <top>-100</top>
+            <bottom>0</bottom>
+            <texture colordiffuse="panel_bg">common/white.png</texture>
+        </control>
+    </include>
+
     <include name="OSD_Music_Seekbar">
         <control type="group">
             <visible>Player.Seeking | Player.DisplayAfterSeek | Player.Paused | Player.Forwarding | Player.Rewinding | Player.ShowInfo | Window.IsActive(musicosd) | Window.IsActive(videoosd) | Window.IsActive(DialogFullScreenInfo.xml)</visible>
@@ -402,7 +452,6 @@
         </control>
     </include>
 
-
     <include name="OSD_Controls">
 
         <control type="togglebutton" id="11">
@@ -640,7 +689,6 @@
             <onclick>XBMC.ActivateWindow(visualisationpresetlist)</onclick>
             <include>OSD_TextButton</include>
         </control> -->
-        
     </include>
 
     <include name="OSD_TextButton">

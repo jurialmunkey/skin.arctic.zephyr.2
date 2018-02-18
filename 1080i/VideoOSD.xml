@@ -17,7 +17,7 @@
             <animation effect="fade" start="100" end="0" time="200" condition="Control.HasFocus(9605)">Conditional</animation>
             <!-- Mini Blade -->
             <control type="group">
-                <include>Topbar_SubMenu_Group_Content</include>
+                <include>OSD_SubMenu_Group</include>
                 <control type="panel" id="9003">
                     <height>40</height>
                     <left>0</left>
@@ -104,7 +104,7 @@
 
             <!-- Main Blade -->
             <control type="group">
-                <include>Topbar_MainMenu_Group</include>
+                <include>OSD_MainMenu_Group</include>
                 <control type="grouplist" id="9001">
                     <align>left</align>
                     <left>0</left>
@@ -149,7 +149,7 @@
                     <include condition="!VideoPlayer.Content(LiveTV)">OSD_Controls_Video_Right</include>
                     <include condition="VideoPlayer.Content(LiveTV)">OSD_Controls_LiveTV_Right</include>
                 </control>
-                <include>Topbar_MainMenu_Lines</include>
+                <include>OSD_MainMenu_Lines</include>
             </control>
         </control>
 

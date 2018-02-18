@@ -571,13 +571,13 @@
     <include name="Topbar_Menu">
         <control type="list" id="300">
             <include>Topbar_Menu_Layout</include>
-            <include condition="Window.IsVisible(Home) + !Window.IsVisible(script-globalsearch-main.xml)">Home_MainMenu_Items</include>
-            <include condition="[Window.IsVisible(MyPVRChannels.xml) | Window.IsVisible(MyPVRGuide.xml) | Window.IsVisible(MyPVRRecordings.xml) | Window.IsVisible(MyPVRTimers.xml) | Window.IsVisible(MyPVRSearch.xml) | Window.IsVisible(AddonBrowser.xml) | Window.IsVisible(MyPrograms.xml) | Window.IsVisible(MyPics.xml) | Window.IsVisible(MyMusicNav.xml) | Window.IsVisible(MyVideoNav.xml)] + !Window.IsVisible(script-globalsearch-main.xml)">Home_MainMenu_OptionsItems</include>
-            <include condition="Window.IsVisible(MyPlaylist.xml) + !Window.IsVisible(script-globalsearch-main.xml)">Home_MainMenu_PlaylistItems</include>
-            <include condition="[Window.IsVisible(SettingsSystemInfo.xml) | Window.IsVisible(Settings.xml) | Window.IsVisible(SettingsCategory.xml) | Window.IsVisible(SkinSettings.xml) | Window.IsVisible(SettingsProfile.xml)] + !Window.IsVisible(script-globalsearch-main.xml)">Home_MainMenu_SettingsItems</include>
-            <include condition="[Window.IsVisible(script-NextAired-TVGuide.xml) | Window.IsVisible(script-NextAired-TVGuide2.xml)] + !Window.IsVisible(script-globalsearch-main.xml)">Home_MainMenu_NextAired</include>
-            <include condition="Window.IsVisible(script-globalsearch-main.xml)">Home_MainMenu_GlobalSearch</include>
-            <include condition="Window.IsVisible(weather)">Home_MainMenu_InfoItems_Weather</include>
+            <include condition="Window.IsVisible(Home) + !Window.IsVisible(script-globalsearch-main.xml)">Items_MainMenu</include>
+            <include condition="[Window.IsVisible(MyPVRChannels.xml) | Window.IsVisible(MyPVRGuide.xml) | Window.IsVisible(MyPVRRecordings.xml) | Window.IsVisible(MyPVRTimers.xml) | Window.IsVisible(MyPVRSearch.xml) | Window.IsVisible(AddonBrowser.xml) | Window.IsVisible(MyPrograms.xml) | Window.IsVisible(MyPics.xml) | Window.IsVisible(MyMusicNav.xml) | Window.IsVisible(MyVideoNav.xml)] + !Window.IsVisible(script-globalsearch-main.xml)">Items_View</include>
+            <include condition="Window.IsVisible(MyPlaylist.xml) + !Window.IsVisible(script-globalsearch-main.xml)">Items_Playlist</include>
+            <include condition="[Window.IsVisible(SettingsSystemInfo.xml) | Window.IsVisible(Settings.xml) | Window.IsVisible(SettingsCategory.xml) | Window.IsVisible(SkinSettings.xml) | Window.IsVisible(SettingsProfile.xml)] + !Window.IsVisible(script-globalsearch-main.xml)">Items_Settings</include>
+            <include condition="[Window.IsVisible(script-NextAired-TVGuide.xml) | Window.IsVisible(script-NextAired-TVGuide2.xml)] + !Window.IsVisible(script-globalsearch-main.xml)">Items_NextAired</include>
+            <include condition="Window.IsVisible(script-globalsearch-main.xml)">Items_GlobalSearch</include>
+            <include condition="Window.IsVisible(weather)">Items_Weather</include>
         </control>
     </include>
 
@@ -654,61 +654,6 @@
                 </control>
             </control>
         </focusedlayout>
-    </include>
-
-    <include name="Topbar_MainMenu_Group">
-        <top>0</top>
-        <left>0</left>
-        <right>0</right>
-        <height>80</height>
-        <control type="image">
-            <bottom>-24</bottom>
-            <height>24</height>
-            <width>100%</width>
-            <texture flipy="false">common/shadow-line-24px.png</texture>
-        </control>
-        <control type="image">
-            <bottom>0</bottom>
-            <top>0</top>
-            <texture>common/gradient-solid.png</texture>
-        </control>   
-    </include>
-
-    <include name="Topbar_MainMenu_Lines">
-        <control type="image">
-            <top>0</top>
-            <height>1</height>
-            <texture colordiffuse="PixelLines">common/white.png</texture>
-        </control>
-        <control type="image">
-            <bottom>0</bottom>
-            <height>1</height>
-            <texture colordiffuse="ff080808">common/white.png</texture>
-            <animation effect="fade" start="100" end="25" condition="true">Conditional</animation>
-        </control>
-    </include>
-
-    <!-- ======= -->
-    <!-- SubMenu -->
-    <!-- ======= -->
-
-
-    <include name="Topbar_SubMenu_Group_Content">
-        <top>80</top>
-        <left>0</left>
-        <right>0</right>
-        <height>40</height>
-        <control type="image">
-            <bottom>-24</bottom>
-            <height>24</height>
-            <width>100%</width>
-            <texture flipy="false">common/shadow-line-24px.png</texture>
-        </control>
-        <control type="image">
-            <top>-100</top>
-            <bottom>0</bottom>
-            <texture colordiffuse="panel_bg">common/white.png</texture>
-        </control>
     </include>
 
 </includes>

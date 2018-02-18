@@ -46,6 +46,11 @@
             <onup condition="Skin.HasSetting(HideSubmenuWidget)">302</onup>
             <onup condition="!Skin.HasSetting(HideSubmenuWidget)">430</onup>
             <ondown>3000</ondown>
+            <ondown condition="Control.IsVisible(3902)">3902</ondown>
+            <ondown condition="!Control.IsVisible(3902)">300</ondown>
+            <onfocus>ClearProperty(WidgetFocus,Home)</onfocus>
+            <onfocus>ClearProperty(WidgetLoading,Home)</onfocus>
+            <onfocus>AlarmClock(SetLoad,SetProperty(WidgetLoading,1,Home),00:00,silent)</onfocus>
             <orientation>horizontal</orientation>
             <height>10</height>
             <top>-1000</top>
@@ -575,7 +580,7 @@
                     <param name="sortby" value="$PARAM[sortby]" />
                     <param name="sortorder" value="$PARAM[sortorder]" />
                 </include>
-                <include condition="$PARAM[submenu]">Home_SubMenu_Items</include>
+                <include condition="$PARAM[submenu]">Items_SubMenu</include>
                 <include content="Widget_ContentInclude">
                     <param name="target" value="$PARAM[target]" />
                     <param name="sortby" value="$PARAM[sortby]" />
@@ -752,7 +757,7 @@
                 </include>
             </focusedlayout>
 
-            <include condition="$PARAM[submenu]">Home_SubMenu_Items</include>
+            <include condition="$PARAM[submenu]">Items_SubMenu</include>
             <include content="Widget_ContentInclude">
                 <param name="target" value="$PARAM[target]" />
                 <param name="sortby" value="$PARAM[sortby]" />
