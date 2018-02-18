@@ -473,11 +473,12 @@
                         <label>$INFO[ListItem.Label]</label>
                         <visible>$PARAM[textonly]</visible>
                     </control>
+                    <include>View_WatchedOverlay</include>
                     <control type="image">
                         <bordersize>10</bordersize>
                         <texture colordiffuse="PixelLines" border="20">common/outline.png</texture>
                     </control>
-                    <include>View_WatchedOverlay</include>
+                    
                 </control>
             </itemlayout>
             <focusedlayout width="$PARAM[itemwidth]" height="$PARAM[itemheight]">
@@ -558,11 +559,11 @@
                         <label>$INFO[ListItem.Label]</label>
                         <visible>$PARAM[textonly]</visible>
                     </control>
+                    <include>View_WatchedOverlay</include>
                     <control type="image">
                         <bordersize>10</bordersize>
                         <texture colordiffuse="PixelLines" border="20">common/outline.png</texture>
                     </control>
-                    <include>View_WatchedOverlay</include>
                     <!-- Highlight -->
                     <control type="group">
                         <visible>Control.HasFocus($PARAM[id])</visible>
