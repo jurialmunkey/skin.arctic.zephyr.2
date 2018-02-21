@@ -390,141 +390,18 @@
                 <param name="label" value="$LOCALIZE[31162]" />
                 <param name="visible" value="String.IsEqual(Container(300).ListItem.Property(hasSubmenu),true)" />
             </include>
-            <include content="Widgets_Set">
-                <param name="pos" value="0" />
-                <param name="unified" value="false" />
-            </include>
-            <include content="Widgets_Set">
-                <param name="pos" value="1" />
-                <param name="unified" value="false" />
-            </include>
-            <include content="Widgets_Set">
-                <param name="pos" value="2" />
-                <param name="unified" value="false" />
-            </include>
-            <include content="Widgets_Set">
-                <param name="pos" value="3" />
-                <param name="unified" value="false" />
-            </include>
-            <include content="Widgets_Set">
-                <param name="pos" value="4" />
-                <param name="unified" value="false" />
-            </include>
-            <include content="Widgets_Set">
-                <param name="pos" value="5" />
-                <param name="unified" value="false" />
-            </include>
-            <include content="Widgets_Set">
-                <param name="pos" value="6" />
-                <param name="unified" value="false" />
-            </include>
-            <include content="Widgets_Set">
-                <param name="pos" value="7" />
-                <param name="unified" value="false" />
-            </include>
-            <include content="Widgets_Set">
-                <param name="pos" value="8" />
-                <param name="unified" value="false" />
-            </include>
-            <include content="Widgets_Set">
-                <param name="pos" value="9" />
-                <param name="unified" value="false" />
-            </include>
-            <include content="Widgets_Set">
-                <param name="pos" value="10" />
-                <param name="unified" value="false" />
-            </include>
-            <include content="Widgets_Set">
-                <param name="pos" value="11" />
-                <param name="unified" value="false" />
-            </include>
+            <include>skinshortcuts-template-widget3002</include>
+            <include>skinshortcuts-template-widget3003</include>
+            <include>skinshortcuts-template-widget3004</include>
+            <include>skinshortcuts-template-widget3005</include>
+            <include>skinshortcuts-template-widget3006</include>
+            <include>skinshortcuts-template-widget3007</include>
+            <include>skinshortcuts-template-widget3008</include>
+            <include>skinshortcuts-template-widget3009</include>
             <control type="group" id="332">
                 <height>widget_spacer_bottom</height>
             </control>
         </control>
-    </include>
-
-    <include name="Widgets_Set">
-        <include content="Widget">
-            <param name="id" value="$PARAM[pos]3002" />
-            <param name="target" value="$INFO[Container(300).ListItemAbsolute($PARAM[pos]).Property(widgetTarget)]" />
-            <param name="sortby" value="$INFO[Container(300).ListItemAbsolute($PARAM[pos]).Property(widgetSort)]" />
-            <param name="sortorder" value="$INFO[Container(300).ListItemAbsolute($PARAM[pos]).Property(widgetDirection)]" />
-            <param name="content" value="Container(300).ListItemAbsolute($PARAM[pos]).Property(widgetPath)" />
-            <param name="aspect" value="Container(300).ListItemAbsolute($PARAM[pos]).Property(WidgetAspect)" />
-            <param name="label" value="$INFO[Container(300).ListItemAbsolute($PARAM[pos]).Property(widgetName)]" />
-            <param name="visible" value="[$PARAM[unified] | Integer.IsEqual(Container(300).Position,$PARAM[pos])] + !String.IsEmpty(Container(300).ListItemAbsolute($PARAM[pos]).Property(widgetPath))" />
-        </include>
-        <include content="Widget">
-            <param name="id" value="$PARAM[pos]3003" />
-            <param name="target" value="$INFO[Container(300).ListItemAbsolute($PARAM[pos]).Property(widgetTarget.Widget1)]" />
-            <param name="sortby" value="$INFO[Container(300).ListItemAbsolute($PARAM[pos]).Property(widgetSort.Widget1)]" />
-            <param name="sortorder" value="$INFO[Container(300).ListItemAbsolute($PARAM[pos]).Property(widgetDirection.Widget1)]" />
-            <param name="content" value="Container(300).ListItemAbsolute($PARAM[pos]).Property(widgetPath.Widget1)" />
-            <param name="aspect" value="Container(300).ListItemAbsolute($PARAM[pos]).Property(WidgetAspect.Widget1)" />
-            <param name="label" value="$INFO[Container(300).ListItemAbsolute($PARAM[pos]).Property(widgetName.Widget1)]" />
-            <param name="visible" value="[$PARAM[unified] | Integer.IsEqual(Container(300).Position,$PARAM[pos])] + !String.IsEmpty(Container(300).ListItemAbsolute($PARAM[pos]).Property(widgetPath.Widget1))" />
-        </include>
-        <include content="Widget">
-            <param name="id" value="$PARAM[pos]3004" />
-            <param name="target" value="$INFO[Container(300).ListItemAbsolute($PARAM[pos]).Property(widgetTarget.Widget2)]" />
-            <param name="sortby" value="$INFO[Container(300).ListItemAbsolute($PARAM[pos]).Property(widgetSort.Widget2)]" />
-            <param name="sortorder" value="$INFO[Container(300).ListItemAbsolute($PARAM[pos]).Property(widgetDirection.Widget2)]" />
-            <param name="content" value="Container(300).ListItemAbsolute($PARAM[pos]).Property(widgetPath.Widget2)" />
-            <param name="aspect" value="Container(300).ListItemAbsolute($PARAM[pos]).Property(WidgetAspect.Widget2)" />
-            <param name="label" value="$INFO[Container(300).ListItemAbsolute($PARAM[pos]).Property(widgetName.Widget2)]" />
-            <param name="visible" value="[$PARAM[unified] | Integer.IsEqual(Container(300).Position,$PARAM[pos])] + !String.IsEmpty(Container(300).ListItemAbsolute($PARAM[pos]).Property(widgetPath.Widget2))" />
-        </include>
-        <include content="Widget">
-            <param name="id" value="$PARAM[pos]3005" />
-            <param name="target" value="$INFO[Container(300).ListItemAbsolute($PARAM[pos]).Property(widgetTarget.Widget3)]" />
-            <param name="sortby" value="$INFO[Container(300).ListItemAbsolute($PARAM[pos]).Property(widgetSort.Widget3)]" />
-            <param name="sortorder" value="$INFO[Container(300).ListItemAbsolute($PARAM[pos]).Property(widgetDirection.Widget3)]" />
-            <param name="content" value="Container(300).ListItemAbsolute($PARAM[pos]).Property(widgetPath.Widget3)" />
-            <param name="aspect" value="Container(300).ListItemAbsolute($PARAM[pos]).Property(WidgetAspect.Widget3)" />
-            <param name="label" value="$INFO[Container(300).ListItemAbsolute($PARAM[pos]).Property(widgetName.Widget3)]" />
-            <param name="visible" value="[$PARAM[unified] | Integer.IsEqual(Container(300).Position,$PARAM[pos])] + !String.IsEmpty(Container(300).ListItemAbsolute($PARAM[pos]).Property(widgetPath.Widget3))" />
-        </include>
-        <include content="Widget">
-            <param name="id" value="$PARAM[pos]3006" />
-            <param name="target" value="$INFO[Container(300).ListItemAbsolute($PARAM[pos]).Property(widgetTarget.Widget4)]" />
-            <param name="sortby" value="$INFO[Container(300).ListItemAbsolute($PARAM[pos]).Property(widgetSort.Widget4)]" />
-            <param name="sortorder" value="$INFO[Container(300).ListItemAbsolute($PARAM[pos]).Property(widgetDirection.Widget4)]" />
-            <param name="content" value="Container(300).ListItemAbsolute($PARAM[pos]).Property(widgetPath.Widget4)" />
-            <param name="aspect" value="Container(300).ListItemAbsolute($PARAM[pos]).Property(WidgetAspect.Widget4)" />
-            <param name="label" value="$INFO[Container(300).ListItemAbsolute($PARAM[pos]).Property(widgetName.Widget4)]" />
-            <param name="visible" value="[$PARAM[unified] | Integer.IsEqual(Container(300).Position,$PARAM[pos])] + !String.IsEmpty(Container(300).ListItemAbsolute($PARAM[pos]).Property(widgetPath.Widget4))" />
-        </include>
-        <include content="Widget">
-            <param name="id" value="$PARAM[pos]3007" />
-            <param name="target" value="$INFO[Container(300).ListItemAbsolute($PARAM[pos]).Property(widgetTarget.Widget5)]" />
-            <param name="sortby" value="$INFO[Container(300).ListItemAbsolute($PARAM[pos]).Property(widgetSort.Widget5)]" />
-            <param name="sortorder" value="$INFO[Container(300).ListItemAbsolute($PARAM[pos]).Property(widgetDirection.Widget5)]" />
-            <param name="content" value="Container(300).ListItemAbsolute($PARAM[pos]).Property(widgetPath.Widget5)" />
-            <param name="aspect" value="Container(300).ListItemAbsolute($PARAM[pos]).Property(WidgetAspect.Widget5)" />
-            <param name="label" value="$INFO[Container(300).ListItemAbsolute($PARAM[pos]).Property(widgetName.Widget5)]" />
-            <param name="visible" value="[$PARAM[unified] | Integer.IsEqual(Container(300).Position,$PARAM[pos])] + !String.IsEmpty(Container(300).ListItemAbsolute($PARAM[pos]).Property(widgetPath.Widget5))" />
-        </include>
-        <include content="Widget">
-            <param name="id" value="$PARAM[pos]3008" />
-            <param name="target" value="$INFO[Container(300).ListItemAbsolute($PARAM[pos]).Property(widgetTarget.Widget6)]" />
-            <param name="sortby" value="$INFO[Container(300).ListItemAbsolute($PARAM[pos]).Property(widgetSort.Widget6)]" />
-            <param name="sortorder" value="$INFO[Container(300).ListItemAbsolute($PARAM[pos]).Property(widgetDirection.Widget6)]" />
-            <param name="content" value="Container(300).ListItemAbsolute($PARAM[pos]).Property(widgetPath.Widget6)" />
-            <param name="aspect" value="Container(300).ListItemAbsolute($PARAM[pos]).Property(WidgetAspect.Widget6)" />
-            <param name="label" value="$INFO[Container(300).ListItemAbsolute($PARAM[pos]).Property(widgetName.Widget6)]" />
-            <param name="visible" value="[$PARAM[unified] | Integer.IsEqual(Container(300).Position,$PARAM[pos])] + !String.IsEmpty(Container(300).ListItemAbsolute($PARAM[pos]).Property(widgetPath.Widget6))" />
-        </include>
-        <include content="Widget">
-            <param name="id" value="$PARAM[pos]3009" />
-            <param name="target" value="$INFO[Container(300).ListItemAbsolute($PARAM[pos]).Property(widgetTarget.Widget7)]" />
-            <param name="sortby" value="$INFO[Container(300).ListItemAbsolute($PARAM[pos]).Property(widgetSort.Widget7)]" />
-            <param name="sortorder" value="$INFO[Container(300).ListItemAbsolute($PARAM[pos]).Property(widgetDirection.Widget7)]" />
-            <param name="content" value="Container(300).ListItemAbsolute($PARAM[pos]).Property(widgetPath.Widget7)" />
-            <param name="aspect" value="Container(300).ListItemAbsolute($PARAM[pos]).Property(WidgetAspect.Widget7)" />
-            <param name="label" value="$INFO[Container(300).ListItemAbsolute($PARAM[pos]).Property(widgetName.Widget7)]" />
-            <param name="visible" value="[$PARAM[unified] | Integer.IsEqual(Container(300).Position,$PARAM[pos])] + !String.IsEmpty(Container(300).ListItemAbsolute($PARAM[pos]).Property(widgetPath.Widget7))" />
-        </include>
     </include>
 
     <include name="Widget">
