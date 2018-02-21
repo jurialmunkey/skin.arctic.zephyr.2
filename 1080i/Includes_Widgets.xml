@@ -773,11 +773,6 @@
         <content target="$PARAM[target]" sortby="$PARAM[sortby]" sortorder="$PARAM[sortorder]" limit="$PARAM[limit]">$INFO[$PARAM[content]]</content>
     </include>
 
-    <variable name="ColorDif">
-        <value condition="String.IsEqual(ListItem.Label,Container(302).ListItem(1).Label)">afff0055</value>
-        <value>PosterBack</value>
-    </variable>
-
     <include name="Widget_Submenu_ItemLayout">
         <param name="genres" default="false" />
         <param name="studios" default="false" />
@@ -795,7 +790,7 @@
                     <control type="image">
                         <bordersize>10</bordersize>
                         <include>Defs_Shadow_Small</include>
-                        <texture colordiffuse="$VAR[ColorDif]" border="20">diffuse/box.png</texture>
+                        <texture colordiffuse="PosterBack" border="20">diffuse/box.png</texture>
                     </control>
                     <control type="image">
                         <bordersize>10</bordersize>
