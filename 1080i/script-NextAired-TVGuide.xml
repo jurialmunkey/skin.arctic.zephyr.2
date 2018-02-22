@@ -25,13 +25,11 @@
                 <visible>Container(9500).HasNext</visible>
             </control>
             <control type="grouplist" id="9500">
-                <onleft>300</onleft>
                 <orientation>vertical</orientation>
                 <itemgap>0</itemgap>
                 <usecontrolcoords>true</usecontrolcoords>
-                <control type="group" id="8888">
-                    <height>40</height>
-                </control>
+                <top>view_pad</top>
+                <bottom>view_pad</bottom>
                 <include content="NextAired_Group">
                     <param name="listid" value="200" />
                     <param name="label" value="$INFO[Window(Home).Property(NextAired.200.Weekday)]" />
