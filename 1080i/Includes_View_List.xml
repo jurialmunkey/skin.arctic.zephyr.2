@@ -12,10 +12,14 @@
                     <bottom>view_pad</bottom>
                     
                     <control type="fixedlist" id="50">
-                        <animation effect="slide" end="0,-90" condition="Integer.IsLess(Container(50).NumItems,9)">Conditional</animation>
-                        <animation effect="slide" end="0,-90" condition="Integer.IsLess(Container(50).NumItems,7)">Conditional</animation>
-                        <animation effect="slide" end="0,-90" condition="Integer.IsLess(Container(50).NumItems,5)">Conditional</animation>
-                        <animation effect="slide" end="0,-90" condition="Integer.IsLess(Container(50).NumItems,3)">Conditional</animation>
+                        <animation effect="slide" end="0,-90" condition="Integer.IsLess(Container(50).NumItems,9) + !Container(50).HasParent">Conditional</animation>
+                        <animation effect="slide" end="0,-90" condition="Integer.IsLess(Container(50).NumItems,7)+ !Container(50).HasParent">Conditional</animation>
+                        <animation effect="slide" end="0,-90" condition="Integer.IsLess(Container(50).NumItems,5)+ !Container(50).HasParent">Conditional</animation>
+                        <animation effect="slide" end="0,-90" condition="Integer.IsLess(Container(50).NumItems,3)+ !Container(50).HasParent">Conditional</animation>
+                        <animation effect="slide" end="0,-90" condition="Integer.IsLess(Container(50).NumItems,8) + Container(50).HasParent">Conditional</animation>
+                        <animation effect="slide" end="0,-90" condition="Integer.IsLess(Container(50).NumItems,6)+ Container(50).HasParent">Conditional</animation>
+                        <animation effect="slide" end="0,-90" condition="Integer.IsLess(Container(50).NumItems,4)+ Container(50).HasParent">Conditional</animation>
+                        <animation effect="slide" end="0,-90" condition="Integer.IsLess(Container(50).NumItems,2)+ Container(50).HasParent">Conditional</animation>
                         <viewtype label="$LOCALIZE[535]">list</viewtype>
                         <include content="View_Forced">
                             <param name="string" value="$LOCALIZE[535]" />
@@ -39,10 +43,14 @@
                     <top>view_pad</top>
                     <bottom>view_pad</bottom>
                     <control type="fixedlist" id="500">
-                        <animation effect="slide" end="0,-90" condition="Integer.IsLess(Container(500).NumItems,9)">Conditional</animation>
-                        <animation effect="slide" end="0,-90" condition="Integer.IsLess(Container(500).NumItems,7)">Conditional</animation>
-                        <animation effect="slide" end="0,-90" condition="Integer.IsLess(Container(500).NumItems,5)">Conditional</animation>
-                        <animation effect="slide" end="0,-90" condition="Integer.IsLess(Container(500).NumItems,3)">Conditional</animation>
+                        <animation effect="slide" end="0,-90" condition="Integer.IsLess(Container(500).NumItems,9) + !Container(500).HasParent">Conditional</animation>
+                        <animation effect="slide" end="0,-90" condition="Integer.IsLess(Container(500).NumItems,7)+ !Container(500).HasParent">Conditional</animation>
+                        <animation effect="slide" end="0,-90" condition="Integer.IsLess(Container(500).NumItems,5)+ !Container(500).HasParent">Conditional</animation>
+                        <animation effect="slide" end="0,-90" condition="Integer.IsLess(Container(500).NumItems,3)+ !Container(500).HasParent">Conditional</animation>
+                        <animation effect="slide" end="0,-90" condition="Integer.IsLess(Container(500).NumItems,8) + Container(500).HasParent">Conditional</animation>
+                        <animation effect="slide" end="0,-90" condition="Integer.IsLess(Container(500).NumItems,6)+ Container(500).HasParent">Conditional</animation>
+                        <animation effect="slide" end="0,-90" condition="Integer.IsLess(Container(500).NumItems,4)+ Container(500).HasParent">Conditional</animation>
+                        <animation effect="slide" end="0,-90" condition="Integer.IsLess(Container(500).NumItems,2)+ Container(500).HasParent">Conditional</animation>
                         <visible>Container.Content(movies) | Container.Content(episodes) | Container.Content(tvshows) | Container.Content(sets) | Container.Content(seasons) | Container.Content(artists) | Container.Content(videos)</visible>
                         <include>View_NotTheseWindows</include>
                         <viewtype label="$LOCALIZE[31298]">list</viewtype>
