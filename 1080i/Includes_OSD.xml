@@ -343,6 +343,7 @@
                                 <control type="group">
                                     <top>-12</top>
                                     <right>-30</right>
+                                    <visible>!Skin.HasSetting(HideOSDVideoCodec)</visible>
                                     <include content="Object_Flags">
                                         <param name="source" value="VideoPlayer." />
                                         <param name="directory" value="color" />
@@ -364,8 +365,8 @@
                 </control>
             </control>
             <control type="image">
-                <bottom>48</bottom>
-                <right>0</right>
+                <bottom>122</bottom>
+                <right>view_pad</right>
                 <width>500</width>
                 <height>281</height>
                 <texture background="true">$VAR[Image_Player_Clearart]</texture>

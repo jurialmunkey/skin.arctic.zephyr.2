@@ -489,16 +489,10 @@
                             <visible>Integer.IsEqual(Window.Property(CurrentFocus),9103)</visible>
                             <include>Defs_Settings_Button</include>
                             <label>$LOCALIZE[31130]</label>
-                            <selected>Skin.HasSetting(ShowOSDVideoCodec)</selected>
-                            <onclick>Skin.ToggleSetting(ShowOSDVideoCodec)</onclick>
+                            <selected>!Skin.HasSetting(HideOSDVideoCodec)</selected>
+                            <onclick>Skin.ToggleSetting(HideOSDVideoCodec)</onclick>
                         </control>
-                        <control type="radiobutton" id="9267" description="Hide sub blade">
-                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9103)</visible>
-                            <include>Defs_Settings_Button</include>
-                            <label>$LOCALIZE[31186]</label>
-                            <selected>!Skin.HasSetting(OSDHideSubmenu)</selected>
-                            <onclick>Skin.ToggleSetting(OSDHideSubmenu)</onclick>
-                        </control>
+
                         <control type="radiobutton" id="9299" description="AutoMusicVis">
                             <visible>Integer.IsEqual(Window.Property(CurrentFocus),9103)</visible>
                             <include>Defs_Settings_Button</include>
@@ -524,15 +518,6 @@
                             <visible>!Skin.HasSetting(BigMusicVis)</visible>
                         </control>
                         
-                        <control type="radiobutton" id="9287" description="Larger statusbar font">
-                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9103)</visible>
-                            <include>Defs_Settings_Button</include>
-                            <label>$LOCALIZE[31253]</label>
-                            <selected>Skin.HasSetting(LargeStatusbarFont)</selected>
-                            <onclick>Skin.ToggleSetting(LargeStatusbarFont)</onclick>
-                        </control>
-                        
-
                         <!-- ======= -->
                         <!-- Artwork -->
                         <!-- ======= -->
