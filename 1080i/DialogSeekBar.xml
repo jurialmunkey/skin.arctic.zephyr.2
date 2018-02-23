@@ -69,7 +69,6 @@
             <visible>[VideoPlayer.IsFullscreen | Window.IsVisible(MusicVisualisation.xml)]</visible>
         </control>
 
-        <include condition="Window.IsVisible(MusicVisualisation.xml) + Skin.HasSetting(BigMusicVis)">OSD_Music_Seekbar</include>
         <include condition="Window.IsVisible(VideoFullScreen.xml)">OSD_Video_Seekbar</include>
         <include condition="Window.IsVisible(VideoFullScreen.xml)" content="OSD_Music_Info">
             <param name="player" value="VideoPlayer" />

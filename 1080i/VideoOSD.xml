@@ -14,6 +14,7 @@
         <control type="group">
             <include condition="String.IsEmpty(Window(Home).Property(OSDViewMode))">Animation_FadeIn</include>
             <visible>!Window.IsVisible(DialogSlider.xml)</visible>
+            <visible>!Window.IsVisible(VideoOSDBookmarks.xml)</visible>
             <animation effect="fade" start="100" end="0" time="200" condition="Control.HasFocus(9605)">Conditional</animation>
             <!-- Main Blade -->
             <control type="group">
@@ -39,10 +40,10 @@
 
         <include content="OSD_Menu_List">
             <param name="content" value="Items_OSD_Settings" />
-            <param name="height" value="452" />
+            <param name="height" value="522" />
             <param name="id" value="3112" />
             <param name="label" value="$LOCALIZE[33063]" />
-            <param name="position" value="264,170" />
+            <param name="position" value="264,135" />
         </include>
 
         <control type="group">

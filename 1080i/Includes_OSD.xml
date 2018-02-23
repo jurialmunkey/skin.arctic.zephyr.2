@@ -50,29 +50,13 @@
         </control>
     </include>
 
-    <include name="OSD_Music_Seekbar">
-        <control type="group">
-            <visible>Player.Seeking | Player.DisplayAfterSeek | Player.Paused | Player.Forwarding | Player.Rewinding | Player.ShowInfo | Window.IsActive(musicosd) | Window.IsActive(videoosd) | Window.IsActive(DialogFullScreenInfo.xml)</visible>
-            <animation effect="fade" start="0" end="100" time="300">VisibleChange</animation>
-            <animation type="WindowOpen" reversible="false">
-                <effect type="fade" start="0" end="100" time="300" tween="sine" easing="out"/>
-                <effect type="slide" start="0,96" end="0" time="400" tween="cubic" easing="out" />
-            </animation>
-            <animation type="WindowClose" reversible="false">
-                <effect type="fade" start="100" end="0" time="300" tween="sine" easing="out" />
-                <effect type="slide" start="0" end="0,96" time="300" tween="cubic" easing="out" />
-            </animation>
-            <include>Statusbar_Info_Clock</include>
-        </control>
-    </include>
-
     <include name="OSD_Music_Info">
         <param name="player" default="MusicPlayer" />
         <param name="rating" default="MusicPlayer.UserRating" />
         <param name="artwork" default="MusicPlayer.Cover" />
         <definition>
             <control type="group">
-                <visible>[Window.IsVisible(VideoFullScreen.xml) + VideoPlayer.Content(musicvideos) + !Skin.HasSetting(BigMusicVis)] | !Window.IsVisible(VideoFullScreen.xml)</visible>
+                <visible>[Window.IsVisible(VideoFullScreen.xml) + VideoPlayer.Content(musicvideos)] | !Window.IsVisible(VideoFullScreen.xml)</visible>
                 <visible>Window.IsVisible(musicosd) | Player.ShowInfo | [Window.IsVisible(VideoFullScreen.xml) + [!String.IsEmpty(Window(Home).Property(OSDInfo)) | Player.Caching | Player.Seeking | Player.DisplayAfterSeek | Player.Paused | Player.Forwarding | Player.Rewinding | Player.ShowInfo | Window.IsActive(videoosd) | Window.IsActive(DialogFullScreenInfo.xml) | Window.IsVisible(DialogPlayerProcessInfo.xml) | [!Skin.HasSetting(DisableMusicVideoAutoInfo) + [Integer.IsEqual(Player.Time(hh),0) + Integer.IsEqual(Player.Time(mm),0) + Integer.IsGreater(Player.Time(ss),5) + Integer.IsLess(Player.Time(ss),15)] | [Integer.IsEqual(Player.TimeRemaining(hh),0) + Integer.IsEqual(Player.TimeRemaining(mm),0) + Integer.IsGreater(Player.TimeRemaining(ss),5) + Integer.IsLess(Player.TimeRemaining(ss),15)]]]]</visible>
                 <animation effect="fade" start="0" end="100" time="300">VisibleChange</animation>
 
@@ -138,6 +122,7 @@
                                 <left>-16</left>
                                 <width>260</width>
                                 <visible>!Window.IsVisible(MusicVisualisation.xml) | !Integer.IsEqual($PARAM[rating],0)</visible>
+                                <visible>!Window.IsVisible(musicosd)</visible>
                                 <include content="Object_StarRating">
                                     <param name="align" value="left" />
                                     <param name="visible" value="true" />
@@ -149,6 +134,7 @@
                                 <left>-16</left>
                                 <width>260</width>
                                 <visible>Window.IsVisible(MusicVisualisation.xml) + Integer.IsEqual($PARAM[rating],0)</visible>
+                                <visible>!Window.IsVisible(musicosd)</visible>
                                 <include content="Object_StarRating_Music">
                                     <param name="align" value="left" />
                                     <param name="visible" value="true" />
@@ -163,6 +149,7 @@
                                 <usecontrolcoords>true</usecontrolcoords>
                                 <width>100%</width>
                                 <visible>Window.IsVisible(MusicVisualisation.xml)</visible>
+                                <visible>!Window.IsVisible(musicosd)</visible>
                                 <control type="image" id="9968">
                                     <width>84</width>
                                     <top>-6</top>
@@ -187,6 +174,7 @@
                                 <height>70</height>
                                 <width>700</width>
                                 <visible>Window.IsVisible(VideoFullScreen.xml)</visible>
+                                <visible>!Window.IsVisible(musicosd)</visible>
                                 <include content="Object_Flags">
                                     <param name="align" value="left" />
                                     <param name="source" value="VideoPlayer." />
@@ -206,11 +194,29 @@
                                 <textcolor>main_fg_100</textcolor>
                                 <font>font_small</font>
                             </control>
-                            <control type="progress">
-                                <top>10</top>
-                                <height>24</height>
+                            <control type="group">
                                 <width>564</width>
-                                <info>Player.Progress</info>
+                                <control type="progress" id="499">
+                                    <top>16</top>
+                                    <height>12</height>
+                                    <width>564</width>
+                                    <info>Player.Progress</info>
+                                    <visible>Player.HasMedia</visible>
+                                </control>
+                                <control type="progress">
+                                    <description>Progressbar</description>
+                                    <top>16</top>
+                                    <height>12</height>
+                                    <width>564</width>
+                                    <info>Player.Progress</info>
+                                    <texturebg colordiffuse="00ffffff" border="4">diffuse/progress-bg.png</texturebg>
+                                    <lefttexture colordiffuse="00ffffff" border="4">diffuse/progress-left.png</lefttexture>
+                                    <midtexture colordiffuse="$VAR[ColorHighlight2]" border="4" diffuse="progress/diffuse.png">diffuse/progress-end.png</midtexture>
+                                    <righttexture colordiffuse="$VAR[ColorHighlight2]" border="4" diffuse="progress/diffuse-end.png">diffuse/progress-right.png</righttexture>
+                                    <include content="Defs_Progress_Colorfade">
+                                        <param name="id" value="499" />
+                                    </include>
+                                </control>
                             </control>
                             <control type="label">
                                 <label>$INFO[Player.Duration,   ,]</label>
@@ -230,7 +236,7 @@
 
     <include name="OSD_Video_Seekbar">
         <control type="group">
-            <visible>[!VideoPlayer.Content(musicvideos) | Skin.HasSetting(BigMusicVis)]</visible>
+            <visible>!Window.IsVisible(VideoOSDBookmarks.xml)</visible>
             <visible>!String.IsEmpty(Window(Home).Property(OSDInfo)) | Player.Caching | Player.Seeking | Player.DisplayAfterSeek | Player.Paused | Player.Forwarding | Player.Rewinding | Player.ShowInfo | Window.IsActive(musicosd) | Window.IsActive(videoosd) | Window.IsActive(DialogFullScreenInfo.xml) | Window.IsVisible(DialogPlayerProcessInfo.xml)</visible>
             <animation effect="fade" start="0" end="100" time="300">VisibleChange</animation>
             <animation effect="fade" start="0" end="100" time="300" condition="![Player.Seeking | Player.DisplayAfterSeek | Player.Paused | Player.Forwarding | Player.Rewinding | Player.ShowInfo | Window.IsActive(musicosd) | Window.IsActive(videoosd) | Window.IsActive(DialogFullScreenInfo.xml)]">WindowOpen</animation>
@@ -506,8 +512,120 @@
             <!-- <onfocus>SetProperty(OSD_Menu,3111,Home)</onfocus>
             <onup>SetFocus(3111,2)</onup> -->
             <onfocus>ClearProperty(OSD_Menu,Home)</onfocus>
+            <visible>Window.IsVisible(videoosd)</visible>
         </control>
-        <control type="button" id="19">
+        <control type="button" id="32">
+            <centertop>50%</centertop>
+            <description>extrainfo</description>
+            <width>48</width>
+            <height>48</height>
+            <label/>
+            <font/>
+            <texturefocus colordiffuse="$VAR[ColorHighlight]">osd/info.png</texturefocus>
+            <texturenofocus colordiffuse="main_fg_70">osd/info.png</texturenofocus>
+            <onclick condition="!Player.Paused + !Skin.HasSetting(DontPauseOSD)">SetProperty(OSDExtendedInfo,1,Home)</onclick>
+            <onclick condition="!Player.Paused + !Skin.HasSetting(DontPauseOSD)">Pause</onclick>
+            <onclick condition="VideoPlayer.Content(movies)">RunScript(script.extendedinfo,info=extendedinfo,name=$INFO[VideoPlayer.Title],imdb_id=$INFO[VideoPlayer.IMDBNumber])</onclick>
+            <onclick condition="VideoPlayer.Content(episodes)">RunScript(script.extendedinfo,info=extendedtvinfo,name=$INFO[VideoPlayer.TvShowTitle])</onclick>
+            <onfocus condition="!String.IsEmpty(Window(Home).Property(OSDExtendedInfo)) + Player.Paused">Play</onfocus>
+            <onfocus condition="!String.IsEmpty(Window(Home).Property(OSDExtendedInfo))">ClearProperty(OSDExtendedInfo,Home)</onfocus>
+            <onfocus>ClearProperty(OSD_Menu,Home)</onfocus>
+            <visible>Window.IsVisible(videoosd)</visible>
+            <visible>!VideoPlayer.Content(livetv)</visible>
+            <visible>VideoPlayer.Content(movies) | VideoPlayer.Content(episodes)</visible>
+        </control>
+        <control type="togglebutton" id="20">
+            <usealttexture>Control.HasFocus(20) | Control.HasFocus(21) | Control.HasFocus(22)</usealttexture>
+            <centertop>50%</centertop>
+            <description>Repeat</description>
+            <width>48</width>
+            <height>48</height>
+            <label/>
+            <font/>
+            <alttexturefocus colordiffuse="$VAR[ColorHighlight]">osd/repeat-off.png</alttexturefocus>
+            <alttexturenofocus colordiffuse="$VAR[ColorHighlight]">osd/repeat-off.png</alttexturenofocus>
+            <texturefocus colordiffuse="$VAR[ColorHighlight]">osd/repeat-off.png</texturefocus>
+            <texturenofocus colordiffuse="main_fg_70">osd/repeat-off.png</texturenofocus>
+            <onfocus condition="!String.IsEmpty(Window(Home).Property(OSDExtendedInfo)) + Player.Paused">Play</onfocus>
+            <onfocus condition="!String.IsEmpty(Window(Home).Property(OSDExtendedInfo))">ClearProperty(OSDExtendedInfo,Home)</onfocus>
+            <onfocus>ClearProperty(OSD_Menu,Home)</onfocus>
+            <onclick>XBMC.PlayerControl(Repeat)</onclick>
+            <visible>Window.IsVisible(musicosd)</visible>
+            <visible>!Playlist.IsRepeatOne + !Playlist.IsRepeat</visible>
+        </control>
+        <control type="togglebutton" id="21">
+            <usealttexture>Control.HasFocus(20) | Control.HasFocus(21) | Control.HasFocus(22)</usealttexture>
+            <centertop>50%</centertop>
+            <description>Repeat</description>
+            <width>48</width>
+            <height>48</height>
+            <label/>
+            <font/>
+            <alttexturefocus colordiffuse="$VAR[ColorHighlight]">osd/repeat-one.png</alttexturefocus>
+            <alttexturenofocus colordiffuse="$VAR[ColorHighlight]">osd/repeat-one.png</alttexturenofocus>
+            <texturefocus colordiffuse="$VAR[ColorHighlight]">osd/repeat-one.png</texturefocus>
+            <texturenofocus colordiffuse="main_fg_70">osd/repeat-one.png</texturenofocus>
+            <onfocus condition="!String.IsEmpty(Window(Home).Property(OSDExtendedInfo)) + Player.Paused">Play</onfocus>
+            <onfocus condition="!String.IsEmpty(Window(Home).Property(OSDExtendedInfo))">ClearProperty(OSDExtendedInfo,Home)</onfocus>
+            <onfocus>ClearProperty(OSD_Menu,Home)</onfocus>
+            <onclick>XBMC.PlayerControl(Repeat)</onclick>
+            <visible>Window.IsVisible(musicosd)</visible>
+            <visible>Playlist.IsRepeatOne</visible>
+        </control>
+        <control type="togglebutton" id="22">
+            <usealttexture>Control.HasFocus(20) | Control.HasFocus(21) | Control.HasFocus(22)</usealttexture>
+            <centertop>50%</centertop>
+            <description>Repeat</description>
+            <width>48</width>
+            <height>48</height>
+            <label/>
+            <font/>
+            <alttexturefocus colordiffuse="$VAR[ColorHighlight]">osd/repeat-all.png</alttexturefocus>
+            <alttexturenofocus colordiffuse="$VAR[ColorHighlight]">osd/repeat-all.png</alttexturenofocus>
+            <texturefocus colordiffuse="$VAR[ColorHighlight]">osd/repeat-all.png</texturefocus>
+            <texturenofocus colordiffuse="main_fg_70">osd/repeat-all.png</texturenofocus>
+            <onfocus condition="!String.IsEmpty(Window(Home).Property(OSDExtendedInfo)) + Player.Paused">Play</onfocus>
+            <onfocus condition="!String.IsEmpty(Window(Home).Property(OSDExtendedInfo))">ClearProperty(OSDExtendedInfo,Home)</onfocus>
+            <onfocus>ClearProperty(OSD_Menu,Home)</onfocus>
+            <onclick>XBMC.PlayerControl(Repeat)</onclick>
+            <visible>Window.IsVisible(musicosd)</visible>
+            <visible>Playlist.IsRepeat</visible>
+        </control>
+        <control type="togglebutton" id="23">
+            <centertop>50%</centertop>
+            <description>Shuffle</description>
+            <width>48</width>
+            <height>48</height>
+            <label/>
+            <font/>
+            <usealttexture>Playlist.IsRandom</usealttexture>
+            <texturefocus colordiffuse="$VAR[ColorHighlight]">osd/shuffle.png</texturefocus>
+            <texturenofocus colordiffuse="main_fg_70">osd/shuffle.png</texturenofocus>
+            <alttexturefocus colordiffuse="$VAR[ColorHighlight]">osd/shuffle-on.png</alttexturefocus>
+            <alttexturenofocus colordiffuse="main_fg_70">osd/shuffle-on.png</alttexturenofocus>
+            <onfocus condition="!String.IsEmpty(Window(Home).Property(OSDExtendedInfo)) + Player.Paused">Play</onfocus>
+            <onfocus condition="!String.IsEmpty(Window(Home).Property(OSDExtendedInfo))">ClearProperty(OSDExtendedInfo,Home)</onfocus>
+            <onfocus>ClearProperty(OSD_Menu,Home)</onfocus>
+            <onclick>XBMC.PlayerControl(Random)</onclick>
+            <visible>Window.IsVisible(musicosd)</visible>
+        </control>
+        <control type="button" id="24">
+            <centertop>50%</centertop>
+            <description>Playlist</description>
+            <width>48</width>
+            <height>48</height>
+            <label/>
+            <font/>
+            <texturefocus colordiffuse="$VAR[ColorHighlight]">osd/playlist.png</texturefocus>
+            <texturenofocus colordiffuse="main_fg_70">osd/playlist.png</texturenofocus>
+            <onclick>Close</onclick>
+            <onclick>ActivateWindow(musicplaylist)</onclick>
+            <onfocus condition="!String.IsEmpty(Window(Home).Property(OSDExtendedInfo)) + Player.Paused">Play</onfocus>
+            <onfocus condition="!String.IsEmpty(Window(Home).Property(OSDExtendedInfo))">ClearProperty(OSDExtendedInfo,Home)</onfocus>
+            <onfocus>ClearProperty(OSD_Menu,Home)</onfocus>
+            <visible>Window.IsVisible(musicosd)</visible>
+        </control>
+        <control type="button" id="25">
             <centertop>50%</centertop>
             <description>Settings</description>
             <width>48</width>
@@ -523,6 +641,42 @@
             <onup>SetProperty(OSD_Menu,3112,Home)</onup>
             <onup>SetFocus(3112,9)</onup>
         </control>
+        <control type="button" id="26">
+            <centertop>50%</centertop>
+            <description>EPG</description>
+            <width>48</width>
+            <height>48</height>
+            <label/>
+            <font/>
+            <texturefocus colordiffuse="$VAR[ColorHighlight]">osd/playlist.png</texturefocus>
+            <texturenofocus colordiffuse="main_fg_70">osd/playlist.png</texturenofocus>
+            <onclick>Close</onclick>
+            <onclick>ActivateWindow(tvguide,,return)</onclick>
+            <onfocus condition="!String.IsEmpty(Window(Home).Property(OSDExtendedInfo)) + Player.Paused">Play</onfocus>
+            <onfocus condition="!String.IsEmpty(Window(Home).Property(OSDExtendedInfo))">ClearProperty(OSDExtendedInfo,Home)</onfocus>
+            <onfocus>ClearProperty(OSD_Menu,Home)</onfocus>
+            <visible>Window.IsVisible(videoosd)</visible>
+            <visible>VideoPlayer.Content(livetv)</visible>
+        </control>
+
+        <control type="button" id="31">
+            <centertop>50%</centertop>
+            <description>3d</description>
+            <width>48</width>
+            <height>48</height>
+            <label/>
+            <font/>
+            <texturefocus colordiffuse="$VAR[ColorHighlight]">osd/3d.png</texturefocus>
+            <texturenofocus colordiffuse="main_fg_70">osd/3d.png</texturenofocus>
+            <onclick>StereoMode</onclick>
+            <visible>VideoPlayer.IsStereoscopic</visible>
+            <onfocus condition="!String.IsEmpty(Window(Home).Property(OSDExtendedInfo)) + Player.Paused">Play</onfocus>
+            <onfocus condition="!String.IsEmpty(Window(Home).Property(OSDExtendedInfo))">ClearProperty(OSDExtendedInfo,Home)</onfocus>
+            <onfocus>ClearProperty(OSD_Menu,Home)</onfocus>
+            <visible>Window.IsVisible(videoosd)</visible>
+            <visible>!VideoPlayer.Content(livetv)</visible>
+        </control>
+
     </include>
 
     <include name="OSD_Menu_List">
@@ -571,13 +725,13 @@
                         <onleft>ClearProperty(OSD_Menu,Home)</onleft>
                         <onright>ClearProperty(OSD_Menu,Home)</onright>
                         <onback>ClearProperty(OSD_Menu,Home)</onback>
-                        <ondown>ClearProperty(OSD_Menu,Home)</ondown>
-                        <!-- <onunfocus>ClearProperty(OSD_Menu,Home)</onunfocus> -->
+                        <!-- <ondown>ClearProperty(OSD_Menu,Home)</ondown> -->
+                        <onunfocus>ClearProperty(OSD_Menu,Home)</onunfocus>
                         <onleft>$PARAM[osd_id]</onleft>
                         <onright>$PARAM[osd_id]</onright>
                         <onback>$PARAM[osd_id]</onback>
-                        <ondown>$PARAM[osd_id]</ondown>
-                        <onup>noop</onup>
+                        <!-- <ondown>$PARAM[osd_id]</ondown> -->
+                        <!-- <onup>noop</onup> -->
                         <bottom>86</bottom>
                         <include>Defs_Options_Grouplist</include>
                         <itemlayout width="450" height="70">
@@ -613,131 +767,7 @@
         </definition>
     </include>
 
-    <include name="OSD_Controls_Video_Right">
-        <control type="button" id="4">
-            <description>Extra Info</description>
-            <label>$LOCALIZE[31086]</label>
-            <onclick condition="!Player.Paused + !Skin.HasSetting(DontPauseOSD)">SetProperty(OSDExtendedInfo,1,Home)</onclick>
-            <onclick condition="!Player.Paused + !Skin.HasSetting(DontPauseOSD)">Pause</onclick>
-            <onclick condition="VideoPlayer.Content(movies)">RunScript(script.extendedinfo,info=extendedinfo,name=$INFO[VideoPlayer.Title],imdb_id=$INFO[VideoPlayer.IMDBNumber])</onclick>
-            <onclick condition="VideoPlayer.Content(episodes)">RunScript(script.extendedinfo,info=extendedtvinfo,name=$INFO[VideoPlayer.TvShowTitle])</onclick>
-            <include>OSD_TextButton</include>
-            <enable>VideoPlayer.Content(movies) | VideoPlayer.Content(episodes)</enable>
-            <visible>!String.Contains(Player.Art(thumb),ytimg)</visible>
-        </control>
-        <control type="button" id="44">
-            <description>Extra Info</description>
-            <label>$LOCALIZE[31115]</label>
-            <include>OSD_TextButton</include>
-            <visible>String.Contains(Player.Art(thumb),ytimg)</visible>
-            <onclick>SetFocus(9605)</onclick>
-        </control>
-        <control type="button" id="5">
-            <description>3d Mode</description>
-            <label>14232</label>
-            <onclick>StereoMode</onclick>
-            <enable>VideoPlayer.IsStereoscopic</enable>
-            <include>OSD_TextButton</include>
-        </control>
-        <control type="button" id="6">
-            <description>Bookmarks</description>
-            <label>298</label>
-            <onclick>ActivateWindow(125)</onclick>
-            <include>OSD_TextButton</include>
-        </control>
-    </include>
-
-    <include name="OSD_Controls_LiveTV_Right">
-        <control type="button" id="4">
-            <description>CHANNELS</description>
-            <label>19019</label>
-            <include>OSD_TextButton</include>
-            <onclick>ActivateWindow(pvrosdchannels)</onclick>
-        </control>
-        <control type="button" id="5">
-            <description>EPG</description>
-            <label>$LOCALIZE[19030] / $LOCALIZE[19031]</label>
-            <onclick>ActivateWindow(pvrosdguide)</onclick>
-            <include>OSD_TextButton</include>
-        </control>
-
-        <control type="button" id="6">
-            <description>TIMELINE</description>
-            <include>OSD_TextButton</include>
-            <label>19032</label>
-            <onclick>Close</onclick>
-            <onclick>ActivateWindow(tvguide,,return)</onclick>
-        </control>
-    </include>
-
-    <include name="OSD_Controls_Video_Left">
-        <control type="button" id="1">
-            <description>CodecInfo</description>
-            <label>$LOCALIZE[31085]</label>
-            <onclick>Action(CodecInfo)</onclick>
-            <include>OSD_TextButton</include>
-        </control>
-        <control type="button" id="2">
-            <description>Audio Settings</description>
-            <label>292</label>
-            <onclick>ActivateWindow(osdaudiosettings)</onclick>
-            <include>OSD_TextButton</include>
-        </control>
-        <control type="button" id="3">
-            <label>291</label>
-            <onclick>ActivateWindow(osdvideosettings)</onclick>
-            <include>OSD_TextButton</include>
-        </control>
-    </include>
-
-    <include name="OSD_Controls_Music_Left">
-        <control type="button" id="1">
-            <description>Repeat</description>
-            <label>$LOCALIZE[486]: $INFO[Playlist.Repeat]</label>
-            <onclick>XBMC.PlayerControl(Repeat)</onclick>
-            <include>OSD_TextButton</include>
-        </control>
-        <control type="button" id="2">
-            <label>$LOCALIZE[590]: $INFO[Playlist.Random]</label>
-            <onclick>XBMC.PlayerControl(Random)</onclick>
-            <include>OSD_TextButton</include>
-        </control>
-        <control type="button" id="3">
-            <description>Playlist</description>
-            <label>$LOCALIZE[559]</label>
-            <onclick>Close</onclick>
-            <onclick>ActivateWindow(musicplaylist)</onclick>
-            <include>OSD_TextButton</include>
-        </control>
-    </include>
-
-    <include name="OSD_Controls_Music_Right">
-        <control type="button" id="4">
-            <description>Rate Song</description>
-            <label>$LOCALIZE[31311]</label>
-            <onclick>setrating</onclick>
-            <include>OSD_TextButton</include>
-        </control>
-        <control type="button" id="500">
-            <description>Vis</description>
-            <label>250</label>
-            <include>OSD_TextButton</include>
-        </control>
-        <control type="button" id="6">
-            <description>Lyrics</description>
-             <label>24013</label>
-            <onclick>Close</onclick>
-            <onclick>RunScript(script.cu.lrclyrics)</onclick>
-            <enable>System.HasAddon(script.cu.lrclyrics)</enable>
-            <include>OSD_TextButton</include>
-        </control>
-        <!-- <control type="button" id="6">
-            <description>Presets</description>
-            <label>13388</label>
-            <onclick>XBMC.ActivateWindow(visualisationpresetlist)</onclick>
-            <include>OSD_TextButton</include>
-        </control> -->
-    </include>
+    
 
     <include name="OSD_TextButton">
         <onfocus condition="!String.IsEmpty(Window(Home).Property(OSDExtendedInfo)) + Player.Paused">Play</onfocus>
