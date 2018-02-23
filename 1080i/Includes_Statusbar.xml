@@ -1,57 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
     
-    <include name="Statusbar">
-        <control type="group">
-            <bottom>0</bottom>
-            <left>0</left>
-            <right>0</right>
-            <height>48</height>
-            <include>Statusbar_Texture</include>
-            <include>Statusbar_PlayerProgress</include>            
-            <control type="group">
-                <visible>Player.HasMedia</visible>
-                <include>Statusbar_NowPlaying</include>
-            </control>
-        </control>
-    </include>
-    
     <include name="Statusbar_PlayerProgress">
         <control type="progress" description="cache">
             <width>100%</width>
-            <top>2</top>
+            <height>12</height>
             <bottom>0</bottom>
             <info>Player.ProgressCache</info>
-            <texturebg colordiffuse="00ffffff">osd/progress-bg.png</texturebg>
+            <texturebg colordiffuse="00ffffff" border="4">diffuse/progress-bg.png</texturebg>
+            <lefttexture colordiffuse="main_fg_12" border="4">diffuse/progress-left.png</lefttexture>
+            <midtexture colordiffuse="main_fg_12" border="4">diffuse/progress-end.png</midtexture>
+            <righttexture colordiffuse="main_fg_12" border="4">diffuse/progress-right.png</righttexture>
+            <!-- <texturebg colordiffuse="00ffffff">osd/progress-bg.png</texturebg>
             <lefttexture colordiffuse="main_fg_12">osd/progress-end.png</lefttexture>
             <midtexture colordiffuse="main_fg_12">osd/progress-end.png</midtexture>
-            <righttexture colordiffuse="main_fg_12">osd/progress-end.png</righttexture>
+            <righttexture colordiffuse="main_fg_12">osd/progress-end.png</righttexture> -->
             <visible>Player.Playing | Player.Paused | Player.Caching</visible>
             <visible>!Player.Seeking</visible>
             <visible>Player.HasMedia</visible>
         </control>
-        <control type="progress">
+        <control type="progress" id="499">
             <width>100%</width>
-            <top>2</top>
+            <height>12</height>
             <bottom>0</bottom>
             <info>Player.Progress</info>
-            <texturebg colordiffuse="00ffffff">osd/progress-bg.png</texturebg>
+            <!-- <texturebg colordiffuse="00ffffff">osd/progress-bg.png</texturebg>
             <lefttexture colordiffuse="main_fg_30">osd/progress-end.png</lefttexture>
             <midtexture colordiffuse="main_fg_30">osd/progress-end.png</midtexture>
-            <righttexture colordiffuse="main_fg_30">osd/progress-end.png</righttexture>
+            <righttexture colordiffuse="main_fg_30">osd/progress-end.png</righttexture> -->
             <visible>Player.HasMedia</visible>
-            <visible>!Window.IsVisible(VideoFullScreen.xml) + !Window.IsVisible(MusicVisualisation.xml)</visible>
         </control>
-        <control type="progress" id="401">
+        <control type="progress">
+            <description>Progressbar</description>
             <width>100%</width>
-            <top>2</top>
+            <height>12</height>
             <bottom>0</bottom>
-            <texturebg colordiffuse="00ffffff">osd/progress-bg.png</texturebg>
-            <lefttexture colordiffuse="main_fg_30">osd/progress-end.png</lefttexture>
-            <midtexture colordiffuse="main_fg_30">osd/progress-end.png</midtexture>
-            <righttexture colordiffuse="main_fg_30">osd/progress-end.png</righttexture>
-            <visible>Player.HasMedia</visible>
-            <visible>Window.IsVisible(VideoFullScreen.xml) | Window.IsVisible(MusicVisualisation.xml)</visible>
+            <info>Player.Progress</info>
+            <texturebg colordiffuse="00ffffff" border="4">diffuse/progress-bg.png</texturebg>
+            <lefttexture colordiffuse="00ffffff" border="4">diffuse/progress-left.png</lefttexture>
+            <midtexture colordiffuse="$VAR[ColorHighlight2]" border="4" diffuse="progress/diffuse.png">diffuse/progress-end.png</midtexture>
+            <righttexture colordiffuse="$VAR[ColorHighlight2]" border="4" diffuse="progress/diffuse-end.png">diffuse/progress-right.png</righttexture>
+            <include content="Defs_Progress_Colorfade">
+                <param name="id" value="499" />
+            </include>
         </control>
     </include>
 
@@ -66,97 +57,61 @@
             <bottom>0</bottom>
             <top>0</top>
             <aspectratio>scale</aspectratio>
-            <texture>common/gradient-solid.png</texture>
+            <texture colordiffuse="main_bg_100">common/white.png</texture>
         </control>
-        
         <control type="image">
-            <height>1</height>
             <top>0</top>
-            <texture colordiffuse="darkline_separator">common/white.png</texture>
-        </control>
-        <control type="image">
-            <top>1</top>
             <height>1</height>
             <texture colordiffuse="PixelLines">common/white.png</texture>
         </control>
-
     </include>
 
     <include name="Statusbar_Info_Clock">
         <control type="group">
-            <bottom>0</bottom>
-            <left>0</left>
-            <right>0</right>
-            <height>48</height>
-            <include>Statusbar_Texture</include>
+            <bottom>view_pad</bottom>
+            <left>view_pad</left>
+            <right>view_pad</right>
             <include>Statusbar_PlayerProgress</include>
-            <control type="group">
-                <visible>Player.HasMedia</visible>
-                <include>Statusbar_NowPlaying</include>
-            </control>
-            <control type="grouplist">
-                <orientation>horizontal</orientation>
-                <left>8</left>
-                <height>48</height>
-                <align>left</align>
-                <itemgap>12</itemgap>
-                <control type="image">
-                    <width>58</width>
-                    <height>48</height>
-                    <aspectratio align="center">keep</aspectratio>
-                    <texture colordiffuse="main_fg_70">$VAR[Image_Statusbar_Icon]</texture>
-                    <include>Statusbar_Menubar_Button</include>
-                </control>
-                <control type="label">
-                    <textoffsetx>0</textoffsetx>
-                    <include>Statusbar_Menubar_Button</include>
-                    <label>19033</label>
-                    <visible>!Window.IsVisible(MusicVisualisation.xml) + !Window.IsVisible(VideoFullScreen.xml)</visible>
-                </control>
-                <control type="label">
-                    <textoffsetx>0</textoffsetx>
-                    <include>Statusbar_Menubar_Button</include>
-                    <label>$VAR[Label_PlayerStatus]</label>
-                    <visible>Window.IsVisible(MusicVisualisation.xml) | Window.IsVisible(VideoFullScreen.xml)</visible>
-                </control>
-            </control>
+            <include>Statusbar_NowPlaying</include>
         </control>
     </include>
 
 
     <include name="Statusbar_NowPlaying">
         <control type="grouplist">
-            <height>48</height>
-            <align>right</align>
-            <left>20</left>
-            <right>20</right>
-            <itemgap>12</itemgap>
-            <usecontrolcoords>true</usecontrolcoords>
             <orientation>horizontal</orientation>
-
+            <height>view_pad</height>
+            <bottom>12</bottom>
+            <align>left</align>
+            <itemgap>12</itemgap>
+            <control type="label">
+                <textoffsetx>0</textoffsetx>
+                <textcolor>main_fg_100</textcolor>
+                <include>Statusbar_Menubar_Items</include>
+                <label>$VAR[Label_PlayerStatus]</label>
+            </control>
+        </control>
+        <control type="grouplist">
+            <orientation>horizontal</orientation>
+            <height>view_pad</height>
+            <bottom>12</bottom>
+            <align>center</align>
+            <itemgap>12</itemgap>
             <control type="label">
                 <textcolor>main_fg_100</textcolor>
                 <include>Statusbar_Menubar_Items</include>
                 <label>$INFO[VideoPlayer.TvShowTitle,[COLOR=main_fg_70],[/COLOR][COLOR=main_fg_30]  •  [/COLOR]]$INFO[MusicPlayer.Artist,[COLOR=main_fg_70],[/COLOR][COLOR=main_fg_30]  •  [/COLOR]]$INFO[VideoPlayer.Season,,x]$INFO[VideoPlayer.Episode,,. ]$INFO[Player.Title]</label>
             </control>
-            <control type="label">
-                <textcolor>main_fg_30</textcolor>
-                <include>Statusbar_Menubar_Items</include>
-                <label>•</label>
-                <visible>!String.IsEmpty(Player.FinishTime)</visible>
-                <visible>Player.HasVideo</visible>
-            </control>
-            <control type="label">
-                <textcolor>main_fg_70</textcolor>
-                <include>Statusbar_Menubar_Items</include>
-                <label>$INFO[Player.FinishTime,[COLOR=main_fg_70]$LOCALIZE[31106] [/COLOR],]</label>
-                <visible>Player.HasVideo</visible>
-            </control>
-            <control type="label">
-                <textcolor>main_fg_30</textcolor>
-                <include>Statusbar_Menubar_Items</include>
-                <label>•</label>
-            </control>
+        </control>
+        <control type="grouplist">
+            <height>view_pad</height>
+            <bottom>12</bottom>
+            <align>right</align>
+            <left>0</left>
+            <right>0</right>
+            <itemgap>12</itemgap>
+            <usecontrolcoords>true</usecontrolcoords>
+            <orientation>horizontal</orientation>
             <control type="label">
                 <textcolor>$VAR[ColorHighlight]</textcolor>
                 <include>Statusbar_Menubar_Items</include>
@@ -175,23 +130,8 @@
         </control>
     </include>
 
-    <include name="Statusbar_Font_Normal"><font>font_statusbar</font></include>
-    <include name="Statusbar_Font_Large"><font>font_small</font></include>
-
-    <include name="Statusbar_Menubar_Button">
-        <include condition="Skin.HasSetting(LargeStatusbarFont)">Statusbar_Font_Large</include>
-        <include condition="!Skin.HasSetting(LargeStatusbarFont)">Statusbar_Font_Normal</include>
-        <textcolor>main_fg_100</textcolor>
-        <focusedcolor>$VAR[ColorHighlight]</focusedcolor>
-        <aligny>center</aligny>
-        <width>auto</width>
-        <height>100%</height>
-        <textoffsetx>64</textoffsetx>
-    </include>
-
     <include name="Statusbar_Menubar_Items">
-        <include condition="Skin.HasSetting(LargeStatusbarFont)">Statusbar_Font_Large</include>
-        <include condition="!Skin.HasSetting(LargeStatusbarFont)">Statusbar_Font_Normal</include>
+        <font>font_tiny</font>
         <textcolor>main_fg_100</textcolor>
         <aligny>center</aligny>
         <width>auto</width>
