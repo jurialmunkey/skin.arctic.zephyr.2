@@ -122,7 +122,7 @@
                                 <left>-16</left>
                                 <width>260</width>
                                 <visible>!Window.IsVisible(MusicVisualisation.xml) | !Integer.IsEqual($PARAM[rating],0)</visible>
-                                <visible>!Window.IsVisible(musicosd)</visible>
+                                <visible>!Window.IsVisible(musicosd) + !Window.IsVisible(videoosd)</visible>
                                 <include content="Object_StarRating">
                                     <param name="align" value="left" />
                                     <param name="visible" value="true" />
@@ -134,7 +134,7 @@
                                 <left>-16</left>
                                 <width>260</width>
                                 <visible>Window.IsVisible(MusicVisualisation.xml) + Integer.IsEqual($PARAM[rating],0)</visible>
-                                <visible>!Window.IsVisible(musicosd)</visible>
+                                <visible>!Window.IsVisible(musicosd) + !Window.IsVisible(videoosd)</visible>
                                 <include content="Object_StarRating_Music">
                                     <param name="align" value="left" />
                                     <param name="visible" value="true" />
@@ -149,7 +149,7 @@
                                 <usecontrolcoords>true</usecontrolcoords>
                                 <width>100%</width>
                                 <visible>Window.IsVisible(MusicVisualisation.xml)</visible>
-                                <visible>!Window.IsVisible(musicosd)</visible>
+                                <visible>!Window.IsVisible(musicosd) + !Window.IsVisible(videoosd)</visible>
                                 <control type="image" id="9968">
                                     <width>84</width>
                                     <top>-6</top>
@@ -174,7 +174,7 @@
                                 <height>70</height>
                                 <width>700</width>
                                 <visible>Window.IsVisible(VideoFullScreen.xml)</visible>
-                                <visible>!Window.IsVisible(musicosd)</visible>
+                                <visible>!Window.IsVisible(musicosd) + !Window.IsVisible(videoosd)</visible>
                                 <include content="Object_Flags">
                                     <param name="align" value="left" />
                                     <param name="source" value="VideoPlayer." />
@@ -234,8 +234,21 @@
         </definition>
     </include>
 
+    <include name="OSD_VideoPosition">
+        <align>center</align>
+        <height>view_pad</height>        
+        <bottom>40</bottom>
+    </include>
+    <include name="OSD_MusicPosition">
+        <left>300</left>
+        <bottom>96</bottom>
+        <align>left</align>
+        <height>48</height>
+    </include>
+
     <include name="OSD_Video_Seekbar">
         <control type="group">
+            <visible>!VideoPlayer.Content(musicvideos)</visible>
             <visible>!Window.IsVisible(VideoOSDBookmarks.xml)</visible>
             <visible>!String.IsEmpty(Window(Home).Property(OSDInfo)) | Player.Caching | Player.Seeking | Player.DisplayAfterSeek | Player.Paused | Player.Forwarding | Player.Rewinding | Player.ShowInfo | Window.IsActive(musicosd) | Window.IsActive(videoosd) | Window.IsActive(DialogFullScreenInfo.xml) | Window.IsVisible(DialogPlayerProcessInfo.xml)</visible>
             <animation effect="fade" start="0" end="100" time="300">VisibleChange</animation>
@@ -514,6 +527,7 @@
             <onup>SetFocus(3111,2)</onup> -->
             <onfocus>ClearProperty(OSD_Menu,Home)</onfocus>
             <visible>Window.IsVisible(videoosd)</visible>
+            <visible>!VideoPlayer.Content(musicvideos)</visible>
         </control>
         <control type="button" id="32">
             <centertop>50%</centertop>
@@ -641,6 +655,35 @@
             <onclick>SetFocus(3112,9)</onclick>
             <onup>SetProperty(OSD_Menu,3112,Home)</onup>
             <onup>SetFocus(3112,9)</onup>
+            <visible>!VideoPlayer.Content(musicvideos)</visible>
+        </control>
+        <control type="button" id="40">
+            <centertop>50%</centertop>
+            <description>Settings</description>
+            <width>48</width>
+            <height>48</height>
+            <label/>
+            <font/>
+            <texturefocus colordiffuse="$VAR[ColorHighlight]">osd/audio-settings.png</texturefocus>
+            <texturenofocus colordiffuse="main_fg_70">osd/audio-settings.png</texturenofocus>
+            <onfocus condition="!String.IsEmpty(Window(Home).Property(OSDExtendedInfo)) + Player.Paused">Play</onfocus>
+            <onfocus condition="!String.IsEmpty(Window(Home).Property(OSDExtendedInfo))">ClearProperty(OSDExtendedInfo,Home)</onfocus>
+            <onclick>ActivateWindow(osdaudiosettings)</onclick>
+            <visible>VideoPlayer.Content(musicvideos)</visible>
+        </control>
+        <control type="button" id="41">
+            <centertop>50%</centertop>
+            <description>Settings</description>
+            <width>48</width>
+            <height>48</height>
+            <label/>
+            <font/>
+            <texturefocus colordiffuse="$VAR[ColorHighlight]">osd/video-settings.png</texturefocus>
+            <texturenofocus colordiffuse="main_fg_70">osd/video-settings.png</texturenofocus>
+            <onfocus condition="!String.IsEmpty(Window(Home).Property(OSDExtendedInfo)) + Player.Paused">Play</onfocus>
+            <onfocus condition="!String.IsEmpty(Window(Home).Property(OSDExtendedInfo))">ClearProperty(OSDExtendedInfo,Home)</onfocus>
+            <onclick>ActivateWindow(osdvideosettings)</onclick>
+            <visible>VideoPlayer.Content(musicvideos)</visible>
         </control>
         <control type="button" id="26">
             <centertop>50%</centertop>

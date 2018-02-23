@@ -16,23 +16,17 @@
             <visible>!Window.IsVisible(DialogSlider.xml)</visible>
             <visible>!Window.IsVisible(VideoOSDBookmarks.xml)</visible>
             <animation effect="fade" start="100" end="0" time="200" condition="Control.HasFocus(9605)">Conditional</animation>
-            <!-- Main Blade -->
-            <control type="group">
-                <height>view_pad</height>
-                <bottom>40</bottom>
-                <control type="grouplist" id="9000">
-                    <align>center</align>
-                    <height>100%</height>
-                    <itemgap>32</itemgap>
-                    <!-- <onleft>3</onleft>
-                    <onright>4</onright> -->
-                    <ondown>9003</ondown>
-                    <onup condition="String.IsEmpty(Window(Home).Property(OSDInfo))">SetProperty(OSDInfo,1,Home)</onup>
-                    <onup condition="!String.IsEmpty(Window(Home).Property(OSDInfo))">ClearProperty(OSDInfo,Home)</onup>
-                    <orientation>horizontal</orientation>
-                    <usecontrolcoords>true</usecontrolcoords>
-                    <include>OSD_Controls</include>
-                </control>
+                
+            <control type="grouplist" id="9000">
+                <include condition="!VideoPlayer.Content(musicvideos)">OSD_VideoPosition</include>
+                <include condition="VideoPlayer.Content(musicvideos)">OSD_MusicPosition</include>
+                <itemgap>32</itemgap>
+                <ondown>9003</ondown>
+                <onup condition="String.IsEmpty(Window(Home).Property(OSDInfo))">SetProperty(OSDInfo,1,Home)</onup>
+                <onup condition="!String.IsEmpty(Window(Home).Property(OSDInfo))">ClearProperty(OSDInfo,Home)</onup>
+                <orientation>horizontal</orientation>
+                <usecontrolcoords>true</usecontrolcoords>
+                <include>OSD_Controls</include>
             </control>
         </control>
 
