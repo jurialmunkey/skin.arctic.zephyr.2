@@ -1,5 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
+    <include name="Items_OSD_Subtitles">
+        <content>
+            <item>
+                <icon/>
+                <label>$LOCALIZE[287] $LOCALIZE[305] $INFO[VideoPlayer.SubtitlesLanguage,[UPPERCASE],[/UPPERCASE]]</label>
+                <onclick>NextSubtitle</onclick>
+                <visible>VideoPlayer.SubtitlesEnabled</visible>
+            </item>
+            <item>
+                <icon/>
+                <label>$LOCALIZE[287] $LOCALIZE[13106]</label>
+                <onclick>NextSubtitle</onclick>
+                <visible>!VideoPlayer.SubtitlesEnabled</visible>
+            </item>
+            <item>
+                <icon />
+                <label>$LOCALIZE[287] $LOCALIZE[33003]</label>
+                <onclick>Close</onclick>
+                <onclick>ActivateWindow(SubtitleSearch)</onclick>
+            </item>
+            <item>
+                <icon/>
+                <label>22006</label>
+                <onclick>subtitledelay</onclick>
+            </item>
+        </content>
+    </include>
+
+    <include name="Items_OSD_Settings">
+        <content>
+            <item>
+                <icon />
+                <label>$LOCALIZE[13395]</label>
+                <onclick>ActivateWindow(osdvideosettings)</onclick>
+            </item>
+            <item>
+                <icon />
+                <label>$LOCALIZE[31033]</label>
+                <onclick>ActivateWindow(osdaudiosettings)</onclick>
+            </item>
+            <item>
+                <icon/>
+                <label>297</label>
+                <onclick>audiodelay</onclick>
+            </item>
+            <item>
+                <icon/>
+                <label>22006</label>
+                <onclick>subtitledelay</onclick>
+            </item>
+            <item>
+                <icon />
+                <label>$LOCALIZE[287] $LOCALIZE[33003]</label>
+                <onclick>Close</onclick>
+                <onclick>ActivateWindow(SubtitleSearch)</onclick>
+            </item>
+            
+            
+            
+            
+            <!-- <item>
+                <icon/>
+                <label>297</label>
+                <onclick>audiodelay</onclick>
+            </item>
+            <item>
+                <icon/>
+                <label>$INFO[VideoPlayer.AudioCodec,[UPPERCASE],[/UPPERCASE]] $INFO[VideoPlayer.AudioChannels]ch $INFO[VideoPlayer.AudioLanguage,[UPPERCASE],[/UPPERCASE]]</label>
+                <onclick>AudioNextLanguage</onclick>
+            </item>
+            
+            <item>
+                <icon/>
+                <label>629</label>
+                <onclick>Close</onclick>
+                <onclick>aspectratio</onclick>
+                <onclick>SetProperty(OSDViewMode,1,Home)</onclick>
+                <onclick>OSD</onclick>
+            </item> -->
+        </content>
+    </include>
+
     <include name="Items_Settings">
         <content>
             <item id="1">

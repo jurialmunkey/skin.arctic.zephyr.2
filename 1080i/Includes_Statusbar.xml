@@ -5,7 +5,7 @@
         <control type="progress" description="cache">
             <width>100%</width>
             <height>12</height>
-            <bottom>0</bottom>
+            <bottom>70</bottom>
             <info>Player.ProgressCache</info>
             <texturebg colordiffuse="00ffffff" border="4">diffuse/progress-bg.png</texturebg>
             <lefttexture colordiffuse="main_fg_12" border="4">diffuse/progress-left.png</lefttexture>
@@ -22,7 +22,7 @@
         <control type="progress" id="499">
             <width>100%</width>
             <height>12</height>
-            <bottom>0</bottom>
+            <bottom>70</bottom>
             <info>Player.Progress</info>
             <!-- <texturebg colordiffuse="00ffffff">osd/progress-bg.png</texturebg>
             <lefttexture colordiffuse="main_fg_30">osd/progress-end.png</lefttexture>
@@ -34,7 +34,7 @@
             <description>Progressbar</description>
             <width>100%</width>
             <height>12</height>
-            <bottom>0</bottom>
+            <bottom>70</bottom>
             <info>Player.Progress</info>
             <texturebg colordiffuse="00ffffff" border="4">diffuse/progress-bg.png</texturebg>
             <lefttexture colordiffuse="00ffffff" border="4">diffuse/progress-left.png</lefttexture>
@@ -68,7 +68,7 @@
 
     <include name="Statusbar_Info_Clock">
         <control type="group">
-            <bottom>view_pad</bottom>
+            <bottom>40</bottom>
             <left>view_pad</left>
             <right>view_pad</right>
             <include>Statusbar_PlayerProgress</include>
@@ -81,7 +81,7 @@
         <control type="grouplist">
             <orientation>horizontal</orientation>
             <height>view_pad</height>
-            <bottom>12</bottom>
+            <bottom>0</bottom>
             <align>left</align>
             <itemgap>12</itemgap>
             <control type="label">
@@ -94,18 +94,26 @@
         <control type="grouplist">
             <orientation>horizontal</orientation>
             <height>view_pad</height>
-            <bottom>12</bottom>
+            <bottom>0</bottom>
             <align>center</align>
             <itemgap>12</itemgap>
+            <visible>!Window.IsVisible(videoosd)</visible>
             <control type="label">
                 <textcolor>main_fg_100</textcolor>
                 <include>Statusbar_Menubar_Items</include>
                 <label>$INFO[VideoPlayer.TvShowTitle,[COLOR=main_fg_70],[/COLOR][COLOR=main_fg_30]  •  [/COLOR]]$INFO[MusicPlayer.Artist,[COLOR=main_fg_70],[/COLOR][COLOR=main_fg_30]  •  [/COLOR]]$INFO[VideoPlayer.Season,,x]$INFO[VideoPlayer.Episode,,. ]$INFO[Player.Title]</label>
+                <visible>![!String.IsEmpty(Window(Home).Property(OSDInfo)) | Player.ShowInfo | Window.IsActive(DialogFullScreenInfo.xml) | [Player.Paused + Skin.HasSetting(ShowInfoPaused)]]</visible>
+            </control>
+            <control type="label">
+                <textcolor>main_fg_100</textcolor>
+                <include>Statusbar_Menubar_Items</include>
+                <label>$INFO[System.Time,Time  ,]$INFO[Player.FinishTime,[COLOR=main_fg_70]  •  $LOCALIZE[31106] ,[/COLOR]]</label>
+                <visible>!String.IsEmpty(Window(Home).Property(OSDInfo)) | Player.ShowInfo | Window.IsActive(DialogFullScreenInfo.xml) | [Player.Paused + Skin.HasSetting(ShowInfoPaused)]</visible>
             </control>
         </control>
         <control type="grouplist">
             <height>view_pad</height>
-            <bottom>12</bottom>
+            <bottom>0</bottom>
             <align>right</align>
             <left>0</left>
             <right>0</right>
@@ -113,7 +121,7 @@
             <usecontrolcoords>true</usecontrolcoords>
             <orientation>horizontal</orientation>
             <control type="label">
-                <textcolor>$VAR[ColorHighlight]</textcolor>
+                <textcolor>main_fg_100</textcolor>
                 <include>Statusbar_Menubar_Items</include>
                 <label>$INFO[Player.Time]</label>
             </control>
@@ -123,7 +131,7 @@
                 <label>|</label>
             </control>
             <control type="label">
-                <textcolor>$VAR[ColorHighlight]</textcolor>
+                <textcolor>main_fg_100</textcolor>
                 <include>Statusbar_Menubar_Items</include>
                 <label>$INFO[Player.Duration]</label>
             </control>

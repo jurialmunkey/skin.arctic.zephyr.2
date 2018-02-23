@@ -26,6 +26,14 @@
         <value>flags/web.png</value>
     </variable>
 
+    <variable name="Image_OSD_HDSD">
+        <value condition="String.IsEqual(VideoPlayer.VideoResolution,4K) | Integer.IsEqual(VideoPlayer.VideoResolution,2160)">flags/4k.png</value>
+        <value condition="Integer.IsGreater(VideoPlayer.VideoResolution,719)">flags/hd.png</value>
+        <value condition="!String.IsEmpty(VideoPlayer.VideoResolution)">flags/sd.png</value>
+        <value condition="VideoPlayer.IsCollection">flags/sets.png</value>
+        <value>flags/web.png</value>
+    </variable>
+
     <variable name="Image_AddonImage">
         <value condition="!String.IsEmpty(Container.PluginName) + !String.EndsWith(ListItem.Icon,icon.png)">special://home/addons/$INFO[Container.PluginName]/icon.png</value>
         <value condition="String.EndsWith(ListItem.Icon,icon.png)">$INFO[ListItem.Icon]</value>
