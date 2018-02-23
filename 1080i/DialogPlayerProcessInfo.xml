@@ -6,9 +6,9 @@
         <control type="group">
             <include>Animation_FadeIn</include>
             <include>Animation_FadeOut</include>
-            <bottom>48</bottom>
+            <top>0</top>
             <width>1920</width>
-            <height>360</height>
+            <height>420</height>
 
             <control type="button" id="9000">
                 <visible allowhiddenfocus="true">false</visible>
@@ -21,12 +21,12 @@
 
             <!-- Background -->
             <control type="image">
-                <texture colordiffuse="df000000">common/white.png</texture>
+                <texture colordiffuse="panel_bg">common/white.png</texture>
             </control>
 
             <control type="grouplist">
-                <left>30</left>
-                <top>30</top>
+                <left>view_pad</left>
+                <top>view_pad</top>
                 <visible>VideoPlayer.Content(livetv)</visible>
                 <control type="label">
                     <width>1200</width>
@@ -85,7 +85,7 @@
             </control>
             <control type="grouplist">
                 <left>1250</left>
-                <top>30</top>
+                <top>view_pad</top>
                 <visible>VideoPlayer.Content(livetv)</visible>
                 <usecontrolcoords>true</usecontrolcoords>
                 <control type="label">
@@ -148,8 +148,8 @@
                 </control>
             </control>
             <control type="grouplist">
-                <left>30</left>
-                <top>30</top>
+                <left>view_pad</left>
+                <top>view_pad</top>
                 <visible>!VideoPlayer.Content(livetv)</visible>
                 <control type="label">
                     <width>1600</width>
