@@ -1004,7 +1004,7 @@
                     <width>32</width>
                     <height>32</height>
                     <texture>flags/$PARAM[directory]/ratings/metacritic.png</texture>
-                    <visible>!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.MetaCritic.Rating))</visible>
+                    <visible>!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.MetaCritic.Rating)) | Integer.IsGreater(ListItem.Ratings(metacritic),0)</visible>
                     <visible>$PARAM[metacritic]</visible>
                 </control>
                 <control type="label">
@@ -1014,8 +1014,8 @@
                     <height>28</height>
                     <align>right</align>
                     <font>font_tiny</font>
-                    <label>$INFO[Window(Home).Property(SkinHelper.ListItem.MetaCritic.Rating), ,%   ]</label>
-                    <visible>!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.MetaCritic.Rating))</visible>
+                    <label>$VAR[Label_Metacritic, ,   ]</label>
+                    <visible>!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.MetaCritic.Rating)) | Integer.IsGreater(ListItem.Ratings(metacritic),0)</visible>
                     <visible>$PARAM[metacritic]</visible>
                 </control>
                 <control type="image">
@@ -1023,7 +1023,7 @@
                     <width>32</width>
                     <height>32</height>
                     <texture>flags/$PARAM[directory]/ratings/tmdb.png</texture>
-                    <visible>!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Rating.TMDB))</visible>
+                    <visible>!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Rating.TMDB))  | Integer.IsGreater(ListItem.Ratings(themoviedb),0)</visible>
                     <visible>$PARAM[tmdb]</visible>
                 </control>
                 <control type="label">
@@ -1033,8 +1033,8 @@
                     <height>28</height>
                     <align>right</align>
                     <font>font_tiny</font>
-                    <label>$INFO[Window(Home).Property(SkinHelper.ListItem.Rating.TMDB), ,   ]</label>
-                    <visible>!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Rating.TMDB))</visible>
+                    <label>$VAR[Label_TMDB, ,   ]</label>
+                    <visible>!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Rating.TMDB))  | Integer.IsGreater(ListItem.Ratings(themoviedb),0)</visible>
                     <visible>$PARAM[tmdb]</visible>
                 </control>
 
@@ -1064,8 +1064,8 @@
                     <width>32</width>
                     <height>32</height>
                     <texture>flags/$PARAM[directory]/ratings/popcorn.png</texture>
-                    <visible>!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.RottenTomatoes.UserMeter))</visible>
-                    <visible>Integer.IsGreater(Window(home).Property(SkinHelper.ListItem.RottenTomatoes.Us​erMeter),59)</visible>
+                    <visible>!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.RottenTomatoes.UserMeter)) | Integer.IsGreater(ListItem.Ratings(tomatometerallaudience),0)</visible>
+                    <visible>[!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.RottenTomatoes.UserMeter)) + Integer.IsGreater(Window(home).Property(SkinHelper.ListItem.RottenTomatoes.Us​erMeter),59)] | [String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.RottenTomatoes.UserMeter)) + Integer.IsGreater(ListItem.Ratings(tomatometerallaudience),5)]</visible>
                     <visible>$PARAM[usermeter]</visible>
                 </control>
                 <control type="image">
@@ -1073,8 +1073,8 @@
                     <width>32</width>
                     <height>32</height>
                     <texture>flags/$PARAM[directory]/ratings/spilt.png</texture>
-                    <visible>!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.RottenTomatoes.UserMeter))</visible>
-                    <visible>!Integer.IsGreater(Window(home).Property(SkinHelper.ListItem.RottenTomatoes.Us​erMeter),59)</visible>
+                    <visible>!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.RottenTomatoes.UserMeter)) | Integer.IsGreater(ListItem.Ratings(tomatometerallaudience),0)</visible>
+                    <visible>[!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.RottenTomatoes.UserMeter)) + !Integer.IsGreater(Window(home).Property(SkinHelper.ListItem.RottenTomatoes.Us​erMeter),59)] | [String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.RottenTomatoes.UserMeter)) + !Integer.IsGreater(ListItem.Ratings(tomatometerallaudience),5)]</visible>
                     <visible>$PARAM[usermeter]</visible>
                 </control>
                 <control type="label">
@@ -1084,24 +1084,24 @@
                     <height>28</height>
                     <align>right</align>
                     <font>font_tiny</font>
-                    <label>$INFO[Window(Home).Property(SkinHelper.ListItem.RottenTomatoes.UserMeter), ,%   ]</label>
-                    <visible>!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.RottenTomatoes.UserMeter))</visible>
+                    <label>$VAR[Label_RottenTomatoesUserMeter, ,   ]</label>
+                    <visible>!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.RottenTomatoes.UserMeter)) | Integer.IsGreater(ListItem.Ratings(tomatometerallaudience),0)</visible>
                     <visible>$PARAM[usermeter]</visible>
                 </control>
                 <control type="image">
                     <width>32</width>
                     <height>32</height>
                     <texture>flags/$PARAM[directory]/ratings/rtrotten.png</texture>
-                    <visible>!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.RottenTomatoes.Rating))</visible>
-                    <visible>Integer.IsGreater(Window(home).Property(SkinHelper.ListItem.RottenTomatoes.Rating),0) + !Integer.IsGreater(Window(home).Property(SkinHelper.ListItem.RottenTomatoes.Rating),59)</visible>
+                    <visible>!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.RottenTomatoes.Rating)) | Integer.IsGreater(ListItem.Ratings(tomatometerallcritics),0)</visible>
+                    <visible>[!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.RottenTomatoes.Rating)) + Integer.IsGreater(Window(home).Property(SkinHelper.ListItem.RottenTomatoes.Rating),0) + !Integer.IsGreater(Window(home).Property(SkinHelper.ListItem.RottenTomatoes.Rating),59)] | [String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.RottenTomatoes.Rating)) + Integer.IsGreater(ListItem.Ratings(tomatometerallcritics),0) + !Integer.IsGreater(ListItem.Ratings(tomatometerallcritics),5)]</visible>
                     <visible>$PARAM[rottentomatoes]</visible>
                 </control>
                 <control type="image">
                     <width>32</width>
                     <height>32</height>
                     <texture>flags/$PARAM[directory]/ratings/rtfresh.png</texture>
-                    <visible>!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.RottenTomatoes.Rating))</visible>
-                    <visible>Integer.IsGreater(Window(home).Property(SkinHelper.ListItem.RottenTomatoes.Rating),59) + !Integer.IsGreater(Window(home).Property(SkinHelper.ListItem.RottenTomatoes.Rating),74)</visible>
+                    <visible>!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.RottenTomatoes.Rating)) | Integer.IsGreater(ListItem.Ratings(tomatometerallcritics),0)</visible>
+                    <visible>[!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.RottenTomatoes.Rating)) + Integer.IsGreater(Window(home).Property(SkinHelper.ListItem.RottenTomatoes.Rating),59) + !Integer.IsGreater(Window(home).Property(SkinHelper.ListItem.RottenTomatoes.Rating),75)] | [String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.RottenTomatoes.Rating)) + Integer.IsGreater(ListItem.Ratings(tomatometerallcritics),5) + !Integer.IsGreater(ListItem.Ratings(tomatometerallcritics),7)]</visible>
                     <visible>$PARAM[rottentomatoes]</visible>
                 </control>
                 <control type="image" description="remove the rtfresh texture line for certified logo">
@@ -1109,8 +1109,9 @@
                     <height>32</height>
                     <texture>flags/$PARAM[directory]/ratings/rtfresh.png</texture>
                     <texture>flags/$PARAM[directory]/ratings/certified.png</texture>
-                    <visible>!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.RottenTomatoes.Rating))</visible>
-                    <visible>Integer.IsGreater(Window(home).Property(SkinHelper.ListItem.RottenTomatoes.Rating),74)</visible>
+                    <visible>!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.RottenTomatoes.Rating)) | Integer.IsGreater(ListItem.Ratings(tomatometerallcritics),0)</visible>
+                    <visible>[!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.RottenTomatoes.Rating)) + Integer.IsGreater(Window(home).Property(SkinHelper.ListItem.RottenTomatoes.Rating),74)] | [String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.RottenTomatoes.Rating)) + Integer.IsGreater(ListItem.Ratings(tomatometerallcritics),7)]</visible>
+
                     <visible>$PARAM[rottentomatoes]</visible>
                 </control>
                 <control type="label">
@@ -1120,8 +1121,8 @@
                     <height>28</height>
                     <align>right</align>
                     <font>font_tiny</font>
-                    <label>$INFO[Window(Home).Property(SkinHelper.ListItem.RottenTomatoes.Rating), ,%   ]</label>
-                    <visible>!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.RottenTomatoes.Rating))</visible>
+                    <label>$VAR[Label_RottenTomatoesCritics, ,   ]</label>
+                    <visible>!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.RottenTomatoes.Rating)) | Integer.IsGreater(ListItem.Ratings(tomatometerallcritics),0)</visible>
                     <visible>$PARAM[rottentomatoes]</visible>
                 </control>
                 <control type="image">
