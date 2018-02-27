@@ -1,33 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
-    <include name="Items_OSD_Subtitles">
-        <content>
-            <item>
-                <icon/>
-                <label>$LOCALIZE[287] $LOCALIZE[305] $INFO[VideoPlayer.SubtitlesLanguage,[UPPERCASE],[/UPPERCASE]]</label>
-                <onclick>NextSubtitle</onclick>
-                <visible>VideoPlayer.SubtitlesEnabled</visible>
-            </item>
-            <item>
-                <icon/>
-                <label>$LOCALIZE[287] $LOCALIZE[13106]</label>
-                <onclick>NextSubtitle</onclick>
-                <visible>!VideoPlayer.SubtitlesEnabled</visible>
-            </item>
-            <item>
-                <icon />
-                <label>$LOCALIZE[287] $LOCALIZE[33003]</label>
-                <onclick>Close</onclick>
-                <onclick>ActivateWindow(SubtitleSearch)</onclick>
-            </item>
-            <item>
-                <icon/>
-                <label>22006</label>
-                <onclick>subtitledelay</onclick>
-            </item>
-        </content>
-    </include>
-
     <include name="Items_OSD_Settings">
         <content>
             <item>
@@ -60,6 +32,7 @@
             <item>
                 <icon />
                 <label>$LOCALIZE[287] $LOCALIZE[33003]</label>
+                <onclick>Close</onclick>
                 <onclick>Close</onclick>
                 <onclick>ActivateWindow(SubtitleSearch)</onclick>
             </item>
