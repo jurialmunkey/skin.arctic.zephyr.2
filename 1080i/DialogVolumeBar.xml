@@ -9,7 +9,7 @@
             <visible>[VideoPlayer.IsFullscreen | Window.IsVisible(MusicVisualisation.xml)]</visible>
             <visible>Player.Muted</visible>
             <visible>![Player.ShowInfo | Window.IsVisible(script-cu-lrclyrics-main.xml) | !String.IsEmpty(Window(Home).Property(OSDInfo)) | Player.ShowInfo | Window.IsActive(DialogFullScreenInfo.xml) | [Player.Paused + Skin.HasSetting(ShowInfoPaused)]]</visible>
-            <include>Animation_OSD_Notification</include>
+            
             <include>Animation_FadeIn_Slide</include>
             <control type="image">
                 <width>116</width>
@@ -33,7 +33,7 @@
             <!-- Volume bar -->
             <control type="group">
                 <height>view_top</height>
-                <include>Animation_OSD_Notification</include>
+                
                 <control type="grouplist">
                     <right>view_pad</right>
                     <height>100%</height>
@@ -53,7 +53,6 @@
                         <font>font_small</font>
                         <aligny>center</aligny>
                         <width>auto</width>
-                        <shadowcolor>main_bg_30</shadowcolor>
                         <textcolor>main_fg_100</textcolor>
                         <label>$INFO[Player.Volume,  ,    ]</label>
                     </control>
@@ -90,7 +89,6 @@
                         <aligny>center</aligny>
                         <width>80</width>
                         <textcolor>main_fg_100</textcolor>
-                        <shadowcolor>main_bg_30</shadowcolor>
                         <label>$INFO[Control.GetLabel(1),,%]</label>
                     </control>
                 </control>
