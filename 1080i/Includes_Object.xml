@@ -98,7 +98,7 @@
                             <top>24</top>
                             <left>256</left>
                             <width>$PARAM[width]</width>
-                            <include content="Object_Ratings" condition="Window.IsVisible(MyVideoNav.xml)">
+                            <include content="Object_Ratings" condition="Window.IsVisible(MyVideoNav.xml) | Window.IsVisible(Home.xml)">
                                 <param name="directory" value="color" />
                                 <param name="align" value="left" />
                                 <param name="width" value="$PARAM[width]" />
@@ -939,7 +939,7 @@
                     <centertop>50%</centertop>
                     <visible>$PARAM[ratings]</visible>
                     <control type="group">
-                        <include content="Object_Ratings" condition="Window.IsVisible(MyVideoNav.xml)">
+                        <include content="Object_Ratings" condition="Window.IsVisible(MyVideoNav.xml) | Window.IsVisible(Home.xml)">
                             <param name="directory" value="color" />
                             <param name="align" value="left" />
                             <param name="width" value="1000" />
