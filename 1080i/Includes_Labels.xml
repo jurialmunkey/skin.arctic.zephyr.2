@@ -1,5 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
+
+    <variable name="Label_Metacritic">
+        <value condition="!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.MetaCritic.Rating))">$INFO[Window(Home).Property(SkinHelper.ListItem.MetaCritic.Rating),,%]</value>
+        <value condition="Integer.IsGreater(ListItem.Ratings(metacritic),0)">$INFO[ListItem.Ratings(metacritic)]</value>
+    </variable>
+
+    <variable name="Label_TMDB">
+        <value condition="!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Rating.TMDB))">$INFO[Window(Home).Property(SkinHelper.ListItem.Rating.TMDB)]</value>
+        <value condition="Integer.IsGreater(ListItem.Ratings(themoviedb),0)">$INFO[ListItem.Ratings(themoviedb)]</value>
+    </variable>
+
+    <variable name="Label_RottenTomatoesCritics">
+        <value condition="!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.RottenTomatoes.Rating))">$INFO[Window(Home).Property(SkinHelper.ListItem.RottenTomatoes.Rating),,%]</value>
+        <value condition="Integer.IsGreater(ListItem.Ratings(tomatometerallcritics),0)">$INFO[ListItem.Ratings(tomatometerallcritics)]</value>
+    </variable>
+
+    <variable name="Label_RottenTomatoesUserMeter">
+        <value condition="!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.RottenTomatoes.UserMeter))">$INFO[Window(Home).Property(SkinHelper.ListItem.RottenTomatoes.UserMeter),,%]</value>
+        <value condition="Integer.IsGreater(ListItem.Ratings(tomatometerallaudience),0)">$INFO[ListItem.Ratings(tomatometerallaudience)]</value>
+</variable>
+    
     <variable name="Label_OSD_Subline">
         <value condition="VideoPlayer.Content(livetv)">$INFO[VideoPlayer.ChannelNumber,,. ]$INFO[VideoPlayer.ChannelName]</value>
         <value condition="VideoPlayer.Content(musicvideos) + !String.IsEmpty(VideoPlayer.Artist)">$INFO[VideoPlayer.Artist]</value>
