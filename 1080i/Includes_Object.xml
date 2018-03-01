@@ -823,7 +823,7 @@
                 <visible>!Skin.HasSetting(furniture.flags)</visible>
                 <visible>!Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml)</visible>
                 <visible>!Window.IsVisible(script-script.extendedinfo-DialogInfo.xml)</visible>
-                <visible>!String.IsEqual($PARAM[container]ListItem.Label,..)</visible>
+                <visible>$PARAM[container]ListItem.IsParentFolder</visible>
                 <animation effect="fade" start="0" end="100" delay="30" time="1" reversible="false">Visible</animation>
                 <right>30</right>
                 <left>-30</left>

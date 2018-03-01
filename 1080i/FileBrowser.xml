@@ -36,7 +36,7 @@
                 <onup>450</onup>
                 <ondown>450</ondown>
                 <pagecontrol>60</pagecontrol>
-                <itemlayout height="138" width="700" condition="![[String.StartsWith(ListItem.FolderPath,special://skin/extras/icons/) + !String.IsEqual(ListItem.Label,icons)]  | [String.StartsWith(Container(450).ListItem(1).FolderPath,special://skin/extras/icons/) + String.IsEqual(ListItem.Label,..)]]">
+                <itemlayout height="138" width="700" condition="![[String.StartsWith(ListItem.FolderPath,special://skin/extras/icons/) + !String.IsEqual(ListItem.Label,icons)]  | [String.StartsWith(Container(450).ListItem(1).FolderPath,special://skin/extras/icons/) + ListItem.IsParentFolder]]">
                     <control type="image">
                         <include>Dialog_Standard_List_Left_Icon</include>
                         <visible>!String.Contains(ListItem.Path,special://skin/extras/icons) + !String.Contains(ListItem.Icon,Default)</visible>
@@ -55,7 +55,7 @@
                         <include>Dialog_Standard_List_Left_Label2</include>
                     </control>
                 </itemlayout>
-                <focusedlayout height="138" width="700" condition="![[String.StartsWith(ListItem.FolderPath,special://skin/extras/icons/) + !String.IsEqual(ListItem.Label,icons)]  | [String.StartsWith(Container(450).ListItem(1).FolderPath,special://skin/extras/icons/) + String.IsEqual(ListItem.Label,..)]]">
+                <focusedlayout height="138" width="700" condition="![[String.StartsWith(ListItem.FolderPath,special://skin/extras/icons/) + !String.IsEqual(ListItem.Label,icons)]  | [String.StartsWith(Container(450).ListItem(1).FolderPath,special://skin/extras/icons/) + ListItem.IsParentFolder]]">
                     <control type="group">
                         <width>100%</width>
                         <height>135</height>
@@ -82,7 +82,7 @@
                         <include>Dialog_Standard_List_Left_Label2</include>
                     </control>
                 </focusedlayout>
-                <itemlayout height="138" width="140" condition="[[String.StartsWith(ListItem.FolderPath,special://skin/extras/icons/) + !String.IsEqual(ListItem.Label,icons)]  | [String.StartsWith(Container(450).ListItem(1).FolderPath,special://skin/extras/icons/) + String.IsEqual(ListItem.Label,..)]]">
+                <itemlayout height="138" width="140" condition="[[String.StartsWith(ListItem.FolderPath,special://skin/extras/icons/) + !String.IsEqual(ListItem.Label,icons)]  | [String.StartsWith(Container(450).ListItem(1).FolderPath,special://skin/extras/icons/) + ListItem.IsParentFolder]]">
                     <control type="image">
                         <centerleft>50%</centerleft>
                         <centertop>50%</centertop>
@@ -103,7 +103,7 @@
                         <visible>String.Contains(ListItem.Path,special://skin/extras/icons) | String.Contains(ListItem.Icon,Default)</visible>
                     </control>
                 </itemlayout>
-                <focusedlayout height="138" width="140" condition="[[String.StartsWith(ListItem.FolderPath,special://skin/extras/icons/) + !String.IsEqual(ListItem.Label,icons)]  | [String.StartsWith(Container(450).ListItem(1).FolderPath,special://skin/extras/icons/) + String.IsEqual(ListItem.Label,..)]]">
+                <focusedlayout height="138" width="140" condition="[[String.StartsWith(ListItem.FolderPath,special://skin/extras/icons/) + !String.IsEqual(ListItem.Label,icons)]  | [String.StartsWith(Container(450).ListItem(1).FolderPath,special://skin/extras/icons/) + ListItem.IsParentFolder]]">
                     <control type="group">
                         <width>100%</width>
                         <height>135</height>

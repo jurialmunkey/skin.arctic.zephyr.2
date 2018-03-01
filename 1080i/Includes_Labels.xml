@@ -261,7 +261,7 @@
         <value condition="Container.Content(songs) + !String.IsEmpty(Container.FolderName)">$INFO[Container.FolderName]</value>
         <value condition="Container.Content(addons) + !String.IsEmpty(ListItem.AddonName)">$INFO[ListItem.AddonName]</value>
 
-        <value condition="String.IsEqual(ListItem.Label,..) | String.IsEqual(ListItem.Label,$LOCALIZE[15102])">$INFO[ListItem.Label]</value>
+        <value condition="ListItem.IsParentFolder | String.IsEqual(ListItem.Label,$LOCALIZE[15102])">$INFO[ListItem.Label]</value>
         <value>$INFO[ListItem.Label]</value>
     </variable>
 
@@ -283,8 +283,8 @@
         <value condition="[Window.IsVisible(MyPVRChannels.xml) | Window.IsVisible(MyPVRSearch.xml) | Window.IsVisible(MyPVRRecordings.xml) | Window.IsVisible(MyPVRTimers.xml)] + !String.IsEmpty(ListItem.Title)">$INFO[ListItem.Title]</value>
         <value condition="Container.Content(artists) | Container.Content(albums) | Container.Content(songs)">$INFO[ListItem.Artist]</value>
         <value condition="Container.Content(episodes)">$INFO[ListItem.Season,,x]$INFO[ListItem.Episode,,. ]$INFO[ListItem.Title]</value>
-        <value condition="!String.IsEqual(ListItem.Label,..)">$INFO[ListItem.Label]</value>
-        <value condition="!String.IsEmpty(Container(50).ListItem.Label) + !String.IsEqual(Container(50).ListItem.Label,..)">$INFO[Container(50).ListItem.Label]</value>
+        <value condition="!ListItem.IsParentFolder">$INFO[ListItem.Label]</value>
+        <value condition="!String.IsEmpty(Container(50).ListItem.Label) + !Container(50).ListItem.IsParentFolder">$INFO[Container(50).ListItem.Label]</value>
     </variable>
 
     <variable name="Label_InfoLine">
