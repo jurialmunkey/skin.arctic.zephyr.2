@@ -38,6 +38,7 @@
             <include>View_Group</include>
             <include>Animation_Left</include>
             <include>Defs_InfoDialog_Visible</include>
+            <visible>!Control.HasFocus(9602)</visible>
             <control type="group">
                 <visible>Control.IsVisible(50) | Control.IsVisible(501)</visible>
                 <include>View_Library_Poster</include>
@@ -51,6 +52,7 @@
             <include>View_Group</include>
             <include>Animation_Right</include>
             <include>Defs_InfoDialog_Visible</include>
+            <visible>!Control.HasFocus(9602)</visible>
             <control type="group">
                 <include condition="![Window.IsVisible(MyPVRChannels.xml) | Window.IsVisible(MyPVRRecordings.xml) | Window.IsVisible(MyPVRTimers.xml) | Window.IsVisible(MyPVRSearch.xml)]">View_List</include>
                 <include condition="![Window.IsVisible(MyPVRChannels.xml) | Window.IsVisible(MyPVRRecordings.xml) | Window.IsVisible(MyPVRTimers.xml) | Window.IsVisible(MyPVRSearch.xml)]">View_Posters</include>

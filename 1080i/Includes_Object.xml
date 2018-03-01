@@ -1761,6 +1761,33 @@
                 </control>
             </control>
         </control>
+
+        <!-- <control type="group">
+            <visible>Control.HasFocus(9602)</visible>
+            <include>Animation_FadeIn</include>
+            <include>Animation_FadeOut</include>
+            <control type="image">
+                <texture colordiffuse="main_bg_100">common/white.png</texture>
+                <aspectratio>scale</aspectratio>
+            </control>
+            <control type="multiimage">
+                <timeperimage>10000</timeperimage>
+                <randomize>true</randomize>
+                <fadetime>600</fadetime>
+                <imagepath background="true">$VAR[Global_Background_Image_Var]</imagepath>
+                <aspectratio>scale</aspectratio>
+            </control>
+        </control> -->
+
+        <control type="button" id="9602">
+            <onleft>300</onleft>
+            <onup>300</onup>
+            <ondown>300</ondown>
+            <onright>300</onright>
+            <onclick>SetFocus(300)</onclick>
+            <onback>300</onback>
+            <include>Defs_Hidden_Button</include>
+        </control>
     </include>
 
 
