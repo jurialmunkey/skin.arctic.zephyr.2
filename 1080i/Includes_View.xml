@@ -19,14 +19,6 @@
     <!-- 558 Banner Info    -->
     <!-- ================== -->
 
-
-    <include name="View_Layout">
-        <control type="group">
-            <include>View_Group</include>
-            <include>View_Content</include>
-        </control>
-    </include>
-
     <include name="View_Group">
         <top>view_pad</top>
     </include>
@@ -43,45 +35,27 @@
 
     <include name="View_Library">
         <control type="group">
+            <include>View_Group</include>
+            <include>Animation_Left</include>
+            <include>Defs_InfoDialog_Visible</include>
+            <control type="group">
+                <visible>Control.IsVisible(50) | Control.IsVisible(501)</visible>
+                <include>View_Library_Poster</include>
+            </control>
+            <control type="group">
+                <visible>Control.IsVisible(500)</visible>
+                <include condition="Window.IsVisible(MyVideoNav.xml) | Window.IsVisible(MyMusicNav.xml)">View_Library_Info</include>
+            </control>
+        </control>
+        <control type="group">
+            <include>View_Group</include>
             <include>Animation_Right</include>
             <include>Defs_InfoDialog_Visible</include>
             <control type="group">
-                
                 <include condition="![Window.IsVisible(MyPVRChannels.xml) | Window.IsVisible(MyPVRRecordings.xml) | Window.IsVisible(MyPVRTimers.xml) | Window.IsVisible(MyPVRSearch.xml)]">View_List</include>
-
                 <include condition="![Window.IsVisible(MyPVRChannels.xml) | Window.IsVisible(MyPVRRecordings.xml) | Window.IsVisible(MyPVRTimers.xml) | Window.IsVisible(MyPVRSearch.xml)]">View_Posters</include>
-
                 <include condition="[Window.IsVisible(MyPVRChannels.xml) | Window.IsVisible(MyPVRRecordings.xml) | Window.IsVisible(MyPVRTimers.xml) | Window.IsVisible(MyPVRSearch.xml)]">View_List_PVR</include>
             </control>
-        </control>
-    </include>
-
-    <include name="View_Content">
-        <control type="group">
-            <!-- Library Views -->
-            <control type="group">
-                <include condition="Window.IsVisible(MyPlaylist.xml) | Window.IsVisible(MyVideoNav.xml) | Window.IsVisible(MyMusicNav.xml) | Window.IsVisible(AddonBrowser.xml) | Window.IsVisible(MyPics.xml) | Window.IsVisible(MyPrograms.xml) | [Window.IsVisible(MyPVRChannels.xml) | Window.IsVisible(MyPVRRecordings.xml) | Window.IsVisible(MyPVRTimers.xml) | Window.IsVisible(MyPVRSearch.xml)]">View_Library</include>
-            </control>
-
-            <!-- Library Poster -->
-            <control type="group">
-                <control type="group">
-                    <visible>Window.IsVisible(MyPlaylist.xml) | Window.IsVisible(MyVideoNav.xml) | Window.IsVisible(MyMusicNav.xml) | Window.IsVisible(AddonBrowser.xml) | Window.IsVisible(MyPics.xml) | Window.IsVisible(MyPrograms.xml)</visible>
-                    <include>Animation_Left</include>
-                    <visible>![Window.IsVisible(DialogAddonInfo.xml) | Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml)]</visible>
-                    <visible>!Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) + !Window.IsVisible(script-script.extendedinfo-DialogInfo.xml)</visible>
-                    <control type="group">
-                        <visible>Control.IsVisible(50) | Control.IsVisible(501)</visible>
-                        <include>View_Library_Poster</include>
-                    </control>
-
-                    <control type="group">
-                        <visible>Control.IsVisible(500)</visible>
-                        <include>View_Library_Info</include>
-                    </control>
-                </control>
-            </control>
-            
         </control>
     </include>
 
@@ -91,7 +65,6 @@
             <top>view_pad</top>
             <height>poster_height</height>
             <width>800</width>
-            
             <control type="group">
                 <height>450</height>
                 <control type="group">
@@ -143,13 +116,18 @@
     </include>
 
     <include name="View_Library_Poster">
-
-        <!-- Music List -->
         <control type="group">
-            <visible>[Container.Content(musicvideos) | Container.Content(images) | Container.Content(artists) | Container.Content(albums) | Container.Content(addons) | Container.Content(songs) | Window.IsVisible(DialogAddonInfo.xml) | Window.IsVisible(DialogMusicInfo.xml)]</visible>
+            <include>View_Library_Poster_Square</include>
+            <include>View_Library_Poster_Big</include>
+        </control>
+    </include>
+
+    <include name="View_Library_Poster_Square">
+        <control type="group">
             <left>view_pad</left>
             <right>view_pad</right>
             <top>view_pad</top>
+            <visible>Container.Content(musicvideos) | Container.Content(images) | Container.Content(artists) | Container.Content(albums) | Container.Content(addons) | Container.Content(songs)</visible>
             <control type="group">
                 <width>poster_width</width>
                 <height>poster_height</height>
@@ -231,13 +209,14 @@
                 </control>
             </control>
         </control>
+    </include>
 
-        <!-- Large Poster -->
+    <include name="View_Library_Poster_Big">
         <control type="group">
-            <visible>![Container.Content(musicvideos) | Container.Content(images) | Container.Content(artists) | Container.Content(albums) | Container.Content(addons) | Container.Content(songs) | Window.IsVisible(DialogAddonInfo.xml) | Window.IsVisible(DialogMusicInfo.xml)]</visible>
             <left>view_pad</left>
             <bottom>view_pad</bottom>
             <top>view_pad</top>
+            <visible>![Container.Content(musicvideos) | Container.Content(images) | Container.Content(artists) | Container.Content(albums) | Container.Content(addons) | Container.Content(songs)]</visible>
             <control type="group">
                 <width>poster_width</width>
                 <height>900</height>
@@ -274,7 +253,6 @@
                 </control>
             </control>
         </control>
-        
     </include>
 
     <include name="View_WatchedOverlay">
@@ -340,8 +318,6 @@
     </include>
 
     <include name="View_Selectbox">
-        
-        
         <control type="group">
             <left>3</left>
             <top>3</top>
@@ -576,7 +552,6 @@
     </include>
 
     <include name="View_Forced">
-        
         <visible>[Container.Content(movies) + [String.IsEqual(Skin.String(Skin.ForcedView.movies),$PARAM[string]) | String.IsEmpty(Skin.String(Skin.ForcedView.movies))]] | [Container.Content(sets) + [String.IsEqual(Skin.String(Skin.ForcedView.sets),$PARAM[string]) | String.IsEmpty(Skin.String(Skin.ForcedView.sets))]] | [Container.Content(tvshows) + [String.IsEqual(Skin.String(Skin.ForcedView.tvshows),$PARAM[string]) | String.IsEmpty(Skin.String(Skin.ForcedView.tvshows))]] | [Container.Content(seasons) + [String.IsEqual(Skin.String(Skin.ForcedView.seasons),$PARAM[string]) | String.IsEmpty(Skin.String(Skin.ForcedView.seasons))]] | [Container.Content(episodes) + [String.IsEqual(Skin.String(Skin.ForcedView.episodes),$PARAM[string]) | String.IsEmpty(Skin.String(Skin.ForcedView.episodes))]] | [Container.Content(actors) + [String.IsEqual(Skin.String(Skin.ForcedView.actors),$PARAM[string]) | String.IsEmpty(Skin.String(Skin.ForcedView.actors))]] | [Container.Content(artists) + [String.IsEqual(Skin.String(Skin.ForcedView.artists),$PARAM[string]) | String.IsEmpty(Skin.String(Skin.ForcedView.artists))]] | [Container.Content(albums) + [String.IsEqual(Skin.String(Skin.ForcedView.albums),$PARAM[string]) | String.IsEmpty(Skin.String(Skin.ForcedView.albums))]] | [Container.Content(songs) + [String.IsEqual(Skin.String(Skin.ForcedView.songs),$PARAM[string]) | String.IsEmpty(Skin.String(Skin.ForcedView.songs))]] | [Container.Content(addons) + [String.IsEqual(Skin.String(Skin.ForcedView.addons),$PARAM[string]) | String.IsEmpty(Skin.String(Skin.ForcedView.addons))]] | [Container.Content(genres) + [String.IsEqual(Skin.String(Skin.ForcedView.genres),$PARAM[string]) | String.IsEmpty(Skin.String(Skin.ForcedView.genres))]] | [Container.Content(images) + [String.IsEqual(Skin.String(Skin.ForcedView.images),$PARAM[string]) | String.IsEmpty(Skin.String(Skin.ForcedView.images))]] | [Container.Content(videos) + [String.IsEqual(Skin.String(Skin.ForcedView.videos),$PARAM[string]) | String.IsEmpty(Skin.String(Skin.ForcedView.videos))]] | [Container.Content() + [String.IsEqual(Skin.String(Skin.ForcedView.),$PARAM[string]) | String.IsEmpty(Skin.String(Skin.ForcedView.))]] | [Container.Content(tags) + [String.IsEqual(Skin.String(Skin.ForcedView.tags),$PARAM[string]) | String.IsEmpty(Skin.String(Skin.ForcedView.tags))]] | [Container.Content(years) + [String.IsEqual(Skin.String(Skin.ForcedView.years),$PARAM[string]) | String.IsEmpty(Skin.String(Skin.ForcedView.years))]] | [Container.Content(countries) + [String.IsEqual(Skin.String(Skin.ForcedView.countries),$PARAM[string]) | String.IsEmpty(Skin.String(Skin.ForcedView.countries))]] | [Container.Content(studios) + [String.IsEqual(Skin.String(Skin.ForcedView.studios),$PARAM[string]) | String.IsEmpty(Skin.String(Skin.ForcedView.studios))]] | [Container.Content(playlists) + [String.IsEqual(Skin.String(Skin.ForcedView.playlists),$PARAM[string]) | String.IsEmpty(Skin.String(Skin.ForcedView.playlists))]] | [Container.Content(musicvideos) + [String.IsEqual(Skin.String(Skin.ForcedView.musicvideos),$PARAM[string]) | String.IsEmpty(Skin.String(Skin.ForcedView.musicvideos))]] | [Container.Content(directors) + [String.IsEqual(Skin.String(Skin.ForcedView.directors),$PARAM[string]) | String.IsEmpty(Skin.String(Skin.ForcedView.directors))]] | [Container.Content(files) + [String.IsEqual(Skin.String(Skin.ForcedView.files),$PARAM[string]) | String.IsEmpty(Skin.String(Skin.ForcedView.files))]] | [Container.Content(mixed) + [String.IsEqual(Skin.String(Skin.ForcedView.mixed),$PARAM[string]) | String.IsEmpty(Skin.String(Skin.ForcedView.mixed))]] | [Container.Content(unknown) + [String.IsEqual(Skin.String(Skin.ForcedView.unknown),$PARAM[string]) | String.IsEmpty(Skin.String(Skin.ForcedView.unknown))]] | [!Container.Content(movies) + !Container.Content(sets) + !Container.Content(tvshows) + !Container.Content(seasons) + !Container.Content(episodes) + !Container.Content(actors) + !Container.Content(artists) + !Container.Content(albums) + !Container.Content(songs) + !Container.Content(addons) + !Container.Content(genres) + !Container.Content(images) + !Container.Content(videos) + !Container.Content() + !Container.Content(tags) + !Container.Content(years) + !Container.Content(countries) + !Container.Content(studios) + !Container.Content(playlists) + !Container.Content(musicvideos) + !Container.Content(directors) + !Container.Content(files) + !Container.Content(mixed) + !Container.Content(unknown)] | Window.IsVisible(MyPlaylist.xml)</visible>
     </include>
 

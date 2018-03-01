@@ -1,409 +1,422 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
     <include name="View_Posters">
-        <param name="listtype" default="fixedlist" />
         <definition>
-            <!-- Standard Wall -->
-            <control type="group">
-                <visible>Control.IsVisible(51)</visible>
-                <control type="group">
-                    <include>View_Pad</include>
-                    <control type="panel" id="51">
-                        <left>-70</left>
-                        <right>-10</right>
-                        <bottom>-10</bottom>
-                        <top>-10</top>
-                        <visible>Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(actors)</visible>
-                        <include>View_NotTheseWindows</include>
-                        <viewtype label="$LOCALIZE[31358]">icon</viewtype>
-                        <include content="View_Forced">
-                            <param name="string" value="$LOCALIZE[31358]" />
-                        </include>
-                        <include content="View_Posters_Layout">
-                            <param name="id" value="51" />
-                            <param name="orientation" value="vertical" />
-                            <param name="posters" default="true" />
-                        </include>
-                    </control>
-                </control>
-                <include>Object_Scrollbar_Vert</include>
-            </control>
-
-            <!-- Landscape Wall -->
-            <control type="group">
-                <visible>Control.IsVisible(52)</visible>
-                <control type="group">
-                    <include>View_Pad</include>
-                    <control type="panel" id="52">
-                        <left>-70</left>
-                        <right>-10</right>
-                        <bottom>20</bottom>
-                        <top>-10</top>
-                        <include>View_NotTheseWindows</include>
-                        <visible>Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(videos) | Container.Content(artists) | Container.Content(images)</visible>
-                        <viewtype label="$LOCALIZE[31359]">icon</viewtype>
-                        <include content="View_Forced">
-                            <param name="string" value="$LOCALIZE[31359]" />
-                        </include>
-                        <include content="View_Posters_Layout">
-                            <param name="id" value="52" />
-                            <param name="orientation" value="vertical" />
-                            <param name="landscape_small" default="true" />
-                        </include>
-                    </control>
-                </control>
-                <include>Object_Scrollbar_Vert</include>
-            </control>
-
-            <!-- Square Wall -->
-            <control type="group">
-                <visible>Control.IsVisible(53)</visible>
-                <control type="group">
-                    <include>View_Pad</include>
-                    <control type="panel" id="53">
-                        <left>-70</left>
-                        <right>-10</right>
-                        <bottom>20</bottom>
-                        <top>-10</top>
-                        <visible>!Container.Content(movies) + !Container.Content(tvshows) + !Container.Content(seasons) + !Container.Content(songs) + !Container.Content(videos) + !Container.Content(episodes) + !Container.Content(sets) + !Container.Content(actors) + !Container.Content(images)</visible>
-                        <include>View_NotTheseWindows</include>
-                        <viewtype label="$LOCALIZE[31360]">icon</viewtype>
-                        <include content="View_Forced">
-                            <param name="string" value="$LOCALIZE[31360]" />
-                        </include>
-                        <include content="View_Posters_Layout">
-                            <param name="id" value="53" />
-                            <param name="orientation" value="vertical" />
-                            <param name="square_small" default="true" />
-                        </include>
-                    </control>
-                </control>
-                <include>Object_Scrollbar_Vert</include>
-            </control>
-
-            <!-- Banner Wall -->
-            <control type="group">
-                <visible>Control.IsVisible(54)</visible>
-                <control type="group">
-                    <include>View_Pad</include>
-                    <control type="panel" id="54">
-                        <left>-70</left>
-                        <right>-10</right>
-                        <bottom>50</bottom>
-                        <top>-10</top>
-                        <visible>Container.Content(tvshows)</visible>
-                        <include>View_NotTheseWindows</include>
-                        <viewtype label="$LOCALIZE[31370]">icon</viewtype>
-                        <include content="View_Forced">
-                            <param name="string" value="$LOCALIZE[31370]" />
-                        </include>
-                        <include content="View_Posters_Layout">
-                            <param name="id" value="54" />
-                            <param name="orientation" value="vertical" />
-                            <param name="banner" default="true" />
-                        </include>
-                    </control>
-                </control>
-                <include>Object_Scrollbar_Vert</include>
-            </control>
-
-            <!-- Showcase -->
-            <control type="group">
-                <visible>Control.IsVisible(55)</visible>
-                <control type="group">
-                    <include>View_Pad</include>
-                    <control type="$PARAM[listtype]" id="55">
-                        <bottom>-10</bottom>
-                        <right>-70</right>
-                        <left>-70</left>
-                        <height>500</height>
-                        <height>poster_height</height>
-                        <focusposition>0</focusposition>
-                        <movement>6</movement>
-                        <viewtype label="$LOCALIZE[31161]">showcase</viewtype>
-                        <onup>300</onup>
-                        <ondown condition="Control.IsVisible(60)">60</ondown>
-                        <onleft>55</onleft>
-                        <onright>55</onright>
-                        <include content="View_Forced">
-                            <param name="string" value="$LOCALIZE[31161]" />
-                        </include>
-                        <visible>Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons)</visible>
-                        <include>View_NotTheseWindows</include>
-                        <include content="View_Posters_Layout">
-                            <param name="id" value="55" />
-                            <param name="orientation" value="horizontal" />
-                            <param name="posters" default="true" />
-                        </include>
-                    </control>
-                    <include content="Object_Info">
-                        <param name="id" value="55" />
-                        <param name="width" value="1654" />
-                        <param name="discart" value="true" />
-                        <param name="hdsd_flag" value="true" />
-                        <param name="plot_height" value="170" />
-                    </include>
-                </control>
-
-                <include>Object_Scrollbar_Horz</include>
-            </control>
-
-            <!-- Landscape Showcase -->
-            <control type="group">
-                <visible>Control.IsVisible(56)</visible>
-                <control type="group">
-                    <include>View_Pad</include>
-                    <control type="$PARAM[listtype]" id="56">
-                        <bottom>-10</bottom>
-                        <right>-70</right>
-                        <left>-70</left>
-                        <height>470</height>
-                        <focusposition>0</focusposition>
-                        <movement>2</movement>
-                        <viewtype label="$LOCALIZE[31361]">showcase</viewtype>
-                        <onup>300</onup>
-                        <ondown condition="Control.IsVisible(60)">60</ondown>
-                        <onleft>56</onleft>
-                        <onright>56</onright>
-                        <include content="View_Forced">
-                            <param name="string" value="$LOCALIZE[31361]" />
-                        </include>
-                        <visible>Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(videos) | Container.Content(artists)</visible>
-                        <include>View_NotTheseWindows</include>
-                        <include content="View_Posters_Layout">
-                            <param name="id" value="56" />
-                            <param name="orientation" value="horizontal" />
-                            <param name="landscape" default="true" />
-                        </include>
-                    </control>
-                    <include content="Object_Info">
-                        <param name="id" value="56" />
-                        <param name="width" value="1654" />
-                        <param name="discart" value="true" />
-                        <param name="hdsd_flag" value="true" />
-                        <param name="plot_height" value="170" />
-                    </include>
-                </control>
-
-                <include>Object_Scrollbar_Horz</include>
-            </control>
-
-            <!-- Square Showcase -->
-            <control type="group">
-                <visible>Control.IsVisible(57)</visible>
-                <control type="group">
-                    <include>View_Pad</include>
-                    <control type="$PARAM[listtype]" id="57">
-                        <bottom>-10</bottom>
-                        <right>-70</right>
-                        <left>-70</left>
-                        <height>484</height>
-                        <focusposition>0</focusposition>
-                        <movement>4</movement>
-                        <viewtype label="$LOCALIZE[31362]">showcase</viewtype>
-                        <onup>300</onup>
-                        <ondown condition="Control.IsVisible(60)">60</ondown>
-                        <onleft>57</onleft>
-                        <onright>57</onright>
-                        <include content="View_Forced">
-                            <param name="string" value="$LOCALIZE[31362]" />
-                        </include>
-                        <visible>Container.Content(artists) | Container.Content(albums)</visible>
-                        <include>View_NotTheseWindows</include>
-                        <include content="View_Posters_Layout">
-                            <param name="id" value="57" />
-                            <param name="orientation" value="horizontal" />
-                            <param name="square" default="true" />
-                        </include>
-                    </control>
-                    <include content="Object_Info">
-                        <param name="id" value="57" />
-                        <param name="width" value="1654" />
-                        <param name="discart" value="true" />
-                        <param name="hdsd_flag" value="true" />
-                        <param name="plot_height" value="170" />
-                    </include>
-                </control>
-
-                <include>Object_Scrollbar_Horz</include>
-            </control>
-
-            <!-- Poster Big -->
-            <control type="group">
-                <visible>Control.IsVisible(58)</visible>
-                <control type="group">
-                    <include>View_Pad</include>
-                    <control type="wraplist" id="58">
-                        <!-- <bottom>-10</bottom> -->
-                        <top>50</top>
-                        <right>-70</right>
-                        <left>570</left>
-                        <preloaditems>0</preloaditems>
-                        <!-- <height>500</height> -->
-                        <height>poster_height</height>
-                        <focusposition>-1</focusposition>
-                        <movement>0</movement>
-                        <viewtype label="$LOCALIZE[31363]">icon</viewtype>
-                        <onup>300</onup>
-                        <ondown condition="Control.IsVisible(60)">60</ondown>
-                        <onleft>58</onleft>
-                        <onright>58</onright>
-                        <include content="View_Forced">
-                            <param name="string" value="$LOCALIZE[31363]" />
-                        </include>
-                        <visible>Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons)</visible>
-                        <include>View_NotTheseWindows</include>
-                        <include content="View_Posters_Layout">
-                            <param name="id" value="58" />
-                            <param name="orientation" value="horizontal" />
-                            <param name="posters_big" default="true" />
-                        </include>
-                    </control>
-                    <control type="group">
-                        <!-- <visible>![Container(58).OnNext | Container(58).OnPrevious]</visible>
-                        <animation effect="fade" start="0" end="100" delay="600" time="400" reversible="false">Visible</animation> -->
-                        <control type="group">
-                            <left>640</left>
-                            <height>230</height>
-                            <include content="Object_Info">
-                                <param name="id" value="58" />
-                                <param name="width" value="1654" />
-                                <param name="discart" value="true" />
-                                <param name="hdsd_flag" value="true" />
-                                <param name="plot_height" value="0" />
-                            </include>
-                        </control>
-                        <control type="group">
-                            <left>640</left>
-                            <right>-40</right>
-                            <height>80</height>
-                            <bottom>view_pad</bottom>
-                            <include content="Object_Flags">
-                                <param name="container" value="" />
-                                <param name="directory" value="color" />
-                                <param name="align" value="left" />
-                            </include>
-                        </control>
-                        <!-- <control type="label">
-                            <left>640</left>
-                            <height>80</height>
-                            <bottom>50</bottom>
-                            <align>left</align>
-                            <label fallback="19055">$VAR[Label_Tagline]</label>
-                            <height>$PARAM[plot_height]</height>
-                            <aligny>top</aligny>
-                            <textcolor>main_fg_70</textcolor>
-                            <font>font_plotbox</font>
-                        </control> -->
-                    </control>
-                </control>
-                <include>View_Library_Poster</include>
-                <include>Object_Scrollbar_Horz</include>
-            </control>
-
-
-            <!-- Lovefilm -->
-            <control type="group">
-                <visible>Control.IsVisible(59)</visible>
-                <control type="group">
-                    <left>view_pad</left>
-                    <right>view_pad</right>
-                    <top>view_pad</top>
-                    <bottom>view_pad</bottom>
-                    <control type="image">
-                        <left>-10</left>
-                        <right>-10</right>
-                        <bottom>-10</bottom>
-                        <top>-10</top>
-                        <bordersize>10</bordersize>
-                        <include>Defs_Shadow_Small</include>
-                        <texture colordiffuse="PosterBack" border="10">diffuse/box.png</texture>
-                    </control>
-                    <control type="wraplist" id="59">
-                        <visible>Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(artists)</visible>
-                        <include>View_NotTheseWindows</include>
-                        <viewtype label="$LOCALIZE[31231]">icon</viewtype>
-                        <include content="View_Forced">
-                            <param name="string" value="$LOCALIZE[31231]" />
-                        </include>
-                        <orientation>horizontal</orientation>
-                        <focusposition>0</focusposition>
-                        <preloaditems>2</preloaditems>
-                        <right>0</right>
-                        <left>0</left>
-                        <top>0</top>
-                        <bottom>0</bottom>
-                        <onup>300</onup>
-                        <ondown condition="Control.IsVisible(8000)">8000</ondown>
-                        <ondown condition="!Control.IsVisible(8000)">300</ondown>
-                        <pagecontrol>60</pagecontrol>
-                        <scrolltime tween="cubic">400</scrolltime>
-                        <itemlayout width="1800" height="900">
-                            <control type="image">
-                                <aspectratio scalediffuse="false">center</aspectratio>
-                                <texture background="true" diffuse="diffuse/lovefilm.png">$INFO[ListItem.ActualIcon]</texture>
-                                <visible>String.IsEmpty(ListItem.Art(fanart))</visible>
-                            </control>
-                            <control type="image">
-                                <aspectratio scalediffuse="false">scale</aspectratio>
-                                <texture background="true" diffuse="diffuse/lovefilm.png">$INFO[ListItem.Art(fanart)]</texture>
-                            </control>
-                        </itemlayout>
-                        <focusedlayout width="1800" height="900">
-                            <control type="image">
-                                <aspectratio scalediffuse="false">center</aspectratio>
-                                <texture background="true" diffuse="diffuse/lovefilm.png">$INFO[ListItem.ActualIcon]</texture>
-                                <visible>String.IsEmpty(ListItem.Art(fanart))</visible>
-                            </control>
-                            <control type="image">
-                                <aspectratio scalediffuse="false">scale</aspectratio>
-                                <texture background="true" diffuse="diffuse/lovefilm.png">$INFO[ListItem.Art(fanart)]</texture>
-                            </control>
-                        </focusedlayout>
-                    </control>
-                    <control type="group">
-                        <height>205</height>
-                        <bottom>0</bottom>
-                        <control type="image">
-                            <top>-300</top>
-                            <aspectratio scalediffuse="false">stretch</aspectratio>
-                            <texture diffuse="diffuse/lovefilm.png">common/gradient-dim.png</texture>
-                        </control>
-                        <control type="group">
-                            <left>40</left>
-                            <right>40</right>
-                            <bottom>30</bottom>
-                            <include content="Object_Info">
-                                <param name="plot_height" value="300" />
-                                <param name="id" value="59" />
-                                <param name="width" value="1068" />
-                                <param name="discart" value="false" />
-                                <param name="hdsd_flag" value="true" />
-                            </include>
-                        </control>
-                    </control>
-                    <control type="group">
-                        <left>-10</left>
-                        <right>-10</right>
-                        <bottom>-10</bottom>
-                        <top>-10</top>
-                        <include>View_WatchedOverlay</include>
-                    </control>
-                    <control type="image">
-                        <texture colordiffuse="PixelLines" border="20">common/outline.png</texture>
-                    </control>
-                    <control type="group">
-                        <left>-10</left>
-                        <right>-10</right>
-                        <bottom>-10</bottom>
-                        <top>-10</top>
-                        <visible>Control.HasFocus(59)</visible>
-                        <include>View_Selectbox</include>
-                    </control>
-                </control>
-                <include>Object_Scrollbar_Horz</include>
-            </control>
+            <include condition="!Skin.HasSetting(DisableViewMode.PosterWall) + [Window.IsVisible(MyVideoNav.xml)]">View_Posters_Wall</include>
+            <include condition="!Skin.HasSetting(DisableViewMode.LandscapeWall) + [Window.IsVisible(MyVideoNav.xml) | Window.IsVisible(MyMusicNav.xml) | Window.IsVisible(MyPics.xml)]">View_Posters_LandscapeWall</include>
+            <include condition="Window.IsVisible(MyVideoNav.xml) | Window.IsVisible(MyMusicNav.xml) | Window.IsVisible(MyPics.xml) | Window.IsVisible(MyPrograms.xml) | Window.IsVisible(AddonBrowser.xml)">View_Posters_SquareWall</include>
+            <include condition="!Skin.HasSetting(DisableViewMode.BannerWall) + [Window.IsVisible(MyVideoNav.xml)]">View_Posters_BannerWall</include>
+            <include condition="!Skin.HasSetting(DisableViewMode.PosterShowcase) + [Window.IsVisible(MyVideoNav.xml)]">View_Posters_Showcase</include>
+            <include condition="!Skin.HasSetting(DisableViewMode.LandscapeShowcase) + [Window.IsVisible(MyVideoNav.xml) | Window.IsVisible(MyMusicNav.xml)]">View_Posters_LandscapeShowcase</include>
+            <include condition="!Skin.HasSetting(DisableViewMode.SquareShowcase) + [Window.IsVisible(MyMusicNav.xml)]">View_Posters_SquareShowcase</include>
+            <include condition="!Skin.HasSetting(DisableViewMode.BigPosters) + [Window.IsVisible(MyVideoNav.xml)]">View_Posters_BigPosters</include>
+            <include condition="!Skin.HasSetting(DisableViewMode.Lovefilm) + [Window.IsVisible(MyVideoNav.xml) | Window.IsVisible(MyMusicNav.xml)]">View_Posters_Lovefilm</include>
         </definition>
+    </include>
+    
+    <include name="View_Posters_Wall">
+        <control type="group">
+            <visible>Control.IsVisible(51)</visible>
+            <control type="group">
+                <include>View_Pad</include>
+                <control type="panel" id="51">
+                    <left>-70</left>
+                    <right>-10</right>
+                    <bottom>-10</bottom>
+                    <top>-10</top>
+                    <visible>Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(actors)</visible>
+                    <include>View_NotTheseWindows</include>
+                    <viewtype label="$LOCALIZE[31358]">icon</viewtype>
+                    <include content="View_Forced">
+                        <param name="string" value="$LOCALIZE[31358]" />
+                    </include>
+                    <include content="View_Posters_Layout">
+                        <param name="id" value="51" />
+                        <param name="orientation" value="vertical" />
+                        <param name="posters" default="true" />
+                    </include>
+                </control>
+            </control>
+            <include>Object_Scrollbar_Vert</include>
+        </control>
+    </include>
+
+    <include name="View_Posters_LandscapeWall">
+        <control type="group">
+            <visible>Control.IsVisible(52)</visible>
+            <control type="group">
+                <include>View_Pad</include>
+                <control type="panel" id="52">
+                    <left>-70</left>
+                    <right>-10</right>
+                    <bottom>20</bottom>
+                    <top>-10</top>
+                    <visible>Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(videos) | Container.Content(artists) | Container.Content(images)</visible>
+                    <include>View_NotTheseWindows</include>
+                    <viewtype label="$LOCALIZE[31359]">icon</viewtype>
+                    <include content="View_Forced">
+                        <param name="string" value="$LOCALIZE[31359]" />
+                    </include>
+                    <include content="View_Posters_Layout">
+                        <param name="id" value="52" />
+                        <param name="orientation" value="vertical" />
+                        <param name="landscape_small" default="true" />
+                    </include>
+                </control>
+            </control>
+            <include>Object_Scrollbar_Vert</include>
+        </control>
+    </include>
+
+    <include name="View_Posters_SquareWall">
+        <control type="group">
+            <visible>Control.IsVisible(53)</visible>
+            <control type="group">
+                <include>View_Pad</include>
+                <control type="panel" id="53">
+                    <left>-70</left>
+                    <right>-10</right>
+                    <bottom>20</bottom>
+                    <top>-10</top>
+                    <visible>!Container.Content(movies) + !Container.Content(tvshows) + !Container.Content(seasons) + !Container.Content(songs) + !Container.Content(videos) + !Container.Content(episodes) + !Container.Content(sets) + !Container.Content(actors) + !Container.Content(images)</visible>
+                    <include>View_NotTheseWindows</include>
+                    <viewtype label="$LOCALIZE[31360]">icon</viewtype>
+                    <include content="View_Forced">
+                        <param name="string" value="$LOCALIZE[31360]" />
+                    </include>
+                    <include content="View_Posters_Layout">
+                        <param name="id" value="53" />
+                        <param name="orientation" value="vertical" />
+                        <param name="square_small" default="true" />
+                    </include>
+                </control>
+            </control>
+            <include>Object_Scrollbar_Vert</include>
+        </control>
+    </include>
+
+    <include name="View_Posters_BannerWall">
+        <control type="group">
+            <visible>Control.IsVisible(54)</visible>
+            <control type="group">
+                <include>View_Pad</include>
+                <control type="panel" id="54">
+                    <left>-70</left>
+                    <right>-10</right>
+                    <bottom>50</bottom>
+                    <top>-10</top>
+                    <visible>Container.Content(tvshows) | Container.Content(movies) | Container.Content(sets)</visible>
+                    <include>View_NotTheseWindows</include>
+                    <viewtype label="$LOCALIZE[31370]">icon</viewtype>
+                    <include content="View_Forced">
+                        <param name="string" value="$LOCALIZE[31370]" />
+                    </include>
+                    <include content="View_Posters_Layout">
+                        <param name="id" value="54" />
+                        <param name="orientation" value="vertical" />
+                        <param name="banner" default="true" />
+                    </include>
+                </control>
+            </control>
+            <include>Object_Scrollbar_Vert</include>
+        </control>
+    </include>
+
+    <include name="View_Posters_Showcase">
+        <control type="group">
+            <visible>Control.IsVisible(55)</visible>
+            <control type="group">
+                <include>View_Pad</include>
+                <control type="fixedlist" id="55">
+                    <bottom>-10</bottom>
+                    <right>-70</right>
+                    <left>-70</left>
+                    <height>500</height>
+                    <height>poster_height</height>
+                    <focusposition>0</focusposition>
+                    <movement>6</movement>
+                    <visible>Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons)</visible>
+                    <viewtype label="$LOCALIZE[31161]">showcase</viewtype>
+                    <onup>300</onup>
+                    <ondown condition="Control.IsVisible(60)">60</ondown>
+                    <onleft>55</onleft>
+                    <onright>55</onright>
+                    <include content="View_Forced">
+                        <param name="string" value="$LOCALIZE[31161]" />
+                    </include>
+                    <include>View_NotTheseWindows</include>
+                    <include content="View_Posters_Layout">
+                        <param name="id" value="55" />
+                        <param name="orientation" value="horizontal" />
+                        <param name="posters" default="true" />
+                    </include>
+                </control>
+                <include content="Object_Info">
+                    <param name="id" value="55" />
+                    <param name="width" value="1654" />
+                    <param name="discart" value="true" />
+                    <param name="hdsd_flag" value="true" />
+                    <param name="plot_height" value="170" />
+                </include>
+            </control>
+
+            <include>Object_Scrollbar_Horz</include>
+        </control>
+    </include>
+
+    <include name="View_Posters_LandscapeShowcase">
+        <control type="group">
+            <visible>Control.IsVisible(56)</visible>
+            <control type="group">
+                <include>View_Pad</include>
+                <control type="fixedlist" id="56">
+                    <bottom>-10</bottom>
+                    <right>-70</right>
+                    <left>-70</left>
+                    <height>470</height>
+                    <focusposition>0</focusposition>
+                    <movement>2</movement>
+                    <viewtype label="$LOCALIZE[31361]">showcase</viewtype>
+                    <onup>300</onup>
+                    <ondown condition="Control.IsVisible(60)">60</ondown>
+                    <onleft>56</onleft>
+                    <onright>56</onright>
+                    <include content="View_Forced">
+                        <param name="string" value="$LOCALIZE[31361]" />
+                    </include>
+                    <visible>Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(videos) | Container.Content(artists)</visible>
+                    <include>View_NotTheseWindows</include>
+                    <include content="View_Posters_Layout">
+                        <param name="id" value="56" />
+                        <param name="orientation" value="horizontal" />
+                        <param name="landscape" default="true" />
+                    </include>
+                </control>
+                <include content="Object_Info">
+                    <param name="id" value="56" />
+                    <param name="width" value="1654" />
+                    <param name="discart" value="true" />
+                    <param name="hdsd_flag" value="true" />
+                    <param name="plot_height" value="170" />
+                </include>
+            </control>
+
+            <include>Object_Scrollbar_Horz</include>
+        </control>
+    </include>
+
+    <include name="View_Posters_SquareShowcase">
+        <control type="group">
+            <visible>Control.IsVisible(57)</visible>
+            <control type="group">
+                <include>View_Pad</include>
+                <control type="fixedlist" id="57">
+                    <bottom>-10</bottom>
+                    <right>-70</right>
+                    <left>-70</left>
+                    <height>484</height>
+                    <focusposition>0</focusposition>
+                    <movement>4</movement>
+                    <viewtype label="$LOCALIZE[31362]">showcase</viewtype>
+                    <onup>300</onup>
+                    <ondown condition="Control.IsVisible(60)">60</ondown>
+                    <onleft>57</onleft>
+                    <onright>57</onright>
+                    <include content="View_Forced">
+                        <param name="string" value="$LOCALIZE[31362]" />
+                    </include>
+                    <visible>Container.Content(artists) | Container.Content(albums)</visible>
+                    <include>View_NotTheseWindows</include>
+                    <include content="View_Posters_Layout">
+                        <param name="id" value="57" />
+                        <param name="orientation" value="horizontal" />
+                        <param name="square" default="true" />
+                    </include>
+                </control>
+                <include content="Object_Info">
+                    <param name="id" value="57" />
+                    <param name="width" value="1654" />
+                    <param name="discart" value="true" />
+                    <param name="hdsd_flag" value="true" />
+                    <param name="plot_height" value="170" />
+                </include>
+            </control>
+
+            <include>Object_Scrollbar_Horz</include>
+        </control>
+    </include>
+
+    <include name="View_Posters_BigPosters">
+        <control type="group">
+            <visible>Control.IsVisible(58)</visible>
+            <control type="group">
+                <include>View_Pad</include>
+                <control type="wraplist" id="58">
+                    <top>50</top>
+                    <right>-70</right>
+                    <left>570</left>
+                    <preloaditems>0</preloaditems>
+                    <height>poster_height</height>
+                    <focusposition>-1</focusposition>
+                    <movement>0</movement>
+                    <viewtype label="$LOCALIZE[31363]">icon</viewtype>
+                    <onup>300</onup>
+                    <ondown condition="Control.IsVisible(60)">60</ondown>
+                    <onleft>58</onleft>
+                    <onright>58</onright>
+                    <include content="View_Forced">
+                        <param name="string" value="$LOCALIZE[31363]" />
+                    </include>
+                    <visible>Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons)</visible>
+                    <include>View_NotTheseWindows</include>
+                    <include content="View_Posters_Layout">
+                        <param name="id" value="58" />
+                        <param name="orientation" value="horizontal" />
+                        <param name="posters_big" default="true" />
+                    </include>
+                </control>
+                <control type="group">
+                    <control type="group">
+                        <left>640</left>
+                        <height>230</height>
+                        <include content="Object_Info">
+                            <param name="id" value="58" />
+                            <param name="width" value="1654" />
+                            <param name="discart" value="true" />
+                            <param name="hdsd_flag" value="true" />
+                            <param name="plot_height" value="0" />
+                        </include>
+                    </control>
+                    <control type="group">
+                        <left>640</left>
+                        <right>-40</right>
+                        <height>80</height>
+                        <bottom>view_pad</bottom>
+                        <include content="Object_Flags">
+                            <param name="container" value="" />
+                            <param name="directory" value="color" />
+                            <param name="align" value="left" />
+                        </include>
+                    </control>
+                    <!-- <control type="label">
+                        <left>640</left>
+                        <height>80</height>
+                        <bottom>50</bottom>
+                        <align>left</align>
+                        <label fallback="19055">$VAR[Label_Tagline]</label>
+                        <height>$PARAM[plot_height]</height>
+                        <aligny>top</aligny>
+                        <textcolor>main_fg_70</textcolor>
+                        <font>font_plotbox</font>
+                    </control> -->
+                </control>
+            </control>
+            <include>View_Library_Poster</include>
+            <include>Object_Scrollbar_Horz</include>
+        </control>
+    </include>
+
+    <include name="View_Posters_Lovefilm">
+        <control type="group">
+            <visible>Control.IsVisible(59)</visible>
+            <control type="group">
+                <left>view_pad</left>
+                <right>view_pad</right>
+                <top>view_pad</top>
+                <bottom>view_pad</bottom>
+                <control type="image">
+                    <left>-10</left>
+                    <right>-10</right>
+                    <bottom>-10</bottom>
+                    <top>-10</top>
+                    <bordersize>10</bordersize>
+                    <include>Defs_Shadow_Small</include>
+                    <texture colordiffuse="PosterBack" border="10">diffuse/box.png</texture>
+                </control>
+                <control type="wraplist" id="59">
+                    <visible>Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(artists)</visible>
+                    <include>View_NotTheseWindows</include>
+                    <viewtype label="$LOCALIZE[31231]">icon</viewtype>
+                    <include content="View_Forced">
+                        <param name="string" value="$LOCALIZE[31231]" />
+                    </include>
+                    <orientation>horizontal</orientation>
+                    <focusposition>0</focusposition>
+                    <preloaditems>2</preloaditems>
+                    <right>0</right>
+                    <left>0</left>
+                    <top>0</top>
+                    <bottom>0</bottom>
+                    <onup>300</onup>
+                    <ondown condition="Control.IsVisible(8000)">8000</ondown>
+                    <ondown condition="!Control.IsVisible(8000)">300</ondown>
+                    <pagecontrol>60</pagecontrol>
+                    <scrolltime tween="cubic">400</scrolltime>
+                    <itemlayout width="1800" height="900">
+                        <control type="image">
+                            <aspectratio scalediffuse="false">center</aspectratio>
+                            <texture background="true" diffuse="diffuse/lovefilm.png">$INFO[ListItem.ActualIcon]</texture>
+                            <visible>String.IsEmpty(ListItem.Art(fanart))</visible>
+                        </control>
+                        <control type="image">
+                            <aspectratio scalediffuse="false">scale</aspectratio>
+                            <texture background="true" diffuse="diffuse/lovefilm.png">$INFO[ListItem.Art(fanart)]</texture>
+                        </control>
+                    </itemlayout>
+                    <focusedlayout width="1800" height="900">
+                        <control type="image">
+                            <aspectratio scalediffuse="false">center</aspectratio>
+                            <texture background="true" diffuse="diffuse/lovefilm.png">$INFO[ListItem.ActualIcon]</texture>
+                            <visible>String.IsEmpty(ListItem.Art(fanart))</visible>
+                        </control>
+                        <control type="image">
+                            <aspectratio scalediffuse="false">scale</aspectratio>
+                            <texture background="true" diffuse="diffuse/lovefilm.png">$INFO[ListItem.Art(fanart)]</texture>
+                        </control>
+                    </focusedlayout>
+                </control>
+                <control type="group">
+                    <height>205</height>
+                    <bottom>0</bottom>
+                    <control type="image">
+                        <top>-300</top>
+                        <aspectratio scalediffuse="false">stretch</aspectratio>
+                        <texture diffuse="diffuse/lovefilm.png">common/gradient-dim.png</texture>
+                    </control>
+                    <control type="group">
+                        <left>40</left>
+                        <right>40</right>
+                        <bottom>30</bottom>
+                        <include content="Object_Info">
+                            <param name="plot_height" value="300" />
+                            <param name="id" value="59" />
+                            <param name="width" value="1068" />
+                            <param name="discart" value="false" />
+                            <param name="hdsd_flag" value="true" />
+                        </include>
+                    </control>
+                </control>
+                <control type="group">
+                    <left>-10</left>
+                    <right>-10</right>
+                    <bottom>-10</bottom>
+                    <top>-10</top>
+                    <include>View_WatchedOverlay</include>
+                </control>
+                <control type="image">
+                    <texture colordiffuse="PixelLines" border="20">common/outline.png</texture>
+                </control>
+                <control type="group">
+                    <left>-10</left>
+                    <right>-10</right>
+                    <bottom>-10</bottom>
+                    <top>-10</top>
+                    <visible>Control.HasFocus(59)</visible>
+                    <include>View_Selectbox</include>
+                </control>
+            </control>
+            <include>Object_Scrollbar_Horz</include>
+        </control>
     </include>
 
     <include name="View_Posters_Layout">
@@ -440,7 +453,7 @@
                         <height>380</height>
                         <include>View_Posters_Itemlayout_Artwork</include>
                     </control>
-                    <include condition="$PARAM[text]">View_Posters_Text</include>
+                    <include condition="$PARAM[text] + !Skin.HasSetting(DisableViewText)">View_Posters_Text</include>
                 </control>
             </itemlayout>
             <focusedlayout width="260" height="480" condition="$PARAM[posters]">
@@ -463,7 +476,7 @@
                             <include>View_Selectbox</include>
                         </control>
                     </control>
-                    <include condition="$PARAM[text]">View_Posters_Text</include>
+                    <include condition="$PARAM[text] + !Skin.HasSetting(DisableViewText)">View_Posters_Text</include>
                 </control>
             </focusedlayout>
             <itemlayout width="400" condition="$PARAM[posters_big]">
@@ -508,7 +521,7 @@
                         <height>350</height>
                         <include>View_Landscape_Artwork</include>
                     </control>
-                    <include condition="$PARAM[text]">View_Landscape_Text</include>
+                    <include condition="$PARAM[text] + !Skin.HasSetting(DisableViewText)">View_Landscape_Text</include>
                 </control>
             </itemlayout>
             <focusedlayout width="606.66" height="480" condition="$PARAM[landscape]">
@@ -531,7 +544,7 @@
                             <include>View_Selectbox</include>
                         </control>
                     </control>
-                    <include condition="$PARAM[text]">View_Landscape_Text</include>
+                    <include condition="$PARAM[text] + !Skin.HasSetting(DisableViewText)">View_Landscape_Text</include>
                 </control>
             </focusedlayout>
             <itemlayout width="455" height="315" condition="$PARAM[landscape_small]">
@@ -553,6 +566,7 @@
                         <left>10</left>
                         <right>10</right>
                         <top>265</top>
+                        <visible>!Skin.HasSetting(DisableViewText)</visible>
                     </control>
                     <control type="label">
                         <label>$INFO[ListItem.Label2]</label>
@@ -563,6 +577,7 @@
                         <left>10</left>
                         <right>10</right>
                         <top>265</top>
+                        <visible>!Skin.HasSetting(DisableViewText)</visible>
                     </control>
                 </control>
             </itemlayout>
@@ -595,6 +610,7 @@
                         <left>10</left>
                         <right>10</right>
                         <top>265</top>
+                        <visible>!Skin.HasSetting(DisableViewText)</visible>
                     </control>
                     <control type="label">
                         <label>$INFO[ListItem.Label2]</label>
@@ -605,6 +621,7 @@
                         <left>10</left>
                         <right>10</right>
                         <top>265</top>
+                        <visible>!Skin.HasSetting(DisableViewText)</visible>
                     </control>
                 </control>
             </focusedlayout>
@@ -626,6 +643,12 @@
                             <aspectratio aligny="center" scalediffuse="false">scale</aspectratio>
                             <texture background="true" diffuse="diffuse/banner.png">$VAR[Image_Banner]</texture>
                         </control>
+                        <control type="image">
+                            <bordersize>30</bordersize>
+                            <aspectratio aligny="bottom" align="right" scalediffuse="false">keep</aspectratio>
+                            <texture background="true" diffuse="diffuse/banner.png">$VAR[Image_ClearLogo]</texture>
+                            <visible>String.IsEmpty(ListItem.Art(tvshow.banner)) + String.IsEmpty(ListItem.Art(banner))</visible>
+                        </control>
                         <include>View_WatchedOverlay</include>
                         <control type="image">
                             <bordersize>10</bordersize>
@@ -641,6 +664,7 @@
                         <left>10</left>
                         <right>10</right>
                         <top>185</top>
+                        <visible>!Skin.HasSetting(DisableViewText)</visible>
                     </control>
                     <control type="label">
                         <label>$INFO[ListItem.Label2]</label>
@@ -651,6 +675,7 @@
                         <left>10</left>
                         <right>10</right>
                         <top>185</top>
+                        <visible>!Skin.HasSetting(DisableViewText)</visible>
                     </control>
                 </control>
             </itemlayout>
@@ -677,6 +702,12 @@
                             <aspectratio aligny="center" scalediffuse="false">scale</aspectratio>
                             <texture background="true" diffuse="diffuse/banner.png">$VAR[Image_Banner]</texture>
                         </control>
+                        <control type="image">
+                            <bordersize>30</bordersize>
+                            <aspectratio aligny="bottom" align="right" scalediffuse="false">keep</aspectratio>
+                            <texture background="true" diffuse="diffuse/banner.png">$VAR[Image_ClearLogo]</texture>
+                            <visible>String.IsEmpty(ListItem.Art(tvshow.banner)) + String.IsEmpty(ListItem.Art(banner))</visible>
+                        </control>
                         <include>View_WatchedOverlay</include>
                         <control type="image">
                             <bordersize>10</bordersize>
@@ -697,6 +728,7 @@
                         <left>10</left>
                         <right>10</right>
                         <top>185</top>
+                        <visible>!Skin.HasSetting(DisableViewText)</visible>
                     </control>
                     <control type="label">
                         <label>$INFO[ListItem.Label2]</label>
@@ -707,6 +739,7 @@
                         <left>10</left>
                         <right>10</right>
                         <top>185</top>
+                        <visible>!Skin.HasSetting(DisableViewText)</visible>
                     </control>
                 </control>
             </focusedlayout>
@@ -731,6 +764,7 @@
                         <top>369</top>
                         <height>30</height>
                         <visible>$PARAM[text]</visible>
+                        <visible>!Skin.HasSetting(DisableViewText)</visible>
                     </control>
                     <control type="label">
                         <label>$INFO[ListItem.Label2]</label>
@@ -743,6 +777,7 @@
                         <top>399</top>
                         <height>30</height>
                         <visible>$PARAM[text]</visible>
+                        <visible>!Skin.HasSetting(DisableViewText)</visible>
                     </control>
                 </control>
             </itemlayout>
@@ -777,6 +812,7 @@
                         <top>369</top>
                         <height>30</height>
                         <visible>$PARAM[text]</visible>
+                        <visible>!Skin.HasSetting(DisableViewText)</visible>
                     </control>
                     <control type="label">
                         <label>$INFO[ListItem.Label2]</label>
@@ -789,6 +825,7 @@
                         <top>399</top>
                         <height>30</height>
                         <visible>$PARAM[text]</visible>
+                        <visible>!Skin.HasSetting(DisableViewText)</visible>
                     </control>
                 </control>
             </focusedlayout>
@@ -813,6 +850,7 @@
                         <bottom>20</bottom>
                         <height>30</height>
                         <visible>$PARAM[text]</visible>
+                        <visible>!Skin.HasSetting(DisableViewText)</visible>
                     </control>
                 </control>
             </itemlayout>
@@ -847,6 +885,7 @@
                         <bottom>20</bottom>
                         <height>30</height>
                         <visible>$PARAM[text]</visible>
+                        <visible>!Skin.HasSetting(DisableViewText)</visible>
                     </control>
                 </control>
             </focusedlayout>

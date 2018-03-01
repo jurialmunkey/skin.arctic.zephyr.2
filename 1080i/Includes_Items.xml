@@ -457,6 +457,7 @@
                 <visible>Window.IsVisible(MyVideoNav.xml) | Window.IsVisible(MyMusicNav.xml) | Window.IsVisible(AddonBrowser.xml) | Window.IsVisible(MyPics.xml) | Window.IsVisible(MyPrograms.xml)</visible>
                 <visible>!Skin.HasSetting(global.kioskmode)</visible>
             </item>
+
             <!-- Sort -->
             <item>
                 <label>$INFO[Control.GetLabel(3)]</label>
@@ -568,6 +569,16 @@
                 <label>$LOCALIZE[21452]</label>
                 <onclick>ActivateWindow(addonbrowser,addons://more/video/,return)</onclick>
                 <visible>Container.Content(addons) + !String.Contains(Container.FolderPath,addons://)</visible>
+                <visible>!Skin.HasSetting(global.kioskmode)</visible>
+            </item>
+
+            <!-- Configure -->
+            <item>
+                <icon>special://skin/extras/icons/configure.png</icon>
+                <label>$LOCALIZE[31039]</label>
+                <onclick>ActivateWindow(1117)</onclick>
+                <visible>Control.IsEnabled(2)</visible>
+                <visible>Window.IsVisible(MyVideoNav.xml) | Window.IsVisible(MyMusicNav.xml) | Window.IsVisible(AddonBrowser.xml) | Window.IsVisible(MyPics.xml) | Window.IsVisible(MyPrograms.xml)</visible>
                 <visible>!Skin.HasSetting(global.kioskmode)</visible>
             </item>
             

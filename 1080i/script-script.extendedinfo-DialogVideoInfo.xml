@@ -2,7 +2,6 @@
 <!-- Foundation -->
 <window>
     <defaultcontrol always="true">1000</defaultcontrol>
-    <onload>Dialog.Close(1112)</onload>
     <onload>ClearProperty(FocusedList,Home)</onload>
     <onunload>ClearProperty(FocusedList,Home)</onunload>
     <onunload condition="!Player.HasVideo + Window.IsVisible(VideoOSD.xml)">SetFocus(300)</onunload>

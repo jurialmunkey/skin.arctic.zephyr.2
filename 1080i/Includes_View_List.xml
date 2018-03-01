@@ -1,108 +1,113 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
+
+    <include name="View_List_Default">
+        <control type="group">
+            <visible>Control.IsVisible(50)</visible>
+            <control type="group">
+                <left>view_left</left>
+                <right>view_pad</right>
+                <top>view_pad</top>
+                <bottom>view_pad</bottom>
+                <control type="fixedlist" id="50">
+                    <animation effect="slide" end="0,-90" condition="Integer.IsLess(Container(50).NumItems,9) + !Container(50).HasParent">Conditional</animation>
+                    <animation effect="slide" end="0,-90" condition="Integer.IsLess(Container(50).NumItems,7)+ !Container(50).HasParent">Conditional</animation>
+                    <animation effect="slide" end="0,-90" condition="Integer.IsLess(Container(50).NumItems,5)+ !Container(50).HasParent">Conditional</animation>
+                    <animation effect="slide" end="0,-90" condition="Integer.IsLess(Container(50).NumItems,3)+ !Container(50).HasParent">Conditional</animation>
+                    <animation effect="slide" end="0,-90" condition="Integer.IsLess(Container(50).NumItems,8) + Container(50).HasParent">Conditional</animation>
+                    <animation effect="slide" end="0,-90" condition="Integer.IsLess(Container(50).NumItems,6)+ Container(50).HasParent">Conditional</animation>
+                    <animation effect="slide" end="0,-90" condition="Integer.IsLess(Container(50).NumItems,4)+ Container(50).HasParent">Conditional</animation>
+                    <animation effect="slide" end="0,-90" condition="Integer.IsLess(Container(50).NumItems,2)+ Container(50).HasParent">Conditional</animation>
+                    <viewtype label="$LOCALIZE[535]">list</viewtype>
+                    <include content="View_Forced">
+                        <param name="string" value="$LOCALIZE[535]" />
+                    </include>
+                    <include content="View_List_Layout">
+                        <param name="id" value="50" />
+                    </include>
+                </control>
+            </control>
+            <include>Object_Scrollbar_Vert</include>
+        </control>
+    </include>
+
+    <include name="View_List_MediaInfo">
+        <control type="group">
+            <visible>Control.IsVisible(500)</visible>
+            <control type="group">
+                <left>880</left>
+                <right>view_pad</right>
+                <top>view_pad</top>
+                <bottom>view_pad</bottom>
+                <control type="fixedlist" id="500">
+                    <animation effect="slide" end="0,-90" condition="Integer.IsLess(Container(500).NumItems,9) + !Container(500).HasParent">Conditional</animation>
+                    <animation effect="slide" end="0,-90" condition="Integer.IsLess(Container(500).NumItems,7)+ !Container(500).HasParent">Conditional</animation>
+                    <animation effect="slide" end="0,-90" condition="Integer.IsLess(Container(500).NumItems,5)+ !Container(500).HasParent">Conditional</animation>
+                    <animation effect="slide" end="0,-90" condition="Integer.IsLess(Container(500).NumItems,3)+ !Container(500).HasParent">Conditional</animation>
+                    <animation effect="slide" end="0,-90" condition="Integer.IsLess(Container(500).NumItems,8) + Container(500).HasParent">Conditional</animation>
+                    <animation effect="slide" end="0,-90" condition="Integer.IsLess(Container(500).NumItems,6)+ Container(500).HasParent">Conditional</animation>
+                    <animation effect="slide" end="0,-90" condition="Integer.IsLess(Container(500).NumItems,4)+ Container(500).HasParent">Conditional</animation>
+                    <animation effect="slide" end="0,-90" condition="Integer.IsLess(Container(500).NumItems,2)+ Container(500).HasParent">Conditional</animation>
+                    <visible>Container.Content(movies) | Container.Content(episodes) | Container.Content(tvshows) | Container.Content(sets) | Container.Content(seasons) | Container.Content(artists) | Container.Content(videos)</visible>
+                    <include>View_NotTheseWindows</include>
+                    <viewtype label="$LOCALIZE[31298]">list</viewtype>
+                    <include content="View_Forced">
+                        <param name="string" value="$LOCALIZE[31298]" />
+                    </include>
+                    <include content="View_List_Layout">
+                        <param name="width" value="1000" />
+                        <param name="id" value="500" />
+                    </include>
+                </control>
+            </control>
+            
+            <include>Object_Scrollbar_Vert</include>
+        </control>
+    </include>
+
+    <include name="View_List_PosterInfo">
+        <control type="group">
+            <visible>Control.IsVisible(501)</visible>
+            <control type="group">
+                <left>view_left</left>
+                <right>view_pad</right>
+                <top>view_pad</top>
+                <bottom>view_pad</bottom>
+                <control type="group">
+                    <height>450</height>
+                    <left>20</left>
+                    <include content="Object_Info">
+                        <param name="id" value="501" />
+                        <param name="width" value="1654" />
+                        <param name="discart" value="true" />
+                        <param name="hdsd_flag" value="true" />
+                        <param name="plot_height" value="170" />
+                    </include>
+                </control>
+                <control type="fixedlist" id="501">
+                    <top>450</top>
+                    <focusposition>2</focusposition>
+                    <movement>2</movement>
+                    <visible>Container.Content(movies) | Container.Content(episodes) | Container.Content(tvshows) | Container.Content(sets) | Container.Content(seasons)</visible>
+                    <include>View_NotTheseWindows</include>
+                    <viewtype label="$LOCALIZE[31164]">list</viewtype>
+                    <include content="View_Forced">
+                        <param name="string" value="$LOCALIZE[31164]" />
+                    </include>
+                    <include content="View_List_Layout">
+                        <param name="id" value="501" />
+                    </include>
+                </control>
+            </control>
+            <include>Object_Scrollbar_Vert</include>
+        </control>
+    </include>
+
     <include name="View_List">
         <definition>
-            <!-- Poster List -->
-            <control type="group">
-                <visible>Control.IsVisible(50)</visible>
-                <control type="group">
-                    <left>view_left</left>
-                    <right>view_pad</right>
-                    <top>view_pad</top>
-                    <bottom>view_pad</bottom>
-                    
-                    <control type="fixedlist" id="50">
-                        <animation effect="slide" end="0,-90" condition="Integer.IsLess(Container(50).NumItems,9) + !Container(50).HasParent">Conditional</animation>
-                        <animation effect="slide" end="0,-90" condition="Integer.IsLess(Container(50).NumItems,7)+ !Container(50).HasParent">Conditional</animation>
-                        <animation effect="slide" end="0,-90" condition="Integer.IsLess(Container(50).NumItems,5)+ !Container(50).HasParent">Conditional</animation>
-                        <animation effect="slide" end="0,-90" condition="Integer.IsLess(Container(50).NumItems,3)+ !Container(50).HasParent">Conditional</animation>
-                        <animation effect="slide" end="0,-90" condition="Integer.IsLess(Container(50).NumItems,8) + Container(50).HasParent">Conditional</animation>
-                        <animation effect="slide" end="0,-90" condition="Integer.IsLess(Container(50).NumItems,6)+ Container(50).HasParent">Conditional</animation>
-                        <animation effect="slide" end="0,-90" condition="Integer.IsLess(Container(50).NumItems,4)+ Container(50).HasParent">Conditional</animation>
-                        <animation effect="slide" end="0,-90" condition="Integer.IsLess(Container(50).NumItems,2)+ Container(50).HasParent">Conditional</animation>
-                        <viewtype label="$LOCALIZE[535]">list</viewtype>
-                        <include content="View_Forced">
-                            <param name="string" value="$LOCALIZE[535]" />
-                        </include>
-                        <include content="View_List_Layout">
-                            <param name="id" value="50" />
-                        </include>
-                    </control>
-                </control>
-                <include>Object_Scrollbar_Vert</include>
-            </control>
-
-            
-
-            <!-- Media Info -->
-            <control type="group">
-                <visible>Control.IsVisible(500)</visible>
-                <control type="group">
-                    <left>880</left>
-                    <right>view_pad</right>
-                    <top>view_pad</top>
-                    <bottom>view_pad</bottom>
-                    <control type="fixedlist" id="500">
-                        <animation effect="slide" end="0,-90" condition="Integer.IsLess(Container(500).NumItems,9) + !Container(500).HasParent">Conditional</animation>
-                        <animation effect="slide" end="0,-90" condition="Integer.IsLess(Container(500).NumItems,7)+ !Container(500).HasParent">Conditional</animation>
-                        <animation effect="slide" end="0,-90" condition="Integer.IsLess(Container(500).NumItems,5)+ !Container(500).HasParent">Conditional</animation>
-                        <animation effect="slide" end="0,-90" condition="Integer.IsLess(Container(500).NumItems,3)+ !Container(500).HasParent">Conditional</animation>
-                        <animation effect="slide" end="0,-90" condition="Integer.IsLess(Container(500).NumItems,8) + Container(500).HasParent">Conditional</animation>
-                        <animation effect="slide" end="0,-90" condition="Integer.IsLess(Container(500).NumItems,6)+ Container(500).HasParent">Conditional</animation>
-                        <animation effect="slide" end="0,-90" condition="Integer.IsLess(Container(500).NumItems,4)+ Container(500).HasParent">Conditional</animation>
-                        <animation effect="slide" end="0,-90" condition="Integer.IsLess(Container(500).NumItems,2)+ Container(500).HasParent">Conditional</animation>
-                        <visible>Container.Content(movies) | Container.Content(episodes) | Container.Content(tvshows) | Container.Content(sets) | Container.Content(seasons) | Container.Content(artists) | Container.Content(videos)</visible>
-                        <include>View_NotTheseWindows</include>
-                        <viewtype label="$LOCALIZE[31298]">list</viewtype>
-                        <include content="View_Forced">
-                            <param name="string" value="$LOCALIZE[31298]" />
-                        </include>
-                        <include content="View_List_Layout">
-                            <param name="width" value="1000" />
-                            <param name="id" value="500" />
-                        </include>
-                    </control>
-                </control>
-                
-                <include>Object_Scrollbar_Vert</include>
-            </control>
-
-            <!-- Info List -->
-            <control type="group">
-                <visible>Control.IsVisible(501)</visible>
-                <control type="group">
-                    <left>view_left</left>
-                    <right>view_pad</right>
-                    <top>view_pad</top>
-                    <bottom>view_pad</bottom>
-                    <control type="group">
-                        <height>450</height>
-                        <left>20</left>
-                        <include content="Object_Info">
-                            <param name="id" value="501" />
-                            <param name="width" value="1654" />
-                            <param name="discart" value="true" />
-                            <param name="hdsd_flag" value="true" />
-                            <param name="plot_height" value="170" />
-                        </include>
-                    </control>
-                    <control type="fixedlist" id="501">
-                        <top>450</top>
-                        <focusposition>2</focusposition>
-                        <movement>2</movement>
-                        <visible>Container.Content(movies) | Container.Content(episodes) | Container.Content(tvshows) | Container.Content(sets) | Container.Content(seasons)</visible>
-                        <include>View_NotTheseWindows</include>
-                        <viewtype label="$LOCALIZE[31164]">list</viewtype>
-                        <include content="View_Forced">
-                            <param name="string" value="$LOCALIZE[31164]" />
-                        </include>
-                        <include content="View_List_Layout">
-                            <param name="id" value="501" />
-                        </include>
-                    </control>
-                </control>
-                <include>Object_Scrollbar_Vert</include>
-            </control>
+            <include>View_List_Default</include>
+            <include condition="!Skin.HasSetting(DisableViewMode.MediaInfo) + [Window.IsVisible(MyVideoNav.xml) | Window.IsVisible(MyMusicNav.xml)]">View_List_MediaInfo</include>            
+            <include condition="!Skin.HasSetting(DisableViewMode.InfoList) + [Window.IsVisible(MyVideoNav.xml)]">View_List_PosterInfo</include>
         </definition>
     </include>
 
