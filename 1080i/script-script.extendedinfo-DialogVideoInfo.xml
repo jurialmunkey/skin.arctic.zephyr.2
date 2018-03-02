@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Foundation -->
 <window>
-    <defaultcontrol always="true">1000</defaultcontrol>
-    <onload>ClearProperty(FocusedList,Home)</onload>
-    <onunload>ClearProperty(FocusedList,Home)</onunload>
-    <onunload condition="!Player.HasVideo + Window.IsVisible(VideoOSD.xml)">SetFocus(300)</onunload>
+    <defaultcontrol always="true">9000</defaultcontrol>
     <controls>
 
         <include>Global_Background</include>
@@ -304,18 +301,13 @@
             <description>Cast</description>
             <label>206</label>
             <include>Defs_Hidden_Button</include>
-            <onclick>SetProperty(FocusedList,1000,Home)</onclick>
-            <onclick>SetProperty(VideoInfo_InfoLine,$INFO[Window.Property(label),$LOCALIZE[206] (,)],Home)</onclick>
             <onclick>SetFocus(1000)</onclick>
-            <!-- <enable>Integer.IsGreater(Container(1000).NumItems,0)</enable> -->
         </control>
         
         <control type="button" id ="9003">
             <description>Similar</description>
             <label>31206</label>
             <include>Defs_Hidden_Button</include>
-            <onclick>SetProperty(FocusedList,150,Home)</onclick>
-            <onclick>SetProperty(VideoInfo_InfoLine,$INFO[Window.Property(label),$LOCALIZE[31206] (,)],Home)</onclick>
             <onclick>SetFocus(150)</onclick>
             <enable>Integer.IsGreater(Container(150).NumItems,0)</enable>
         </control>
@@ -324,8 +316,6 @@
             <description>Youtube</description>
             <label>31141</label>
             <include>Defs_Hidden_Button</include>
-            <onclick>SetProperty(FocusedList,350,Home)</onclick>
-            <onclick>SetProperty(VideoInfo_InfoLine,$INFO[Window.Property(label),$LOCALIZE[31141] (,)],Home)</onclick>
             <onclick>SetFocus(350)</onclick>
             <enable>Integer.IsGreater(Container(350).NumItems,0)</enable>
         </control>
@@ -335,8 +325,6 @@
             <description>Crew</description>
             <label>$ADDON[script.extendedinfo 32115]</label>
             <include>Defs_Hidden_Button</include>
-            <onclick>SetProperty(FocusedList,750,Home)</onclick>
-            <onclick>SetProperty(VideoInfo_InfoLine,$INFO[Window.Property(label), (,)],Home)</onclick>
             <onclick>SetFocus(750)</onclick>
             <enable>Integer.IsGreater(Container(750).NumItems,0)</enable>
         </control>
@@ -363,6 +351,7 @@
         <control type="list" id="1050"><visible>false</visible></control>
         <control type="list" id="1250"><visible>false</visible></control>
         <control type="list" id="1450"><visible>false</visible></control>
+        <control type="list" id="2000"><visible>false</visible></control>
 
         <control type="button" id="430">
             <width>1</width>

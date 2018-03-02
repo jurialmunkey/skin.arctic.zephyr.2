@@ -632,6 +632,21 @@
         </control>
     </include>
 
+    <include name="Topbar_Menu_SettingsTrick_Button">
+        <control type="button">
+            <visible allowhiddenfocus="true">false</visible>
+            <onfocus condition="!Window.IsActive(InterfaceSettings) + String.IsEqual(Container(300).ListItem.Property(path),ReplaceWindow(InterfaceSettings))">ReplaceWindow(InterfaceSettings)</onfocus>
+            <onfocus condition="!Window.IsActive(SkinSettings) + String.IsEqual(Container(300).ListItem.Property(path),ReplaceWindow(SkinSettings))">ReplaceWindow(SkinSettings)</onfocus>
+            <onfocus condition="!Window.IsActive(MediaSettings) + String.IsEqual(Container(300).ListItem.Property(path),ReplaceWindow(MediaSettings))">ReplaceWindow(MediaSettings)</onfocus>
+            <onfocus condition="!Window.IsActive(PlayerSettings) + String.IsEqual(Container(300).ListItem.Property(path),ReplaceWindow(PlayerSettings))">ReplaceWindow(PlayerSettings)</onfocus>
+            <onfocus condition="!Window.IsActive(SystemSettings) + String.IsEqual(Container(300).ListItem.Property(path),ReplaceWindow(SystemSettings))">ReplaceWindow(SystemSettings)</onfocus>
+            <onfocus condition="!Window.IsActive(servicesettings) + String.IsEqual(Container(300).ListItem.Property(path),ReplaceWindow(servicesettings))">ReplaceWindow(servicesettings)</onfocus>
+            <onfocus condition="!Window.IsActive(pvrsettings) + String.IsEqual(Container(300).ListItem.Property(path),ReplaceWindow(pvrsettings))">ReplaceWindow(pvrsettings)</onfocus>
+            <onfocus condition="!Window.IsActive(systeminfo) + String.IsEqual(Container(300).ListItem.Property(path),ReplaceWindow(systeminfo))">ReplaceWindow(systeminfo)</onfocus>
+            <onfocus condition="!Window.IsActive(Profiles) + String.IsEqual(Container(300).ListItem.Property(path),ReplaceWindow(Profiles))">ReplaceWindow(Profiles)</onfocus>
+        </control>
+    </include>
+
     <include name="Topbar_Menu_Layout">
         <animation effect="fade" start="0" end="100" time="350" tween="cubic" easing="inout" reversible="false">Visible</animation>
         <animation effect="fade" start="100" end="0" time="350" tween="cubic" easing="inout" reversible="false">Hidden</animation>
@@ -668,18 +683,7 @@
             </control>
         </itemlayout>
         <focusedlayout width="70" height="view_pad">
-            <control type="button">
-                <visible allowhiddenfocus="true">false</visible>
-                <onfocus condition="!Window.IsActive(InterfaceSettings) + String.IsEqual(Container(300).ListItem.Property(path),ReplaceWindow(InterfaceSettings))">ReplaceWindow(InterfaceSettings)</onfocus>
-                <onfocus condition="!Window.IsActive(SkinSettings) + String.IsEqual(Container(300).ListItem.Property(path),ReplaceWindow(SkinSettings))">ReplaceWindow(SkinSettings)</onfocus>
-                <onfocus condition="!Window.IsActive(MediaSettings) + String.IsEqual(Container(300).ListItem.Property(path),ReplaceWindow(MediaSettings))">ReplaceWindow(MediaSettings)</onfocus>
-                <onfocus condition="!Window.IsActive(PlayerSettings) + String.IsEqual(Container(300).ListItem.Property(path),ReplaceWindow(PlayerSettings))">ReplaceWindow(PlayerSettings)</onfocus>
-                <onfocus condition="!Window.IsActive(SystemSettings) + String.IsEqual(Container(300).ListItem.Property(path),ReplaceWindow(SystemSettings))">ReplaceWindow(SystemSettings)</onfocus>
-                <onfocus condition="!Window.IsActive(servicesettings) + String.IsEqual(Container(300).ListItem.Property(path),ReplaceWindow(servicesettings))">ReplaceWindow(servicesettings)</onfocus>
-                <onfocus condition="!Window.IsActive(pvrsettings) + String.IsEqual(Container(300).ListItem.Property(path),ReplaceWindow(pvrsettings))">ReplaceWindow(pvrsettings)</onfocus>
-                <onfocus condition="!Window.IsActive(systeminfo) + String.IsEqual(Container(300).ListItem.Property(path),ReplaceWindow(systeminfo))">ReplaceWindow(systeminfo)</onfocus>
-                <onfocus condition="!Window.IsActive(Profiles) + String.IsEqual(Container(300).ListItem.Property(path),ReplaceWindow(Profiles))">ReplaceWindow(Profiles)</onfocus>
-            </control>
+            <include condition="Window.IsVisible(SettingsCategory.xml) | Window.IsVisible(SettingsProfile.xml) | Window.IsVisible(SettingsSystemInfo.xml) | Window.IsVisible(SkinSettings.xml)">Topbar_Menu_SettingsTrick_Button</include>
             <control type="image">
                 <visible>!Control.HasFocus(300)</visible>
                 <centerleft>50%</centerleft>

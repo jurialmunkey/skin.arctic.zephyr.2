@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Foundation -->
 <window id="2003">
-    <defaultcontrol always="true">300</defaultcontrol>
-    <onload>ClearProperty(FocusedList,Home)</onload>
-    <onunload>ClearProperty(FocusedList,Home)</onunload>
-    <onload>ClearProperty(ListFanartContent,Home)</onload>
-    <onunload>ClearProperty(ListFanartContent,Home)</onunload>
-    
+    <defaultcontrol always="true">9570</defaultcontrol>
     <onload>ClearProperty(TrailerPlaying,Home)</onload>
     <onunload>ClearProperty(TrailerPlaying,Home)</onunload>
     <controls>
@@ -62,6 +57,15 @@
                     <height>380</height>
                     <left>view_pad</left>
                     <right>view_pad</right>
+                    <control type="button" id="9570">
+                        <texturefocus />
+                        <teturenofocus />
+                        <width>1</width>
+                        <height>1</height>
+                        <onfocus>SetFocus(300,0)</onfocus>
+                        <onup>SetFocus(300,0)</onup>
+                        <ondown>SetFocus(300,0)</ondown>
+                    </control>
                     <control type="group">
                         <height>360</height>
                         <control type="group">
@@ -241,7 +245,6 @@
                             <visible>!String.IsEmpty(ListItem.DBID) | Integer.IsEqual(Container(9550).NumItems,0)</visible>
                             <onup>300</onup>
                             <ondown>9501</ondown>
-                            <onfocus>SetProperty(FocusedList,50,Home)</onfocus>
                             <orientation>horizontal</orientation>
                             <animation effect="fade" start="100" end="0" time="0" condition="Container(50).IsUpdating">Conditional</animation>
                             <include content="View_Actor_Layout">
@@ -503,8 +506,6 @@
 
         <control type="button" id="9002">
             <label>20339</label>
-            <onclick>SetProperty(VideoInfo_InfoLine,$INFO[ListItem.Director],Home)</onclick>
-            <onclick>SetProperty(FocusedList,9502,Home)</onclick>
             <onclick>SetFocus(9502)</onclick>
             <visible>Container.Content(movies)</visible>
             <visible>!String.IsEmpty(ListItem.Director)</visible>
@@ -513,14 +514,12 @@
 
         <control type="button" id="9003">
             <label>$LOCALIZE[206]</label>
-            <onclick>SetProperty(FocusedList,50,Home)</onclick>
             <onclick>SetFocus(50)</onclick>
             <include>Defs_Hidden_Button</include>
         </control>
 
         <control type="button" id="9004">
             <label>$LOCALIZE[31221]</label>
-            <onclick>SetProperty(FocusedList,9501,Home)</onclick>
             <onclick>SetFocus(9501)</onclick>
             <include>Defs_Hidden_Button</include>
         </control>
@@ -536,8 +535,6 @@
 
         <control type="button" id="9006">
             <label>20339</label>
-            <onclick>SetProperty(VideoInfo_InfoLine,$INFO[ListItem.Label],Home)</onclick>
-            <onclick>SetProperty(FocusedList,9503,Home)</onclick>
             <onclick>SetFocus(9503)</onclick>
             <visible>Container.Content(movies)</visible>
             <visible>!String.IsEmpty(ListItem.IMDBNumber)</visible>

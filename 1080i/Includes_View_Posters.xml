@@ -442,7 +442,6 @@
             <preloaditems>2</preloaditems>
             <pagecontrol>60</pagecontrol>
             <scrolltime tween="quadratic">400</scrolltime>
-            <onfocus>SetProperty(ViewType,Posters,Home)</onfocus>
             <itemlayout width="260" height="480" condition="$PARAM[posters]">
                 <control type="group">
                     <left>view_pad</left>
@@ -457,10 +456,6 @@
                 </control>
             </itemlayout>
             <focusedlayout width="260" height="480" condition="$PARAM[posters]">
-                <include content="View_Position_Button">
-                    <param name="id" value="$PARAM[id]" />
-                    <param name="setfanart" value="$PARAM[setfanart]" />
-                </include>
                 <control type="group">
                     <top>$PARAM[top_offset]</top>
                     <bottom>$PARAM[bottom_offset]</bottom>
@@ -494,10 +489,6 @@
                 </control>
             </itemlayout>
             <focusedlayout width="400" condition="$PARAM[posters_big]">
-                <include content="View_Position_Button">
-                    <param name="id" value="$PARAM[id]" />
-                    <param name="setfanart" value="$PARAM[setfanart]" />
-                </include>
                 <control type="group">
                     <left>view_pad</left>
                     <right>-view_pad</right>
@@ -525,10 +516,6 @@
                 </control>
             </itemlayout>
             <focusedlayout width="606.66" height="480" condition="$PARAM[landscape]">
-                <include content="View_Position_Button">
-                    <param name="id" value="$PARAM[id]" />
-                    <param name="setfanart" value="$PARAM[setfanart]" />
-                </include>
                 <control type="group">
                     <top>$PARAM[top_offset]</top>
                     <bottom>$PARAM[bottom_offset]</bottom>
@@ -582,10 +569,6 @@
                 </control>
             </itemlayout>
             <focusedlayout width="455" height="315" condition="$PARAM[landscape_small]">
-                <include content="View_Position_Button">
-                    <param name="id" value="$PARAM[id]" />
-                    <param name="setfanart" value="$PARAM[setfanart]" />
-                </include>
                 <control type="group">
                     <top>$PARAM[top_offset]</top>
                     <bottom>$PARAM[bottom_offset]</bottom>
@@ -680,10 +663,6 @@
                 </control>
             </itemlayout>
             <focusedlayout width="910" height="230" condition="$PARAM[banner]">
-                <include content="View_Position_Button">
-                    <param name="id" value="$PARAM[id]" />
-                    <param name="setfanart" value="$PARAM[setfanart]" />
-                </include>
                 <control type="group">
                     <top>$PARAM[top_offset]</top>
                     <bottom>$PARAM[bottom_offset]</bottom>
@@ -782,10 +761,6 @@
                 </control>
             </itemlayout>
             <focusedlayout width="364" height="480" condition="$PARAM[square]">
-                <include content="View_Position_Button">
-                    <param name="id" value="$PARAM[id]" />
-                    <param name="setfanart" value="$PARAM[setfanart]" />
-                </include>
                 <control type="group">
                     <top>$PARAM[top_offset]</top>
                     <bottom>$PARAM[bottom_offset]</bottom>
@@ -855,10 +830,6 @@
                 </control>
             </itemlayout>
             <focusedlayout width="260" height="315" condition="$PARAM[square_small]">
-                <include content="View_Position_Button">
-                    <param name="id" value="$PARAM[id]" />
-                    <param name="setfanart" value="$PARAM[setfanart]" />
-                </include>
                 <control type="group">
                     <top>$PARAM[top_offset]</top>
                     <bottom>$PARAM[bottom_offset]</bottom>

@@ -148,7 +148,6 @@
             <preloaditems>2</preloaditems>
             <orientation>vertical</orientation>
             <pagecontrol>60</pagecontrol>
-            <onfocus>SetProperty(ViewType,List,Home)</onfocus>
             <scrolltime tween="quadratic">400</scrolltime>
             <itemlayout width="$PARAM[width]" height="$PARAM[height]">
 
@@ -329,11 +328,6 @@
                 </control>
             </itemlayout>
             <focusedlayout width="$PARAM[width]" height="$PARAM[height]">
-                <include content="View_Position_Button">
-                    <param name="id" value="$PARAM[id]" />
-                    <param name="setfanart" value="$PARAM[setfanart]" />
-                </include>
-
                 <control type="group">
                     <left>10</left>
                     <right>10</right>

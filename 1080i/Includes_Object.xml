@@ -280,7 +280,6 @@
                     <onup>$PARAM[onup]</onup>
                     <ondown>$PARAM[ondown]</ondown>
                     <include>Animation_FadeInOut</include>
-                    <onfocus>SetProperty(FocusedList,$PARAM[id],Home)</onfocus>
                     <animation effect="fade" start="100" end="0" time="0" condition="Container($PARAM[id]).IsUpdating">Conditional</animation>
                     <include content="View_Actor_Layout">
                         <param name="id" value="$PARAM[id]" />
