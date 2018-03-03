@@ -345,6 +345,7 @@
         <param name="episodelayout" default="false" />
         <param name="textonly" default="false" />
         <param name="aspect" default="scale" />
+        <param name="altfocus" default="false" />
         <definition>
             <left>-10</left>
             <right>-10</right>
@@ -446,7 +447,10 @@
             </itemlayout>
             <focusedlayout width="$PARAM[itemwidth]" height="$PARAM[itemheight]">
                 <control type="group">
-                    
+                    <animation type="Conditional" condition="!Skin.HasSetting(BounceAnimations) + !Container($PARAM[id]).OnNext + !Container($PARAM[id]).OnPrevious + $PARAM[altfocus]" reversible="false">
+                        <effect type="zoom" end="110" time="75" tween="sine" easing="out" center="auto" />
+                        <effect type="zoom" end="90.9090909" time="225" tween="sine" delay="100" easing="out" center="auto" />
+                    </animation>
                     <include>Animation_FocusBounce</include>
                     <control type="image">
                         <bordersize>10</bordersize>
@@ -529,7 +533,7 @@
                     </control>
                     <!-- Highlight -->
                     <control type="group">
-                        <visible>Control.HasFocus($PARAM[id])</visible>
+                        <visible>Control.HasFocus($PARAM[id]) | $PARAM[altfocus]</visible>
                         <include>View_Selectbox</include>
                     </control>
                     

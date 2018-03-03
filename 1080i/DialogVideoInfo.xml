@@ -54,7 +54,7 @@
                 <orientation>vertical</orientation>
                 <control type="group">
                     <top>30</top>
-                    <height>380</height>
+                    <height>410</height>
                     <left>view_pad</left>
                     <right>view_pad</right>
                     <control type="button" id="9570">
@@ -107,8 +107,8 @@
                 <control type="group">
                     <left>view_pad</left>
                     <right>view_pad</right>
-                    <height>450</height>
-                    <top>20</top>
+                    <height>455</height>
+                    <top>-15</top>
                     <visible>!Container.Content(musicvideos)</visible>
                     <visible>Integer.IsGreater(Container(50).NumItems,0) | Container(50).IsUpdating</visible>
                     <!-- Info Label -->
@@ -239,23 +239,37 @@
 
                     <!-- Cast -->
                     <control type="group" id="9500">
+                        <control type="button" id="9950">
+                            <visible allowhiddenfocus="true">false</visible>
+                            <width>1</width>
+                            <height>widget_poster_height</height>
+                            <onup>9570</onup>
+                            <ondown>9501</ondown>
+                            <onleft>SetFocus(50)</onleft>
+                            <onleft>Left</onleft>
+                            <onleft>SetFocus(9950)</onleft>
+                            <onright>SetFocus(50)</onright>
+                            <onright>Right</onright>
+                            <onright>SetFocus(9950)</onright>
+                        </control>
                         <control type="list" id="50">
                             <include>Animation_FadeInOut</include>
                             <visible>!Container(9550).IsUpdating</visible>
                             <visible>!String.IsEmpty(ListItem.DBID) | Integer.IsEqual(Container(9550).NumItems,0)</visible>
-                            <onup>300</onup>
+                            <onup>9570</onup>
                             <ondown>9501</ondown>
                             <orientation>horizontal</orientation>
                             <animation effect="fade" start="100" end="0" time="0" condition="Container(50).IsUpdating">Conditional</animation>
                             <include content="View_Actor_Layout">
                                 <param name="id" value="50" />
+                                <param name="altfocus" value="Control.HasFocus(9950)" />
                             </include>
                         </control>
                         <include content="Dialog_VideoInfo_BusyIndicator">
                             <param name="id" value="50" />
                         </include>
                         <include content="Object_VideoInfo_CastList" condition="String.IsEmpty(ListItem.DBID) + String.IsEqual(ListItem.DBTYPE,movie)">
-                            <param name="onup" value="300" />
+                            <param name="onup" value="9570" />
                             <param name="id" value="9550" />
                             <param name="ondown" value="9501" />
                             <param name="label" value="$LOCALIZE[206]" />
@@ -265,7 +279,7 @@
                             <param name="top" value="0" />
                         </include>
                         <include content="Object_VideoInfo_CastList" condition="String.IsEmpty(ListItem.DBID) + String.IsEqual(ListItem.DBTYPE,tvshow)">
-                            <param name="onup" value="300" />
+                            <param name="onup" value="9570" />
                             <param name="id" value="9550" />
                             <param name="ondown" value="9501" />
                             <param name="label" value="$LOCALIZE[206]" />
@@ -275,7 +289,7 @@
                             <param name="top" value="0" />
                         </include>
                         <include content="Object_VideoInfo_CastList" condition="String.IsEmpty(ListItem.DBID) + String.IsEqual(ListItem.DBTYPE,season)">
-                            <param name="onup" value="300" />
+                            <param name="onup" value="9570" />
                             <param name="id" value="9550" />
                             <param name="ondown" value="9501" />
                             <param name="label" value="$LOCALIZE[206]" />
@@ -285,7 +299,7 @@
                             <param name="top" value="0" />
                         </include>
                         <include content="Object_VideoInfo_CastList" condition="String.IsEmpty(ListItem.DBID) + String.IsEqual(ListItem.DBTYPE,episode)">
-                            <param name="onup" value="300" />
+                            <param name="onup" value="9570" />
                             <param name="id" value="9550" />
                             <param name="ondown" value="9501" />
                             <param name="label" value="$LOCALIZE[206]" />

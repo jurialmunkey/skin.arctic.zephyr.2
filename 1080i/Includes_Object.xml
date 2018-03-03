@@ -819,10 +819,9 @@
         <param name="ratings" default="false" />
         <definition>
             <control type="grouplist">
-                <visible>!Skin.HasSetting(furniture.flags)</visible>
                 <visible>!Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml)</visible>
                 <visible>!Window.IsVisible(script-script.extendedinfo-DialogInfo.xml)</visible>
-                <visible>$PARAM[container]ListItem.IsParentFolder</visible>
+                <visible>!$PARAM[container]ListItem.IsParentFolder</visible>
                 <animation effect="fade" start="0" end="100" delay="30" time="1" reversible="false">Visible</animation>
                 <right>30</right>
                 <left>-30</left>
