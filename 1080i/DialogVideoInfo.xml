@@ -240,7 +240,7 @@
                     <!-- Cast -->
                     <control type="group" id="9500">
                         <control type="button" id="9950">
-                            <visible allowhiddenfocus="true">false</visible>
+                            <visible>Control.IsVisible(50)</visible>
                             <width>1</width>
                             <height>widget_poster_height</height>
                             <onup>9570</onup>
@@ -251,6 +251,7 @@
                             <onright>SetFocus(50)</onright>
                             <onright>Right</onright>
                             <onright>SetFocus(9950)</onright>
+                            <onclick>SetFocus(9959)</onclick>
                         </control>
                         <control type="list" id="50">
                             <include>Animation_FadeInOut</include>
@@ -603,6 +604,78 @@
             <onfocus>SetFocus(9000)</onfocus>
             <onclick>noop</onclick>
             <visible allowhiddenfocus="true">Control.HasFocus(431)</visible>
+        </control>
+
+        <control type="group">
+            <visible>ControlGroup(9957).HasFocus()</visible>
+            <include>Animation_FadeIn</include>
+            <include>Global_Overlay</include>
+        </control>
+        <control type="group">
+            <visible>ControlGroup(9957).HasFocus()</visible>
+            <include>Animation_FadeIn_SlideUp</include>
+            <control type="group">
+                <height>242</height>
+                <include>Defs_Powermenu_Group</include>
+                <include>Defs_Options_Texture</include>
+                <control type="label">
+                    <top>8</top>
+                    <width>458</width>
+                    <height>80</height>
+                    <left>8</left>
+                    <textcolor>dialog_fg_70</textcolor>
+                    <font>font_small_bold</font>
+                    <label>$INFO[Container(50).ListItem.Label]</label>
+                    <align>left</align>
+                    <textoffsetx>30</textoffsetx>
+                </control>
+                <control type="image">
+                    <top>16</top>
+                    <width>458</width>
+                    <height>64</height>
+                    <left>-8</left>
+                    <aspectratio align="right">keep</aspectratio>
+                    <texture colordiffuse="dialog_fg_70">special://skin/extras/icons/kodi.png</texture>
+                </control>
+                <control type="image">
+                    <left>8</left>
+                    <width>450</width>
+                    <top>86</top>
+                    <height>70</height>
+                    <texture colordiffuse="$VAR[ColorHighlight]">common/white.png</texture>
+                    <animation effect="slide" end="0,70" condition="Integer.IsGreater(Container(9957).Position,0)">Conditional</animation>
+                </control>
+                <control type="grouplist" id="9957">
+                    <left>8</left>
+                    <bottom>16</bottom>
+                    <width>450</width>
+                    <top>86</top>
+                    <itemgap>0</itemgap>
+                    <control type="button" id="9959">
+                        <description>Buttons</description>
+                        <onleft>SetFocus(9950)</onleft>
+                        <onright>SetFocus(9950)</onright>
+                        <onback>9950</onback>
+                        <onclick>SetFocus(50)</onclick>
+                        <onclick>Select</onclick>
+                        <onclick>SetFocus(9950)</onclick>
+                        <width>458</width>
+                        <label>$LOCALIZE[31046]</label>
+                        <include>Defs_Context_Button</include>
+                    </control>
+                    <control type="button" id="9958">
+                        <description>Buttons</description>
+                        <onleft>SetFocus(9950)</onleft>
+                        <onright>SetFocus(9950)</onright>
+                        <onback>9950</onback>
+                        <width>458</width>
+                        <label>$LOCALIZE[31178]</label>
+                        <onclick>SetFocus(9950)</onclick>
+                        <onclick>RunScript(script.extendedinfo,info=extendedactorinfo,name=$INFO[Container(50).ListItem.Label])</onclick>
+                        <include>Defs_Context_Button</include>
+                    </control>
+                </control>
+            </control>
         </control>
 
     </controls>
