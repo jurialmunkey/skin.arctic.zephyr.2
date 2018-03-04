@@ -58,10 +58,7 @@
                     <left>view_pad</left>
                     <right>view_pad</right>
                     <control type="button" id="9570">
-                        <texturefocus />
-                        <teturenofocus />
-                        <width>1</width>
-                        <height>1</height>
+                        <include>Defs_Hidden_Button</include>
                         <onfocus>SetFocus(300,0)</onfocus>
                         <onup>SetFocus(300,0)</onup>
                         <ondown>SetFocus(300,0)</ondown>
@@ -241,8 +238,7 @@
                     <control type="group" id="9500">
                         <control type="button" id="9950">
                             <visible>Control.IsVisible(50)</visible>
-                            <width>1</width>
-                            <height>widget_poster_height</height>
+                            <include>Defs_Hidden_Button</include>
                             <onup>9570</onup>
                             <ondown>9501</ondown>
                             <onleft>SetFocus(50)</onleft>
@@ -375,16 +371,26 @@
                     <param name="onclick" value="RunScript(script.extendedinfo,info=extendedtvinfo,name=$INFO[ListItem.Label])" />
                 </include>
 
+                <!-- Images Movies -->
+                <include content="Object_VideoInfo_CastList">
+                    <param name="onup" value="9502" />
+                    <param name="id" value="9503" />
+                    <param name="ondown" value="9505" />
+                    <param name="label" value="Images" />
+                    <param name="content" value="$INFO[ListItem.Path,,/extrafanart/]" />
+                    <param name="infolabel" value="false" />
+                    <param name="itemwidth" value="606.66" />
+                </include>
+
                 <control type="group">
                     <top>-15</top>
                     <height>455</height>
                     <left>view_pad</left>
                     <right>view_pad</right>
-                    <control type="button" id="9503">
-                        <onup>9502</onup>
+                    <control type="button" id="9505">
+                        <onup>9503</onup>
                         <ondown>SetFocus(431)</ondown>
-                        <texturefocus />
-                        <texturenofocus />
+                        <include>Defs_Hidden_Button</include>
                     </control>
                     <!-- Info Label -->
                     <control type="grouplist">
