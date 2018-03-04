@@ -371,13 +371,22 @@
                     <param name="onclick" value="RunScript(script.extendedinfo,info=extendedtvinfo,name=$INFO[ListItem.Label])" />
                 </include>
 
-                <!-- Images Movies -->
-                <include content="Object_VideoInfo_CastList">
+                <!-- Images -->
+                <include content="Object_VideoInfo_CastList" condition="Container.Content(movies)">
                     <param name="onup" value="9502" />
                     <param name="id" value="9503" />
                     <param name="ondown" value="9505" />
                     <param name="label" value="Images" />
                     <param name="content" value="$INFO[ListItem.Path,,/extrafanart/]" />
+                    <param name="infolabel" value="false" />
+                    <param name="itemwidth" value="606.66" />
+                </include>
+                <include content="Object_VideoInfo_CastList" condition="!Container.Content(movies)">
+                    <param name="onup" value="9502" />
+                    <param name="id" value="9503" />
+                    <param name="ondown" value="9505" />
+                    <param name="label" value="Images" />
+                    <param name="content" value="$INFO[ListItem.FileNameAndPath,,/extrafanart/]" />
                     <param name="infolabel" value="false" />
                     <param name="itemwidth" value="606.66" />
                 </include>
