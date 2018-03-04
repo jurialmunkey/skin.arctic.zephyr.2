@@ -406,24 +406,6 @@
     <include name="Widget">
         <param name="submenu" default="false" />
         <definition>
-            <include content="Widget_Normal">
-                <param name="id" value="$PARAM[id]" />
-                <param name="target" value="$PARAM[target]" />
-                <param name="content" value="$PARAM[content]" />
-                <param name="aspect" value="$PARAM[aspect]" />
-                <param name="submenu" value="$PARAM[submenu]" />
-                <param name="sortby" value="$PARAM[sortby]" />
-                <param name="sortorder" value="$PARAM[sortorder]" />
-                <param name="submenu" value="$PARAM[submenu]" />
-                <param name="label" value="$PARAM[label]" />
-                <param name="visible" value="$PARAM[visible]" />
-            </include>
-        </definition>
-    </include>
-
-    <include name="Widget_Normal">
-        <param name="submenu" default="false" />
-        <definition>
             <control type="group" id="2$PARAM[id]">
                 <top>widget_gap</top>
                 <visible>$PARAM[visible]</visible>
@@ -456,14 +438,6 @@
                     <param name="submenu" value="$PARAM[submenu]" />
                     <param name="sortby" value="$PARAM[sortby]" />
                     <param name="sortorder" value="$PARAM[sortorder]" />
-                </include>
-                <include condition="$PARAM[submenu]">Items_SubMenu</include>
-                <include content="Widget_ContentInclude">
-                    <param name="target" value="$PARAM[target]" />
-                    <param name="sortby" value="$PARAM[sortby]" />
-                    <param name="sortorder" value="$PARAM[sortorder]" />
-                    <param name="content" value="$PARAM[content]" />
-                    <param name="limit" value="$VAR[Label_WidgetItemLimit]" />
                 </include>
             </control>
         </definition>
@@ -635,7 +609,7 @@
             </focusedlayout>
 
             <include condition="$PARAM[submenu]">Items_SubMenu</include>
-            <include content="Widget_ContentInclude">
+            <include content="Widget_ContentInclude" condition="!$PARAM[submenu]">
                 <param name="target" value="$PARAM[target]" />
                 <param name="sortby" value="$PARAM[sortby]" />
                 <param name="sortorder" value="$PARAM[sortorder]" />
