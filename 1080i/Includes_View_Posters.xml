@@ -2,15 +2,15 @@
 <includes>
     <include name="View_Posters">
         <definition>
-            <include condition="!Skin.HasSetting(DisableViewMode.PosterWall) + [Window.IsVisible(MyVideoNav.xml)]">View_Posters_Wall</include>
-            <include condition="!Skin.HasSetting(DisableViewMode.LandscapeWall) + [Window.IsVisible(MyVideoNav.xml) | Window.IsVisible(MyMusicNav.xml) | Window.IsVisible(MyPics.xml)]">View_Posters_LandscapeWall</include>
-            <include condition="Window.IsVisible(MyVideoNav.xml) | Window.IsVisible(MyMusicNav.xml) | Window.IsVisible(MyPics.xml) | Window.IsVisible(MyPrograms.xml) | Window.IsVisible(AddonBrowser.xml)">View_Posters_SquareWall</include>
-            <include condition="!Skin.HasSetting(DisableViewMode.BannerWall) + [Window.IsVisible(MyVideoNav.xml)]">View_Posters_BannerWall</include>
-            <include condition="!Skin.HasSetting(DisableViewMode.PosterShowcase) + [Window.IsVisible(MyVideoNav.xml)]">View_Posters_Showcase</include>
-            <include condition="!Skin.HasSetting(DisableViewMode.LandscapeShowcase) + [Window.IsVisible(MyVideoNav.xml) | Window.IsVisible(MyMusicNav.xml)]">View_Posters_LandscapeShowcase</include>
-            <include condition="!Skin.HasSetting(DisableViewMode.SquareShowcase) + [Window.IsVisible(MyMusicNav.xml)]">View_Posters_SquareShowcase</include>
-            <include condition="!Skin.HasSetting(DisableViewMode.BigPosters) + [Window.IsVisible(MyVideoNav.xml)]">View_Posters_BigPosters</include>
-            <include condition="!Skin.HasSetting(DisableViewMode.Lovefilm) + [Window.IsVisible(MyVideoNav.xml) | Window.IsVisible(MyMusicNav.xml)]">View_Posters_Lovefilm</include>
+            <include condition="!Skin.HasSetting(DisableViewMode.PosterWall) + [Window.IsVisible(MyPrograms.xml) | Window.IsVisible(MyVideoNav.xml)]">View_Posters_Wall</include>
+            <include condition="!Skin.HasSetting(DisableViewMode.LandscapeWall) + [Window.IsVisible(MyPrograms.xml) | Window.IsVisible(MyVideoNav.xml) | Window.IsVisible(MyMusicNav.xml) | Window.IsVisible(MyPics.xml)]">View_Posters_LandscapeWall</include>
+            <include condition="Window.IsVisible(MyPrograms.xml) | Window.IsVisible(MyVideoNav.xml) | Window.IsVisible(MyMusicNav.xml) | Window.IsVisible(MyPics.xml) | Window.IsVisible(MyPrograms.xml) | Window.IsVisible(AddonBrowser.xml)">View_Posters_SquareWall</include>
+            <include condition="!Skin.HasSetting(DisableViewMode.BannerWall) + [Window.IsVisible(MyPrograms.xml) | Window.IsVisible(MyVideoNav.xml)]">View_Posters_BannerWall</include>
+            <include condition="!Skin.HasSetting(DisableViewMode.PosterShowcase) + [Window.IsVisible(MyPrograms.xml) | Window.IsVisible(MyVideoNav.xml)]">View_Posters_Showcase</include>
+            <include condition="!Skin.HasSetting(DisableViewMode.LandscapeShowcase) + [Window.IsVisible(MyPrograms.xml) | Window.IsVisible(MyVideoNav.xml) | Window.IsVisible(MyMusicNav.xml)]">View_Posters_LandscapeShowcase</include>
+            <include condition="!Skin.HasSetting(DisableViewMode.SquareShowcase) + [Window.IsVisible(MyMusicNav.xml) | Window.IsVisible(MyPrograms.xml)]">View_Posters_SquareShowcase</include>
+            <include condition="!Skin.HasSetting(DisableViewMode.BigPosters) + [Window.IsVisible(MyPrograms.xml) | Window.IsVisible(MyVideoNav.xml)]">View_Posters_BigPosters</include>
+            <include condition="!Skin.HasSetting(DisableViewMode.Lovefilm) + [Window.IsVisible(MyPrograms.xml) | Window.IsVisible(MyVideoNav.xml) | Window.IsVisible(MyMusicNav.xml)]">View_Posters_Lovefilm</include>
         </definition>
     </include>
     
@@ -24,7 +24,7 @@
                     <right>-10</right>
                     <bottom>-10</bottom>
                     <top>-10</top>
-                    <visible>Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(actors)</visible>
+                    <visible>Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(actors) | $EXP[Exp_IsPluginAdvancedLauncher]</visible>
                     <include>View_NotTheseWindows</include>
                     <viewtype label="$LOCALIZE[31358]">icon</viewtype>
                     <include content="View_Forced">
@@ -51,7 +51,7 @@
                     <right>-10</right>
                     <bottom>20</bottom>
                     <top>-10</top>
-                    <visible>Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(videos) | Container.Content(artists) | Container.Content(images)</visible>
+                    <visible>Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(videos) | Container.Content(artists) | Container.Content(images) | $EXP[Exp_IsPluginAdvancedLauncher]</visible>
                     <include>View_NotTheseWindows</include>
                     <viewtype label="$LOCALIZE[31359]">icon</viewtype>
                     <include content="View_Forced">
@@ -78,7 +78,7 @@
                     <right>-10</right>
                     <bottom>20</bottom>
                     <top>-10</top>
-                    <visible>!Container.Content(movies) + !Container.Content(tvshows) + !Container.Content(seasons) + !Container.Content(songs) + !Container.Content(videos) + !Container.Content(episodes) + !Container.Content(sets) + !Container.Content(actors) + !Container.Content(images)</visible>
+                    <visible>[!Container.Content(movies) + !Container.Content(tvshows) + !Container.Content(seasons) + !Container.Content(songs) + !Container.Content(videos) + !Container.Content(episodes) + !Container.Content(sets) + !Container.Content(actors) + !Container.Content(images)] | $EXP[Exp_IsPluginAdvancedLauncher]</visible>
                     <include>View_NotTheseWindows</include>
                     <viewtype label="$LOCALIZE[31360]">icon</viewtype>
                     <include content="View_Forced">
@@ -105,7 +105,7 @@
                     <right>-10</right>
                     <bottom>50</bottom>
                     <top>-10</top>
-                    <visible>Container.Content(tvshows) | Container.Content(movies) | Container.Content(sets)</visible>
+                    <visible>Container.Content(tvshows) | Container.Content(movies) | Container.Content(sets) | $EXP[Exp_IsPluginAdvancedLauncher]</visible>
                     <include>View_NotTheseWindows</include>
                     <viewtype label="$LOCALIZE[31370]">icon</viewtype>
                     <include content="View_Forced">
@@ -135,7 +135,7 @@
                     <height>poster_height</height>
                     <focusposition>0</focusposition>
                     <movement>6</movement>
-                    <visible>Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons)</visible>
+                    <visible>Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | $EXP[Exp_IsPluginAdvancedLauncher]</visible>
                     <viewtype label="$LOCALIZE[31161]">showcase</viewtype>
                     <onup>300</onup>
                     <ondown condition="Control.IsVisible(60)">60</ondown>
@@ -184,7 +184,7 @@
                     <include content="View_Forced">
                         <param name="string" value="$LOCALIZE[31361]" />
                     </include>
-                    <visible>Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(videos) | Container.Content(artists)</visible>
+                    <visible>Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(videos) | Container.Content(artists) | $EXP[Exp_IsPluginAdvancedLauncher]</visible>
                     <include>View_NotTheseWindows</include>
                     <include content="View_Posters_Layout">
                         <param name="id" value="56" />
@@ -225,7 +225,7 @@
                     <include content="View_Forced">
                         <param name="string" value="$LOCALIZE[31362]" />
                     </include>
-                    <visible>Container.Content(artists) | Container.Content(albums)</visible>
+                    <visible>Container.Content(artists) | Container.Content(albums) | $EXP[Exp_IsPluginAdvancedLauncher]</visible>
                     <include>View_NotTheseWindows</include>
                     <include content="View_Posters_Layout">
                         <param name="id" value="57" />
@@ -267,7 +267,7 @@
                     <include content="View_Forced">
                         <param name="string" value="$LOCALIZE[31363]" />
                     </include>
-                    <visible>Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons)</visible>
+                    <visible>Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | $EXP[Exp_IsPluginAdvancedLauncher]</visible>
                     <include>View_NotTheseWindows</include>
                     <include content="View_Posters_Layout">
                         <param name="id" value="58" />
@@ -334,7 +334,7 @@
                     <texture colordiffuse="PosterBack" border="10">diffuse/box.png</texture>
                 </control>
                 <control type="wraplist" id="59">
-                    <visible>Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(artists)</visible>
+                    <visible>Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(artists) | $EXP[Exp_IsPluginAdvancedLauncher]</visible>
                     <include>View_NotTheseWindows</include>
                     <viewtype label="$LOCALIZE[31231]">icon</viewtype>
                     <include content="View_Forced">

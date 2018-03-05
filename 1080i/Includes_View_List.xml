@@ -48,7 +48,7 @@
                     <animation effect="slide" end="0,-90" condition="Integer.IsLess(Container(500).NumItems,6)+ Container(500).HasParent">Conditional</animation>
                     <animation effect="slide" end="0,-90" condition="Integer.IsLess(Container(500).NumItems,4)+ Container(500).HasParent">Conditional</animation>
                     <animation effect="slide" end="0,-90" condition="Integer.IsLess(Container(500).NumItems,2)+ Container(500).HasParent">Conditional</animation>
-                    <visible>Container.Content(movies) | Container.Content(episodes) | Container.Content(tvshows) | Container.Content(sets) | Container.Content(seasons) | Container.Content(artists) | Container.Content(videos)</visible>
+                    <visible>Container.Content(movies) | Container.Content(episodes) | Container.Content(tvshows) | Container.Content(sets) | Container.Content(seasons) | Container.Content(artists) | Container.Content(videos) | $EXP[Exp_IsPluginAdvancedLauncher]</visible>
                     <include>View_NotTheseWindows</include>
                     <viewtype label="$LOCALIZE[31298]">list</viewtype>
                     <include content="View_Forced">
@@ -88,7 +88,7 @@
                     <top>450</top>
                     <focusposition>2</focusposition>
                     <movement>2</movement>
-                    <visible>Container.Content(movies) | Container.Content(episodes) | Container.Content(tvshows) | Container.Content(sets) | Container.Content(seasons)</visible>
+                    <visible>Container.Content(movies) | Container.Content(episodes) | Container.Content(tvshows) | Container.Content(sets) | Container.Content(seasons) | $EXP[Exp_IsPluginAdvancedLauncher]</visible>
                     <include>View_NotTheseWindows</include>
                     <viewtype label="$LOCALIZE[31164]">list</viewtype>
                     <include content="View_Forced">
@@ -106,8 +106,8 @@
     <include name="View_List">
         <definition>
             <include>View_List_Default</include>
-            <include condition="!Skin.HasSetting(DisableViewMode.MediaInfo) + [Window.IsVisible(MyVideoNav.xml) | Window.IsVisible(MyMusicNav.xml)]">View_List_MediaInfo</include>            
-            <include condition="!Skin.HasSetting(DisableViewMode.InfoList) + [Window.IsVisible(MyVideoNav.xml)]">View_List_PosterInfo</include>
+            <include condition="!Skin.HasSetting(DisableViewMode.MediaInfo) + [Window.IsVisible(MyVideoNav.xml) | Window.IsVisible(MyMusicNav.xml) | Window.IsVisible(MyPrograms.xml)]">View_List_MediaInfo</include>            
+            <include condition="!Skin.HasSetting(DisableViewMode.InfoList) + [Window.IsVisible(MyVideoNav.xml) | Window.IsVisible(MyPrograms.xml)]">View_List_PosterInfo</include>
         </definition>
     </include>
 
