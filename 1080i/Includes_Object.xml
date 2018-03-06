@@ -822,6 +822,7 @@
         <param name="align" default="right" />
         <param name="colordiffuse" default="panel_fg_100" />
         <param name="ratings" default="false" />
+        <param name="fps" default="false" />
         <definition>
             <control type="grouplist">
                 <visible>!Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml)</visible>
@@ -844,6 +845,28 @@
                     <texture colordiffuse="$PARAM[colordiffuse]" fallback="flags/fallback.png">$INFO[$PARAM[container]$PARAM[source]VideoResolution,flags/$PARAM[directory]/resolution/,.png]</texture>
                     <aspectratio align="right">keep</aspectratio>
                     <visible>!String.IsEmpty($PARAM[container]$PARAM[source]VideoResolution) + !String.StartsWith($PARAM[container]$PARAM[source]Path,videodb://movies/sets)</visible>
+                </control>
+                <control type="group">
+                    <width>88</width>
+                    <height>48</height>
+                    <centertop>50%</centertop>
+                    <visible>!String.IsEmpty(Player.Process(VideoFPS)) + Integer.IsGreater(Player.Process(VideoFPS),0)</visible>
+                    <visible>$PARAM[fps]</visible>
+                    <control type="image">
+                        <texture colordiffuse="$PARAM[colordiffuse]">flags/$PARAM[directory]/other/fps.png</texture>
+                        <aspectratio align="right">keep</aspectratio>
+                    </control>
+                    <control type="label">
+                        <left>21</left>
+                        <width>64</width>
+                        <height>24</height>
+                        <bottom>2</bottom>
+                        <textcolor>ff8f9799</textcolor>
+                        <font>font_fps</font>
+                        <label>$INFO[Player.Process(VideoFPS)]</label>
+                        <align>center</align>
+                        <aligny>center</aligny>
+                    </control>
                 </control>
                 <control type="image">
                     <width>88</width>
