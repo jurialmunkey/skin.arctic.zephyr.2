@@ -224,6 +224,7 @@
         <param name="top" default="-15" />
         <param name="episodelayout" default="false" />
         <param name="aspect" default="scale" />
+        <param name="fallbackimage" default="DefaultAddonImages.png" />
         <definition>
             <control type="group">
                 <visible>Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating</visible>
@@ -290,6 +291,7 @@
                         <param name="textonly" value="$PARAM[textonly]"/>
                         <param name="episodelayout" value="$PARAM[episodelayout]" />
                         <param name="aspect" value="$PARAM[aspect]" />
+                        <param name="fallbackimage" value="$PARAM[fallbackimage]" />
                     </include>
                     <include condition="$PARAM[include_content_nextup]">Object_VideoInfo_CastList_Content_NextUp</include>
                     <include content="Object_VideoInfo_CastList_Content" condition="$PARAM[include_content]">

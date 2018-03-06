@@ -374,7 +374,7 @@
                     <param name="onup" value="9502" />
                     <param name="id" value="9503" />
                     <param name="ondown" value="9505" />
-                    <param name="label" value="Images" />
+                    <param name="label" value="$LOCALIZE[31365]" />
                     <param name="content" value="$INFO[ListItem.Path,,/extrafanart/]" />
                     <param name="infolabel" value="false" />
                     <param name="itemwidth" value="606.66" />
@@ -383,10 +383,32 @@
                     <param name="onup" value="9502" />
                     <param name="id" value="9503" />
                     <param name="ondown" value="9505" />
-                    <param name="label" value="Images" />
+                    <param name="label" value="$LOCALIZE[31365]" />
                     <param name="content" value="$INFO[ListItem.FileNameAndPath,,/extrafanart/]" />
                     <param name="infolabel" value="false" />
                     <param name="itemwidth" value="606.66" />
+                </include>
+
+                <!-- Extras -->
+                <include content="Object_VideoInfo_CastList" condition="Container.Content(movies)">
+                    <param name="onup" value="9503" />
+                    <param name="id" value="9505" />
+                    <param name="ondown" value="9506" />
+                    <param name="label" value="$LOCALIZE[31169]" />
+                    <param name="content" value="$INFO[ListItem.Path,,/Extras/]" />
+                    <param name="infolabel" value="false" />
+                    <param name="itemwidth" value="606.66" />
+                    <param name="fallbackimage" value="DefaultVideo.png" />
+                </include>
+                <include content="Object_VideoInfo_CastList" condition="!Container.Content(movies)">
+                    <param name="onup" value="9503" />
+                    <param name="id" value="9505" />
+                    <param name="ondown" value="9506" />
+                    <param name="label" value="$LOCALIZE[31169]" />
+                    <param name="content" value="$INFO[ListItem.FileNameAndPath,,/Extras/]" />
+                    <param name="infolabel" value="false" />
+                    <param name="itemwidth" value="606.66" />
+                    <param name="fallbackimage" value="DefaultVideo.png" />
                 </include>
 
                 <control type="group">
@@ -394,8 +416,8 @@
                     <height>455</height>
                     <left>view_pad</left>
                     <right>view_pad</right>
-                    <control type="button" id="9505">
-                        <onup>9503</onup>
+                    <control type="button" id="9506">
+                        <onup>9505</onup>
                         <ondown>SetFocus(431)</ondown>
                         <include>Defs_Hidden_Button</include>
                     </control>

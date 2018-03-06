@@ -346,6 +346,7 @@
         <param name="itemheight" default="widget_poster_height" />
         <param name="episodelayout" default="false" />
         <param name="textonly" default="false" />
+        <param name="fallbackimage" default="DefaultAddonImages.png" />
         <param name="aspect" default="scale" />
         <param name="altfocus" default="false" />
         <definition>
@@ -378,7 +379,7 @@
                         <top>10</top>
                         <bottom>10</bottom>
                         <aspectratio scalediffuse="false">$PARAM[aspect]</aspectratio>
-                        <texture fallback="DefaultArtist.png" background="true" diffuse="diffuse/widgetposter.png">$VAR[Image_Poster]</texture>
+                        <texture fallback="$PARAM[fallbackimage]" background="true" diffuse="diffuse/widgetposter.png">$VAR[Image_Poster]</texture>
                         <visible>!$PARAM[episodelayout]</visible>
                         <visible>!$PARAM[textonly]</visible>
                     </control>
@@ -388,7 +389,7 @@
                         <top>10</top>
                         <bottom>10</bottom>
                         <aspectratio scalediffuse="false">$PARAM[aspect]</aspectratio>
-                        <texture fallback="DefaultArtist.png" background="true" diffuse="diffuse/widgetposter.png">$INFO[ListItem.Art(thumb)]</texture>
+                        <texture fallback="$PARAM[fallbackimage]" background="true" diffuse="diffuse/widgetposter.png">$INFO[ListItem.Art(thumb)]</texture>
                         <visible>$PARAM[episodelayout]</visible>
                         <visible>!$PARAM[textonly]</visible>
                     </control>
@@ -467,7 +468,7 @@
                         <top>10</top>
                         <bottom>10</bottom>
                         <aspectratio scalediffuse="false">$PARAM[aspect]</aspectratio>
-                        <texture fallback="DefaultArtist.png" background="true" diffuse="diffuse/widgetposter.png">$VAR[Image_Poster]</texture>
+                        <texture fallback="$PARAM[fallbackimage]" background="true" diffuse="diffuse/widgetposter.png">$VAR[Image_Poster]</texture>
                         <visible>!$PARAM[episodelayout]</visible>
                         <visible>!$PARAM[textonly]</visible>
                     </control>
@@ -477,7 +478,7 @@
                         <top>10</top>
                         <bottom>10</bottom>
                         <aspectratio scalediffuse="false">$PARAM[aspect]</aspectratio>
-                        <texture fallback="DefaultArtist.png" background="true" diffuse="diffuse/widgetposter.png">$INFO[ListItem.Art(thumb)]</texture>
+                        <texture fallback="$PARAM[fallbackimage]" background="true" diffuse="diffuse/widgetposter.png">$INFO[ListItem.Art(thumb)]</texture>
                         <visible>!$PARAM[textonly]</visible>
                         <visible>$PARAM[episodelayout]</visible>
                     </control>
