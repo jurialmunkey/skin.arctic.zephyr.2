@@ -219,6 +219,7 @@
         <param name="include_onclick" default="false" />
         <param name="onclick" default="Close" />
         <param name="onclick2" default="" />
+        <param name="onclick3" default="" />
         <param name="busyspinner" default="true" />
         <param name="pad" default="view_pad" />
         <param name="top" default="-15" />
@@ -277,6 +278,7 @@
                     <include content="Object_VideoInfo_CastList_OnClick" condition="$PARAM[include_onclick]">
                         <param name="onclick" value="$PARAM[onclick]" />
                         <param name="onclick2" value="$PARAM[onclick2]" />
+                        <param name="onclick3" value="$PARAM[onclick3]" />
                     </include>
                     <onup>$PARAM[onup]</onup>
                     <ondown>$PARAM[ondown]</ondown>
@@ -310,6 +312,7 @@
     <include name="Object_VideoInfo_CastList_OnClick">
         <onclick>$PARAM[onclick]</onclick>
         <onclick>$PARAM[onclick2]</onclick>
+        <onclick>$PARAM[onclick3]</onclick>
     </include>
 
     <include name="Object_StarRating">
