@@ -105,17 +105,17 @@
                 </control>
                 <control type="image">
                     <texture background="true">common/vignette-full.png</texture>
-                    <visible>!Skin.HasSetting(DisableVignette) | !Skin.HasSetting(DisableOverlayColor)</visible>
+                    <visible>!Skin.HasSetting(DisableVignette)</visible>
                 </control>
             </control>
         </control>
     </include>
 
     <variable name="Global_FanartDim">
-        <value condition="Skin.HasSetting(DisableVignette) + Skin.HasSetting(DisableOverlayColor) + !String.IsEqual(Skin.String(TransparencyLevel),$LOCALIZE[31000])">FanartDim_Increased_Old</value>
-        <value condition="Skin.HasSetting(DisableVignette) + Skin.HasSetting(DisableOverlayColor)">FanartDim_Default_Old</value>
+        <value condition="Skin.HasSetting(DisableVignette) + !String.IsEqual(Skin.String(TransparencyLevel),$LOCALIZE[31000])">FanartDim_NoVignette_Increased</value>
+        <value condition="Skin.HasSetting(DisableVignette)">FanartDim_NoVignette_Reduced</value>
         <value condition="!String.IsEqual(Skin.String(TransparencyLevel),$LOCALIZE[31000])">FanartDim_Increased</value>
-        <value>FanartDim_Default</value>
+        <value>FanartDim_Reduced</value>
     </variable>
 
     <include name="Global_Background_Settings">

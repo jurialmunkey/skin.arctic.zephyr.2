@@ -275,15 +275,16 @@
                             <include>Defs_Settings_Button</include>
                             <label>$LOCALIZE[31336]</label>
                             <selected>!Skin.HasSetting(DisableOverlayColor)</selected>
+                            <!-- <onclick condition="Skin.HasSetting(DisableOverlayColor)">Skin.Reset(DisableVignette)</onclick> -->
                             <onclick>Skin.ToggleSetting(DisableOverlayColor)</onclick>
                         </control>
 
-                        <control type="radiobutton" id="9458" description="Disable color overlay">
+                        <control type="radiobutton" id="9458" description="Disable vignette overlay">
                             <visible>Integer.IsEqual(Window.Property(CurrentFocus),9109)</visible>
                             <include>Defs_Settings_Button</include>
                             <label>$LOCALIZE[31338]</label>
                             <selected>!Skin.HasSetting(DisableVignette)</selected>
-                            <enable>Skin.HasSetting(DisableOverlayColor)</enable>
+                            <!-- <enable>Skin.HasSetting(DisableOverlayColor)</enable> -->
                             <onclick>Skin.ToggleSetting(DisableVignette)</onclick>
                         </control>
 
