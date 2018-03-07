@@ -405,6 +405,10 @@
                     <param name="infolabel" value="false" />
                     <param name="itemwidth" value="606.66" />
                     <param name="fallbackimage" value="DefaultVideo.png" />
+                    <param name="include_onclick" value="true" />
+                    <param name="onclick" value="SetProperty(TrailerPlaying,9505,Home)" />
+                    <param name="onclick2" value="PlayMedia($INFO[ListItem.FileNameAndPath],1)" />
+                    <param name="onclick3" value="SetFocus(9002)" />
                 </include>
                 <include content="Object_VideoInfo_CastList" condition="!Container.Content(movies)">
                     <param name="onup" value="9504" />
@@ -416,6 +420,10 @@
                     <param name="infolabel" value="false" />
                     <param name="itemwidth" value="606.66" />
                     <param name="fallbackimage" value="DefaultVideo.png" />
+                    <param name="include_onclick" value="true" />
+                    <param name="onclick" value="SetProperty(TrailerPlaying,9505,Home)" />
+                    <param name="onclick2" value="PlayMedia($INFO[ListItem.FileNameAndPath],1)" />
+                    <param name="onclick3" value="SetFocus(9002)" />
                 </include>
 
                 <control type="group">
@@ -563,15 +571,31 @@
 
         <control type="button" id="9002">
             <label>20339</label>
-            <onclick>SetFocus(9502)</onclick>
-            <visible>Container.Content(movies)</visible>
-            <visible>!String.IsEmpty(ListItem.Director)</visible>
+            <onclick condition="!String.IsEmpty(Window(Home).Property(TrailerPlaying)) + Player.HasMedia">Stop</onclick>
+            <onleft condition="!String.IsEmpty(Window(Home).Property(TrailerPlaying)) + Player.HasMedia">Stop</onleft>
+            <onright condition="!String.IsEmpty(Window(Home).Property(TrailerPlaying)) + Player.HasMedia">Stop</onright>
+            <ondown condition="!String.IsEmpty(Window(Home).Property(TrailerPlaying)) + Player.HasMedia">Stop</ondown>
+            <onup condition="!String.IsEmpty(Window(Home).Property(TrailerPlaying)) + Player.HasMedia">Stop</onup>
+            <onback condition="!String.IsEmpty(Window(Home).Property(TrailerPlaying)) + Player.HasMedia">Stop</onback>
+            <oninfo condition="!String.IsEmpty(Window(Home).Property(TrailerPlaying)) + Player.HasMedia">Stop</oninfo>
+
+            <onclick>SetFocus(9003)</onclick>
+            <onleft>SetFocus(9003)</onleft>
+            <onright>SetFocus(9003)</onright>
+            <onup>SetFocus(9003)</onup>
+            <ondown>SetFocus(9003)</ondown>
+            <onback>SetFocus(9003)</onback>
+            <oninfo>SetFocus(9003)</oninfo>
+            <onback>9003</onback>
+            <oninfo>9003</oninfo>
+
             <include>Defs_Hidden_Button</include>
         </control>
 
         <control type="button" id="9003">
-            <label>$LOCALIZE[206]</label>
-            <onclick>SetFocus(50)</onclick>
+            <onclick>SetFocus(300)</onclick>
+            <onfocus>SetFocus($INFO[Window(Home).Property(TrailerPlaying)])</onfocus>
+            <onfocus>ClearProperty(TrailerPlaying,Home)</onfocus>
             <include>Defs_Hidden_Button</include>
         </control>
 
