@@ -462,6 +462,16 @@
                         <height>360</height>
                         <aspectratio>keep</aspectratio>
                         <texture background="true">$INFO[ListItem.Art(discart)]</texture>
+                        <visible>Container.Content(movies)</visible>
+                    </control>
+                    <control type="image">
+                        <top>60</top>
+                        <right>0</right>
+                        <width>360</width>
+                        <height>360</height>
+                        <aspectratio>keep</aspectratio>
+                        <texture background="true">$INFO[ListItem.Art(characterart)]</texture>
+                        <visible>!Container.Content(movies)</visible>
                     </control>
                     <control type="grouplist">
                         <top>90</top>
@@ -480,10 +490,10 @@
                             <param name="label" value="$LOCALIZE[31352]" />
                             <param name="label2" value="ListItem.DateAdded" />
                         </include>
-                        <include content="Object_VideoInfo_InfoSection">
+                        <!-- <include content="Object_VideoInfo_InfoSection">
                             <param name="label" value="$LOCALIZE[31353]" />
                             <param name="label2" value="ListItem.LastPlayed" />
-                        </include>
+                        </include> -->
                         <include content="Object_VideoInfo_InfoSection">
                             <param name="label" value="$LOCALIZE[572]" />
                             <param name="label2" value="ListItem.Studio" />
@@ -499,6 +509,10 @@
                         <include content="Object_VideoInfo_InfoSection">
                             <param name="label" value="$LOCALIZE[202]" />
                             <param name="label2" value="ListItem.Tagline" />
+                        </include>
+                        <include content="Object_VideoInfo_InfoSection">
+                            <param name="label" value="$LOCALIZE[31289]" />
+                            <param name="label2" value="Window(Home).Property(SkinHelper.ListItem.Awards)" />
                         </include>
                     </control>
                 </control>
