@@ -226,6 +226,7 @@
         <param name="episodelayout" default="false" />
         <param name="aspect" default="scale" />
         <param name="fallbackimage" default="DefaultAddonImages.png" />
+        <param name="showfocuslabel" default="true" />
         <definition>
             <control type="group">
                 <visible>Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating</visible>
@@ -260,6 +261,8 @@
                         <height>100%</height>
                         <label>|</label>
                         <visible>Control.HasFocus($PARAM[id])</visible>
+                        <visible>!String.IsEmpty(Container($PARAM[id]).ListItem.Label)</visible>
+                        <visible>$PARAM[showfocuslabel]</visible>
                     </control>
                     <control type="label">
                         <font>font_small</font>
@@ -269,6 +272,7 @@
                         <height>100%</height>
                         <label>$INFO[Container($PARAM[id]).ListItem.Label]</label>
                         <visible>Control.HasFocus($PARAM[id])</visible>
+                        <visible>$PARAM[showfocuslabel]</visible>
                     </control>
                 </control>
 

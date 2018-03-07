@@ -12,6 +12,7 @@
             <top>30</top>
             <onup>9601</onup>
             <ondown>9500</ondown>
+
             <include>Topbar_Menu_Layout</include>
             <include>Items_Info</include>
         </control>
@@ -236,6 +237,8 @@
 
                     <!-- Cast -->
                     <control type="group" id="9500">
+                        <onup>9570</onup>
+                        <ondown>9501</ondown>
                         <control type="button" id="9950">
                             <visible>Control.IsVisible(50)</visible>
                             <include>Defs_Hidden_Button</include>
@@ -253,6 +256,7 @@
                             <include>Animation_FadeInOut</include>
                             <visible>!Container(9550).IsUpdating</visible>
                             <visible>!String.IsEmpty(ListItem.DBID) | Integer.IsEqual(Container(9550).NumItems,0)</visible>
+                            <visible>Integer.IsGreater(Container(50).NumItems,0) | Container(50).IsUpdating</visible>
                             <onup>9570</onup>
                             <ondown>9501</ondown>
                             <orientation>horizontal</orientation>
@@ -308,11 +312,11 @@
                     </control>
                 </control>
 
-                <!-- Director Movies -->
-                <include content="Object_VideoInfo_CastList" condition="Container.Content(movies) | Container.Content(sets)">
+                <!-- Director Movies 9501 -->
+                <include content="Object_VideoInfo_CastList" condition="Container.Content(movies)">
                     <param name="onup" value="9500" />
                     <param name="id" value="9501" />
-                    <param name="ondown" value="9504" />
+                    <param name="ondown" value="9502" />
                     <param name="label" value="$INFO[ListItem.Director,$LOCALIZE[31016] ,]" />
                     <param name="content" value="plugin://script.extendedinfo?info=personmovies&amp;&amp;person=$INFO[ListItem.Director]" />
                     <param name="infolabel" value="false" />
@@ -320,32 +324,8 @@
                     <param name="onclick" value="RunScript(script.extendedinfo,info=extendedinfo,name=$INFO[ListItem.Label],imdb_id=$INFO[ListItem.IMDBNumber])" />
                 </include>
 
-                <!-- Similar Movies -->
-                <include content="Object_VideoInfo_CastList" condition="Container.Content(movies) | Container.Content(sets)">
-                    <param name="onup" value="9501" />
-                    <param name="id" value="9504" />
-                    <param name="ondown" value="9502" />
-                    <param name="label" value="$INFO[ListItem.Title,$LOCALIZE[31350],]" />
-                    <param name="content" value="plugin://script.skin.helper.widgets/?action=similar&amp;mediatype=movies&amp;imdbid=$INFO[ListItem.IMDBNumber]" />
-                    <param name="infolabel" value="false" />
-                    <param name="include_onclick" value="true" />
-                    <param name="onclick" value="RunScript(script.extendedinfo,info=extendedinfo,name=$INFO[ListItem.Label],imdb_id=$INFO[ListItem.IMDBNumber])" />
-                </include>
-
-                <!-- Studio Movies -->
-                <include content="Object_VideoInfo_CastList" condition="Container.Content(movies) | Container.Content(sets)">
-                    <param name="onup" value="9504" />
-                    <param name="id" value="9502" />
-                    <param name="ondown" value="9503" />
-                    <param name="label" value="$INFO[ListItem.Studio,$LOCALIZE[31025] ,]" />
-                    <param name="content" value="plugin://script.extendedinfo?info=studio&amp;&amp;studio=$INFO[ListItem.Studio]" />
-                    <param name="infolabel" value="false" />
-                    <param name="include_onclick" value="true" />
-                    <param name="onclick" value="RunScript(script.extendedinfo,info=extendedinfo,name=$INFO[ListItem.Label],imdb_id=$INFO[ListItem.IMDBNumber])" />
-                </include>
-
-                <!-- Next Up Episodes -->
-                <include content="Object_VideoInfo_CastList" condition="Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)">
+                <!-- Next Up Episodes 9501 -->
+                <include content="Object_VideoInfo_CastList" condition="!Container.Content(movies)">
                     <param name="onup" value="9500" />
                     <param name="id" value="9501" />
                     <param name="ondown" value="9502" />
@@ -357,11 +337,23 @@
                     <param name="include_content_nextup" value="true" />
                 </include>
 
-                <!-- Similar TvShows -->
-                <include content="Object_VideoInfo_CastList" condition="Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)">
+                <!-- Similar Movies 9502 -->
+                <include content="Object_VideoInfo_CastList" condition="Container.Content(movies)">
                     <param name="onup" value="9501" />
                     <param name="id" value="9502" />
                     <param name="ondown" value="9503" />
+                    <param name="label" value="$INFO[ListItem.Title,$LOCALIZE[31350],]" />
+                    <param name="content" value="plugin://script.skin.helper.widgets/?action=similar&amp;mediatype=movies&amp;imdbid=$INFO[ListItem.IMDBNumber]" />
+                    <param name="infolabel" value="false" />
+                    <param name="include_onclick" value="true" />
+                    <param name="onclick" value="RunScript(script.extendedinfo,info=extendedinfo,name=$INFO[ListItem.Label],imdb_id=$INFO[ListItem.IMDBNumber])" />
+                </include>
+
+                <!-- Similar TvShows 9502 -->
+                <include content="Object_VideoInfo_CastList" condition="!Container.Content(movies)">
+                    <param name="onup" value="9501" />
+                    <param name="id" value="9502" />
+                    <param name="ondown" value="9504" />
                     <param name="label" value="$INFO[ListItem.Title,$LOCALIZE[31350],]" />
                     <param name="content" value="plugin://script.skin.helper.widgets/?action=similar&amp;mediatype=tvshows&amp;imdbid=$INFO[ListItem.IMDBNumber]" />
                     <param name="infolabel" value="false" />
@@ -369,29 +361,43 @@
                     <param name="onclick" value="RunScript(script.extendedinfo,info=extendedtvinfo,name=$INFO[ListItem.Label])" />
                 </include>
 
-                <!-- Images -->
+                <!-- Studio Movies 9503 -->
                 <include content="Object_VideoInfo_CastList" condition="Container.Content(movies)">
                     <param name="onup" value="9502" />
                     <param name="id" value="9503" />
+                    <param name="ondown" value="9504" />
+                    <param name="label" value="$INFO[ListItem.Studio,$LOCALIZE[31025] ,]" />
+                    <param name="content" value="plugin://script.extendedinfo?info=studio&amp;&amp;studio=$INFO[ListItem.Studio]" />
+                    <param name="infolabel" value="false" />
+                    <param name="include_onclick" value="true" />
+                    <param name="onclick" value="RunScript(script.extendedinfo,info=extendedinfo,name=$INFO[ListItem.Label],imdb_id=$INFO[ListItem.IMDBNumber])" />
+                </include>
+
+                <!-- Images -->
+                <include content="Object_VideoInfo_CastList" condition="Container.Content(movies)">
+                    <param name="onup" value="9503" />
+                    <param name="id" value="9504" />
                     <param name="ondown" value="9505" />
                     <param name="label" value="$LOCALIZE[31365]" />
                     <param name="content" value="$INFO[ListItem.Path,,/extrafanart/]" />
                     <param name="infolabel" value="false" />
                     <param name="itemwidth" value="606.66" />
+                    <param name="showfocuslabel" value="false" />
                 </include>
                 <include content="Object_VideoInfo_CastList" condition="!Container.Content(movies)">
                     <param name="onup" value="9502" />
-                    <param name="id" value="9503" />
+                    <param name="id" value="9504" />
                     <param name="ondown" value="9505" />
                     <param name="label" value="$LOCALIZE[31365]" />
                     <param name="content" value="$INFO[ListItem.FileNameAndPath,,/extrafanart/]" />
                     <param name="infolabel" value="false" />
                     <param name="itemwidth" value="606.66" />
+                    <param name="showfocuslabel" value="false" />
                 </include>
 
                 <!-- Extras -->
                 <include content="Object_VideoInfo_CastList" condition="Container.Content(movies)">
-                    <param name="onup" value="9503" />
+                    <param name="onup" value="9504" />
                     <param name="id" value="9505" />
                     <param name="ondown" value="9506" />
                     <param name="label" value="$LOCALIZE[31169]" />
@@ -401,11 +407,12 @@
                     <param name="fallbackimage" value="DefaultVideo.png" />
                 </include>
                 <include content="Object_VideoInfo_CastList" condition="!Container.Content(movies)">
-                    <param name="onup" value="9503" />
+                    <param name="onup" value="9504" />
                     <param name="id" value="9505" />
                     <param name="ondown" value="9506" />
                     <param name="label" value="$LOCALIZE[31169]" />
-                    <param name="content" value="$INFO[ListItem.FileNameAndPath,,/Extras/]" />
+                    <param name="content" value="$INFO[ListItem.FileNameAndPath,,Extras/]" />
+                    <!-- <param name="content" value="plugin://context.item.extras/?path=$INFO[ListItem.FileNameAndPath,,Extras]&amp;isroot=true&amp;title=$INFO[ListItem.TvShowTitle]" /> -->
                     <param name="infolabel" value="false" />
                     <param name="itemwidth" value="606.66" />
                     <param name="fallbackimage" value="DefaultVideo.png" />

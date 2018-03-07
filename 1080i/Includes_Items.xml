@@ -236,6 +236,14 @@
                 <onclick>Select</onclick>
                 <visible>Control.IsEnabled(9005)</visible>
             </item>
+            <!-- Special Features -->
+            <item>
+                <label>$LOCALIZE[31306]</label>
+                <icon>special://skin/extras/icons/stream-video.png</icon>
+                <visible>String.IsEqual(Window(home).Property(sf_info),true)</visible>
+                <onclick>Close</onclick>
+                <onclick>RunScript(plugin.specialfeatures,listitem)</onclick>
+            </item>
             <!-- User Rating -->
             <item>
                 <label>$LOCALIZE[31310]$INFO[ListItem.UserRating,: ,]</label>
