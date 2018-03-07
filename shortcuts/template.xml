@@ -5,17 +5,22 @@
         <property name="widgetTarget" tag="property" attribute="name|widgetTarget" />
         <property name="widgetSort" tag="property" attribute="name|WidgetSort" />
         <property name="widgetDirection" tag="property" attribute="name|WidgetDirection" />
+        <property name="widgetAspect" tag="property" attribute="name|WidgetAspect" />
+        <property name="widgetName" tag="property" attribute="name|widgetName" />
+        <property name="widgetContent" tag="property" attribute="name|widgetPath" />
         <property name="id" tag="mainmenuid" />
         <controls>
             <include content="Widget">
                 <param name="id" value="$PYTHON[int(id) - 1]3002" />
-                <param name="target" value="$INFO[Container(300).ListItemAbsolute($PYTHON[int(id) - 1]).Property(widgetTarget)]" />
-                <param name="sortby" value="$INFO[Container(300).ListItemAbsolute($PYTHON[int(id) - 1]).Property(widgetSort)]" />
-                <param name="sortorder" value="$INFO[Container(300).ListItemAbsolute($PYTHON[int(id) - 1]).Property(widgetDirection)]" />
-                <param name="content" value="Container(300).ListItemAbsolute($PYTHON[int(id) - 1]).Property(widgetPath)" />
-                <param name="aspect" value="Container(300).ListItemAbsolute($PYTHON[int(id) - 1]).Property(WidgetAspect)" />
-                <param name="label" value="$INFO[Container(300).ListItemAbsolute($PYTHON[int(id) - 1]).Property(widgetName)]" />
-                <param name="visible" value="Integer.IsEqual(Container(300).Position,$PYTHON[int(id) - 1])" />
+                <param name="target" value="$SKINSHORTCUTS[widgetTarget]" />
+                <param name="sortby" value="$SKINSHORTCUTS[widgetSort]" />
+                <param name="sortorder" value="$SKINSHORTCUTS[widgetDirection]" />
+                <param name="content" value="Container(300).ListItem.Property(widgetPath)" />
+                <param name="widgetContent" value="$SKINSHORTCUTS[widgetContent]" />
+                <param name="widgetAspect" value="$SKINSHORTCUTS[widgetAspect]" />
+                <param name="aspect" value="Container(300).ListItem.Property(widgetAspect)" />
+                <param name="label" value="$SKINSHORTCUTS[widgetName]" />
+                <param name="visible" value="Integer.IsEqual(Container(300).ListItem.Property(id),$SKINSHORTCUTS[id])" />
             </include>
         </controls>
     </other>
@@ -24,17 +29,22 @@
         <property name="widgetTarget" tag="property" attribute="name|widgetTarget.Widget1" />
         <property name="widgetSort" tag="property" attribute="name|WidgetSort.Widget1" />
         <property name="widgetDirection" tag="property" attribute="name|WidgetDirection.Widget1" />
+        <property name="widgetAspect" tag="property" attribute="name|WidgetAspect.Widget1" />
+        <property name="widgetName" tag="property" attribute="name|widgetName.Widget1" />
+        <property name="widgetContent" tag="property" attribute="name|widgetPath.Widget1" />
         <property name="id" tag="mainmenuid" />
         <controls>
             <include content="Widget">
                 <param name="id" value="$PYTHON[int(id) - 1]3003" />
-                <param name="target" value="$INFO[Container(300).ListItemAbsolute($PYTHON[int(id) - 1]).Property(widgetTarget.Widget1)]" />
-                <param name="sortby" value="$INFO[Container(300).ListItemAbsolute($PYTHON[int(id) - 1]).Property(widgetSort.Widget1)]" />
-                <param name="sortorder" value="$INFO[Container(300).ListItemAbsolute($PYTHON[int(id) - 1]).Property(widgetDirection.Widget1)]" />
-                <param name="content" value="Container(300).ListItemAbsolute($PYTHON[int(id) - 1]).Property(widgetPath.Widget1)" />
-                <param name="aspect" value="Container(300).ListItemAbsolute($PYTHON[int(id) - 1]).Property(WidgetAspect.Widget1)" />
-                <param name="label" value="$INFO[Container(300).ListItemAbsolute($PYTHON[int(id) - 1]).Property(widgetName.Widget1)]" />
-                <param name="visible" value="Integer.IsEqual(Container(300).Position,$PYTHON[int(id) - 1])" />
+                <param name="target" value="$SKINSHORTCUTS[widgetTarget]" />
+                <param name="sortby" value="$SKINSHORTCUTS[widgetSort]" />
+                <param name="sortorder" value="$SKINSHORTCUTS[widgetDirection]" />
+                <param name="content" value="Container(300).ListItem.Property(widgetPath.Widget1)" />
+                <param name="widgetContent" value="$SKINSHORTCUTS[widgetContent]" />
+                <param name="widgetAspect" value="$SKINSHORTCUTS[widgetAspect]" />
+                <param name="aspect" value="Container(300).ListItem.Property(widgetAspect.Widget1)" />
+                <param name="label" value="$SKINSHORTCUTS[widgetName]" />
+                <param name="visible" value="Integer.IsEqual(Container(300).ListItem.Property(id),$SKINSHORTCUTS[id])" />
             </include>
         </controls>
     </other>
@@ -43,17 +53,22 @@
         <property name="widgetTarget" tag="property" attribute="name|widgetTarget.Widget2" />
         <property name="widgetSort" tag="property" attribute="name|WidgetSort.Widget2" />
         <property name="widgetDirection" tag="property" attribute="name|WidgetDirection.Widget2" />
+        <property name="widgetAspect" tag="property" attribute="name|WidgetAspect.Widget2" />
+        <property name="widgetName" tag="property" attribute="name|widgetName.Widget2" />
+        <property name="widgetContent" tag="property" attribute="name|widgetPath.Widget2" />
         <property name="id" tag="mainmenuid" />
         <controls>
             <include content="Widget">
                 <param name="id" value="$PYTHON[int(id) - 1]3004" />
-                <param name="target" value="$INFO[Container(300).ListItemAbsolute($PYTHON[int(id) - 1]).Property(widgetTarget.Widget2)]" />
-                <param name="sortby" value="$INFO[Container(300).ListItemAbsolute($PYTHON[int(id) - 1]).Property(widgetSort.Widget2)]" />
-                <param name="sortorder" value="$INFO[Container(300).ListItemAbsolute($PYTHON[int(id) - 1]).Property(widgetDirection.Widget2)]" />
-                <param name="content" value="Container(300).ListItemAbsolute($PYTHON[int(id) - 1]).Property(widgetPath.Widget2)" />
-                <param name="aspect" value="Container(300).ListItemAbsolute($PYTHON[int(id) - 1]).Property(WidgetAspect.Widget2)" />
-                <param name="label" value="$INFO[Container(300).ListItemAbsolute($PYTHON[int(id) - 1]).Property(widgetName.Widget2)]" />
-                <param name="visible" value="Integer.IsEqual(Container(300).Position,$PYTHON[int(id) - 1])" />
+                <param name="target" value="$SKINSHORTCUTS[widgetTarget]" />
+                <param name="sortby" value="$SKINSHORTCUTS[widgetSort]" />
+                <param name="sortorder" value="$SKINSHORTCUTS[widgetDirection]" />
+                <param name="content" value="Container(300).ListItem.Property(widgetPath.Widget2)" />
+                <param name="widgetContent" value="$SKINSHORTCUTS[widgetContent]" />
+                <param name="widgetAspect" value="$SKINSHORTCUTS[widgetAspect]" />
+                <param name="aspect" value="Container(300).ListItem.Property(widgetAspect.Widget2)" />
+                <param name="label" value="$SKINSHORTCUTS[widgetName]" />
+                <param name="visible" value="Integer.IsEqual(Container(300).ListItem.Property(id),$SKINSHORTCUTS[id])" />
             </include>
         </controls>
     </other>
@@ -62,17 +77,22 @@
         <property name="widgetTarget" tag="property" attribute="name|widgetTarget.Widget3" />
         <property name="widgetSort" tag="property" attribute="name|WidgetSort.Widget3" />
         <property name="widgetDirection" tag="property" attribute="name|WidgetDirection.Widget3" />
+        <property name="widgetAspect" tag="property" attribute="name|WidgetAspect.Widget3" />
+        <property name="widgetName" tag="property" attribute="name|widgetName.Widget3" />
+        <property name="widgetContent" tag="property" attribute="name|widgetPath.Widget3" />
         <property name="id" tag="mainmenuid" />
         <controls>
             <include content="Widget">
                 <param name="id" value="$PYTHON[int(id) - 1]3005" />
-                <param name="target" value="$INFO[Container(300).ListItemAbsolute($PYTHON[int(id) - 1]).Property(widgetTarget.Widget3)]" />
-                <param name="sortby" value="$INFO[Container(300).ListItemAbsolute($PYTHON[int(id) - 1]).Property(widgetSort.Widget3)]" />
-                <param name="sortorder" value="$INFO[Container(300).ListItemAbsolute($PYTHON[int(id) - 1]).Property(widgetDirection.Widget3)]" />
-                <param name="content" value="Container(300).ListItemAbsolute($PYTHON[int(id) - 1]).Property(widgetPath.Widget3)" />
-                <param name="aspect" value="Container(300).ListItemAbsolute($PYTHON[int(id) - 1]).Property(WidgetAspect.Widget3)" />
-                <param name="label" value="$INFO[Container(300).ListItemAbsolute($PYTHON[int(id) - 1]).Property(widgetName.Widget3)]" />
-                <param name="visible" value="Integer.IsEqual(Container(300).Position,$PYTHON[int(id) - 1])" />
+                <param name="target" value="$SKINSHORTCUTS[widgetTarget]" />
+                <param name="sortby" value="$SKINSHORTCUTS[widgetSort]" />
+                <param name="sortorder" value="$SKINSHORTCUTS[widgetDirection]" />
+                <param name="content" value="Container(300).ListItem.Property(widgetPath.Widget3)" />
+                <param name="widgetContent" value="$SKINSHORTCUTS[widgetContent]" />
+                <param name="widgetAspect" value="$SKINSHORTCUTS[widgetAspect]" />
+                <param name="aspect" value="Container(300).ListItem.Property(widgetAspect.Widget3)" />
+                <param name="label" value="$SKINSHORTCUTS[widgetName]" />
+                <param name="visible" value="Integer.IsEqual(Container(300).ListItem.Property(id),$SKINSHORTCUTS[id])" />
             </include>
         </controls>
     </other>
@@ -81,17 +101,22 @@
         <property name="widgetTarget" tag="property" attribute="name|widgetTarget.Widget4" />
         <property name="widgetSort" tag="property" attribute="name|WidgetSort.Widget4" />
         <property name="widgetDirection" tag="property" attribute="name|WidgetDirection.Widget4" />
+        <property name="widgetAspect" tag="property" attribute="name|WidgetAspect.Widget4" />
+        <property name="widgetName" tag="property" attribute="name|widgetName.Widget4" />
+        <property name="widgetContent" tag="property" attribute="name|widgetPath.Widget4" />
         <property name="id" tag="mainmenuid" />
         <controls>
             <include content="Widget">
                 <param name="id" value="$PYTHON[int(id) - 1]3006" />
-                <param name="target" value="$INFO[Container(300).ListItemAbsolute($PYTHON[int(id) - 1]).Property(widgetTarget.Widget4)]" />
-                <param name="sortby" value="$INFO[Container(300).ListItemAbsolute($PYTHON[int(id) - 1]).Property(widgetSort.Widget4)]" />
-                <param name="sortorder" value="$INFO[Container(300).ListItemAbsolute($PYTHON[int(id) - 1]).Property(widgetDirection.Widget4)]" />
-                <param name="content" value="Container(300).ListItemAbsolute($PYTHON[int(id) - 1]).Property(widgetPath.Widget4)" />
-                <param name="aspect" value="Container(300).ListItemAbsolute($PYTHON[int(id) - 1]).Property(WidgetAspect.Widget4)" />
-                <param name="label" value="$INFO[Container(300).ListItemAbsolute($PYTHON[int(id) - 1]).Property(widgetName.Widget4)]" />
-                <param name="visible" value="Integer.IsEqual(Container(300).Position,$PYTHON[int(id) - 1])" />
+                <param name="target" value="$SKINSHORTCUTS[widgetTarget]" />
+                <param name="sortby" value="$SKINSHORTCUTS[widgetSort]" />
+                <param name="sortorder" value="$SKINSHORTCUTS[widgetDirection]" />
+                <param name="content" value="Container(300).ListItem.Property(widgetPath.Widget4)" />
+                <param name="widgetContent" value="$SKINSHORTCUTS[widgetContent]" />
+                <param name="widgetAspect" value="$SKINSHORTCUTS[widgetAspect]" />
+                <param name="aspect" value="Container(300).ListItem.Property(widgetAspect.Widget4)" />
+                <param name="label" value="$SKINSHORTCUTS[widgetName]" />
+                <param name="visible" value="Integer.IsEqual(Container(300).ListItem.Property(id),$SKINSHORTCUTS[id])" />
             </include>
         </controls>
     </other>
@@ -100,17 +125,22 @@
         <property name="widgetTarget" tag="property" attribute="name|widgetTarget.Widget5" />
         <property name="widgetSort" tag="property" attribute="name|WidgetSort.Widget5" />
         <property name="widgetDirection" tag="property" attribute="name|WidgetDirection.Widget5" />
+        <property name="widgetAspect" tag="property" attribute="name|WidgetAspect.Widget5" />
+        <property name="widgetName" tag="property" attribute="name|widgetName.Widget5" />
+        <property name="widgetContent" tag="property" attribute="name|widgetPath.Widget5" />
         <property name="id" tag="mainmenuid" />
         <controls>
             <include content="Widget">
                 <param name="id" value="$PYTHON[int(id) - 1]3007" />
-                <param name="target" value="$INFO[Container(300).ListItemAbsolute($PYTHON[int(id) - 1]).Property(widgetTarget.Widget5)]" />
-                <param name="sortby" value="$INFO[Container(300).ListItemAbsolute($PYTHON[int(id) - 1]).Property(widgetSort.Widget5)]" />
-                <param name="sortorder" value="$INFO[Container(300).ListItemAbsolute($PYTHON[int(id) - 1]).Property(widgetDirection.Widget5)]" />
-                <param name="content" value="Container(300).ListItemAbsolute($PYTHON[int(id) - 1]).Property(widgetPath.Widget5)" />
-                <param name="aspect" value="Container(300).ListItemAbsolute($PYTHON[int(id) - 1]).Property(WidgetAspect.Widget5)" />
-                <param name="label" value="$INFO[Container(300).ListItemAbsolute($PYTHON[int(id) - 1]).Property(widgetName.Widget5)]" />
-                <param name="visible" value="Integer.IsEqual(Container(300).Position,$PYTHON[int(id) - 1])" />
+                <param name="target" value="$SKINSHORTCUTS[widgetTarget]" />
+                <param name="sortby" value="$SKINSHORTCUTS[widgetSort]" />
+                <param name="sortorder" value="$SKINSHORTCUTS[widgetDirection]" />
+                <param name="content" value="Container(300).ListItem.Property(widgetPath.Widget5)" />
+                <param name="widgetContent" value="$SKINSHORTCUTS[widgetContent]" />
+                <param name="widgetAspect" value="$SKINSHORTCUTS[widgetAspect]" />
+                <param name="aspect" value="Container(300).ListItem.Property(widgetAspect.Widget5)" />
+                <param name="label" value="$SKINSHORTCUTS[widgetName]" />
+                <param name="visible" value="Integer.IsEqual(Container(300).ListItem.Property(id),$SKINSHORTCUTS[id])" />
             </include>
         </controls>
     </other>
@@ -119,17 +149,22 @@
         <property name="widgetTarget" tag="property" attribute="name|widgetTarget.Widget6" />
         <property name="widgetSort" tag="property" attribute="name|WidgetSort.Widget6" />
         <property name="widgetDirection" tag="property" attribute="name|WidgetDirection.Widget6" />
+        <property name="widgetAspect" tag="property" attribute="name|WidgetAspect.Widget6" />
+        <property name="widgetName" tag="property" attribute="name|widgetName.Widget6" />
+        <property name="widgetContent" tag="property" attribute="name|widgetPath.Widget6" />
         <property name="id" tag="mainmenuid" />
         <controls>
             <include content="Widget">
                 <param name="id" value="$PYTHON[int(id) - 1]3008" />
-                <param name="target" value="$INFO[Container(300).ListItemAbsolute($PYTHON[int(id) - 1]).Property(widgetTarget.Widget6)]" />
-                <param name="sortby" value="$INFO[Container(300).ListItemAbsolute($PYTHON[int(id) - 1]).Property(widgetSort.Widget6)]" />
-                <param name="sortorder" value="$INFO[Container(300).ListItemAbsolute($PYTHON[int(id) - 1]).Property(widgetDirection.Widget6)]" />
-                <param name="content" value="Container(300).ListItemAbsolute($PYTHON[int(id) - 1]).Property(widgetPath.Widget6)" />
-                <param name="aspect" value="Container(300).ListItemAbsolute($PYTHON[int(id) - 1]).Property(WidgetAspect.Widget6)" />
-                <param name="label" value="$INFO[Container(300).ListItemAbsolute($PYTHON[int(id) - 1]).Property(widgetName.Widget6)]" />
-                <param name="visible" value="Integer.IsEqual(Container(300).Position,$PYTHON[int(id) - 1])" />
+                <param name="target" value="$SKINSHORTCUTS[widgetTarget]" />
+                <param name="sortby" value="$SKINSHORTCUTS[widgetSort]" />
+                <param name="sortorder" value="$SKINSHORTCUTS[widgetDirection]" />
+                <param name="content" value="Container(300).ListItem.Property(widgetPath.Widget6)" />
+                <param name="widgetContent" value="$SKINSHORTCUTS[widgetContent]" />
+                <param name="widgetAspect" value="$SKINSHORTCUTS[widgetAspect]" />
+                <param name="aspect" value="Container(300).ListItem.Property(widgetAspect.Widget6)" />
+                <param name="label" value="$SKINSHORTCUTS[widgetName]" />
+                <param name="visible" value="Integer.IsEqual(Container(300).ListItem.Property(id),$SKINSHORTCUTS[id])" />
             </include>
         </controls>
     </other>
@@ -138,17 +173,22 @@
         <property name="widgetTarget" tag="property" attribute="name|widgetTarget.Widget7" />
         <property name="widgetSort" tag="property" attribute="name|WidgetSort.Widget7" />
         <property name="widgetDirection" tag="property" attribute="name|WidgetDirection.Widget7" />
+        <property name="widgetAspect" tag="property" attribute="name|WidgetAspect.Widget7" />
+        <property name="widgetName" tag="property" attribute="name|widgetName.Widget7" />
+        <property name="widgetContent" tag="property" attribute="name|widgetPath.Widget7" />
         <property name="id" tag="mainmenuid" />
         <controls>
             <include content="Widget">
                 <param name="id" value="$PYTHON[int(id) - 1]3009" />
-                <param name="target" value="$INFO[Container(300).ListItemAbsolute($PYTHON[int(id) - 1]).Property(widgetTarget.Widget7)]" />
-                <param name="sortby" value="$INFO[Container(300).ListItemAbsolute($PYTHON[int(id) - 1]).Property(widgetSort.Widget7)]" />
-                <param name="sortorder" value="$INFO[Container(300).ListItemAbsolute($PYTHON[int(id) - 1]).Property(widgetDirection.Widget7)]" />
-                <param name="content" value="Container(300).ListItemAbsolute($PYTHON[int(id) - 1]).Property(widgetPath.Widget7)" />
-                <param name="aspect" value="Container(300).ListItemAbsolute($PYTHON[int(id) - 1]).Property(WidgetAspect.Widget7)" />
-                <param name="label" value="$INFO[Container(300).ListItemAbsolute($PYTHON[int(id) - 1]).Property(widgetName.Widget7)]" />
-                <param name="visible" value="Integer.IsEqual(Container(300).Position,$PYTHON[int(id) - 1])" />
+                <param name="target" value="$SKINSHORTCUTS[widgetTarget]" />
+                <param name="sortby" value="$SKINSHORTCUTS[widgetSort]" />
+                <param name="sortorder" value="$SKINSHORTCUTS[widgetDirection]" />
+                <param name="content" value="Container(300).ListItem.Property(widgetPath.Widget7)" />
+                <param name="widgetContent" value="$SKINSHORTCUTS[widgetContent]" />
+                <param name="widgetAspect" value="$SKINSHORTCUTS[widgetAspect]" />
+                <param name="aspect" value="Container(300).ListItem.Property(widgetAspect.Widget7)" />
+                <param name="label" value="$SKINSHORTCUTS[widgetName]" />
+                <param name="visible" value="Integer.IsEqual(Container(300).ListItem.Property(id),$SKINSHORTCUTS[id])" />
             </include>
         </controls>
     </other>
