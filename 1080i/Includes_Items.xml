@@ -505,14 +505,22 @@
                 <visible>Control.IsEnabled(14)</visible>
             </item>
             
-            <!-- Notifications -->
+            <!-- Hide Foreign -->
             <item>
-                <label>$INFO[Control.GetLabel(6)]</label>
-                <icon>special://skin/extras/icons/infobubble.png</icon>
-                <onclick>SetFocus(6)</onclick>
-                <onclick>Select</onclick>
-                <onclick>SetFocus(300)</onclick>
-                <visible>Control.IsEnabled(6)</visible>
+                <label>$INFO[Control.GetLabel(7)]</label>
+                <icon>special://skin/extras/icons/world.png</icon>
+                <onclick>SendClick(7)</onclick>
+                <visible>Window.IsVisible(AddonBrowser.xml)</visible>
+                <visible>Control.IsEnabled(7)</visible>
+                <visible>!Skin.HasSetting(global.kioskmode)</visible>
+            </item>
+            <!-- Hide Incompat -->
+            <item>
+                <label>$INFO[Control.GetLabel(8)]</label>
+                <icon>special://skin/extras/icons/warning.png</icon>
+                <onclick>SendClick(8)</onclick>
+                <visible>Window.IsVisible(AddonBrowser.xml)</visible>
+                <visible>Control.IsEnabled(8)</visible>
                 <visible>!Skin.HasSetting(global.kioskmode)</visible>
             </item>
             <!-- Extra Fanart -->
