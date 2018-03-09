@@ -383,6 +383,8 @@
                     <param name="infolabel" value="false" />
                     <param name="itemwidth" value="606.66" />
                     <param name="showfocuslabel" value="false" />
+                    <param name="include_onclick" value="true" />
+                    <param name="onclick" value="SetFocus(9991)" />
                 </include>
                 <include content="Object_VideoInfo_CastList" condition="!Container.Content(movies)">
                     <param name="onup" value="9502" />
@@ -393,6 +395,8 @@
                     <param name="infolabel" value="false" />
                     <param name="itemwidth" value="606.66" />
                     <param name="showfocuslabel" value="false" />
+                    <param name="include_onclick" value="true" />
+                    <param name="onclick" value="SetFocus(9991)" />
                 </include>
 
                 <!-- Extras -->
@@ -754,6 +758,49 @@
                         <onclick>RunScript(script.extendedinfo,info=extendedactorinfo,name=$INFO[Container(50).ListItem.Label])</onclick>
                         <include>Defs_Context_Button</include>
                     </control>
+                </control>
+            </control>
+        </control>
+
+        <control type="group">
+            <visible>Control.HasFocus(9991)</visible>
+            <include>Animation_FadeIn</include>
+            <include>Animation_FadeOut</include>
+            <control type="button" id="9991">
+                <include>Defs_Hidden_Button</include>
+                <onleft>Control.Move(9504,-1)</onleft>
+                <onright>Control.Move(9504,1)</onright>
+                <onup>Control.Move(9504,-1)</onup>
+                <ondown>Control.Move(9504,1)</ondown>
+                <onback>9504</onback>
+                <oninfo>9504</oninfo>
+                <onclick>SetFocus(9504)</onclick>
+            </control>
+            <control type="image">
+                <texture colordiffuse="ff000000">common/white.png</texture>
+            </control>
+            <control type="group">
+                <animation effect="slide" start="0" end="-1920" condition="!Container(9504).OnNext" reversible="false" time="300" tween="quadratic">Conditional</animation>
+                <animation effect="slide" start="0" end="1920" condition="!Container(9504).OnPrevious" reversible="false" time="300" tween="quadratic">Conditional</animation>
+                <control type="image">
+                    <width>1920</width>
+                    <height>1080</height>
+                    <left>-1920</left>
+                    <aspectratio>keep</aspectratio>
+                    <texture background="true">$INFO[Container(9504).ListItem(-1).FileNameAndPath]</texture>
+                </control>
+                <control type="image">
+                    <width>1920</width>
+                    <height>1080</height>
+                    <aspectratio>keep</aspectratio>
+                    <texture background="true">$INFO[Container(9504).ListItem.FileNameAndPath]</texture>
+                </control>
+                <control type="image">
+                    <width>1920</width>
+                    <height>1080</height>
+                    <left>1920</left>
+                    <aspectratio>keep</aspectratio>
+                    <texture background="true">$INFO[Container(9504).ListItem(1).FileNameAndPath]</texture>
                 </control>
             </control>
         </control>
