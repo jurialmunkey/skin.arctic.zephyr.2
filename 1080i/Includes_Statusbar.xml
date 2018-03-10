@@ -15,12 +15,20 @@
             <visible>!Player.Seeking</visible>
             <visible>Player.HasMedia</visible>
         </control>
+        <control type="progress" id="401">
+            <width>100%</width>
+            <height>12</height>
+            <bottom>70</bottom>
+            <visible>Player.HasMedia</visible>
+            <visible>Player.Seeking</visible>
+        </control>
         <control type="progress" id="499">
             <width>100%</width>
             <height>12</height>
             <bottom>70</bottom>
             <info>Player.Progress</info>
             <visible>Player.HasMedia</visible>
+            <visible>!Player.Seeking</visible>
         </control>
         <control type="progress">
             <description>Progressbar</description>
