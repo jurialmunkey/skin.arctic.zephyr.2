@@ -241,9 +241,9 @@
             <item>
                 <label>$LOCALIZE[31306]</label>
                 <icon>special://skin/extras/icons/stream-video.png</icon>
-                <visible>String.IsEqual(Window(home).Property(sf_info),true)</visible>
+                <visible>!String.IsEmpty(Window(home).Property(SpecialFeatures.Widget))</visible>
                 <onclick>Close</onclick>
-                <onclick>RunScript(plugin.specialfeatures,listitem)</onclick>
+                <onclick>RunScript(plugin.video.specialfeatures,listitem)</onclick>
             </item>
             <!-- User Rating -->
             <item>

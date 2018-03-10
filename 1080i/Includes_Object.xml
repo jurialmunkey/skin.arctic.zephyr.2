@@ -15,7 +15,7 @@
         <definition>
             <control type="grouplist">
                 <top>-10</top>
-                <visible>Container.Content(movies) | Container.Content(sets) | Container.Content(seasons) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(videos) | Window.IsVisible(script-script.extendedinfo-VideoList.xml)</visible>
+                <visible>Container.Content(movies) | Container.Content(sets) | Container.Content(seasons) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(videos) | Window.IsVisible(script-script.extendedinfo-VideoList.xml) | $EXP[Exp_IsPluginAdvancedLauncher]</visible>
                 <visible>Control.IsVisible($PARAM[id]) | $PARAM[visible]</visible>
                 <orientation>vertical</orientation>
                 <usecontrolcoords>true</usecontrolcoords>
@@ -132,7 +132,7 @@
                 </control>
             </control>
             <control type="grouplist">
-                <visible>Container.Content(albums) | Container.Content(artists) | Container.Content(songs) | Container.Content(addons) | Container.Content(musicvideos)</visible>
+                <visible>![Container.Content(movies) | Container.Content(sets) | Container.Content(seasons) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(videos) | Window.IsVisible(script-script.extendedinfo-VideoList.xml) | $EXP[Exp_IsPluginAdvancedLauncher]]</visible>
                 <visible>Control.IsVisible($PARAM[id]) | $PARAM[visible]</visible>
                 <bottom>$PARAM[bottom]</bottom>
                 <top>-10</top>

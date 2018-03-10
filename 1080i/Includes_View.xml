@@ -1,24 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
 
-    <!-- ================== -->
-    <!-- View Mode IDs      -->
-    <!-- 50  List           -->
-    <!-- 51  Icons          -->
-    <!-- 52  Showcase       -->
-    <!-- 53  Landscape      -->
-    <!-- 54  Details List   -->
-    <!-- 55  Info List      -->
-    <!-- 56  Showcase 2     -->
-    <!-- 57  Media Info 2   -->
-    <!-- 58  Banner         -->
-    <!-- 59  Lovefilme      -->
-    <!-- 551 Icons Info     -->
-    <!-- 553 Landscape List -->
-    <!-- 557 Media Info     -->
-    <!-- 558 Banner Info    -->
-    <!-- ================== -->
-
     <include name="View_Group">
         <top>view_pad</top>
     </include>
@@ -46,7 +28,7 @@
             </control>
             <control type="group">
                 <visible>Control.IsVisible(500)</visible>
-                <include condition="Window.IsVisible(MyVideoNav.xml) | Window.IsVisible(MyMusicNav.xml)">View_Library_Info</include>
+                <include condition="Window.IsVisible(MyVideoNav.xml) | Window.IsVisible(MyMusicNav.xml) | Window.IsVisible(MyPrograms.xml)">View_Library_Info</include>
             </control>
         </control>
         <control type="group">
