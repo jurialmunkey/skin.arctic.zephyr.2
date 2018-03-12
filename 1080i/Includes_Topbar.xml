@@ -118,6 +118,8 @@
                     <height>view_pad</height>
                     <!-- Left Info -->
                     <control type="grouplist">
+                        <visible allowhiddenfocus="true">!Control.HasFocus(9601)</visible>
+                        <include>Animation_FadeInOut</include>
                         <itemgap>0</itemgap>
                         <left>view_pad</left>
                         <align>left</align>
@@ -271,7 +273,11 @@
                         </control>
                     </control>
                 </control>
-                <include condition="Window.IsVisible(Home)">Topbar_Home_TextButtons</include>
+                <control type="group">
+                    <visible allowhiddenfocus="true">!Control.HasFocus(9601)</visible>
+                    <include>Animation_FadeInOut</include>
+                    <include condition="Window.IsVisible(Home)">Topbar_Home_TextButtons</include>
+                </control>
             </control>
         </control>
     </include>
@@ -553,6 +559,8 @@
                         <itemgap>0</itemgap>
                         <left>view_pad</left>
                         <align>left</align>
+                        <visible allowhiddenfocus="true">!Control.HasFocus(9601)</visible>
+                        <include>Animation_FadeInOut</include>
                         <orientation>horizontal</orientation>
                         <usecontrolcoords>true</usecontrolcoords>
                         <control type="label">

@@ -77,48 +77,52 @@
             <visible allowhiddenfocus="true">Control.HasFocus(431)</visible>
         </control>
         <control type="group">
-            <include>Animation_Right</include>
-            <include>Defs_InfoDialog_Visible</include>
-            <include content="Object_UpDownInfoArrows">
-                <param name="id" value="330" />
-                <param name="hasprevious" value="false" />
-            </include>
+            <visible allowhiddenfocus="true">!Control.HasFocus(9601)</visible>
+            <include>Animation_FadeInOut</include>
             <control type="group">
-                <left>-10</left>
-                <right>-400</right>
-                <animation type="Conditional" condition="Control.IsVisible(430)" reversible="false">
-                    <effect type="slide" end="0,20" time="60" tween="sine" />
-                    <effect type="slide" end="0,-20" time="180" tween="sine" delay="80" />
-                </animation>
-                <animation type="Conditional" condition="Control.IsVisible(431)" reversible="false">
-                    <effect type="slide" end="0,-20" time="60" tween="sine" />
-                    <effect type="slide" end="0,20" time="180" tween="sine" delay="80" />
-                </animation>
-                <control type="group" id="3000">
-                    <left>0</left>
-                    <top>0</top>
-                    <bottom>0</bottom>
-                    <include>Widgets_Grouplist</include>
-                    <control type="button" id="9966">
-                        <onleft>300</onleft>
-                        <onright>300</onright>
-                        <onup>300</onup>
-                        <ondown>300</ondown>
-                        <onback>300</onback>
-                        <width>1</width>
-                        <height>1</height>
-                        <top>-1000</top>
-                        <onclick>ActivateWindow(Weather)</onclick>
-                        <visible>String.IsEqual(Container(300).ListItem.Property(widget),Weather)</visible>
-                        <animation effect="fade" end="0" condition="true">Conditional</animation>
-                    </control>
-                    <control type="group">
-                        <visible>String.IsEqual(Container(300).ListItem.Property(widget),Weather)</visible>
-                        <include>Weather</include>
-                    </control>
-                    <control type="group">
-                        <visible>String.IsEqual(Container(300).ListItem.Property(widget),Settings)</visible>
-                        <include>Widget_Settings</include>
+                <include>Animation_Right</include>
+                <include>Defs_InfoDialog_Visible</include>
+                <include content="Object_UpDownInfoArrows">
+                    <param name="id" value="330" />
+                    <param name="hasprevious" value="false" />
+                </include>
+                <control type="group">
+                    <left>-10</left>
+                    <right>-400</right>
+                    <animation type="Conditional" condition="Control.IsVisible(430)" reversible="false">
+                        <effect type="slide" end="0,20" time="60" tween="sine" />
+                        <effect type="slide" end="0,-20" time="180" tween="sine" delay="80" />
+                    </animation>
+                    <animation type="Conditional" condition="Control.IsVisible(431)" reversible="false">
+                        <effect type="slide" end="0,-20" time="60" tween="sine" />
+                        <effect type="slide" end="0,20" time="180" tween="sine" delay="80" />
+                    </animation>
+                    <control type="group" id="3000">
+                        <left>0</left>
+                        <top>0</top>
+                        <bottom>0</bottom>
+                        <include>Widgets_Grouplist</include>
+                        <control type="button" id="9966">
+                            <onleft>300</onleft>
+                            <onright>300</onright>
+                            <onup>300</onup>
+                            <ondown>300</ondown>
+                            <onback>300</onback>
+                            <width>1</width>
+                            <height>1</height>
+                            <top>-1000</top>
+                            <onclick>ActivateWindow(Weather)</onclick>
+                            <visible>String.IsEqual(Container(300).ListItem.Property(widget),Weather)</visible>
+                            <animation effect="fade" end="0" condition="true">Conditional</animation>
+                        </control>
+                        <control type="group">
+                            <visible>String.IsEqual(Container(300).ListItem.Property(widget),Weather)</visible>
+                            <include>Weather</include>
+                        </control>
+                        <control type="group">
+                            <visible>String.IsEqual(Container(300).ListItem.Property(widget),Settings)</visible>
+                            <include>Widget_Settings</include>
+                        </control>
                     </control>
                 </control>
             </control>

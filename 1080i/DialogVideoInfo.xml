@@ -7,7 +7,6 @@
     <controls>
 
 
-
         <control type="list" id="300">
             <top>30</top>
             <onup>9601</onup>
@@ -16,561 +15,566 @@
             <include>Items_Info</include>
         </control>
         <include>Topbar_Info</include>
-        <include>Object_UpDownInfoArrows</include>
 
         <control type="group">
-            <include>Animation_Right_Delay</include>
-            <animation type="Conditional" condition="Control.IsVisible(430)" reversible="false">
-                <effect type="slide" end="0,20" time="60" tween="sine" />
-                <effect type="slide" end="0,-20" time="180" tween="sine" delay="80" />
-            </animation>
-            <animation type="Conditional" condition="Control.IsVisible(431)" reversible="false">
-                <effect type="slide" end="0,-20" time="60" tween="sine" />
-                <effect type="slide" end="0,20" time="180" tween="sine" delay="80" />
-            </animation>
-            <visible>!Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) + !Window.IsVisible(script-script.extendedinfo-DialogInfo.xml)</visible>
-            <control type="scrollbar" id="9560">
-                <top>0</top>
-                <right>0</right>
-                <width>8</width>
-                <top>0</top>
-                <bottom>0</bottom>
-                <showonepage>true</showonepage>
-                <orientation>vertical</orientation>
-                <texturesliderbackground colordiffuse="main_fg_12">common/white.png</texturesliderbackground>
-                <texturesliderbar colordiffuse="main_fg_30">common/white.png</texturesliderbar>
-                <texturesliderbarfocus colordiffuse="$VAR[ColorHighlight]">common/white.png</texturesliderbarfocus>
-                <animation effect="fade" start="100" end="33" time="400" condition="!Control.HasFocus(9560) + !Container.Scrolling">Conditional</animation>
-                <include>Animation_FadeIn</include>
-                <include>Animation_FadeOut</include>
-            </control>
+            <visible allowhiddenfocus="true">!Control.HasFocus(9601)</visible>
+            <include>Animation_FadeInOut</include>
+            <include>Object_UpDownInfoArrows</include>
+            <control type="group">
+                <include>Animation_Right_Delay</include>
+                <animation type="Conditional" condition="Control.IsVisible(430)" reversible="false">
+                    <effect type="slide" end="0,20" time="60" tween="sine" />
+                    <effect type="slide" end="0,-20" time="180" tween="sine" delay="80" />
+                </animation>
+                <animation type="Conditional" condition="Control.IsVisible(431)" reversible="false">
+                    <effect type="slide" end="0,-20" time="60" tween="sine" />
+                    <effect type="slide" end="0,20" time="180" tween="sine" delay="80" />
+                </animation>
+                <visible>!Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) + !Window.IsVisible(script-script.extendedinfo-DialogInfo.xml)</visible>
+                <control type="scrollbar" id="9560">
+                    <top>0</top>
+                    <right>0</right>
+                    <width>8</width>
+                    <top>0</top>
+                    <bottom>0</bottom>
+                    <showonepage>true</showonepage>
+                    <orientation>vertical</orientation>
+                    <texturesliderbackground colordiffuse="main_fg_12">common/white.png</texturesliderbackground>
+                    <texturesliderbar colordiffuse="main_fg_30">common/white.png</texturesliderbar>
+                    <texturesliderbarfocus colordiffuse="$VAR[ColorHighlight]">common/white.png</texturesliderbarfocus>
+                    <animation effect="fade" start="100" end="33" time="400" condition="!Control.HasFocus(9560) + !Container.Scrolling">Conditional</animation>
+                    <include>Animation_FadeIn</include>
+                    <include>Animation_FadeOut</include>
+                </control>
 
-            <control type="grouplist" id="9000">
-                <pagecontrol>9560</pagecontrol>
-                <top>90</top>
-                <bottom>110</bottom>
-                <itemgap>0</itemgap>
-                <usecontrolcoords>true</usecontrolcoords>
-                <orientation>vertical</orientation>
-                <control type="group">
-                    <top>30</top>
-                    <height>410</height>
-                    <left>view_pad</left>
-                    <right>view_pad</right>
-                    <control type="button" id="9570">
-                        <include>Defs_Hidden_Button</include>
-                        <onfocus>SetFocus(300,0)</onfocus>
-                        <onup>SetFocus(300,0)</onup>
-                        <ondown>SetFocus(300,0)</ondown>
-                    </control>
+                <control type="grouplist" id="9000">
+                    <pagecontrol>9560</pagecontrol>
+                    <top>90</top>
+                    <bottom>110</bottom>
+                    <itemgap>0</itemgap>
+                    <usecontrolcoords>true</usecontrolcoords>
+                    <orientation>vertical</orientation>
                     <control type="group">
-                        <height>360</height>
+                        <top>30</top>
+                        <height>410</height>
+                        <left>view_pad</left>
+                        <right>view_pad</right>
+                        <control type="button" id="9570">
+                            <include>Defs_Hidden_Button</include>
+                            <onfocus>SetFocus(300,0)</onfocus>
+                            <onup>SetFocus(300,0)</onup>
+                            <ondown>SetFocus(300,0)</ondown>
+                        </control>
                         <control type="group">
-                            <left>0</left>
-                            <width>240</width>
+                            <height>360</height>
                             <control type="group">
-                                <left>-10</left>
-                                <right>-10</right>
-                                <bottom>-10</bottom>
-                                <top>-10</top>
-                                <control type="image">
-                                    <bordersize>10</bordersize>
-                                    <aspectratio scalediffuse="false">scale</aspectratio>
-                                    <include>Defs_Shadow_Small</include>
-                                    <texture diffuse="diffuse/widgetposter.png">$VAR[Image_Poster]</texture>
-                                </control>
-                                <control type="image">
-                                    <bordersize>10</bordersize>
-                                    <texture colordiffuse="PixelLines" border="20">common/outline.png</texture>
+                                <left>0</left>
+                                <width>240</width>
+                                <control type="group">
+                                    <left>-10</left>
+                                    <right>-10</right>
+                                    <bottom>-10</bottom>
+                                    <top>-10</top>
+                                    <control type="image">
+                                        <bordersize>10</bordersize>
+                                        <aspectratio scalediffuse="false">scale</aspectratio>
+                                        <include>Defs_Shadow_Small</include>
+                                        <texture diffuse="diffuse/widgetposter.png">$VAR[Image_Poster]</texture>
+                                    </control>
+                                    <control type="image">
+                                        <bordersize>10</bordersize>
+                                        <texture colordiffuse="PixelLines" border="20">common/outline.png</texture>
+                                    </control>
                                 </control>
                             </control>
+                            <control type="group">
+                                <left>270</left>
+                                <top>10</top>
+                                <include content="Object_Info">
+                                    <param name="id" value="50" />
+                                    <param name="width" value="1654" />
+                                    <param name="discart" value="true" />
+                                    <param name="hdsd_flag" value="true" />
+                                    <param name="visible" value="true" />
+                                    <param name="plot_height" value="95" />
+                                </include>
+                            </control>
                         </control>
-                        <control type="group">
-                            <left>270</left>
-                            <top>10</top>
-                            <include content="Object_Info">
+                    </control>
+
+                    <!-- Cast / Directed By -->
+                    <control type="group">
+                        <left>view_pad</left>
+                        <right>view_pad</right>
+                        <height>455</height>
+                        <top>-15</top>
+                        <visible>!Container.Content(musicvideos)</visible>
+                        <visible>Integer.IsGreater(Container(50).NumItems,0) | Container(50).IsUpdating</visible>
+                        <!-- Info Label -->
+                        <control type="grouplist">
+                            <visible>!String.IsEmpty(ListItem.DBID) | Integer.IsEqual(Container(9550).NumItems,0)</visible>
+                            <top>20</top>
+                            <height>42</height>
+                            <left>0</left>
+                            <align>left</align>
+                            <itemgap>12</itemgap>
+                            <usecontrolcoords>true</usecontrolcoords>
+                            <orientation>horizontal</orientation>
+                            <include>Object_DownArrows</include>
+                            <control type="label">
+                                <font>font_small</font>
+                                <textcolor>main_fg_100</textcolor>
+                                <aligny>center</aligny>
+                                <width>auto</width>
+                                <height>100%</height>
+                                <label>$LOCALIZE[206]</label>
+                            </control>
+                            <control type="label">
+                                <font>font_small</font>
+                                <textcolor>$VAR[ColorHighlight]</textcolor>
+                                <aligny>center</aligny>
+                                <width>auto</width>
+                                <height>100%</height>
+                                <label>|</label>
+                                <visible>Control.HasFocus(50)</visible>
+                            </control>
+                            <control type="label">
+                                <font>font_small</font>
+                                <textcolor>main_fg_100</textcolor>
+                                <aligny>center</aligny>
+                                <width>auto</width>
+                                <height>100%</height>
+                                <label>$INFO[Container(50).ListItem.Label]$INFO[Container(50).ListItem.Label2, [COLOR=main_fg_30]$LOCALIZE[20347][/COLOR] ,]</label>
+                                <visible>Control.HasFocus(50)</visible>
+                            </control>
+
+                        </control>
+
+                        <!-- Audio Flags -->
+                        <control type="grouplist">
+                            <top>24</top>
+                            <usecontrolcoords>true</usecontrolcoords>
+                            <itemgap>10</itemgap>
+                            <orientation>horizontal</orientation>
+                            <align>right</align>
+                            <right>0</right>
+                            <height>32</height>
+                            <control type="image">
+                                <width>32</width>
+                                <height>32</height>
+                                <aspectratio>keep</aspectratio>
+                                <texture fallback="lang/eng.png">$INFO[ListItem.Property(AudioLanguage.1),lang/,.png]</texture>
+                                <visible>!String.IsEmpty(ListItem.Property(AudioLanguage.1))</visible>
+                            </control>
+                            <control type="image">
+                                <width>32</width>
+                                <height>32</height>
+                                <aspectratio>keep</aspectratio>
+                                <texture fallback="lang/eng.png">$INFO[ListItem.Property(AudioLanguage.2),lang/,.png]</texture>
+                                <visible>!String.IsEmpty(ListItem.Property(AudioLanguage.2))</visible>
+                            </control>
+                            <control type="image">
+                                <width>32</width>
+                                <height>32</height>
+                                <aspectratio>keep</aspectratio>
+                                <texture fallback="lang/eng.png">$INFO[ListItem.Property(AudioLanguage.3),lang/,.png]</texture>
+                                <visible>!String.IsEmpty(ListItem.Property(AudioLanguage.3))</visible>
+                            </control>
+                            <control type="image">
+                                <width>32</width>
+                                <height>32</height>
+                                <aspectratio>keep</aspectratio>
+                                <texture fallback="lang/eng.png">$INFO[ListItem.Property(AudioLanguage.4),lang/,.png]</texture>
+                                <visible>!String.IsEmpty(ListItem.Property(AudioLanguage.4))</visible>
+                            </control>
+                            <control type="image">
+                                <width>32</width>
+                                <height>32</height>
+                                <aspectratio>keep</aspectratio>
+                                <texture fallback="lang/eng.png">$INFO[ListItem.Property(AudioLanguage.5),lang/,.png]</texture>
+                                <visible>!String.IsEmpty(ListItem.Property(AudioLanguage.5))</visible>
+                            </control>
+                            <control type="image">
+                                <width>32</width>
+                                <height>32</height>
+                                <aspectratio>keep</aspectratio>
+                                <texture fallback="lang/eng.png">$INFO[ListItem.Property(SubtitleLanguage.1),lang/,.png]</texture>
+                                <visible>!String.IsEmpty(ListItem.Property(SubtitleLanguage.1))</visible>
+                                <animation effect="fade" end="50" condition="true">Conditional</animation>
+                            </control>
+                            <control type="image">
+                                <width>32</width>
+                                <height>32</height>
+                                <aspectratio>keep</aspectratio>
+                                <texture fallback="lang/eng.png">$INFO[ListItem.Property(SubtitleLanguage.2),lang/,.png]</texture>
+                                <visible>!String.IsEmpty(ListItem.Property(SubtitleLanguage.2))</visible>
+                                <animation effect="fade" end="50" condition="true">Conditional</animation>
+                            </control>
+                            <control type="image">
+                                <width>32</width>
+                                <height>32</height>
+                                <aspectratio>keep</aspectratio>
+                                <texture fallback="lang/eng.png">$INFO[ListItem.Property(SubtitleLanguage.3),lang/,.png]</texture>
+                                <visible>!String.IsEmpty(ListItem.Property(SubtitleLanguage.3))</visible>
+                                <animation effect="fade" end="50" condition="true">Conditional</animation>
+                            </control>
+                            <control type="image">
+                                <width>32</width>
+                                <height>32</height>
+                                <aspectratio>keep</aspectratio>
+                                <texture fallback="lang/eng.png">$INFO[ListItem.Property(SubtitleLanguage.4),lang/,.png]</texture>
+                                <visible>!String.IsEmpty(ListItem.Property(SubtitleLanguage.4))</visible>
+                                <animation effect="fade" end="50" condition="true">Conditional</animation>
+                            </control>
+                            <control type="image">
+                                <width>32</width>
+                                <height>32</height>
+                                <aspectratio>keep</aspectratio>
+                                <texture fallback="lang/eng.png">$INFO[ListItem.Property(SubtitleLanguage.5),lang/,.png]</texture>
+                                <visible>!String.IsEmpty(ListItem.Property(SubtitleLanguage.5))</visible>
+                                <animation effect="fade" end="50" condition="true">Conditional</animation>
+                            </control>
+                        </control>
+
+                        <!-- Cast -->
+                        <control type="group" id="9500">
+                            <onup>9570</onup>
+                            <ondown>9501</ondown>
+                            <control type="button" id="9950">
+                                <visible>Control.IsVisible(50)</visible>
+                                <include>Defs_Hidden_Button</include>
+                                <onup>9570</onup>
+                                <ondown>9501</ondown>
+                                <onleft>SetFocus(50)</onleft>
+                                <onleft>Left</onleft>
+                                <onleft>SetFocus(9950)</onleft>
+                                <onright>SetFocus(50)</onright>
+                                <onright>Right</onright>
+                                <onright>SetFocus(9950)</onright>
+                                <onclick>SetFocus(9959)</onclick>
+                            </control>
+                            <control type="list" id="50">
+                                <include>Animation_FadeInOut</include>
+                                <visible>!Container(9550).IsUpdating</visible>
+                                <visible>!String.IsEmpty(ListItem.DBID) | Integer.IsEqual(Container(9550).NumItems,0)</visible>
+                                <visible>Integer.IsGreater(Container(50).NumItems,0) | Container(50).IsUpdating</visible>
+                                <onup>9570</onup>
+                                <ondown>9501</ondown>
+                                <orientation>horizontal</orientation>
+                                <animation effect="fade" start="100" end="0" time="0" condition="Container(50).IsUpdating">Conditional</animation>
+                                <include content="View_Actor_Layout">
+                                    <param name="id" value="50" />
+                                    <param name="altfocus" value="Control.HasFocus(9950)" />
+                                </include>
+                            </control>
+                            <include content="Dialog_VideoInfo_BusyIndicator">
                                 <param name="id" value="50" />
-                                <param name="width" value="1654" />
-                                <param name="discart" value="true" />
-                                <param name="hdsd_flag" value="true" />
-                                <param name="visible" value="true" />
-                                <param name="plot_height" value="95" />
+                            </include>
+                            <include content="Object_VideoInfo_CastList" condition="String.IsEmpty(ListItem.DBID) + String.IsEqual(ListItem.DBTYPE,movie)">
+                                <param name="onup" value="9570" />
+                                <param name="id" value="9550" />
+                                <param name="ondown" value="9501" />
+                                <param name="label" value="$LOCALIZE[206]" />
+                                <param name="content" value="plugin://script.skin.helper.service/?action=getcast&amp;movie=$INFO[ListItem.Title]&amp;castaction=extendedinfo" />
+                                <param name="infolabel" value="true" />
+                                <param name="pad" value="0" />
+                                <param name="top" value="0" />
+                            </include>
+                            <include content="Object_VideoInfo_CastList" condition="String.IsEmpty(ListItem.DBID) + String.IsEqual(ListItem.DBTYPE,tvshow)">
+                                <param name="onup" value="9570" />
+                                <param name="id" value="9550" />
+                                <param name="ondown" value="9501" />
+                                <param name="label" value="$LOCALIZE[206]" />
+                                <param name="content" value="plugin://script.skin.helper.service/?action=getcast&amp;tvshow=$INFO[ListItem.Title]&amp;castaction=extendedinfo" />
+                                <param name="infolabel" value="true" />
+                                <param name="pad" value="0" />
+                                <param name="top" value="0" />
+                            </include>
+                            <include content="Object_VideoInfo_CastList" condition="String.IsEmpty(ListItem.DBID) + String.IsEqual(ListItem.DBTYPE,season)">
+                                <param name="onup" value="9570" />
+                                <param name="id" value="9550" />
+                                <param name="ondown" value="9501" />
+                                <param name="label" value="$LOCALIZE[206]" />
+                                <param name="content" value="plugin://script.skin.helper.service/?action=getcast&amp;tvshow=$INFO[ListItem.TvShowTitle]&amp;castaction=extendedinfo" />
+                                <param name="infolabel" value="true" />
+                                <param name="pad" value="0" />
+                                <param name="top" value="0" />
+                            </include>
+                            <include content="Object_VideoInfo_CastList" condition="String.IsEmpty(ListItem.DBID) + String.IsEqual(ListItem.DBTYPE,episode)">
+                                <param name="onup" value="9570" />
+                                <param name="id" value="9550" />
+                                <param name="ondown" value="9501" />
+                                <param name="label" value="$LOCALIZE[206]" />
+                                <param name="content" value="plugin://script.skin.helper.service/?action=getcast&amp;episode=$INFO[ListItem.Label]&amp;castaction=extendedinfo" />
+                                <param name="infolabel" value="true" />
+                                <param name="pad" value="0" />
+                                <param name="top" value="0" />
+                            </include>
+                        </control>
+                    </control>
+
+                    <!-- Director Movies 9501 -->
+                    <include content="Object_VideoInfo_CastList" condition="Container.Content(movies)">
+                        <param name="onup" value="9500" />
+                        <param name="id" value="9501" />
+                        <param name="ondown" value="9502" />
+                        <param name="label" value="$INFO[ListItem.Director,$LOCALIZE[31016] ,]" />
+                        <param name="content" value="plugin://script.extendedinfo?info=personmovies&amp;&amp;person=$INFO[ListItem.Director]" />
+                        <param name="infolabel" value="false" />
+                        <param name="include_onclick" value="true" />
+                        <param name="onclick" value="RunScript(script.extendedinfo,info=extendedinfo,name=$INFO[ListItem.Label],imdb_id=$INFO[ListItem.IMDBNumber])" />
+                    </include>
+
+                    <!-- Next Up Episodes 9501 -->
+                    <include content="Object_VideoInfo_CastList" condition="!Container.Content(movies)">
+                        <param name="onup" value="9500" />
+                        <param name="id" value="9501" />
+                        <param name="ondown" value="9502" />
+                        <param name="label" value="$LOCALIZE[31221]" />
+                        <param name="episodelayout" value="true" />
+                        <param name="itemwidth" value="606.66" />
+                        <param name="infolabel" value="false" />
+                        <param name="include_content" value="false" />
+                        <param name="include_content_nextup" value="true" />
+                    </include>
+
+                    <!-- Similar Movies 9502 -->
+                    <include content="Object_VideoInfo_CastList" condition="Container.Content(movies)">
+                        <param name="onup" value="9501" />
+                        <param name="id" value="9502" />
+                        <param name="ondown" value="9503" />
+                        <param name="label" value="$INFO[ListItem.Title,$LOCALIZE[31350],]" />
+                        <param name="content" value="plugin://script.skin.helper.widgets/?action=similar&amp;mediatype=movies&amp;imdbid=$INFO[ListItem.IMDBNumber]" />
+                        <param name="infolabel" value="false" />
+                        <param name="include_onclick" value="true" />
+                        <param name="onclick" value="RunScript(script.extendedinfo,info=extendedinfo,name=$INFO[ListItem.Label],imdb_id=$INFO[ListItem.IMDBNumber])" />
+                    </include>
+
+                    <!-- Similar TvShows 9502 -->
+                    <include content="Object_VideoInfo_CastList" condition="!Container.Content(movies)">
+                        <param name="onup" value="9501" />
+                        <param name="id" value="9502" />
+                        <param name="ondown" value="9504" />
+                        <param name="label" value="$INFO[ListItem.Title,$LOCALIZE[31350],]" />
+                        <param name="content" value="plugin://script.skin.helper.widgets/?action=similar&amp;mediatype=tvshows&amp;imdbid=$INFO[ListItem.IMDBNumber]" />
+                        <param name="infolabel" value="false" />
+                        <param name="include_onclick" value="true" />
+                        <param name="onclick" value="RunScript(script.extendedinfo,info=extendedtvinfo,name=$INFO[ListItem.Label])" />
+                    </include>
+
+                    <!-- Studio Movies 9503 -->
+                    <include content="Object_VideoInfo_CastList" condition="Container.Content(movies)">
+                        <param name="onup" value="9502" />
+                        <param name="id" value="9503" />
+                        <param name="ondown" value="9504" />
+                        <param name="label" value="$INFO[ListItem.Studio,$LOCALIZE[31025] ,]" />
+                        <param name="content" value="plugin://script.extendedinfo?info=studio&amp;&amp;studio=$INFO[ListItem.Studio]" />
+                        <param name="infolabel" value="false" />
+                        <param name="include_onclick" value="true" />
+                        <param name="onclick" value="RunScript(script.extendedinfo,info=extendedinfo,name=$INFO[ListItem.Label],imdb_id=$INFO[ListItem.IMDBNumber])" />
+                    </include>
+
+                    <!-- Images -->
+                    <include content="Object_VideoInfo_CastList" condition="Container.Content(movies)">
+                        <param name="onup" value="9503" />
+                        <param name="id" value="9504" />
+                        <param name="ondown" value="9505" />
+                        <param name="label" value="$LOCALIZE[31365]" />
+                        <param name="content" value="$INFO[ListItem.Path,,/extrafanart/]" />
+                        <param name="infolabel" value="false" />
+                        <param name="itemwidth" value="606.66" />
+                        <param name="showfocuslabel" value="false" />
+                        <param name="include_onclick" value="true" />
+                        <param name="onclick" value="SetFocus(9991)" />
+                    </include>
+                    <include content="Object_VideoInfo_CastList" condition="!Container.Content(movies)">
+                        <param name="onup" value="9502" />
+                        <param name="id" value="9504" />
+                        <param name="ondown" value="9505" />
+                        <param name="label" value="$LOCALIZE[31365]" />
+                        <param name="content" value="$INFO[ListItem.FileNameAndPath,,/extrafanart/]" />
+                        <param name="infolabel" value="false" />
+                        <param name="itemwidth" value="606.66" />
+                        <param name="showfocuslabel" value="false" />
+                        <param name="include_onclick" value="true" />
+                        <param name="onclick" value="SetFocus(9991)" />
+                    </include>
+
+                    <!-- Extras -->
+                    <include content="Object_VideoInfo_CastList" condition="Container.Content(movies) + String.IsEmpty(Window(home).Property(SpecialFeatures.Widget))">
+                        <param name="onup" value="9504" />
+                        <param name="id" value="9505" />
+                        <param name="ondown" value="9506" />
+                        <param name="label" value="$LOCALIZE[31169]" />
+                        <param name="content" value="$INFO[ListItem.Path,,/Extras/]" />
+                        <param name="infolabel" value="false" />
+                        <param name="itemwidth" value="606.66" />
+                        <param name="fallbackimage" value="DefaultVideo.png" />
+                        <param name="include_onclick" value="true" />
+                        <param name="onclick" value="SetProperty(TrailerPlaying,9505,Home)" />
+                        <param name="onclick2" value="PlayMedia($INFO[ListItem.FileNameAndPath],1)" />
+                        <param name="onclick3" value="SetFocus(9002)" />
+                    </include>
+                    <include content="Object_VideoInfo_CastList" condition="!Container.Content(movies) + String.IsEmpty(Window(home).Property(SpecialFeatures.Widget))">
+                        <param name="onup" value="9504" />
+                        <param name="id" value="9505" />
+                        <param name="ondown" value="9506" />
+                        <param name="label" value="$LOCALIZE[31169]" />
+                        <param name="content" value="$INFO[ListItem.FileNameAndPath,,Extras/]" />
+                        <!-- <param name="content" value="$INFO[Window(home).Property(SpecialFeatures.Widget)]" /> -->
+                        <param name="infolabel" value="false" />
+                        <param name="itemwidth" value="606.66" />
+                        <param name="fallbackimage" value="DefaultVideo.png" />
+                        <param name="include_onclick" value="true" />
+                        <param name="onclick" value="SetProperty(TrailerPlaying,9505,Home)" />
+                        <param name="onclick2" value="PlayMedia($INFO[ListItem.FileNameAndPath],1)" />
+                        <param name="onclick3" value="SetFocus(9002)" />
+                    </include>
+                    <include content="Object_VideoInfo_CastList" condition="!String.IsEmpty(Window(home).Property(SpecialFeatures.Widget))">
+                        <param name="onup" value="9504" />
+                        <param name="id" value="9505" />
+                        <param name="ondown" value="9506" />
+                        <param name="label" value="$LOCALIZE[31169]" />
+                        <param name="content" value="$INFO[Window(home).Property(SpecialFeatures.Widget)]" />
+                        <param name="infolabel" value="false" />
+                        <param name="itemwidth" value="606.66" />
+                        <param name="fallbackimage" value="DefaultVideo.png" />
+                        <param name="include_onclick" value="true" />
+                        <param name="onclick" value="SetProperty(TrailerPlaying,9505,Home)" />
+                        <param name="onclick2" value="PlayMedia($INFO[ListItem.FileNameAndPath],1)" />
+                        <param name="onclick3" value="SetFocus(9002)" />
+                    </include>
+
+                    <control type="group">
+                        <top>-15</top>
+                        <height>455</height>
+                        <left>view_pad</left>
+                        <right>view_pad</right>
+                        <control type="button" id="9506">
+                            <onup>9505</onup>
+                            <ondown>SetFocus(431)</ondown>
+                            <include>Defs_Hidden_Button</include>
+                        </control>
+                        <!-- Info Label -->
+                        <control type="grouplist">
+                            <top>20</top>
+                            <height>42</height>
+                            <left>0</left>
+                            <align>left</align>
+                            <itemgap>12</itemgap>
+                            <usecontrolcoords>true</usecontrolcoords>
+                            <orientation>horizontal</orientation>
+                            <include>Object_DownArrows</include>
+                            <control type="label">
+                                <font>font_small</font>
+                                <textcolor>main_fg_100</textcolor>
+                                <aligny>center</aligny>
+                                <width>auto</width>
+                                <height>100%</height>
+                                <label>$LOCALIZE[19033]</label>
+                            </control>
+                        </control>
+                        <control type="image">
+                            <top>60</top>
+                            <right>0</right>
+                            <width>360</width>
+                            <height>360</height>
+                            <aspectratio>keep</aspectratio>
+                            <texture background="true">$INFO[ListItem.Art(discart)]</texture>
+                            <visible>Container.Content(movies)</visible>
+                        </control>
+                        <control type="image">
+                            <top>60</top>
+                            <right>0</right>
+                            <width>360</width>
+                            <height>360</height>
+                            <aspectratio>keep</aspectratio>
+                            <texture background="true">$INFO[ListItem.Art(characterart)]</texture>
+                            <visible>!Container.Content(movies)</visible>
+                        </control>
+                        <control type="grouplist">
+                            <top>90</top>
+                            <right>390</right>
+                            <orientation>vertical</orientation>
+                            <itemgap>10</itemgap>
+                            <include content="Object_VideoInfo_InfoSection">
+                                <param name="label" value="$LOCALIZE[561]" />
+                                <param name="label2" value="ListItem.FileName" />
+                            </include>
+                            <include content="Object_VideoInfo_InfoSection">
+                                <param name="label" value="$LOCALIZE[573]" />
+                                <param name="label2" value="ListItem.Path" />
+                            </include>
+                            <include content="Object_VideoInfo_InfoSection">
+                                <param name="label" value="$LOCALIZE[31352]" />
+                                <param name="label2" value="ListItem.DateAdded" />
+                            </include>
+                            <!-- <include content="Object_VideoInfo_InfoSection">
+                                <param name="label" value="$LOCALIZE[31353]" />
+                                <param name="label2" value="ListItem.LastPlayed" />
+                            </include> -->
+                            <include content="Object_VideoInfo_InfoSection">
+                                <param name="label" value="$LOCALIZE[572]" />
+                                <param name="label2" value="ListItem.Studio" />
+                            </include>
+                            <include content="Object_VideoInfo_InfoSection">
+                                <param name="label" value="$LOCALIZE[574]" />
+                                <param name="label2" value="ListItem.Country" />
+                            </include>
+                            <include content="Object_VideoInfo_InfoSection">
+                                <param name="label" value="$LOCALIZE[20417]" />
+                                <param name="label2" value="ListItem.Writer" />
+                            </include>
+                            <include content="Object_VideoInfo_InfoSection">
+                                <param name="label" value="$LOCALIZE[202]" />
+                                <param name="label2" value="ListItem.Tagline" />
+                            </include>
+                            <include content="Object_VideoInfo_InfoSection">
+                                <param name="label" value="$LOCALIZE[31289]" />
+                                <param name="label2" value="Window(Home).Property(SkinHelper.ListItem.Awards)" />
                             </include>
                         </control>
                     </control>
                 </control>
 
-                <!-- Cast / Directed By -->
+                <!-- Flags -->
                 <control type="group">
+                    <bottom>view_pad</bottom>
+                    <height>40</height>
                     <left>view_pad</left>
                     <right>view_pad</right>
-                    <height>455</height>
-                    <top>-15</top>
-                    <visible>!Container.Content(musicvideos)</visible>
-                    <visible>Integer.IsGreater(Container(50).NumItems,0) | Container(50).IsUpdating</visible>
-                    <!-- Info Label -->
-                    <control type="grouplist">
-                        <visible>!String.IsEmpty(ListItem.DBID) | Integer.IsEqual(Container(9550).NumItems,0)</visible>
-                        <top>20</top>
-                        <height>42</height>
-                        <left>0</left>
-                        <align>left</align>
-                        <itemgap>12</itemgap>
-                        <usecontrolcoords>true</usecontrolcoords>
-                        <orientation>horizontal</orientation>
-                        <include>Object_DownArrows</include>
-                        <control type="label">
-                            <font>font_small</font>
-                            <textcolor>main_fg_100</textcolor>
-                            <aligny>center</aligny>
-                            <width>auto</width>
-                            <height>100%</height>
-                            <label>$LOCALIZE[206]</label>
-                        </control>
-                        <control type="label">
-                            <font>font_small</font>
-                            <textcolor>$VAR[ColorHighlight]</textcolor>
-                            <aligny>center</aligny>
-                            <width>auto</width>
-                            <height>100%</height>
-                            <label>|</label>
-                            <visible>Control.HasFocus(50)</visible>
-                        </control>
-                        <control type="label">
-                            <font>font_small</font>
-                            <textcolor>main_fg_100</textcolor>
-                            <aligny>center</aligny>
-                            <width>auto</width>
-                            <height>100%</height>
-                            <label>$INFO[Container(50).ListItem.Label]$INFO[Container(50).ListItem.Label2, [COLOR=main_fg_30]$LOCALIZE[20347][/COLOR] ,]</label>
-                            <visible>Control.HasFocus(50)</visible>
-                        </control>
-
+                    <control type="group">
+                        <include content="Object_Flags">
+                            <param name="container" value="" />
+                            <param name="directory" value="color" />
+                            <param name="align" value="left" />
+                        </include>
                     </control>
-
-                    <!-- Audio Flags -->
+                    <!-- Info -->
                     <control type="grouplist">
-                        <top>24</top>
-                        <usecontrolcoords>true</usecontrolcoords>
-                        <itemgap>10</itemgap>
-                        <orientation>horizontal</orientation>
                         <align>right</align>
                         <right>0</right>
-                        <height>32</height>
-                        <control type="image">
-                            <width>32</width>
-                            <height>32</height>
-                            <aspectratio>keep</aspectratio>
-                            <texture fallback="lang/eng.png">$INFO[ListItem.Property(AudioLanguage.1),lang/,.png]</texture>
-                            <visible>!String.IsEmpty(ListItem.Property(AudioLanguage.1))</visible>
-                        </control>
-                        <control type="image">
-                            <width>32</width>
-                            <height>32</height>
-                            <aspectratio>keep</aspectratio>
-                            <texture fallback="lang/eng.png">$INFO[ListItem.Property(AudioLanguage.2),lang/,.png]</texture>
-                            <visible>!String.IsEmpty(ListItem.Property(AudioLanguage.2))</visible>
-                        </control>
-                        <control type="image">
-                            <width>32</width>
-                            <height>32</height>
-                            <aspectratio>keep</aspectratio>
-                            <texture fallback="lang/eng.png">$INFO[ListItem.Property(AudioLanguage.3),lang/,.png]</texture>
-                            <visible>!String.IsEmpty(ListItem.Property(AudioLanguage.3))</visible>
-                        </control>
-                        <control type="image">
-                            <width>32</width>
-                            <height>32</height>
-                            <aspectratio>keep</aspectratio>
-                            <texture fallback="lang/eng.png">$INFO[ListItem.Property(AudioLanguage.4),lang/,.png]</texture>
-                            <visible>!String.IsEmpty(ListItem.Property(AudioLanguage.4))</visible>
-                        </control>
-                        <control type="image">
-                            <width>32</width>
-                            <height>32</height>
-                            <aspectratio>keep</aspectratio>
-                            <texture fallback="lang/eng.png">$INFO[ListItem.Property(AudioLanguage.5),lang/,.png]</texture>
-                            <visible>!String.IsEmpty(ListItem.Property(AudioLanguage.5))</visible>
-                        </control>
-                        <control type="image">
-                            <width>32</width>
-                            <height>32</height>
-                            <aspectratio>keep</aspectratio>
-                            <texture fallback="lang/eng.png">$INFO[ListItem.Property(SubtitleLanguage.1),lang/,.png]</texture>
-                            <visible>!String.IsEmpty(ListItem.Property(SubtitleLanguage.1))</visible>
-                            <animation effect="fade" end="50" condition="true">Conditional</animation>
-                        </control>
-                        <control type="image">
-                            <width>32</width>
-                            <height>32</height>
-                            <aspectratio>keep</aspectratio>
-                            <texture fallback="lang/eng.png">$INFO[ListItem.Property(SubtitleLanguage.2),lang/,.png]</texture>
-                            <visible>!String.IsEmpty(ListItem.Property(SubtitleLanguage.2))</visible>
-                            <animation effect="fade" end="50" condition="true">Conditional</animation>
-                        </control>
-                        <control type="image">
-                            <width>32</width>
-                            <height>32</height>
-                            <aspectratio>keep</aspectratio>
-                            <texture fallback="lang/eng.png">$INFO[ListItem.Property(SubtitleLanguage.3),lang/,.png]</texture>
-                            <visible>!String.IsEmpty(ListItem.Property(SubtitleLanguage.3))</visible>
-                            <animation effect="fade" end="50" condition="true">Conditional</animation>
-                        </control>
-                        <control type="image">
-                            <width>32</width>
-                            <height>32</height>
-                            <aspectratio>keep</aspectratio>
-                            <texture fallback="lang/eng.png">$INFO[ListItem.Property(SubtitleLanguage.4),lang/,.png]</texture>
-                            <visible>!String.IsEmpty(ListItem.Property(SubtitleLanguage.4))</visible>
-                            <animation effect="fade" end="50" condition="true">Conditional</animation>
-                        </control>
-                        <control type="image">
-                            <width>32</width>
-                            <height>32</height>
-                            <aspectratio>keep</aspectratio>
-                            <texture fallback="lang/eng.png">$INFO[ListItem.Property(SubtitleLanguage.5),lang/,.png]</texture>
-                            <visible>!String.IsEmpty(ListItem.Property(SubtitleLanguage.5))</visible>
-                            <animation effect="fade" end="50" condition="true">Conditional</animation>
-                        </control>
-                    </control>
-
-                    <!-- Cast -->
-                    <control type="group" id="9500">
-                        <onup>9570</onup>
-                        <ondown>9501</ondown>
-                        <control type="button" id="9950">
-                            <visible>Control.IsVisible(50)</visible>
-                            <include>Defs_Hidden_Button</include>
-                            <onup>9570</onup>
-                            <ondown>9501</ondown>
-                            <onleft>SetFocus(50)</onleft>
-                            <onleft>Left</onleft>
-                            <onleft>SetFocus(9950)</onleft>
-                            <onright>SetFocus(50)</onright>
-                            <onright>Right</onright>
-                            <onright>SetFocus(9950)</onright>
-                            <onclick>SetFocus(9959)</onclick>
-                        </control>
-                        <control type="list" id="50">
-                            <include>Animation_FadeInOut</include>
-                            <visible>!Container(9550).IsUpdating</visible>
-                            <visible>!String.IsEmpty(ListItem.DBID) | Integer.IsEqual(Container(9550).NumItems,0)</visible>
-                            <visible>Integer.IsGreater(Container(50).NumItems,0) | Container(50).IsUpdating</visible>
-                            <onup>9570</onup>
-                            <ondown>9501</ondown>
-                            <orientation>horizontal</orientation>
-                            <animation effect="fade" start="100" end="0" time="0" condition="Container(50).IsUpdating">Conditional</animation>
-                            <include content="View_Actor_Layout">
-                                <param name="id" value="50" />
-                                <param name="altfocus" value="Control.HasFocus(9950)" />
-                            </include>
-                        </control>
-                        <include content="Dialog_VideoInfo_BusyIndicator">
-                            <param name="id" value="50" />
-                        </include>
-                        <include content="Object_VideoInfo_CastList" condition="String.IsEmpty(ListItem.DBID) + String.IsEqual(ListItem.DBTYPE,movie)">
-                            <param name="onup" value="9570" />
-                            <param name="id" value="9550" />
-                            <param name="ondown" value="9501" />
-                            <param name="label" value="$LOCALIZE[206]" />
-                            <param name="content" value="plugin://script.skin.helper.service/?action=getcast&amp;movie=$INFO[ListItem.Title]&amp;castaction=extendedinfo" />
-                            <param name="infolabel" value="true" />
-                            <param name="pad" value="0" />
-                            <param name="top" value="0" />
-                        </include>
-                        <include content="Object_VideoInfo_CastList" condition="String.IsEmpty(ListItem.DBID) + String.IsEqual(ListItem.DBTYPE,tvshow)">
-                            <param name="onup" value="9570" />
-                            <param name="id" value="9550" />
-                            <param name="ondown" value="9501" />
-                            <param name="label" value="$LOCALIZE[206]" />
-                            <param name="content" value="plugin://script.skin.helper.service/?action=getcast&amp;tvshow=$INFO[ListItem.Title]&amp;castaction=extendedinfo" />
-                            <param name="infolabel" value="true" />
-                            <param name="pad" value="0" />
-                            <param name="top" value="0" />
-                        </include>
-                        <include content="Object_VideoInfo_CastList" condition="String.IsEmpty(ListItem.DBID) + String.IsEqual(ListItem.DBTYPE,season)">
-                            <param name="onup" value="9570" />
-                            <param name="id" value="9550" />
-                            <param name="ondown" value="9501" />
-                            <param name="label" value="$LOCALIZE[206]" />
-                            <param name="content" value="plugin://script.skin.helper.service/?action=getcast&amp;tvshow=$INFO[ListItem.TvShowTitle]&amp;castaction=extendedinfo" />
-                            <param name="infolabel" value="true" />
-                            <param name="pad" value="0" />
-                            <param name="top" value="0" />
-                        </include>
-                        <include content="Object_VideoInfo_CastList" condition="String.IsEmpty(ListItem.DBID) + String.IsEqual(ListItem.DBTYPE,episode)">
-                            <param name="onup" value="9570" />
-                            <param name="id" value="9550" />
-                            <param name="ondown" value="9501" />
-                            <param name="label" value="$LOCALIZE[206]" />
-                            <param name="content" value="plugin://script.skin.helper.service/?action=getcast&amp;episode=$INFO[ListItem.Label]&amp;castaction=extendedinfo" />
-                            <param name="infolabel" value="true" />
-                            <param name="pad" value="0" />
-                            <param name="top" value="0" />
-                        </include>
-                    </control>
-                </control>
-
-                <!-- Director Movies 9501 -->
-                <include content="Object_VideoInfo_CastList" condition="Container.Content(movies)">
-                    <param name="onup" value="9500" />
-                    <param name="id" value="9501" />
-                    <param name="ondown" value="9502" />
-                    <param name="label" value="$INFO[ListItem.Director,$LOCALIZE[31016] ,]" />
-                    <param name="content" value="plugin://script.extendedinfo?info=personmovies&amp;&amp;person=$INFO[ListItem.Director]" />
-                    <param name="infolabel" value="false" />
-                    <param name="include_onclick" value="true" />
-                    <param name="onclick" value="RunScript(script.extendedinfo,info=extendedinfo,name=$INFO[ListItem.Label],imdb_id=$INFO[ListItem.IMDBNumber])" />
-                </include>
-
-                <!-- Next Up Episodes 9501 -->
-                <include content="Object_VideoInfo_CastList" condition="!Container.Content(movies)">
-                    <param name="onup" value="9500" />
-                    <param name="id" value="9501" />
-                    <param name="ondown" value="9502" />
-                    <param name="label" value="$LOCALIZE[31221]" />
-                    <param name="episodelayout" value="true" />
-                    <param name="itemwidth" value="606.66" />
-                    <param name="infolabel" value="false" />
-                    <param name="include_content" value="false" />
-                    <param name="include_content_nextup" value="true" />
-                </include>
-
-                <!-- Similar Movies 9502 -->
-                <include content="Object_VideoInfo_CastList" condition="Container.Content(movies)">
-                    <param name="onup" value="9501" />
-                    <param name="id" value="9502" />
-                    <param name="ondown" value="9503" />
-                    <param name="label" value="$INFO[ListItem.Title,$LOCALIZE[31350],]" />
-                    <param name="content" value="plugin://script.skin.helper.widgets/?action=similar&amp;mediatype=movies&amp;imdbid=$INFO[ListItem.IMDBNumber]" />
-                    <param name="infolabel" value="false" />
-                    <param name="include_onclick" value="true" />
-                    <param name="onclick" value="RunScript(script.extendedinfo,info=extendedinfo,name=$INFO[ListItem.Label],imdb_id=$INFO[ListItem.IMDBNumber])" />
-                </include>
-
-                <!-- Similar TvShows 9502 -->
-                <include content="Object_VideoInfo_CastList" condition="!Container.Content(movies)">
-                    <param name="onup" value="9501" />
-                    <param name="id" value="9502" />
-                    <param name="ondown" value="9504" />
-                    <param name="label" value="$INFO[ListItem.Title,$LOCALIZE[31350],]" />
-                    <param name="content" value="plugin://script.skin.helper.widgets/?action=similar&amp;mediatype=tvshows&amp;imdbid=$INFO[ListItem.IMDBNumber]" />
-                    <param name="infolabel" value="false" />
-                    <param name="include_onclick" value="true" />
-                    <param name="onclick" value="RunScript(script.extendedinfo,info=extendedtvinfo,name=$INFO[ListItem.Label])" />
-                </include>
-
-                <!-- Studio Movies 9503 -->
-                <include content="Object_VideoInfo_CastList" condition="Container.Content(movies)">
-                    <param name="onup" value="9502" />
-                    <param name="id" value="9503" />
-                    <param name="ondown" value="9504" />
-                    <param name="label" value="$INFO[ListItem.Studio,$LOCALIZE[31025] ,]" />
-                    <param name="content" value="plugin://script.extendedinfo?info=studio&amp;&amp;studio=$INFO[ListItem.Studio]" />
-                    <param name="infolabel" value="false" />
-                    <param name="include_onclick" value="true" />
-                    <param name="onclick" value="RunScript(script.extendedinfo,info=extendedinfo,name=$INFO[ListItem.Label],imdb_id=$INFO[ListItem.IMDBNumber])" />
-                </include>
-
-                <!-- Images -->
-                <include content="Object_VideoInfo_CastList" condition="Container.Content(movies)">
-                    <param name="onup" value="9503" />
-                    <param name="id" value="9504" />
-                    <param name="ondown" value="9505" />
-                    <param name="label" value="$LOCALIZE[31365]" />
-                    <param name="content" value="$INFO[ListItem.Path,,/extrafanart/]" />
-                    <param name="infolabel" value="false" />
-                    <param name="itemwidth" value="606.66" />
-                    <param name="showfocuslabel" value="false" />
-                    <param name="include_onclick" value="true" />
-                    <param name="onclick" value="SetFocus(9991)" />
-                </include>
-                <include content="Object_VideoInfo_CastList" condition="!Container.Content(movies)">
-                    <param name="onup" value="9502" />
-                    <param name="id" value="9504" />
-                    <param name="ondown" value="9505" />
-                    <param name="label" value="$LOCALIZE[31365]" />
-                    <param name="content" value="$INFO[ListItem.FileNameAndPath,,/extrafanart/]" />
-                    <param name="infolabel" value="false" />
-                    <param name="itemwidth" value="606.66" />
-                    <param name="showfocuslabel" value="false" />
-                    <param name="include_onclick" value="true" />
-                    <param name="onclick" value="SetFocus(9991)" />
-                </include>
-
-                <!-- Extras -->
-                <include content="Object_VideoInfo_CastList" condition="Container.Content(movies) + String.IsEmpty(Window(home).Property(SpecialFeatures.Widget))">
-                    <param name="onup" value="9504" />
-                    <param name="id" value="9505" />
-                    <param name="ondown" value="9506" />
-                    <param name="label" value="$LOCALIZE[31169]" />
-                    <param name="content" value="$INFO[ListItem.Path,,/Extras/]" />
-                    <param name="infolabel" value="false" />
-                    <param name="itemwidth" value="606.66" />
-                    <param name="fallbackimage" value="DefaultVideo.png" />
-                    <param name="include_onclick" value="true" />
-                    <param name="onclick" value="SetProperty(TrailerPlaying,9505,Home)" />
-                    <param name="onclick2" value="PlayMedia($INFO[ListItem.FileNameAndPath],1)" />
-                    <param name="onclick3" value="SetFocus(9002)" />
-                </include>
-                <include content="Object_VideoInfo_CastList" condition="!Container.Content(movies) + String.IsEmpty(Window(home).Property(SpecialFeatures.Widget))">
-                    <param name="onup" value="9504" />
-                    <param name="id" value="9505" />
-                    <param name="ondown" value="9506" />
-                    <param name="label" value="$LOCALIZE[31169]" />
-                    <param name="content" value="$INFO[ListItem.FileNameAndPath,,Extras/]" />
-                    <!-- <param name="content" value="$INFO[Window(home).Property(SpecialFeatures.Widget)]" /> -->
-                    <param name="infolabel" value="false" />
-                    <param name="itemwidth" value="606.66" />
-                    <param name="fallbackimage" value="DefaultVideo.png" />
-                    <param name="include_onclick" value="true" />
-                    <param name="onclick" value="SetProperty(TrailerPlaying,9505,Home)" />
-                    <param name="onclick2" value="PlayMedia($INFO[ListItem.FileNameAndPath],1)" />
-                    <param name="onclick3" value="SetFocus(9002)" />
-                </include>
-                <include content="Object_VideoInfo_CastList" condition="!String.IsEmpty(Window(home).Property(SpecialFeatures.Widget))">
-                    <param name="onup" value="9504" />
-                    <param name="id" value="9505" />
-                    <param name="ondown" value="9506" />
-                    <param name="label" value="$LOCALIZE[31169]" />
-                    <param name="content" value="$INFO[Window(home).Property(SpecialFeatures.Widget)]" />
-                    <param name="infolabel" value="false" />
-                    <param name="itemwidth" value="606.66" />
-                    <param name="fallbackimage" value="DefaultVideo.png" />
-                    <param name="include_onclick" value="true" />
-                    <param name="onclick" value="SetProperty(TrailerPlaying,9505,Home)" />
-                    <param name="onclick2" value="PlayMedia($INFO[ListItem.FileNameAndPath],1)" />
-                    <param name="onclick3" value="SetFocus(9002)" />
-                </include>
-
-                <control type="group">
-                    <top>-15</top>
-                    <height>455</height>
-                    <left>view_pad</left>
-                    <right>view_pad</right>
-                    <control type="button" id="9506">
-                        <onup>9505</onup>
-                        <ondown>SetFocus(431)</ondown>
-                        <include>Defs_Hidden_Button</include>
-                    </control>
-                    <!-- Info Label -->
-                    <control type="grouplist">
-                        <top>20</top>
-                        <height>42</height>
-                        <left>0</left>
-                        <align>left</align>
-                        <itemgap>12</itemgap>
-                        <usecontrolcoords>true</usecontrolcoords>
+                        <height>40</height>
+                        <itemgap>50</itemgap>
                         <orientation>horizontal</orientation>
-                        <include>Object_DownArrows</include>
                         <control type="label">
+                            <height>40</height>
                             <font>font_small</font>
                             <textcolor>main_fg_100</textcolor>
                             <aligny>center</aligny>
-                            <width>auto</width>
-                            <height>100%</height>
-                            <label>$LOCALIZE[19033]</label>
+                            <width max="1200">auto</width>
+                            <label>$INFO[ListItem.Director,[COLOR=main_fg_30]$LOCALIZE[20339]   [/COLOR],]</label>
+                            <visible>!String.IsEmpty(ListItem.Director)</visible>
                         </control>
                     </control>
-                    <control type="image">
-                        <top>60</top>
-                        <right>0</right>
-                        <width>360</width>
-                        <height>360</height>
-                        <aspectratio>keep</aspectratio>
-                        <texture background="true">$INFO[ListItem.Art(discart)]</texture>
-                        <visible>Container.Content(movies)</visible>
-                    </control>
-                    <control type="image">
-                        <top>60</top>
-                        <right>0</right>
-                        <width>360</width>
-                        <height>360</height>
-                        <aspectratio>keep</aspectratio>
-                        <texture background="true">$INFO[ListItem.Art(characterart)]</texture>
-                        <visible>!Container.Content(movies)</visible>
-                    </control>
-                    <control type="grouplist">
-                        <top>90</top>
-                        <right>390</right>
-                        <orientation>vertical</orientation>
-                        <itemgap>10</itemgap>
-                        <include content="Object_VideoInfo_InfoSection">
-                            <param name="label" value="$LOCALIZE[561]" />
-                            <param name="label2" value="ListItem.FileName" />
-                        </include>
-                        <include content="Object_VideoInfo_InfoSection">
-                            <param name="label" value="$LOCALIZE[573]" />
-                            <param name="label2" value="ListItem.Path" />
-                        </include>
-                        <include content="Object_VideoInfo_InfoSection">
-                            <param name="label" value="$LOCALIZE[31352]" />
-                            <param name="label2" value="ListItem.DateAdded" />
-                        </include>
-                        <!-- <include content="Object_VideoInfo_InfoSection">
-                            <param name="label" value="$LOCALIZE[31353]" />
-                            <param name="label2" value="ListItem.LastPlayed" />
-                        </include> -->
-                        <include content="Object_VideoInfo_InfoSection">
-                            <param name="label" value="$LOCALIZE[572]" />
-                            <param name="label2" value="ListItem.Studio" />
-                        </include>
-                        <include content="Object_VideoInfo_InfoSection">
-                            <param name="label" value="$LOCALIZE[574]" />
-                            <param name="label2" value="ListItem.Country" />
-                        </include>
-                        <include content="Object_VideoInfo_InfoSection">
-                            <param name="label" value="$LOCALIZE[20417]" />
-                            <param name="label2" value="ListItem.Writer" />
-                        </include>
-                        <include content="Object_VideoInfo_InfoSection">
-                            <param name="label" value="$LOCALIZE[202]" />
-                            <param name="label2" value="ListItem.Tagline" />
-                        </include>
-                        <include content="Object_VideoInfo_InfoSection">
-                            <param name="label" value="$LOCALIZE[31289]" />
-                            <param name="label2" value="Window(Home).Property(SkinHelper.ListItem.Awards)" />
-                        </include>
-                    </control>
                 </control>
-            </control>
 
-            <!-- Flags -->
-            <control type="group">
-                <bottom>view_pad</bottom>
-                <height>40</height>
-                <left>view_pad</left>
-                <right>view_pad</right>
-                <control type="group">
-                    <include content="Object_Flags">
-                        <param name="container" value="" />
-                        <param name="directory" value="color" />
-                        <param name="align" value="left" />
-                    </include>
-                </control>
-                <!-- Info -->
-                <control type="grouplist">
-                    <align>right</align>
-                    <right>0</right>
-                    <height>40</height>
-                    <itemgap>50</itemgap>
-                    <orientation>horizontal</orientation>
-                    <control type="label">
-                        <height>40</height>
-                        <font>font_small</font>
-                        <textcolor>main_fg_100</textcolor>
-                        <aligny>center</aligny>
-                        <width max="1200">auto</width>
-                        <label>$INFO[ListItem.Director,[COLOR=main_fg_30]$LOCALIZE[20339]   [/COLOR],]</label>
-                        <visible>!String.IsEmpty(ListItem.Director)</visible>
-                    </control>
-                </control>
             </control>
+        </control>
 
-            <control type="group">
-                <visible>!Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) + !Window.IsVisible(script-script.extendedinfo-DialogInfo.xml)</visible>
-                <include>Object_PlotOverlay</include>
-            </control>
+        <control type="group">
+            <visible>!Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) + !Window.IsVisible(script-script.extendedinfo-DialogInfo.xml)</visible>
+            <include>Object_PlotOverlay</include>
         </control>
 
         <control type="group">

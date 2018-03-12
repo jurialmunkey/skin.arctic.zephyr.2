@@ -13,177 +13,181 @@
             <include>Items_ExtendedInfo</include>
         </control>
         <include>Topbar_Info</include>
-        <include>Object_UpDownInfoArrows</include>
 
         <control type="group">
-            <include>Animation_Right_Delay</include>
-            <animation type="Conditional" condition="Control.IsVisible(430)" reversible="false">
-                <effect type="slide" end="0,20" time="60" tween="sine" />
-                <effect type="slide" end="0,-20" time="180" tween="sine" delay="80" />
-            </animation>
-            <animation type="Conditional" condition="Control.IsVisible(431)" reversible="false">
-                <effect type="slide" end="0,-20" time="60" tween="sine" />
-                <effect type="slide" end="0,20" time="180" tween="sine" delay="80" />
-            </animation>
-            <control type="scrollbar" id="9560">
-                <top>0</top>
-                <right>0</right>
-                <width>8</width>
-                <bottom>0</bottom>
-                <showonepage>true</showonepage>
-                <orientation>vertical</orientation>
-                <texturesliderbackground colordiffuse="main_fg_12">common/white.png</texturesliderbackground>
-                <texturesliderbar colordiffuse="main_fg_30">common/white.png</texturesliderbar>
-                <texturesliderbarfocus colordiffuse="$VAR[ColorHighlight]">common/white.png</texturesliderbarfocus>
-                <animation effect="fade" start="100" end="33" time="400" condition="!Control.HasFocus(9560) + !Container.Scrolling">Conditional</animation>
-                <include>Animation_FadeIn</include>
-                <include>Animation_FadeOut</include>
-            </control>
-
-            <control type="grouplist" id="9000">
-                <pagecontrol>9560</pagecontrol>
-                <top>90</top>
-                <bottom>110</bottom>
-                <itemgap>0</itemgap>
-                <usecontrolcoords>true</usecontrolcoords>
-                <orientation>vertical</orientation>
-                <control type="group">
-                    <top>30</top>
-                    <height>415</height>
-                    <left>view_pad</left>
-                    <right>view_pad</right>
-                    <control type="group">
-                        <left>0</left>
-                        <width>240</width>
-                        <height>360</height>
-                        <control type="group">
-                            <left>-10</left>
-                            <right>-10</right>
-                            <bottom>-10</bottom>
-                            <top>-10</top>
-                            <control type="image">
-                                <bordersize>10</bordersize>
-                                <aspectratio scalediffuse="false">scale</aspectratio>
-                                <include>Defs_Shadow_Small</include>
-                                <texture diffuse="diffuse/widgetposter.png">$INFO[Window.Property(thumb)]</texture>
-                            </control>
-                            <control type="image">
-                                <bordersize>10</bordersize>
-                                <texture colordiffuse="PixelLines" border="20">common/outline.png</texture>
-                            </control>
-                        </control>
-                    </control>
-                    <control type="group">
-                        <left>270</left>
-                        <height>360</height>
-                        <control type="grouplist">
-                            <top>0</top>
-                            <orientation>vertical</orientation>
-                            <usecontrolcoords>true</usecontrolcoords>
-                            <itemgap>0</itemgap>
-                            <control type="label">
-                                <left>0</left>
-                                <right>0</right>
-                                <label>$INFO[Window.Property(label)]</label>
-                                <height>80</height>
-                                <aligny>top</aligny>
-                                <textcolor>main_fg_100</textcolor>
-                                <font>font_showcase_title</font>
-                            </control>
-                            <control type="label">
-                                <left>0</left>
-                                <right>0</right>
-                                <label>[CAPITALIZE]$INFO[Window.Property(Birthday),[COLOR=main_fg_100],[/COLOR]]$INFO[Window.Property(PlaceOfBirth),  |  [COLOR=main_fg_100],[/COLOR]]$INFO[Window.Property(Age),  |  [COLOR=main_fg_100], $LOCALIZE[31356][/COLOR]]$INFO[Window.Property(Deathday),  |  [COLOR=main_fg_100]$LOCALIZE[21897] ,[/COLOR]][/CAPITALIZE]</label>
-                                <height>60</height>
-                                <aligny>top</aligny>
-                                <textcolor>$VAR[ColorHighlight]</textcolor>
-                                <font>font_small</font>
-                            </control>
-                            <control type="textbox">
-                                <label fallback="19055">$INFO[Window.Property(biography)]</label>
-                                <height>220</height>
-                                <aligny>top</aligny>
-                                <textcolor>main_fg_70</textcolor>
-                                <font>font_plotbox</font>
-                            </control>
-                        </control>
-                    </control>
+            <visible allowhiddenfocus="true">!Control.HasFocus(9601)</visible>
+            <include>Animation_FadeInOut</include>
+            <control type="group">
+                <include>Animation_Right_Delay</include>
+                <include>Object_UpDownInfoArrows</include>
+                <animation type="Conditional" condition="Control.IsVisible(430)" reversible="false">
+                    <effect type="slide" end="0,20" time="60" tween="sine" />
+                    <effect type="slide" end="0,-20" time="180" tween="sine" delay="80" />
+                </animation>
+                <animation type="Conditional" condition="Control.IsVisible(431)" reversible="false">
+                    <effect type="slide" end="0,-20" time="60" tween="sine" />
+                    <effect type="slide" end="0,20" time="180" tween="sine" delay="80" />
+                </animation>
+                <control type="scrollbar" id="9560">
+                    <top>0</top>
+                    <right>0</right>
+                    <width>8</width>
+                    <bottom>0</bottom>
+                    <showonepage>true</showonepage>
+                    <orientation>vertical</orientation>
+                    <texturesliderbackground colordiffuse="main_fg_12">common/white.png</texturesliderbackground>
+                    <texturesliderbar colordiffuse="main_fg_30">common/white.png</texturesliderbar>
+                    <texturesliderbarfocus colordiffuse="$VAR[ColorHighlight]">common/white.png</texturesliderbarfocus>
+                    <animation effect="fade" start="100" end="33" time="400" condition="!Control.HasFocus(9560) + !Container.Scrolling">Conditional</animation>
+                    <include>Animation_FadeIn</include>
+                    <include>Animation_FadeOut</include>
                 </control>
 
-                <!-- Movies -->
-                <include content="Object_VideoInfo_CastList">
-                    <param name="onup" value="300" />
-                    <param name="id" value="150" />
-                    <param name="ondown" value="250" />
-                    <param name="label" value="$LOCALIZE[20342]" />
-                    <param name="infolabel" value="false" />
-                    <param name="include_content" value="false" />
-                </include>
+                <control type="grouplist" id="9000">
+                    <pagecontrol>9560</pagecontrol>
+                    <top>90</top>
+                    <bottom>110</bottom>
+                    <itemgap>0</itemgap>
+                    <usecontrolcoords>true</usecontrolcoords>
+                    <orientation>vertical</orientation>
+                    <control type="group">
+                        <top>30</top>
+                        <height>415</height>
+                        <left>view_pad</left>
+                        <right>view_pad</right>
+                        <control type="group">
+                            <left>0</left>
+                            <width>240</width>
+                            <height>360</height>
+                            <control type="group">
+                                <left>-10</left>
+                                <right>-10</right>
+                                <bottom>-10</bottom>
+                                <top>-10</top>
+                                <control type="image">
+                                    <bordersize>10</bordersize>
+                                    <aspectratio scalediffuse="false">scale</aspectratio>
+                                    <include>Defs_Shadow_Small</include>
+                                    <texture diffuse="diffuse/widgetposter.png">$INFO[Window.Property(thumb)]</texture>
+                                </control>
+                                <control type="image">
+                                    <bordersize>10</bordersize>
+                                    <texture colordiffuse="PixelLines" border="20">common/outline.png</texture>
+                                </control>
+                            </control>
+                        </control>
+                        <control type="group">
+                            <left>270</left>
+                            <height>360</height>
+                            <control type="grouplist">
+                                <top>0</top>
+                                <orientation>vertical</orientation>
+                                <usecontrolcoords>true</usecontrolcoords>
+                                <itemgap>0</itemgap>
+                                <control type="label">
+                                    <left>0</left>
+                                    <right>0</right>
+                                    <label>$INFO[Window.Property(label)]</label>
+                                    <height>80</height>
+                                    <aligny>top</aligny>
+                                    <textcolor>main_fg_100</textcolor>
+                                    <font>font_showcase_title</font>
+                                </control>
+                                <control type="label">
+                                    <left>0</left>
+                                    <right>0</right>
+                                    <label>[CAPITALIZE]$INFO[Window.Property(Birthday),[COLOR=main_fg_100],[/COLOR]]$INFO[Window.Property(PlaceOfBirth),  |  [COLOR=main_fg_100],[/COLOR]]$INFO[Window.Property(Age),  |  [COLOR=main_fg_100], $LOCALIZE[31356][/COLOR]]$INFO[Window.Property(Deathday),  |  [COLOR=main_fg_100]$LOCALIZE[21897] ,[/COLOR]][/CAPITALIZE]</label>
+                                    <height>60</height>
+                                    <aligny>top</aligny>
+                                    <textcolor>$VAR[ColorHighlight]</textcolor>
+                                    <font>font_small</font>
+                                </control>
+                                <control type="textbox">
+                                    <label fallback="19055">$INFO[Window.Property(biography)]</label>
+                                    <height>220</height>
+                                    <aligny>top</aligny>
+                                    <textcolor>main_fg_70</textcolor>
+                                    <font>font_plotbox</font>
+                                </control>
+                            </control>
+                        </control>
+                    </control>
 
-                <!-- TV -->
-                <include content="Object_VideoInfo_CastList">
-                    <param name="onup" value="150" />
-                    <param name="id" value="250" />
-                    <param name="ondown" value="350" />
-                    <param name="label" value="$LOCALIZE[20343]" />
-                    <param name="infolabel" value="false" />
-                    <param name="include_content" value="false" />
-                </include>
+                    <!-- Movies -->
+                    <include content="Object_VideoInfo_CastList">
+                        <param name="onup" value="300" />
+                        <param name="id" value="150" />
+                        <param name="ondown" value="250" />
+                        <param name="label" value="$LOCALIZE[20342]" />
+                        <param name="infolabel" value="false" />
+                        <param name="include_content" value="false" />
+                    </include>
 
-                <!-- Youtube -->
-                <include content="Object_VideoInfo_CastList">
-                    <param name="onup" value="250" />
-                    <param name="id" value="350" />
-                    <param name="ondown" value="450" />
-                    <param name="label" value="$LOCALIZE[31141]" />
-                    <param name="infolabel" value="false" />
-                    <param name="itemwidth" value="606.66" />
-                    <param name="include_content" value="false" />
-                </include>
+                    <!-- TV -->
+                    <include content="Object_VideoInfo_CastList">
+                        <param name="onup" value="150" />
+                        <param name="id" value="250" />
+                        <param name="ondown" value="350" />
+                        <param name="label" value="$LOCALIZE[20343]" />
+                        <param name="infolabel" value="false" />
+                        <param name="include_content" value="false" />
+                    </include>
 
-                <!-- Images -->
-                <include content="Object_VideoInfo_CastList">
-                    <param name="onup" value="350" />
-                    <param name="id" value="450" />
-                    <param name="ondown" value="550" />
-                    <param name="label" value="$LOCALIZE[31365]" />
-                    <param name="infolabel" value="false" />
-                    <!-- <param name="itemwidth" value="364" /> -->
-                    <param name="include_content" value="false" />
-                    <param name="aspect" value="scale" />
-                </include>
+                    <!-- Youtube -->
+                    <include content="Object_VideoInfo_CastList">
+                        <param name="onup" value="250" />
+                        <param name="id" value="350" />
+                        <param name="ondown" value="450" />
+                        <param name="label" value="$LOCALIZE[31141]" />
+                        <param name="infolabel" value="false" />
+                        <param name="itemwidth" value="606.66" />
+                        <param name="include_content" value="false" />
+                    </include>
 
-                <!-- Crew -->
-                <include content="Object_VideoInfo_CastList">
-                    <param name="onup" value="450" />
-                    <param name="id" value="550" />
-                    <param name="ondown" value="650" />
-                    <param name="label" value="$LOCALIZE[31357]" />
-                    <param name="infolabel" value="true" />
-                    <param name="include_content" value="false" />
-                    <param name="label2" value="$INFO[ListItem.Property(job)]" />
-                </include>
-                <!-- TV Crew -->
-                <include content="Object_VideoInfo_CastList">
-                    <param name="onup" value="550" />
-                    <param name="id" value="650" />
-                    <param name="ondown" value="750" />
-                    <param name="label" value="$LOCALIZE[31357]" />
-                    <param name="infolabel" value="true" />
-                    <param name="include_content" value="false" />
-                    <param name="label2" value="$INFO[ListItem.Property(job)]" />
-                </include>
-                <!-- Tagged Images -->
-                <include content="Object_VideoInfo_CastList">
-                    <param name="onup" value="650" />
-                    <param name="id" value="750" />
-                    <param name="ondown" value="431" />
-                    <param name="label" value="$LOCALIZE[31368]" />
-                    <param name="infolabel" value="false" />
-                    <param name="itemwidth" value="364" />
-                    <param name="include_content" value="false" />
-                    <param name="aspect" value="keep" />
-                </include>
+                    <!-- Images -->
+                    <include content="Object_VideoInfo_CastList">
+                        <param name="onup" value="350" />
+                        <param name="id" value="450" />
+                        <param name="ondown" value="550" />
+                        <param name="label" value="$LOCALIZE[31365]" />
+                        <param name="infolabel" value="false" />
+                        <!-- <param name="itemwidth" value="364" /> -->
+                        <param name="include_content" value="false" />
+                        <param name="aspect" value="scale" />
+                    </include>
+
+                    <!-- Crew -->
+                    <include content="Object_VideoInfo_CastList">
+                        <param name="onup" value="450" />
+                        <param name="id" value="550" />
+                        <param name="ondown" value="650" />
+                        <param name="label" value="$LOCALIZE[31357]" />
+                        <param name="infolabel" value="true" />
+                        <param name="include_content" value="false" />
+                        <param name="label2" value="$INFO[ListItem.Property(job)]" />
+                    </include>
+                    <!-- TV Crew -->
+                    <include content="Object_VideoInfo_CastList">
+                        <param name="onup" value="550" />
+                        <param name="id" value="650" />
+                        <param name="ondown" value="750" />
+                        <param name="label" value="$LOCALIZE[31357]" />
+                        <param name="infolabel" value="true" />
+                        <param name="include_content" value="false" />
+                        <param name="label2" value="$INFO[ListItem.Property(job)]" />
+                    </include>
+                    <!-- Tagged Images -->
+                    <include content="Object_VideoInfo_CastList">
+                        <param name="onup" value="650" />
+                        <param name="id" value="750" />
+                        <param name="ondown" value="431" />
+                        <param name="label" value="$LOCALIZE[31368]" />
+                        <param name="infolabel" value="false" />
+                        <param name="itemwidth" value="364" />
+                        <param name="include_content" value="false" />
+                        <param name="aspect" value="keep" />
+                    </include>
+                </control>
             </control>
         </control>
 

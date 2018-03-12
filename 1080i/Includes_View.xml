@@ -17,29 +17,33 @@
 
     <include name="View_Library">
         <control type="group">
-            <include>View_Group</include>
-            <include>Animation_Left</include>
-            <include>Defs_InfoDialog_Visible</include>
-            <visible>!Control.HasFocus(9602)</visible>
-            <visible>![Window.IsVisible(MyPVRChannels.xml) | Window.IsVisible(MyPVRGuide.xml) | Window.IsVisible(MyPVRRecordings.xml) | Window.IsVisible(MyPVRTimers.xml) | Window.IsVisible(MyPVRSearch.xml)]</visible>
+            <visible allowhiddenfocus="true">!Control.HasFocus(9601)</visible>
+            <include>Animation_FadeInOut</include>
             <control type="group">
-                <visible>Control.IsVisible(50) | Control.IsVisible(501)</visible>
-                <include>View_Library_Poster</include>
+                <include>View_Group</include>
+                <include>Animation_Left</include>
+                <include>Defs_InfoDialog_Visible</include>
+                <visible>!Control.HasFocus(9602)</visible>
+                <visible>![Window.IsVisible(MyPVRChannels.xml) | Window.IsVisible(MyPVRGuide.xml) | Window.IsVisible(MyPVRRecordings.xml) | Window.IsVisible(MyPVRTimers.xml) | Window.IsVisible(MyPVRSearch.xml)]</visible>
+                <control type="group">
+                    <visible>Control.IsVisible(50) | Control.IsVisible(501)</visible>
+                    <include>View_Library_Poster</include>
+                </control>
+                <control type="group">
+                    <visible>Control.IsVisible(500)</visible>
+                    <include condition="Window.IsVisible(MyVideoNav.xml) | Window.IsVisible(MyMusicNav.xml) | Window.IsVisible(MyPrograms.xml)">View_Library_Info</include>
+                </control>
             </control>
             <control type="group">
-                <visible>Control.IsVisible(500)</visible>
-                <include condition="Window.IsVisible(MyVideoNav.xml) | Window.IsVisible(MyMusicNav.xml) | Window.IsVisible(MyPrograms.xml)">View_Library_Info</include>
-            </control>
-        </control>
-        <control type="group">
-            <include>View_Group</include>
-            <include>Animation_Right</include>
-            <include>Defs_InfoDialog_Visible</include>
-            <visible>!Control.HasFocus(9602)</visible>
-            <control type="group">
-                <include condition="![Window.IsVisible(MyPVRChannels.xml) | Window.IsVisible(MyPVRRecordings.xml) | Window.IsVisible(MyPVRTimers.xml) | Window.IsVisible(MyPVRSearch.xml)]">View_List</include>
-                <include condition="![Window.IsVisible(MyPVRChannels.xml) | Window.IsVisible(MyPVRRecordings.xml) | Window.IsVisible(MyPVRTimers.xml) | Window.IsVisible(MyPVRSearch.xml)]">View_Posters</include>
-                <include condition="[Window.IsVisible(MyPVRChannels.xml) | Window.IsVisible(MyPVRRecordings.xml) | Window.IsVisible(MyPVRTimers.xml) | Window.IsVisible(MyPVRSearch.xml)]">View_List_PVR</include>
+                <include>View_Group</include>
+                <include>Animation_Right</include>
+                <include>Defs_InfoDialog_Visible</include>
+                <visible>!Control.HasFocus(9602)</visible>
+                <control type="group">
+                    <include condition="![Window.IsVisible(MyPVRChannels.xml) | Window.IsVisible(MyPVRRecordings.xml) | Window.IsVisible(MyPVRTimers.xml) | Window.IsVisible(MyPVRSearch.xml)]">View_List</include>
+                    <include condition="![Window.IsVisible(MyPVRChannels.xml) | Window.IsVisible(MyPVRRecordings.xml) | Window.IsVisible(MyPVRTimers.xml) | Window.IsVisible(MyPVRSearch.xml)]">View_Posters</include>
+                    <include condition="[Window.IsVisible(MyPVRChannels.xml) | Window.IsVisible(MyPVRRecordings.xml) | Window.IsVisible(MyPVRTimers.xml) | Window.IsVisible(MyPVRSearch.xml)]">View_List_PVR</include>
+                </control>
             </control>
         </control>
     </include>
