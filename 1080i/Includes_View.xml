@@ -265,14 +265,14 @@
                 <right>10</right>
                 <width>48</width>
                 <height>48</height>
-                <texture colordiffuse="ff000000" border="10">$VAR[Image_Overlay_Corner]</texture>
+                <texture colordiffuse="dddddddd" border="10">$VAR[Image_Overlay_Corner]</texture>
             </control>
             <control type="image">
                 <top>11</top>
                 <right>11</right>
                 <width>24</width>
                 <height>24</height>
-                <texture>$VAR[Image_Overlay]</texture>
+                <texture colordiffuse="ff181818">$VAR[Image_Overlay_Focus]</texture>
                 <visible>!Integer.IsGreater(ListItem.Property(UnWatchedEpisodes),0) | ![Container.Content(tvshows) | Container.Content(seasons) | Window.IsVisible(Home)]</visible>
             </control>
             <control type="label">
@@ -282,7 +282,7 @@
                 <height>28</height>
                 <font>font_unwatched</font>
                 <align>center</align>
-                <textcolor>ffcccccc</textcolor>
+                <textcolor>ff181818</textcolor>
                 <label>$INFO[ListItem.Property(UnWatchedEpisodes)]</label>
                 <include>View_UnwatchedEpisodes_Visible</include>
             </control>
