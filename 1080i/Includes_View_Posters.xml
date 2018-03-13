@@ -25,6 +25,7 @@
                     <bottom>-10</bottom>
                     <top>-10</top>
                     <visible>Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(actors) | $EXP[Exp_IsPluginAdvancedLauncher]</visible>
+                    <pagecontrol>60</pagecontrol>
                     <include>View_NotTheseWindows</include>
                     <viewtype label="$LOCALIZE[31358]">icon</viewtype>
                     <include content="View_Forced">
@@ -37,7 +38,6 @@
                     </include>
                 </control>
             </control>
-            <include>Object_Scrollbar_Vert</include>
         </control>
     </include>
 
@@ -52,6 +52,7 @@
                     <bottom>20</bottom>
                     <top>-10</top>
                     <visible>Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(videos) | Container.Content(artists) | Container.Content(images) | $EXP[Exp_IsPluginAdvancedLauncher]</visible>
+                    <pagecontrol>60</pagecontrol>
                     <include>View_NotTheseWindows</include>
                     <viewtype label="$LOCALIZE[31359]">icon</viewtype>
                     <include content="View_Forced">
@@ -64,7 +65,6 @@
                     </include>
                 </control>
             </control>
-            <include>Object_Scrollbar_Vert</include>
         </control>
     </include>
 
@@ -78,6 +78,7 @@
                     <right>-10</right>
                     <bottom>20</bottom>
                     <top>-10</top>
+                    <pagecontrol>60</pagecontrol>
                     <visible>[!Container.Content(movies) + !Container.Content(tvshows) + !Container.Content(seasons) + !Container.Content(songs) + !Container.Content(videos) + !Container.Content(episodes) + !Container.Content(sets) + !Container.Content(actors) + !Container.Content(images)] | $EXP[Exp_IsPluginAdvancedLauncher]</visible>
                     <include>View_NotTheseWindows</include>
                     <viewtype label="$LOCALIZE[31360]">icon</viewtype>
@@ -91,7 +92,6 @@
                     </include>
                 </control>
             </control>
-            <include>Object_Scrollbar_Vert</include>
         </control>
     </include>
 
@@ -106,6 +106,7 @@
                     <bottom>50</bottom>
                     <top>-10</top>
                     <visible>Container.Content(tvshows) | Container.Content(movies) | Container.Content(sets)</visible>
+                    <pagecontrol>60</pagecontrol>
                     <include>View_NotTheseWindows</include>
                     <viewtype label="$LOCALIZE[31370]">icon</viewtype>
                     <include content="View_Forced">
@@ -118,7 +119,6 @@
                     </include>
                 </control>
             </control>
-            <include>Object_Scrollbar_Vert</include>
         </control>
     </include>
 
@@ -138,7 +138,8 @@
                     <visible>Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | $EXP[Exp_IsPluginAdvancedLauncher]</visible>
                     <viewtype label="$LOCALIZE[31161]">showcase</viewtype>
                     <onup>300</onup>
-                    <ondown condition="Control.IsVisible(60)">60</ondown>
+                    <ondown condition="Control.IsVisible(62)">62</ondown>
+                    <pagecontrol>62</pagecontrol>
                     <onleft>55</onleft>
                     <onright>55</onright>
                     <include content="View_Forced">
@@ -160,7 +161,6 @@
                 </include>
             </control>
 
-            <include>Object_Scrollbar_Horz</include>
         </control>
     </include>
 
@@ -178,7 +178,8 @@
                     <movement>2</movement>
                     <viewtype label="$LOCALIZE[31361]">showcase</viewtype>
                     <onup>300</onup>
-                    <ondown condition="Control.IsVisible(60)">60</ondown>
+                    <ondown condition="Control.IsVisible(62)">62</ondown>
+                    <pagecontrol>62</pagecontrol>
                     <onleft>56</onleft>
                     <onright>56</onright>
                     <include content="View_Forced">
@@ -201,7 +202,6 @@
                 </include>
             </control>
 
-            <include>Object_Scrollbar_Horz</include>
         </control>
     </include>
 
@@ -219,7 +219,8 @@
                     <movement>4</movement>
                     <viewtype label="$LOCALIZE[31362]">showcase</viewtype>
                     <onup>300</onup>
-                    <ondown condition="Control.IsVisible(60)">60</ondown>
+                    <ondown condition="Control.IsVisible(62)">62</ondown>
+                    <pagecontrol>62</pagecontrol>
                     <onleft>57</onleft>
                     <onright>57</onright>
                     <include content="View_Forced">
@@ -242,7 +243,6 @@
                 </include>
             </control>
 
-            <include>Object_Scrollbar_Horz</include>
         </control>
     </include>
 
@@ -261,7 +261,8 @@
                     <movement>0</movement>
                     <viewtype label="$LOCALIZE[31363]">icon</viewtype>
                     <onup>300</onup>
-                    <ondown condition="Control.IsVisible(60)">60</ondown>
+                    <ondown condition="Control.IsVisible(62)">62</ondown>
+                    <pagecontrol>62</pagecontrol>
                     <onleft>58</onleft>
                     <onright>58</onright>
                     <include content="View_Forced">
@@ -312,7 +313,6 @@
                 </control>
             </control>
             <include>View_Library_Poster</include>
-            <include>Object_Scrollbar_Horz</include>
         </control>
     </include>
 
@@ -350,7 +350,7 @@
                     <onup>300</onup>
                     <ondown condition="Control.IsVisible(8000)">8000</ondown>
                     <ondown condition="!Control.IsVisible(8000)">300</ondown>
-                    <pagecontrol>60</pagecontrol>
+                    <pagecontrol>62</pagecontrol>
                     <scrolltime tween="cubic">400</scrolltime>
                     <itemlayout width="1800" height="900">
                         <control type="image">
@@ -415,7 +415,6 @@
                     <include>View_Selectbox</include>
                 </control>
             </control>
-            <include>Object_Scrollbar_Horz</include>
         </control>
     </include>
 
@@ -440,7 +439,6 @@
             <orientation>$PARAM[orientation]</orientation>
             <include condition="!Window.IsVisible(DialogVideoInfo.xml)">View_Movement_Horizontal</include>
             <preloaditems>2</preloaditems>
-            <pagecontrol>60</pagecontrol>
             <scrolltime tween="quadratic">400</scrolltime>
             <itemlayout width="260" height="480" condition="$PARAM[posters]">
                 <control type="group">

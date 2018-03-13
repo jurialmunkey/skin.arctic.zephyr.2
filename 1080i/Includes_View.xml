@@ -45,6 +45,19 @@
                     <include condition="[Window.IsVisible(MyPVRChannels.xml) | Window.IsVisible(MyPVRRecordings.xml) | Window.IsVisible(MyPVRTimers.xml) | Window.IsVisible(MyPVRSearch.xml)]">View_List_PVR</include>
                 </control>
             </control>
+            <control type="group">
+                <include>View_Group</include>
+                <include>Defs_InfoDialog_Visible</include>
+                <include>Animation_FadeIn</include>
+                <include>Animation_FadeOut</include>
+                <include content="Object_Scrollbar_Vert">
+                    <param name="visible" value="Control.IsVisible(50) | Control.IsVisible(51) | Control.IsVisible(52) | Control.IsVisible(53) | Control.IsVisible(54) | Control.IsVisible(500) | Control.IsVisible(501)" />
+                </include>
+                <include content="Object_Scrollbar_Horz">
+                    <param name="visible" value="Control.IsVisible(55) | Control.IsVisible(56) | Control.IsVisible(57) | Control.IsVisible(58) | Control.IsVisible(59)" />
+                </include>
+            </control>
+
         </control>
     </include>
 
@@ -349,11 +362,9 @@
             <movement>6</movement>
             <description>Plugin Content Widget</description>
             <height>$PARAM[itemheight]</height>
-            <orientation>vertical</orientation>
-            
+            <orientation>vertical</orientation>            
             <include condition="!Window.IsVisible(DialogVideoInfo.xml)">View_Movement_Horizontal</include>
             <preloaditems>2</preloaditems>
-            <pagecontrol>60</pagecontrol>
             <scrolltime tween="quadratic">400</scrolltime>
             <itemlayout width="$PARAM[itemwidth]" height="$PARAM[itemheight]">
                 <control type="group">

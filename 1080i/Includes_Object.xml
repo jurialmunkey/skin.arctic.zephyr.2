@@ -1677,6 +1677,7 @@
             <width>8</width>
             <top>-60</top>
             <bottom>0</bottom>
+            <visible>$PARAM[visible]</visible>
             <showonepage>true</showonepage>
             <orientation>vertical</orientation>
             <onright condition="[String.IsEqual(Container.SortMethod,$LOCALIZE[551]) | String.IsEqual(Container.SortMethod,$LOCALIZE[556]) | String.IsEqual(Container.SortMethod,$LOCALIZE[557]) | String.IsEqual(Container.SortMethod,$LOCALIZE[558])] + !Container.Content(seasons) + [Control.IsEnabled(3) | Control.IsEnabled(4)] + Skin.HasSetting(AlphabetStrip)">SetFocus(8000)</onright>
@@ -1694,7 +1695,7 @@
     </include>
 
     <include name="Object_Scrollbar_Horz">
-        <control type="scrollbar" id="60">
+        <control type="scrollbar" id="62">
             <onback>50</onback>
             <height>8</height>
             <left>0</left>
@@ -1704,6 +1705,7 @@
             <showonepage>true</showonepage>
             <orientation>horizontal</orientation>
             <onup>50</onup>
+            <visible>$PARAM[visible]</visible>
             <ondown condition="[String.IsEqual(Container.SortMethod,$LOCALIZE[551]) | String.IsEqual(Container.SortMethod,$LOCALIZE[556]) | String.IsEqual(Container.SortMethod,$LOCALIZE[557]) | String.IsEqual(Container.SortMethod,$LOCALIZE[558])] + !Container.Content(seasons) + [Control.IsEnabled(3) | Control.IsEnabled(4)] + Skin.HasSetting(AlphabetStrip)">SetFocus(8000)</ondown>
             <ondown condition="![[String.IsEqual(Container.SortMethod,$LOCALIZE[551]) | String.IsEqual(Container.SortMethod,$LOCALIZE[556]) | String.IsEqual(Container.SortMethod,$LOCALIZE[557]) | String.IsEqual(Container.SortMethod,$LOCALIZE[558])] + !Container.Content(seasons) + [Control.IsEnabled(3) | Control.IsEnabled(4)]] + Skin.HasSetting(AlphabetStrip)">Notification($LOCALIZE[161],$LOCALIZE[31334])</ondown>
             <ondown condition="!Skin.HasSetting(AlphabetStrip)">50</ondown>
