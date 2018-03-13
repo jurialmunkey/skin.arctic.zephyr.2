@@ -50,12 +50,13 @@
     <include name="Dialog_Standard_Group">
         <param name="width" default="1080" />
         <param name="height" default="900" />
+        <param name="animation" default="true" />
         <definition>
             <centerleft>50%</centerleft>
             <centertop>50%</centertop>
             <width>$PARAM[width]</width>
             <height>$PARAM[height]</height>
-            <include>Animation_FadeIn_Slide</include>
+            <include condition="$PARAM[animation]">Animation_FadeIn_Slide</include>
             <control type="image">
                 <include condition="!Skin.HasSetting(DisableShadows)">Defs_Shadow_Opaque</include>
                 <texture border="16" colordiffuse="dialog_bg_100">common/rounded-dialog.png</texture>
