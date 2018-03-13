@@ -65,7 +65,7 @@
                         <top>-10</top>
                         <control type="image">
                             <bordersize>10</bordersize>
-                            <include>Defs_Shadow_Small</include>
+                            <include condition="!Skin.HasSetting(DisableShadows)">Defs_Shadow_Small</include>
                             <texture colordiffuse="PosterBack" border="10">diffuse/box.png</texture>
                         </control>
                         <control type="image">
@@ -116,7 +116,7 @@
             <left>view_pad</left>
             <right>view_pad</right>
             <top>view_pad</top>
-            <visible>Container.Content(musicvideos) | Container.Content(images) | Container.Content(artists) | Container.Content(albums) | Container.Content(addons) | Container.Content(songs)</visible>
+            <visible>Container.Content(musicvideos) | Container.Content(images) | Container.Content(artists) | Container.Content(albums) | Container.Content(addons) | Container.Content(songs) | [Container.Content(files) + [Window.IsVisible(MyMusicNav.xml) | Window.IsVisible(MyPics.xml)]]</visible>
             <control type="group">
                 <width>poster_width</width>
                 <height>poster_height</height>
@@ -130,7 +130,7 @@
                             <top>-10</top>
                             <control type="image">
                                 <bordersize>10</bordersize>
-                                <include>Defs_Shadow_Small</include>
+                                <include condition="!Skin.HasSetting(DisableShadows)">Defs_Shadow_Small</include>
                                 <texture colordiffuse="PosterBack" border="10">diffuse/box.png</texture>
                             </control>
                         </control>
@@ -205,7 +205,7 @@
             <left>view_pad</left>
             <bottom>view_pad</bottom>
             <top>view_pad</top>
-            <visible>![Container.Content(musicvideos) | Container.Content(images) | Container.Content(artists) | Container.Content(albums) | Container.Content(addons) | Container.Content(songs)]</visible>
+            <visible>![Container.Content(musicvideos) | Container.Content(images) | Container.Content(artists) | Container.Content(albums) | Container.Content(addons) | Container.Content(songs) | [Container.Content(files) + [Window.IsVisible(MyMusicNav.xml) | Window.IsVisible(MyPics.xml)]]]</visible>
             <control type="group">
                 <width>poster_width</width>
                 <height>900</height>
@@ -216,7 +216,7 @@
                     <top>-10</top>
                     <control type="image">
                         <bordersize>10</bordersize>
-                        <include>Defs_Shadow_Small</include>
+                        <include condition="!Skin.HasSetting(DisableShadows)">Defs_Shadow_Small</include>
                         <texture colordiffuse="PosterBack" border="20">diffuse/box.png</texture>
                     </control>
                 </control>
@@ -245,60 +245,66 @@
     </include>
 
     <include name="View_WatchedOverlay">
-        <control type="image">
-            <top>10</top>
-            <right>10</right>
-            <width>48</width>
-            <height>48</height>
-            <texture colordiffuse="ff000000" border="10">$VAR[Image_Overlay_Corner]</texture>
-        </control>
-        <control type="image">
-            <top>11</top>
-            <right>11</right>
-            <width>24</width>
-            <height>24</height>
-            <texture>$VAR[Image_Overlay]</texture>
-            <visible>!Integer.IsGreater(ListItem.Property(UnWatchedEpisodes),0) | ![Container.Content(tvshows) | Container.Content(seasons) | Window.IsVisible(Home)]</visible>
-        </control>
-        <control type="label">
-            <top>10</top>
-            <right>10</right>
-            <width>28</width>
-            <height>28</height>
-            <font>font_unwatched</font>
-            <align>center</align>
-            <textcolor>ffcccccc</textcolor>
-            <label>$INFO[ListItem.Property(UnWatchedEpisodes)]</label>
-            <include>View_UnwatchedEpisodes_Visible</include>
+        <control type="group">
+            <visible>!Skin.HasSetting(DisableWatchedOverlay)</visible>
+            <control type="image">
+                <top>10</top>
+                <right>10</right>
+                <width>48</width>
+                <height>48</height>
+                <texture colordiffuse="ff000000" border="10">$VAR[Image_Overlay_Corner]</texture>
+            </control>
+            <control type="image">
+                <top>11</top>
+                <right>11</right>
+                <width>24</width>
+                <height>24</height>
+                <texture>$VAR[Image_Overlay]</texture>
+                <visible>!Integer.IsGreater(ListItem.Property(UnWatchedEpisodes),0) | ![Container.Content(tvshows) | Container.Content(seasons) | Window.IsVisible(Home)]</visible>
+            </control>
+            <control type="label">
+                <top>10</top>
+                <right>10</right>
+                <width>28</width>
+                <height>28</height>
+                <font>font_unwatched</font>
+                <align>center</align>
+                <textcolor>ffcccccc</textcolor>
+                <label>$INFO[ListItem.Property(UnWatchedEpisodes)]</label>
+                <include>View_UnwatchedEpisodes_Visible</include>
+            </control>
         </control>
     </include>
 
     <include name="View_WatchedOverlay_Focus">
-        <control type="image">
-            <top>10</top>
-            <right>10</right>
-            <width>48</width>
-            <height>48</height>
-            <texture colordiffuse="$VAR[ColorHighlight]" border="10">$VAR[Image_Overlay_Corner]</texture>
-        </control>
-        <control type="image">
-            <top>11</top>
-            <right>11</right>
-            <width>24</width>
-            <height>24</height>
-            <texture colordiffuse="ff000000">$VAR[Image_Overlay]</texture>
-            <visible>!Integer.IsGreater(ListItem.Property(UnWatchedEpisodes),0) | ![Container.Content(tvshows) | Container.Content(seasons) | Window.IsVisible(Home)]</visible>
-        </control>
-        <control type="label">
-            <top>10</top>
-            <right>10</right>
-            <width>28</width>
-            <height>28</height>
-            <font>font_unwatched</font>
-            <align>center</align>
-            <textcolor>Selected</textcolor>
-            <label>$INFO[ListItem.Property(UnWatchedEpisodes)]</label>
-            <include>View_UnwatchedEpisodes_Visible</include>
+        <control type="group">
+            <visible>!Skin.HasSetting(DisableWatchedOverlay)</visible>
+            <control type="image">
+                <top>10</top>
+                <right>10</right>
+                <width>48</width>
+                <height>48</height>
+                <texture colordiffuse="$VAR[ColorHighlight]" border="10">$VAR[Image_Overlay_Corner]</texture>
+            </control>
+            <control type="image">
+                <top>11</top>
+                <right>11</right>
+                <width>24</width>
+                <height>24</height>
+                <texture colordiffuse="ff000000">$VAR[Image_Overlay]</texture>
+                <visible>!Integer.IsGreater(ListItem.Property(UnWatchedEpisodes),0) | ![Container.Content(tvshows) | Container.Content(seasons) | Window.IsVisible(Home)]</visible>
+            </control>
+            <control type="label">
+                <top>10</top>
+                <right>10</right>
+                <width>28</width>
+                <height>28</height>
+                <font>font_unwatched</font>
+                <align>center</align>
+                <textcolor>Selected</textcolor>
+                <label>$INFO[ListItem.Property(UnWatchedEpisodes)]</label>
+                <include>View_UnwatchedEpisodes_Visible</include>
+            </control>
         </control>
     </include>
 
@@ -354,7 +360,7 @@
                     
                     <control type="image">
                         <bordersize>10</bordersize>
-                        <include>Defs_Shadow_Small</include>
+                        <include condition="!Skin.HasSetting(DisableShadows)">Defs_Shadow_Small</include>
                         <texture colordiffuse="PosterBack" border="10">diffuse/box.png</texture>
                     </control>
 
@@ -443,7 +449,7 @@
                     <include>Animation_FocusBounce</include>
                     <control type="image">
                         <bordersize>10</bordersize>
-                        <include>Defs_Shadow_Small</include>
+                        <include condition="!Skin.HasSetting(DisableShadows)">Defs_Shadow_Small</include>
                         <texture colordiffuse="PosterBack" border="10">diffuse/box.png</texture>
                     </control>
 
@@ -557,7 +563,7 @@
                         <top>-10</top>
                         <bottom>-10</bottom>
                         <bordersize>10</bordersize>
-                        <include>Defs_Shadow_Small</include>
+                        <include condition="!Skin.HasSetting(DisableShadows)">Defs_Shadow_Small</include>
                         <texture colordiffuse="PosterBack">common/white.png</texture>
                     </control>
                 </control>

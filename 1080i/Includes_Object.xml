@@ -543,7 +543,7 @@
                         <bottom>-10</bottom>
                         <control type="image">
                             <bordersize>10</bordersize>
-                            <include>Defs_Shadow_Small</include>
+                            <include condition="!Skin.HasSetting(DisableShadows)">Defs_Shadow_Small</include>
                             <aspectratio scalediffuse="false">scale</aspectratio>
                             <texture colordiffuse="PosterBack" diffuse="diffuse/widgetposter.png">common/white.png</texture>
                         </control>

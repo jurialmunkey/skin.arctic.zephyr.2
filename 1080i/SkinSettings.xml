@@ -332,6 +332,14 @@
                             <enable>Skin.HasSetting(EnableBlur) + System.HasAddon(script.colorbox)</enable>
                         </control>
 
+                        <control type="radiobutton" id="9926" description="Shadows">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9109)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31318]</label>
+                            <selected>!Skin.HasSetting(DisableShadows)</selected>
+                            <onclick>Skin.ToggleSetting(DisableShadows)</onclick>
+                        </control>
+
                         <control type="button" id="9654">
                             <visible>Integer.IsEqual(Window.Property(CurrentFocus),9109)</visible>
                             <label>$LOCALIZE[31321]</label>
@@ -412,6 +420,14 @@
                             <onclick condition="System.HasAddon(script.colorbox) + !Skin.HasSetting(CycleColors)">RunScript(script.colorbox,daemon=True)</onclick>
                             <onclick condition="System.HasAddon(script.colorbox) + !Skin.HasSetting(CycleColors)">AlarmClock(nms1,SetProperty(NINE_manual_set,"var=main,set=$INFO[Skin.String(colorbox_main)]|var=comp,set=$INFO[Skin.String(colorbox_comp)]|var=quality,set=$INFO[Skin.String(colorbox_quality)]|var=blursize,set=$INFO[Skin.String(colorbox_blursize)]|var=bitsize,set=$INFO[Skin.String(colorbox_bitsize)]|var=pixelsize,set=$INFO[Skin.String(colorbox_pixelsize)]|var=black,set=$INFO[Skin.String(colorbox_black)]|var=white,set=$INFO[Skin.String(colorbox_white)]",home),00:05,true)</onclick>
                             <onclick condition="System.HasAddon(script.colorbox)">Skin.ToggleSetting(CycleColors)</onclick>
+                        </control>
+
+                        <control type="radiobutton" id="9332" description="Use genre colors">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9105)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31056]</label>
+                            <selected>!Skin.HasSetting(PVRGuideGenreColors)</selected>
+                            <onclick>Skin.ToggleSetting(PVRGuideGenreColors)</onclick>
                         </control>
 
                         <control type="button" id="9254">
@@ -606,13 +622,7 @@
                             <onclick>Skin.ToggleSetting(AlphabetStrip)</onclick>
                         </control>
 
-                        <control type="radiobutton" id="9332" description="Use genre colors">
-                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9107)</visible>
-                            <include>Defs_Settings_Button</include>
-                            <label>$LOCALIZE[31056]</label>
-                            <selected>!Skin.HasSetting(PVRGuideGenreColors)</selected>
-                            <onclick>Skin.ToggleSetting(PVRGuideGenreColors)</onclick>
-                        </control>
+                        
 
                         <control type="radiobutton" id="9278" description="Enable bounce animations">
                             <visible>Integer.IsEqual(Window.Property(CurrentFocus),9107)</visible>
@@ -636,6 +646,14 @@
                             <label>$LOCALIZE[31307]</label>
                             <selected>!Skin.HasSetting(DisablePlotOutline)</selected>
                             <onclick>Skin.ToggleSetting(DisablePlotOutline)</onclick>
+                        </control>
+
+                        <control type="radiobutton" id="9893" description="Disable watched indicators">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9107)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31317]</label>
+                            <selected>!Skin.HasSetting(DisableWatchedOverlay)</selected>
+                            <onclick>Skin.ToggleSetting(DisableWatchedOverlay)</onclick>
                         </control>
 
                         <control type="button" id="9279" description="Enable viewmodes">

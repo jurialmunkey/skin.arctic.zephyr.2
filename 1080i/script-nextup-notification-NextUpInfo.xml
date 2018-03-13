@@ -32,7 +32,7 @@
             <control type="image" description="fanart">
                 <fadetime>350</fadetime>
                 <aspectratio scalediffuse="false">scale</aspectratio>
-                <include>Defs_Shadow_Opaque</include>
+                <include condition="!Skin.HasSetting(DisableShadows)">Defs_Shadow_Opaque</include>
                 <texture>$INFO[Player.Art(fanart)]</texture>
             </control>
 

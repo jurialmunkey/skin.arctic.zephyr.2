@@ -57,7 +57,7 @@
             <height>$PARAM[height]</height>
             <include>Animation_FadeIn_Slide</include>
             <control type="image">
-                <include>Defs_Shadow_Opaque</include>
+                <include condition="!Skin.HasSetting(DisableShadows)">Defs_Shadow_Opaque</include>
                 <texture border="16" colordiffuse="dialog_bg_100">common/rounded-dialog.png</texture>
             </control>
         </definition>

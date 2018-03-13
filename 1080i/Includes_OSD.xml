@@ -81,7 +81,7 @@
                             <bottom>-6</bottom>
                             <control type="image">
                                 <aspectratio scalediffuse="false">scale</aspectratio>
-                                <include>Defs_Shadow_Opaque</include>
+                                <include condition="!Skin.HasSetting(DisableShadows)">Defs_Shadow_Opaque</include>
                                 <texture diffuse="diffuse/widgetposter.png">$INFO[$PARAM[artwork]]</texture>
                             </control>
                             <control type="image">
@@ -279,7 +279,7 @@
                         <left>view_pad</left>
                         <bottom>158</bottom>
                         <control type="image">
-                            <include>Defs_Shadow_Opaque</include>
+                            <include condition="!Skin.HasSetting(DisableShadows)">Defs_Shadow_Opaque</include>
                             <aspectratio aligny="bottom">keep</aspectratio>
                             <texture diffuse="diffuse/widgetposter.png">$VAR[Image_OSD_Artwork]</texture>
                         </control>

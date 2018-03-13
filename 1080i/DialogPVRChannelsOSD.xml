@@ -16,7 +16,7 @@
                 <width>668</width>
                 <height>1082</height>
                 <control type="image">
-                    <include>Defs_Shadow_Opaque</include>
+                    <include condition="!Skin.HasSetting(DisableShadows)">Defs_Shadow_Opaque</include>
                     <texture>common/gradient-solid.png</texture>
                 </control>
                 <control type="image">

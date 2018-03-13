@@ -68,7 +68,7 @@
                                 <control type="image">
                                     <bordersize>10</bordersize>
                                     <aspectratio scalediffuse="false">scale</aspectratio>
-                                    <include>Defs_Shadow_Small</include>
+                                    <include condition="!Skin.HasSetting(DisableShadows)">Defs_Shadow_Small</include>
                                     <texture diffuse="diffuse/widgetposter.png">$INFO[Window.Property(thumb)]</texture>
                                 </control>
                                 <control type="image">

@@ -57,7 +57,7 @@
                                 <top>-10</top>
                                 <control type="image">
                                     <bordersize>10</bordersize>
-                                    <include>Defs_Shadow_Small</include>
+                                    <include condition="!Skin.HasSetting(DisableShadows)">Defs_Shadow_Small</include>
                                     <aspectratio scalediffuse="false">scale</aspectratio>
                                     <texture diffuse="diffuse/widgetposter.png">$VAR[Image_Poster]</texture>
                                 </control>

@@ -150,7 +150,7 @@
                 <itemlayout width="455" height="306.66">
                     <control type="image">
                         <bordersize>10</bordersize>
-                        <include>Defs_Shadow_Small</include>
+                        <include condition="!Skin.HasSetting(DisableShadows)">Defs_Shadow_Small</include>
                         <texture colordiffuse="PosterBack" border="20">diffuse/box.png</texture>
                     </control>
                     <control type="image">
@@ -204,7 +204,7 @@
                     <control type="group">
                         <control type="image">
                             <bordersize>10</bordersize>
-                            <include>Defs_Shadow_Small</include>
+                            <include condition="!Skin.HasSetting(DisableShadows)">Defs_Shadow_Small</include>
                             <texture colordiffuse="PosterBack" border="20">diffuse/box.png</texture>
                         </control>
                         <control type="image">
@@ -699,7 +699,7 @@
                 <control type="group">
                     <control type="image">
                         <bordersize>10</bordersize>
-                        <include>Defs_Shadow_Small</include>
+                        <include condition="!Skin.HasSetting(DisableShadows)">Defs_Shadow_Small</include>
                         <texture colordiffuse="PosterBack" border="20">diffuse/box.png</texture>
                     </control>
                     <control type="image">
@@ -739,7 +739,7 @@
                 <control type="group">
                     <control type="image">
                         <bordersize>10</bordersize>
-                        <include>Defs_Shadow_Small</include>
+                        <include condition="!Skin.HasSetting(DisableShadows)">Defs_Shadow_Small</include>
                         <texture colordiffuse="PosterBack" border="20">diffuse/box.png</texture>
                     </control>
                     <control type="image">
@@ -785,7 +785,7 @@
                 <bottom>-0</bottom>
                 <control type="image">
                     <bordersize>10</bordersize>
-                    <include>Defs_Shadow_Small</include>
+                    <include condition="!Skin.HasSetting(DisableShadows)">Defs_Shadow_Small</include>
                     <texture colordiffuse="PosterBack" border="20">diffuse/box.png</texture>
                 </control>
                 <control type="group">
@@ -946,7 +946,7 @@
                 <include condition="$PARAM[landscape]">Animation_FocusBounce_Small</include>
                 <control type="image">
                     <bordersize>10</bordersize>
-                    <include>Defs_Shadow_Small</include>
+                    <include condition="!Skin.HasSetting(DisableShadows)">Defs_Shadow_Small</include>
                     <texture colordiffuse="PosterBack" border="20">diffuse/box.png</texture>
                 </control>
                 <control type="group">
