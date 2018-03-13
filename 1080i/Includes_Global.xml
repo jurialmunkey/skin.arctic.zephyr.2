@@ -142,6 +142,7 @@
         <value condition="Window.IsVisible(home) + !String.IsEmpty(Skin.String(home.slideshowpath)) + !String.IsEqual(Skin.String(home.slideshowpath),$LOCALIZE[8]) + [String.IsEmpty(Container(300).ListItem.Property(widget)) | Container(301).IsUpdating |  Skin.HasSetting(home.dontshowfanart)]">$INFO[Skin.String(home.slideshowpath)]</value>
         <value condition="!String.IsEmpty(Skin.String(fanart.fallback))">$INFO[Skin.String(fanart.fallback)]</value>
         <value condition="!Skin.HasSetting(NoFanart)">special://skin/extras/backgrounds/default.jpg</value>
+        <value>common/null.png</value>
     </variable>
 
     <variable name="Global_Background_Image">
