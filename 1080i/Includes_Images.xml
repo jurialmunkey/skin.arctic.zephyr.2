@@ -155,10 +155,10 @@
     <variable name="Image_Fanart">
         <value condition="!String.IsEmpty(ListItem.Art(thumb)) + !String.IsEmpty(ListItem.TvShowTitle) + Window.IsVisible(MyPlaylist.xml)">$INFO[ListItem.Art(thumb)]</value>
         <value condition="Skin.HasSetting(SkinHelper.EnableAnimatedPosters) + !String.IsEmpty(ListItem.Art(animatedfanart)) + ![Container.Content(videos) | Container.Content(episodes)] + !Window.IsVisible(home)">$INFO[ListItem.Art(animatedfanart)]</value>
-        <value condition="!String.IsEmpty(ListItem.Art(season.landscape)) + ![Container.Content(videos) | Container.Content(episodes)] + !Window.IsVisible(home)">$INFO[ListItem.Art(season.landscape)]</value>
-        <value condition="!String.IsEmpty(ListItem.Art(tvshow.landscape)) + ![Container.Content(videos) | Container.Content(episodes)] + !Window.IsVisible(home)">$INFO[ListItem.Art(tvshow.landscape)]</value>
-        <value condition="!String.IsEmpty(ListItem.Art(landscape)) + ![Container.Content(videos) | Container.Content(episodes)] + !Window.IsVisible(home)">$INFO[ListItem.Art(landscape)]</value>
-        <value condition="!String.IsEmpty(ListItem.Art(fanart)) + ![Container.Content(videos) | Container.Content(episodes)] + !Window.IsVisible(home)">$INFO[ListItem.Art(fanart)]</value>
+        <value condition="!String.IsEmpty(ListItem.Art(season.landscape)) + [[!Container.Content(videos) + !Container.Content(episodes)] | String.IsEqual(ListItem.Label,Play All)] + !Window.IsVisible(home)">$INFO[ListItem.Art(season.landscape)]</value>
+        <value condition="!String.IsEmpty(ListItem.Art(tvshow.landscape)) + [[!Container.Content(videos) + !Container.Content(episodes)] | String.IsEqual(ListItem.Label,Play All)] + !Window.IsVisible(home)">$INFO[ListItem.Art(tvshow.landscape)]</value>
+        <value condition="!String.IsEmpty(ListItem.Art(landscape)) + [[!Container.Content(videos) + !Container.Content(episodes)] | String.IsEqual(ListItem.Label,Play All)] + !Window.IsVisible(home)">$INFO[ListItem.Art(landscape)]</value>
+        <value condition="!String.IsEmpty(ListItem.Art(fanart)) + [[!Container.Content(videos) + !Container.Content(episodes)] | String.IsEqual(ListItem.Label,Play All)] + !Window.IsVisible(home)">$INFO[ListItem.Art(fanart)]</value>
         <value condition="!String.IsEmpty(ListItem.Art(fanart)) + Window.IsVisible(home) + [String.IsEqual(ListItem.Label,ListItem.TvShowTitle) | String.IsEmpty(ListItem.TvShowTitle) | Skin.HasSetting(PreferFanartHome) | !String.IsEmpty(ListItem.Property(airday))]">$INFO[ListItem.Art(fanart)]</value>
         <value condition="!String.IsEmpty(ListItem.Property(fanart))">$INFO[ListItem.Property(fanart)]</value>
         <value condition="!String.IsEmpty(ListItem.Thumb)">$INFO[ListItem.Thumb]</value>
