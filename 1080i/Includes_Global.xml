@@ -188,6 +188,7 @@
         <value condition="!String.IsEmpty(ListItem.Art(fanart))">$INFO[ListItem.Art(fanart)]</value>
         <value condition="!String.IsEmpty(ListItem.Property(Fanart_Image))">$INFO[ListItem.Property(Fanart_Image)]</value>
         <value condition="!String.IsEmpty(ListItem.Property(Fanart))">$INFO[ListItem.Property(Fanart)]</value>
+        <value condition="Window.IsVisible(Home) + !String.IsEmpty(Container.ListItem.Art(fanart))">$INFO[Container.ListItem.Art(fanart)]</value>
         <value condition="!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Art.Fanart)) + [!Window.IsVisible(Home) | [Window.IsVisible(Home) + !Control.HasFocus(300) + !Control.HasFocus(302)]]">$INFO[Window(Home).Property(SkinHelper.ListItem.Art.Fanart)]</value>
 
         <!-- Pictures -->
