@@ -258,6 +258,11 @@
     </include>
 
     <include name="View_WatchedOverlay">
+        <include condition="Skin.HasSetting(LightWatchedOverlay)">View_WatchedOverlay_White</include>
+        <include condition="!Skin.HasSetting(LightWatchedOverlay)">View_WatchedOverlay_Black</include>
+    </include>
+
+    <include name="View_WatchedOverlay_White">
         <control type="group">
             <visible>!Skin.HasSetting(DisableWatchedOverlay)</visible>
             <control type="image">
@@ -283,6 +288,38 @@
                 <font>font_unwatched</font>
                 <align>center</align>
                 <textcolor>ff181818</textcolor>
+                <label>$INFO[ListItem.Property(UnWatchedEpisodes)]</label>
+                <include>View_UnwatchedEpisodes_Visible</include>
+            </control>
+        </control>
+    </include>
+
+    <include name="View_WatchedOverlay_Black">
+        <control type="group">
+            <visible>!Skin.HasSetting(DisableWatchedOverlay)</visible>
+            <control type="image">
+                <top>10</top>
+                <right>10</right>
+                <width>48</width>
+                <height>48</height>
+                <texture colordiffuse="ff000000" border="10">$VAR[Image_Overlay_Corner]</texture>
+            </control>
+            <control type="image">
+                <top>11</top>
+                <right>11</right>
+                <width>24</width>
+                <height>24</height>
+                <texture colordiffuse="ffffffff">$VAR[Image_Overlay]</texture>
+                <visible>!Integer.IsGreater(ListItem.Property(UnWatchedEpisodes),0) | ![Container.Content(tvshows) | Container.Content(seasons) | Window.IsVisible(Home)]</visible>
+            </control>
+            <control type="label">
+                <top>10</top>
+                <right>10</right>
+                <width>28</width>
+                <height>28</height>
+                <font>font_unwatched</font>
+                <align>center</align>
+                <textcolor>ffededed</textcolor>
                 <label>$INFO[ListItem.Property(UnWatchedEpisodes)]</label>
                 <include>View_UnwatchedEpisodes_Visible</include>
             </control>
