@@ -675,12 +675,21 @@
                 <param name="widgetContent" value="$PARAM[widgetContent]" />
                 <param name="content" value="$PARAM[content]" />
                 <param name="limit" value="$VAR[Label_WidgetItemLimit]" />
+                <param name="id" value="$PARAM[id]" />
             </include>
         </definition>
     </include>
 
     <include name="Widget_ContentInclude">
         <content target="$PARAM[target]" sortby="$PARAM[sortby]" sortorder="$PARAM[sortorder]" limit="$PARAM[limit]">$PARAM[widgetContent]</content>
+        <!-- <content>
+            <item>
+                <label>See More...</label>
+                <icon>DefaultFolder.png</icon>
+                <onclick>ActivateWindow($PARAM[target],$PARAM[widgetContent],return)</onclick>
+                <visible>Integer.IsGreater(Container($PARAM[id]).NumItems,9)</visible>
+            </item>
+        </content> -->
     </include>
 
     <include name="Widget_Submenu_ItemLayout">
