@@ -5,12 +5,15 @@
     <controls>
 
         <include>Global_Background</include>
-        <control type="list" id="300">
+        <control type="button" id="300">
             <top>30</top>
             <onup>9601</onup>
             <ondown>150</ondown>
-            <include>Topbar_Menu_Layout</include>
-            <include>Items_ExtendedInfo</include>
+            <onfocus condition="String.IsEmpty(Window.Property(MoveDirection))">SetFocus(9601)</onfocus>
+            <onfocus condition="!String.IsEmpty(Window.Property(MoveDirection))">SetFocus(150)</onfocus>
+            <onfocus condition="String.IsEmpty(Window.Property(MoveDirection))">SetProperty(MoveDirection,1)</onfocus>
+            <onfocus condition="!String.IsEmpty(Window.Property(MoveDirection))">ClearProperty(MoveDirection)</onfocus>
+            <include>Defs_Hidden_Button</include>
         </control>
         <include>Topbar_Info</include>
 

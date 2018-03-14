@@ -573,8 +573,9 @@
         </control>
 
         <control type="group">
-            <visible>!Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) + !Window.IsVisible(script-script.extendedinfo-DialogInfo.xml)</visible>
-            <include>Object_PlotOverlay</include>
+            <include content="Object_PlotOverlay">
+                <param name="visible" value="!Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) + !Window.IsVisible(script-script.extendedinfo-DialogInfo.xml)" />
+            </include>
         </control>
 
         <control type="group">
