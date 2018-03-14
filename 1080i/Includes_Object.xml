@@ -58,11 +58,22 @@
                         <visible>!Skin.HasSetting(DisableInfoRatings)</visible>
                     </control>
                     <control type="label">
+                        <width>auto</width>
                         <label>$VAR[Label_ShowCase_InfoLine]</label>
                         <height>40</height>
                         <aligny>top</aligny>
                         <textcolor>$VAR[ColorHighlight]</textcolor>
                         <font>font_small</font>
+                    </control>
+                    <control type="label">
+                        <width>auto</width>
+                        <label>$VAR[Label_Info_NextAired_Status,  |  [COLOR=main_fg_100],[/COLOR]]$VAR[Label_Info_NextAired_Date, [COLOR=main_fg_100],[/COLOR]]</label>
+                        <height>40</height>
+                        <aligny>top</aligny>
+                        <textcolor>$VAR[ColorHighlight]</textcolor>
+                        <font>font_small</font>
+                        <visible>Container.Content(tvshows)</visible>
+                        <visible>!Control.IsVisible(500)</visible>
                     </control>
                 </control>
                 <control type="group">
