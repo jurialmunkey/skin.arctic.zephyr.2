@@ -3,6 +3,7 @@
     <include>Defs_Settings_OnLoad</include>
     <onunload>RunScript(script.skinshortcuts,type=buildxml&amp;mainmenuID=300&amp;mode=single&amp;group=mainmenu|powermenu)</onunload>
     <onunload condition="System.HasAddon(script.colorbox)">SetProperty(NINE_manual_set,"var=main,set=$INFO[Skin.String(colorbox_main)]|var=comp,set=$INFO[Skin.String(colorbox_comp)]|var=quality,set=$INFO[Skin.String(colorbox_quality)]|var=blursize,set=$INFO[Skin.String(colorbox_blursize)]|var=bitsize,set=$INFO[Skin.String(colorbox_bitsize)]|var=pixelsize,set=$INFO[Skin.String(colorbox_pixelsize)]|var=black,set=$INFO[Skin.String(colorbox_black)]|var=white,set=$INFO[Skin.String(colorbox_white)]|var=blend,set=$INFO[Skin.String(colorbox_blend)]|var=desat,set=$INFO[Skin.String(colorbox_desat)]",home)</onunload> 
+    <onload condition="String.IsEmpty(Window.Property(CurrentFocus))">SetProperty(CurrentFocus,$NUMBER[9101])</onload>
     <controls>
 
         <include>Global_Background</include>
@@ -104,13 +105,13 @@
                             <label>$LOCALIZE[31021]</label>
                         </control>
 
-                        <control type="togglebutton" id="9104" description="Artwork">
+                        <control type="togglebutton" id="9104" description="Views">
                             <onfocus>SetProperty(CurrentFocus,$NUMBER[9104])</onfocus>
                             <usealttexture>![Control.HasFocus(3901) | Control.HasFocus(3902) | Control.HasFocus(3903) | Control.HasFocus(300)] + !Control.HasFocus(302) + Integer.IsEqual(Window.Property(CurrentFocus),9104)</usealttexture>
                             <alttexturenofocus colordiffuse="$VAR[Defs_Settings_ColorHighlight]">common/gradient-diffuse-horizontal.png</alttexturenofocus>
                             <width>450</width>
                             <include>Defs_Settings_Button</include>
-                            <label>$LOCALIZE[31203]</label>
+                            <label>$LOCALIZE[14022]</label>
                         </control>
 
                         <control type="togglebutton" id="9107" description="Miscellaneous">
@@ -214,12 +215,7 @@
                             <onclick condition="!String.IsEmpty(Skin.String(StartupPlaylist))">Skin.Reset(StartupPlaylist)</onclick>
                         </control>
 
-                        <control type="button" id="9274" description="Customise Shutdown Menu">
-                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9101)</visible>
-                            <include>Defs_Settings_Button</include>
-                            <label>$LOCALIZE[31027]</label>
-                            <onclick>RunScript(script.skinshortcuts,type=manage&amp;group=powermenu)</onclick>
-                        </control>
+                        
 
 
                         <!-- ========== -->
@@ -448,6 +444,13 @@
                         <!-- ================= -->
                         <!-- Video / Music OSD -->
                         <!-- ================= -->
+                        <control type="label" id="9981" description="LABEL MUSIC OSD">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9103)</visible>
+                            <font>font_button</font>
+                            <textcolor>main_fg_30</textcolor>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31347]</label>
+                        </control>
                         <control type="radiobutton" id="9231" description="Show Fanart">
                             <visible>Integer.IsEqual(Window.Property(CurrentFocus),9103)</visible>
                             <include>Defs_Settings_Button</include>
@@ -492,6 +495,13 @@
                             <selected>Skin.HasSetting(ArtistSlideshow.Animate)</selected>
                             <onclick>Skin.ToggleSetting(ArtistSlideshow.Animate)</onclick>
                             <enable>Skin.HasSetting(musicvis.fanartfallback) | !Skin.HasSetting(ArtistSlideShow.Disabled)</enable>
+                        </control>
+                        <control type="label" id="9982" description="LABEL MUSIC OSD">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9103)</visible>
+                            <font>font_button</font>
+                            <textcolor>main_fg_30</textcolor>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31346]</label>
                         </control>
                         <control type="radiobutton" id="9239" description="Show detailed info on pause">
                             <visible>Integer.IsEqual(Window.Property(CurrentFocus),9103)</visible>
@@ -551,25 +561,8 @@
                         </control>
                         
                         <!-- ======= -->
-                        <!-- Artwork -->
+                        <!-- Library -->
                         <!-- ======= -->
-                        <control type="button" id="9241">
-                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9104)</visible>
-                            <label>$LOCALIZE[31013]</label>
-                            <label2>$INFO[Skin.String(weather.icons.name)]</label2>
-                            <include>Defs_Settings_Button</include>
-                            <onclick>RunScript(script.image.resource.select,property=weather.icons&amp;type=resource.images.weathericons)</onclick>
-                        </control>
-                        
-                        <control type="togglebutton" id="9225" description="Install Weather Fanart">
-                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9104)</visible>
-                            <include>Defs_Settings_Button</include>
-                            <label>$LOCALIZE[31008]</label>
-                            <altlabel>$LOCALIZE[31010]</altlabel>
-                            <usealttexture>System.HasAddon(resource.images.weatherfanart.multi)</usealttexture>
-                            <enable>!System.HasAddon(resource.images.weatherfanart.multi)</enable>
-                            <onclick condition="!System.HasAddon(resource.images.weatherfanart.multi)">InstallAddon(resource.images.weatherfanart.multi)</onclick>
-                        </control>
                         
                         <control type="radiobutton" id="9244">
                             <visible>Integer.IsEqual(Window.Property(CurrentFocus),9104)</visible>
@@ -587,10 +580,63 @@
                             <include>Defs_Settings_Button</include>
                         </control>
 
+                        <control type="radiobutton" id="9876" description="Alphabet Strip">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9104)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31026]</label>
+                            <selected>Skin.HasSetting(AlphabetStrip)</selected>
+                            <onclick>Skin.ToggleSetting(AlphabetStrip)</onclick>
+                        </control>
+
+                        <control type="radiobutton" id="9891" description="Enable View Text">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9104)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31042]</label>
+                            <selected>!Skin.HasSetting(DisableViewText)</selected>
+                            <onclick>Skin.ToggleSetting(DisableViewText)</onclick>
+                        </control>
+
+                        <control type="radiobutton" id="9892" description="Disable plot outline">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9104)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31307]</label>
+                            <selected>!Skin.HasSetting(DisablePlotOutline)</selected>
+                            <onclick>Skin.ToggleSetting(DisablePlotOutline)</onclick>
+                        </control>
+
+                        <control type="radiobutton" id="9893" description="Disable watched indicators">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9104)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31317]</label>
+                            <selected>!Skin.HasSetting(DisableWatchedOverlay)</selected>
+                            <onclick>Skin.ToggleSetting(DisableWatchedOverlay)</onclick>
+                        </control>
+
+                        <control type="button" id="9894" description="Watched Indicators">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9104)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31319]</label>
+                            <label2>$VAR[Label_WatchedIndicatorStyle]</label2>
+                            <onclick>Skin.ToggleSetting(LightWatchedOverlay)</onclick>
+                        </control>
+
+                        <control type="button" id="9279" description="Enable viewmodes">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9104)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31039]</label>
+                            <onclick>ActivateWindow(1117)</onclick>
+                        </control>
+
+                        <control type="button" id="9389" description="Enable ratings">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9104)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31312]</label>
+                            <onclick>ActivateWindow(1118)</onclick>
+                        </control>
+
                         <!-- ============= -->
                         <!-- Miscellaneous -->
                         <!-- ============= -->
-
                         <control type="radiobutton" id="9273" description="Kiosk Mode">
                             <visible>Integer.IsEqual(Window.Property(CurrentFocus),9107)</visible>
                             <include>Defs_Settings_Button</include>
@@ -598,6 +644,7 @@
                             <selected>Skin.HasSetting(global.kioskmode)</selected>
                             <onclick>Skin.ToggleSetting(global.kioskmode)</onclick>
                         </control>
+                        
 
                         <control type="radiobutton" id="9339" description="Minimal Busy Loader">
                             <visible>Integer.IsEqual(Window.Property(CurrentFocus),9107)</visible>
@@ -615,16 +662,6 @@
                             <onclick>Skin.ToggleSetting(UseHoursMinutes)</onclick>
                         </control> -->
 
-                        <control type="radiobutton" id="9876" description="Alphabet Strip">
-                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9107)</visible>
-                            <include>Defs_Settings_Button</include>
-                            <label>$LOCALIZE[31026]</label>
-                            <selected>Skin.HasSetting(AlphabetStrip)</selected>
-                            <onclick>Skin.ToggleSetting(AlphabetStrip)</onclick>
-                        </control>
-
-                        
-
                         <control type="radiobutton" id="9278" description="Enable bounce animations">
                             <visible>Integer.IsEqual(Window.Property(CurrentFocus),9107)</visible>
                             <include>Defs_Settings_Button</include>
@@ -633,42 +670,11 @@
                             <onclick>Skin.ToggleSetting(BounceAnimations)</onclick>
                         </control>
 
-                        <control type="radiobutton" id="9891" description="Enable View Text">
+                        <control type="button" id="9274" description="Customise Shutdown Menu">
                             <visible>Integer.IsEqual(Window.Property(CurrentFocus),9107)</visible>
                             <include>Defs_Settings_Button</include>
-                            <label>$LOCALIZE[31042]</label>
-                            <selected>!Skin.HasSetting(DisableViewText)</selected>
-                            <onclick>Skin.ToggleSetting(DisableViewText)</onclick>
-                        </control>
-
-                        <control type="radiobutton" id="9892" description="Disable plot outline">
-                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9107)</visible>
-                            <include>Defs_Settings_Button</include>
-                            <label>$LOCALIZE[31307]</label>
-                            <selected>!Skin.HasSetting(DisablePlotOutline)</selected>
-                            <onclick>Skin.ToggleSetting(DisablePlotOutline)</onclick>
-                        </control>
-
-                        <control type="radiobutton" id="9893" description="Disable watched indicators">
-                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9107)</visible>
-                            <include>Defs_Settings_Button</include>
-                            <label>$LOCALIZE[31317]</label>
-                            <selected>!Skin.HasSetting(DisableWatchedOverlay)</selected>
-                            <onclick>Skin.ToggleSetting(DisableWatchedOverlay)</onclick>
-                        </control>
-
-                        <control type="button" id="9279" description="Enable viewmodes">
-                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9107)</visible>
-                            <include>Defs_Settings_Button</include>
-                            <label>$LOCALIZE[31039]</label>
-                            <onclick>ActivateWindow(1117)</onclick>
-                        </control>
-
-                        <control type="button" id="9389" description="Enable ratings">
-                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9107)</visible>
-                            <include>Defs_Settings_Button</include>
-                            <label>$LOCALIZE[31312]</label>
-                            <onclick>ActivateWindow(1118)</onclick>
+                            <label>$LOCALIZE[31027]</label>
+                            <onclick>RunScript(script.skinshortcuts,type=manage&amp;group=powermenu)</onclick>
                         </control>
 
                         <!-- ============ -->
