@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
+    <variable name="Label_WatchedIndicatorStyle">
+        <value condition="Skin.HasSetting(LightWatchedOverlay)">$LOCALIZE[31337]</value>
+        <value>$LOCALIZE[31341]</value>
+    </variable>
 
     <variable name="Label_Metacritic">
         <value condition="!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.MetaCritic.Rating))">$INFO[Window(Home).Property(SkinHelper.ListItem.MetaCritic.Rating),,%]</value>
