@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
+    <variable name="Defs_VideoInfo_StudioMovies">
+        <value condition="Container.Content(movies)">plugin://script.extendedinfo?info=studio&amp;&amp;studio=$INFO[ListItem.Studio]</value>
+    </variable>
+
+    <variable name="Defs_VideoInfo_Images">
+        <value condition="Container.Content(movies) + !String.StartsWith(ListItem.Path,plugin://)">$INFO[ListItem.Path,,/extrafanart/]</value>
+        <value condition="!Container.Content(movies) + !String.StartsWith(ListItem.Path,plugin://)">$INFO[ListItem.FileNameAndPath,,/extrafanart/]</value>
+    </variable>
+
+    <variable name="Defs_VideoInfo_Extras">
+        <value condition="Container.Content(movies) + String.IsEmpty(Window(home).Property(SpecialFeatures.Widget)) + !String.StartsWith(ListItem.Path,plugin://)">$INFO[ListItem.Path,,/Extras/]</value>
+        <value condition="!Container.Content(movies) + String.IsEmpty(Window(home).Property(SpecialFeatures.Widget)) + !String.StartsWith(ListItem.Path,plugin://)">$INFO[ListItem.FileNameAndPath,,Extras/]</value>
+        <value condition="!String.IsEmpty(Window(home).Property(SpecialFeatures.Widget)) + !String.StartsWith(ListItem.Path,plugin://)">$INFO[Window(home).Property(SpecialFeatures.Widget)]</value>
+    </variable>
 
     <include name="Defs_Settings_OnLoad">
         <onload condition="Window.IsActive(interfacesettings)">SetProperty(MenuIconFocus,ReplaceWindow(interfacesettings),Home)</onload>

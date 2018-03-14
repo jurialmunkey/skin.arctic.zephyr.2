@@ -361,7 +361,7 @@
                     <include content="Object_VideoInfo_CastList" condition="!Container.Content(movies)">
                         <param name="onup" value="9501" />
                         <param name="id" value="9502" />
-                        <param name="ondown" value="9504" />
+                        <param name="ondown" value="9503" />
                         <param name="label" value="$INFO[ListItem.Title,$LOCALIZE[31350],]" />
                         <param name="content" value="plugin://script.skin.helper.widgets/?action=similar&amp;mediatype=tvshows&amp;imdbid=$INFO[ListItem.IMDBNumber]" />
                         <param name="infolabel" value="false" />
@@ -370,36 +370,24 @@
                     </include>
 
                     <!-- Studio Movies 9503 -->
-                    <include content="Object_VideoInfo_CastList" condition="Container.Content(movies)">
+                    <include content="Object_VideoInfo_CastList">
                         <param name="onup" value="9502" />
                         <param name="id" value="9503" />
                         <param name="ondown" value="9504" />
                         <param name="label" value="$INFO[ListItem.Studio,$LOCALIZE[31025] ,]" />
-                        <param name="content" value="plugin://script.extendedinfo?info=studio&amp;&amp;studio=$INFO[ListItem.Studio]" />
+                        <param name="content" value="$VAR[Defs_VideoInfo_StudioMovies]" />
                         <param name="infolabel" value="false" />
                         <param name="include_onclick" value="true" />
                         <param name="onclick" value="RunScript(script.extendedinfo,info=extendedinfo,name=$INFO[ListItem.Label],imdb_id=$INFO[ListItem.IMDBNumber])" />
                     </include>
 
                     <!-- Images -->
-                    <include content="Object_VideoInfo_CastList" condition="Container.Content(movies)">
+                    <include content="Object_VideoInfo_CastList">
                         <param name="onup" value="9503" />
                         <param name="id" value="9504" />
                         <param name="ondown" value="9505" />
                         <param name="label" value="$LOCALIZE[31365]" />
-                        <param name="content" value="$INFO[ListItem.Path,,/extrafanart/]" />
-                        <param name="infolabel" value="false" />
-                        <param name="itemwidth" value="606.66" />
-                        <param name="showfocuslabel" value="false" />
-                        <param name="include_onclick" value="true" />
-                        <param name="onclick" value="SetFocus(9991)" />
-                    </include>
-                    <include content="Object_VideoInfo_CastList" condition="!Container.Content(movies)">
-                        <param name="onup" value="9502" />
-                        <param name="id" value="9504" />
-                        <param name="ondown" value="9505" />
-                        <param name="label" value="$LOCALIZE[31365]" />
-                        <param name="content" value="$INFO[ListItem.FileNameAndPath,,/extrafanart/]" />
+                        <param name="content" value="$VAR[Defs_VideoInfo_Images]" />
                         <param name="infolabel" value="false" />
                         <param name="itemwidth" value="606.66" />
                         <param name="showfocuslabel" value="false" />
@@ -408,41 +396,12 @@
                     </include>
 
                     <!-- Extras -->
-                    <include content="Object_VideoInfo_CastList" condition="Container.Content(movies) + String.IsEmpty(Window(home).Property(SpecialFeatures.Widget))">
+                    <include content="Object_VideoInfo_CastList">
                         <param name="onup" value="9504" />
                         <param name="id" value="9505" />
                         <param name="ondown" value="9506" />
                         <param name="label" value="$LOCALIZE[31169]" />
-                        <param name="content" value="$INFO[ListItem.Path,,/Extras/]" />
-                        <param name="infolabel" value="false" />
-                        <param name="itemwidth" value="606.66" />
-                        <param name="fallbackimage" value="DefaultVideo.png" />
-                        <param name="include_onclick" value="true" />
-                        <param name="onclick" value="SetProperty(TrailerPlaying,9505,Home)" />
-                        <param name="onclick2" value="PlayMedia($INFO[ListItem.FileNameAndPath],1)" />
-                        <param name="onclick3" value="SetFocus(9002)" />
-                    </include>
-                    <include content="Object_VideoInfo_CastList" condition="!Container.Content(movies) + String.IsEmpty(Window(home).Property(SpecialFeatures.Widget))">
-                        <param name="onup" value="9504" />
-                        <param name="id" value="9505" />
-                        <param name="ondown" value="9506" />
-                        <param name="label" value="$LOCALIZE[31169]" />
-                        <param name="content" value="$INFO[ListItem.FileNameAndPath,,Extras/]" />
-                        <!-- <param name="content" value="$INFO[Window(home).Property(SpecialFeatures.Widget)]" /> -->
-                        <param name="infolabel" value="false" />
-                        <param name="itemwidth" value="606.66" />
-                        <param name="fallbackimage" value="DefaultVideo.png" />
-                        <param name="include_onclick" value="true" />
-                        <param name="onclick" value="SetProperty(TrailerPlaying,9505,Home)" />
-                        <param name="onclick2" value="PlayMedia($INFO[ListItem.FileNameAndPath],1)" />
-                        <param name="onclick3" value="SetFocus(9002)" />
-                    </include>
-                    <include content="Object_VideoInfo_CastList" condition="!String.IsEmpty(Window(home).Property(SpecialFeatures.Widget))">
-                        <param name="onup" value="9504" />
-                        <param name="id" value="9505" />
-                        <param name="ondown" value="9506" />
-                        <param name="label" value="$LOCALIZE[31169]" />
-                        <param name="content" value="$INFO[Window(home).Property(SpecialFeatures.Widget)]" />
+                        <param name="content" value="$VAR[Defs_VideoInfo_Extras]" />
                         <param name="infolabel" value="false" />
                         <param name="itemwidth" value="606.66" />
                         <param name="fallbackimage" value="DefaultVideo.png" />
