@@ -173,13 +173,6 @@
                             <label>$LOCALIZE[31109]</label>
                             <onclick>RunScript(script.skinshortcuts,type=manage&amp;group=mainmenu)</onclick>
                         </control>
-                        <control type="radiobutton" id="9312" description="Display text labels on landscape widgets">
-                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9101)</visible>
-                            <include>Defs_Settings_Button</include>
-                            <label>$LOCALIZE[31291]</label>
-                            <selected>!Skin.HasSetting(WidgetLabels)</selected>
-                            <onclick>Skin.ToggleSetting(WidgetLabels)</onclick>
-                        </control>
                         <control type="radiobutton" id="9317" description="Touch / Mouse enabled widgets">
                             <visible>Integer.IsEqual(Window.Property(CurrentFocus),9101)</visible>
                             <include>Defs_Settings_Button</include>
@@ -204,6 +197,20 @@
                             <label>$LOCALIZE[31002]</label>
                             <selected>!Skin.HasSetting(HideSubmenuWidget)</selected>
                             <onclick>Skin.ToggleSetting(HideSubmenuWidget)</onclick>
+                        </control>
+                        <control type="radiobutton" id="9312" description="Display text labels on landscape widgets">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9101)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31291]</label>
+                            <selected>!Skin.HasSetting(WidgetLabels)</selected>
+                            <onclick>Skin.ToggleSetting(WidgetLabels)</onclick>
+                        </control>
+                        <control type="radiobutton" id="9912" description="Prefer fanart">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9101)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31369]</label>
+                            <selected>Skin.HasSetting(PreferFanartHome)</selected>
+                            <onclick>Skin.ToggleSetting(PreferFanartHome)</onclick>
                         </control>
 
                         <control type="button" id="9271" description="Startup Video">
