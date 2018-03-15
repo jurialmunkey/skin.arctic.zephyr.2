@@ -859,7 +859,7 @@
                             <bottom>0</bottom>
                             <texture background="true" diffuse="diffuse/widgetposter.png">$INFO[ListItem.Icon]</texture>
                             <aspectratio scalediffuse="false">scale</aspectratio>
-                            <visible>[!$PARAM[studios] + !$PARAM[genres] + !$PARAM[text] + !String.IsEqual(ListItem.Icon,ListItem.Art(poster)) + !String.IsEqual(ListItem.Icon,ListItem.Art(tvshow.poster))] | $PARAM[square]</visible>
+                            <visible>[!$PARAM[studios] + !$PARAM[genres] + !$PARAM[text] + String.IsEmpty(ListItem.Art(poster)) + [String.IsEmpty(ListItem.Art(tvshow.poster)) | String.IsEqual(ListItem.DBType,episode)]] | $PARAM[square]</visible>
                             <visible>!String.Contains(ListItem.Icon,/extras/icons/)</visible>
                             <visible>String.IsEmpty(ListItem.ChannelName) + String.IsEmpty(ListItem.ChannelNumber) + !String.Contains(ListItem.FileNameAndPath,channelid)</visible>
                         </control>
@@ -870,7 +870,7 @@
                             <bottom>0</bottom>
                             <texture background="true" diffuse="diffuse/widgetposter.png">$INFO[ListItem.Icon]</texture>
                             <aspectratio scalediffuse="false">keep</aspectratio>
-                            <visible>[!$PARAM[studios] + !$PARAM[genres] + !$PARAM[text] + !String.IsEqual(ListItem.Icon,ListItem.Art(poster)) + !String.IsEqual(ListItem.Icon,ListItem.Art(tvshow.poster))] | $PARAM[square]</visible>
+                            <visible>[!$PARAM[studios] + !$PARAM[genres] + !$PARAM[text] + String.IsEmpty(ListItem.Art(poster)) + [String.IsEmpty(ListItem.Art(tvshow.poster)) | String.IsEqual(ListItem.DBType,episode)]] | $PARAM[square]</visible>
                             <visible>!String.Contains(ListItem.Icon,/extras/icons/)</visible>
                             <visible>!String.IsEmpty(ListItem.ChannelName) | !String.IsEmpty(ListItem.ChannelNumber) | String.Contains(ListItem.FileNameAndPath,channelid)</visible>
                         </control>
@@ -881,14 +881,14 @@
                             <bottom>47</bottom>
                             <texture background="true" colordiffuse="main_fg_70" diffuse="diffuse/widgetposter.png">$INFO[ListItem.Icon]</texture>
                             <aspectratio scalediffuse="false">keep</aspectratio>
-                            <visible>[!$PARAM[studios] + !$PARAM[genres] + !$PARAM[text] + !String.IsEqual(ListItem.Icon,ListItem.Art(poster)) + !String.IsEqual(ListItem.Icon,ListItem.Art(tvshow.poster))] | $PARAM[square]</visible>
+                            <visible>[!$PARAM[studios] + !$PARAM[genres] + !$PARAM[text] + String.IsEmpty(ListItem.Art(poster)) + [String.IsEmpty(ListItem.Art(tvshow.poster)) | String.IsEqual(ListItem.DBType,episode)]] | $PARAM[square]</visible>
                             <visible>String.Contains(ListItem.Icon,/extras/icons/)</visible>
                         </control>
                     </control>
                     <control type="image">
                         <texture background="true" diffuse="diffuse/widgetposter.png">$VAR[Image_Poster]</texture>
                         <aspectratio scalediffuse="false">scale</aspectratio>
-                        <visible>!$PARAM[landscape] + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text] + !$PARAM[square] + [String.IsEqual(ListItem.Icon,ListItem.Art(poster)) | String.IsEqual(ListItem.Icon,ListItem.Art(tvshow.poster)) | $PARAM[poster]]</visible>
+                        <visible>!$PARAM[landscape] + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text] + !$PARAM[square] + [!String.IsEmpty(ListItem.Art(poster)) | [!String.IsEmpty(ListItem.Art(tvshow.poster)) + !String.IsEqual(ListItem.DBType,episode)] | $PARAM[poster]]</visible>
                     </control>
                     <control type="group">
                         <visible>$PARAM[landscape]</visible>
@@ -1018,7 +1018,7 @@
                             <bottom>0</bottom>
                             <texture background="true">$INFO[ListItem.Icon]</texture>
                             <aspectratio>scale</aspectratio>
-                            <visible>[!$PARAM[studios] + !$PARAM[genres] + !$PARAM[text] + !String.IsEqual(ListItem.Icon,ListItem.Art(poster)) + !String.IsEqual(ListItem.Icon,ListItem.Art(tvshow.poster))] | $PARAM[square]</visible>
+                            <visible>[!$PARAM[studios] + !$PARAM[genres] + !$PARAM[text] + String.IsEmpty(ListItem.Art(poster)) + [String.IsEmpty(ListItem.Art(tvshow.poster)) | String.IsEqual(ListItem.DBType,episode)]] | $PARAM[square]</visible>
                             <visible>!String.Contains(ListItem.Icon,/extras/icons/)</visible>
                             <visible>String.IsEmpty(ListItem.ChannelName) + String.IsEmpty(ListItem.ChannelNumber) + !String.Contains(ListItem.FileNameAndPath,channelid)</visible>
                         </control>
@@ -1029,7 +1029,7 @@
                             <bottom>0</bottom>
                             <texture background="true">$INFO[ListItem.Icon]</texture>
                             <aspectratio>keep</aspectratio>
-                            <visible>[!$PARAM[studios] + !$PARAM[genres] + !$PARAM[text] + !String.IsEqual(ListItem.Icon,ListItem.Art(poster)) + !String.IsEqual(ListItem.Icon,ListItem.Art(tvshow.poster))] | $PARAM[square]</visible>
+                            <visible>[!$PARAM[studios] + !$PARAM[genres] + !$PARAM[text] + String.IsEmpty(ListItem.Art(poster)) + [String.IsEmpty(ListItem.Art(tvshow.poster)) | String.IsEqual(ListItem.DBType,episode)]] | $PARAM[square]</visible>
                             <visible>!String.Contains(ListItem.Icon,/extras/icons/)</visible>
                             <visible>!String.IsEmpty(ListItem.ChannelName) | !String.IsEmpty(ListItem.ChannelNumber) | String.Contains(ListItem.FileNameAndPath,channelid)</visible>
                         </control>
@@ -1040,14 +1040,14 @@
                             <bottom>47</bottom>
                             <texture background="true" colordiffuse="Selected">$INFO[ListItem.Icon]</texture>
                             <aspectratio>keep</aspectratio>
-                            <visible>[!$PARAM[studios] + !$PARAM[genres] + !$PARAM[text] + !String.IsEqual(ListItem.Icon,ListItem.Art(poster)) + !String.IsEqual(ListItem.Icon,ListItem.Art(tvshow.poster))] | $PARAM[square]</visible>
+                            <visible>[!$PARAM[studios] + !$PARAM[genres] + !$PARAM[text] + String.IsEmpty(ListItem.Art(poster)) + [String.IsEmpty(ListItem.Art(tvshow.poster)) | String.IsEqual(ListItem.DBType,episode)]] | $PARAM[square]</visible>
                             <visible>String.Contains(ListItem.Icon,/extras/icons/)</visible>
                         </control>
                     </control>
                     <control type="image">
                         <texture background="true">$VAR[Image_Poster]</texture>
                         <aspectratio>scale</aspectratio>
-                        <visible>!$PARAM[landscape] + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text] + !$PARAM[square] + [String.IsEqual(ListItem.Icon,ListItem.Art(poster)) | String.IsEqual(ListItem.Icon,ListItem.Art(tvshow.poster)) | $PARAM[poster]]</visible>
+                        <visible>!$PARAM[landscape] + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text] + !$PARAM[square] + [!String.IsEmpty(ListItem.Art(poster)) | [!String.IsEmpty(ListItem.Art(tvshow.poster)) + !String.IsEqual(ListItem.DBType,episode)] | $PARAM[poster]]</visible>
                     </control>
                     <control type="group">
                         <visible>$PARAM[landscape]</visible>
