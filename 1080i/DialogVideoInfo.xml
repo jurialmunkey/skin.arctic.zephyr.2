@@ -116,7 +116,7 @@
                         <right>view_pad</right>
                         <height>455</height>
                         <top>-15</top>
-                        <visible>!Container.Content(musicvideos)</visible>
+                        <visible>!String.IsEqual(ListItem.DBType,musicvideo)</visible>
                         <visible>Integer.IsGreater(Container(50).NumItems,0) | Container(50).IsUpdating</visible>
                         <!-- Info Label -->
                         <control type="grouplist">
@@ -322,7 +322,7 @@
                     </control>
 
                     <!-- Director Movies 9501 -->
-                    <include content="Object_VideoInfo_CastList" condition="Container.Content(movies)">
+                    <include content="Object_VideoInfo_CastList" condition="String.IsEqual(ListItem.DBType,movie)">
                         <param name="onup" value="9500" />
                         <param name="id" value="9501" />
                         <param name="ondown" value="9502" />
@@ -334,7 +334,7 @@
                     </include>
 
                     <!-- Next Up Episodes 9501 -->
-                    <include content="Object_VideoInfo_CastList" condition="!Container.Content(movies)">
+                    <include content="Object_VideoInfo_CastList" condition="!String.IsEqual(ListItem.DBType,movie)">
                         <param name="onup" value="9500" />
                         <param name="id" value="9501" />
                         <param name="ondown" value="9502" />
@@ -347,7 +347,7 @@
                     </include>
 
                     <!-- Similar Movies 9502 -->
-                    <include content="Object_VideoInfo_CastList" condition="Container.Content(movies)">
+                    <include content="Object_VideoInfo_CastList" condition="String.IsEqual(ListItem.DBType,movie)">
                         <param name="onup" value="9501" />
                         <param name="id" value="9502" />
                         <param name="ondown" value="9503" />
@@ -359,7 +359,7 @@
                     </include>
 
                     <!-- Similar TvShows 9502 -->
-                    <include content="Object_VideoInfo_CastList" condition="!Container.Content(movies)">
+                    <include content="Object_VideoInfo_CastList" condition="!String.IsEqual(ListItem.DBType,movie)">
                         <param name="onup" value="9501" />
                         <param name="id" value="9502" />
                         <param name="ondown" value="9503" />
@@ -448,7 +448,7 @@
                             <height>360</height>
                             <aspectratio>keep</aspectratio>
                             <texture background="true">$INFO[ListItem.Art(discart)]</texture>
-                            <visible>Container.Content(movies)</visible>
+                            <visible>String.IsEqual(ListItem.DBType,movie)</visible>
                         </control>
                         <control type="image">
                             <top>60</top>
@@ -457,7 +457,7 @@
                             <height>360</height>
                             <aspectratio>keep</aspectratio>
                             <texture background="true">$INFO[ListItem.Art(characterart)]</texture>
-                            <visible>!Container.Content(movies)</visible>
+                            <visible>!String.IsEqual(ListItem.DBType,movie)</visible>
                         </control>
                         <control type="grouplist">
                             <top>90</top>
@@ -620,7 +620,7 @@
         <control type="button" id="9006">
             <label>20339</label>
             <onclick>SetFocus(9503)</onclick>
-            <visible>Container.Content(movies)</visible>
+            <visible>String.IsEqual(ListItem.DBType,movie)</visible>
             <visible>!String.IsEmpty(ListItem.IMDBNumber)</visible>
             <include>Defs_Hidden_Button</include>
         </control>
@@ -636,20 +636,20 @@
             <!-- If ADownloader installed but not ABeef then use AD otherwise prefer AB -->
             <!-- AD has been depreciated but some still use it -->
 
-            <onclick condition="Container.Content(tvshows) + !Skin.HasSetting(ArtworkDownloaderAll) + System.HasAddon(script.artwork.downloader) + !System.HasAddon(script.artwork.beef)">XBMC.RunScript(script.artwork.downloader, mode=gui, mediatype=tvshow, dbid=$INFO[ListItem.DBID])</onclick>
-            <onclick condition="Container.Content(movies) + !Skin.HasSetting(ArtworkDownloaderAll) + System.HasAddon(script.artwork.downloader) + !System.HasAddon(script.artwork.beef)">XBMC.RunScript(script.artwork.downloader, mode=gui, mediatype=movie, dbid=$INFO[ListItem.DBID])</onclick>
-            <onclick condition="Container.Content(tvshows) + Skin.HasSetting(ArtworkDownloaderAll) + System.HasAddon(script.artwork.downloader) + !System.HasAddon(script.artwork.beef)">XBMC.RunScript(script.artwork.downloader, mediatype=tvshow, dbid=$INFO[ListItem.DBID])</onclick>
-            <onclick condition="Container.Content(movies) + Skin.HasSetting(ArtworkDownloaderAll) + System.HasAddon(script.artwork.downloader) + !System.HasAddon(script.artwork.beef)">XBMC.RunScript(script.artwork.downloader, mediatype=movie, dbid=$INFO[ListItem.DBID])</onclick>
+            <onclick condition="String.IsEqual(ListItem.DBType,tvshow) + !Skin.HasSetting(ArtworkDownloaderAll) + System.HasAddon(script.artwork.downloader) + !System.HasAddon(script.artwork.beef)">XBMC.RunScript(script.artwork.downloader, mode=gui, mediatype=tvshow, dbid=$INFO[ListItem.DBID])</onclick>
+            <onclick condition="String.IsEqual(ListItem.DBType,movie) + !Skin.HasSetting(ArtworkDownloaderAll) + System.HasAddon(script.artwork.downloader) + !System.HasAddon(script.artwork.beef)">XBMC.RunScript(script.artwork.downloader, mode=gui, mediatype=movie, dbid=$INFO[ListItem.DBID])</onclick>
+            <onclick condition="String.IsEqual(ListItem.DBType,tvshow) + Skin.HasSetting(ArtworkDownloaderAll) + System.HasAddon(script.artwork.downloader) + !System.HasAddon(script.artwork.beef)">XBMC.RunScript(script.artwork.downloader, mediatype=tvshow, dbid=$INFO[ListItem.DBID])</onclick>
+            <onclick condition="String.IsEqual(ListItem.DBType,movie) + Skin.HasSetting(ArtworkDownloaderAll) + System.HasAddon(script.artwork.downloader) + !System.HasAddon(script.artwork.beef)">XBMC.RunScript(script.artwork.downloader, mediatype=movie, dbid=$INFO[ListItem.DBID])</onclick>
 
-            <onclick condition="Container.Content(episodes) + !Skin.HasSetting(ArtworkDownloaderAll) + System.HasAddon(script.artwork.beef)">XBMC.RunScript(script.artwork.beef, mode=gui, mediatype=episode, dbid=$INFO[ListItem.DBID])</onclick>
-            <onclick condition="Container.Content(tvshows) + !Skin.HasSetting(ArtworkDownloaderAll) + System.HasAddon(script.artwork.beef)">XBMC.RunScript(script.artwork.beef, mode=gui, mediatype=tvshow, dbid=$INFO[ListItem.DBID])</onclick>
-            <onclick condition="Container.Content(movies) + !Skin.HasSetting(ArtworkDownloaderAll) + System.HasAddon(script.artwork.beef)">XBMC.RunScript(script.artwork.beef, mode=gui, mediatype=movie, dbid=$INFO[ListItem.DBID])</onclick>
-            <onclick condition="Container.Content(episodes) + Skin.HasSetting(ArtworkDownloaderAll) + System.HasAddon(script.artwork.beef)">XBMC.RunScript(script.artwork.beef, mode=auto, mediatype=tvshow, dbid=$INFO[ListItem.DBID])</onclick>
-            <onclick condition="Container.Content(tvshows) + Skin.HasSetting(ArtworkDownloaderAll) + System.HasAddon(script.artwork.beef)">XBMC.RunScript(script.artwork.beef, mode=auto, mediatype=tvshow, dbid=$INFO[ListItem.DBID])</onclick>
-            <onclick condition="Container.Content(movies) + Skin.HasSetting(ArtworkDownloaderAll) + System.HasAddon(script.artwork.beef)">XBMC.RunScript(script.artwork.beef, mode=auto, mediatype=movie, dbid=$INFO[ListItem.DBID])</onclick>
+            <onclick condition="String.IsEqual(ListItem.DBType,episode) + !Skin.HasSetting(ArtworkDownloaderAll) + System.HasAddon(script.artwork.beef)">XBMC.RunScript(script.artwork.beef, mode=gui, mediatype=episode, dbid=$INFO[ListItem.DBID])</onclick>
+            <onclick condition="String.IsEqual(ListItem.DBType,tvshow) + !Skin.HasSetting(ArtworkDownloaderAll) + System.HasAddon(script.artwork.beef)">XBMC.RunScript(script.artwork.beef, mode=gui, mediatype=tvshow, dbid=$INFO[ListItem.DBID])</onclick>
+            <onclick condition="String.IsEqual(ListItem.DBType,movie) + !Skin.HasSetting(ArtworkDownloaderAll) + System.HasAddon(script.artwork.beef)">XBMC.RunScript(script.artwork.beef, mode=gui, mediatype=movie, dbid=$INFO[ListItem.DBID])</onclick>
+            <onclick condition="String.IsEqual(ListItem.DBType,episode) + Skin.HasSetting(ArtworkDownloaderAll) + System.HasAddon(script.artwork.beef)">XBMC.RunScript(script.artwork.beef, mode=auto, mediatype=tvshow, dbid=$INFO[ListItem.DBID])</onclick>
+            <onclick condition="String.IsEqual(ListItem.DBType,tvshow) + Skin.HasSetting(ArtworkDownloaderAll) + System.HasAddon(script.artwork.beef)">XBMC.RunScript(script.artwork.beef, mode=auto, mediatype=tvshow, dbid=$INFO[ListItem.DBID])</onclick>
+            <onclick condition="String.IsEqual(ListItem.DBType,movie) + Skin.HasSetting(ArtworkDownloaderAll) + System.HasAddon(script.artwork.beef)">XBMC.RunScript(script.artwork.beef, mode=auto, mediatype=movie, dbid=$INFO[ListItem.DBID])</onclick>
             <description>Get Artwork</description>
             <include>Defs_Hidden_Button</include>
-            <visible>[Container.Content(tvshows) | Container.Content(movies) | Container.Content(musicvideos) | Container.Content(episodes)] + [system.hasaddon(script.artwork.downloader) | system.hasaddon(script.artwork.beef)]</visible>
+            <visible>[String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,musicvideo) | String.IsEqual(ListItem.DBType,episode)] + [system.hasaddon(script.artwork.downloader) | system.hasaddon(script.artwork.beef)]</visible>
         </control>
 
         <control type="button" id ="6">
