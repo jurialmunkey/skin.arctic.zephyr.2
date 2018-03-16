@@ -12,6 +12,7 @@
         <param name="oscars" default="true" />
         <param name="visible" default="false" />
         <param name="genre" default="true" />
+        <param name="titleright" default="0" />
         <definition>
             <control type="grouplist">
                 <top>-10</top>
@@ -22,7 +23,7 @@
                 <itemgap>0</itemgap>
                 <control type="label">
                     <left>0</left>
-                    <right>0</right>
+                    <right>$PARAM[titleright]</right>
                     <label>$INFO[ListItem.Label]</label>
                     <height>80</height>
                     <aligny>top</aligny>
