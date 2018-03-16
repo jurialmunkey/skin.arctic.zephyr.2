@@ -324,15 +324,9 @@
                 <right>view_pad</right>
                 <top>view_pad</top>
                 <bottom>view_pad</bottom>
-                <control type="image">
-                    <left>-10</left>
-                    <right>-10</right>
-                    <bottom>-10</bottom>
-                    <top>-10</top>
-                    <bordersize>10</bordersize>
-                    <include condition="!Skin.HasSetting(DisableShadows)">Defs_Shadow_Small</include>
-                    <texture colordiffuse="PosterBack" border="10">diffuse/box.png</texture>
-                </control>
+                <include content="Defs_PosterBack">
+                    <param name="pad" value="-10" />
+                </include>
                 <control type="wraplist" id="59">
                     <visible>Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(artists) | $EXP[Exp_IsPluginAdvancedLauncher]</visible>
                     <include>View_NotTheseWindows</include>
@@ -614,11 +608,7 @@
                     <bottom>$PARAM[bottom_offset]</bottom>
                     <control type="group">
                         <height>185</height>
-                        <control type="image">
-                            <bordersize>10</bordersize>
-                            <include condition="!Skin.HasSetting(DisableShadows)">Defs_Shadow_Small</include>
-                            <texture colordiffuse="PosterBack" border="10">diffuse/box.png</texture>
-                        </control>
+                        <include>Defs_PosterBack</include>
                         <control type="image">
                             <bordersize>10</bordersize>
                             <aspectratio aligny="center" scalediffuse="false">scale</aspectratio>
@@ -669,11 +659,7 @@
                     <include>Animation_FocusBounce_Small</include>
                     <control type="group">
                         <height>185</height>
-                        <control type="image">
-                            <bordersize>10</bordersize>
-                            <include condition="!Skin.HasSetting(DisableShadows)">Defs_Shadow_Small</include>
-                            <texture colordiffuse="PosterBack" border="10">diffuse/box.png</texture>
-                        </control>
+                        <include>Defs_PosterBack</include>
                         <control type="image">
                             <bordersize>10</bordersize>
                             <aspectratio aligny="center" scalediffuse="false">scale</aspectratio>
@@ -865,11 +851,7 @@
                     <top>$PARAM[top_offset]</top>
                     <bottom>$PARAM[bottom_offset]</bottom>
                     <control type="group">
-                        <control type="image">
-                            <bordersize>10</bordersize>
-                            <include condition="!Skin.HasSetting(DisableShadows)">Defs_Shadow_Small</include>
-                            <texture colordiffuse="PosterBack">common/white.png</texture>
-                        </control>
+                        <include>Defs_PosterBack</include>
                         <control type="image">
                             <bordersize>10</bordersize>
                             <texture background="true" colordiffuse="main_fg_70">$INFO[ListItem.Icon]</texture>
@@ -895,11 +877,7 @@
                     <bottom>$PARAM[bottom_offset]</bottom>
                     <control type="group">
                         <visible>!Control.HasFocus($PARAM[id])</visible>
-                        <control type="image">
-                            <bordersize>10</bordersize>
-                            <include condition="!Skin.HasSetting(DisableShadows)">Defs_Shadow_Small</include>
-                            <texture colordiffuse="PosterBack">common/white.png</texture>
-                        </control>
+                        <include>Defs_PosterBack</include>
                         <control type="image">
                             <bordersize>10</bordersize>
                             <texture background="true" colordiffuse="main_fg_70">$INFO[ListItem.Icon]</texture>
@@ -917,11 +895,7 @@
                     </control>
                     <control type="group">
                         <visible>Control.HasFocus($PARAM[id])</visible>
-                        <control type="image">
-                            <bordersize>10</bordersize>
-                            <include condition="!Skin.HasSetting(DisableShadows)">Defs_Shadow_Small</include>
-                            <texture colordiffuse="PosterBack">common/white.png</texture>
-                        </control>
+                        <include>Defs_PosterBack</include>
                         <control type="image">
                             <bordersize>10</bordersize>
                             <texture background="true" colordiffuse="Selected">$INFO[ListItem.Icon]</texture>
@@ -988,11 +962,7 @@
         </control>
     </include>
     <include name="View_Landscape_Artwork">
-        <control type="image">
-            <bordersize>10</bordersize>
-            <include condition="!Skin.HasSetting(DisableShadows)">Defs_Shadow_Small</include>
-            <texture colordiffuse="PosterBack" border="10">diffuse/box.png</texture>
-        </control>
+        <include>Defs_PosterBack</include>
         <control type="image">
             <bordersize>10</bordersize>
             <aspectratio aligny="center" scalediffuse="false">scale</aspectratio>
@@ -1039,11 +1009,7 @@
     <include name="View_Posters_Itemlayout_Artwork">
         <control type="group" description="ParentFolder and DefaultIcon">
             <visible>ListItem.IsParentFolder | String.StartsWith(ListItem.Icon,Default) | ![!String.IsEmpty(ListItem.Art(poster)) | !String.IsEmpty(ListItem.Art(tvshow.poster)) | !String.IsEmpty(ListItem.Art(season.poster))] | Container.Content(musicvideos)</visible>
-            <control type="image">
-                <bordersize>10</bordersize>
-                <include condition="!Skin.HasSetting(DisableShadows)">Defs_Shadow_Small</include>
-                <texture colordiffuse="PosterBack" border="10">diffuse/box.png</texture>
-            </control>
+            <include>Defs_PosterBack</include>
             <control type="image">
                 <bordersize>10</bordersize>
                 <aspectratio aligny="center" scalediffuse="false">keep</aspectratio>
@@ -1108,11 +1074,7 @@
     <include name="View_Posters_Focusedlayout_Artwork">
         <control type="group" description="ParentFolder and DefaultIcon">
             <visible>ListItem.IsParentFolder | String.StartsWith(ListItem.Icon,Default) | Container.Content(musicvideos) | ![!String.IsEmpty(ListItem.Art(poster)) | !String.IsEmpty(ListItem.Art(tvshow.poster)) | !String.IsEmpty(ListItem.Art(season.poster))]</visible>
-            <control type="image">
-                <bordersize>10</bordersize>
-                <include condition="!Skin.HasSetting(DisableShadows)">Defs_Shadow_Small</include>
-                <texture colordiffuse="PosterBack" border="10">diffuse/box.png</texture>
-            </control>
+            <include>Defs_PosterBack</include>
             <control type="image">
                 <bordersize>10</bordersize>
                 <aspectratio aligny="center" scalediffuse="false">keep</aspectratio>

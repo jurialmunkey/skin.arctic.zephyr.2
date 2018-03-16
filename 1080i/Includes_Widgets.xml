@@ -148,11 +148,7 @@
                 <onback condition="Window.IsVisible(Home)">300</onback>
                 <orientation>horizontal</orientation>
                 <itemlayout width="455" height="306.66">
-                    <control type="image">
-                        <bordersize>10</bordersize>
-                        <include condition="!Skin.HasSetting(DisableShadows)">Defs_Shadow_Small</include>
-                        <texture colordiffuse="PosterBack" border="20">diffuse/box.png</texture>
-                    </control>
+                    <include>Defs_PosterBack</include>
                     <control type="image">
                         <bordersize>10</bordersize>
                         <texture colordiffuse="PixelLines" border="20">common/outline.png</texture>
@@ -202,11 +198,7 @@
                 </itemlayout>
                 <focusedlayout width="455" height="306.66">
                     <control type="group">
-                        <control type="image">
-                            <bordersize>10</bordersize>
-                            <include condition="!Skin.HasSetting(DisableShadows)">Defs_Shadow_Small</include>
-                            <texture colordiffuse="PosterBack" border="20">diffuse/box.png</texture>
-                        </control>
+                        <include>Defs_PosterBack</include>
                         <control type="image">
                             <bordersize>10</bordersize>
                             <texture colordiffuse="PixelLines" border="20">common/outline.png</texture>
@@ -706,11 +698,7 @@
                 <top>0</top>
                 <bottom>-0</bottom>
                 <control type="group">
-                    <control type="image">
-                        <bordersize>10</bordersize>
-                        <include condition="!Skin.HasSetting(DisableShadows)">Defs_Shadow_Small</include>
-                        <texture colordiffuse="PosterBack" border="20">diffuse/box.png</texture>
-                    </control>
+                    <include>Defs_PosterBack</include>
                     <control type="image">
                         <bordersize>10</bordersize>
                         <texture background="true" colordiffuse="main_fg_70" diffuse="diffuse/submenu.png">$INFO[ListItem.Icon]</texture>
@@ -746,11 +734,7 @@
                 <visible>Control.HasFocus($PARAM[id])</visible>
                 <include>Animation_FocusBounce_Large</include>
                 <control type="group">
-                    <control type="image">
-                        <bordersize>10</bordersize>
-                        <include condition="!Skin.HasSetting(DisableShadows)">Defs_Shadow_Small</include>
-                        <texture colordiffuse="PosterBack" border="20">diffuse/box.png</texture>
-                    </control>
+                    <include>Defs_PosterBack</include>
                     <control type="image">
                         <bordersize>10</bordersize>
                         <texture background="true" diffuse="diffuse/submenu.png">$INFO[ListItem.Icon]</texture>
@@ -792,11 +776,7 @@
                 <right>-60</right>
                 <top>0</top>
                 <bottom>-0</bottom>
-                <control type="image">
-                    <bordersize>10</bordersize>
-                    <include condition="!Skin.HasSetting(DisableShadows)">Defs_Shadow_Small</include>
-                    <texture colordiffuse="PosterBack" border="20">diffuse/box.png</texture>
-                </control>
+                <include>Defs_PosterBack</include>
                 <control type="group">
                     <top>10</top>
                     <right>10</right>
@@ -953,11 +933,7 @@
                 <visible>Control.HasFocus($PARAM[id])</visible>
                 <include condition="!$PARAM[landscape]">Animation_FocusBounce</include>
                 <include condition="$PARAM[landscape]">Animation_FocusBounce_Small</include>
-                <control type="image">
-                    <bordersize>10</bordersize>
-                    <include condition="!Skin.HasSetting(DisableShadows)">Defs_Shadow_Small</include>
-                    <texture colordiffuse="PosterBack" border="20">diffuse/box.png</texture>
-                </control>
+                <include>Defs_PosterBack</include>
                 <control type="group">
                     <top>10</top>
                     <right>10</right>

@@ -25,11 +25,7 @@
                                 <right>-10</right>
                                 <bottom>-10</bottom>
                                 <top>-10</top>
-                                <control type="image">
-                                    <bordersize>10</bordersize>
-                                    <include condition="!Skin.HasSetting(DisableShadows)">Defs_Shadow_Small</include>
-                                    <texture colordiffuse="PosterBack" border="10">diffuse/box.png</texture>
-                                </control>
+                                <include>Defs_PosterBack</include>
                                 <control type="image">
                                     <bordersize>10</bordersize>
                                     <aspectratio aligny="center" scalediffuse="false">scale</aspectratio>
@@ -238,11 +234,7 @@
                                 <right>-10</right>
                                 <bottom>-10</bottom>
                                 <top>-10</top>
-                                <control type="image">
-                                    <bordersize>10</bordersize>
-                                    <include condition="!Skin.HasSetting(DisableShadows)">Defs_Shadow_Small</include>
-                                    <texture colordiffuse="PosterBack" border="10">diffuse/box.png</texture>
-                                </control>
+                                <include>Defs_PosterBack</include>
                                 <control type="image">
                                     <bordersize>10</bordersize>
                                     <aspectratio aligny="center" scalediffuse="false">scale</aspectratio>
@@ -397,17 +389,9 @@
                 <top>view_pad</top>
                 <width>poster_width</width>
                 <height>900</height>
-                <control type="group">
-                    <left>-10</left>
-                    <right>-10</right>
-                    <bottom>-10</bottom>
-                    <top>-10</top>
-                    <control type="image">
-                        <bordersize>10</bordersize>
-                        <include condition="!Skin.HasSetting(DisableShadows)">Defs_Shadow_Small</include>
-                        <texture colordiffuse="PosterBack" border="20">diffuse/box.png</texture>
-                    </control>
-                </control>
+                <include content="Defs_PosterBack">
+                    <param name="pad" value="-10" />
+                </include>
                 <include content="Object_BigPoster">
                     <param name="discart" value="false" />
                     <param name="aspect" value="scale" />
