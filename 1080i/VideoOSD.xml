@@ -8,7 +8,6 @@
     <onunload>ClearProperty(OSDInfo,Home)</onunload>
     <onunload condition="!String.IsEmpty(Window(Home).Property(OSDExtendedInfo)) + Player.Paused">Play</onunload>
     <onunload condition="!String.IsEmpty(Window(Home).Property(OSDExtendedInfo))">ClearProperty(OSDExtendedInfo,Home)</onunload>
-    <onload condition="String.Contains(Player.Art(thumb),ytimg)">RunScript(script.skin.helper.service,action=stripstring,splitchar=/,string=$INFO[Window(Home).Property(ThumbSplit1)],output=ThumbSplit2,index=0)</onload>
     <controls>
 
         <control type="group">
@@ -29,8 +28,6 @@
                 <include>OSD_Controls</include>
             </control>
         </control>
-
-        <include condition="System.HasAddon(plugin.video.youtube)">Object_Youtube_Recommended</include>
 
         <include content="OSD_Menu_List">
             <param name="content" value="Items_OSD_Settings" />

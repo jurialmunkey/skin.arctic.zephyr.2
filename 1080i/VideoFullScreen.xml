@@ -2,18 +2,8 @@
 <!-- Foundation -->
 <window id="2005">
     <onload>ClearProperty(ViewType,Home)</onload>
-    <onload>ClearProperty(ThumbSplit1,Home)</onload>
-    <onload>ClearProperty(ThumbSplit2,Home)</onload>
-    <onload condition="String.Contains(Player.Art(thumb),ytimg)">RunScript(script.skin.helper.service,action=stripstring,splitchar=/vi/,string=$INFO[Player.Art(thumb)],output=ThumbSplit1,index=1)</onload>
-    <onload condition="String.Contains(Player.Art(thumb),ytimg)">AlarmClock(setfo,SetFocus(9606),00:01,silent)</onload>
     <controls>
 
-        <control type="button" id="9606">
-            <onfocus>RunScript(script.skin.helper.service,action=stripstring,splitchar=/,string=$INFO[Window(Home).Property(ThumbSplit1)],output=ThumbSplit2,index=0)</onfocus>
-            <width>1</width>
-            <height>1</height>
-            <left>-1000</left>
-        </control>
         <control type="group" id="0">
             <left>0</left>
             <include>Animation_FadeIn</include>

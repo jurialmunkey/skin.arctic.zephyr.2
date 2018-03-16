@@ -58,11 +58,12 @@
         </control>
 
         <control type="image">
-            <right>0</right>
-            <top>0</top>
-            <width>1920</width>
-            <height>600</height>
-            <texture>common/vignette-corner.png</texture>
+            <right>-100</right>
+            <top>-50</top>
+            <texture>common/shadowspot.png</texture>
+            <height>228</height>
+            <width>800</width>
+                
             <include>Animation_FadeIn</include>
             <include>Animation_FadeOut</include>
             <visible>[Window.IsVisible(DialogVolumeBar.xml) + !Player.Muted] | Window.IsVisible(DialogNotification.xml) | [Window.IsVisible(DialogBusy.xml) + Skin.HasSetting(MinimalBusyLoader)]</visible>
