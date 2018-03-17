@@ -55,11 +55,11 @@
                                 <right>-10</right>
                                 <bottom>-10</bottom>
                                 <top>-10</top>
+                                <include>Defs_PosterBack</include>
                                 <control type="image">
                                     <bordersize>10</bordersize>
-                                    <include condition="!Skin.HasSetting(DisableShadows)">Defs_Shadow_Small</include>
                                     <aspectratio scalediffuse="false">scale</aspectratio>
-                                    <texture diffuse="diffuse/widgetposter.png">$VAR[Image_Poster]</texture>
+                                    <texture diffuse="diffuse/widgetposter.png" fallback="DefaultAddon.png">$VAR[Image_Poster]</texture>
                                 </control>
                                 <control type="image">
                                     <bordersize>10</bordersize>
