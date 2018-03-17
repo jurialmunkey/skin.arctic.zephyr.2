@@ -137,8 +137,7 @@
                     <movement>6</movement>
                     <visible>Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | $EXP[Exp_IsPluginAdvancedLauncher]</visible>
                     <viewtype label="$LOCALIZE[31161]">showcase</viewtype>
-                    <onup>300</onup>
-                    <ondown condition="Control.IsVisible(60)">60</ondown>
+                    <include>View_Movement_Vertical</include>
                     <pagecontrol>60</pagecontrol>
                     <onleft>55</onleft>
                     <onright>55</onright>
@@ -177,8 +176,7 @@
                     <focusposition>0</focusposition>
                     <movement>2</movement>
                     <viewtype label="$LOCALIZE[31361]">showcase</viewtype>
-                    <onup>300</onup>
-                    <ondown condition="Control.IsVisible(60)">60</ondown>
+                    <include>View_Movement_Vertical</include>
                     <pagecontrol>60</pagecontrol>
                     <onleft>56</onleft>
                     <onright>56</onright>
@@ -218,8 +216,7 @@
                     <focusposition>0</focusposition>
                     <movement>4</movement>
                     <viewtype label="$LOCALIZE[31362]">showcase</viewtype>
-                    <onup>300</onup>
-                    <ondown condition="Control.IsVisible(60)">60</ondown>
+                    <include>View_Movement_Vertical</include>
                     <pagecontrol>60</pagecontrol>
                     <onleft>57</onleft>
                     <onright>57</onright>
@@ -260,8 +257,7 @@
                     <focusposition>-1</focusposition>
                     <movement>0</movement>
                     <viewtype label="$LOCALIZE[31363]">icon</viewtype>
-                    <onup>300</onup>
-                    <ondown condition="Control.IsVisible(60)">60</ondown>
+                    <include>View_Movement_Vertical</include>
                     <pagecontrol>60</pagecontrol>
                     <onleft>58</onleft>
                     <onright>58</onright>
@@ -431,7 +427,7 @@
             <focusposition>3</focusposition>
             <movement>3</movement>
             <orientation>$PARAM[orientation]</orientation>
-            <include condition="!Window.IsVisible(DialogVideoInfo.xml)">View_Movement_Horizontal</include>
+            <include>View_Movement_Horizontal</include>
             <preloaditems>2</preloaditems>
             <scrolltime tween="quadratic">400</scrolltime>
             <itemlayout width="260" height="480" condition="$PARAM[posters]">

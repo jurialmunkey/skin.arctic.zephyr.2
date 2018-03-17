@@ -559,8 +559,14 @@
 
     <include name="View_Movement_Horizontal">
         <onright condition="Control.IsVisible(60)">60</onright>
-        <onright condition="!Control.IsVisible(8000) + !Control.IsVisible(60)">300</onright>
+        <onright condition="!Control.IsVisible(60)">300</onright>
         <onleft>300</onleft>
+    </include>
+
+    <include name="View_Movement_Vertical">
+        <ondown condition="Control.IsVisible(60)">60</ondown>
+        <ondown condition="!Control.IsVisible(60)">300</ondown>
+        <onup>300</onup>
     </include>
 
     <include name="View_Forced">

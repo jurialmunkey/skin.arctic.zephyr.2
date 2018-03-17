@@ -1624,6 +1624,7 @@
             <control type="panel" id="8001">
                 <left>view_pad</left>
                 <visible allowhiddenfocus="true">Control.HasFocus(8001)</visible>
+                <include>Animation_FadeIn</include>
                 <orientation>horizontal</orientation>
                 <height>view_pad</height>
                 <onup>50</onup>
@@ -1685,7 +1686,7 @@
             <top>-60</top>
             <bottom>0</bottom>
             <visible>$PARAM[visible]</visible>
-            <showonepage>true</showonepage>
+            <showonepage>false</showonepage>
             <orientation>vertical</orientation>
             <onright condition="[String.IsEqual(Container.SortMethod,$LOCALIZE[551]) | String.IsEqual(Container.SortMethod,$LOCALIZE[556]) | String.IsEqual(Container.SortMethod,$LOCALIZE[557]) | String.IsEqual(Container.SortMethod,$LOCALIZE[558])] + !Container.Content(seasons) + [Control.IsEnabled(3) | Control.IsEnabled(4)] + Skin.HasSetting(AlphabetStrip)">SetFocus(8000)</onright>
             <onright condition="![[String.IsEqual(Container.SortMethod,$LOCALIZE[551]) | String.IsEqual(Container.SortMethod,$LOCALIZE[556]) | String.IsEqual(Container.SortMethod,$LOCALIZE[557]) | String.IsEqual(Container.SortMethod,$LOCALIZE[558])] + !Container.Content(seasons) + [Control.IsEnabled(3) | Control.IsEnabled(4)]] + Skin.HasSetting(AlphabetStrip)">Notification($LOCALIZE[161],$LOCALIZE[31334])</onright>
@@ -1709,7 +1710,7 @@
             <right>0</right>
             <width>100%</width>
             <bottom>0</bottom>
-            <showonepage>true</showonepage>
+            <showonepage>false</showonepage>
             <orientation>horizontal</orientation>
             <onup>50</onup>
             <visible>$PARAM[visible]</visible>
