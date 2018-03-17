@@ -108,6 +108,23 @@
                     <visible>!Skin.HasSetting(DisableVignette)</visible>
                 </control>
             </control>
+
+            <!-- Topbar Home Dim -->
+            <include condition="Window.IsVisible(Home)">Global_Home_Topbar_Image_Dim</include>
+        </control>
+    </include>
+
+    <include name="Global_Home_Topbar_Image_Dim">
+        <control type="image">
+            <height>1080</height>
+            <texture>common/vignette-top.png</texture>
+            <visible>!$EXP[Exp_Info_Visible]</visible>
+            <visible>!Control.HasFocus(9602)</visible>
+            <visible>![[String.IsEqual(Container(300).ListItem.Property(widget),Weather) | !String.IsEmpty(Container(300).ListItem.Property(widgetPath)) | !String.IsEmpty(Container(300).ListItem.Property(widgetPath.Widget1)) | !String.IsEmpty(Container(300).ListItem.Property(widgetPath.Widget2)) | !String.IsEmpty(Container(300).ListItem.Property(widgetPath.Widget3)) | !String.IsEmpty(Container(300).ListItem.Property(widgetPath.Widget4)) | !String.IsEmpty(Container(300).ListItem.Property(widgetPath.Widget5)) | !String.IsEmpty(Container(300).ListItem.Property(widgetPath.Widget6)) | !String.IsEmpty(Container(300).ListItem.Property(widgetPath.Widget7)) | !String.IsEmpty(Container(300).ListItem.Property(widgetPath.Widget8)) | [String.IsEmpty(Container(300).ListItem.Property(Background)) + String.IsEmpty(Container(300).ListItem.Property(backgroundPlaylist)) + String.IsEmpty(Skin.String(home.slideshowpath))] | [String.IsEqual(Container(300).ListItem.Property(hasSubmenu),True) + !Skin.HasSetting(HideSubmenuWidget)]]]</visible>
+            <animation effect="fade" start="0" end="100" time="0" reversible="false">Visible</animation>
+            <animation effect="fade" end="0" start="100" time="1000" reversible="false">Hidden</animation>
+            <animation effect="fade" end="0" start="100" time="350" reversible="false">WindowClose</animation>
+            <animation effect="fade" start="0" end="100" time="200" reversible="false">WindowOpen</animation>
         </control>
     </include>
 
