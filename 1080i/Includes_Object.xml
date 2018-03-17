@@ -227,6 +227,7 @@
         <param name="label2" default="$INFO[ListItem.Label2]"/>
         <param name="itemwidth" default="widget_poster_width" />
         <param name="itemheight" default="widget_poster_height" />
+        <param name="content2" default="" />
         <param name="textonly" default="false" />
         <param name="include_onclick" default="false" />
         <param name="onclick" default="Close" />
@@ -314,6 +315,9 @@
                     <include condition="$PARAM[include_content_nextup]">Object_VideoInfo_CastList_Content_NextUp</include>
                     <include content="Object_VideoInfo_CastList_Content" condition="$PARAM[include_content]">
                         <param name="content" value="$PARAM[content]" />
+                    </include>
+                    <include content="Object_VideoInfo_CastList_Content" condition="$PARAM[include_content]">
+                        <param name="content" value="$PARAM[content2]" />
                     </include>
                 </control>
                 <include content="Dialog_VideoInfo_BusyIndicator" condition="$PARAM[busyspinner]">
