@@ -85,6 +85,7 @@
                 <include content="Object_UpDownInfoArrows">
                     <param name="id" value="330" />
                     <param name="hasprevious" value="false" />
+                    <param name="hasnext" value="!String.IsEqual(Container(300).ListItem.Property(widget),Weather) + !String.IsEqual(Container(300).ListItem.Property(widget),Settings)" />
                 </include>
                 <control type="group">
                     <left>-10</left>
@@ -137,10 +138,9 @@
             <bottom>view_pad</bottom>
             <control type="panel" id="9967">
                 <onfocus>SetProperty(WidgetFocus,1,Home)</onfocus>
-                <right>-10</right>
-                <left>-10</left>
                 <top>-10</top>
-                <bottom>-10</bottom>
+                <width>1820</width>
+                <height>920</height>
                 <onleft condition="Window.IsVisible(Home)">300</onleft>
                 <onright condition="Window.IsVisible(Home)">300</onright>
                 <onup condition="Window.IsVisible(Home)">300</onup>
@@ -873,7 +873,7 @@
                     <control type="group">
                         <visible>$PARAM[landscape]</visible>
                         <control type="image">
-                            <texture background="true" diffuse="diffuse/widgetposter.png">$VAR[Image_Fanart]</texture>
+                            <texture background="true" diffuse="diffuse/widgetlandscape.png">$VAR[Image_Fanart]</texture>
                             <aspectratio scalediffuse="false">scale</aspectratio>
                         </control>
                         <control type="image">
@@ -882,7 +882,7 @@
                             <left>120</left>
                             <right>120</right>
                             <aspectratio aligny="bottom" scalediffuse="false">keep</aspectratio>
-                            <texture background="true" diffuse="diffuse/widgetposter.png">$INFO[ListItem.Art(clearlogo)]</texture>
+                            <texture background="true" diffuse="diffuse/widgetlandscape.png">$INFO[ListItem.Art(clearlogo)]</texture>
                             <visible>!Skin.HasSetting(DisableFakeLandscapeArt) + !String.IsEmpty(ListItem.Art(clearlogo)) + !String.IsEmpty(ListItem.Art(fanart)) + [String.IsEqual(ListItem.Label,ListItem.TvShowTitle) | String.IsEmpty(ListItem.TvShowTitle) | Skin.HasSetting(PreferFanartHome)]</visible>
                         </control>
                         <control type="group">
