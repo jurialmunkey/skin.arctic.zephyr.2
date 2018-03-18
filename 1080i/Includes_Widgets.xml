@@ -796,8 +796,8 @@
                         <top>240</top>
                         <visible>!$PARAM[poster] + !$PARAM[landscape]</visible>
                         <control type="textbox">
-                            <top>7</top>
-                            <bottom>7</bottom>
+                            <top>10</top>
+                            <bottom>10</bottom>
                             <left>20</left>
                             <right>20</right>
                             <align>center</align>
@@ -816,7 +816,7 @@
                             <left>50</left>
                             <right>50</right>
                             <bottom>50</bottom>
-                            <texture background="true" colordiffuse="main_fg_70" fallback="DefaultGenres.png" diffuse="diffuse/widgetposter.png">$VAR[Image_GenreIcons]</texture>
+                            <texture background="true" colordiffuse="main_fg_70" fallback="DefaultGenres.png">$VAR[Image_GenreIcons]</texture>
                             <aspectratio scalediffuse="false">keep</aspectratio>
                             <visible>$PARAM[genres]</visible>
                         </control>
@@ -825,7 +825,7 @@
                             <left>20</left>
                             <right>20</right>
                             <bottom>20</bottom>
-                            <texture background="true" colordiffuse="main_fg_70" fallback="DefaultStudios.png" diffuse="diffuse/widgetposter.png">$INFO[ListItem.Label,resource://resource.images.studios.white/,.png]</texture>
+                            <texture background="true" colordiffuse="main_fg_70" fallback="DefaultStudios.png">$INFO[ListItem.Label,resource://resource.images.studios.white/,.png]</texture>
                             <aspectratio scalediffuse="false">keep</aspectratio>
                             <visible>$PARAM[studios]</visible>
                         </control>
@@ -846,7 +846,7 @@
                             <left>0</left>
                             <right>0</right>
                             <bottom>0</bottom>
-                            <texture background="true" diffuse="diffuse/widgetposter.png">$INFO[ListItem.Icon]</texture>
+                            <texture background="true" diffuse="diffuse/widgetsquare.png">$INFO[ListItem.Icon]</texture>
                             <aspectratio scalediffuse="false">scale</aspectratio>
                             <visible>[!$PARAM[studios] + !$PARAM[genres] + !$PARAM[text] + String.IsEmpty(ListItem.Art(poster)) + [String.IsEmpty(ListItem.Art(tvshow.poster)) | String.IsEqual(ListItem.DBType,episode)]] | $PARAM[square]</visible>
                             <visible>!String.Contains(ListItem.Icon,/extras/icons/)</visible>
@@ -857,7 +857,7 @@
                             <left>0</left>
                             <right>0</right>
                             <bottom>0</bottom>
-                            <texture background="true" diffuse="diffuse/widgetposter.png">$INFO[ListItem.Icon]</texture>
+                            <texture background="true" diffuse="diffuse/widgetsquare.png">$INFO[ListItem.Icon]</texture>
                             <aspectratio scalediffuse="false">keep</aspectratio>
                             <visible>[!$PARAM[studios] + !$PARAM[genres] + !$PARAM[text] + String.IsEmpty(ListItem.Art(poster)) + [String.IsEmpty(ListItem.Art(tvshow.poster)) | String.IsEqual(ListItem.DBType,episode)]] | $PARAM[square]</visible>
                             <visible>!String.Contains(ListItem.Icon,/extras/icons/)</visible>
@@ -868,7 +868,7 @@
                             <left>47</left>
                             <right>47</right>
                             <bottom>47</bottom>
-                            <texture background="true" colordiffuse="main_fg_70" diffuse="diffuse/widgetposter.png">$INFO[ListItem.Icon]</texture>
+                            <texture background="true" colordiffuse="main_fg_70">$INFO[ListItem.Icon]</texture>
                             <aspectratio scalediffuse="false">keep</aspectratio>
                             <visible>[!$PARAM[studios] + !$PARAM[genres] + !$PARAM[text] + String.IsEmpty(ListItem.Art(poster)) + [String.IsEmpty(ListItem.Art(tvshow.poster)) | String.IsEqual(ListItem.DBType,episode)]] | $PARAM[square]</visible>
                             <visible>String.Contains(ListItem.Icon,/extras/icons/)</visible>
@@ -952,8 +952,8 @@
                         <top>240</top>
                         <visible>!$PARAM[poster] + !$PARAM[landscape]</visible>
                         <control type="textbox">
-                            <top>7</top>
-                            <bottom>7</bottom>
+                            <top>10</top>
+                            <bottom>10</bottom>
                             <left>20</left>
                             <right>20</right>
                             <align>center</align>
