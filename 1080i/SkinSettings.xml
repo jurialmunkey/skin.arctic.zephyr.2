@@ -723,15 +723,6 @@
                             <selected>System.HasAddon(script.skin.helper.colorpicker)</selected>
                             <include>Defs_Settings_Button</include>
                         </control>
-                        <control type="radiobutton" id="9284">
-                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9108)</visible>
-                            <label>script.skin.helper.backgrounds</label>
-                            <label2>$INFO[System.AddonVersion(script.skin.helper.backgrounds)]        </label2>
-                            <onclick condition="!System.HasAddon(script.skin.helper.backgrounds)">InstallAddon(script.skin.helper.backgrounds)</onclick>
-                            <onclick condition="System.HasAddon(script.skin.helper.backgrounds)">Addon.OpenSettings(script.skin.helper.backgrounds)</onclick>
-                            <selected>System.HasAddon(script.skin.helper.backgrounds)</selected>
-                            <include>Defs_Settings_Button</include>
-                        </control>
                         <control type="radiobutton" id="9297">
                             <visible>Integer.IsEqual(Window.Property(CurrentFocus),9108)</visible>
                             <label>script.skin.helper.skinbackup</label>
@@ -748,6 +739,15 @@
                             <onclick condition="!System.HasAddon(script.module.metadatautils)">InstallAddon(script.module.metadatautils)</onclick>
                             <onclick condition="System.HasAddon(script.module.metadatautils)">Addon.OpenSettings(script.module.metadatautils)</onclick>
                             <selected>System.HasAddon(script.module.metadatautils)</selected>
+                            <include>Defs_Settings_Button</include>
+                        </control>
+                        <control type="radiobutton" id="9284">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9108)</visible>
+                            <label>plugin.video.specialfeatures</label>
+                            <label2>$INFO[System.AddonVersion(plugin.video.specialfeatures)]        </label2>
+                            <onclick condition="!System.HasAddon(plugin.video.specialfeatures)">InstallAddon(plugin.video.specialfeatures)</onclick>
+                            <onclick condition="System.HasAddon(plugin.video.specialfeatures)">Addon.OpenSettings(plugin.video.specialfeatures)</onclick>
+                            <selected>System.HasAddon(plugin.video.specialfeatures)</selected>
                             <include>Defs_Settings_Button</include>
                         </control>
                         <control type="radiobutton" id="9298">
