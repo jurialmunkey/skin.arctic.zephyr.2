@@ -249,12 +249,13 @@
             <control type="group">
                 <include>View_Pad</include>
                 <control type="wraplist" id="58">
-                    <top>50</top>
+                    <top>-10</top>
+                    <height>920</height>
                     <right>-70</right>
-                    <left>570</left>
-                    <preloaditems>0</preloaditems>
+                    <left>-70</left>
+                    <preloaditems>2</preloaditems>
                     <height>poster_height</height>
-                    <focusposition>-1</focusposition>
+                    <focusposition>0</focusposition>
                     <movement>0</movement>
                     <viewtype label="$LOCALIZE[31363]">icon</viewtype>
                     <include>View_Movement_Vertical</include>
@@ -469,24 +470,35 @@
                     <top>$PARAM[top_offset]</top>
                     <bottom>$PARAM[bottom_offset]</bottom>
                     <control type="group">
-                        <top>205</top>
+                        <top>265</top>
                         <height>560</height>
                         <width>380</width>
                         <include>View_Posters_Itemlayout_Artwork</include>
                     </control>
                 </control>
             </itemlayout>
-            <focusedlayout width="400" condition="$PARAM[posters_big]">
+            <focusedlayout width="640" condition="$PARAM[posters_big]">
                 <control type="group">
                     <left>view_pad</left>
                     <right>-view_pad</right>
                     <top>$PARAM[top_offset]</top>
                     <bottom>$PARAM[bottom_offset]</bottom>
                     <control type="group">
-                        <top>205</top>
+                        <top>265</top>
                         <height>560</height>
                         <width>380</width>
                         <include>View_Posters_Itemlayout_Artwork</include>
+                        <visible>Container.OnPrevious</visible>
+                        <animation effect="fade" reversible="false" start="100" end="0" delay="200" time="200">Hidden</animation>
+                    </control>
+                    <control type="group">
+                        <right>20</right>
+                        <top>265</top>
+                        <height>560</height>
+                        <width>380</width>
+                        <include>View_Posters_Itemlayout_Artwork</include>
+                        <visible>Container.OnNext</visible>
+                        <animation effect="fade" reversible="false" start="100" end="0" delay="200" time="200">Hidden</animation>
                     </control>
                 </control>
             </focusedlayout>
