@@ -1021,7 +1021,7 @@
             <control type="image">
                 <bordersize>10</bordersize>
                 <aspectratio aligny="center" scalediffuse="false">keep</aspectratio>
-                <texture colordiffuse="main_fg_70" background="true" diffuse="diffuse/widgetposter.png">$INFO[ListItem.Icon]</texture>
+                <texture colordiffuse="PosterFront_70" background="true" diffuse="diffuse/widgetposter.png">$INFO[ListItem.Icon]</texture>
                 <visible>String.StartsWith(ListItem.Icon,Default)</visible>
                 <visible>![[Container.Content(genres) | [Container.Content(addons) + String.Contains(Container.FolderPath,Genres)]] | Container.Content(studios) | Container.Content(years) | Container.Content(directors) | Container.Content(countries) | Container.Content(tags) | Container.Content(playlists)] | ListItem.IsParentFolder</visible>
             </control>
@@ -1035,19 +1035,19 @@
             <control type="image">
                 <bordersize>70</bordersize>
                 <aspectratio aligny="center" scalediffuse="false">keep</aspectratio>
-                <texture background="true" colordiffuse="main_fg_70" fallback="DefaultGenres.png" diffuse="diffuse/widgetposter.png">$VAR[Image_GenreIcons]</texture>
+                <texture background="true" colordiffuse="PosterFront_70" fallback="DefaultGenres.png" diffuse="diffuse/widgetposter.png">$VAR[Image_GenreIcons]</texture>
                 <visible>[Container.Content(genres) | [Container.Content(addons) + String.Contains(Container.FolderPath,Genres)]] + !ListItem.IsParentFolder</visible>
             </control>
             <control type="image">
                 <bordersize>10</bordersize>
                 <aspectratio aligny="center" scalediffuse="false">keep</aspectratio>
-                <texture background="true" colordiffuse="main_fg_70" fallback="DefaultStudios.png" diffuse="diffuse/widgetposter.png">$INFO[ListItem.Label,resource://resource.images.studios.white/,.png]</texture>
+                <texture background="true" colordiffuse="PosterFront_70" fallback="DefaultStudios.png" diffuse="diffuse/widgetposter.png">$INFO[ListItem.Label,resource://resource.images.studios.white/,.png]</texture>
                 <visible>Container.Content(studios) + !ListItem.IsParentFolder</visible>
             </control>
             <control type="image">
                 <bordersize>10</bordersize>
                 <aspectratio aligny="center" scalediffuse="false">keep</aspectratio>
-                <texture background="true" colordiffuse="main_fg_30" diffuse="diffuse/widgetposter.png">$INFO[ListItem.Label,resource://resource.images.moviecountryicons.maps/,.png]</texture>
+                <texture background="true" colordiffuse="PosterFront_30" diffuse="diffuse/widgetposter.png">$INFO[ListItem.Label,resource://resource.images.moviecountryicons.maps/,.png]</texture>
                 <visible>Container.Content(countries) + !ListItem.IsParentFolder</visible>
             </control>
             <control type="textbox">
@@ -1056,7 +1056,7 @@
                 <align>center</align>
                 <aligny>center</aligny>
                 <font>font_poster_text</font>
-                <textcolor>main_fg_70</textcolor>
+                <textcolor>PosterFront_70</textcolor>
                 <label>$INFO[ListItem.Label]</label>
                 <visible>!ListItem.IsParentFolder</visible>
                 <visible>Container.Content(years) | Container.Content(directors) | Container.Content(countries) | Container.Content(tags) | Container.Content(playlists)</visible>
@@ -1086,7 +1086,7 @@
             <control type="image">
                 <bordersize>10</bordersize>
                 <aspectratio aligny="center" scalediffuse="false">keep</aspectratio>
-                <texture colordiffuse="Selected" background="true" diffuse="diffuse/widgetposter.png">$INFO[ListItem.Icon]</texture>
+                <texture colordiffuse="PosterFront" background="true" diffuse="diffuse/widgetposter.png">$INFO[ListItem.Icon]</texture>
                 <visible>String.StartsWith(ListItem.Icon,Default)</visible>
                 <visible>![[Container.Content(genres) | [Container.Content(addons) + String.Contains(Container.FolderPath,Genres)]] | Container.Content(studios) | Container.Content(years) | Container.Content(directors) | Container.Content(countries) | Container.Content(tags) | Container.Content(playlists)] | ListItem.IsParentFolder</visible>
             </control>
@@ -1100,19 +1100,20 @@
             <control type="image">
                 <bordersize>70</bordersize>
                 <aspectratio aligny="center" scalediffuse="false">keep</aspectratio>
-                <texture background="true" colordiffuse="Selected" fallback="DefaultGenres.png" diffuse="diffuse/widgetposter.png">$VAR[Image_GenreIcons]</texture>
+                <texture background="true" colordiffuse="PosterFront" fallback="DefaultGenres.png" diffuse="diffuse/widgetposter.png">$VAR[Image_GenreIcons]</texture>
                 <visible>[Container.Content(genres) | [Container.Content(addons) + String.Contains(Container.FolderPath,Genres)]] + !ListItem.IsParentFolder</visible>
             </control>
             <control type="image">
                 <bordersize>10</bordersize>
                 <aspectratio aligny="center" scalediffuse="false">keep</aspectratio>
-                <texture background="true" colordiffuse="Selected" fallback="DefaultStudios.png" diffuse="diffuse/widgetposter.png">$INFO[ListItem.Label,resource://resource.images.studios.white/,.png]</texture>
+                <texture background="true" colordiffuse="PosterFront" fallback="DefaultStudios.png" diffuse="diffuse/widgetposter.png">$INFO[ListItem.Label,resource://resource.images.studios.white/,.png]</texture>
                 <visible>Container.Content(studios) + !ListItem.IsParentFolder</visible>
             </control>
             <control type="image">
                 <bordersize>10</bordersize>
                 <aspectratio aligny="center" scalediffuse="false">keep</aspectratio>
-                <texture background="true" colordiffuse="main_fg_30" diffuse="diffuse/widgetposter.png">$INFO[ListItem.Label,resource://resource.images.moviecountryicons.maps/,.png]</texture>
+                <animation effect="fade" condition="true" end="35">Conditional</animation>
+                <texture background="true" colordiffuse="PosterFront" diffuse="diffuse/widgetposter.png">$INFO[ListItem.Label,resource://resource.images.moviecountryicons.maps/,.png]</texture>
                 <visible>Container.Content(countries) + !ListItem.IsParentFolder</visible>
             </control>
             <control type="textbox">
@@ -1121,7 +1122,7 @@
                 <align>center</align>
                 <aligny>center</aligny>
                 <font>font_poster_text</font>
-                <textcolor>Selected</textcolor>
+                <textcolor>PosterFront</textcolor>
                 <label>$INFO[ListItem.Label]</label>
                 <visible>!ListItem.IsParentFolder</visible>
                 <visible>Container.Content(years) | Container.Content(directors) | Container.Content(countries) | Container.Content(tags) | Container.Content(playlists)</visible>

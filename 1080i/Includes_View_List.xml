@@ -364,7 +364,7 @@
                                 <left>30</left>
                                 <width>32</width>
                                 <height>32</height>
-                                <texture colordiffuse="Selected">$VAR[Image_Overlay_List]</texture>
+                                <texture colordiffuse="PosterFront">$VAR[Image_Overlay_List]</texture>
                                 <visible>!String.IsEmpty(ListItem.Overlay)</visible>
                             </control>
                             <!-- Fallback Icon -->
@@ -373,7 +373,7 @@
                                 <left>16</left>
                                 <width>64</width>
                                 <height>64</height>
-                                <texture colordiffuse="Selected" fallback="DefaultFolder.png">$VAR[Image_FallbackIcon]</texture>
+                                <texture colordiffuse="PosterFront" fallback="DefaultFolder.png">$VAR[Image_FallbackIcon]</texture>
                                 <visible>String.IsEmpty(ListItem.Overlay)</visible>
                             </control>
                             <!-- HDSD Flag -->
@@ -382,7 +382,7 @@
                                 <left>90</left>
                                 <width>37</width>
                                 <height>24</height>
-                                <texture colordiffuse="Selected">$VAR[Image_HDSD]</texture>
+                                <texture colordiffuse="PosterFront">$VAR[Image_HDSD]</texture>
                                 <visible>Container.Content(movies) | Container.Content(episodes)</visible>
                                 <visible>!ListItem.IsParentFolder</visible>
                                 <animation effect="slide" end="8" condition="String.IsEmpty(ListItem.Overlay)">Conditional</animation>
@@ -393,7 +393,7 @@
                                 <width>80</width>
                                 <height>100%</height>
                                 <aligny>center</aligny>
-                                <textcolor>Selected</textcolor>
+                                <textcolor>PosterFront</textcolor>
                                 <font>font_small</font>
                                 <label>$INFO[ListItem.Year]</label>
                                 <animation effect="slide" end="-70" condition="!Container.Content(movies) + !Container.Content(episodes)">Conditional</animation>
@@ -406,7 +406,7 @@
                                 <right>30</right>
                                 <height>100%</height>
                                 <aligny>center</aligny>
-                                <textcolor>Selected</textcolor>
+                                <textcolor>PosterFront</textcolor>
                                 <font>font_small</font>
                                 <animation effect="slide" end="8" condition="String.IsEmpty(ListItem.Overlay)">Conditional</animation>
                                 <label>$INFO[ListItem.Label]</label>
@@ -418,7 +418,7 @@
                                 <right>30</right>
                                 <height>100%</height>
                                 <aligny>center</aligny>
-                                <textcolor>Selected</textcolor>
+                                <textcolor>PosterFront</textcolor>
                                 <font>font_small</font>
                                 <animation effect="slide" end="8" condition="String.IsEmpty(ListItem.Overlay)">Conditional</animation>
                                 <label>$INFO[ListItem.Label]</label>
@@ -430,7 +430,7 @@
                                 <right>30</right>
                                 <height>100%</height>
                                 <aligny>center</aligny>
-                                <textcolor>Selected</textcolor>
+                                <textcolor>PosterFront</textcolor>
                                 <font>font_small</font>
                                 <animation effect="slide" end="8" condition="String.IsEmpty(ListItem.Overlay)">Conditional</animation>
                                 <label>$INFO[ListItem.Label]</label>
@@ -443,7 +443,7 @@
                                 <align>right</align>
                                 <height>100%</height>
                                 <aligny>center</aligny>
-                                <textcolor>Selected</textcolor>
+                                <textcolor>PosterFront</textcolor>
                                 <font>font_small</font>
                                 <label>$INFO[ListItem.Label2]</label>
                             </control>
@@ -465,7 +465,7 @@
                                 <width>340</width>
                                 <height>100%</height>
                                 <aligny>center</aligny>
-                                <textcolor>Selected</textcolor>
+                                <textcolor>PosterFront</textcolor>
                                 <font>font_tiny_bold_uppercase</font>
                                 <label>$INFO[ListItem.ChannelNumber,,. ]$INFO[ListItem.ChannelName,,]</label>
                             </control>
@@ -474,7 +474,7 @@
                                 <right>300</right>
                                 <height>100%</height>
                                 <aligny>center</aligny>
-                                <textcolor>Selected</textcolor>
+                                <textcolor>PosterFront</textcolor>
                                 <font>font_tiny_uppercase</font>
                                 <label>$INFO[ListItem.Title]</label>
                             </control>
@@ -484,7 +484,7 @@
                                 <height>100%</height>
                                 <aligny>center</aligny>
                                 <align>right</align>
-                                <textcolor>Selected</textcolor>
+                                <textcolor>PosterFront</textcolor>
                                 <font>font_tiny_uppercase</font>
                                 <scroll>false</scroll>
                                 <label>[UPPERCASE]$INFO[ListItem.NextTitle][/UPPERCASE]</label>
@@ -495,7 +495,7 @@
                                 <height>100%</height>
                                 <aligny>center</aligny>
                                 <align>right</align>
-                                <textcolor>Selected</textcolor>
+                                <textcolor>PosterFront</textcolor>
                                 <font>font_tiny_bold_uppercase</font>
                                 <scroll>false</scroll>
                                 <label>$INFO[ListItem.StartTime]    </label>
@@ -506,7 +506,7 @@
                                 <height>100%</height>
                                 <aligny>center</aligny>
                                 <align>center</align>
-                                <textcolor>Selected</textcolor>
+                                <textcolor>PosterFront</textcolor>
                                 <font>font_tiny_bold_uppercase</font>
                                 <scroll>false</scroll>
                                 <label>   |</label>
@@ -518,7 +518,7 @@
                                 <height>100%</height>
                                 <aligny>center</aligny>
                                 <align>right</align>
-                                <textcolor>Selected</textcolor>
+                                <textcolor>PosterFront</textcolor>
                                 <font>font_tiny_bold_uppercase</font>
                                 <scroll>false</scroll>
                                 <label>   $INFO[ListItem.EndTime]</label>

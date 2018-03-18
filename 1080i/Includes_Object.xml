@@ -781,13 +781,14 @@
   
                         <control type="image">
                             <aspectratio aligny="center" scalediffuse="false">center</aspectratio>
-                            <texture background="true"  colordiffuse="main_fg_100" fallback="DefaultAddonNone.png" diffuse="diffuse/bigposter.png">$INFO[$PARAM[container]ListItem.Icon]</texture>
+                            <texture background="true"  colordiffuse="PosterFront" fallback="DefaultAddonNone.png" diffuse="diffuse/bigposter.png">$INFO[$PARAM[container]ListItem.Icon]</texture>
                             <visible>[!Container.Content(genres) + !Container.Content(studios) + !Container.Content(countries) + !Container.Content(years) + !Container.Content(directors)] | ListItem.IsParentFolder</visible>
                         </control>
                         <control type="image">
                             <bordersize>80</bordersize>
                             <aspectratio aligny="center" scalediffuse="false">$PARAM[aspect]</aspectratio>
-                            <texture background="true" colordiffuse="main_fg_30" fallback="DefaultFolder.png" diffuse="diffuse/bigposter.png">$INFO[$PARAM[container]ListItem.Label,resource://resource.images.moviecountryicons.maps/,.png]</texture>
+                            <animation effect="fade" condition="true" end="35">Conditional</animation>
+                            <texture background="true" colordiffuse="PosterFront" fallback="DefaultFolder.png" diffuse="diffuse/bigposter.png">$INFO[$PARAM[container]ListItem.Label,resource://resource.images.moviecountryicons.maps/,.png]</texture>
                             <visible>Container.Content(countries) + !ListItem.IsParentFolder</visible>
                         </control>
                         <control type="textbox">
@@ -798,20 +799,20 @@
                             <align>center</align>
                             <aligny>center</aligny>
                             <label>$INFO[$PARAM[container]ListItem.Label]</label>
-                            <textcolor>main_fg_100</textcolor>
+                            <textcolor>PosterFront</textcolor>
                             <font>font_bigposter_text</font>
                             <visible>[Container.Content(years) | Container.Content(directors) | Container.Content(countries)] + !ListItem.IsParentFolder</visible>
                         </control>
                         <control type="image">
                             <bordersize>80</bordersize>
                             <aspectratio aligny="center" scalediffuse="false">$PARAM[aspect]</aspectratio>
-                            <texture background="true" colordiffuse="main_fg_100" fallback="DefaultFolder.png" diffuse="diffuse/bigposter.png">$VAR[Image_GenreIcons_Path]$INFO[$PARAM[container]ListItem.Label,,.png]</texture>
+                            <texture background="true" colordiffuse="PosterFront" fallback="DefaultFolder.png" diffuse="diffuse/bigposter.png">$VAR[Image_GenreIcons_Path]$INFO[$PARAM[container]ListItem.Label,,.png]</texture>
                             <visible>Container.Content(genres) + !ListItem.IsParentFolder</visible>
                         </control>
                         <control type="image">
                             <bordersize>80</bordersize>
                             <aspectratio aligny="center" scalediffuse="false">$PARAM[aspect]</aspectratio>
-                            <texture background="true" colordiffuse="main_fg_100" fallback="DefaultFolder.png" diffuse="diffuse/bigposter.png">$INFO[$PARAM[container]ListItem.Label,resource://resource.images.studios.white/,.png]</texture>
+                            <texture background="true" colordiffuse="PosterFront" fallback="DefaultFolder.png" diffuse="diffuse/bigposter.png">$INFO[$PARAM[container]ListItem.Label,resource://resource.images.studios.white/,.png]</texture>
                             <visible>Container.Content(studios) + !ListItem.IsParentFolder</visible>
                         </control>
                     </control>
@@ -821,7 +822,7 @@
                     <control type="group">
                         <control type="image">
                             <aspectratio aligny="center" scalediffuse="false">$PARAM[aspect]</aspectratio>
-                            <texture background="true" colordiffuse="main_fg_100" fallback="DefaultAddonImages.png" diffuse="diffuse/bigposter.png">$INFO[ListItem.FileNameAndPath]</texture>
+                            <texture background="true" fallback="DefaultAddonImages.png" diffuse="diffuse/bigposter.png">$INFO[ListItem.FileNameAndPath]</texture>
                         </control>
                     </control>
                 </control>
