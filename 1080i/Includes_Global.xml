@@ -51,6 +51,8 @@
         </control>
     </include>
 
+    <include name="Global_FadeTime_600"><fadetime>600</fadetime></include>
+
     <include name="Global_Background">
         <control type="multiimage" id="7975">
             <left>-2160</left>
@@ -83,7 +85,7 @@
                     <include>Dimensions_Fullscreen</include>
                     <timeperimage>10000</timeperimage>
                     <randomize>true</randomize>
-                    <fadetime>600</fadetime>
+                    <include condition="!Window.IsVisible(SettingsCategory.xml) + !Window.IsVisible(SkinSettings.xml) + !Window.IsVisible(SettingsProfile.xml) + !Window.IsVisible(SettingsSystemInfo.xml)">Global_FadeTime_600</include>
                     <aspectratio>scale</aspectratio>
                     <imagepath background="true">$VAR[Global_Background_Image]</imagepath>
                 </control>
