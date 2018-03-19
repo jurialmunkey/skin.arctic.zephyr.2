@@ -136,14 +136,25 @@
             <left>view_pad</left>
             <right>view_pad</right>
             <bottom>view_pad</bottom>
-            <control type="group">
-                <top>-380</top>
-                <left>-60</left>
+            <control type="grouplist">
+                <top>20</top>
+                <left>10</left>
                 <height>40</height>
-                <include content="Widget_Label">
-                    <param name="id" value="9967" />
-                    <param name="label" value="$LOCALIZE[31162]" />
-                </include>
+                <orientation>horizontal</orientation>
+                <usecontrolcoords>true</usecontrolcoords>
+                <itemgap>16</itemgap>
+                <control type="image">
+                    <width>16</width>
+                    <height>100%</height>
+                    <aspectratio aligny="center">keep</aspectratio>
+                    <texture colordiffuse="main_fg_30">common/cube-16.png</texture>
+                </control>
+                <control type="label">
+                    <left>2</left>
+                    <textcolor>main_fg_100</textcolor>
+                    <label>$LOCALIZE[31162]</label>
+                    <include>Statusbar_Menubar_Items</include>
+                </control>
             </control>
             <control type="panel" id="9967">
                 <onfocus>SetProperty(WidgetFocus,1,Home)</onfocus>
