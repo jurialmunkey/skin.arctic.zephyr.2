@@ -2,8 +2,137 @@
 <window id="2003">
     <defaultcontrol always="true">9000</defaultcontrol>
     <controls>
+        <include>Global_Overlay</include>
+        <control type="group">
+            <include content="Dialog_Standard_Group">
+                <param name="width" value="1400" />
+                <param name="height" value="650" />
+            </include>
 
-        <include>Dialog_PVRInfo_Guide</include>
+            <control type="label" id="2">
+                <include>Dialog_Standard_Header</include>
+                <label>$INFO[ListItem.EpgEventTitle]$INFO[ListItem.EpisodeName, - ,]</label>
+            </control>
+            <control type="grouplist">
+                <left>30</left>
+                <top>100</top>
+                <right>60</right>
+                <include>Dialog_Info_Details_Grouplist</include>
+                <!-- Start Time -->
+                <control type="group">
+                    <height>50</height>
+                    <control type="label">
+                        <left>0</left>
+                        <width>160</width>
+                        <align>right</align>
+                        <textcolor>dialog_fg_30</textcolor>
+                        <font>font_small</font>
+                        <label>19126</label>
+                        <aligny>top</aligny>
+                    </control>
+                    <control type="label">
+                        <left>176</left>
+                        <textcolor>dialog_fg_70</textcolor>
+                        <font>font_small</font>
+                        <aligny>top</aligny>
+                        <label fallback="19055">$INFO[ListItem.StartDate] - $INFO[ListItem.StartTime]</label>
+                    </control>
+                </control>
+                <!-- End Time -->
+                <control type="group">
+                    <height>50</height>
+                    <control type="label">
+                        <left>0</left>
+                        <width>160</width>
+                        <align>right</align>
+                        <textcolor>dialog_fg_30</textcolor>
+                        <font>font_small</font>
+                        <label>19127</label>
+                        <aligny>top</aligny>
+                    </control>
+                    <control type="label">
+                        <left>176</left>
+                        <textcolor>dialog_fg_70</textcolor>
+                        <font>font_small</font>
+                        <aligny>top</aligny>
+                        <label fallback="19055">$INFO[ListItem.EndDate] - $INFO[ListItem.EndTime]</label>
+                    </control>
+                </control>
+                <!-- Channel Name -->
+                <control type="group">
+                    <height>50</height>
+                    <control type="label">
+                        <left>0</left>
+                        <width>160</width>
+                        <align>right</align>
+                        <textcolor>dialog_fg_30</textcolor>
+                        <font>font_small</font>
+                        <label>19029</label>
+                        <aligny>top</aligny>
+                    </control>
+                    <control type="label">
+                        <left>176</left>
+                        <textcolor>dialog_fg_70</textcolor>
+                        <font>font_small</font>
+                        <aligny>top</aligny>
+                        <label fallback="19055">$INFO[ListItem.ChannelName]$INFO[ListItem.ChannelNumber, (,)]</label>
+                    </control>
+                </control>
+                <!-- Plot -->
+                <control type="group">
+                    <height>250</height>
+                    <control type="label">
+                        <left>0</left>
+                        <width>160</width>
+                        <align>right</align>
+                        <textcolor>dialog_fg_30</textcolor>
+                        <font>font_small</font>
+                        <label>21821</label>
+                        <aligny>top</aligny>
+                    </control>
+                    <control type="textbox">
+                        <left>176</left>
+                        <textcolor>dialog_fg_70</textcolor>
+                        <font>font_plotbox</font>
+                        <aligny>top</aligny>
+                        <label fallback="19055">$INFO[ListItem.Plot]</label>
+                    </control>
+                </control>
+            </control>
+            <!-- Buttons -->
+            <control type="grouplist" id="9000">
+                <left>30</left>
+                <right>30</right>
+                <align>center</align>
+                <bottom>20</bottom>
+                <height>60</height>
+                <orientation>horizontal</orientation>
+                <itemgap>14</itemgap>
+                <control type="button" id="4">
+                    <label>19003</label>
+                    <include>Dialog_Info_Buttons</include>
+                    <visible>Window.IsActive(PVRGuideInfo)</visible>
+                </control>
+                <control type="button" id="5">
+                    <label>19165</label>
+                    <include>Dialog_Info_Buttons</include>
+                    <visible>Window.IsActive(PVRGuideInfo)</visible>
+                </control>
+                <control type="button" id="6">
+                    <include>Dialog_Info_Buttons</include>
+                    <visible>Window.IsActive(PVRGuideInfo)</visible>
+                </control>
+                <control type="button" id="7">
+                    <label>186</label>
+                    <include>Dialog_Info_Buttons</include>
+                </control>
+                <control type="button" id="8">
+                    <label>19687</label>
+                    <include>Dialog_Info_Buttons</include>
+                    <visible>Window.IsActive(PVRGuideInfo)</visible>
+                </control>
+            </control>
+        </control>
     </controls>
 
 </window>

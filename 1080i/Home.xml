@@ -42,9 +42,12 @@
             <width>1</width>
             <height>1</height>
             <onleft>300</onleft>
-            <onright>3000</onright>
-            <onfocus condition="String.IsEmpty(Window(Home).Property(WidgetFocus)) | Window.Previous(MusicVisualisation.xml) | Window.Previous(VideoFullScreen.xml)">SetFocus(300)</onfocus>
-            <onfocus condition="!String.IsEmpty(Window(Home).Property(WidgetFocus)) + !Window.Previous(MusicVisualisation.xml) + !Window.Previous(VideoFullScreen.xml)">SetFocus(3000)</onfocus>
+            <onright>300</onright>
+            <onup>300</onup>
+            <ondown>3000</ondown>
+            <onfocus condition="!String.IsEmpty(Skin.String(MenuPos))">SetFocus(300,$INFO[Skin.String(MenuPos)])</onfocus>
+            <onfocus condition="String.IsEmpty(Skin.String(MenuPos)) + [String.IsEmpty(Window(Home).Property(WidgetFocus)) | Window.Previous(MusicVisualisation.xml) | Window.Previous(VideoFullScreen.xml)]">SetFocus(300)</onfocus>
+            <onfocus condition="String.IsEmpty(Skin.String(MenuPos)) + [!String.IsEmpty(Window(Home).Property(WidgetFocus)) + !Window.Previous(MusicVisualisation.xml) + !Window.Previous(VideoFullScreen.xml)]">SetFocus(3000)</onfocus>
         </control>
 
         <control type="scrollbar" id="9060">

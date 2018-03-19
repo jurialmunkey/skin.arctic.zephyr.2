@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
+    <variable name="Label_OSD_Title">
+        <value condition="!String.IsEmpty(VideoPlayer.EpgEventTitle) | !String.IsEmpty(VideoPlayer.EpisodeName)">$INFO[VideoPlayer.EpgEventTitle,,  ]$INFO[VideoPlayer.EpisodeName]</value>
+        <value>$INFO[Player.Title]</value>
+    </variable>
+
     <variable name="Label_WatchedIndicatorStyle">
         <value condition="Skin.HasSetting(LightWatchedOverlay)">$LOCALIZE[31337]</value>
         <value>$LOCALIZE[31341]</value>
