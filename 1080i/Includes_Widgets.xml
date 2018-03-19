@@ -746,9 +746,17 @@
                     </control>
                     <control type="image">
                         <bordersize>10</bordersize>
-                        <aspectratio>scale</aspectratio>
+                        <aspectratio scalediffuse="false">stretch</aspectratio>
                         <texture background="true" diffuse="diffuse/submenu.png">$INFO[ListItem.Icon]</texture>
                         <visible>!String.Contains(ListItem.Icon,special://skin/extras/icons/)</visible>
+                        <visible>!Skin.HasSetting(SubmenuLabel)</visible>
+                    </control>
+                    <control type="image">
+                        <bordersize>10</bordersize>
+                        <aspectratio scalediffuse="false">stretch</aspectratio>
+                        <texture background="true" diffuse="diffuse/submenubig.png">$INFO[ListItem.Icon]</texture>
+                        <visible>!String.Contains(ListItem.Icon,special://skin/extras/icons/)</visible>
+                        <visible>Skin.HasSetting(SubmenuLabel)</visible>
                     </control>
                     <control type="image">
                         <bordersize>10</bordersize>
@@ -797,9 +805,17 @@
                     </control>
                     <control type="image">
                         <bordersize>10</bordersize>
-                        <aspectratio>scale</aspectratio>
+                        <aspectratio scalediffuse="false">stretch</aspectratio>
                         <texture background="true" diffuse="diffuse/submenu.png">$INFO[ListItem.Icon]</texture>
                         <visible>!String.Contains(ListItem.Icon,special://skin/extras/icons/)</visible>
+                        <visible>!Skin.HasSetting(SubmenuLabel)</visible>
+                    </control>
+                    <control type="image">
+                        <bordersize>10</bordersize>
+                        <aspectratio scalediffuse="false">stretch</aspectratio>
+                        <texture background="true" diffuse="diffuse/submenubig.png">$INFO[ListItem.Icon]</texture>
+                        <visible>!String.Contains(ListItem.Icon,special://skin/extras/icons/)</visible>
+                        <visible>Skin.HasSetting(SubmenuLabel)</visible>
                     </control>
                     <control type="image">
                         <bordersize>10</bordersize>
