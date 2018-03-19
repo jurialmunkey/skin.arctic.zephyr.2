@@ -433,7 +433,8 @@
             </control>
             <control type="list" id="$PARAM[id]">
                 <top>widget_top</top>
-                <include condition="$PARAM[submenu]">Widget_Posters_Submenu_Height</include>
+                <include condition="$PARAM[submenu] + !Skin.HasSetting(SubmenuLabel)">Widget_Posters_Submenu_Height</include>
+                <include condition="$PARAM[submenu] + Skin.HasSetting(SubmenuLabel)">Widget_Posters_Submenu_Big_Height</include>
                 <height>widget_poster_spacer</height>
                 <visible>$PARAM[visible] + [Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating | Container(300).OnNext | Container(300).OnPrevious | String.IsEmpty(Window(Home).Property(WidgetLoading))]</visible>
                 <include content="Widget_Posters" condition="!$PARAM[submenu]">
@@ -462,9 +463,8 @@
         </definition>
     </include>
 
-    <include name="Widget_Posters_Submenu_Height">
-        <height>widget_submenu_spacer</height>
-    </include>
+    <include name="Widget_Posters_Submenu_Height"><height>widget_submenu_spacer</height></include>
+    <include name="Widget_Posters_Submenu_Big_Height"><height>widget_submenu_big_spacer</height></include>
 
     <include name="Widget_Label">
         <definition>
@@ -534,11 +534,17 @@
         <preloaditems>2</preloaditems>
         <onfocus>SetProperty(WidgetFocus,1,Home)</onfocus>
         <onfocus>SetProperty(SkinHelper.WidgetContainer,$PARAM[id],Home)</onfocus>
-        <include content="Widget_Movement">
+        <include content="Widget_Movement" condition="!Skin.HasSetting(SubmenuLabel)">
             <param name="id" value="$PARAM[id]" />
             <param name="aspect" value="$PARAM[aspect]" />
             <param name="widgetAspect" value="$PARAM[widgetAspect]" />
             <param name="submenu" value="$PARAM[submenu]" />
+        </include>
+        <include content="Widget_Movement" condition="Skin.HasSetting(SubmenuLabel)">
+            <param name="id" value="$PARAM[id]" />
+            <param name="aspect" value="$PARAM[aspect]" />
+            <param name="widgetAspect" value="$PARAM[widgetAspect]" />
+            <param name="submenu" value="false" />
         </include>
         <orientation>horizontal</orientation>
     </include>
@@ -561,11 +567,21 @@
                 <param name="submenu" value="$PARAM[submenu]" />
             </include>
 
-            <itemlayout width="130" height="130">
+            <itemlayout width="130" height="130" condition="!Skin.HasSetting(SubmenuLabel)">
                 <include>Widget_Submenu_ItemLayout</include>
             </itemlayout>
             
-            <focusedlayout width="130" height="130">
+            <focusedlayout width="130" height="130" condition="!Skin.HasSetting(SubmenuLabel)">
+                <include content="Widget_Submenu_FocusedLayout">
+                    <param name="id" value="$PARAM[id]" />
+                </include>
+            </focusedlayout>
+
+            <itemlayout width="260" height="170" condition="Skin.HasSetting(SubmenuLabel)">
+                <include>Widget_Submenu_ItemLayout</include>
+            </itemlayout>
+            
+            <focusedlayout width="260" height="170" condition="Skin.HasSetting(SubmenuLabel)">
                 <include content="Widget_Submenu_FocusedLayout">
                     <param name="id" value="$PARAM[id]" />
                 </include>
@@ -709,12 +725,28 @@
                 <control type="group">
                     <include>Defs_PosterBack</include>
                     <control type="image">
+                        <height>130</height>
                         <bordersize>10</bordersize>
+                        <aspectratio>keep</aspectratio>
                         <texture background="true" colordiffuse="PosterFront_70" diffuse="diffuse/submenu.png">$INFO[ListItem.Icon]</texture>
+                        <visible>String.Contains(ListItem.Icon,special://skin/extras/icons/)</visible>
+                    </control>
+                    <control type="label">
+                        <bottom>30</bottom>
+                        <height>30</height>
+                        <align>center</align>
+                        <font>font_tiny</font>
+                        <textcolor>PosterFront_70</textcolor>
+                        <right>30</right>
+                        <left>30</left>
+                        <label>$INFO[ListItem.Label]</label>
+                        <scroll>false</scroll>
+                        <visible>Skin.HasSetting(SubmenuLabel)</visible>
                         <visible>String.Contains(ListItem.Icon,special://skin/extras/icons/)</visible>
                     </control>
                     <control type="image">
                         <bordersize>10</bordersize>
+                        <aspectratio>scale</aspectratio>
                         <texture background="true" diffuse="diffuse/submenu.png">$INFO[ListItem.Icon]</texture>
                         <visible>!String.Contains(ListItem.Icon,special://skin/extras/icons/)</visible>
                     </control>
@@ -745,12 +777,27 @@
                 <control type="group">
                     <include>Defs_PosterBack</include>
                     <control type="image">
+                        <height>130</height>
                         <bordersize>10</bordersize>
+                        <aspectratio>keep</aspectratio>
                         <texture background="true" colordiffuse="PosterFront" diffuse="diffuse/submenu.png">$INFO[ListItem.Icon]</texture>
+                        <visible>String.Contains(ListItem.Icon,special://skin/extras/icons/)</visible>
+                    </control>
+                    <control type="label">
+                        <bottom>30</bottom>
+                        <height>30</height>
+                        <align>center</align>
+                        <font>font_tiny</font>
+                        <textcolor>PosterFront</textcolor>
+                        <right>30</right>
+                        <left>30</left>
+                        <label>$INFO[ListItem.Label]</label>
+                        <visible>Skin.HasSetting(SubmenuLabel)</visible>
                         <visible>String.Contains(ListItem.Icon,special://skin/extras/icons/)</visible>
                     </control>
                     <control type="image">
                         <bordersize>10</bordersize>
+                        <aspectratio>scale</aspectratio>
                         <texture background="true" diffuse="diffuse/submenu.png">$INFO[ListItem.Icon]</texture>
                         <visible>!String.Contains(ListItem.Icon,special://skin/extras/icons/)</visible>
                     </control>
