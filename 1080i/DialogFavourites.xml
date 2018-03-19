@@ -34,22 +34,20 @@
                         <control type="group">
                             <bottom>100</bottom>
                             <control type="image">
-                                <texture border="5" colordiffuse="dialog_fg_12">common/box.png</texture>
+                                <bordersize>10</bordersize>
+                                <texture colordiffuse="dialog_fg_12" border="10">common/box.png</texture>
                             </control>
                             <control type="image">
-                                <left>10</left>
-                                <right>10</right>
-                                <top>10</top>
-                                <bottom>10</bottom>
-                                <aspectratio>keep</aspectratio>
-                                <texture fallback="DefaultAddon.png">$INFO[ListItem.Icon]</texture>
+                                <bordersize>10</bordersize>
+                                <aspectratio scalediffuse="false">keep</aspectratio>
+                                <texture fallback="DefaultAddon.png" diffuse="diffuse/square.png">$INFO[ListItem.Icon]</texture>
                             </control>
                         </control>
                         <control type="textbox">
                             <left>20</left>
                             <right>20</right>
-                            <bottom>10</bottom>
-                            <height>80</height>
+                            <bottom>20</bottom>
+                            <height>70</height>
                             <align>center</align>
                             <font>font_tiny</font>
                             <label>$INFO[ListItem.Label]$INFO[ListItem.Label2, ,]</label>
@@ -61,25 +59,25 @@
                         <left>10</left>
                         <right>10</right>
                         <top>10</top>
+                        <include>Animation_FocusBounce_Small</include>
                         <control type="group">
                             <bottom>100</bottom>
                             <control type="image">
-                                <texture border="5" colordiffuse="$VAR[ColorHighlight]">common/box.png</texture>
+                                <bordersize>10</bordersize>
+                                <texture colordiffuse="dialog_fg_12" border="10">common/box.png</texture>
                             </control>
                             <control type="image">
-                                <left>10</left>
-                                <right>10</right>
-                                <top>10</top>
-                                <bottom>10</bottom>
-                                <aspectratio>keep</aspectratio>
-                                <texture fallback="DefaultAddon.png">$INFO[ListItem.Icon]</texture>
+                                <bordersize>10</bordersize>
+                                <aspectratio scalediffuse="false">keep</aspectratio>
+                                <texture fallback="DefaultAddon.png" diffuse="diffuse/square.png">$INFO[ListItem.Icon]</texture>
                             </control>
+                            <include>View_Selectbox</include>
                         </control>
                         <control type="textbox">
                             <left>20</left>
                             <right>20</right>
-                            <bottom>10</bottom>
-                            <height>80</height>
+                            <bottom>20</bottom>
+                            <height>70</height>
                             <align>center</align>
                             <font>font_tiny</font>
                             <label>$INFO[ListItem.Label]$INFO[ListItem.Label2, ,]</label>

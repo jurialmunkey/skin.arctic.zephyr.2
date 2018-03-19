@@ -981,7 +981,7 @@
             <left>75</left>
             <right>75</right>
             <aspectratio aligny="bottom">keep</aspectratio>
-            <texture background="true">$VAR[Image_Clearlogo]</texture>
+            <texture background="true">$VAR[Image_ClearLogo]</texture>
             <visible>!Skin.HasSetting(DisableFakeLandscapeArt)</visible>
             <visible>String.IsEmpty(ListItem.Art(landscape)) + String.IsEmpty(ListItem.Art(tvshow.landscape)) + String.IsEmpty(ListItem.Art(season.landscape))</visible>
             <visible>Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons)</visible>
@@ -1064,7 +1064,7 @@
         </control>
         <control type="image" description="Poster">
             <bordersize>10</bordersize>
-            <include condition="!Skin.HasSetting(DisableShadows)">Defs_Shadow_Small</include>
+            <include condition="!Skin.HasSetting(DisableShadows)">Defs_Shadow_10</include>
             <aspectratio scalediffuse="false">scale</aspectratio>
             <texture fallback="DefaultAddonNone.png" background="true" diffuse="diffuse/widgetposter.png">$VAR[Image_Poster]</texture>
             <visible>!ListItem.IsParentFolder</visible>
@@ -1130,7 +1130,7 @@
         </control>
         <control type="image" description="Poster">
             <bordersize>10</bordersize>
-            <include condition="!Skin.HasSetting(DisableShadows)">Defs_Shadow_Small</include>
+            <include condition="!Skin.HasSetting(DisableShadows)">Defs_Shadow_10</include>
             <aspectratio scalediffuse="false">scale</aspectratio>
             <texture fallback="DefaultAddonNone.png" background="true" diffuse="diffuse/widgetposter.png">$VAR[Image_Poster]</texture>
             <visible>!ListItem.IsParentFolder</visible>

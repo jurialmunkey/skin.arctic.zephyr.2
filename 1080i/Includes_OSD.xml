@@ -1,55 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
 
-    <include name="OSD_MainMenu_Group">
-        <top>0</top>
-        <left>0</left>
-        <right>0</right>
-        <height>80</height>
-        <control type="image">
-            <bottom>-24</bottom>
-            <height>24</height>
-            <width>100%</width>
-            <texture flipy="false">common/shadow-line-24px.png</texture>
-        </control>
-        <control type="image">
-            <bottom>0</bottom>
-            <top>0</top>
-            <texture>common/gradient-solid.png</texture>
-        </control>   
-    </include>
-
-    <include name="OSD_MainMenu_Lines">
-        <control type="image">
-            <top>0</top>
-            <height>1</height>
-            <texture colordiffuse="PixelLines">common/white.png</texture>
-        </control>
-        <control type="image">
-            <bottom>0</bottom>
-            <height>1</height>
-            <texture colordiffuse="panel_bg">common/white.png</texture>
-        </control>
-    </include>
-
-    <include name="OSD_SubMenu_Group">
-        <top>80</top>
-        <left>0</left>
-        <right>0</right>
-        <height>40</height>
-        <control type="image">
-            <bottom>-24</bottom>
-            <height>24</height>
-            <width>100%</width>
-            <texture flipy="false">common/shadow-line-24px.png</texture>
-        </control>
-        <control type="image">
-            <top>-100</top>
-            <bottom>0</bottom>
-            <texture colordiffuse="panel_bg">common/white.png</texture>
-        </control>
-    </include>
-
     <include name="OSD_Music_Info">
         <param name="player" default="MusicPlayer" />
         <param name="rating" default="MusicPlayer.UserRating" />
@@ -81,7 +32,7 @@
                             <bottom>-6</bottom>
                             <control type="image">
                                 <aspectratio scalediffuse="false">scale</aspectratio>
-                                <include condition="!Skin.HasSetting(DisableShadows)">Defs_Shadow_Opaque</include>
+                                <include condition="!Skin.HasSetting(DisableShadows)">Defs_Shadow_24</include>
                                 <texture diffuse="diffuse/widgetposter.png">$INFO[$PARAM[artwork]]</texture>
                             </control>
                             <control type="image">
@@ -279,7 +230,7 @@
                         <left>view_pad</left>
                         <bottom>158</bottom>
                         <control type="image">
-                            <include condition="!Skin.HasSetting(DisableShadows)">Defs_Shadow_Opaque</include>
+                            <include condition="!Skin.HasSetting(DisableShadows)">Defs_Shadow_24</include>
                             <aspectratio aligny="bottom">keep</aspectratio>
                             <texture diffuse="diffuse/widgetposter.png">$VAR[Image_OSD_Artwork]</texture>
                         </control>
@@ -811,19 +762,5 @@
                 </control>
             </control>
         </definition>
-    </include>
-
-    
-
-    <include name="OSD_TextButton">
-        <onfocus condition="!String.IsEmpty(Window(Home).Property(OSDExtendedInfo)) + Player.Paused">Play</onfocus>
-        <onfocus condition="!String.IsEmpty(Window(Home).Property(OSDExtendedInfo))">ClearProperty(OSDExtendedInfo,Home)</onfocus>
-        <width>230</width>
-        <height>100%</height>
-        <textoffsetx>10</textoffsetx>
-        <textcolor>main_fg_70</textcolor>
-        <disabledcolor>main_fg_12</disabledcolor>
-        <texturefocus colordiffuse="$VAR[ColorHighlight]">common/gradient-diffuse.png</texturefocus>
-        <font>font_osd_mainmenu</font>
     </include>
 </includes>

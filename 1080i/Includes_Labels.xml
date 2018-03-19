@@ -23,16 +23,8 @@
     <variable name="Label_RottenTomatoesUserMeter">
         <value condition="!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.RottenTomatoes.UserMeter))">$INFO[Window(Home).Property(SkinHelper.ListItem.RottenTomatoes.UserMeter),,%]</value>
         <value condition="Integer.IsGreater(ListItem.Ratings(tomatometerallaudience),0)">$INFO[ListItem.Ratings(tomatometerallaudience)]</value>
-</variable>
-    
-    <variable name="Label_OSD_Subline">
-        <value condition="VideoPlayer.Content(livetv)">$INFO[VideoPlayer.ChannelNumber,,. ]$INFO[VideoPlayer.ChannelName]</value>
-        <value condition="VideoPlayer.Content(musicvideos) + !String.IsEmpty(VideoPlayer.Artist)">$INFO[VideoPlayer.Artist]</value>
-        <value condition="[!String.IsEmpty(VideoPlayer.TvShowTitle) | VideoPlayer.Content(episodes)] + !String.IsEmpty(VideoPlayer.Title)">$INFO[VideoPlayer.Title]</value>
-        <value condition="!String.IsEmpty(VideoPlayer.Director)">$INFO[VideoPlayer.Director]</value>
-        <value condition="![!String.IsEmpty(VideoPlayer.TvShowTitle) | VideoPlayer.Content(episodes)] + !String.IsEmpty(VideoPlayer.Premiered)">$INFO[VideoPlayer.Premiered]</value>
     </variable>
-
+    
     <variable name="Label_WidgetItemLimit">
         <value condition="!String.IsEmpty(Skin.String(HomeWidgetItemLimit))">$INFO[Skin.String(HomeWidgetItemLimit)]</value>
         <value>$NUMBER[10]</value>

@@ -7,7 +7,7 @@
             <bottom>$PARAM[pad]</bottom>
             <top>$PARAM[pad]</top>
             <bordersize>10</bordersize>
-            <include condition="!Skin.HasSetting(DisableShadows)">Defs_Shadow_Small</include>
+            <include condition="!Skin.HasSetting(DisableShadows)">Defs_Shadow_10</include>
             <texture colordiffuse="PosterBack" border="10">diffuse/box.png</texture>
         </control>
         <!-- <control type="image">
@@ -325,25 +325,16 @@
     </include>
 
     <!-- Shadows -->
-    <include name="Defs_Shadow">
+    <include name="Defs_Shadow_24">
         <left>-24</left>
         <right>-24</right>
         <top>-24</top>
         <bottom>-24</bottom>
         <bordersize>24</bordersize>
-        <bordertexture border="32" colordiffuse="dialog_fg_12">common/shadow-24.png</bordertexture>
+        <bordertexture border="32">common/shadow-24.png</bordertexture>
     </include>
-    <include name="Defs_Shadow_Opaque">
-        <left>-24</left>
-        <right>-24</right>
-        <top>-24</top>
-        <bottom>-24</bottom>
-        <bordersize>24</bordersize>
-        <!-- <bordertexture border="32" colordiffuse="PosterBack">common/shadow-24.png</bordertexture> -->
-        <bordertexture border="32">common/trans-shadow-24.png</bordertexture>
-    </include>
-    <include name="Defs_Shadow_Small">
-        <bordertexture border="10">common/trans-nofocus-shadow10.png</bordertexture>
+    <include name="Defs_Shadow_10">
+        <bordertexture border="20">common/shadow-10.png</bordertexture>
     </include>
 
     <include name="Defs_UpdateColorbox_Onclick">
