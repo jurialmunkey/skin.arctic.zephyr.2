@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+    <views>50</views>
+    <controls>
+
+        <include>Topbar</include>
+        <include>Object_PlotOverlay</include>
+        <control type="list" id="9000">
+            <orientation>horizontal</orientation>
+            <height>10</height>
+            <top>-1000</top>
+            <ondown>50</ondown>
+            <itemlayout width="10" />
+            <focusedlayout width="10" />
+        </control>
+
+        <control type="group">
+            <include>View_Group</include>
+            <include>Animation_Right</include>
+            <include>Defs_InfoDialog_Visible</include>
+            <visible>!Control.HasFocus(9602)</visible>
+            <control type="group">
+                <visible>Control.IsVisible(50)</visible>
+                <control type="group">
+                    <include>View_Pad</include>
+                    <control type="fixedlist" id="50">
+                        <bottom>-10</bottom>
+                        <right>-70</right>
+                        <left>-70</left>
+                        <height>500</height>
+                        <height>poster_height</height>
+                        <focusposition>0</focusposition>
+                        <movement>6</movement>
+                        <viewtype label="$LOCALIZE[31161]">showcase</viewtype>
+                        <pagecontrol>60</pagecontrol>
+                        <onleft>50</onleft>
+                        <onright>50</onright>
+                        <onup>9000</onup>
+                        <include content="View_Forced">
+                            <param name="string" value="$LOCALIZE[31161]" />
+                        </include>
+                        <include>View_NotTheseWindows</include>
+                        <include content="View_Posters_Layout">
+                            <param name="id" value="50" />
+                            <param name="orientation" value="horizontal" />
+                            <param name="posters" default="true" />
+                        </include>
+                    </control>
+                    <include content="Object_Info">
+                        <param name="id" value="50" />
+                        <param name="width" value="1654" />
+                        <param name="discart" value="true" />
+                        <param name="hdsd_flag" value="true" />
+                        <param name="plot_height" value="170" />
+                    </include>
+                </control>
+
+            </control>
+        </control>
+        <control type="group">
+            <include>View_Group</include>
+            <include>Defs_InfoDialog_Visible</include>
+            <include>Animation_FadeIn</include>
+            <include>Animation_FadeOut</include>
+            <include content="Object_Scrollbar_Horz">
+                <param name="visible" value="Control.IsVisible(50)" />
+            </include>
+        </control>
+
+        <control type="label" id="991"><include>Defs_Hidden_Button</include></control>
+        <control type="button" id="990"><include>Defs_Hidden_Button</include></control>
+        <control type="label" id="999"><include>Defs_Hidden_Button</include></control>
+    </controls>
+</window>
