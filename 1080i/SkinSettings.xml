@@ -476,6 +476,53 @@
                         <!-- ================= -->
                         <!-- Video / Music OSD -->
                         <!-- ================= -->
+                        <control type="label" id="9982" description="LABEL VIDEO OSD">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9103)</visible>
+                            <font>font_button</font>
+                            <textcolor>main_fg_30</textcolor>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31346]</label>
+                        </control>
+                        <control type="radiobutton" id="9239" description="Show detailed info on pause">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9103)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31145]</label>
+                            <selected>Skin.HasSetting(ShowInfoPaused)</selected>
+                            <onclick>Skin.ToggleSetting(ShowInfoPaused)</onclick>
+                            <onclick>Skin.Reset(DisableOSDInfo)</onclick>
+                        </control>
+                        <control type="radiobutton" id="9248" description="Only show seekbar on pressing info">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9103)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31201]</label>
+                            <selected>Skin.HasSetting(DisableOSDInfo)</selected>
+                            <onclick>Skin.ToggleSetting(DisableOSDInfo)</onclick>
+                            <onclick>Skin.Reset(ShowInfoPaused)</onclick>
+                        </control>
+                        <control type="radiobutton" id="9680" description="Show clearart">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9103)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31258]</label>
+                            <selected>Skin.HasSetting(ShowOSDClearArt)</selected>
+                            <onclick>Skin.ToggleSetting(ShowOSDClearArt)</onclick>
+                        </control>
+
+                        <control type="radiobutton" id="9238" description="Media Flags">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9103)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31130]</label>
+                            <selected>!Skin.HasSetting(HideOSDVideoCodec)</selected>
+                            <onclick>Skin.ToggleSetting(HideOSDVideoCodec)</onclick>
+                        </control>
+                        
+                        <control type="radiobutton" id="9235" description="Dont pause on information">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9103)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31079]</label>
+                            <selected>!Skin.HasSetting(DontPauseOSD)</selected>
+                            <onclick>Skin.ToggleSetting(DontPauseOSD)</onclick>
+                        </control>
+
                         <control type="label" id="9981" description="LABEL MUSIC OSD">
                             <visible>Integer.IsEqual(Window.Property(CurrentFocus),9103)</visible>
                             <font>font_button</font>
@@ -528,61 +575,6 @@
                             <onclick>Skin.ToggleSetting(ArtistSlideshow.Animate)</onclick>
                             <enable>Skin.HasSetting(musicvis.fanartfallback) | !Skin.HasSetting(ArtistSlideShow.Disabled)</enable>
                         </control>
-                        <control type="label" id="9982" description="LABEL MUSIC OSD">
-                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9103)</visible>
-                            <font>font_button</font>
-                            <textcolor>main_fg_30</textcolor>
-                            <include>Defs_Settings_Button</include>
-                            <label>$LOCALIZE[31346]</label>
-                        </control>
-                        <control type="radiobutton" id="9239" description="Show detailed info on pause">
-                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9103)</visible>
-                            <include>Defs_Settings_Button</include>
-                            <label>$LOCALIZE[31145]</label>
-                            <selected>Skin.HasSetting(ShowInfoPaused)</selected>
-                            <onclick>Skin.ToggleSetting(ShowInfoPaused)</onclick>
-                            <onclick>Skin.Reset(DisableOSDInfo)</onclick>
-                        </control>
-                        <control type="radiobutton" id="9248" description="Only show seekbar on pressing info">
-                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9103)</visible>
-                            <include>Defs_Settings_Button</include>
-                            <label>$LOCALIZE[31201]</label>
-                            <selected>Skin.HasSetting(DisableOSDInfo)</selected>
-                            <onclick>Skin.ToggleSetting(DisableOSDInfo)</onclick>
-                            <onclick>Skin.Reset(ShowInfoPaused)</onclick>
-                        </control>
-                        <control type="radiobutton" id="9680" description="Show clearart">
-                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9103)</visible>
-                            <include>Defs_Settings_Button</include>
-                            <label>$LOCALIZE[31258]</label>
-                            <selected>Skin.HasSetting(ShowOSDClearArt)</selected>
-                            <onclick>Skin.ToggleSetting(ShowOSDClearArt)</onclick>
-                        </control>
-
-                        <control type="radiobutton" id="9238" description="Media Flags">
-                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9103)</visible>
-                            <include>Defs_Settings_Button</include>
-                            <label>$LOCALIZE[31130]</label>
-                            <selected>!Skin.HasSetting(HideOSDVideoCodec)</selected>
-                            <onclick>Skin.ToggleSetting(HideOSDVideoCodec)</onclick>
-                        </control>
-
-                        <control type="radiobutton" id="9299" description="AutoMusicVis">
-                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9103)</visible>
-                            <include>Defs_Settings_Button</include>
-                            <label>$LOCALIZE[31158]</label>
-                            <selected>Skin.HasSetting(AutoMusicVis)</selected>
-                            <onclick>Skin.ToggleSetting(AutoMusicVis)</onclick>
-                        </control>
-                        
-                        <control type="radiobutton" id="9235" description="Dont pause on information">
-                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9103)</visible>
-                            <include>Defs_Settings_Button</include>
-                            <label>$LOCALIZE[31079]</label>
-                            <selected>!Skin.HasSetting(DontPauseOSD)</selected>
-                            <onclick>Skin.ToggleSetting(DontPauseOSD)</onclick>
-                        </control>
-
                         <control type="radiobutton" id="9399" description="Musicvideo auto info">
                             <visible>Integer.IsEqual(Window.Property(CurrentFocus),9103)</visible>
                             <include>Defs_Settings_Button</include>
@@ -590,6 +582,13 @@
                             <selected>!Skin.HasSetting(DisableMusicVideoAutoInfo)</selected>
                             <onclick>Skin.ToggleSetting(DisableMusicVideoAutoInfo)</onclick>
                             <visible>!Skin.HasSetting(BigMusicVis)</visible>
+                        </control>
+                        <control type="radiobutton" id="9299" description="AutoMusicVis">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9103)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31158]</label>
+                            <selected>Skin.HasSetting(AutoMusicVis)</selected>
+                            <onclick>Skin.ToggleSetting(AutoMusicVis)</onclick>
                         </control>
                         
                         <!-- ======= -->
