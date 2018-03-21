@@ -1,23 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
     <include name="Defs_PosterBack">
-        <control type="image">
-            <left>$PARAM[pad]</left>
-            <right>$PARAM[pad]</right>
-            <bottom>$PARAM[pad]</bottom>
-            <top>$PARAM[pad]</top>
-            <bordersize>10</bordersize>
-            <include condition="!Skin.HasSetting(DisableShadows)">Defs_Shadow_10</include>
-            <texture colordiffuse="PosterBack" border="10">diffuse/box.png</texture>
-        </control>
-        <!-- <control type="image">
-            <left>$PARAM[pad]</left>
-            <right>$PARAM[pad]</right>
-            <bottom>$PARAM[pad]</bottom>
-            <top>$PARAM[pad]</top>
-            <bordersize>10</bordersize>
-            <texture border="5" colordiffuse="$PARAM[gradientcolordiffuse]">common/gradientcurve.png</texture>
-        </control> -->
+        <param name="gradientcolordiffuse" default="cfffffff" />
+        <definition>
+            <control type="image">
+                <left>$PARAM[pad]</left>
+                <right>$PARAM[pad]</right>
+                <bottom>$PARAM[pad]</bottom>
+                <top>$PARAM[pad]</top>
+                <bordersize>10</bordersize>
+                <include condition="!Skin.HasSetting(DisableShadows)">Defs_Shadow_10</include>
+                <texture colordiffuse="PosterBack" border="10">diffuse/box.png</texture>
+            </control>
+            <control type="image">
+                <left>$PARAM[pad]</left>
+                <right>$PARAM[pad]</right>
+                <bottom>$PARAM[pad]</bottom>
+                <top>$PARAM[pad]</top>
+                <bordersize>10</bordersize>
+                <texture border="5" colordiffuse="$PARAM[gradientcolordiffuse]">common/gradientcurve.png</texture>
+                <visible>Skin.HasSetting(PosterBackGradient)</visible>
+            </control>
+        </definition>
     </include>
 
     <variable name="Defs_VideoInfo_StudioMovies">

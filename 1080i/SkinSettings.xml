@@ -294,7 +294,7 @@
                             <onclick condition="String.IsEqual(Skin.String(TransparencyLevel),$LOCALIZE[31000])">Skin.SetString(TransparencyLevel,$LOCALIZE[31316])</onclick>
                         </control>
 
-                        <control type="button" id="9552" description="Set overlaycolor ">
+                        <!-- <control type="button" id="9552" description="Set overlaycolor ">
                             <visible>Integer.IsEqual(Window.Property(CurrentFocus),9109)</visible>
                             <include>Defs_Settings_Button</include>
                             <label>$LOCALIZE[31273]</label>
@@ -303,7 +303,7 @@
                             <onclick condition="!System.HasAddon(script.skin.helper.colorpicker)">InstallAddon(script.skin.helper.colorpicker)</onclick>
                             <onclick>RunScript(script.skin.helper.colorpicker,skinstring=overlaycolor.name)</onclick>
                             <enable>!Skin.HasSetting(MatchOverlayColors)</enable>
-                        </control>
+                        </control> -->
 
                         <control type="radiobutton" id="9457" description="Disable color overlay">
                             <visible>Integer.IsEqual(Window.Property(CurrentFocus),9109)</visible>
@@ -358,6 +358,14 @@
                             <label>$LOCALIZE[31318]</label>
                             <selected>!Skin.HasSetting(DisableShadows)</selected>
                             <onclick>Skin.ToggleSetting(DisableShadows)</onclick>
+                        </control>
+
+                        <control type="radiobutton" id="9927" description="Poster Back Gradient">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9109)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31373]</label>
+                            <selected>Skin.HasSetting(PosterBackGradient)</selected>
+                            <onclick>Skin.ToggleSetting(PosterBackGradient)</onclick>
                         </control>
 
                         <control type="button" id="9654">
