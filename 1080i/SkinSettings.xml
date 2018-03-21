@@ -207,6 +207,13 @@
                             <onclick>Skin.ToggleSetting(SubmenuLabel)</onclick>
                             <onclick>ReloadSkin()</onclick>
                         </control>
+                        <control type="radiobutton" id="9932" description="Show more item">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9101)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31374]</label>
+                            <selected>!Skin.HasSetting(HideShowMoreItem)</selected>
+                            <onclick>Skin.ToggleSetting(HideShowMoreItem)</onclick>
+                        </control>
                         <control type="radiobutton" id="9312" description="Display text labels on landscape widgets">
                             <visible>Integer.IsEqual(Window.Property(CurrentFocus),9101)</visible>
                             <include>Defs_Settings_Button</include>
@@ -231,15 +238,7 @@
                             <onclick condition="!String.IsEmpty(Skin.String(MenuPos))">Skin.Reset(MenuPos)</onclick>
                         </control>
 
-                        <control type="button" id="9271" description="Startup Video">
-                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9101)</visible>
-                            <include>Defs_Settings_Button</include>
-                            <label>31168</label>
-                            <label2>$INFO[Skin.String(StartupPlaylist)]</label2>
-                            <onclick condition="String.IsEmpty(Skin.String(StartupPlaylist))">Skin.SetFile(StartupPlaylist,.mp4|.avi|.mkv|.xvid|.wmv|.mov|.xsp|.mp3|.wma|.flac|.m3u)</onclick>
-                            <onclick condition="!String.IsEmpty(Skin.String(StartupPlaylist))">Skin.Reset(StartupPlaylist)</onclick>
-                        </control>
-
+                       
                         
 
 
@@ -710,6 +709,16 @@
                             <label>$LOCALIZE[31027]</label>
                             <onclick>RunScript(script.skinshortcuts,type=manage&amp;group=powermenu)</onclick>
                         </control>
+
+                         <control type="button" id="9271" description="Startup Video">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9107)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>31168</label>
+                            <label2>$INFO[Skin.String(StartupPlaylist)]</label2>
+                            <onclick condition="String.IsEmpty(Skin.String(StartupPlaylist))">Skin.SetFile(StartupPlaylist,.mp4|.avi|.mkv|.xvid|.wmv|.mov|.xsp|.mp3|.wma|.flac|.m3u)</onclick>
+                            <onclick condition="!String.IsEmpty(Skin.String(StartupPlaylist))">Skin.Reset(StartupPlaylist)</onclick>
+                        </control>
+
 
                         <!-- ============ -->
                         <!-- Dependencies -->
