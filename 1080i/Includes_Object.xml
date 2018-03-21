@@ -10,14 +10,14 @@
         <param name="tmdb" default="true" />
         <param name="metacritic" default="true" />
         <param name="oscars" default="true" />
-        <param name="visible" default="false" />
         <param name="genre" default="true" />
         <param name="titleright" default="0" />
         <definition>
             <control type="grouplist">
                 <top>-10</top>
                 <visible>Container.Content(movies) | Container.Content(sets) | Container.Content(seasons) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(videos) | Window.IsVisible(script-script.extendedinfo-VideoList.xml) | $EXP[Exp_IsPluginAdvancedLauncher]</visible>
-                <visible>Control.IsVisible($PARAM[id]) | $PARAM[visible]</visible>
+                <visible>Control.IsVisible($PARAM[id])</visible>
+                <visible>!Container($PARAM[id]).ListItem.IsParentFolder</visible>
                 <orientation>vertical</orientation>
                 <usecontrolcoords>true</usecontrolcoords>
                 <itemgap>0</itemgap>
@@ -145,7 +145,8 @@
             </control>
             <control type="grouplist">
                 <visible>![Container.Content(movies) | Container.Content(sets) | Container.Content(seasons) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(videos) | Window.IsVisible(script-script.extendedinfo-VideoList.xml) | $EXP[Exp_IsPluginAdvancedLauncher]]</visible>
-                <visible>Control.IsVisible($PARAM[id]) | $PARAM[visible]</visible>
+                <visible>Control.IsVisible($PARAM[id])</visible>
+                <visible>!Container($PARAM[id]).ListItem.IsParentFolder</visible>
                 <bottom>$PARAM[bottom]</bottom>
                 <top>-10</top>
                 <orientation>vertical</orientation>
