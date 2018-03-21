@@ -124,11 +124,11 @@
                             <onclick>Back</onclick>
                             <texturenofocus colordiffuse="main_fg_100" flipx="true">common/arrow-48.png</texturenofocus>
                             <texturefocus colordiffuse="$VAR[ColorHighlight]" flipx="true">common/arrow-48.png</texturefocus>
-                            <visible>Skin.HasSetting(MouseMode) + !Window.IsVisible(Home)</visible>
+                            <visible>Skin.HasSetting(MouseMode) + ![Window.IsVisible(script-globalsearch.xml) | Window.IsVisible(Home)]</visible>
                         </control>
                         <control type="group">
                             <width>32</width>
-                            <visible>Skin.HasSetting(MouseMode) + !Window.IsVisible(Home)</visible>
+                            <visible>Skin.HasSetting(MouseMode) + ![Window.IsVisible(script-globalsearch.xml) | Window.IsVisible(Home)]</visible>
                         </control>
                         <control type="label">
                             <top>0</top>
@@ -136,7 +136,7 @@
                             <font>font_topbar</font>
                             <textcolor>main_fg_100</textcolor>
                             <label>$VAR[Label_Header_Content]</label>
-                            <visible>!Window.IsVisible(Home) | Window.IsVisible(script-script.extendedinfo-VideoList.xml)</visible>
+                            <visible>![Window.IsVisible(script-globalsearch.xml) | Window.IsVisible(Home)] | Window.IsVisible(script-script.extendedinfo-VideoList.xml)</visible>
                             <visible>!Control.HasFocus(300)</visible>
                         </control>
                         <control type="label">
@@ -145,12 +145,12 @@
                             <font>font_topbar</font>
                             <textcolor>main_fg_100</textcolor>
                             <label>$INFO[Container(300).ListItem.Label]</label>
-                            <visible>!Window.IsVisible(Home)</visible>
+                            <visible>![Window.IsVisible(script-globalsearch.xml) | Window.IsVisible(Home)]</visible>
                             <visible>Control.HasFocus(300)</visible>
                         </control>
                     </control>
                     
-                    <include condition="!Window.IsVisible(Home)">Topbar_Menu</include>
+                    <include condition="![Window.IsVisible(script-globalsearch.xml) | Window.IsVisible(Home)]">Topbar_Menu</include>
                     <!-- <include condition="[Window.IsVisible(MyVideoNav.xml) | Window.IsVisible(MyMusicNav.xml)] + Skin.HasSetting(AlphabetStrip)">Object_AlphabetStrip</include> -->
 
                     <!-- Right Info -->
@@ -267,7 +267,8 @@
                 <control type="group">
                     <visible allowhiddenfocus="true">!Control.HasFocus(9601)</visible>
                     <include>Animation_FadeInOut</include>
-                    <include condition="Window.IsVisible(Home)">Topbar_Home_TextButtons</include>
+                    <include condition="Window.IsVisible(Home) + !Window.IsVisible(script-globalsearch.xml)">Topbar_Home_TextButtons</include>
+                    <include condition="Window.IsVisible(script-globalsearch.xml)">Topbar_GlobalSearch_TextButtons</include>
                 </control>
             </control>
         </control>
@@ -533,6 +534,171 @@
                 </include>
                 <include content="Topbar_HomeMenu_Item_Gradient">
                     <param name="id" value="300" />
+                    <param name="pos" value="12" />
+                </include>
+            </control>
+        </control>
+    </include>
+
+    <include name="Topbar_GlobalSearch_Icon">
+        <control type="group">
+            <left>-10</left>
+            <top>1</top>
+            <height>view_pad</height>
+            <width>view_pad</width>
+            <control type="image">
+                <texture colordiffuse="main_fg_100">special://skin/extras/icons/search.png</texture>
+                <visible>$PARAM[visible]</visible>
+            </control>
+            <control type="image">
+                <texture colordiffuse="$VAR[ColorHighlight]" border="8">common/underline2.png</texture>
+                <visible>$PARAM[visible]</visible>
+                <visible>Control.HasFocus(990)</visible>
+            </control>
+            <control type="image">
+                <texture colordiffuse="$VAR[ColorHighlight2]" border="8" diffuse="common/gradient-diffuse-horizontal.png">common/underline2.png</texture>
+                <visible>$PARAM[visible]</visible>
+                <visible>Control.HasFocus(990)</visible>
+            </control>
+        </control>
+        <control type="group">
+            <width>-40</width>
+        </control>
+    </include>
+
+    <include name="Topbar_GlobalSearch_TextButtons">
+        <control type="group">
+            <animation type="Visible">
+                <effect type="fade" start="0" end="100" time="200" tween="sine" easing="in" delay="200" />
+                <effect type="slide" start="0,-30" end="0,0" time="250" tween="sine" easing="out" delay="200" />
+            </animation>
+            <animation type="Hidden">
+                <effect type="fade" start="100" end="0" time="150" tween="sine" easing="out" />
+                <effect type="slide" start="0,0" end="0,-30" time="200" tween="sine" easing="out" />
+            </animation>
+            <control type="grouplist">
+                <itemgap>30</itemgap>
+                <height>view_pad</height>
+                <left>view_pad</left>
+                <orientation>horizontal</orientation>
+                <visible>Window.IsVisible(script-globalsearch.xml) + !$EXP[Exp_Info_Visible]</visible>
+                <usecontrolcoords>true</usecontrolcoords>
+                <include content="Topbar_GlobalSearch_Icon">
+                    <param name="visible" value="true" />
+                </include>
+                <include content="Topbar_HomeMenu_Item">
+                    <param name="id" value="9000" />
+                    <param name="pos" value="0" />
+                </include>
+                <include content="Topbar_HomeMenu_Item">
+                    <param name="id" value="9000" />
+                    <param name="pos" value="1" />
+                </include>
+                <include content="Topbar_HomeMenu_Item">
+                    <param name="id" value="9000" />
+                    <param name="pos" value="2" />
+                </include>
+                <include content="Topbar_HomeMenu_Item">
+                    <param name="id" value="9000" />
+                    <param name="pos" value="3" />
+                </include>
+                <include content="Topbar_HomeMenu_Item">
+                    <param name="id" value="9000" />
+                    <param name="pos" value="4" />
+                </include>
+                <include content="Topbar_HomeMenu_Item">
+                    <param name="id" value="9000" />
+                    <param name="pos" value="5" />
+                </include>
+                <include content="Topbar_HomeMenu_Item">
+                    <param name="id" value="9000" />
+                    <param name="pos" value="6" />
+                </include>
+                <include content="Topbar_HomeMenu_Item">
+                    <param name="id" value="9000" />
+                    <param name="pos" value="7" />
+                </include>
+                <include content="Topbar_HomeMenu_Item">
+                    <param name="id" value="9000" />
+                    <param name="pos" value="8" />
+                </include>
+                <include content="Topbar_HomeMenu_Item">
+                    <param name="id" value="9000" />
+                    <param name="pos" value="9" />
+                </include>
+                <include content="Topbar_HomeMenu_Item">
+                    <param name="id" value="9000" />
+                    <param name="pos" value="10" />
+                </include>
+                <include content="Topbar_HomeMenu_Item">
+                    <param name="id" value="9000" />
+                    <param name="pos" value="11" />
+                </include>
+                <include content="Topbar_HomeMenu_Item">
+                    <param name="id" value="9000" />
+                    <param name="pos" value="12" />
+                </include>
+            </control>
+            <control type="grouplist">
+                <itemgap>30</itemgap>
+                <height>view_pad</height>
+                <left>view_pad</left>
+                <orientation>horizontal</orientation>
+                <visible>Window.IsVisible(script-globalsearch.xml) + !$EXP[Exp_Info_Visible]</visible>
+                <usecontrolcoords>true</usecontrolcoords>
+                <include content="Topbar_GlobalSearch_Icon">
+                    <param name="visible" value="false" />
+                </include>
+                <include content="Topbar_HomeMenu_Item_Gradient">
+                    <param name="id" value="9000" />
+                    <param name="pos" value="0" />
+                </include>
+                <include content="Topbar_HomeMenu_Item_Gradient">
+                    <param name="id" value="9000" />
+                    <param name="pos" value="1" />
+                </include>
+                <include content="Topbar_HomeMenu_Item_Gradient">
+                    <param name="id" value="9000" />
+                    <param name="pos" value="2" />
+                </include>
+                <include content="Topbar_HomeMenu_Item_Gradient">
+                    <param name="id" value="9000" />
+                    <param name="pos" value="3" />
+                </include>
+                <include content="Topbar_HomeMenu_Item_Gradient">
+                    <param name="id" value="9000" />
+                    <param name="pos" value="4" />
+                </include>
+                <include content="Topbar_HomeMenu_Item_Gradient">
+                    <param name="id" value="9000" />
+                    <param name="pos" value="5" />
+                </include>
+                <include content="Topbar_HomeMenu_Item_Gradient">
+                    <param name="id" value="9000" />
+                    <param name="pos" value="6" />
+                </include>
+                <include content="Topbar_HomeMenu_Item_Gradient">
+                    <param name="id" value="9000" />
+                    <param name="pos" value="7" />
+                </include>
+                <include content="Topbar_HomeMenu_Item_Gradient">
+                    <param name="id" value="9000" />
+                    <param name="pos" value="8" />
+                </include>
+                <include content="Topbar_HomeMenu_Item_Gradient">
+                    <param name="id" value="9000" />
+                    <param name="pos" value="9" />
+                </include>
+                <include content="Topbar_HomeMenu_Item_Gradient">
+                    <param name="id" value="9000" />
+                    <param name="pos" value="10" />
+                </include>
+                <include content="Topbar_HomeMenu_Item_Gradient">
+                    <param name="id" value="9000" />
+                    <param name="pos" value="11" />
+                </include>
+                <include content="Topbar_HomeMenu_Item_Gradient">
+                    <param name="id" value="9000" />
                     <param name="pos" value="12" />
                 </include>
             </control>

@@ -267,7 +267,7 @@
     </variable>
 
     <variable name="Label_SubTitle">
-        <value condition="!String.IsEmpty(ListItem.Genre) + Container.Content(artists)">$INFO[Window(Home).Property(SkinHelper.ListItem.AlbumCount),[COLOR=main_fg_100], $LOCALIZE[132][/COLOR]  |  ]$INFO[ListItem.Genre,[COLOR=main_fg_100],[/COLOR]]$INFO[ListItem.Property(Artist_YearsActive),  |  [COLOR=main_fg_100],[/COLOR]]</value>
+        <value condition="!String.IsEmpty(ListItem.Property(Artist_Genre)) + Container.Content(artists)">$INFO[Window(Home).Property(SkinHelper.ListItem.AlbumCount),[COLOR=main_fg_100], $LOCALIZE[132][/COLOR]  |  ]$INFO[ListItem.Property(Artist_Genre),[COLOR=main_fg_100],[/COLOR]]$INFO[ListItem.Property(Artist_YearsActive),  |  [COLOR=main_fg_100],[/COLOR]]</value>
         
         <value condition="!String.IsEmpty(ListItem.Artist) + [Container.Content(musicvideos) | Container.Content(albums) | Container.Content(songs)]">$INFO[ListItem.Artist,[COLOR=main_fg_100],[/COLOR]]$INFO[ListItem.Year,  |  [COLOR=main_fg_100],[/COLOR]]$INFO[ListItem.Genre,  |  [COLOR=main_fg_100],[/COLOR]]</value>
 

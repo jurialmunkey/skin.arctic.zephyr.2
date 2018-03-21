@@ -110,7 +110,7 @@
                             <top>24</top>
                             <left>256</left>
                             <width>$PARAM[width]</width>
-                            <include content="Object_Ratings" condition="Window.IsVisible(MyVideoNav.xml) | Window.IsVisible(Home.xml)">
+                            <include content="Object_Ratings" condition="Window.IsVisible(MyVideoNav.xml) | Window.IsVisible(Home.xml) | Window.IsVisible(script-globalsearch.xml)">
                                 <param name="directory" value="color" />
                                 <param name="align" value="left" />
                                 <param name="width" value="$PARAM[width]" />
@@ -176,11 +176,11 @@
                         <left>-16</left>
                         <include content="Object_StarRating_Music">
                             <param name="align" value="left" />
-                            <param name="visible" value="[Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(MyMusicNav.xml) | Window.IsVisible(musicplaylist) | Container.Content(musicvideos)] + String.IsEmpty(ListItem.UserRating)" />
+                            <param name="visible" value="String.IsEmpty(ListItem.UserRating)" />
                         </include>
                         <include content="Object_StarRating">
                             <param name="align" value="left" />
-                            <param name="visible" value="[Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(MyMusicNav.xml) | Window.IsVisible(musicplaylist) | Container.Content(musicvideos)] + !String.IsEmpty(ListItem.UserRating)" />
+                            <param name="visible" value="!String.IsEmpty(ListItem.UserRating)" />
                             <param name="rating_prop" value="ListItem.UserRating" />
                         </include>
                     </control>
@@ -456,7 +456,7 @@
     <include name="Object_StarRating_Music">
         <param name="align" default="center" />
         <param name="rating_prop" default="ListItem.Rating" />
-        <param name="visible" default="Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(MyMusicNav.xml) | Window.IsVisible(musicplaylist) | Container.Content(musicvideos)" />
+        <param name="visible" default="Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(MyMusicNav.xml) | Window.IsVisible(musicplaylist) | Container.Content(musicvideos) | Window.IsVisible(script-globalsearch.xml)" />
         <definition>
             <control type="group">
                 <height>64</height>

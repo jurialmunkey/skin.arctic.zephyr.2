@@ -724,32 +724,7 @@
                         <height>364</height>
                         <include>View_Posters_Itemlayout_Artwork</include>
                     </control>
-                    <control type="label">
-                        <label>$INFO[ListItem.Label]</label>
-                        <align>center</align>
-                        <aligny>top</aligny>
-                        <font>font_statusbar</font>
-                        <textcolor>main_fg_100</textcolor>
-                        <left>10</left>
-                        <right>10</right>
-                        <top>369</top>
-                        <height>30</height>
-                        <visible>$PARAM[text]</visible>
-                        <visible>!Skin.HasSetting(DisableViewText)</visible>
-                    </control>
-                    <control type="label">
-                        <label>$INFO[ListItem.Label2]</label>
-                        <align>center</align>
-                        <aligny>top</aligny>
-                        <font>font_statusbar</font>
-                        <textcolor>main_fg_30</textcolor>
-                        <left>10</left>
-                        <right>10</right>
-                        <top>399</top>
-                        <height>30</height>
-                        <visible>$PARAM[text]</visible>
-                        <visible>!Skin.HasSetting(DisableViewText)</visible>
-                    </control>
+                    <include condition="$PARAM[text] + !Skin.HasSetting(DisableViewText)">View_Square_Text</include>
                 </control>
             </itemlayout>
             <focusedlayout width="364" height="480" condition="$PARAM[square]">
@@ -768,32 +743,7 @@
                             <include>View_Selectbox</include>
                         </control>
                     </control>
-                    <control type="label">
-                        <label>$INFO[ListItem.Label]</label>
-                        <align>center</align>
-                        <aligny>top</aligny>
-                        <font>font_statusbar</font>
-                        <textcolor>main_fg_100</textcolor>
-                        <left>10</left>
-                        <right>10</right>
-                        <top>369</top>
-                        <height>30</height>
-                        <visible>$PARAM[text]</visible>
-                        <visible>!Skin.HasSetting(DisableViewText)</visible>
-                    </control>
-                    <control type="label">
-                        <label>$INFO[ListItem.Label2]</label>
-                        <align>center</align>
-                        <aligny>top</aligny>
-                        <font>font_statusbar</font>
-                        <textcolor>main_fg_30</textcolor>
-                        <left>10</left>
-                        <right>10</right>
-                        <top>399</top>
-                        <height>30</height>
-                        <visible>$PARAM[text]</visible>
-                        <visible>!Skin.HasSetting(DisableViewText)</visible>
-                    </control>
+                    <include condition="$PARAM[text] + !Skin.HasSetting(DisableViewText)">View_Square_Text</include>
                 </control>
             </focusedlayout>
             <itemlayout width="260" height="315" condition="$PARAM[square_small]">
@@ -927,6 +877,57 @@
         </definition>
     </include>
 
+    <include name="View_Square_Text">
+        <control type="label">
+            <label>$INFO[ListItem.Label]</label>
+            <align>center</align>
+            <aligny>top</aligny>
+            <font>font_statusbar</font>
+            <textcolor>main_fg_100</textcolor>
+            <left>10</left>
+            <right>10</right>
+            <top>369</top>
+            <height>30</height>
+        </control>
+        <control type="label">
+            <label>$INFO[ListItem.Label2]</label>
+            <align>center</align>
+            <aligny>top</aligny>
+            <font>font_statusbar</font>
+            <textcolor>main_fg_30</textcolor>
+            <left>10</left>
+            <right>10</right>
+            <top>399</top>
+            <height>30</height>
+        </control>
+    </include>
+
+    <include name="View_GlobalSearch_Square_Text">
+        <control type="label">
+            <label>$INFO[ListItem.Label]</label>
+            <align>center</align>
+            <aligny>top</aligny>
+            <font>font_statusbar</font>
+            <textcolor>main_fg_100</textcolor>
+            <left>10</left>
+            <right>10</right>
+            <top>369</top>
+            <height>30</height>
+        </control>
+        <control type="label">
+            <label>$INFO[ListItem.Artist]$INFO[ListItem.Duration, - ,]</label>
+            <align>center</align>
+            <aligny>top</aligny>
+            <font>font_statusbar</font>
+            <textcolor>main_fg_30</textcolor>
+            <left>10</left>
+            <right>10</right>
+            <top>399</top>
+            <height>30</height>
+            <visible>!Container.Content(artists)</visible>
+        </control>
+    </include>
+
     <include name="View_Landscape_Text">
         <control type="label">
             <label>$INFO[ListItem.Label]</label>
@@ -969,6 +970,50 @@
             <top>385</top>
         </control>
     </include>
+
+    <include name="View_GlobalSearch_Landscape_Text">
+        <control type="label">
+            <label>$INFO[ListItem.Label]</label>
+            <align>left</align>
+            <aligny>top</aligny>
+            <font>font_statusbar</font>
+            <textcolor>main_fg_100</textcolor>
+            <left>10</left>
+            <right>10</right>
+            <top>355</top>
+        </control>
+        <control type="label">
+            <label>$INFO[ListItem.Premiered]</label>
+            <align>right</align>
+            <aligny>top</aligny>
+            <font>font_statusbar</font>
+            <textcolor>main_fg_70</textcolor>
+            <left>10</left>
+            <right>10</right>
+            <top>355</top>
+        </control>
+        <control type="label">
+            <label>$INFO[ListItem.TvShowTitle]</label>
+            <align>left</align>
+            <aligny>top</aligny>
+            <font>font_statusbar</font>
+            <textcolor>main_fg_30</textcolor>
+            <left>10</left>
+            <right>10</right>
+            <top>385</top>
+        </control>
+        <control type="label">
+            <label>$INFO[ListItem.Duration]</label>
+            <align>right</align>
+            <aligny>top</aligny>
+            <font>font_statusbar</font>
+            <textcolor>main_fg_30</textcolor>
+            <left>10</left>
+            <right>10</right>
+            <top>385</top>
+        </control>
+    </include>
+
     <include name="View_Landscape_Artwork">
         <include>Defs_PosterBack</include>
         <control type="image">
