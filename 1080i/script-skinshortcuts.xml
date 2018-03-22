@@ -335,7 +335,7 @@
                     <texturenofocus colordiffuse="dialog_fg_12" border="5">common/box.png</texturenofocus>
                     <align>left</align>
                     <include>Dialog_Standard_Right_Buttons</include>
-                    <onfocus>SetProperty(WidgetName,WidgetName)</onfocus>
+                    <onfocus>SetProperty(widgetName,widgetName)</onfocus>
                     <onfocus>SetProperty(WidgetSort,WidgetSort)</onfocus>
                     <onfocus>SetProperty(WidgetAspect,WidgetAspect)</onfocus>
                     <onfocus>SetProperty(WidgetAspect_Item,$INFO[Container(211).ListItem.Property(WidgetAspect)])</onfocus>
@@ -451,7 +451,7 @@
                     <texturenofocus colordiffuse="dialog_fg_30">special://skin/extras/icons/write.png</texturenofocus>
                     <label>$LOCALIZE[118]</label>
                     <textcolor>dialog_fg_30</textcolor>
-                    <onclick>RunScript(script.skin.helper.service,action=setskinshortcutsproperty,header=$ADDON[script.skinshortcuts 32025],property=$INFO[Window.Property(WidgetName)])</onclick>
+                    <onclick>RunScript(script.skin.helper.service,action=setskinshortcutsproperty,header=$ADDON[script.skinshortcuts 32025],property=$INFO[Window.Property(widgetName)])</onclick>
                     <onback condition="!String.IsEmpty(Window.Property(SetWidgets))">AlarmClock(reopen,RunScript(script.skinshortcuts,type=manage&amp;group=mainmenu),00:00,silent)</onback>
                 </control>
                 <control type="button" id="9403" description="Aspect">
