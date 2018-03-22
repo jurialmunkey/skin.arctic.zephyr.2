@@ -20,9 +20,10 @@
                 <include condition="!VideoPlayer.Content(musicvideos)">OSD_VideoPosition</include>
                 <include condition="VideoPlayer.Content(musicvideos)">OSD_MusicPosition</include>
                 <itemgap>32</itemgap>
-                <ondown>9003</ondown>
                 <onup condition="String.IsEmpty(Window(Home).Property(OSDInfo))">SetProperty(OSDInfo,1,Home)</onup>
                 <onup condition="!String.IsEmpty(Window(Home).Property(OSDInfo))">ClearProperty(OSDInfo,Home)</onup>
+                <ondown condition="String.IsEmpty(Window(Home).Property(OSDInfo))">Close</ondown>
+                <ondown condition="!String.IsEmpty(Window(Home).Property(OSDInfo))">ClearProperty(OSDInfo,Home)</ondown>
                 <orientation>horizontal</orientation>
                 <usecontrolcoords>true</usecontrolcoords>
                 <include>OSD_Controls</include>

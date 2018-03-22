@@ -74,24 +74,30 @@
                 <label>$VAR[Label_PlayerStatus]</label>
             </control>
         </control>
-        <control type="grouplist">
-            <orientation>horizontal</orientation>
+        <control type="group">
             <height>view_pad</height>
             <bottom>0</bottom>
-            <align>center</align>
-            <itemgap>12</itemgap>
+            <left>0</left>
+            <right>0</right>
             <visible>!Window.IsVisible(videoosd)</visible>
+            <animation effect="fade" end="100" start="0" delay="200" time="200" reversible="false">Visible</animation>
             <control type="label">
+                <align>center</align>
+                <width>100%</width>
                 <textcolor>main_fg_100</textcolor>
                 <include>Statusbar_Menubar_Items</include>
                 <label>$INFO[VideoPlayer.TvShowTitle,[COLOR=main_fg_70],[/COLOR][COLOR=main_fg_30]  •  [/COLOR]]$INFO[MusicPlayer.Artist,[COLOR=main_fg_70],[/COLOR][COLOR=main_fg_30]  •  [/COLOR]]$INFO[VideoPlayer.Season,,x]$INFO[VideoPlayer.Episode,,. ]$INFO[Player.Title]</label>
+                <animation effect="fade" end="100" start="0" delay="300" time="1" reversible="false">Visible</animation>
                 <visible>![!String.IsEmpty(Window(Home).Property(OSDInfo)) | Player.ShowInfo | Window.IsActive(DialogFullScreenInfo.xml) | [Player.Paused + Skin.HasSetting(ShowInfoPaused)]]</visible>
             </control>
             <control type="label">
+                <align>center</align>
+                <width>100%</width>
                 <textcolor>main_fg_100</textcolor>
                 <include>Statusbar_Menubar_Items</include>
-                <label>$INFO[System.Time,Time  ,]$INFO[Player.FinishTime,[COLOR=main_fg_70]  •  $LOCALIZE[31106] ,[/COLOR]]</label>
+                <label>$INFO[System.Time,$LOCALIZE[555]  ,]$INFO[Player.FinishTime,[COLOR=main_fg_70]  •  $LOCALIZE[31106] ,[/COLOR]]</label>
                 <visible>!String.IsEmpty(Window(Home).Property(OSDInfo)) | Player.ShowInfo | Window.IsActive(DialogFullScreenInfo.xml) | [Player.Paused + Skin.HasSetting(ShowInfoPaused)]</visible>
+                <animation effect="fade" start="100" end="0" delay="300" time="1" reversible="false">Hidden</animation>
             </control>
         </control>
         <control type="grouplist">
