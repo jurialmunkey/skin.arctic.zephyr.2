@@ -7,7 +7,7 @@
         <control type="group">
             <include content="Dialog_Standard_Group">
                 <param name="width" value="820" />
-                <param name="height" value="575" />
+                <param name="height" value="647" />
             </include>
 
             <control type="label">
@@ -21,7 +21,7 @@
                 <right>20</right>
                 <width>780</width>
                 <top>100</top>
-                <height>600</height>
+                <height>672</height>
                 <itemgap>10</itemgap>
                 <orientation>vertical</orientation>
                 <pagecontrol>60</pagecontrol>
@@ -67,6 +67,13 @@
                     <include>Dialog_Standard_ListButton</include>
                     <onclick>Skin.ToggleSetting(Ratings.IMDB)</onclick>
                     <selected>!Skin.HasSetting(Ratings.IMDB)</selected>
+                </control>
+                <control type="radiobutton" id="9007">
+                    <label>$LOCALIZE[33067]</label>
+                    <radioposx>730</radioposx>
+                    <include>Dialog_Standard_ListButton</include>
+                    <onclick>Skin.ToggleSetting(DisableStarRating)</onclick>
+                    <selected>!Skin.HasSetting(DisableStarRating)</selected>
                 </control>
             </control>
         </control>

@@ -292,12 +292,14 @@
                                 <control type="group">
                                     <top>-41</top>
                                     <left>-16</left>
+                                    <visible>!Skin.HasSetting(DisableStarRating)</visible>
                                     <include content="Object_StarRating">
                                         <param name="rating_prop" value="VideoPlayer.Rating" />
                                     </include>
                                 </control>
                                 <control type="group">
                                     <left>256</left>
+                                    <animation effect="slide" end="-256" condition="Skin.HasSetting(DisableStarRating)">Conditional</animation>
                                     <include content="Object_OSD_Ratings">
                                         <param name="directory" value="color" />
                                         <param name="align" value="left" />
