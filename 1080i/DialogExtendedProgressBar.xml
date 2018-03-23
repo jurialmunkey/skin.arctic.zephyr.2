@@ -8,6 +8,7 @@
             <height>view_top</height>
             <control type="group">
                 <include>Dialog_Notification_Group</include>
+                <visible>!Skin.HasSetting(MinimalBusyLoader) | !Window.IsVisible(DialogBusy.xml)</visible>
                 <visible>!Window.IsVisible(DialogNotification.xml)</visible>
                 <visible>!Window.IsVisible(DialogVolumeBar.xml) | Player.Muted</visible>
                 <visible>!Window.IsVisible(fullscreenvideo)</visible>
