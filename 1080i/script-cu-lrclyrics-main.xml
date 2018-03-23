@@ -4,22 +4,18 @@
     <zorder>1</zorder>
     <controls>
         <control type="group">
-            <animation effect="fade" start="100" end="0" condition="true">Conditional</animation>
+            <animation effect="fade" start="100" end="0" condition="!Skin.HasSetting(NormalLyrics)">Conditional</animation>
             <include>Animation_FadeIn</include>
             <include>Animation_FadeOut</include>
             <control type="group">
 
                 <control type="group">
-                    <top>250</top>
-                    <bottom>100</bottom>
-                    <left>720</left>
-                    <right>0</right>
                     <!-- ** Required ** Do not change <id> or <type> (Smooth scrolling list for lyrics) -->
                     <control type="list" id="110">
-                        <left>125</left>
-                        <right>50</right>
-                        <top>350</top>
-                        <bottom>0</bottom>
+                        <centerleft>50%</centerleft>
+                        <width>1000</width>
+                        <top>200</top>
+                        <bottom>350</bottom>
                         <onleft>101</onleft>
                         <onright>101</onright>
                         <onup>110</onup>
@@ -29,7 +25,7 @@
                         <itemlayout height="60" width="1000">
                             <control type="label">
                                 <width>100%</width>
-                                <align>left</align>
+                                <align>center</align>
                                 <textcolor>main_fg_70</textcolor>
                                 <selectedcolor>Highlight2</selectedcolor>
                                 <info>ListItem.Label</info>
@@ -38,7 +34,7 @@
                         <focusedlayout height="60" width="1000">
                             <control type="label">
                                 <width>100%</width>
-                                <align>left</align>
+                                <align>center</align>
                                 <textcolor>Highlight2</textcolor>
                                 <selectedcolor>Highlight2</selectedcolor>
                                 <info>ListItem.Label</info>
@@ -48,10 +44,10 @@
                     </control>
                     <!-- ** Required ** Do not change <id> or <type> (Song Chooser if it gets it wrong) -->
                     <control type="list" id="120">
-                        <left>125</left>
-                        <right>50</right>
-                        <top>350</top>
-                        <bottom>0</bottom>
+                        <centerleft>50%</centerleft>
+                        <width>1000</width>
+                        <top>200</top>
+                        <bottom>350</bottom>
                         <onleft>111</onleft>
                         <onright>111</onright>
                         <onup>110</onup>
@@ -87,6 +83,7 @@
 
         </control>
         <control type="group">
+            <animation effect="fade" start="100" end="0" condition="Skin.HasSetting(NormalLyrics)">Conditional</animation>
             <animation effect="zoom" start="100" end="66" condition="Player.ShowInfo + Skin.HasSetting(BigMusicVis)">Conditional</animation>
             <animation effect="slide" start="0" end="1080,400" condition="Player.ShowInfo + Skin.HasSetting(BigMusicVis)">Conditional</animation>
             <animation effect="slide" start="0" end="0,200" condition="!Player.ShowInfo | !Skin.HasSetting(BigMusicVis)">Conditional</animation>

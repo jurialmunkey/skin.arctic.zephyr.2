@@ -74,6 +74,7 @@
                                 <width>260</width>
                                 <visible>!Window.IsVisible(MusicVisualisation.xml) | !Integer.IsEqual($PARAM[rating],0)</visible>
                                 <visible>!Window.IsVisible(musicosd) + !Window.IsVisible(videoosd)</visible>
+                                <visible>!Skin.HasSetting(DisableStarRating)</visible>
                                 <include content="Object_StarRating">
                                     <param name="align" value="left" />
                                     <param name="visible" value="true" />
@@ -86,6 +87,7 @@
                                 <width>260</width>
                                 <visible>Window.IsVisible(MusicVisualisation.xml) + Integer.IsEqual($PARAM[rating],0)</visible>
                                 <visible>!Window.IsVisible(musicosd) + !Window.IsVisible(videoosd)</visible>
+                                <visible>!Skin.HasSetting(DisableStarRating)</visible>
                                 <include content="Object_StarRating_Music">
                                     <param name="align" value="left" />
                                     <param name="visible" value="true" />

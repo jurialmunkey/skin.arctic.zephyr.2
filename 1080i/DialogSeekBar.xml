@@ -5,6 +5,7 @@
     <zorder>0</zorder>
     <visible>[VideoPlayer.IsFullscreen | Window.IsVisible(MusicVisualisation.xml)]</visible>
     <controls>
+        
         <control type="group">
             <visible>!Integer.IsEqual(Player.CacheLevel,100)</visible>
             <visible>!Player.Seeking + !Player.DisplayAfterSeek</visible>

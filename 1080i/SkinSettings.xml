@@ -567,6 +567,13 @@
                             <selected>!Skin.HasSetting(HideOSDScrollingText)</selected>
                             <onclick>Skin.ToggleSetting(HideOSDScrollingText)</onclick>
                         </control>
+                        <control type="radiobutton" id="9599" description="Video Lyrics">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9103)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31377]</label>
+                            <selected>!Skin.HasSetting(NormalLyrics)</selected>
+                            <onclick>Skin.ToggleSetting(NormalLyrics)</onclick>
+                        </control>
                         <control type="radiobutton" id="9234" description="Animate Artist slideshow">
                             <visible>Integer.IsEqual(Window.Property(CurrentFocus),9103)</visible>
                             <include>Defs_Settings_Button</include>
@@ -575,6 +582,7 @@
                             <onclick>Skin.ToggleSetting(ArtistSlideshow.Animate)</onclick>
                             <enable>Skin.HasSetting(musicvis.fanartfallback) | !Skin.HasSetting(ArtistSlideShow.Disabled)</enable>
                         </control>
+                        
                         <control type="radiobutton" id="9399" description="Musicvideo auto info">
                             <visible>Integer.IsEqual(Window.Property(CurrentFocus),9103)</visible>
                             <include>Defs_Settings_Button</include>

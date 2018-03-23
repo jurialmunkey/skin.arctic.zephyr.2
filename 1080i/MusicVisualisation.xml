@@ -39,6 +39,14 @@
             <visible>!Skin.HasSetting(HideOSDDiffuseColors)</visible>
         </control>
 
+        <control type="group" id="3337">
+            <include>Global_Overlay</include>
+            <include>Animation_FadeIn</include>
+            <include>Animation_FadeOut</include>
+            <visible>Skin.HasSetting(NormalLyrics)</visible>
+            <visible>Window.IsVisible(script-cu-lrclyrics-main.xml)</visible>
+        </control>
+
         <control type="group" id="3334">
             <top>-70</top>
             <visible>!Skin.HasSetting(HideOSDScrollingText)</visible>
