@@ -132,7 +132,7 @@
                         </control>
                         <control type="label">
                             <top>0</top>
-                            <width>auto</width>
+                            <width max="1140">auto</width>
                             <font>font_topbar</font>
                             <textcolor>main_fg_100</textcolor>
                             <label>$VAR[Label_Header_Content]</label>
@@ -144,7 +144,7 @@
                             <width>auto</width>
                             <font>font_topbar</font>
                             <textcolor>main_fg_100</textcolor>
-                            <label>$INFO[Container(300).ListItem.Label]</label>
+                            <label max="1140">$INFO[Container(300).ListItem.Label]</label>
                             <visible>![Window.IsVisible(script-globalsearch.xml) | Window.IsVisible(Home)]</visible>
                             <visible>Control.HasFocus(300)</visible>
                         </control>
@@ -167,6 +167,10 @@
                         <usecontrolcoords>true</usecontrolcoords>
                         <control type="group">
                             <width>view_pad</width>
+                            <visible>![Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml) | Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(DialogAddonInfo.xml)]</visible>
+                            <visible>!Control.HasFocus(300) | Window.IsVisible(Home)</visible>
+                            <visible>[String.IsEmpty(Window(10025).Property(PlayingBackgroundMedia)) + Player.HasMedia]</visible>
+                            <include>Animation_FadeIn_Delay</include>
                             <control type="multiimage">
                                 <centertop>50%</centertop>
                                 <imagepath colordiffuse="$VAR[ColorHighlight]">eq</imagepath>
@@ -174,9 +178,7 @@
                                 <height>23</height>
                                 <fadetime>50</fadetime>
                                 <timeperimage>50</timeperimage>
-                                <visible>[String.IsEmpty(Window(10025).Property(PlayingBackgroundMedia)) + Player.HasMedia]</visible>
                                 <visible>!Player.Paused + !Player.Caching</visible>
-                                <visible>![Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml) | Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(DialogAddonInfo.xml)]</visible>
                             </control>
                             <control type="image">
                                 <centertop>50%</centertop>
@@ -185,9 +187,7 @@
                                 <width>32</width>
                                 <height>32</height>
                                 <fadetime>50</fadetime>
-                                <visible>[String.IsEmpty(Window(10025).Property(PlayingBackgroundMedia)) + Player.HasMedia]</visible>
                                 <visible>Player.Paused + !Player.Caching</visible>
-                                <visible>![Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml) | Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(DialogAddonInfo.xml)]</visible>
                             </control>
                             <control type="image">
                                 <centertop>50%</centertop>
@@ -197,9 +197,6 @@
                                 <height>64</height>
                                 <fadetime>50</fadetime>
                                 <visible>Player.Caching</visible>
-                                <visible>[String.IsEmpty(Window(10025).Property(PlayingBackgroundMedia)) + Player.HasMedia]</visible>
-                                <!-- <visible>Player.Caching</visible> -->
-                                <visible>![Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml) | Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(DialogAddonInfo.xml)]</visible>
                             </control>
                             <visible>Player.HasMedia</visible>
                         </control>
@@ -211,6 +208,8 @@
                             <visible>Player.HasMedia</visible>
                             <visible>[String.IsEmpty(Window(10025).Property(PlayingBackgroundMedia)) + Player.HasMedia]</visible>
                             <visible>![Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml) | Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(DialogAddonInfo.xml)]</visible>
+                            <visible>!Control.HasFocus(300) | Window.IsVisible(Home)</visible>
+                            <include>Animation_FadeIn_Delay</include>
                         </control>
                         <control type="label">
                             <width>auto</width>
@@ -218,6 +217,8 @@
                             <textcolor>$VAR[ColorHighlight]</textcolor>
                             <label>  |  </label>
                             <visible>Player.HasMedia</visible>
+                            <visible>![Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml) | Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(DialogAddonInfo.xml)]</visible>
+                            <visible>!Control.HasFocus(300) | Window.IsVisible(Home)</visible>
                         </control>
                         <control type="group">
                             <width>view_pad</width>
@@ -228,7 +229,7 @@
                                 <texture colordiffuse="main_fg_100">$INFO[Weather.FanartCode,resource://resource.images.weathericons.white/,.png]</texture>
                             </control>
                             <visible>Weather.IsFetched</visible>
-                            <visible>!Player.HasMedia</visible>
+                            <visible>!Player.HasMedia | [Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml) | Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(DialogAddonInfo.xml)] | [Control.HasFocus(300) + !Window.IsVisible(Home)]</visible>
                         </control>
                         <control type="label">
                             <width>auto</width>
@@ -236,7 +237,7 @@
                             <textcolor>main_fg_100</textcolor>
                             <label>$INFO[Weather.Temperature]</label>
                             <visible>Weather.IsFetched</visible>
-                            <visible>!Player.HasMedia</visible>
+                            <visible>!Player.HasMedia | [Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml) | Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(DialogAddonInfo.xml)] | [Control.HasFocus(300) + !Window.IsVisible(Home)]</visible>
                         </control>
                         <control type="label">
                             <width>auto</width>
@@ -245,7 +246,7 @@
                             <label>  |  </label>
                             <visible>!String.IsEmpty(Weather.Temperature)</visible>
                             <visible>Weather.IsFetched</visible>
-                            <visible>!Player.HasMedia</visible>
+                            <visible>!Player.HasMedia | [Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml) | Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(DialogAddonInfo.xml)] | [Control.HasFocus(300) + !Window.IsVisible(Home)]</visible>
                         </control>
                         <control type="label">
                             <width>auto</width>
