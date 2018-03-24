@@ -109,7 +109,7 @@
                     <height>view_pad</height>
                     <!-- Left Info -->
                     <control type="grouplist">
-                        <visible allowhiddenfocus="true">!Control.HasFocus(9601)</visible>
+                        <visible allowhiddenfocus="true">![Control.HasFocus(9601) | [System.IdleTime(4) + Skin.HasSetting(AutoPlotOverlay) + [Window.IsVisible(MyVideoNav.xml) | Window.IsVisible(MyMusicNav.xml) | Window.IsVisible(Home)] + ![Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(DialogAddonInfo.xml)]]]</visible>
                         <include>Animation_FadeInOut</include>
                         <itemgap>0</itemgap>
                         <left>view_pad</left>
@@ -265,7 +265,7 @@
                     </control>
                 </control>
                 <control type="group">
-                    <visible allowhiddenfocus="true">!Control.HasFocus(9601)</visible>
+                    <visible allowhiddenfocus="true">![Control.HasFocus(9601) | [System.IdleTime(4) + Skin.HasSetting(AutoPlotOverlay) + [Window.IsVisible(MyVideoNav.xml) | Window.IsVisible(MyMusicNav.xml) | Window.IsVisible(Home)] + ![Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(DialogAddonInfo.xml)]]]</visible>
                     <include>Animation_FadeInOut</include>
                     <include condition="Window.IsVisible(Home) + !Window.IsVisible(script-globalsearch.xml)">Topbar_Home_TextButtons</include>
                     <include condition="Window.IsVisible(script-globalsearch.xml)">Topbar_GlobalSearch_TextButtons</include>
@@ -716,7 +716,7 @@
                         <itemgap>0</itemgap>
                         <left>view_pad</left>
                         <align>left</align>
-                        <visible allowhiddenfocus="true">!Control.HasFocus(9601)</visible>
+                        <visible allowhiddenfocus="true">![Control.HasFocus(9601) | [System.IdleTime(4) + Skin.HasSetting(AutoPlotOverlay) + [Window.IsVisible(MyVideoNav.xml) | Window.IsVisible(MyMusicNav.xml) | Window.IsVisible(Home)] + ![Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(DialogAddonInfo.xml)]]]</visible>
                         <include>Animation_FadeInOut</include>
                         <orientation>horizontal</orientation>
                         <usecontrolcoords>true</usecontrolcoords>

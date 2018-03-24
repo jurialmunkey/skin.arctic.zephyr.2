@@ -15,7 +15,7 @@
         
 
         <control type="group">
-            <visible allowhiddenfocus="true">!Control.HasFocus(9601)</visible>
+            <visible allowhiddenfocus="true">![Control.HasFocus(9601) | [System.IdleTime(4) + Skin.HasSetting(AutoPlotOverlay) + [Window.IsVisible(MyVideoNav.xml) | Window.IsVisible(MyMusicNav.xml) | Window.IsVisible(Home)] + ![Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(DialogAddonInfo.xml)]]]</visible>
             <include>Object_UpDownInfoArrows</include>
             <include>Animation_FadeInOut</include>
             <control type="group">

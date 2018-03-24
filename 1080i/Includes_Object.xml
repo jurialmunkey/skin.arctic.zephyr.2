@@ -1780,7 +1780,7 @@
                     <right>view_pad</right>
                     <top>view_top</top>
                     <bottom>view_pad</bottom>
-                    <visible>Control.HasFocus(9601)</visible>
+                    <visible>[Control.HasFocus(9601) | [System.IdleTime(4) + Skin.HasSetting(AutoPlotOverlay) + [Window.IsVisible(MyVideoNav.xml) | Window.IsVisible(MyMusicNav.xml) | Window.IsVisible(Home)] + ![Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(DialogAddonInfo.xml)]]]</visible>
                     <include>Animation_FadeIn</include>
                     <control type="group">
                         <top>12</top>
@@ -1845,7 +1845,7 @@
                             <align>left</align>
                             <textcolor>main_fg_70</textcolor>
                             <font>font_overlay_plotbox</font>
-                            <label>$VAR[Label_OverlayPlot]</label>
+                            <label fallback="19055">$VAR[Label_OverlayPlot]</label>
                             <pagecontrol>9601</pagecontrol>
                             <autoscroll delay="8000" time="4000" repeat="12000">false</autoscroll>
                         </control>
