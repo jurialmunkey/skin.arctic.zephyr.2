@@ -720,14 +720,14 @@
                             <top>5</top>
                             <width>24</width>
                             <height>24</height>
-                            <texture colordiffuse="ff000000">indicator/new.png</texture>
+                            <texture>indicator/timer.png</texture>
                             <visible>ListItem.HasTimer</visible>
                         </control>
                         <control type="image">
                             <top>5</top>
                             <width>24</width>
                             <height>24</height>
-                            <texture colordiffuse="ff000000">indicator/checkmark.png</texture>
+                            <texture>indicator/record.png</texture>
                             <visible>ListItem.IsRecording</visible>
                         </control>
                         <control type="label" id="1">
@@ -738,6 +738,7 @@
                             <textoffsetx>0</textoffsetx>
                             <font>font_tiny_bold_uppercase</font>
                             <label>$INFO[ListItem.Label]</label>
+                            <animation effect="slide" end="0,14" condition="Skin.HasSetting(PVRGuideGenreName)">Conditional</animation>
                         </control>
                         <control type="label" id="1">
                             <left>20</left>
@@ -747,6 +748,7 @@
                             <textoffsetx>0</textoffsetx>
                             <font>font_statusbar</font>
                             <label>$INFO[ListItem.Genre,[UPPERCASE],[/UPPERCASE]]</label>
+                            <visible>!Skin.HasSetting(PVRGuideGenreName)</visible>
                         </control>
                     </itemlayout>
                     <focusedlayout height="listitem_height" width="262">
@@ -781,14 +783,14 @@
                             <top>5</top>
                             <width>24</width>
                             <height>24</height>
-                            <texture colordiffuse="ff000000">indicator/new.png</texture>
+                            <texture>indicator/time.png</texture>
                             <visible>ListItem.HasTimer</visible>
                         </control>
                         <control type="image">
                             <top>5</top>
                             <width>24</width>
                             <height>24</height>
-                            <texture colordiffuse="ff000000">indicator/checkmark.png</texture>
+                            <texture>indicator/record.png</texture>
                             <visible>ListItem.IsRecording</visible>
                         </control>
                         
@@ -800,6 +802,7 @@
                             <textoffsetx>0</textoffsetx>
                             <font>font_tiny_bold_uppercase</font>
                             <label>$INFO[ListItem.Label]</label>
+                            <animation effect="slide" end="0,14" condition="Skin.HasSetting(PVRGuideGenreName)">Conditional</animation>
                         </control>
                         <control type="label" id="1">
                             <left>20</left>
@@ -809,6 +812,7 @@
                             <textoffsetx>0</textoffsetx>
                             <font>font_statusbar</font>
                             <label>$INFO[ListItem.Genre,[UPPERCASE],[/UPPERCASE]]</label>
+                            <visible>!Skin.HasSetting(PVRGuideGenreName)</visible>
                         </control>
                     </focusedlayout>
                 </control>
