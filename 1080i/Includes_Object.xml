@@ -200,27 +200,30 @@
     </include>
 
     <include name="Object_VideoInfo_InfoSection">
-        <control type="group">
-            <height>32</height>
-            <visible>!String.IsEmpty($PARAM[label2])</visible>
-            <control type="label">
-                <width>150</width>
-                <align>left</align>
-                <font>font_tiny</font>
-                <textcolor>main_fg_30</textcolor>
-                <label>$PARAM[label]</label>
-                <scroll>true</scroll>
+        <param name="haspath" default="false" />
+        <definition>
+            <control type="group">
+                <height>32</height>
+                <visible>!String.IsEmpty($PARAM[label2])</visible>
+                <control type="label">
+                    <width>150</width>
+                    <align>left</align>
+                    <font>font_tiny</font>
+                    <textcolor>main_fg_30</textcolor>
+                    <label>$PARAM[label]</label>
+                    <scroll>true</scroll>
+                </control>
+                <control type="label">
+                    <left>150</left>
+                    <align>left</align>
+                    <font>font_tiny</font>
+                    <textcolor>main_fg_70</textcolor>
+                    <label>$INFO[$PARAM[label2]]</label>
+                    <haspath>$PARAM[haspath]</haspath>
+                    <scroll>true</scroll>
+                </control>
             </control>
-            <control type="label">
-                <left>150</left>
-                <align>left</align>
-                <font>font_tiny</font>
-                <textcolor>main_fg_70</textcolor>
-                <label>$INFO[$PARAM[label2]]</label>
-                <haspath>true</haspath>
-                <scroll>true</scroll>
-            </control>
-        </control>
+        </definition>
     </include>
     
     <include name="Object_VideoInfo_CastList">

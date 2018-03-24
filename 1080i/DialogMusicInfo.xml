@@ -26,7 +26,7 @@
                     <right>0</right>
                     <width>8</width>
                     <bottom>0</bottom>
-                    <showonepage>true</showonepage>
+                    <showonepage>false</showonepage>
                     <orientation>vertical</orientation>
                     <texturesliderbackground colordiffuse="main_fg_12">common/white.png</texturesliderbackground>
                     <texturesliderbar colordiffuse="main_fg_30">common/white.png</texturesliderbar>
@@ -79,7 +79,7 @@
                                 <param name="discart" value="true" />
                                 <param name="hdsd_flag" value="true" />
                                 <param name="visible" value="true" />
-                                <param name="plot_height" value="130" />
+                                <param name="plot_height" value="170" />
                             </include>
                         </control>
                     </control>
@@ -118,7 +118,7 @@
                             <top>90</top>
                             <right>390</right>
                             <orientation>vertical</orientation>
-                            <itemgap>10</itemgap>
+                            <itemgap>9</itemgap>
                             <usecontrolcoords>true</usecontrolcoords>
                             <include content="Object_VideoInfo_InfoSection">
                                 <param name="label" value="$LOCALIZE[561]" />
@@ -127,6 +127,7 @@
                             <include content="Object_VideoInfo_InfoSection">
                                 <param name="label" value="$LOCALIZE[573]" />
                                 <param name="label2" value="ListItem.Path" />
+                                <param name="haspath" value="true" />
                             </include>
                             <include content="Object_VideoInfo_InfoSection">
                                 <param name="label" value="$LOCALIZE[21893]" />

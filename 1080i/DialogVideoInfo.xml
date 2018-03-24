@@ -37,7 +37,7 @@
                     <width>8</width>
                     <top>0</top>
                     <bottom>0</bottom>
-                    <showonepage>true</showonepage>
+                    <showonepage>false</showonepage>
                     <orientation>vertical</orientation>
                     <texturesliderbackground colordiffuse="main_fg_12">common/white.png</texturesliderbackground>
                     <texturesliderbar colordiffuse="main_fg_30">common/white.png</texturesliderbar>
@@ -464,7 +464,7 @@
                             <top>90</top>
                             <right>390</right>
                             <orientation>vertical</orientation>
-                            <itemgap>10</itemgap>
+                            <itemgap>9</itemgap>
                             <include content="Object_VideoInfo_InfoSection">
                                 <param name="label" value="$LOCALIZE[561]" />
                                 <param name="label2" value="ListItem.FileName" />
@@ -472,15 +472,12 @@
                             <include content="Object_VideoInfo_InfoSection">
                                 <param name="label" value="$LOCALIZE[573]" />
                                 <param name="label2" value="ListItem.Path" />
+                                <param name="haspath" value="true" />
                             </include>
                             <include content="Object_VideoInfo_InfoSection">
                                 <param name="label" value="$LOCALIZE[31352]" />
                                 <param name="label2" value="ListItem.DateAdded" />
                             </include>
-                            <!-- <include content="Object_VideoInfo_InfoSection">
-                                <param name="label" value="$LOCALIZE[31353]" />
-                                <param name="label2" value="ListItem.LastPlayed" />
-                            </include> -->
                             <include content="Object_VideoInfo_InfoSection">
                                 <param name="label" value="$LOCALIZE[572]" />
                                 <param name="label2" value="ListItem.Studio" />
