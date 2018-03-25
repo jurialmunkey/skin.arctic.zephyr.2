@@ -47,6 +47,7 @@
             <onright>300</onright>
             <onup>300</onup>
             <ondown>3000</ondown>
+            <onfocus condition="!String.IsEmpty(Skin.String(MenuPos))">SetFocus(302)</onfocus>
             <onfocus condition="!String.IsEmpty(Skin.String(MenuPos))">SetFocus(300,$INFO[Skin.String(MenuPos)])</onfocus>
             <onfocus condition="String.IsEmpty(Skin.String(MenuPos)) + String.IsEmpty(Window(Home).Property(WidgetFocus))">SetFocus(300)</onfocus>
             <onfocus condition="String.IsEmpty(Skin.String(MenuPos)) + !String.IsEmpty(Window(Home).Property(WidgetFocus))">SetFocus(3000)</onfocus>
