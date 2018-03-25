@@ -6,12 +6,11 @@
     </variable>
 
     <variable name="Label_OSD_Title">
-        <value condition="!String.IsEmpty(VideoPlayer.EpgEventTitle) | !String.IsEmpty(VideoPlayer.EpisodeName)">$INFO[VideoPlayer.EpgEventTitle,,  ]$INFO[VideoPlayer.EpisodeName]</value>
         <value>$INFO[Player.Title]</value>
     </variable>
 
     <variable name="Label_OSD_InfoLine">
-        <value condition="[!String.IsEmpty(VideoPlayer.EpgEventTitle) | !String.IsEmpty(VideoPlayer.EpisodeName)] + VideoPlayer.Content(livetv)">$INFO[VideoPlayer.Title,  |  [COLOR=main_fg_100],[/COLOR]]$INFO[VideoPlayer.Year,  |  [COLOR=main_fg_100],[/COLOR]]$INFO[VideoPlayer.MPAA,  |  [COLOR=main_fg_100],[/COLOR]]$INFO[VideoPlayer.Genre,  |  [COLOR=main_fg_100],[/COLOR]]</value>
+        <value condition="[!String.IsEmpty(VideoPlayer.EpgEventTitle) | !String.IsEmpty(VideoPlayer.EpisodeName)] + VideoPlayer.Content(livetv)">$INFO[VideoPlayer.EpisodeName,  |  [COLOR=main_fg_100],[/COLOR]]$INFO[VideoPlayer.EpgEventTitle,  |  [COLOR=main_fg_100],[/COLOR]]$INFO[VideoPlayer.Year,  |  [COLOR=main_fg_100],[/COLOR]]$INFO[VideoPlayer.MPAA,  |  [COLOR=main_fg_100],[/COLOR]]$INFO[VideoPlayer.Genre,  |  [COLOR=main_fg_100],[/COLOR]]</value>
         <value condition="!String.IsEmpty(VideoPlayer.Season) + !String.IsEmpty(VideoPlayer.Episode)">$INFO[VideoPlayer.TvShowTitle,  |  [COLOR=main_fg_100],[/COLOR]]$INFO[VideoPlayer.Season,  |  [COLOR=main_fg_100]S,[/COLOR]]$INFO[VideoPlayer.Episode,[COLOR=main_fg_100]E,[/COLOR]]$INFO[VideoPlayer.Premiered,  |  [COLOR=main_fg_100],[/COLOR]]$INFO[VideoPlayer.MPAA,  |  [COLOR=main_fg_100],[/COLOR]]$INFO[VideoPlayer.Genre,  |  [COLOR=main_fg_100],[/COLOR]]</value>
         <value>$INFO[VideoPlayer.TvShowTitle,  |  [COLOR=main_fg_100],[/COLOR]]$INFO[VideoPlayer.Year,  |  [COLOR=main_fg_100],[/COLOR]]$INFO[VideoPlayer.MPAA,  |  [COLOR=main_fg_100],[/COLOR]]$INFO[VideoPlayer.Genre,  |  [COLOR=main_fg_100],[/COLOR]]</value>
     </variable>
