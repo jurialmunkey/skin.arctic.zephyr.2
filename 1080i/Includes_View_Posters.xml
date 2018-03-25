@@ -11,6 +11,7 @@
             <include condition="!Skin.HasSetting(DisableViewMode.SquareShowcase) + [Window.IsVisible(MyMusicNav.xml) | Window.IsVisible(MyPrograms.xml)]">View_Posters_SquareShowcase</include>
             <include condition="!Skin.HasSetting(DisableViewMode.BigPosters) + [Window.IsVisible(MyPrograms.xml) | Window.IsVisible(MyVideoNav.xml)]">View_Posters_BigPosters</include>
             <include condition="!Skin.HasSetting(DisableViewMode.Lovefilm) + [Window.IsVisible(MyPrograms.xml) | Window.IsVisible(MyVideoNav.xml) | Window.IsVisible(MyMusicNav.xml)]">View_Posters_Lovefilm</include>
+            <include condition="!Skin.HasSetting(DisableViewMode.EpisodeList) + [Window.IsVisible(MyVideoNav.xml) | Window.IsVisible(MyMusicNav.xml)]">View_Posters_EpisodeList</include>
         </definition>
     </include>
     
@@ -409,6 +410,35 @@
         </control>
     </include>
 
+    <include name="View_Posters_EpisodeList">
+        <control type="group">
+            <visible>Control.IsVisible(502)</visible>
+            <control type="group">
+                <include>View_Pad</include>
+                <control type="fixedlist" id="502">
+                    <left>-70</left>
+                    <right>-10</right>
+                    <bottom>40</bottom>
+                    <top>-10</top>
+                    <visible>Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(videos) | Container.Content(artists)</visible>
+                    <pagecontrol>60</pagecontrol>
+                    <focusposition>1</focusposition>
+                    <movement>1</movement>
+                    <include>View_NotTheseWindows</include>
+                    <viewtype label="$LOCALIZE[31385]">icon</viewtype>
+                    <include content="View_Forced">
+                        <param name="string" value="$LOCALIZE[31385]" />
+                    </include>
+                    <include content="View_Posters_Layout">
+                        <param name="id" value="502" />
+                        <param name="orientation" value="vertical" />
+                        <param name="episode_list" default="true" />
+                    </include>
+                </control>
+            </control>
+        </control>
+    </include>
+
     <include name="View_Posters_Layout">
         <param name="id" default="51" />
         <param name="setfanart" default="false" />
@@ -421,6 +451,7 @@
         <param name="square_small" default="false" />
         <param name="landscape" default="false" />
         <param name="landscape_small" default="false" />
+        <param name="episode_list" default="false" />
         <param name="banner" default="false" />
         <param name="submenu" default="false" />
         <param name="text" default="true" />
@@ -605,6 +636,184 @@
                         <right>10</right>
                         <top>265</top>
                         <visible>!Skin.HasSetting(DisableViewText)</visible>
+                    </control>
+                </control>
+            </focusedlayout>
+            <itemlayout width="1820" height="310" condition="$PARAM[episode_list]">
+                <control type="group">
+                    <left>view_pad</left>
+                    <right>-view_pad</right>
+                    <top>$PARAM[top_offset]</top>
+                    <bottom>$PARAM[bottom_offset]</bottom>
+                    <control type="group">
+                        <height>300</height>
+                        <width>518</width>
+                        <include>View_Landscape_Artwork</include>
+                    </control>
+                    <control type="group">
+                        <height>300</height>
+                        <left>538</left>
+                        <visible>!ListItem.IsParentFolder</visible>
+                        <control type="label">
+                            <left>0</left>
+                            <label>$INFO[ListItem.Label]</label>
+                            <height>80</height>
+                            <aligny>top</aligny>
+                            <textcolor>main_fg_100</textcolor>
+                            <font>font_showcase_title</font>
+                        </control>
+                        <control type="group">
+                            <top>80</top>
+                            <control type="image">
+                                <left>0</left>
+                                <top>10</top>
+                                <width>37</width>
+                                <height>24</height>
+                                <texture colordiffuse="main_fg_100">$VAR[Image_HDSD]</texture>
+                                <visible>Container.Content(movies) | Container.Content(episodes)</visible>
+                            </control>
+                            <control type="label">
+                                <left>37</left>
+                                <label>|</label>
+                                <width>40</width>
+                                <align>center</align>
+                                <height>40</height>
+                                <aligny>top</aligny>
+                                <textcolor>$VAR[ColorHighlight]</textcolor>
+                                <font>font_small</font>
+                                <visible>Container.Content(movies) | Container.Content(episodes)</visible>
+                            </control>
+                            <control type="label">
+                                <animation effect="slide" condition="![Container.Content(movies) | Container.Content(episodes)]" end="-73">Conditional</animation>
+                                <left>73</left>
+                                <width>auto</width>
+                                <label>$VAR[Label_ShowCase_InfoLine]$INFO[ListItem.Rating,  |  [COLOR=main_fg_100],[/COLOR]]</label>
+                                <height>40</height>
+                                <aligny>top</aligny>
+                                <textcolor>$VAR[ColorHighlight]</textcolor>
+                                <font>font_small</font>
+                            </control>
+                        </control>
+                        <control type="label">
+                            <top>120</top>
+                            <label>[CAPITALIZE]$INFO[ListItem.Genre][/CAPITALIZE]</label>
+                            <height>80</height>
+                            <aligny>center</aligny>
+                            <textcolor>main_fg_100</textcolor>
+                            <font>font_small</font>
+                            <visible>!String.IsEmpty(ListItem.Genre)</visible>
+                        </control>
+                        <control type="textbox">
+                            <top>195</top>
+                            <label fallback="19055">$VAR[Label_Plot]</label>
+                            <bottom>10</bottom>
+                            <aligny>top</aligny>
+                            <textcolor>main_fg_70</textcolor>
+                            <font>font_plotbox</font>
+                            <autoscroll>false</autoscroll>
+                            <visible>!String.IsEmpty(ListItem.Genre)</visible>
+                        </control>
+                        <control type="textbox">
+                            <top>120</top>
+                            <label fallback="19055">$VAR[Label_Plot]</label>
+                            <bottom>10</bottom>
+                            <aligny>top</aligny>
+                            <textcolor>main_fg_70</textcolor>
+                            <font>font_plotbox</font>
+                            <autoscroll>false</autoscroll>
+                            <visible>String.IsEmpty(ListItem.Genre)</visible>
+                        </control>
+                    </control>
+                </control>
+            </itemlayout>
+            <focusedlayout width="1820" height="310" condition="$PARAM[episode_list]">
+                <control type="group">
+                    <top>$PARAM[top_offset]</top>
+                    <bottom>$PARAM[bottom_offset]</bottom>
+                    <left>view_pad</left>
+                    <right>-view_pad</right>
+                    <include>Animation_FocusBounce_Small</include>
+                    <control type="group">
+                        <height>300</height>
+                        <width>518</width>
+                        <include>View_Landscape_Artwork</include>
+                        <!-- Highlight -->
+                        <control type="group">
+                            <visible>Control.HasFocus($PARAM[id])</visible>
+                            <include>View_Selectbox</include>
+                        </control>
+                    </control>
+                    <control type="group">
+                        <height>300</height>
+                        <left>538</left>
+                        <visible>!ListItem.IsParentFolder</visible>
+                        <control type="label">
+                            <left>0</left>
+                            <label>$INFO[ListItem.Label]</label>
+                            <height>80</height>
+                            <aligny>top</aligny>
+                            <textcolor>main_fg_100</textcolor>
+                            <font>font_showcase_title</font>
+                        </control>
+                        <control type="group">
+                            <top>80</top>
+                            <control type="image">
+                                <left>0</left>
+                                <top>10</top>
+                                <width>37</width>
+                                <height>24</height>
+                                <texture colordiffuse="main_fg_100">$VAR[Image_HDSD]</texture>
+                                <visible>Container.Content(movies) | Container.Content(episodes)</visible>
+                            </control>
+                            <control type="label">
+                                <left>37</left>
+                                <label>|</label>
+                                <width>40</width>
+                                <align>center</align>
+                                <height>40</height>
+                                <aligny>top</aligny>
+                                <textcolor>$VAR[ColorHighlight]</textcolor>
+                                <font>font_small</font>
+                                <visible>Container.Content(movies) | Container.Content(episodes)</visible>
+                            </control>
+                            <control type="label">
+                                <animation effect="slide" condition="![Container.Content(movies) | Container.Content(episodes)]" end="-73">Conditional</animation>
+                                <left>73</left>
+                                <width>100%</width>
+                                <label>$VAR[Label_ShowCase_InfoLine]$INFO[ListItem.Rating,  |  [COLOR=main_fg_100],[/COLOR]]</label>
+                                <height>40</height>
+                                <aligny>top</aligny>
+                                <textcolor>$VAR[ColorHighlight]</textcolor>
+                                <font>font_small</font>
+                            </control>
+                        </control>
+                        <control type="label">
+                            <top>120</top>
+                            <label>[CAPITALIZE]$INFO[ListItem.Genre][/CAPITALIZE]</label>
+                            <height>80</height>
+                            <aligny>center</aligny>
+                            <textcolor>main_fg_100</textcolor>
+                            <font>font_small</font>
+                            <visible>!String.IsEmpty(ListItem.Genre)</visible>
+                        </control>
+                        <control type="textbox">
+                            <top>195</top>
+                            <label fallback="19055">$VAR[Label_Plot]</label>
+                            <bottom>10</bottom>
+                            <aligny>top</aligny>
+                            <textcolor>main_fg_70</textcolor>
+                            <font>font_plotbox</font>
+                            <visible>!String.IsEmpty(ListItem.Genre)</visible>
+                        </control>
+                        <control type="textbox">
+                            <top>120</top>
+                            <label fallback="19055">$VAR[Label_Plot]</label>
+                            <bottom>10</bottom>
+                            <aligny>top</aligny>
+                            <textcolor>main_fg_70</textcolor>
+                            <font>font_plotbox</font>
+                            <visible>String.IsEmpty(ListItem.Genre)</visible>
+                        </control>
                     </control>
                 </control>
             </focusedlayout>

@@ -124,6 +124,14 @@
                     <selected>!Skin.HasSetting(DisableViewMode.Lovefilm)</selected>
                     <onfocus>SetProperty(Image_Preview,special://skin/extras/backgrounds/viewmodes/lovefilm.jpg)</onfocus>
                 </control>
+                <control type="radiobutton" id="9011" description="EpisodeList">
+                    <label>$LOCALIZE[31385]</label>
+                    <radioposx>630</radioposx>
+                    <include>Dialog_Standard_ListButton</include>
+                    <onclick>Skin.ToggleSetting(DisableViewMode.EpisodeList)</onclick>
+                    <selected>!Skin.HasSetting(DisableViewMode.EpisodeList)</selected>
+                    <onfocus>SetProperty(Image_Preview,special://skin/extras/backgrounds/viewmodes/episodelist.jpg)</onfocus>
+                </control>
             </control>
         </control>
     </controls>
