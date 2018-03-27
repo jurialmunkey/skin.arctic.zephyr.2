@@ -79,7 +79,7 @@
         </control>
         <control type="image" description="Background">
             <include>Dimensions_Fullscreen</include>
-            <texture>special://skin/fanart.jpg</texture>
+            <texture fallback="special://skin/fanart.jpg">$INFO[Skin.String(StartupSplash)]</texture>
             <visible>String.IsEmpty(Window(Home).Property(SkinSplashStarted)) | Integer.IsEqual(Container(300).NumItems,0) | Container(300).IsUpdating</visible>
             <animation effect="fade" start="100" end="0" time="600" tween="quadratic">Hidden</animation>
             <visible>String.IsEmpty(Skin.String(StartupPlaylist))</visible>

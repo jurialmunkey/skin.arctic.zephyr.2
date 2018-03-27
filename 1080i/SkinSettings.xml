@@ -528,7 +528,7 @@
                         <!-- ============= -->
                         <!-- Miscellaneous -->
                         <!-- ============= -->
-                        <control type="radiobutton" id="9601" description="Kiosk Mode">
+                        <control type="radiobutton" id="9605" description="Kiosk Mode">
                             <visible>Integer.IsEqual(Window.Property(CurrentFocus),9006)</visible>
                             <include>Defs_Settings_Button</include>
                             <label>31199</label>
@@ -536,14 +536,14 @@
                             <onclick>Skin.ToggleSetting(global.kioskmode)</onclick>
                         </control>
 
-                        <control type="button" id="9602" description="Customise Shutdown Menu">
+                        <control type="button" id="9606" description="Customise Shutdown Menu">
                             <visible>Integer.IsEqual(Window.Property(CurrentFocus),9006)</visible>
                             <include>Defs_Settings_Button</include>
                             <label>$LOCALIZE[31027]</label>
                             <onclick>RunScript(script.skinshortcuts,type=manage&amp;group=powermenu)</onclick>
                         </control>
 
-                        <control type="radiobutton" id="9603" description="Minimal Busy Loader">
+                        <control type="radiobutton" id="9607" description="Minimal Busy Loader">
                             <visible>Integer.IsEqual(Window.Property(CurrentFocus),9006)</visible>
                             <include>Defs_Settings_Button</include>
                             <label>$LOCALIZE[31015]</label>
@@ -551,7 +551,7 @@
                             <onclick>Skin.ToggleSetting(MinimalBusyLoader)</onclick>
                         </control>
 
-                        <control type="radiobutton" id="9604" description="Use genre colors">
+                        <control type="radiobutton" id="9608" description="Use genre colors">
                             <visible>Integer.IsEqual(Window.Property(CurrentFocus),9006)</visible>
                             <include>Defs_Settings_Button</include>
                             <label>$LOCALIZE[31056]</label>
@@ -559,7 +559,7 @@
                             <onclick>Skin.ToggleSetting(PVRGuideGenreColors)</onclick>
                         </control>
 
-                        <control type="radiobutton" id="9605" description="Show genre in EPG">
+                        <control type="radiobutton" id="9609" description="Show genre in EPG">
                             <visible>Integer.IsEqual(Window.Property(CurrentFocus),9006)</visible>
                             <include>Defs_Settings_Button</include>
                             <label>$LOCALIZE[31378]</label>
@@ -567,7 +567,7 @@
                             <onclick>Skin.ToggleSetting(PVRGuideGenreName)</onclick>
                         </control>
 
-                        <control type="radiobutton" id="9606" description="Artwork button downloads all artwork">
+                        <control type="radiobutton" id="9610" description="Artwork button downloads all artwork">
                             <visible>Integer.IsEqual(Window.Property(CurrentFocus),9006)</visible>
                             <include>Defs_Settings_Button</include>
                             <label>$LOCALIZE[31366]</label>
@@ -576,21 +576,30 @@
                             <enable>System.HasAddon(script.artwork.downloader) | System.HasAddon(script.artwork.beef)</enable>
                         </control>
 
-                        <control type="radiobutton" id="9607" description="Enable bounce animations">
+                        <control type="radiobutton" id="9611" description="Enable bounce animations">
                             <visible>Integer.IsEqual(Window.Property(CurrentFocus),9006)</visible>
                             <include>Defs_Settings_Button</include>
                             <label>$LOCALIZE[31192]</label>
                             <selected>!Skin.HasSetting(BounceAnimations)</selected>
                             <onclick>Skin.ToggleSetting(BounceAnimations)</onclick>
                         </control>
-
-                        <control type="button" id="9609" description="Startup Video">
+                        
+                        <control type="button" id="9613" description="Startup Video">
                             <visible>Integer.IsEqual(Window.Property(CurrentFocus),9006)</visible>
                             <include>Defs_Settings_Button</include>
                             <label>31168</label>
                             <label2>$INFO[Skin.String(StartupPlaylist)]</label2>
                             <onclick condition="String.IsEmpty(Skin.String(StartupPlaylist))">Skin.SetFile(StartupPlaylist,.mp4|.avi|.mkv|.xvid|.wmv|.mov|.xsp|.mp3|.wma|.flac|.m3u)</onclick>
                             <onclick condition="!String.IsEmpty(Skin.String(StartupPlaylist))">Skin.Reset(StartupPlaylist)</onclick>
+                        </control>
+
+                        <control type="button" id="9614" description="Startup Splash">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9006)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31387]</label>
+                            <label2>$INFO[Skin.String(StartupSplash)]</label2>
+                            <onclick condition="String.IsEmpty(Skin.String(StartupSplash))">Skin.SetImage(StartupSplash)</onclick>
+                            <onclick condition="!String.IsEmpty(Skin.String(StartupSplash))">Skin.Reset(StartupSplash)</onclick>
                         </control>
 
                         <!-- ================= -->
