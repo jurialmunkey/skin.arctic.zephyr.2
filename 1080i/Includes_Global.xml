@@ -58,7 +58,7 @@
             <left>-2160</left>
             <width>1</width>
             <height>1</height>
-            <timeperimage>10000</timeperimage>
+            <timeperimage>7000</timeperimage>
             <randomize>true</randomize>
             <fadetime>600</fadetime>
             <imagepath background="true">$VAR[Global_Background_Image_Var]</imagepath>
@@ -83,7 +83,7 @@
                 <control type="multiimage" description="Fanart">
                     <visible>!Player.HasMedia | [!Skin.HasSetting(global.showvideo) + Player.HasVideo] | [!Skin.HasSetting(global.showvisualisation) + Player.HasAudio] | [Player.HasAudio + !String.IsEmpty(Window(10025).Property(PlayingBackgroundMedia))]</visible>
                     <include>Dimensions_Fullscreen</include>
-                    <timeperimage>10000</timeperimage>
+                    <timeperimage>7000</timeperimage>
                     <randomize>true</randomize>
                     <include condition="!Window.IsVisible(SettingsCategory.xml) + !Window.IsVisible(SkinSettings.xml) + !Window.IsVisible(SettingsProfile.xml) + !Window.IsVisible(SettingsSystemInfo.xml)">Global_FadeTime_600</include>
                     <aspectratio>scale</aspectratio>
