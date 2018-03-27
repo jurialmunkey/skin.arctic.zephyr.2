@@ -12,7 +12,7 @@
                 <control type="label">
                     <left>view_pad</left>
                     <height>80</height>
-                    <label>$INFO[System.FriendlyName,,  -  ]$INFO[Control.GetLabel(52)]</label>
+                    <label>$INFO[System.AddonVersion(skin.aura),Aura ,]</label>
                     <font>font_button</font>
                     <textcolor>main_fg_30</textcolor>
                 </control>
@@ -114,8 +114,16 @@
                         <right>0</right>
                         <itemgap>0</itemgap>
                         <usecontrolcoords>true</usecontrolcoords>
-
                         <control type="label">
+                            <description>Label 52</description>
+                            <font>font_small_mono</font>
+                            <height>60</height>
+                            <include>Defs_Settings_Button</include>
+                            <label>$INFO[Control.GetLabel(52)]$INFO[System.FriendlyName, - ,]</label>
+                            <visible>!Control.IsVisible(30)</visible>
+                        </control>
+                        <control type="label">
+                            <top>20</top>
                             <left>view_pad</left>
                             <aligny>top</aligny>
                             <height>50</height>
