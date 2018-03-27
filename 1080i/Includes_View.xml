@@ -606,7 +606,7 @@
                     <rulerlayout height="74" width="262">
                         <control type="label" id="2">
                             <posx>0</posx>
-                            <posy>46</posy>
+                            <posy>36</posy>
                             <width>262</width>
                             <align>left</align>
                             <aligny>top</aligny>
@@ -630,7 +630,7 @@
                             <width>250</width>
                             <aligny>center</aligny>
                             <height>listitem_height</height>
-                            <font>font_tiny_bold_uppercase</font>
+                            <font>font_tiny_bold</font>
                             <textcolor>PosterFront_70</textcolor>
                             <label>$INFO[ListItem.ChannelName]</label>
                         </control>
@@ -641,7 +641,7 @@
                             <aligny>center</aligny>
                             <height>listitem_height</height>
                             <textcolor>PosterFront_70</textcolor>
-                            <font>font_tiny_bold_uppercase</font>
+                            <font>font_tiny_bold</font>
                             <label>$INFO[ListItem.ChannelNumberLabel]</label>
                         </control>
                         <control type="image">
@@ -678,7 +678,7 @@
                             <height>listitem_height</height>
                             <selectedcolor>Selected</selectedcolor>
                             <textcolor>Selected</textcolor>
-                            <font>font_tiny_bold_uppercase</font>
+                            <font>font_tiny_bold</font>
                             <label>$INFO[ListItem.ChannelName]</label>
                         </control>
                         <control type="label">
@@ -689,7 +689,7 @@
                             <selectedcolor>Selected</selectedcolor>
                             <height>listitem_height</height>
                             <textcolor>Selected</textcolor>
-                            <font>font_tiny_bold_uppercase</font>
+                            <font>font_tiny_bold</font>
                             <label>$INFO[ListItem.ChannelNumberLabel]</label>
                         </control>
                         <control type="image">
@@ -733,22 +733,31 @@
                         <control type="label" id="1">
                             <left>20</left>
                             <width>218</width>
-                            <centertop>35%</centertop>
+                            <centertop>33%</centertop>
                             <textcolor>main_fg_100</textcolor>
                             <textoffsetx>0</textoffsetx>
-                            <font>font_tiny_bold_uppercase</font>
+                            <font>font_tiny_bold</font>
                             <label>$INFO[ListItem.Label]</label>
-                            <animation effect="slide" end="0,14" condition="Skin.HasSetting(PVRGuideGenreName)">Conditional</animation>
                         </control>
                         <control type="label" id="1">
                             <left>20</left>
                             <width>218</width>
-                            <centerbottom>35%</centerbottom>
+                            <centerbottom>33%</centerbottom>
                             <textcolor>main_fg_70</textcolor>
                             <textoffsetx>0</textoffsetx>
                             <font>font_statusbar</font>
-                            <label>$INFO[ListItem.Genre,[UPPERCASE],[/UPPERCASE]]</label>
+                            <label>$INFO[ListItem.Genre]</label>
                             <visible>!Skin.HasSetting(PVRGuideGenreName)</visible>
+                        </control>
+                        <control type="label" id="1">
+                            <left>20</left>
+                            <width>218</width>
+                            <centerbottom>33%</centerbottom>
+                            <textcolor>main_fg_70</textcolor>
+                            <textoffsetx>0</textoffsetx>
+                            <font>font_statusbar</font>
+                            <label>$INFO[ListItem.StartTime]$INFO[ListItem.EndTime, - ,]</label>
+                            <visible>Skin.HasSetting(PVRGuideGenreName)</visible>
                         </control>
                     </itemlayout>
                     <focusedlayout height="listitem_height" width="262">
@@ -797,22 +806,31 @@
                         <control type="label" id="1">
                             <left>20</left>
                             <width>218</width>
-                            <centertop>35%</centertop>
+                            <centertop>33%</centertop>
                             <textcolor>Selected</textcolor>
                             <textoffsetx>0</textoffsetx>
-                            <font>font_tiny_bold_uppercase</font>
+                            <font>font_tiny_bold</font>
                             <label>$INFO[ListItem.Label]</label>
-                            <animation effect="slide" end="0,14" condition="Skin.HasSetting(PVRGuideGenreName)">Conditional</animation>
                         </control>
                         <control type="label" id="1">
                             <left>20</left>
                             <width>218</width>
-                            <centerbottom>35%</centerbottom>
+                            <centerbottom>33%</centerbottom>
                             <textcolor>Selected</textcolor>
                             <textoffsetx>0</textoffsetx>
                             <font>font_statusbar</font>
-                            <label>$INFO[ListItem.Genre,[UPPERCASE],[/UPPERCASE]]</label>
+                            <label>$INFO[ListItem.Genre]</label>
                             <visible>!Skin.HasSetting(PVRGuideGenreName)</visible>
+                        </control>
+                        <control type="label" id="1">
+                            <left>20</left>
+                            <width>218</width>
+                            <centerbottom>33%</centerbottom>
+                            <textcolor>Selected</textcolor>
+                            <textoffsetx>0</textoffsetx>
+                            <font>font_statusbar</font>
+                            <label>$INFO[ListItem.StartTime]$INFO[ListItem.EndTime, - ,]</label>
+                            <visible>Skin.HasSetting(PVRGuideGenreName)</visible>
                         </control>
                     </focusedlayout>
                 </control>
