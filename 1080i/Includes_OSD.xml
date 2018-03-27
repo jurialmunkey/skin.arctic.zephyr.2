@@ -608,9 +608,7 @@
             <texturenofocus colordiffuse="main_fg_70">osd/settings.png</texturenofocus>
             <onfocus condition="!String.IsEmpty(Window(Home).Property(OSDExtendedInfo)) + Player.Paused">Play</onfocus>
             <onfocus condition="!String.IsEmpty(Window(Home).Property(OSDExtendedInfo))">ClearProperty(OSDExtendedInfo,Home)</onfocus>
-            <onclick>SetProperty(OSD_Menu,3112,Home)</onclick>
             <onclick>SetFocus(3112,9)</onclick>
-            <onup>SetProperty(OSD_Menu,3112,Home)</onup>
             <onup>SetFocus(3112,9)</onup>
             <visible>!VideoPlayer.Content(musicvideos)</visible>
         </control>
@@ -726,13 +724,10 @@
                         <onleft>ClearProperty(OSD_Menu,Home)</onleft>
                         <onright>ClearProperty(OSD_Menu,Home)</onright>
                         <onback>ClearProperty(OSD_Menu,Home)</onback>
-                        <!-- <ondown>ClearProperty(OSD_Menu,Home)</ondown> -->
-                        <!-- <onunfocus>ClearProperty(OSD_Menu,Home)</onunfocus> -->
+                        <onfocus>SetProperty(OSD_Menu,3112,Home)</onfocus>
                         <onleft>$PARAM[osd_id]</onleft>
                         <onright>$PARAM[osd_id]</onright>
                         <onback>$PARAM[osd_id]</onback>
-                        <!-- <ondown>$PARAM[osd_id]</ondown> -->
-                        <!-- <onup>noop</onup> -->
                         <bottom>86</bottom>
                         <include>Defs_Options_Grouplist</include>
                         <itemlayout width="450" height="70">
