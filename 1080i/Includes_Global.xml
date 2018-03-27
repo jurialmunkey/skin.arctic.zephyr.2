@@ -185,12 +185,16 @@
 
         <!-- Fanart -->
         <value condition="Skin.HasSetting(SkinHelper.EnableAnimatedPosters) + !String.IsEmpty(ListItem.Art(animatedfanart))">$INFO[ListItem.Art(animatedfanart)]</value>
-        <value condition="System.HasAddon(script.artwork.helper) + Skin.HasSetting(SkinHelper.EnableExtraFanart)">plugin://script.artwork.helper/multiimage/listitem/?refresh=$INFO[ListItem.Label]</value>
-        <value condition="!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Art.ExtraFanArt)) + Skin.HasSetting(SkinHelper.EnableExtraFanart)">$INFO[Window(Home).Property(SkinHelper.ListItem.Art.ExtraFanArt)]</value>
+        <value condition="Skin.HasSetting(SkinHelper.EnableAnimatedPosters) + !String.IsEmpty(Container.ListItem.Art(animatedfanart)) + Window.IsVisible(Home) + !Control.HasFocus(300) + !Control.HasFocus(302)">$INFO[Container.ListItem.Art(animatedfanart)]</value>
+        <value condition="System.HasAddon(script.artwork.helper) + Skin.HasSetting(SkinHelper.EnableExtraFanart) + !String.IsEmpty(ListItem.Art(fanart))">plugin://script.artwork.helper/multiimage/listitem/?refresh=$INFO[ListItem.Label]</value>
+        <value condition="System.HasAddon(script.artwork.helper) + Skin.HasSetting(SkinHelper.EnableExtraFanart) + !String.IsEmpty(Container.ListItem.Art(fanart)) + Window.IsVisible(Home) + !Control.HasFocus(300) + !Control.HasFocus(302)">plugin://script.artwork.helper/multiimage/listitem/?refresh=$INFO[Container.ListItem.Label]&amp;&amp;containerid=</value>
+        <value condition="!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Art.ExtraFanArt)) + Skin.HasSetting(SkinHelper.EnableExtraFanart) + [!Window.IsVisible(Home) | [Window.IsVisible(Home) + !Control.HasFocus(300) + !Control.HasFocus(302)]]">$INFO[Window(Home).Property(SkinHelper.ListItem.Art.ExtraFanArt)]</value>
         <value condition="!String.IsEmpty(ListItem.Art(fanart))">$INFO[ListItem.Art(fanart)]</value>
+        <value condition="!String.IsEmpty(Container.ListItem.Art(fanart)) + Window.IsVisible(Home) + !Control.HasFocus(300) + !Control.HasFocus(302)">$INFO[Container.ListItem.Art(fanart)]</value>
         <value condition="!String.IsEmpty(ListItem.Property(Fanart_Image))">$INFO[ListItem.Property(Fanart_Image)]</value>
+        <value condition="!String.IsEmpty(Container.ListItem.Property(Fanart_Image)) + Window.IsVisible(Home) + !Control.HasFocus(300) + !Control.HasFocus(302)">$INFO[Container.ListItem.Property(Fanart_Image)]</value>
         <value condition="!String.IsEmpty(ListItem.Property(Fanart))">$INFO[ListItem.Property(Fanart)]</value>
-        <value condition="Window.IsVisible(Home) + !String.IsEmpty(Container.ListItem.Art(fanart))">$INFO[Container.ListItem.Art(fanart)]</value>
+        <value condition="!String.IsEmpty(Container.ListItem.Property(Fanart)) + Window.IsVisible(Home) + !Control.HasFocus(300) + !Control.HasFocus(302)">$INFO[Container.ListItem.Property(Fanart)]</value>
         <value condition="!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Art.Fanart)) + [!Window.IsVisible(Home) | [Window.IsVisible(Home) + !Control.HasFocus(300) + !Control.HasFocus(302)]]">$INFO[Window(Home).Property(SkinHelper.ListItem.Art.Fanart)]</value>
 
         <!-- Pictures -->
