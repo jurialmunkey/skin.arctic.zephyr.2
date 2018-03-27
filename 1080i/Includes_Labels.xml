@@ -153,9 +153,9 @@
         <value condition="Window.IsVisible(MyPVRTimers.xml)">$LOCALIZE[31166]</value>
         <value condition="Window.IsVisible(MyPVRSearch.xml)">$LOCALIZE[137]</value>
         <value condition="Window.IsVisible(Weather) | [Window.IsVisible(Home) + String.IsEqual(Container(300).ListItem.Property(widget),Weather) + Control.HasFocus(9966)]">$INFO[Window(Weather).Property(Location),$LOCALIZE[31007] ,]</value>
-        <value condition="Window.IsVisible(SettingsCategory.xml)">$VAR[Label_Settings_Header,, $LOCALIZE[5]]</value>
-        <value condition="Window.IsVisible(SettingsProfile.xml)">$VAR[Label_Settings_Header,, $LOCALIZE[5]]</value>
-        <value condition="Window.IsVisible(SkinSettings.xml)">$VAR[Label_Settings_Header,, $LOCALIZE[5]]</value>
+        <value condition="Window.IsVisible(SettingsCategory.xml)">$VAR[Label_Settings_Header]</value>
+        <value condition="Window.IsVisible(SettingsProfile.xml)">$VAR[Label_Settings_Header]</value>
+        <value condition="Window.IsVisible(SkinSettings.xml)">$VAR[Label_Settings_Header]</value>
         <value condition="Window.IsVisible(Settings.xml)">$LOCALIZE[5]</value>
         <value condition="Window.IsVisible(SettingsSystemInfo.xml)">[CAPITALIZE]$LOCALIZE[138][/CAPITALIZE]</value>
         <value condition="Window.IsVisible(FileManager.xml)">$LOCALIZE[7]</value>
@@ -244,7 +244,7 @@
     </variable>
 
     <variable name="Label_Duration">
-        <value condition="!String.IsEmpty(ListItem.Duration) + Integer.IsGreater(ListItem.Duration(h),0)">$INFO[ListItem.Duration(h),, $LOCALIZE[31036] ]$INFO[ListItem.Duration(mm),, $LOCALIZE[31020] ]</value>
+        <value condition="!String.IsEmpty(ListItem.Duration) + Integer.IsGreater(ListItem.Duration(h),0)">$INFO[ListItem.Duration(h),, $LOCALIZE[31036] ]$INFO[ListItem.Duration(mm),, $LOCALIZE[31020]]</value>
         <value condition="!String.IsEmpty(ListItem.Duration)">$INFO[ListItem.Duration(mins),, $LOCALIZE[31020]]</value>
     </variable>
 
