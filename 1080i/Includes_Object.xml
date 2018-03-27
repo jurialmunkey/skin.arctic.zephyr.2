@@ -234,6 +234,7 @@
         <param name="itemwidth" default="widget_poster_width" />
         <param name="itemheight" default="widget_poster_height" />
         <param name="content2" default="" />
+        <param name="content3" default="" />
         <param name="textonly" default="false" />
         <param name="include_onclick" default="false" />
         <param name="onclick" default="Close" />
@@ -324,6 +325,9 @@
                     </include>
                     <include content="Object_VideoInfo_CastList_Content" condition="$PARAM[include_content]">
                         <param name="content" value="$PARAM[content2]" />
+                    </include>
+                    <include content="Object_VideoInfo_CastList_Content" condition="$PARAM[include_content]">
+                        <param name="content" value="$PARAM[content3]" />
                     </include>
                 </control>
                 <include content="Dialog_VideoInfo_BusyIndicator" condition="$PARAM[busyspinner]">

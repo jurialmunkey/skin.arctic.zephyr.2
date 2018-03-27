@@ -29,10 +29,13 @@
     </variable>
 
     <variable name="Defs_VideoInfo_Images">
+        <value condition="System.HasAddon(script.artwork.helper)">plugin://script.artwork.helper/multiimage/listitem/?refresh=$INFO[ListItem.Label]</value>
+    </variable>
+    <variable name="Defs_VideoInfo_Images2">
         <value condition="Container.Content(movies) + !String.StartsWith(ListItem.Path,plugin://)">$INFO[ListItem.Path,,/extrafanart/]</value>
         <value condition="!Container.Content(movies) + !String.StartsWith(ListItem.Path,plugin://)">$INFO[ListItem.FileNameAndPath,,/extrafanart/]</value>
     </variable>
-    <variable name="Defs_VideoInfo_Images2">
+    <variable name="Defs_VideoInfo_Images3">
         <value condition="Container.Content(movies) + !String.StartsWith(ListItem.Path,plugin://)">$INFO[ListItem.Path,,/extrathumbs/]</value>
         <value condition="!Container.Content(movies) + !String.StartsWith(ListItem.Path,plugin://)">$INFO[ListItem.FileNameAndPath,,/extrathumbs/]</value>
     </variable>
