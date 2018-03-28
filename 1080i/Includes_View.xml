@@ -601,7 +601,7 @@
                     <onleft>9400</onleft>
                     <progresstexture border="5" colordiffuse="bf777777">pvr/progressline-full.png</progresstexture>
                     <scrolltime tween="quadratic">300</scrolltime>
-                    <timeblocks>28</timeblocks>
+                    <timeblocks>24</timeblocks>
                     <rulerunit>6</rulerunit>
                     <rulerlayout height="74" width="262">
                         <control type="label" id="2">
@@ -615,7 +615,7 @@
                             <textcolor>main_fg_30</textcolor>
                         </control>
                     </rulerlayout>
-                    <channellayout height="listitem_height" width="524">
+                    <channellayout height="listitem_height" width="444">
                         <control type="image">
                             <left>0</left>
                             <right>1</right>
@@ -626,8 +626,8 @@
                             <visible>ListItem.IsPlaying</visible>
                         </control>
                         <control type="label">
-                            <posx>90</posx>
-                            <width>250</width>
+                            <left>90</left>
+                            <right>120</right>
                             <aligny>center</aligny>
                             <height>listitem_height</height>
                             <font>font_tiny_bold</font>
@@ -647,13 +647,13 @@
                         <control type="image">
                             <top>10</top>
                             <right>10</right>
-                            <width>140</width>
+                            <width>100</width>
                             <height>70</height>
                             <texture>$INFO[ListItem.Icon]</texture>
                             <aspectratio aligny="center" align="right">keep</aspectratio>
                         </control>
                     </channellayout>
-                    <focusedchannellayout height="listitem_height" width="524"> 
+                    <focusedchannellayout height="listitem_height" width="444"> 
                         <control type="group">
                             <left>0</left>
                             <right>4</right>
@@ -672,8 +672,8 @@
                             </control>
                         </control>
                         <control type="label">
-                            <posx>90</posx>
-                            <width>250</width>
+                            <left>90</left>
+                            <right>120</right>
                             <aligny>center</aligny>
                             <height>listitem_height</height>
                             <selectedcolor>Selected</selectedcolor>
@@ -695,7 +695,7 @@
                         <control type="image">
                             <top>10</top>
                             <right>10</right>
-                            <width>140</width>
+                            <width>100</width>
                             <height>70</height>
                             <texture>$INFO[ListItem.Icon]</texture>
                             <aspectratio aligny="center" align="right">keep</aspectratio>
