@@ -567,15 +567,6 @@
                             <onclick>Skin.ToggleSetting(PVRGuideGenreName)</onclick>
                         </control>
 
-                        <control type="radiobutton" id="9610" description="Artwork button downloads all artwork">
-                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9006)</visible>
-                            <include>Defs_Settings_Button</include>
-                            <label>$LOCALIZE[31366]</label>
-                            <selected>Skin.HasSetting(ArtworkDownloaderAll)</selected>
-                            <onclick>Skin.ToggleSetting(ArtworkDownloaderAll)</onclick>
-                            <enable>System.HasAddon(script.artwork.downloader) | System.HasAddon(script.artwork.beef)</enable>
-                        </control>
-
                         <control type="radiobutton" id="9611" description="Enable bounce animations">
                             <visible>Integer.IsEqual(Window.Property(CurrentFocus),9006)</visible>
                             <include>Defs_Settings_Button</include>

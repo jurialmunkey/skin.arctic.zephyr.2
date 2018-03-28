@@ -274,16 +274,24 @@
         </control>
 
         <control type="button" id="9001">
-            <label>$LOCALIZE[31203]</label>
+            <label>$LOCALIZE[31389]</label>
             <!-- If ADownloader installed but not ABeef then use AD otherwise prefer AB -->
             <!-- AD has been depreciated but some still use it -->
 
-            <onclick condition="String.IsEqual(ListItem.DBType,artist) + !Skin.HasSetting(ArtworkDownloaderAll) + System.HasAddon(script.artwork.beef)">XBMC.RunScript(script.artwork.beef, mode=gui, mediatype=artist, dbid=$INFO[ListItem.DBID])</onclick>
-            <onclick condition="String.IsEqual(ListItem.DBType,album) + !Skin.HasSetting(ArtworkDownloaderAll) + System.HasAddon(script.artwork.beef)">XBMC.RunScript(script.artwork.beef, mode=gui, mediatype=album, dbid=$INFO[ListItem.DBID])</onclick>
-            <onclick condition="String.IsEqual(ListItem.DBType,song) + !Skin.HasSetting(ArtworkDownloaderAll) + System.HasAddon(script.artwork.beef)">XBMC.RunScript(script.artwork.beef, mode=gui, mediatype=song, dbid=$INFO[ListItem.DBID])</onclick>
-            <onclick condition="String.IsEqual(ListItem.DBType,artist) + Skin.HasSetting(ArtworkDownloaderAll) + System.HasAddon(script.artwork.beef)">XBMC.RunScript(script.artwork.beef, mode=auto, mediatype=album, dbid=$INFO[ListItem.DBID])</onclick>
-            <onclick condition="String.IsEqual(ListItem.DBType,album) + Skin.HasSetting(ArtworkDownloaderAll) + System.HasAddon(script.artwork.beef)">XBMC.RunScript(script.artwork.beef, mode=auto, mediatype=album, dbid=$INFO[ListItem.DBID])</onclick>
-            <onclick condition="String.IsEqual(ListItem.DBType,song) + Skin.HasSetting(ArtworkDownloaderAll) + System.HasAddon(script.artwork.beef)">XBMC.RunScript(script.artwork.beef, mode=auto, mediatype=song, dbid=$INFO[ListItem.DBID])</onclick>
+            <onclick condition="String.IsEqual(ListItem.DBType,artist) + System.HasAddon(script.artwork.beef)">XBMC.RunScript(script.artwork.beef, mode=gui, mediatype=artist, dbid=$INFO[ListItem.DBID])</onclick>
+            <onclick condition="String.IsEqual(ListItem.DBType,album) + System.HasAddon(script.artwork.beef)">XBMC.RunScript(script.artwork.beef, mode=gui, mediatype=album, dbid=$INFO[ListItem.DBID])</onclick>
+            <onclick condition="String.IsEqual(ListItem.DBType,song) + System.HasAddon(script.artwork.beef)">XBMC.RunScript(script.artwork.beef, mode=gui, mediatype=song, dbid=$INFO[ListItem.DBID])</onclick>
+            <description>Get Artwork</description>
+            <include>Defs_Hidden_Button</include>
+            <visible>[String.IsEqual(ListItem.DBType,album) | String.IsEqual(ListItem.DBType,song) | String.IsEqual(ListItem.DBType,artist)] + system.hasaddon(script.artwork.beef)</visible>
+        </control>
+        <control type="button" id="9011">
+            <label>$LOCALIZE[31388]</label>
+            <!-- If ADownloader installed but not ABeef then use AD otherwise prefer AB -->
+            <!-- AD has been depreciated but some still use it -->
+            <onclick condition="String.IsEqual(ListItem.DBType,artist) + System.HasAddon(script.artwork.beef)">XBMC.RunScript(script.artwork.beef, mode=auto, mediatype=album, dbid=$INFO[ListItem.DBID])</onclick>
+            <onclick condition="String.IsEqual(ListItem.DBType,album) + System.HasAddon(script.artwork.beef)">XBMC.RunScript(script.artwork.beef, mode=auto, mediatype=album, dbid=$INFO[ListItem.DBID])</onclick>
+            <onclick condition="String.IsEqual(ListItem.DBType,song) + System.HasAddon(script.artwork.beef)">XBMC.RunScript(script.artwork.beef, mode=auto, mediatype=song, dbid=$INFO[ListItem.DBID])</onclick>
             <description>Get Artwork</description>
             <include>Defs_Hidden_Button</include>
             <visible>[String.IsEqual(ListItem.DBType,album) | String.IsEqual(ListItem.DBType,song) | String.IsEqual(ListItem.DBType,artist)] + system.hasaddon(script.artwork.beef)</visible>
