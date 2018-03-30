@@ -1204,7 +1204,7 @@
                     <width>40</width>
                     <height>32</height>
                     <texture>flags/$PARAM[directory]/ratings/imdbicon.png</texture>
-                    <visible>!String.IsEmpty(ListItem.RatingAndVotes) | !String.IsEmpty(Window(home).Property(SkinHelper.ListItem.Rating.IMDB)) | [Window.IsVisible(DialogVideoInfo.xml) + !String.IsEmpty(ListItem.Rating)]</visible>
+                    <visible>!String.IsEmpty(ListItem.RatingAndVotes) | !String.IsEmpty(Window(home).Property(SkinHelper.ListItem.Rating.IMDB))</visible>
                     <visible>$PARAM[imdb]</visible>
                     <visible>!Skin.HasSetting(Ratings.IMDB)</visible>
                 </control>
@@ -1216,7 +1216,6 @@
                     <align>right</align>
                     <font>font_tiny</font>
                     <label>$INFO[Window(home).Property(SkinHelper.ListItem.Rating.IMDB), ,]$INFO[Window(home).Property(SkinHelper.ListItem.Votes.IMDB), (, $LOCALIZE[205])]</label>
-                    <visible>!Window.IsVisible(DialogVideoInfo.xml)</visible>
                     <visible>!String.IsEmpty(Window(home).Property(SkinHelper.ListItem.Rating.IMDB))</visible>
                     <visible>$PARAM[imdb]</visible>
                     <visible>!Skin.HasSetting(Ratings.IMDB)</visible>
@@ -1230,7 +1229,6 @@
                     <align>right</align>
                     <font>font_tiny</font>
                     <label>$INFO[ListItem.RatingAndVotes, ,]</label>
-                    <visible>!Window.IsVisible(DialogVideoInfo.xml)</visible>
                     <visible>String.IsEmpty(Window(home).Property(SkinHelper.ListItem.Rating.IMDB)) + !String.IsEmpty(ListItem.RatingAndVotes)</visible>
                     <visible>$PARAM[imdbvotes]</visible>
                     <visible>$PARAM[imdb]</visible>
@@ -1244,7 +1242,6 @@
                     <align>right</align>
                     <font>font_tiny</font>
                     <label>$INFO[Window(home).Property(SkinHelper.ListItem.Rating.IMDB), ,]</label>
-                    <visible>!Window.IsVisible(DialogVideoInfo.xml)</visible>
                     <visible>!String.IsEmpty(Window(home).Property(SkinHelper.ListItem.Rating.IMDB))</visible>
                     <visible>$PARAM[imdb]</visible>
                     <visible>!Skin.HasSetting(Ratings.IMDB)</visible>
@@ -1258,37 +1255,10 @@
                     <align>right</align>
                     <font>font_tiny</font>
                     <label>$INFO[ListItem.Rating, ,]</label>
-                    <visible>!Window.IsVisible(DialogVideoInfo.xml)</visible>
                     <visible>String.IsEmpty(Window(home).Property(SkinHelper.ListItem.Rating.IMDB)) + !String.IsEmpty(ListItem.Rating)</visible>
                     <visible>$PARAM[imdb]</visible>
                     <visible>!Skin.HasSetting(Ratings.IMDB)</visible>
                     <visible>!$PARAM[imdbvotes]</visible>
-                </control>
-                <control type="label">
-                    <textcolor>main_fg_70</textcolor>
-                    <top>2</top>
-                    <width>auto</width>
-                    <height>28</height>
-                    <align>right</align>
-                    <font>font_tiny</font>
-                    <label>$INFO[Window(home).Property(SkinHelper.ListItem.Rating.IMDB), ,]</label>
-                    <visible>Window.IsVisible(DialogVideoInfo.xml)</visible>
-                    <visible>!String.IsEmpty(Window(home).Property(SkinHelper.ListItem.Rating.IMDB))</visible>
-                    <visible>$PARAM[imdb]</visible>
-                    <visible>!Skin.HasSetting(Ratings.IMDB)</visible>
-                </control>
-                <control type="label">
-                    <textcolor>main_fg_70</textcolor>
-                    <top>2</top>
-                    <width>auto</width>
-                    <height>28</height>
-                    <align>right</align>
-                    <font>font_tiny</font>
-                    <label>$INFO[ListItem.Rating, ,]</label>
-                    <visible>Window.IsVisible(DialogVideoInfo.xml)</visible>
-                    <visible>String.IsEmpty(Window(home).Property(SkinHelper.ListItem.Rating.IMDB)) + !String.IsEmpty(ListItem.Rating)</visible>
-                    <visible>$PARAM[imdb]</visible>
-                    <visible>!Skin.HasSetting(Ratings.IMDB)</visible>
                 </control>
                 <control type="label">
                     <textcolor>main_fg_70</textcolor>
