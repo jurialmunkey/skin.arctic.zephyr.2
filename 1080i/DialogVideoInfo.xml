@@ -70,6 +70,29 @@
                             <control type="group">
                                 <left>0</left>
                                 <width>240</width>
+                                <visible>!String.IsEqual(ListItem.DBType,musicvideo)</visible>
+                                <control type="group">
+                                    <left>-10</left>
+                                    <right>-10</right>
+                                    <bottom>-10</bottom>
+                                    <top>-10</top>
+                                    <include>Defs_PosterBack</include>
+                                    <control type="image">
+                                        <bordersize>10</bordersize>
+                                        <aspectratio scalediffuse="false">scale</aspectratio>
+                                        <texture diffuse="diffuse/widgetposter.png" fallback="DefaultAddonImages.png">$VAR[Image_Poster]</texture>
+                                    </control>
+                                    <control type="image">
+                                        <bordersize>10</bordersize>
+                                        <texture colordiffuse="PixelLines" border="20">common/outline.png</texture>
+                                    </control>
+                                </control>
+                            </control>
+                            <control type="group">
+                                <visible>String.IsEqual(ListItem.DBType,musicvideo)</visible>
+                                <left>0</left>
+                                <width>360</width>
+                                <height>360</height>
                                 <control type="group">
                                     <left>-10</left>
                                     <right>-10</right>
@@ -90,7 +113,7 @@
                             <control type="group">
                                 <left>270</left>
                                 <top>10</top>
-                                <include content="Object_Info">
+                                <include content="Object_Info" condition="!String.IsEqual(ListItem.DBType,musicvideo)">
                                     <param name="id" value="50" />
                                     <param name="width" value="1654" />
                                     <param name="discart" value="true" />
@@ -106,6 +129,18 @@
                                     <aspectratio aligny="center" align="center">keep</aspectratio>
                                     <right>0</right>
                                 </control>
+                            </control>
+                            <control type="group">
+                                <left>390</left>
+                                <height>360</height>
+                                <include content="Object_Info" condition="String.IsEqual(ListItem.DBType,musicvideo)">
+                                    <param name="id" value="50" />
+                                    <param name="width" value="1654" />
+                                    <param name="discart" value="true" />
+                                    <param name="hdsd_flag" value="true" />
+                                    <param name="visible" value="true" />
+                                    <param name="plot_height" value="170" />
+                                </include>
                             </control>
                         </control>
                     </control>
