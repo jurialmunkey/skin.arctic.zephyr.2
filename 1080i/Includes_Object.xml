@@ -948,6 +948,14 @@
                     <aspectratio align="right">keep</aspectratio>
                     <centertop>50%</centertop>
                     <height>64</height>
+                    <texture colordiffuse="$PARAM[colordiffuse]">flags/$PARAM[directory]/other/HDR.png</texture>
+                    <visible>String.Contains($PARAM[container]$PARAM[source]FileNameAndPath,HDR)</visible>
+                </control>
+                <control type="image">
+                    <width>88</width>
+                    <aspectratio align="right">keep</aspectratio>
+                    <centertop>50%</centertop>
+                    <height>64</height>
                     <texture colordiffuse="$PARAM[colordiffuse]">flags/$PARAM[directory]/other/bluray.png</texture>
                     <visible>[String.Contains($PARAM[container]$PARAM[source]FileNameAndPath,blu-ray) | String.Contains($PARAM[container]$PARAM[source]FileNameAndPath,bluray) | String.Contains($PARAM[container]$PARAM[source]FileNameAndPath,bdrip) | String.Contains($PARAM[container]$PARAM[source]FileNameAndPath,bd25) | String.Contains($PARAM[container]$PARAM[source]FileNameAndPath,bd50)]</visible>
                     <visible>![String.Contains($PARAM[container]$PARAM[source]FileNameAndPath,2160p) | String.Contains($PARAM[container]$PARAM[source]FileNameAndPath,UHD) | String.Contains($PARAM[container]$PARAM[source]FileNameAndPath,UltraHD) | String.Contains($PARAM[container]$PARAM[source]FileNameAndPath,Ultra-HD) | String.Contains($PARAM[container]$PARAM[source]FileNameAndPath,4K)]</visible>
