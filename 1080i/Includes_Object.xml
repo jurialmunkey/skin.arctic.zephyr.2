@@ -1681,9 +1681,7 @@
             <visible>$PARAM[visible]</visible>
             <showonepage>false</showonepage>
             <orientation>vertical</orientation>
-            <onright condition="[String.IsEqual(Container.SortMethod,$LOCALIZE[551]) | String.IsEqual(Container.SortMethod,$LOCALIZE[556]) | String.IsEqual(Container.SortMethod,$LOCALIZE[557]) | String.IsEqual(Container.SortMethod,$LOCALIZE[558])] + !Container.Content(seasons) + [Control.IsEnabled(3) | Control.IsEnabled(4)] + Skin.HasSetting(AlphabetStrip)">SetFocus(8000)</onright>
-            <onright condition="![[String.IsEqual(Container.SortMethod,$LOCALIZE[551]) | String.IsEqual(Container.SortMethod,$LOCALIZE[556]) | String.IsEqual(Container.SortMethod,$LOCALIZE[557]) | String.IsEqual(Container.SortMethod,$LOCALIZE[558])] + !Container.Content(seasons) + [Control.IsEnabled(3) | Control.IsEnabled(4)]] + Skin.HasSetting(AlphabetStrip)">Notification($LOCALIZE[161],$LOCALIZE[31334])</onright>
-            <onright condition="!Skin.HasSetting(AlphabetStrip)">50</onright>
+            <onright>50</onright>
             <onleft>50</onleft>
             <texturesliderbackground colordiffuse="main_fg_12" border="4">common/white.png</texturesliderbackground>
             <texturesliderbar colordiffuse="main_fg_30" border="4">scrollbar/scrollv.png</texturesliderbar>
@@ -1707,9 +1705,7 @@
             <orientation>horizontal</orientation>
             <onup>50</onup>
             <visible>$PARAM[visible]</visible>
-            <ondown condition="[String.IsEqual(Container.SortMethod,$LOCALIZE[551]) | String.IsEqual(Container.SortMethod,$LOCALIZE[556]) | String.IsEqual(Container.SortMethod,$LOCALIZE[557]) | String.IsEqual(Container.SortMethod,$LOCALIZE[558])] + !Container.Content(seasons) + [Control.IsEnabled(3) | Control.IsEnabled(4)] + Skin.HasSetting(AlphabetStrip)">SetFocus(8000)</ondown>
-            <ondown condition="![[String.IsEqual(Container.SortMethod,$LOCALIZE[551]) | String.IsEqual(Container.SortMethod,$LOCALIZE[556]) | String.IsEqual(Container.SortMethod,$LOCALIZE[557]) | String.IsEqual(Container.SortMethod,$LOCALIZE[558])] + !Container.Content(seasons) + [Control.IsEnabled(3) | Control.IsEnabled(4)]] + Skin.HasSetting(AlphabetStrip)">Notification($LOCALIZE[161],$LOCALIZE[31334])</ondown>
-            <ondown condition="!Skin.HasSetting(AlphabetStrip)">50</ondown>
+            <ondown>50</ondown>
             <texturesliderbackground colordiffuse="main_fg_12" border="4">common/white.png</texturesliderbackground>
             <texturesliderbar colordiffuse="main_fg_30" border="4">scrollbar/scrollv.png</texturesliderbar>
             <texturesliderbarfocus colordiffuse="$VAR[ColorHighlight]" border="4">scrollbar/scrollv.png</texturesliderbarfocus>
