@@ -22,67 +22,41 @@
                     <top>80</top>
                     <height>800</height>
 
-                <!-- Left Gradient Fade -->
-                <control type="image">
-                    <top>0</top>
-                    <height>80</height>
-                    <width>450</width>
-                    <texture colordiffuse="$VAR[ColorHighlight]">common/white.png</texture>
-                    <visible>Control.HasFocus(4)</visible>
-                </control>
-                <!-- Left Group -->
-                <control type="radiobutton" id="4">
-                    <top>0</top>
-                    <include>Defs_Settings_OnLeft</include>
-                    <onright>2</onright>
-                    <width>450</width>
-                    <label>20096</label>
-                    <radioposx>395</radioposx>
-                    <include>Defs_Settings_Button</include>
-                </control>
+                    <!-- Left Gradient Fade -->
+                    <control type="image">
+                        <top>0</top>
+                        <height>80</height>
+                        <width>450</width>
+                        <texture colordiffuse="$VAR[ColorHighlight]">common/white.png</texture>
+                        <visible>Control.HasFocus(4)</visible>
+                    </control>
+                    <!-- Left Group -->
+                    <control type="radiobutton" id="4">
+                        <top>0</top>
+                        <include>Defs_Settings_OnLeft</include>
+                        <onright>2</onright>
+                        <width>450</width>
+                        <label>20096</label>
+                        <radioposx>395</radioposx>
+                        <include>Defs_Settings_Button</include>
+                    </control>
 
-                <!-- Right Group -->
-                <control type="panel" id="2">
-                    <description>Control Area</description>
-                    <left>450</left>
-                    <right>0</right>
-                    <top>0</top>
-                    <bottom>80</bottom>
-                    <onleft>4</onleft>
-                    <include>Defs_Settings_OnRight</include>
-                    <orientation>vertical</orientation>
-                    <scrolltime>0</scrolltime>
-                    <itemlayout height="80" width="1480">
-                        <control type="label">
-                            <right>50</right>
-                            <left>50</left>
-                            <textcolor>main_fg_100</textcolor>
-                            <info>ListItem.Label</info>
-                        </control>
-                        <control type="label">
-                            <right>50</right>
-                            <left>50</left>
-                            <align>right</align>
-                            <font>font_tiny</font>
-                            <textcolor>main_fg_100</textcolor>
-                            <info>ListItem.Label2</info>
-                        </control>
-                    </itemlayout>
-
-                    <focusedlayout height="80" width="1480">
-                        <control type="group">
-                            <control type="image">
-                                <width>100%</width>
-                                <texture border="5" colordiffuse="$VAR[ColorHighlight]">common/white.png</texture>
-                            </control>
-                            <control type="image">
-                                <width>100%</width>
-                                <texture border="5" colordiffuse="$VAR[ColorHighlight2]">common/gradient-diffuse-horizontal.png</texture>
-                            </control>
+                    <!-- Right Group -->
+                    <control type="panel" id="2">
+                        <description>Control Area</description>
+                        <left>450</left>
+                        <right>0</right>
+                        <top>0</top>
+                        <bottom>80</bottom>
+                        <onleft>4</onleft>
+                        <include>Defs_Settings_OnRight</include>
+                        <orientation>vertical</orientation>
+                        <scrolltime>0</scrolltime>
+                        <itemlayout height="80" width="1480">
                             <control type="label">
-                                <left>50</left>
                                 <right>50</right>
-                                <textcolor>Selected</textcolor>
+                                <left>50</left>
+                                <textcolor>main_fg_100</textcolor>
                                 <info>ListItem.Label</info>
                             </control>
                             <control type="label">
@@ -90,25 +64,51 @@
                                 <left>50</left>
                                 <align>right</align>
                                 <font>font_tiny</font>
-                                <textcolor>Selected</textcolor>
+                                <textcolor>main_fg_100</textcolor>
                                 <info>ListItem.Label2</info>
                             </control>
-                        </control>
-                    </focusedlayout>
+                        </itemlayout>
+
+                        <focusedlayout height="80" width="1480">
+                            <control type="group">
+                                <control type="image">
+                                    <width>100%</width>
+                                    <texture border="5" colordiffuse="$VAR[ColorHighlight]">common/white.png</texture>
+                                </control>
+                                <control type="image">
+                                    <width>100%</width>
+                                    <texture border="5" colordiffuse="$VAR[ColorHighlight2]">common/gradient-diffuse-horizontal.png</texture>
+                                </control>
+                                <control type="label">
+                                    <left>50</left>
+                                    <right>50</right>
+                                    <textcolor>Selected</textcolor>
+                                    <info>ListItem.Label</info>
+                                </control>
+                                <control type="label">
+                                    <right>50</right>
+                                    <left>50</left>
+                                    <align>right</align>
+                                    <font>font_tiny</font>
+                                    <textcolor>Selected</textcolor>
+                                    <info>ListItem.Label2</info>
+                                </control>
+                            </control>
+                        </focusedlayout>
+                    </control>
+
+                    <!-- Lines -->
+                    <include>Defs_Settings_Line</include>
+
+                    <!-- Arrows -->
+                    <include content="Defs_Settings_Arrows">
+                        <param name="id" value="5" />
+                    </include>
                 </control>
-
-                <!-- Lines -->
-                <include>Defs_Settings_Line</include>
-
-                <!-- Arrows -->
-                <include content="Defs_Settings_Arrows">
-                    <param name="id" value="5" />
-                </include>
-            </control>
-            <!-- Info -->
+                <!-- Info -->
                 <control type="grouplist">
-                    <left>40</left>
-                    <right>30</right>
+                    <left>view_pad</left>
+                    <right>view_pad</right>
                     <top>806</top>
                     <bottom>0</bottom>
                     <orientation>vertical</orientation>
