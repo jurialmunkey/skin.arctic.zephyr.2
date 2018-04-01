@@ -2,14 +2,12 @@
 <!-- Foundation -->
 <window id="103">
     <defaultcontrol always="true">300</defaultcontrol>
-
     <controls>
         <include>Global_Overlay</include>
         <control type="group">
             <visible>!Window.IsVisible(numericinput)</visible>
             <include>Animation_ZoomIn</include>
             <include>Animation_FadeOut</include>
-
             <centerleft>50%</centerleft>
             <centertop>60%</centertop>
             <height>522</height>
@@ -20,6 +18,7 @@
                 <left>-18</left>
                 <right>-18</right>
                 <texture border="16" colordiffuse="dialog_bg_100">common/rounded-shadow8.png</texture>
+                <animation effect="zoom" end="100,117.5"  center="auto,528" time="100" condition="Integer.IsGreater(Container(8000).NumItems,0)">Conditional</animation>
             </control>
 
             <control type="image">
@@ -29,6 +28,7 @@
                 <height>75</height>
                 <aspectratio>stretch</aspectratio>
                 <texture border="5" colordiffuse="dialog_fg_12">common/box.png</texture>
+                <animation effect="slide" end="0,-94" time="100" condition="Integer.IsGreater(Container(8000).NumItems,0)">Conditional</animation>
             </control>
             <control type="label" id="311">
                 <description>Heading</description>
@@ -39,9 +39,13 @@
                 <align>center</align>
                 <font>font_small_bold</font>
                 <textcolor>panel_fg_100</textcolor>
+                <animation effect="slide" end="0,-94" time="100" condition="Integer.IsGreater(Container(8000).NumItems,0)">Conditional</animation>
             </control>
             <control type="edit" id="312">
                 <description>Edit Text</description>
+                <ondown condition="Integer.IsGreater(Container(8000).NumItems,0)">8000</ondown>
+                <ondown>309</ondown>
+                <onup>300</onup>
                 <left>10</left>
                 <right>10</right>
                 <top>11</top>
@@ -49,6 +53,7 @@
                 <align>center</align>
                 <textcolor>dialog_fg_70</textcolor>
                 <texturefocus colordiffuse="$VAR[ColorHighlight]" border="5">common/box.png</texturefocus>
+                <animation effect="slide" end="0,-94" time="200" condition="Integer.IsGreater(Container(8000).NumItems,0)">Conditional</animation>
             </control>
 
             <control type="group">
@@ -59,20 +64,23 @@
                     <itemgap>10</itemgap>
                     <control type="button" id="309">
                         <description>Layout</description>
-                        <onup>300</onup>
+                        <onup condition="Integer.IsGreater(Container(8000).NumItems,0)">8000</onup>                       
+                        <onup>312</onup>
                         <ondown>302</ondown>
                         <width>370</width>
                         <textoffsetx>20</textoffsetx>
                         <include>Defs_Keyboard_Button</include>
                     </control>
                     <control type="button" id="100">
-                        <onup>32</onup>
+                        <onup condition="Integer.IsGreater(Container(8000).NumItems,0)">8000</onup>                       
+                        <onup>312</onup>
                         <ondown>120</ondown>
                         <description>Layout</description>
                         <include>Defs_Keyboard_Button</include>
                     </control>
                     <control type="button" id="101">
-                        <onup>32</onup>
+                        <onup condition="Integer.IsGreater(Container(8000).NumItems,0)">8000</onup>                       
+                        <onup>312</onup>
                         <ondown>121</ondown>
                         <description>Layout</description>
                         <include>Defs_Keyboard_Button</include>
@@ -80,31 +88,36 @@
                     <control type="button" id="102">
                         <description>Layout</description>
                         <include>Defs_Keyboard_Button</include>
-                        <onup>32</onup>
+                        <onup condition="Integer.IsGreater(Container(8000).NumItems,0)">8000</onup>                       
+                        <onup>312</onup>
                         <ondown>122</ondown>
                     </control>
                     <control type="button" id="103">
                         <description>Layout</description>
                         <include>Defs_Keyboard_Button</include>
-                        <onup>32</onup>
+                        <onup condition="Integer.IsGreater(Container(8000).NumItems,0)">8000</onup>                       
+                        <onup>312</onup>
                         <ondown>123</ondown>
                     </control>
                     <control type="button" id="104">
                         <description>Layout</description>
                         <include>Defs_Keyboard_Button</include>
-                        <onup>32</onup>
+                        <onup condition="Integer.IsGreater(Container(8000).NumItems,0)">8000</onup>                       
+                        <onup>312</onup>
                         <ondown>124</ondown>
                     </control>
                     <control type="button" id="105">
                         <description>Layout</description>
                         <include>Defs_Keyboard_Button</include>
-                        <onup>32</onup>
+                        <onup condition="Integer.IsGreater(Container(8000).NumItems,0)">8000</onup>                       
+                        <onup>312</onup>
                         <ondown>125</ondown>
                     </control>
                     <control type="button" id="106">
                         <description>Layout</description>
                         <include>Defs_Keyboard_Button</include>
-                        <onup>32</onup>
+                        <onup condition="Integer.IsGreater(Container(8000).NumItems,0)">8000</onup>                       
+                        <onup>312</onup>
                         <ondown>126</ondown>
                     </control>
                     <control type="button" id="107">
@@ -116,25 +129,29 @@
                     <control type="button" id="108">
                         <description>Layout</description>
                         <include>Defs_Keyboard_Button</include>
-                        <onup>32</onup>
+                        <onup condition="Integer.IsGreater(Container(8000).NumItems,0)">8000</onup>                       
+                        <onup>312</onup>
                         <ondown>128</ondown>
                     </control>
                     <control type="button" id="109">
                         <description>Layout</description>
                         <include>Defs_Keyboard_Button</include>
-                        <onup>32</onup>
+                        <onup condition="Integer.IsGreater(Container(8000).NumItems,0)">8000</onup>                       
+                        <onup>312</onup>
                         <ondown>129</ondown>
                     </control>
                     <control type="button" id="110">
                         <description>Layout</description>
                         <include>Defs_Keyboard_Button</include>
-                        <onup>32</onup>
+                        <onup condition="Integer.IsGreater(Container(8000).NumItems,0)">8000</onup>                       
+                        <onup>312</onup>
                         <ondown>130</ondown>
                     </control>
                     <control type="button" id="111">
                         <description>Layout</description>
                         <include>Defs_Keyboard_Button</include>
-                        <onup>32</onup>
+                        <onup condition="Integer.IsGreater(Container(8000).NumItems,0)">8000</onup>                       
+                        <onup>312</onup>
                         <ondown>131</ondown>
                     </control>
                 </control>
@@ -455,21 +472,15 @@
             <control type="group">
                 <width>100%</width>
                 <height>89</height>
-                <bottom>-129</bottom>
-                <control type="image">
-                    <top>-18</top>
-                    <bottom>-18</bottom>
-                    <left>-18</left>
-                    <right>-18</right>
-                    <texture border="16" colordiffuse="dialog_bg_100">common/rounded-shadow8.png</texture>
-                    <visible>Integer.IsGreater(Container(8000).NumItems,0)</visible>
-                </control>
+                <top/>
+                <animation effect="fade" start="0" end="100" time="200" delay="100" condition="Integer.IsGreater(Container(8000).NumItems,0)">Conditional</animation>
                 <control type="panel" id="8000">
                     <height>69</height>
                     <top>10</top>
                     <left>10</left>
                     <right>0</right>
-                    <onup>8001</onup>
+                    <onup>312</onup>
+                    <ondown>100</ondown>
                     <orientation>horizontal</orientation>
                     <itemlayout height="69" width="304">
                         <control type="group">
