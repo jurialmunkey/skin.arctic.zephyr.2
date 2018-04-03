@@ -7,7 +7,7 @@
         <include>Global_Background</include>
         <control type="button" id="300">
             <top>30</top>
-            <onup>9601</onup>
+            <onup condition="!Skin.HasSetting(DisablePressingUp)">9601</onup>
             <ondown>150</ondown>
             <onfocus condition="String.IsEmpty(Window.Property(MoveDirection))">SetFocus(9601)</onfocus>
             <onfocus condition="!String.IsEmpty(Window.Property(MoveDirection))">SetFocus(150)</onfocus>
