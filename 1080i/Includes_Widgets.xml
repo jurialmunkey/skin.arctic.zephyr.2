@@ -444,11 +444,11 @@
             </control>
             <control type="list" id="$PARAM[id]">
                 <top>widget_top</top>
-                <include condition="$PARAM[submenu] + !Skin.HasSetting(SubmenuLabel)">Widget_Posters_Submenu_Height</include>
-                <include condition="$PARAM[submenu] + Skin.HasSetting(SubmenuLabel)">Widget_Posters_Submenu_Big_Height</include>
+                <include condition="$PARAM[submenu] + !Skin.HasSetting(SubmenuLabel)">Widget_Items_Submenu_Height</include>
+                <include condition="$PARAM[submenu] + Skin.HasSetting(SubmenuLabel)">Widget_Items_Submenu_Big_Height</include>
                 <height>widget_poster_spacer</height>
                 <visible>$PARAM[visible] + [Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating | Container(300).OnNext | Container(300).OnPrevious | String.IsEmpty(Window(Home).Property(WidgetLoading))]</visible>
-                <include content="Widget_Posters" condition="!$PARAM[submenu]">
+                <include content="Widget_Items" condition="!$PARAM[submenu]">
                     <param name="id" value="$PARAM[id]" />
                     <param name="target" value="$PARAM[target]" />
                     <param name="content" value="$PARAM[content]" />
@@ -474,8 +474,8 @@
         </definition>
     </include>
 
-    <include name="Widget_Posters_Submenu_Height"><height>widget_submenu_spacer</height></include>
-    <include name="Widget_Posters_Submenu_Big_Height"><height>widget_submenu_big_spacer</height></include>
+    <include name="Widget_Items_Submenu_Height"><height>widget_submenu_spacer</height></include>
+    <include name="Widget_Items_Submenu_Big_Height"><height>widget_submenu_big_spacer</height></include>
 
     <include name="Widget_Label">
         <definition>
@@ -602,7 +602,7 @@
         </definition>
     </include>
 
-    <include name="Widget_Posters">
+    <include name="Widget_Items">
         <param name="submenu" default="false" />
         <param name="aspect" default="" />
         <param name="sortby" default="" />
@@ -620,78 +620,78 @@
             </include>
 
             <itemlayout width="widget_poster_width" height="widget_poster_height" condition="[String.Contains($PARAM[content],tvGenres) | String.Contains($PARAM[content],movieGenres) | String.Contains($PARAM[content],genres.xml)]">
-                <include content="Widget_Posters_ItemLayout">
+                <include content="Widget_Items_ItemLayout">
                     <param name="genres" value="true" />
                 </include>
             </itemlayout>
             <itemlayout width="widget_poster_width" height="widget_poster_height" condition="String.Contains($PARAM[content],studios.xml)">
-                <include content="Widget_Posters_ItemLayout">
+                <include content="Widget_Items_ItemLayout">
                     <param name="studios" value="true" />
                 </include>
             </itemlayout>
             <itemlayout width="widget_poster_width" height="widget_poster_height" condition="String.Contains($PARAM[content],years.xml) | String.Contains($PARAM[content],country.xml) | String.Contains($PARAM[content],tags.xml) | String.Contains($PARAM[content],directors.xml) | String.Contains($PARAM[content],special://videoplaylists/)">
-                <include content="Widget_Posters_ItemLayout">
+                <include content="Widget_Items_ItemLayout">
                     <param name="text" value="true" />
                 </include>
             </itemlayout>
 
             <itemlayout width="widget_poster_width" height="widget_poster_height" condition="![[String.Contains($PARAM[content],tvGenres) | String.Contains($PARAM[content],movieGenres) | String.Contains($PARAM[content],genres.xml)] | String.Contains($PARAM[content],studios.xml) | String.Contains($PARAM[content],years.xml) | String.Contains($PARAM[content],country.xml) | String.Contains($PARAM[content],tags.xml) | String.Contains($PARAM[content],directors.xml) | String.Contains($PARAM[content],special://videoplaylists/)] + String.IsEqual($PARAM[aspect],$LOCALIZE[20021])">
-                <include content="Widget_Posters_ItemLayout">
+                <include content="Widget_Items_ItemLayout">
                     <param name="poster" value="true" />
                 </include>
             </itemlayout>
             <itemlayout width="606.67" height="widget_poster_height" condition="![[String.Contains($PARAM[content],tvGenres) | String.Contains($PARAM[content],movieGenres) | String.Contains($PARAM[content],genres.xml)] | String.Contains($PARAM[content],studios.xml) | String.Contains($PARAM[content],years.xml) | String.Contains($PARAM[content],country.xml) | String.Contains($PARAM[content],tags.xml) | String.Contains($PARAM[content],directors.xml) | String.Contains($PARAM[content],special://videoplaylists/)] + String.IsEqual($PARAM[aspect],$LOCALIZE[31038])">
-                <include content="Widget_Posters_ItemLayout">
+                <include content="Widget_Items_ItemLayout">
                     <param name="landscape" value="true" />
                 </include>
             </itemlayout>
             <itemlayout width="widget_poster_width" height="widget_poster_height" condition="![[String.Contains($PARAM[content],tvGenres) | String.Contains($PARAM[content],movieGenres) | String.Contains($PARAM[content],genres.xml)] | String.Contains($PARAM[content],studios.xml) | String.Contains($PARAM[content],years.xml) | String.Contains($PARAM[content],country.xml) | String.Contains($PARAM[content],tags.xml) | String.Contains($PARAM[content],directors.xml) | String.Contains($PARAM[content],special://videoplaylists/)] + String.IsEqual($PARAM[aspect],$LOCALIZE[31263])">
-                <include content="Widget_Posters_ItemLayout">
+                <include content="Widget_Items_ItemLayout">
                     <param name="square" value="true" />
                 </include>
             </itemlayout>
             <itemlayout width="widget_poster_width" height="widget_poster_height" condition="![[String.Contains($PARAM[content],tvGenres) | String.Contains($PARAM[content],movieGenres) | String.Contains($PARAM[content],genres.xml)] | String.Contains($PARAM[content],studios.xml) | String.Contains($PARAM[content],years.xml) | String.Contains($PARAM[content],country.xml) | String.Contains($PARAM[content],tags.xml) | String.Contains($PARAM[content],directors.xml) | String.Contains($PARAM[content],special://videoplaylists/)] + String.IsEmpty($PARAM[aspect])">
-                <include>Widget_Posters_ItemLayout</include>
+                <include>Widget_Items_ItemLayout</include>
             </itemlayout>
 
             <focusedlayout width="widget_poster_width" height="widget_poster_height" condition="[String.Contains($PARAM[content],tvGenres) | String.Contains($PARAM[content],movieGenres) | String.Contains($PARAM[content],genres.xml)]">
-                <include content="Widget_Posters_FocusedLayout">
+                <include content="Widget_Items_FocusedLayout">
                     <param name="id" value="$PARAM[id]" />
                     <param name="genres" value="true" />
                 </include>
             </focusedlayout>
             <focusedlayout width="widget_poster_width" height="widget_poster_height" condition="String.Contains($PARAM[content],studios.xml)">
-                <include content="Widget_Posters_FocusedLayout">
+                <include content="Widget_Items_FocusedLayout">
                     <param name="id" value="$PARAM[id]" />
                     <param name="studios" value="true" />
                 </include>
             </focusedlayout>
             <focusedlayout width="widget_poster_width" height="widget_poster_height" condition="String.Contains($PARAM[content],years.xml) | String.Contains($PARAM[content],country.xml) | String.Contains($PARAM[content],tags.xml) | String.Contains($PARAM[content],directors.xml) | String.Contains($PARAM[content],special://videoplaylists/)">
-                <include content="Widget_Posters_FocusedLayout">
+                <include content="Widget_Items_FocusedLayout">
                     <param name="id" value="$PARAM[id]" />
                     <param name="text" value="true" />
                 </include>
             </focusedlayout>
             <focusedlayout width="widget_poster_width" height="widget_poster_height" condition="![[String.Contains($PARAM[content],tvGenres) | String.Contains($PARAM[content],movieGenres) | String.Contains($PARAM[content],genres.xml)] | String.Contains($PARAM[content],studios.xml) | String.Contains($PARAM[content],years.xml) | String.Contains($PARAM[content],country.xml) | String.Contains($PARAM[content],tags.xml) | String.Contains($PARAM[content],directors.xml) | String.Contains($PARAM[content],special://videoplaylists/)] + String.IsEqual($PARAM[aspect],$LOCALIZE[20021])">
-                <include content="Widget_Posters_FocusedLayout">
+                <include content="Widget_Items_FocusedLayout">
                     <param name="id" value="$PARAM[id]" />
                     <param name="poster" value="true" />
                 </include>
             </focusedlayout>
             <focusedlayout width="606.67" height="widget_poster_height" condition="![[String.Contains($PARAM[content],tvGenres) | String.Contains($PARAM[content],movieGenres) | String.Contains($PARAM[content],genres.xml)] | String.Contains($PARAM[content],studios.xml) | String.Contains($PARAM[content],years.xml) | String.Contains($PARAM[content],country.xml) | String.Contains($PARAM[content],tags.xml) | String.Contains($PARAM[content],directors.xml) | String.Contains($PARAM[content],special://videoplaylists/)] + String.IsEqual($PARAM[aspect],$LOCALIZE[31038])">
-                <include content="Widget_Posters_FocusedLayout">
+                <include content="Widget_Items_FocusedLayout">
                     <param name="id" value="$PARAM[id]" />
                     <param name="landscape" value="true" />
                 </include>
             </focusedlayout>
             <focusedlayout width="widget_poster_width" height="widget_poster_height" condition="![[String.Contains($PARAM[content],tvGenres) | String.Contains($PARAM[content],movieGenres) | String.Contains($PARAM[content],genres.xml)] | String.Contains($PARAM[content],studios.xml) | String.Contains($PARAM[content],years.xml) | String.Contains($PARAM[content],country.xml) | String.Contains($PARAM[content],tags.xml) | String.Contains($PARAM[content],directors.xml) | String.Contains($PARAM[content],special://videoplaylists/)] + String.IsEqual($PARAM[aspect],$LOCALIZE[31263])">
-                <include content="Widget_Posters_FocusedLayout">
+                <include content="Widget_Items_FocusedLayout">
                     <param name="id" value="$PARAM[id]" />
                     <param name="square" value="true" />
                 </include>
             </focusedlayout>
             <focusedlayout width="widget_poster_width" height="widget_poster_height" condition="![[String.Contains($PARAM[content],tvGenres) | String.Contains($PARAM[content],movieGenres) | String.Contains($PARAM[content],genres.xml)] | String.Contains($PARAM[content],studios.xml) | String.Contains($PARAM[content],years.xml) | String.Contains($PARAM[content],country.xml) | String.Contains($PARAM[content],tags.xml) | String.Contains($PARAM[content],directors.xml) | String.Contains($PARAM[content],special://videoplaylists/)] + String.IsEmpty($PARAM[aspect])">
-                <include content="Widget_Posters_FocusedLayout">
+                <include content="Widget_Items_FocusedLayout">
                     <param name="id" value="$PARAM[id]" />
                 </include>
             </focusedlayout>
@@ -852,8 +852,174 @@
         </definition>
     </include>
 
+    <include name="Widget_Items_Textbox">
+        <param name="color" default="PosterFront_70" />
+        <definition>
+            <control type="textbox">
+                <top>250</top>
+                <bottom>10</bottom>
+                <left>20</left>
+                <right>20</right>
+                <align>center</align>
+                <aligny>center</aligny>
+                <font>font_tiny</font>
+                <autoscroll>false</autoscroll>
+                <textcolor>$PARAM[color]</textcolor>
+                <label>$INFO[ListItem.Label]</label>
+            </control>
+        </definition>
+    </include>
 
-    <include name="Widget_Posters_ItemLayout">
+    <include name="Widget_Items_Genres">
+        <param name="color" default="PosterFront_70" />
+        <definition>
+            <control type="group">
+                <height>240</height>
+                <control type="image">
+                    <top>50</top>
+                    <left>50</left>
+                    <right>50</right>
+                    <bottom>50</bottom>
+                    <texture background="true" colordiffuse="$PARAM[color]" fallback="DefaultGenres.png">$VAR[Image_GenreIcons]</texture>
+                    <aspectratio scalediffuse="false">keep</aspectratio>
+                </control>
+            </control>
+        </definition>
+    </include>
+
+    <include name="Widget_Items_Studios">
+        <param name="color" default="PosterFront_70" />
+        <definition>
+            <control type="group">
+                <height>240</height>
+                <control type="image">
+                    <top>20</top>
+                    <left>20</left>
+                    <right>20</right>
+                    <bottom>20</bottom>
+                    <texture background="true" colordiffuse="$PARAM[color]" fallback="DefaultStudios.png">$INFO[ListItem.Label,resource://resource.images.studios.white/,.png]</texture>
+                    <aspectratio scalediffuse="false">keep</aspectratio>
+                </control>
+            </control>
+        </definition>
+    </include>
+
+    <include name="Widget_Items_Text">
+        <param name="color" default="PosterFront_70" />
+        <definition>
+            <control type="textbox">
+                <top>20</top>
+                <bottom>20</bottom>
+                <left>20</left>
+                <right>20</right>
+                <align>center</align>
+                <aligny>center</aligny>
+                <font>font_poster_text</font>
+                <textcolor>$PARAM[color]</textcolor>
+                <label>$INFO[ListItem.Label]</label>
+            </control>
+        </definition>
+    </include>
+
+    <include name="Widget_Items_Square">
+        <param name="color" default="PosterFront_70" />
+        <definition>
+            <control type="group">
+                <height>240</height>
+                <visible>String.IsEmpty(ListItem.Art(poster)) + [String.IsEmpty(ListItem.Art(tvshow.poster)) | String.IsEqual(ListItem.DBType,episode)]</visible>
+                <control type="image">
+                    <top>0</top>
+                    <left>0</left>
+                    <right>0</right>
+                    <bottom>0</bottom>
+                    <texture background="true" diffuse="diffuse/widgetsquare.png">$INFO[ListItem.Icon]</texture>
+                    <aspectratio>scale</aspectratio>
+                    <visible>!String.Contains(ListItem.Icon,/extras/icons/) + !String.Contains(ListItem.Icon,Default)</visible>
+                    <visible>String.IsEmpty(ListItem.ChannelName) + String.IsEmpty(ListItem.ChannelNumber) + !String.Contains(ListItem.FileNameAndPath,channelid)</visible>
+                </control>
+                <control type="image">
+                    <top>0</top>
+                    <left>0</left>
+                    <right>0</right>
+                    <bottom>0</bottom>
+                    <texture background="true" colordiffuse="$PARAM[color]" diffuse="diffuse/widgetsquare.png">$INFO[ListItem.Icon]</texture>
+                    <aspectratio>scale</aspectratio>
+                    <visible>!String.Contains(ListItem.Icon,/extras/icons/) + String.Contains(ListItem.Icon,Default)</visible>
+                    <visible>String.IsEmpty(ListItem.ChannelName) + String.IsEmpty(ListItem.ChannelNumber) + !String.Contains(ListItem.FileNameAndPath,channelid)</visible>
+                </control>
+                <control type="image">
+                    <top>0</top>
+                    <left>0</left>
+                    <right>0</right>
+                    <bottom>0</bottom>
+                    <texture background="true" diffuse="diffuse/widgetsquare.png">$INFO[ListItem.Icon]</texture>
+                    <aspectratio scalediffuse="false">keep</aspectratio>
+                    <visible>!String.Contains(ListItem.Icon,/extras/icons/)</visible>
+                    <visible>!String.IsEmpty(ListItem.ChannelName) | !String.IsEmpty(ListItem.ChannelNumber) | String.Contains(ListItem.FileNameAndPath,channelid)</visible>
+                </control>
+                <control type="image">
+                    <top>47</top>
+                    <left>47</left>
+                    <right>47</right>
+                    <bottom>47</bottom>
+                    <texture background="true" colordiffuse="$PARAM[color]">$INFO[ListItem.Icon]</texture>
+                    <aspectratio scalediffuse="false">keep</aspectratio>
+                    <visible>String.Contains(ListItem.Icon,/extras/icons/)</visible>
+                </control>
+            </control>
+        </definition>
+    </include>
+
+    <include name="Widget_Items_Poster">
+        <param name="poster" default="false" />
+        <definition>
+            <control type="image">
+                <texture background="true" diffuse="diffuse/widgetposter.png">$VAR[Image_Poster]</texture>
+                <aspectratio scalediffuse="false">scale</aspectratio>
+                <visible>!String.IsEmpty(ListItem.Art(poster)) | [!String.IsEmpty(ListItem.Art(tvshow.poster)) + !String.IsEqual(ListItem.DBType,episode)] | $PARAM[poster]</visible>
+            </control>
+        </definition>
+    </include>
+
+    <include name="Widget_Items_Landscape">
+        <control type="group">
+            <control type="image">
+                <texture background="true" diffuse="diffuse/widgetlandscape.png">$VAR[Image_Fanart]</texture>
+                <aspectratio scalediffuse="false">scale</aspectratio>
+            </control>
+            <control type="image">
+                <bottom>30</bottom>
+                <top>170</top>
+                <left>120</left>
+                <right>120</right>
+                <aspectratio aligny="bottom" scalediffuse="false">keep</aspectratio>
+                <texture background="true" diffuse="diffuse/widgetlandscape.png">$INFO[ListItem.Art(clearlogo)]</texture>
+                <visible>!Skin.HasSetting(DisableFakeLandscapeArt) + !String.IsEmpty(ListItem.Art(clearlogo)) + !String.IsEmpty(ListItem.Art(fanart)) + [String.IsEqual(ListItem.Label,ListItem.TvShowTitle) | String.IsEmpty(ListItem.TvShowTitle) | Skin.HasSetting(PreferFanartHome)]</visible>
+            </control>
+            <control type="group">
+                <height>70</height>
+                <bottom>0</bottom>
+                <visible>![!Skin.HasSetting(DisableFakeLandscapeArt) + !String.IsEmpty(ListItem.Art(clearlogo)) + !String.IsEmpty(ListItem.Art(fanart)) + [String.IsEqual(ListItem.Label,ListItem.TvShowTitle) | String.IsEmpty(ListItem.TvShowTitle) | Skin.HasSetting(PreferFanartHome)]]</visible>
+                <visible>!Skin.HasSetting(WidgetLabels)</visible>
+                <control type="image">
+                    <texture colordiffuse="99000000" border="10" flipy="true">diffuse/halfbox.png</texture>
+                </control>
+                <control type="label">
+                    <top>0</top>
+                    <bottom>0</bottom>
+                    <left>20</left>
+                    <right>20</right>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <font>font_tiny</font>
+                    <textcolor>main_fg_70</textcolor>
+                    <label>$VAR[Label_Widget]</label>
+                </control>
+            </control>
+        </control>
+    </include>
+
+    <include name="Widget_Items_ItemLayout">
         <param name="genres" default="false" />
         <param name="studios" default="false" />
         <param name="text" default="false" />
@@ -872,142 +1038,15 @@
                     <right>10</right>
                     <bottom>10</bottom>
                     <left>10</left>
-                    
-                    <control type="group">
-                        <top>240</top>
-                        <visible>!$PARAM[poster] + !$PARAM[landscape]</visible>
-                        <control type="textbox">
-                            <top>10</top>
-                            <bottom>10</bottom>
-                            <left>20</left>
-                            <right>20</right>
-                            <align>center</align>
-                            <aligny>center</aligny>
-                            <font>font_tiny</font>
-                            <autoscroll>false</autoscroll>
-                            <textcolor>PosterFront_70</textcolor>
-                            <label>$INFO[ListItem.Label]</label>
-                        </control>
-                    </control>
-                    <control type="group">
-                        <height>240</height>
-                        <visible>!$PARAM[poster] + !$PARAM[landscape]</visible>
-                        <control type="image">
-                            <top>50</top>
-                            <left>50</left>
-                            <right>50</right>
-                            <bottom>50</bottom>
-                            <texture background="true" colordiffuse="PosterFront_70" fallback="DefaultGenres.png">$VAR[Image_GenreIcons]</texture>
-                            <aspectratio scalediffuse="false">keep</aspectratio>
-                            <visible>$PARAM[genres]</visible>
-                        </control>
-                        <control type="image">
-                            <top>20</top>
-                            <left>20</left>
-                            <right>20</right>
-                            <bottom>20</bottom>
-                            <texture background="true" colordiffuse="PosterFront_70" fallback="DefaultStudios.png">$INFO[ListItem.Label,resource://resource.images.studios.white/,.png]</texture>
-                            <aspectratio scalediffuse="false">keep</aspectratio>
-                            <visible>$PARAM[studios]</visible>
-                        </control>
-                        <control type="textbox">
-                            <top>20</top>
-                            <bottom>20</bottom>
-                            <left>20</left>
-                            <right>20</right>
-                            <align>center</align>
-                            <aligny>center</aligny>
-                            <font>font_poster_text</font>
-                            <textcolor>PosterFront_70</textcolor>
-                            <label>$INFO[ListItem.Label]</label>
-                            <visible>$PARAM[text]</visible>
-                        </control>
-                        <control type="image">
-                            <top>0</top>
-                            <left>0</left>
-                            <right>0</right>
-                            <bottom>0</bottom>
-                            <texture background="true" diffuse="diffuse/widgetsquare.png">$INFO[ListItem.Icon]</texture>
-                            <aspectratio>scale</aspectratio>
-                            <visible>[!$PARAM[studios] + !$PARAM[genres] + !$PARAM[text] + String.IsEmpty(ListItem.Art(poster)) + [String.IsEmpty(ListItem.Art(tvshow.poster)) | String.IsEqual(ListItem.DBType,episode)]] | $PARAM[square]</visible>
-                            <visible>!String.Contains(ListItem.Icon,/extras/icons/) + !String.Contains(ListItem.Icon,Default)</visible>
-                            <visible>String.IsEmpty(ListItem.ChannelName) + String.IsEmpty(ListItem.ChannelNumber) + !String.Contains(ListItem.FileNameAndPath,channelid)</visible>
-                        </control>
-                        <control type="image">
-                            <top>0</top>
-                            <left>0</left>
-                            <right>0</right>
-                            <bottom>0</bottom>
-                            <texture background="true" colordiffuse="PosterFront_70" diffuse="diffuse/widgetsquare.png">$INFO[ListItem.Icon]</texture>
-                            <aspectratio>scale</aspectratio>
-                            <visible>[!$PARAM[studios] + !$PARAM[genres] + !$PARAM[text] + String.IsEmpty(ListItem.Art(poster)) + [String.IsEmpty(ListItem.Art(tvshow.poster)) | String.IsEqual(ListItem.DBType,episode)]] | $PARAM[square]</visible>
-                            <visible>!String.Contains(ListItem.Icon,/extras/icons/) + String.Contains(ListItem.Icon,Default)</visible>
-                            <visible>String.IsEmpty(ListItem.ChannelName) + String.IsEmpty(ListItem.ChannelNumber) + !String.Contains(ListItem.FileNameAndPath,channelid)</visible>
-                        </control>
-                        <control type="image">
-                            <top>0</top>
-                            <left>0</left>
-                            <right>0</right>
-                            <bottom>0</bottom>
-                            <texture background="true" diffuse="diffuse/widgetsquare.png">$INFO[ListItem.Icon]</texture>
-                            <aspectratio scalediffuse="false">keep</aspectratio>
-                            <visible>[!$PARAM[studios] + !$PARAM[genres] + !$PARAM[text] + String.IsEmpty(ListItem.Art(poster)) + [String.IsEmpty(ListItem.Art(tvshow.poster)) | String.IsEqual(ListItem.DBType,episode)]] | $PARAM[square]</visible>
-                            <visible>!String.Contains(ListItem.Icon,/extras/icons/)</visible>
-                            <visible>!String.IsEmpty(ListItem.ChannelName) | !String.IsEmpty(ListItem.ChannelNumber) | String.Contains(ListItem.FileNameAndPath,channelid)</visible>
-                        </control>
-                        <control type="image">
-                            <top>47</top>
-                            <left>47</left>
-                            <right>47</right>
-                            <bottom>47</bottom>
-                            <texture background="true" colordiffuse="PosterFront_70">$INFO[ListItem.Icon]</texture>
-                            <aspectratio scalediffuse="false">keep</aspectratio>
-                            <visible>[!$PARAM[studios] + !$PARAM[genres] + !$PARAM[text] + String.IsEmpty(ListItem.Art(poster)) + [String.IsEmpty(ListItem.Art(tvshow.poster)) | String.IsEqual(ListItem.DBType,episode)]] | $PARAM[square]</visible>
-                            <visible>String.Contains(ListItem.Icon,/extras/icons/)</visible>
-                        </control>
-                    </control>
-                    <control type="image">
-                        <texture background="true" diffuse="diffuse/widgetposter.png">$VAR[Image_Poster]</texture>
-                        <aspectratio scalediffuse="false">scale</aspectratio>
-                        <visible>!$PARAM[landscape] + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text] + !$PARAM[square] + [!String.IsEmpty(ListItem.Art(poster)) | [!String.IsEmpty(ListItem.Art(tvshow.poster)) + !String.IsEqual(ListItem.DBType,episode)] | $PARAM[poster]]</visible>
-                    </control>
-                    <control type="group">
-                        <visible>$PARAM[landscape]</visible>
-                        <control type="image">
-                            <texture background="true" diffuse="diffuse/widgetlandscape.png">$VAR[Image_Fanart]</texture>
-                            <aspectratio scalediffuse="false">scale</aspectratio>
-                        </control>
-                        <control type="image">
-                            <bottom>30</bottom>
-                            <top>170</top>
-                            <left>120</left>
-                            <right>120</right>
-                            <aspectratio aligny="bottom" scalediffuse="false">keep</aspectratio>
-                            <texture background="true" diffuse="diffuse/widgetlandscape.png">$INFO[ListItem.Art(clearlogo)]</texture>
-                            <visible>!Skin.HasSetting(DisableFakeLandscapeArt) + !String.IsEmpty(ListItem.Art(clearlogo)) + !String.IsEmpty(ListItem.Art(fanart)) + [String.IsEqual(ListItem.Label,ListItem.TvShowTitle) | String.IsEmpty(ListItem.TvShowTitle) | Skin.HasSetting(PreferFanartHome)]</visible>
-                        </control>
-                        <control type="group">
-                            <height>70</height>
-                            <bottom>0</bottom>
-                            <visible>![!Skin.HasSetting(DisableFakeLandscapeArt) + !String.IsEmpty(ListItem.Art(clearlogo)) + !String.IsEmpty(ListItem.Art(fanart)) + [String.IsEqual(ListItem.Label,ListItem.TvShowTitle) | String.IsEmpty(ListItem.TvShowTitle) | Skin.HasSetting(PreferFanartHome)]]</visible>
-                            <visible>!Skin.HasSetting(WidgetLabels)</visible>
-                            <control type="image">
-                                <texture colordiffuse="99000000" border="10" flipy="true">diffuse/halfbox.png</texture>
-                            </control>
-
-                            <control type="label">
-                                <top>0</top>
-                                <bottom>0</bottom>
-                                <left>20</left>
-                                <right>20</right>
-                                <align>center</align>
-                                <aligny>center</aligny>
-                                <font>font_tiny</font>
-                                <textcolor>main_fg_70</textcolor>
-                                <label>$VAR[Label_Widget]</label>
-                            </control>
-                        </control>
-                    </control>
+                    <include condition="!$PARAM[poster] + !$PARAM[landscape] + !$PARAM[text]">Widget_Items_Textbox</include>
+                    <include condition="$PARAM[genres]">Widget_Items_Genres</include>
+                    <include condition="$PARAM[studios]">Widget_Items_Studios</include>
+                    <include condition="$PARAM[text]">Widget_Items_Text</include>
+                    <include condition="$PARAM[square] | [!$PARAM[poster] + !$PARAM[landscape] + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text]]">Widget_Items_Square</include>
+                    <include condition="$PARAM[poster] | [!$PARAM[landscape] + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text] + !$PARAM[square]]" content="Widget_Items_Poster">
+                        <param name="poster" value="$PARAM[poster]" />
+                    </include>
+                    <include condition="$PARAM[landscape]">Widget_Items_Landscape</include>
                 </control>
                 <include>View_WatchedOverlay</include>
                 <control type="image">
@@ -1018,7 +1057,7 @@
         </definition>
     </include>
 
-    <include name="Widget_Posters_FocusedLayout">
+    <include name="Widget_Items_FocusedLayout">
         <param name="genres" default="false" />
         <param name="studios" default="false" />
         <param name="text" default="false" />
@@ -1040,139 +1079,25 @@
                     <right>10</right>
                     <bottom>10</bottom>
                     <left>10</left>
-                    <control type="group">
-                        <top>240</top>
-                        <visible>!$PARAM[poster] + !$PARAM[landscape]</visible>
-                        <control type="textbox">
-                            <top>10</top>
-                            <bottom>10</bottom>
-                            <left>20</left>
-                            <right>20</right>
-                            <align>center</align>
-                            <aligny>center</aligny>
-                            <font>font_tiny</font>
-                            <textcolor>PosterFront</textcolor>
-                            <label>$INFO[ListItem.Label]</label>
-                        </control>
-                    </control>
-                    <control type="group">
-                        <visible>!$PARAM[poster] + !$PARAM[landscape]</visible>
-                        <height>240</height>
-                        <control type="image">
-                            <top>50</top>
-                            <left>50</left>
-                            <right>50</right>
-                            <bottom>50</bottom>
-                            <texture background="true" colordiffuse="PosterFront" fallback="DefaultGenres.png">$VAR[Image_GenreIcons]</texture>
-                            <aspectratio>keep</aspectratio>
-                            <visible>$PARAM[genres]</visible>
-                        </control>
-                        <control type="image">
-                            <top>20</top>
-                            <left>20</left>
-                            <right>20</right>
-                            <bottom>20</bottom>
-                            <texture background="true" colordiffuse="PosterFront" fallback="DefaultStudios.png">$INFO[ListItem.Label,resource://resource.images.studios.white/,.png]</texture>
-                            <aspectratio>keep</aspectratio>
-                            <visible>$PARAM[studios]</visible>
-                        </control>
-                        <control type="textbox">
-                            <top>20</top>
-                            <bottom>20</bottom>
-                            <left>20</left>
-                            <right>20</right>
-                            <align>center</align>
-                            <aligny>center</aligny>
-                            <font>font_poster_text</font>
-                            <textcolor>PosterFront</textcolor>
-                            <label>$INFO[ListItem.Label]</label>
-                            <visible>$PARAM[text]</visible>
-                        </control>
-                        <control type="image">
-                            <top>0</top>
-                            <left>0</left>
-                            <right>0</right>
-                            <bottom>0</bottom>
-                            <texture background="true">$INFO[ListItem.Icon]</texture>
-                            <aspectratio>scale</aspectratio>
-                            <visible>[!$PARAM[studios] + !$PARAM[genres] + !$PARAM[text] + String.IsEmpty(ListItem.Art(poster)) + [String.IsEmpty(ListItem.Art(tvshow.poster)) | String.IsEqual(ListItem.DBType,episode)]] | $PARAM[square]</visible>
-                            <visible>!String.Contains(ListItem.Icon,/extras/icons/) + !String.Contains(ListItem.Icon,Default)</visible>
-                            <visible>String.IsEmpty(ListItem.ChannelName) + String.IsEmpty(ListItem.ChannelNumber) + !String.Contains(ListItem.FileNameAndPath,channelid)</visible>
-                        </control>
-                        <control type="image">
-                            <top>0</top>
-                            <left>0</left>
-                            <right>0</right>
-                            <bottom>0</bottom>
-                            <texture background="true" colordiffuse="PosterFront">$INFO[ListItem.Icon]</texture>
-                            <aspectratio>scale</aspectratio>
-                            <visible>[!$PARAM[studios] + !$PARAM[genres] + !$PARAM[text] + String.IsEmpty(ListItem.Art(poster)) + [String.IsEmpty(ListItem.Art(tvshow.poster)) | String.IsEqual(ListItem.DBType,episode)]] | $PARAM[square]</visible>
-                            <visible>!String.Contains(ListItem.Icon,/extras/icons/) + String.Contains(ListItem.Icon,Default)</visible>
-                            <visible>String.IsEmpty(ListItem.ChannelName) + String.IsEmpty(ListItem.ChannelNumber) + !String.Contains(ListItem.FileNameAndPath,channelid)</visible>
-                        </control>
-                        <control type="image">
-                            <top>0</top>
-                            <left>0</left>
-                            <right>0</right>
-                            <bottom>0</bottom>
-                            <texture background="true">$INFO[ListItem.Icon]</texture>
-                            <aspectratio>keep</aspectratio>
-                            <visible>[!$PARAM[studios] + !$PARAM[genres] + !$PARAM[text] + String.IsEmpty(ListItem.Art(poster)) + [String.IsEmpty(ListItem.Art(tvshow.poster)) | String.IsEqual(ListItem.DBType,episode)]] | $PARAM[square]</visible>
-                            <visible>!String.Contains(ListItem.Icon,/extras/icons/)</visible>
-                            <visible>!String.IsEmpty(ListItem.ChannelName) | !String.IsEmpty(ListItem.ChannelNumber) | String.Contains(ListItem.FileNameAndPath,channelid)</visible>
-                        </control>
-                        <control type="image">
-                            <top>47</top>
-                            <left>47</left>
-                            <right>47</right>
-                            <bottom>47</bottom>
-                            <texture background="true" colordiffuse="PosterFront">$INFO[ListItem.Icon]</texture>
-                            <aspectratio>keep</aspectratio>
-                            <visible>[!$PARAM[studios] + !$PARAM[genres] + !$PARAM[text] + String.IsEmpty(ListItem.Art(poster)) + [String.IsEmpty(ListItem.Art(tvshow.poster)) | String.IsEqual(ListItem.DBType,episode)]] | $PARAM[square]</visible>
-                            <visible>String.Contains(ListItem.Icon,/extras/icons/)</visible>
-                        </control>
-                    </control>
-                    <control type="image">
-                        <texture background="true">$VAR[Image_Poster]</texture>
-                        <aspectratio>scale</aspectratio>
-                        <visible>!$PARAM[landscape] + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text] + !$PARAM[square] + [!String.IsEmpty(ListItem.Art(poster)) | [!String.IsEmpty(ListItem.Art(tvshow.poster)) + !String.IsEqual(ListItem.DBType,episode)] | $PARAM[poster]]</visible>
-                    </control>
-                    <control type="group">
-                        <visible>$PARAM[landscape]</visible>
-                        <control type="image">
-                            <texture background="true">$VAR[Image_Fanart]</texture>
-                            <aspectratio>scale</aspectratio>
-                        </control>
-                        <control type="image">
-                            <bottom>30</bottom>
-                            <top>170</top>
-                            <left>120</left>
-                            <right>120</right>
-                            <aspectratio aligny="bottom">keep</aspectratio>
-                            <texture background="true">$INFO[ListItem.Art(clearlogo)]</texture>
-                            <visible>!Skin.HasSetting(DisableFakeLandscapeArt) + !String.IsEmpty(ListItem.Art(clearlogo)) + !String.IsEmpty(ListItem.Art(fanart)) + [String.IsEqual(ListItem.Label,ListItem.TvShowTitle) | String.IsEmpty(ListItem.TvShowTitle) | Skin.HasSetting(PreferFanartHome)]</visible>
-                        </control>
-                        <control type="group">
-                            <height>70</height>
-                            <bottom>0</bottom>
-                            <visible>![!Skin.HasSetting(DisableFakeLandscapeArt) + !String.IsEmpty(ListItem.Art(clearlogo)) + !String.IsEmpty(ListItem.Art(fanart)) + [String.IsEqual(ListItem.Label,ListItem.TvShowTitle) | String.IsEmpty(ListItem.TvShowTitle) | Skin.HasSetting(PreferFanartHome)]]</visible>
-                            <visible>!Skin.HasSetting(WidgetLabels)</visible>
-                            <control type="image">
-                                <texture colordiffuse="99000000">common/white.png</texture>
-                            </control>
-                            <control type="label">
-                                <top>0</top>
-                                <bottom>0</bottom>
-                                <left>20</left>
-                                <right>20</right>
-                                <align>center</align>
-                                <aligny>center</aligny>
-                                <font>font_tiny</font>
-                                <textcolor>Selected</textcolor>
-                                <label>$VAR[Label_Widget]</label>
-                            </control>
-                        </control>
-                    </control>
+                    <include condition="!$PARAM[poster] + !$PARAM[landscape] + !$PARAM[text]" content="Widget_Items_Textbox">
+                        <param name="color" value="PosterFront" />
+                    </include>
+                    <include condition="$PARAM[genres]" content="Widget_Items_Genres">
+                        <param name="color" value="PosterFront" />
+                    </include>
+                    <include condition="$PARAM[studios]" content="Widget_Items_Studios">
+                        <param name="color" value="PosterFront" />
+                    </include>
+                    <include condition="$PARAM[text]" content="Widget_Items_Text">
+                        <param name="color" value="PosterFront" />
+                    </include>
+                    <include condition="$PARAM[square] | [!$PARAM[poster] + !$PARAM[landscape] + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text]]" content="Widget_Items_Square">
+                        <param name="color" value="PosterFront" />
+                    </include>
+                    <include condition="$PARAM[poster] | [!$PARAM[landscape] + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text] + !$PARAM[square]]" content="Widget_Items_Poster">
+                        <param name="poster" value="$PARAM[poster]" />
+                    </include>
+                    <include condition="$PARAM[landscape]">Widget_Items_Landscape</include>
                 </control>
                 <include>View_WatchedOverlay</include>
                 <control type="group">
@@ -1181,7 +1106,7 @@
             </control>
             <control type="group">
                 <visible>!Control.HasFocus($PARAM[id])</visible>
-                <include content="Widget_Posters_ItemLayout">
+                <include content="Widget_Items_ItemLayout">
                     <param name="genres" value="$PARAM[genres]" />
                     <param name="studios" value="$PARAM[studios]" />
                     <param name="text" value="$PARAM[text]" />
