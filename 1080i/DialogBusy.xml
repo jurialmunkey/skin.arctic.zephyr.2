@@ -12,13 +12,15 @@
             <include>Global_Overlay</include>
             <include>Defs_BusySpinner</include>
         </control>
-
+        <control type="image">
+            <include>Defs_ShadowBack_Fullscreen</include>
+            <visible>Skin.HasSetting(MinimalBusyLoader)</visible>
+        </control>
         <control type="group">
             <height>view_top</height>
             <control type="group">
                 <visible>Skin.HasSetting(MinimalBusyLoader) + !Window.IsVisible(DialogNotification.xml) + [!Window.IsVisible(DialogVolumeBar.xml) | Player.Muted] + !Window.IsVisible(Startup.xml)</visible>
                 <include>Dialog_Notification_Group</include>
-                
                 <control type="group">
                     <control type="group">
                         <include>Dialog_Notification_Icon</include>

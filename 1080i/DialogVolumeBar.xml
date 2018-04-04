@@ -9,7 +9,6 @@
             <visible>[VideoPlayer.IsFullscreen | Window.IsVisible(MusicVisualisation.xml)]</visible>
             <visible>Player.Muted</visible>
             <visible>![Player.ShowInfo | Window.IsVisible(script-cu-lrclyrics-main.xml) | !String.IsEmpty(Window(Home).Property(OSDInfo)) | Player.ShowInfo | Window.IsActive(DialogFullScreenInfo.xml) | [Player.Paused + Skin.HasSetting(ShowInfoPaused)]]</visible>
-            
             <include>Animation_FadeIn_Slide</include>
             <control type="image">
                 <width>216</width>
@@ -26,14 +25,16 @@
                 <texture colordiffuse="main_fg_100">buttons/mute.png</texture>
             </control>
         </control>
-
+        <control type="image">
+            <include>Defs_ShadowBack_Fullscreen</include>
+            <visible>!Player.Muted</visible>
+        </control>
         <control type="group">
             <include>Animation_FadeIn_Slide</include>
             <visible>!Player.Muted</visible>
             <!-- Volume bar -->
             <control type="group">
                 <height>view_top</height>
-                
                 <control type="grouplist">
                     <right>view_pad</right>
                     <height>100%</height>
