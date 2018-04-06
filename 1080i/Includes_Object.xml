@@ -615,23 +615,11 @@
     </include>
 
     <include name="Object_PVR_Info_Content">
-        <control type="grouplist">
-            <orientation>horizontal</orientation>
+        <control type="group">
             <height>80</height>
-            <itemgap>0</itemgap>
             <control type="label">
-                <label>$INFO[ListItem.EpgEventTitle]</label>
+                <label>$INFO[ListItem.EpgEventTitle]$INFO[ListItem.EpisodeName, - ,]</label>
                 <height>80</height>
-                <width>auto</width>
-                <aligny>top</aligny>
-                <textcolor>main_fg_100</textcolor>
-                <font>font_showcase_title</font>
-                <visible>!String.IsEmpty(ListItem.EpgEventTitle)</visible>
-            </control>
-            <control type="label">
-                <label>$INFO[ListItem.EpisodeName, - ,]</label>
-                <height>80</height>
-                <width>auto</width>
                 <aligny>top</aligny>
                 <textcolor>main_fg_100</textcolor>
                 <font>font_showcase_title</font>
@@ -641,7 +629,6 @@
                 <label>$INFO[ListItem.Label]</label>
                 <height>80</height>
                 <aligny>top</aligny>
-                <width>auto</width>
                 <textcolor>main_fg_100</textcolor>
                 <font>font_showcase_title</font>
                 <visible>String.IsEmpty(ListItem.EpgEventTitle)</visible>
