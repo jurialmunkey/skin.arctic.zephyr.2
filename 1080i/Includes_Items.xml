@@ -389,19 +389,28 @@
             </item>
             <item>
                 <label>$INFO[Control.GetLabel(7)]</label>
-                <icon>special://skin/extras/icons/error.png</icon>
+                <icon>special://skin/extras/icons/disabled.png</icon>
                 <onclick>SendClick(7)</onclick>
                 <visible>Control.IsEnabled(7)</visible>
                 <visible>!String.IsEqual(Control.GetLabel(7),$LOCALIZE[24021])</visible>
                 <visible>!Skin.HasSetting(global.kioskmode)</visible>
             </item>
-            <!-- uninstall -->
+            <!-- uninstall / install -->
             <item>
                 <label>$INFO[Control.GetLabel(6)]</label>
                 <icon>special://skin/extras/icons/download.png</icon>
                 <onclick>SendClick(6)</onclick>
                 <visible>Control.IsEnabled(6)</visible>
                 <visible>!Skin.HasSetting(global.kioskmode)</visible>
+                <visible>!String.IsEqual(Control.GetLabel(6),$LOCALIZE[24037])</visible>
+            </item>
+            <item>
+                <label>$INFO[Control.GetLabel(6)]</label>
+                <icon>special://skin/extras/icons/uninstall.png</icon>
+                <onclick>SendClick(6)</onclick>
+                <visible>Control.IsEnabled(6)</visible>
+                <visible>!Skin.HasSetting(global.kioskmode)</visible>
+                <visible>String.IsEqual(Control.GetLabel(6),$LOCALIZE[24037])</visible>
             </item>
             <!--Update -->
             <item>
