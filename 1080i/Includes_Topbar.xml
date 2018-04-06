@@ -166,6 +166,7 @@
                         <width>700</width>
                         <usecontrolcoords>true</usecontrolcoords>
                         <control type="group">
+                            <visible>!Control.HasFocus(60)</visible>
                             <width>view_pad</width>
                             <visible>![Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml) | Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(DialogAddonInfo.xml)]</visible>
                             <visible>!Control.HasFocus(300) | Window.IsVisible(Home)</visible>
@@ -210,6 +211,7 @@
                             <visible>![Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml) | Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(DialogAddonInfo.xml)]</visible>
                             <visible>!Control.HasFocus(300) | Window.IsVisible(Home)</visible>
                             <include>Animation_FadeIn_Delay</include>
+                            <visible>!Control.HasFocus(60)</visible>
                         </control>
                         <control type="label">
                             <width>auto</width>
@@ -219,8 +221,10 @@
                             <visible>Player.HasMedia</visible>
                             <visible>![Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml) | Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(DialogAddonInfo.xml)]</visible>
                             <visible>!Control.HasFocus(300) | Window.IsVisible(Home)</visible>
+                            <visible>!Control.HasFocus(60)</visible>
                         </control>
                         <control type="group">
+                            <visible>!Control.HasFocus(60)</visible>
                             <width>view_pad</width>
                             <control type="image">
                                 <centertop>50%</centertop>
@@ -232,6 +236,7 @@
                             <visible>!Player.HasMedia | [Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml) | Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(DialogAddonInfo.xml)] | [Control.HasFocus(300) + !Window.IsVisible(Home)]</visible>
                         </control>
                         <control type="label">
+                            <visible>!Control.HasFocus(60)</visible>
                             <width>auto</width>
                             <font>font_small</font>
                             <textcolor>main_fg_100</textcolor>
@@ -240,6 +245,7 @@
                             <visible>!Player.HasMedia | [Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml) | Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(DialogAddonInfo.xml)] | [Control.HasFocus(300) + !Window.IsVisible(Home)]</visible>
                         </control>
                         <control type="label">
+                            <visible>!Control.HasFocus(60)</visible>
                             <width>auto</width>
                             <font>font_small</font>
                             <textcolor>$VAR[ColorHighlight]</textcolor>
@@ -253,6 +259,28 @@
                             <font>font_small</font>
                             <textcolor>main_fg_100</textcolor>
                             <label>$INFO[System.Time]</label>
+                            <visible>!Control.HasFocus(60)</visible>
+                        </control>
+                        <control type="label">
+                            <visible>Control.HasFocus(60)</visible>
+                            <width>auto</width>
+                            <font>font_small</font>
+                            <textcolor>main_fg_100</textcolor>
+                            <label>$INFO[Container.NumItems,, $LOCALIZE[31101]]</label>
+                        </control>
+                        <control type="label">
+                            <visible>Control.HasFocus(60)</visible>
+                            <width>auto</width>
+                            <font>font_small</font>
+                            <textcolor>$VAR[ColorHighlight]</textcolor>
+                            <label>  |  </label>
+                        </control>
+                        <control type="label">
+                            <visible>Control.HasFocus(60)</visible>
+                            <width>auto</width>
+                            <font>font_small</font>
+                            <textcolor>main_fg_100</textcolor>
+                            <label>$INFO[Container.CurrentPage,$LOCALIZE[31391] , $LOCALIZE[20163] ]$INFO[Container.NumPages]</label>
                         </control>
                         <control type="image">
                             <centertop>50%</centertop>
