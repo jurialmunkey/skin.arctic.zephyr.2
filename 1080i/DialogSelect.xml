@@ -84,10 +84,10 @@
             <control type="panel" id="6">
                 <include>Dialog_Standard_List_Left</include>
                 <onleft>8000</onleft>
-                <onright>60</onright>
+                <onright>61</onright>
                 <onup>6</onup>
                 <ondown>6</ondown>
-                <pagecontrol>60</pagecontrol>
+                <pagecontrol>61</pagecontrol>
                 <itemlayout height="138" width="700">
                     <control type="image">
                         <include>Dialog_Standard_List_Left_Icon</include>
@@ -152,10 +152,10 @@
             <!-- Buttons -->
             <control type="grouplist" id="8000">
                 <include>Dialog_Standard_Right_Grouplist</include>
-                <onleft condition="Control.IsVisible(60)">60</onleft>
-                <onleft condition="!Control.IsVisible(60) + Control.IsVisible(3)">3</onleft>
+                <onleft condition="Control.IsVisible(61)">61</onleft>
+                <onleft condition="!Control.IsVisible(61) + Control.IsVisible(3)">3</onleft>
                 <onright condition="Control.IsVisible(3)">3</onright>
-                <onleft condition="!Control.IsVisible(60) + Control.IsVisible(6)">6</onleft>
+                <onleft condition="!Control.IsVisible(61) + Control.IsVisible(6)">6</onleft>
                 <onright condition="Control.IsVisible(6)">6</onright>
                 <animation effect="slide" start="0" end="22,-100" condition="!Control.IsVisible(6)">Conditional</animation>
                 <control type="button" id="5">
@@ -195,7 +195,7 @@
                 <height>687</height>
                 <width>1</width>
                 <texture colordiffuse="PixelLines">common/white.png</texture>
-                <visible>Control.IsVisible(6) + !Control.IsVisible(60)</visible>
+                <visible>Control.IsVisible(6) + !Control.IsVisible(61)</visible>
             </control>
             <control type="image">
                 <left>700</left>
@@ -203,9 +203,9 @@
                 <height>687</height>
                 <width>1</width>
                 <texture colordiffuse="darkline_separator">common/white.png</texture>
-                <visible>Control.IsVisible(6) + !Control.IsVisible(60)</visible>
+                <visible>Control.IsVisible(6) + !Control.IsVisible(61)</visible>
             </control>
-            <control type="scrollbar" id="60">
+            <control type="scrollbar" id="61">
                 <orientation>vertical</orientation>
                 <left>700</left>
                 <width>8</width>

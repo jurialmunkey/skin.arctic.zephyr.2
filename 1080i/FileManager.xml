@@ -7,7 +7,7 @@
         <include>Global_Background</include>
         <include>Topbar</include>
         
-        <control type="scrollbar" id="60">
+        <control type="scrollbar" id="62">
             <showonepage>false</showonepage>
             <orientation>vertical</orientation>
             <left>0</left>
@@ -19,7 +19,7 @@
             <texturesliderbackground colordiffuse="main_fg_12" border="4">common/white.png</texturesliderbackground>
             <texturesliderbar colordiffuse="main_fg_30" border="4">scrollbar/scrollv.png</texturesliderbar>
             <texturesliderbarfocus colordiffuse="$VAR[ColorHighlight]" border="4">scrollbar/scrollv.png</texturesliderbarfocus>
-            <animation effect="fade" start="100" end="33" time="400" condition="!Control.HasFocus(60) + !Container(20).Scrolling">Conditional</animation>
+            <animation effect="fade" start="100" end="33" time="400" condition="!Control.HasFocus(62) + !Container(20).Scrolling">Conditional</animation>
             <include>Animation_FadeIn</include>
             <include>Animation_FadeOut</include>
         </control>
@@ -81,11 +81,11 @@
                         <width>890</width>
                         <top>75</top>
                         <height>825</height>
-                        <onleft>60</onleft>
+                        <onleft>62</onleft>
                         <onright>21</onright>
                         <onup>20</onup>
                         <ondown>20</ondown>
-                        <pagecontrol>60</pagecontrol>
+                        <pagecontrol>62</pagecontrol>
                         <itemlayout height="75" width="890">
                             <control type="label">
                                 <left>30</left>
