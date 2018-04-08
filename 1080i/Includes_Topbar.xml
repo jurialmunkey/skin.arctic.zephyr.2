@@ -843,69 +843,72 @@
     </include>
 
     <include name="Topbar_Menu_Layout">
-        <animation effect="fade" start="0" end="100" time="350" tween="cubic" easing="inout" reversible="false">Visible</animation>
-        <animation effect="fade" start="100" end="0" time="350" tween="cubic" easing="inout" reversible="false">Hidden</animation>
-        <animation effect="slide" end="35" condition="Integer.IsLess(Container(300).NumItems,11)">Conditional</animation>
-        <animation effect="slide" end="35" condition="Integer.IsLess(Container(300).NumItems,10)">Conditional</animation>
-        <animation effect="slide" end="35" condition="Integer.IsLess(Container(300).NumItems,9)">Conditional</animation>
-        <animation effect="slide" end="35" condition="Integer.IsLess(Container(300).NumItems,8)">Conditional</animation>
-        <animation effect="slide" end="35" condition="Integer.IsLess(Container(300).NumItems,7)">Conditional</animation>
-        <animation effect="slide" end="35" condition="Integer.IsLess(Container(300).NumItems,6)">Conditional</animation>
-        <animation effect="slide" end="35" condition="Integer.IsLess(Container(300).NumItems,5)">Conditional</animation>
-        <animation effect="slide" end="35" condition="Integer.IsLess(Container(300).NumItems,4)">Conditional</animation>
-        <animation effect="slide" end="35" condition="Integer.IsLess(Container(300).NumItems,3)">Conditional</animation>
-        <animation effect="slide" end="35" condition="Integer.IsLess(Container(300).NumItems,2)">Conditional</animation>
-        <animation effect="slide" end="35" condition="Integer.IsLess(Container(300).NumItems,1)">Conditional</animation>
-        <visible allowhiddenfocus="true">Control.HasFocus(300) | $PARAM[visible]</visible>
-        <width>770</width>
-        <focusposition>5</focusposition>
-        <movement>5</movement>
-        <centerleft>50%</centerleft>
-        <orientation>horizontal</orientation>
-        <onup condition="!Skin.HasSetting(DisablePressingUp)">9602</onup>
-        <ondown condition="Window.IsVisible(SettingsCategory.xml)">3</ondown>
-        <ondown condition="Window.IsVisible(SettingsProfile.xml)">4</ondown>
-        <ondown condition="Window.IsVisible(SettingsSystemInfo.xml)">95</ondown>
-        <ondown condition="Window.IsVisible(SkinSettings.xml)">9000</ondown>
-        <ondown condition="Window.IsVisible(script-NextAired-TVGuide.xml) | Window.IsVisible(script-NextAired-TVGuide2.xml)">9500</ondown>
-        <ondown>50</ondown>
-        <height>120</height>
-        <itemlayout width="70" height="view_pad">
-            <control type="image">
-                <centerleft>50%</centerleft>
-                <width>view_pad</width>
-                <texture colordiffuse="main_fg_30">$INFO[ListItem.Icon]</texture>
-            </control>
-        </itemlayout>
-        <focusedlayout width="70" height="view_pad">
-            <include condition="Window.IsVisible(SettingsCategory.xml) | Window.IsVisible(SettingsProfile.xml) | Window.IsVisible(SettingsSystemInfo.xml) | Window.IsVisible(SkinSettings.xml)">Topbar_Menu_SettingsTrick_Button</include>
-            <control type="image">
-                <visible>!Control.HasFocus(300)</visible>
-                <centerleft>50%</centerleft>
-                <width>view_pad</width>
-                <texture colordiffuse="main_fg_30">$INFO[ListItem.Icon]</texture>
-            </control>
-            <control type="group">
-                <visible>Control.HasFocus(300)</visible>
-                <control type="group">
+        <param name="visible" default="false" />
+        <definition>
+            <animation effect="fade" start="0" end="100" time="350" tween="cubic" easing="inout" reversible="false">Visible</animation>
+            <animation effect="fade" start="100" end="0" time="350" tween="cubic" easing="inout" reversible="false">Hidden</animation>
+            <animation effect="slide" end="35" condition="Integer.IsLess(Container(300).NumItems,11)">Conditional</animation>
+            <animation effect="slide" end="35" condition="Integer.IsLess(Container(300).NumItems,10)">Conditional</animation>
+            <animation effect="slide" end="35" condition="Integer.IsLess(Container(300).NumItems,9)">Conditional</animation>
+            <animation effect="slide" end="35" condition="Integer.IsLess(Container(300).NumItems,8)">Conditional</animation>
+            <animation effect="slide" end="35" condition="Integer.IsLess(Container(300).NumItems,7)">Conditional</animation>
+            <animation effect="slide" end="35" condition="Integer.IsLess(Container(300).NumItems,6)">Conditional</animation>
+            <animation effect="slide" end="35" condition="Integer.IsLess(Container(300).NumItems,5)">Conditional</animation>
+            <animation effect="slide" end="35" condition="Integer.IsLess(Container(300).NumItems,4)">Conditional</animation>
+            <animation effect="slide" end="35" condition="Integer.IsLess(Container(300).NumItems,3)">Conditional</animation>
+            <animation effect="slide" end="35" condition="Integer.IsLess(Container(300).NumItems,2)">Conditional</animation>
+            <animation effect="slide" end="35" condition="Integer.IsLess(Container(300).NumItems,1)">Conditional</animation>
+            <visible allowhiddenfocus="true">Control.HasFocus(300) | $PARAM[visible]</visible>
+            <width>770</width>
+            <focusposition>5</focusposition>
+            <movement>5</movement>
+            <centerleft>50%</centerleft>
+            <orientation>horizontal</orientation>
+            <onup condition="!Skin.HasSetting(DisablePressingUp)">9602</onup>
+            <ondown condition="Window.IsVisible(SettingsCategory.xml)">3</ondown>
+            <ondown condition="Window.IsVisible(SettingsProfile.xml)">4</ondown>
+            <ondown condition="Window.IsVisible(SettingsSystemInfo.xml)">95</ondown>
+            <ondown condition="Window.IsVisible(SkinSettings.xml)">9000</ondown>
+            <ondown condition="Window.IsVisible(script-NextAired-TVGuide.xml) | Window.IsVisible(script-NextAired-TVGuide2.xml)">9500</ondown>
+            <ondown>50</ondown>
+            <height>120</height>
+            <itemlayout width="70" height="view_pad">
+                <control type="image">
                     <centerleft>50%</centerleft>
                     <width>view_pad</width>
-                    <control type="image">
-                        <texture colordiffuse="$VAR[ColorHighlight]">common/white.png</texture>
-                        <bottom>0</bottom>
-                        <height>6</height>
-                    </control>
-                    <control type="image">
-                        <texture colordiffuse="$VAR[ColorHighlight2]">common/gradient-diffuse-horizontal.png</texture>
-                        <bottom>0</bottom>
-                        <height>6</height>
-                    </control>
-                    <control type="image">
-                        <texture colordiffuse="Selected">$INFO[ListItem.Icon]</texture>
+                    <texture colordiffuse="main_fg_30">$INFO[ListItem.Icon]</texture>
+                </control>
+            </itemlayout>
+            <focusedlayout width="70" height="view_pad">
+                <include condition="Window.IsVisible(SettingsCategory.xml) | Window.IsVisible(SettingsProfile.xml) | Window.IsVisible(SettingsSystemInfo.xml) | Window.IsVisible(SkinSettings.xml)">Topbar_Menu_SettingsTrick_Button</include>
+                <control type="image">
+                    <visible>!Control.HasFocus(300)</visible>
+                    <centerleft>50%</centerleft>
+                    <width>view_pad</width>
+                    <texture colordiffuse="main_fg_30">$INFO[ListItem.Icon]</texture>
+                </control>
+                <control type="group">
+                    <visible>Control.HasFocus(300)</visible>
+                    <control type="group">
+                        <centerleft>50%</centerleft>
+                        <width>view_pad</width>
+                        <control type="image">
+                            <texture colordiffuse="$VAR[ColorHighlight]">common/white.png</texture>
+                            <bottom>0</bottom>
+                            <height>6</height>
+                        </control>
+                        <control type="image">
+                            <texture colordiffuse="$VAR[ColorHighlight2]">common/gradient-diffuse-horizontal.png</texture>
+                            <bottom>0</bottom>
+                            <height>6</height>
+                        </control>
+                        <control type="image">
+                            <texture colordiffuse="Selected">$INFO[ListItem.Icon]</texture>
+                        </control>
                     </control>
                 </control>
-            </control>
-        </focusedlayout>
+            </focusedlayout>
+        </definition>
     </include>
 
 </includes>
