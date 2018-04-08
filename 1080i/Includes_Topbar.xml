@@ -856,7 +856,7 @@
         <animation effect="slide" end="35" condition="Integer.IsLess(Container(300).NumItems,3)">Conditional</animation>
         <animation effect="slide" end="35" condition="Integer.IsLess(Container(300).NumItems,2)">Conditional</animation>
         <animation effect="slide" end="35" condition="Integer.IsLess(Container(300).NumItems,1)">Conditional</animation>
-        <visible allowhiddenfocus="true">Control.HasFocus(300)</visible>
+        <visible allowhiddenfocus="true">Control.HasFocus(300) | $PARAM[visible]</visible>
         <width>770</width>
         <focusposition>5</focusposition>
         <movement>5</movement>
