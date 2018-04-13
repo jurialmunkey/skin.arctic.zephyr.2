@@ -530,6 +530,14 @@
                             <selected>Skin.HasSetting(DisableInfoRatings)</selected>
                         </control>
 
+                        <control type="radiobutton" id="9511" description="Monochrome Flags">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9005)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31394]</label>
+                            <onclick>Skin.ToggleSetting(MonochromeFlags)</onclick>
+                            <selected>Skin.HasSetting(MonochromeFlags)</selected>
+                        </control>
+
                         
 
                         <!-- ============= -->
