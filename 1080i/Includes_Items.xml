@@ -588,9 +588,14 @@
             <item>
                 <icon>special://skin/extras/icons/playlist.png</icon>
                 <label>13350</label>
-                <onclick condition="Integer.IsGreater(Playlist.Length(video),0)">ActivateWindow(VideoPlaylist)</onclick>
-                <onclick condition="Integer.IsGreater(Playlist.Length(music),0)">ActivateWindow(MusicPlaylist)</onclick>
-                <visible>Integer.IsGreater(Playlist.Length(music),0) | Integer.IsGreater(Playlist.Length(video),0)</visible>
+                <onclick condition="!String.IsEqual(Playlist.Length(music),0) + String.IsEqual(Playlist.Length(video),0)">ActivateWindow(musicplaylist)</onclick>
+                <onclick condition="!String.IsEqual(Playlist.Length(video),0) + String.IsEqual(Playlist.Length(music),0)">ActivateWindow(videoplaylist)</onclick>
+                <onclick condition="!String.IsEqual(Playlist.Length(music),0) + !String.IsEqual(Playlist.Length(video),0)">SetProperty(Dialog.1.Label,$LOCALIZE[31395])</onclick>
+                <onclick condition="!String.IsEqual(Playlist.Length(music),0) + !String.IsEqual(Playlist.Length(video),0)">SetProperty(Dialog.1.BuiltIn,ActivateWindow(musicplaylist))</onclick>
+                <onclick condition="!String.IsEqual(Playlist.Length(music),0) + !String.IsEqual(Playlist.Length(video),0)">SetProperty(Dialog.2.Label,$LOCALIZE[31396])</onclick>
+                <onclick condition="!String.IsEqual(Playlist.Length(music),0) + !String.IsEqual(Playlist.Length(video),0)">SetProperty(Dialog.2.BuiltIn,ActivateWindow(videoplaylist))</onclick>
+                <onclick condition="!String.IsEqual(Playlist.Length(music),0) + !String.IsEqual(Playlist.Length(video),0)">RunScript(script.toolbox,info=selectdialog,header=$LOCALIZE[524])</onclick>
+                <visible>!String.IsEqual(Playlist.Length(music),0) | !String.IsEqual(Playlist.Length(video),0)</visible> 
             </item>
             <!-- Fullscreen -->
             <item>
