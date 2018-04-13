@@ -477,9 +477,7 @@
             <font/>
             <texturefocus colordiffuse="$VAR[ColorHighlight]">osd/subs.png</texturefocus>
             <texturenofocus colordiffuse="main_fg_70">osd/subs.png</texturenofocus>
-            <onclick condition="VideoPlayer.HasSubtitles">NextSubtitle</onclick>
-            <onclick condition="!VideoPlayer.HasSubtitles">Close</onclick>
-            <onclick condition="!VideoPlayer.HasSubtitles">ActivateWindow(SubtitleSearch)</onclick>   
+            <onclick>ActivateWindow(osdsubtitlesettings)</onclick>   
             <onfocus condition="!String.IsEmpty(Window(Home).Property(OSDExtendedInfo)) + Player.Paused">Play</onfocus>
             <onfocus condition="!String.IsEmpty(Window(Home).Property(OSDExtendedInfo))">ClearProperty(OSDExtendedInfo,Home)</onfocus>
             <onfocus>ClearProperty(OSD_Menu,Home)</onfocus>
