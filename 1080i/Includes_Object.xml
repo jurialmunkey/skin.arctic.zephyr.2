@@ -44,7 +44,7 @@
                         <texture colordiffuse="main_fg_100">$VAR[Image_HDSD]</texture>
                         <visible>Container.Content(movies) | Container.Content(episodes)</visible>
                         <visible>$PARAM[hdsd_flag]</visible>
-                        <visible>!Skin.HasSetting(DisableInfoRatings)</visible>
+                        <visible>![Skin.HasSetting(DisableInfoRatings) + !Window.IsVisible(DialogVideoInfo.xml)]</visible>
                     </control>
                     <control type="label">
                         <label>  |  </label>
@@ -55,7 +55,7 @@
                         <font>font_small</font>
                         <visible>Container.Content(movies) | Container.Content(episodes)</visible>
                         <visible>$PARAM[hdsd_flag]</visible>
-                        <visible>!Skin.HasSetting(DisableInfoRatings)</visible>
+                        <visible>![Skin.HasSetting(DisableInfoRatings) + !Window.IsVisible(DialogVideoInfo.xml)]</visible>
                     </control>
                     <control type="label">
                         <width>auto</width>
@@ -81,7 +81,7 @@
                     <left>0</left>
                     <right>0</right>
                     <control type="group">
-                        <visible>Skin.HasSetting(DisableInfoRatings) + [Container.Content(movies) | Container.Content(episodes)]</visible>
+                        <visible>[Skin.HasSetting(DisableInfoRatings) + !Window.IsVisible(DialogVideoInfo.xml)] + [Container.Content(movies) | Container.Content(episodes)]</visible>
                         <include content="Object_Flags">
                             <param name="container" value="" />
                             <param name="directory" value="color" />
@@ -90,7 +90,7 @@
                         </include>
                     </control>
                     <control type="group">
-                        <visible>!Skin.HasSetting(DisableInfoRatings) | [!Container.Content(movies) + !Container.Content(episodes)]</visible>
+                        <visible>![Skin.HasSetting(DisableInfoRatings) + !Window.IsVisible(DialogVideoInfo.xml)] | [!Container.Content(movies) + !Container.Content(episodes)]</visible>
                         <control type="group">
                             <top>-17</top>
                             <left>-16</left>

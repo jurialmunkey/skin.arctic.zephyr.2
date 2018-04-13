@@ -522,6 +522,14 @@
                             <onclick>ActivateWindow(1118)</onclick>
                         </control>
 
+                        <control type="radiobutton" id="9510" description="Show media flags instead of ratings in library views">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9005)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31393]</label>
+                            <onclick>Skin.ToggleSetting(DisableInfoRatings)</onclick>
+                            <selected>Skin.HasSetting(DisableInfoRatings)</selected>
+                        </control>
+
                         
 
                         <!-- ============= -->
