@@ -268,6 +268,7 @@
     </variable>
 
     <variable name="Label_MainTitle">
+        <value condition="Window.IsVisible(MyPlaylist.xml) + String.IsEqual(ListItem.DBType,song)">$INFO[ListItem.Album]</value>
         <value condition="Container.Content(artists) + !String.IsEmpty(ListItem.Artist)">$INFO[ListItem.Artist]</value>
         <value condition="Container.Content(albums) + !String.IsEmpty(ListItem.Title)">$INFO[ListItem.Title]</value>
         <value condition="Container.Content(musicvideos) + !String.IsEmpty(ListItem.Title)">$INFO[ListItem.Title]</value>
@@ -283,7 +284,7 @@
     <variable name="Label_SubTitle">
         <value condition="!String.IsEmpty(ListItem.Property(Artist_Genre)) + Container.Content(artists)">$INFO[Window(Home).Property(SkinHelper.ListItem.AlbumCount),[COLOR=main_fg_100], $LOCALIZE[132][/COLOR]  |  ]$INFO[ListItem.Property(Artist_Genre),[COLOR=main_fg_100],[/COLOR]]$INFO[ListItem.Property(Artist_YearsActive),  |  [COLOR=main_fg_100],[/COLOR]]</value>
         
-        <value condition="!String.IsEmpty(ListItem.Artist) + [Container.Content(musicvideos) | Container.Content(albums) | Container.Content(songs)]">$INFO[ListItem.Artist,[COLOR=main_fg_100],[/COLOR]]$INFO[ListItem.Year,  |  [COLOR=main_fg_100],[/COLOR]]$INFO[ListItem.Genre,  |  [COLOR=main_fg_100],[/COLOR]]</value>
+        <value condition="!String.IsEmpty(ListItem.Artist) + [Container.Content(musicvideos) | Container.Content(albums) | Container.Content(songs) | [Window.IsVisible(MyPlaylist.xml) + String.IsEqual(ListItem.DBType,song)]]">$INFO[ListItem.Artist,[COLOR=main_fg_100],[/COLOR]]$INFO[ListItem.Year,  |  [COLOR=main_fg_100],[/COLOR]]$INFO[ListItem.Genre,  |  [COLOR=main_fg_100],[/COLOR]]</value>
 
         <value condition="[Window.IsVisible(DialogAddonInfo.xml) | Container.Content(addons)] + !String.IsEmpty(ListItem.AddonVersion)">$INFO[ListItem.AddonType,[COLOR=main_fg_100],[/COLOR]  |  ]$INFO[ListItem.AddonVersion,[COLOR=main_fg_100],[/COLOR]]$INFO[ListItem.AddonCreator,  |  [COLOR=main_fg_100],[/COLOR]]</value>
 

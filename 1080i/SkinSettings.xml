@@ -435,7 +435,15 @@
                             <onclick condition="System.HasAddon(script.colorbox)">Skin.ToggleSetting(CycleColors)</onclick>
                         </control>
 
-                        <control type="button" id="9407">
+                        <control type="radiobutton" id="9407" description="Monochrome Flags">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9004)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31394]</label>
+                            <onclick>Skin.ToggleSetting(MonochromeFlags)</onclick>
+                            <selected>Skin.HasSetting(MonochromeFlags)</selected>
+                        </control>
+
+                        <control type="button" id="9499">
                             <visible>Integer.IsEqual(Window.Property(CurrentFocus),9004)</visible>
                             <label>$LOCALIZE[31321]</label>
                             <include>Defs_Settings_Button</include>
@@ -447,6 +455,7 @@
                             <onclick>Skin.Reset(MatchOverlayColors)</onclick>
                             <onclick>Skin.Reset(DisableOverlayColor)</onclick>
                             <onclick>Skin.Reset(DisableVignette)</onclick>
+                            <onclick>Skin.Reset(MonochromeFlags)</onclick>
                         </control>
                         
                         <!-- ======= -->
@@ -529,15 +538,6 @@
                             <onclick>Skin.ToggleSetting(DisableInfoRatings)</onclick>
                             <selected>Skin.HasSetting(DisableInfoRatings)</selected>
                         </control>
-
-                        <control type="radiobutton" id="9511" description="Monochrome Flags">
-                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9005)</visible>
-                            <include>Defs_Settings_Button</include>
-                            <label>$LOCALIZE[31394]</label>
-                            <onclick>Skin.ToggleSetting(MonochromeFlags)</onclick>
-                            <selected>Skin.HasSetting(MonochromeFlags)</selected>
-                        </control>
-
                         
 
                         <!-- ============= -->

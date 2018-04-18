@@ -127,7 +127,7 @@
             <left>view_pad</left>
             <right>view_pad</right>
             <top>view_pad</top>
-            <visible>Container.Content(musicvideos) | Container.Content(images) | Container.Content(artists) | Container.Content(albums) | Container.Content(addons) | Container.Content(songs) | [Container.Content(files) + [Window.IsVisible(MyMusicNav.xml) | Window.IsVisible(MyPics.xml)]]</visible>
+            <visible>[[Container.Content(musicvideos) | Container.Content(images) | Container.Content(artists) | Container.Content(albums) | Container.Content(addons) | Container.Content(songs) | [Container.Content(files) + [Window.IsVisible(MyMusicNav.xml) | Window.IsVisible(MyPics.xml)]]] + !Window.IsVisible(MyPlaylist.xml)] | [Window.IsVisible(MyPlaylist.xml) + String.IsEqual(ListItem.DBType,song)]</visible>
             <control type="group">
                 <width>poster_width</width>
                 <height>poster_height</height>
@@ -180,7 +180,7 @@
                                 <align>center</align>
                                 <textcolor>main_fg_70</textcolor>
                                 <font>font_small</font>
-                                <visible>[!Window.IsVisible(MyMusicNav.xml) | Window.IsVisible(DialogAddonInfo.xml)] + !String.IsEmpty(ListItem.AddonSummary)</visible>
+                                <visible>[[!Window.IsVisible(MyMusicNav.xml) + !Window.IsVisible(MyPlaylist.xml)] | Window.IsVisible(DialogAddonInfo.xml)] + !String.IsEmpty(ListItem.AddonSummary)</visible>
                             </control>
                             <control type="group">
                                 <left>-15</left>
@@ -188,11 +188,11 @@
                                 <top>-15</top>
                                 <include content="Object_StarRating_Music">
                                     <param name="align" value="center" />
-                                    <param name="visible" value="[Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(MyMusicNav.xml) | Window.IsVisible(musicplaylist) | Container.Content(musicvideos)] + String.IsEmpty(ListItem.UserRating)" />
+                                    <param name="visible" value="[Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(MyMusicNav.xml) | Window.IsVisible(MyPlaylist.xml) | Container.Content(musicvideos)] + String.IsEmpty(ListItem.UserRating)" />
                                 </include>
                                 <include content="Object_StarRating">
                                     <param name="align" value="center" />
-                                    <param name="visible" value="[Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(MyMusicNav.xml) | Window.IsVisible(musicplaylist) | Container.Content(musicvideos)] + !String.IsEmpty(ListItem.UserRating)" />
+                                    <param name="visible" value="[Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(MyMusicNav.xml) | Window.IsVisible(MyPlaylist.xml) | Container.Content(musicvideos)] + !String.IsEmpty(ListItem.UserRating)" />
                                     <param name="rating_prop" value="ListItem.UserRating" />
                                 </include>
                             </control>
@@ -208,7 +208,7 @@
             <left>view_pad</left>
             <bottom>view_pad</bottom>
             <top>view_pad</top>
-            <visible>![Container.Content(musicvideos) | Container.Content(images) | Container.Content(artists) | Container.Content(albums) | Container.Content(addons) | Container.Content(songs) | [Container.Content(files) + [Window.IsVisible(MyMusicNav.xml) | Window.IsVisible(MyPics.xml)]]]</visible>
+            <visible>![[[Container.Content(musicvideos) | Container.Content(images) | Container.Content(artists) | Container.Content(albums) | Container.Content(addons) | Container.Content(songs) | [Container.Content(files) + [Window.IsVisible(MyMusicNav.xml) | Window.IsVisible(MyPics.xml)]]] + !Window.IsVisible(MyPlaylist.xml)] | [Window.IsVisible(MyPlaylist.xml) + String.IsEqual(ListItem.DBType,song)]]</visible>
             <control type="group">
                 <width>poster_width</width>
                 <height>900</height>
