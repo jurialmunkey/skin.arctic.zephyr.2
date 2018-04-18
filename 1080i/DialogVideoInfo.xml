@@ -2,6 +2,14 @@
 <!-- Foundation -->
 <window id="2003">
     <defaultcontrol always="true">9570</defaultcontrol>
+    <onload condition="Skin.HasSetting(ForceExtendedInfo) + System.HasAddon(script.extendedinfo) + [Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)]">Action(close)</onload>
+    <onload condition="Skin.HasSetting(ForceExtendedInfo) + System.HasAddon(script.extendedinfo) + Container.Content(movies) + Skin.String(ListItem.IMDBNumber)">RunScript(script.extendedinfo,info=extendedinfo,dbid=$INFO[ListItem.DBID],imdb_id=$INFO[ListItem.IMDBNumber],name=$INFO[ListItem.Title])</onload>
+    <onload condition="Skin.HasSetting(ForceExtendedInfo) + System.HasAddon(script.extendedinfo) + Container.Content(movies) + !Skin.String(ListItem.IMDBNumber)">RunScript(script.extendedinfo,info=extendedinfo,dbid=$INFO[ListItem.DBID],name=$INFO[ListItem.Title])</onload>
+    <onload condition="Skin.HasSetting(ForceExtendedInfo) + System.HasAddon(script.extendedinfo) + Container.Content(tvshows) + Skin.String(ListItem.IMDBNumber)">RunScript(script.extendedinfo,info=extendedtvinfo,dbid=$INFO[ListItem.DBID],tvdb_id=$INFO[ListItem.IMDBNumber],name=$INFO[ListItem.TVShowTitle])</onload>
+    <onload condition="Skin.HasSetting(ForceExtendedInfo) + System.HasAddon(script.extendedinfo) + Container.Content(tvshows) + !Skin.String(ListItem.IMDBNumber)">RunScript(script.extendedinfo,info=extendedtvinfo,dbid=$INFO[ListItem.DBID],name=$INFO[ListItem.TVShowTitle])</onload>
+    <onload condition="Skin.HasSetting(ForceExtendedInfo) + System.HasAddon(script.extendedinfo) + Container.Content(seasons)">RunScript(script.extendedinfo,info=seasoninfo,tvshow=$INFO[ListItem.TVShowTitle],dbid=$INFO[ListItem.DBID],season=$INFO[ListItem.Season])</onload>
+    <onload condition="Skin.HasSetting(ForceExtendedInfo) + System.HasAddon(script.extendedinfo) + Container.Content(episodes)">RunScript(script.extendedinfo,info=extendedepisodeinfo,tvshow=$INFO[ListItem.TVShowTitle],dbid=$INFO[ListItem.DBID],episode=$INFO[ListItem.Episode],season=$INFO[ListItem.Season])</onload>
+
     <onload>ClearProperty(TrailerPlaying,Home)</onload>
     <onunload>ClearProperty(TrailerPlaying,Home)</onunload>
     <controls>
@@ -61,7 +69,7 @@
                         <right>view_pad</right>
                         <control type="button" id="9570">
                             <include>Defs_Hidden_Button</include>
-                            <onfocus>SetFocus(300,0)</onfocus>
+                            <onfocus condition="!Skin.HasSetting(ForceExtendedInfo)">SetFocus(300,0)</onfocus>
                             <onup>SetFocus(300,0)</onup>
                             <ondown>SetFocus(300,0)</ondown>
                         </control>

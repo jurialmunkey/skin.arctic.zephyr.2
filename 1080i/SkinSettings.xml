@@ -616,6 +616,14 @@
                             <onclick>Skin.ToggleSetting(DisablePressingUp)</onclick>
                         </control>
 
+                        <control type="radiobutton" id="9616" description="Force extended info">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9006)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31398]</label>
+                            <selected>Skin.HasSetting(ForceExtendedInfo)</selected>
+                            <onclick>Skin.ToggleSetting(ForceExtendedInfo)</onclick>
+                        </control>
+
                         <!-- ================= -->
                         <!-- Video / Music OSD -->
                         <!-- ================= -->
