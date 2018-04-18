@@ -30,7 +30,7 @@
 
     <include name="Widgets">
         <control type="list" id="302">
-            <onup>300</onup>
+            <onup>430</onup>
             <onback>300</onback>
             <ondown>300</ondown>
             <orientation>horizontal</orientation>
@@ -63,7 +63,8 @@
             <height>1</height>
             <left>-2000</left>
             <animation effect="fade" time="300" start="100" end="0">Focus</animation>
-            <onfocus>SetFocus(300)</onfocus>
+            <onfocus condition="!Skin.HasSetting(HideSubmenuWidget) | !Integer.IsGreater(Container(302).NumItems,0)">SetFocus(300)</onfocus>
+            <onfocus condition="Skin.HasSetting(HideSubmenuWidget) + Integer.IsGreater(Container(302).NumItems,0)">SetFocus(302)</onfocus>
             <onclick>noop</onclick>
             <visible allowhiddenfocus="true">Control.HasFocus(430)</visible>
         </control>

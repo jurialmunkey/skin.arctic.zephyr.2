@@ -305,7 +305,7 @@
 
     <include name="Topbar_Home_TextButtons">
         <control type="group">
-            <visible>Control.HasFocus(302)</visible>
+            <visible>Control.HasFocus(302) | [Control.HasFocus(430) + Integer.IsGreater(Container(302).NumItems,0)]</visible>
             <visible>Skin.HasSetting(HideSubmenuWidget)</visible>
             <animation type="Visible">
                 <effect type="fade" start="0" end="100" time="200" tween="sine" easing="in" delay="200" />
@@ -437,7 +437,7 @@
             </control>
         </control>
         <control type="group">
-            <visible>!Control.HasFocus(302) | !Skin.HasSetting(HideSubmenuWidget)</visible>
+            <visible>[!Control.HasFocus(302) + ![Control.HasFocus(430) + Integer.IsGreater(Container(302).NumItems,0)]] | !Skin.HasSetting(HideSubmenuWidget)</visible>
             <animation type="Visible">
                 <effect type="fade" start="0" end="100" time="200" tween="sine" easing="in" delay="200" />
                 <effect type="slide" start="0,-30" end="0,0" time="250" tween="sine" easing="out" delay="200" />
