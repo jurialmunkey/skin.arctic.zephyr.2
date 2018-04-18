@@ -94,6 +94,30 @@
                 </control>
             </control>
         </control>
+        <control type="group">
+            <visible>Control.IsVisible(503)</visible>
+            <control type="group">
+                <include>View_Pad</include>
+                <control type="panel" id="503">
+                    <left>-70</left>
+                    <right>-10</right>
+                    <bottom>-10</bottom>
+                    <top>-10</top>
+                    <pagecontrol>60</pagecontrol>
+                    <visible>[!Container.Content(movies) + !Container.Content(tvshows) + !Container.Content(seasons) + !Container.Content(songs) + !Container.Content(videos) + !Container.Content(episodes) + !Container.Content(sets) + !Container.Content(actors) + !Container.Content(images)] | $EXP[Exp_IsPluginAdvancedLauncher]</visible>
+                    <include>View_NotTheseWindows</include>
+                    <viewtype label="$LOCALIZE[31397]">icon</viewtype>
+                    <include content="View_Forced">
+                        <param name="string" value="$LOCALIZE[31397]" />
+                    </include>
+                    <include content="View_Posters_Layout">
+                        <param name="id" value="503" />
+                        <param name="orientation" value="vertical" />
+                        <param name="square" default="true" />
+                    </include>
+                </control>
+            </control>
+        </control>
     </include>
 
     <include name="View_Posters_BannerWall">
