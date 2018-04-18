@@ -535,6 +535,14 @@
                 </control>
                 <control type="label">
                     <textcolor>main_fg_70</textcolor>
+                    <label>$INFO[Container($PARAM[id]).ListItem.Top250,#,]</label>
+                    <include>Statusbar_Menubar_Items</include>
+                    <visible>Control.HasFocus($PARAM[id])</visible>
+                    <visible>!String.IsEmpty(Container($PARAM[id]).ListItem.Top250)</visible>
+                    <visible>String.Contains($PARAM[content],Top250)</visible>
+                </control>
+                <control type="label">
+                    <textcolor>main_fg_70</textcolor>
                     <label>$INFO[Container($PARAM[id]).ListItem.Artist,-   ,]</label>
                     <include>Statusbar_Menubar_Items</include>
                     <visible>Control.HasFocus($PARAM[id])</visible>
