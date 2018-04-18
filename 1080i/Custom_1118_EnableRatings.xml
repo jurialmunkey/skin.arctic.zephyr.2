@@ -7,7 +7,7 @@
         <control type="group">
             <include content="Dialog_Standard_Group">
                 <param name="width" value="820" />
-                <param name="height" value="647" />
+                <param name="height" value="723" />
             </include>
 
             <control type="label">
@@ -69,6 +69,13 @@
                     <selected>!Skin.HasSetting(Ratings.IMDB)</selected>
                 </control>
                 <control type="radiobutton" id="9007">
+                    <label>$LOCALIZE[205]</label>
+                    <radioposx>730</radioposx>
+                    <include>Dialog_Standard_ListButton</include>
+                    <onclick>Skin.ToggleSetting(Ratings.IMDBVotes)</onclick>
+                    <selected>Skin.HasSetting(Ratings.IMDBVotes)</selected>
+                </control>
+                <control type="radiobutton" id="9099">
                     <label>$LOCALIZE[33067]</label>
                     <radioposx>730</radioposx>
                     <include>Dialog_Standard_ListButton</include>
