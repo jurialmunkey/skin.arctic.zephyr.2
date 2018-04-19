@@ -939,7 +939,7 @@
                     <right>0</right>
                     <bottom>0</bottom>
                     <texture background="true" diffuse="diffuse/widgetsquare.png">$INFO[ListItem.Icon]</texture>
-                    <aspectratio>scale</aspectratio>
+                    <aspectratio scalediffuse="false">scale</aspectratio>
                     <visible>!String.Contains(ListItem.Icon,/extras/icons/) + !String.Contains(ListItem.Icon,Default)</visible>
                     <visible>String.IsEmpty(ListItem.ChannelName) + String.IsEmpty(ListItem.ChannelNumber) + !String.Contains(ListItem.FileNameAndPath,channelid)</visible>
                 </control>
@@ -949,7 +949,7 @@
                     <right>0</right>
                     <bottom>0</bottom>
                     <texture background="true" colordiffuse="$PARAM[color]" diffuse="diffuse/widgetsquare.png">$INFO[ListItem.Icon]</texture>
-                    <aspectratio>scale</aspectratio>
+                    <aspectratio scalediffuse="false">scale</aspectratio>
                     <visible>!String.Contains(ListItem.Icon,/extras/icons/) + String.Contains(ListItem.Icon,Default)</visible>
                     <visible>String.IsEmpty(ListItem.ChannelName) + String.IsEmpty(ListItem.ChannelNumber) + !String.Contains(ListItem.FileNameAndPath,channelid)</visible>
                 </control>
