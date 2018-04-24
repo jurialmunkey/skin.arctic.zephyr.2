@@ -315,23 +315,25 @@
                         <right>-40</right>
                         <height>80</height>
                         <bottom>view_pad</bottom>
+                        <visible>!Skin.HasSetting(DisableInfoRatings) | ![Container.Content(movies) | Container.Content(episodes)]</visible>
                         <include content="Object_Flags">
                             <param name="container" value="" />
                             <param name="directory" value="color" />
                             <param name="align" value="left" />
                         </include>
                     </control>
-                    <!-- <control type="label">
+                    <control type="label">
                         <left>640</left>
                         <height>80</height>
                         <bottom>50</bottom>
                         <align>left</align>
+                        <visible>Skin.HasSetting(DisableInfoRatings) + [Container.Content(movies) | Container.Content(episodes)]</visible>
                         <label fallback="19055">$VAR[Label_Tagline]</label>
                         <height>$PARAM[plot_height]</height>
                         <aligny>top</aligny>
                         <textcolor>main_fg_70</textcolor>
                         <font>font_plotbox</font>
-                    </control> -->
+                    </control>
                 </control>
             </control>
             <include>View_Library_Poster</include>
