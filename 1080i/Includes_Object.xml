@@ -292,7 +292,7 @@
                         <aligny>center</aligny>
                         <width>auto</width>
                         <height>100%</height>
-                        <label>$INFO[Container($PARAM[id]).ListItem.Label]</label>
+                        <label>$INFO[Container($PARAM[id]).ListItem.Label]$PARAM[focuslabel]</label>
                         <visible>Control.HasFocus($PARAM[id])</visible>
                         <visible>$PARAM[showfocuslabel]</visible>
                     </control>
