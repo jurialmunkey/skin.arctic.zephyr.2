@@ -420,6 +420,8 @@
         </control>
     </include>
 
+    <include name="Widget_Busy_Top_Mouse"><top>455</top></include>
+
     <include name="Widget">
         <param name="submenu" default="false" />
         <param name="genres" default="false" />
@@ -438,6 +440,7 @@
                     <param name="widgetContent" value="$PARAM[widgetContent]" />
                 </include>
                 <control type="group">
+                    <include condition="Skin.HasSetting(MouseMode)">Widget_Busy_Top_Mouse</include>
                     <top>655</top>
                     <left>-395</left>
                     <include content="Defs_BusySpinner">
