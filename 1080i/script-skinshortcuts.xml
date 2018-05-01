@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
-    <defaultcontrol always="true">401</defaultcontrol>
+    <defaultcontrol always="true">313</defaultcontrol>
     <onload condition="!Skin.HasSetting(WidgetsInit)">AlarmClock(Clickit,Action(Close),00:01,silent)</onload>
     <onunload condition="!Skin.HasSetting(WidgetsInit)">Skin.ToggleSetting(WidgetsInit)</onunload>
     <controls>
@@ -102,7 +102,8 @@
                         <right>30</right>
                         <height>66</height>
                         <info>ListItem.Label</info>
-                        <animation effect="slide" end="48" condition="!String.IsEqual(Window.Property(groupname),powermenu)">Conditional</animation>
+                        <animation effect="fade" start="100" end="50" condition="String.IsEqual(ListItem.Property(skinshortcuts-disabled),True)">Conditional</animation>
+                        <animation effect="slide" end="48" condition="!String.IsEqual(Window.Property(groupname),powermenu) + !String.IsEqual(Window.Property(groupname),mainmenu)">Conditional</animation>
                     </control>
                     <control type="image">
                         <left>0</left>
@@ -111,7 +112,7 @@
                         <height>66</height>
                         <texture colordiffuse="dialog_fg_30">$INFO[ListItem.Icon]</texture>
                         <visible>String.Contains(ListItem.Icon,special://skin/extras/icons)</visible>
-                        <visible>!String.IsEqual(Window.Property(groupname),powermenu)</visible>
+                        <visible>!String.IsEqual(Window.Property(groupname),powermenu) + !String.IsEqual(Window.Property(groupname),mainmenu)</visible>
                     </control>
                     <control type="image">
                         <left>0</left>
@@ -120,7 +121,7 @@
                         <height>66</height>
                         <texture>$INFO[ListItem.Icon]</texture>
                         <visible>!String.Contains(ListItem.Icon,special://skin/extras/icons)</visible>
-                        <visible>!String.IsEqual(Window.Property(groupname),powermenu)</visible>
+                        <visible>!String.IsEqual(Window.Property(groupname),powermenu) + !String.IsEqual(Window.Property(groupname),mainmenu)</visible>
                     </control>
                 </itemlayout>
                 <focusedlayout width="580" height="69">
@@ -138,7 +139,8 @@
                         <height>66</height>
                         <info>ListItem.Label</info>
                         <textcolor>Selected</textcolor>
-                        <animation effect="slide" end="48" condition="!String.IsEqual(Window.Property(groupname),powermenu)">Conditional</animation>
+                        <animation effect="fade" start="100" end="50" condition="String.IsEqual(ListItem.Property(skinshortcuts-disabled),True)">Conditional</animation>
+                        <animation effect="slide" end="48" condition="!String.IsEqual(Window.Property(groupname),powermenu) + !String.IsEqual(Window.Property(groupname),mainmenu)">Conditional</animation>
                     </control>
                     <control type="image">
                         <left>0</left>
@@ -146,7 +148,7 @@
                         <width>66</width>
                         <height>66</height>
                         <texture colordiffuse="Selected">$INFO[ListItem.Icon]</texture>
-                        <visible>!String.IsEqual(Window.Property(groupname),powermenu)</visible>
+                        <visible>!String.IsEqual(Window.Property(groupname),powermenu) + !String.IsEqual(Window.Property(groupname),mainmenu)</visible>
                     </control>
                 </focusedlayout>
             </control>
@@ -224,12 +226,24 @@
                 <height>621</height>
                 <orientation>vertical</orientation>
                 <itemgap>3</itemgap>
+                <control type="togglebutton" id="313" description="Enable/Disable">
+                    <width>100%</width>
+                    <height>66</height>
+                    <label>Enable</label>
+                    <altlabel>Disable</altlabel>
+                    <usealttexture>String.IsEqual(Container(211).ListItem.Property(skinshortcuts-disabled),False)</usealttexture>
+                    <radioposx>1200</radioposx>
+                    <texturenofocus colordiffuse="dialog_fg_12" border="5">common/box.png</texturenofocus>
+                    <align>left</align>
+                    <include>Dialog_Standard_Right_Buttons</include>
+                </control>
                 
                 <control type="button" id="401" description="Alt chooser">
                     <width>100%</width>
                     <height>66</height>
                     <texturenofocus colordiffuse="dialog_fg_12" border="5">common/box.png</texturenofocus>
                     <align>left</align>
+                    <visible>String.IsEqual(Container(211).ListItem.Property(skinshortcuts-disabled),False)</visible>
                     <include>Dialog_Standard_Right_Buttons</include>
                 </control>
                 <control type="button" id="307" description="Custom">
@@ -239,6 +253,7 @@
                     <label2>$INFO[Container(211).ListItem.Property(Path)]</label2>
                     <texturenofocus colordiffuse="dialog_fg_12" border="5">common/box.png</texturenofocus>
                     <align>left</align>
+                    <visible>String.IsEqual(Container(211).ListItem.Property(skinshortcuts-disabled),False)</visible>
                     <include>Dialog_Standard_Right_Buttons</include>
                 </control>
                 <control type="button" id="305" description="Set Label">
@@ -248,6 +263,7 @@
                     <label2>$INFO[Container(211).ListItem.Label]</label2>
                     <texturenofocus colordiffuse="dialog_fg_12" border="5">common/box.png</texturenofocus>
                     <align>left</align>
+                    <visible>String.IsEqual(Container(211).ListItem.Property(skinshortcuts-disabled),False)</visible>
                     <include>Dialog_Standard_Right_Buttons</include>
                 </control>
 
@@ -257,7 +273,9 @@
                     <label>31181</label>
                     <texturenofocus colordiffuse="dialog_fg_12" border="5">common/box.png</texturenofocus>
                     <align>left</align>
+                    <visible>String.IsEqual(Container(211).ListItem.Property(skinshortcuts-disabled),False)</visible>
                     <include>Dialog_Standard_Right_Buttons</include>
+                    <visible>!String.IsEqual(Window.Property(groupname),powermenu) + !String.IsEqual(Window.Property(groupname),mainmenu)</visible>
                 </control>
                 <control type="button" id="405" description="Set Submenu">
                     <width>100%</width>
@@ -266,6 +284,7 @@
                     <visible>String.IsEqual(Window.Property(groupname),mainmenu)</visible>
                     <texturenofocus colordiffuse="dialog_fg_12" border="5">common/box.png</texturenofocus>
                     <align>left</align>
+                    <visible>String.IsEqual(Container(211).ListItem.Property(skinshortcuts-disabled),False)</visible>
                     <include>Dialog_Standard_Right_Buttons</include>
                 </control>
 
@@ -279,6 +298,7 @@
                     <onclick>SetFocus(9300)</onclick>
                     <onclick>SetFocus(9401)</onclick>
                     <visible>String.IsEqual(Window.Property(groupname),mainmenu)</visible>
+                    <visible>String.IsEqual(Container(211).ListItem.Property(skinshortcuts-disabled),False)</visible>
                     <include>Dialog_Standard_Right_Buttons</include>
                 </control>
 
@@ -290,6 +310,7 @@
                     <visible>String.IsEqual(Window.Property(groupname),mainmenu)</visible>
                     <texturenofocus colordiffuse="dialog_fg_12" border="5">common/box.png</texturenofocus>
                     <align>left</align>
+                    <visible>String.IsEqual(Container(211).ListItem.Property(skinshortcuts-disabled),False)</visible>
                     <include>Dialog_Standard_Right_Buttons</include>
                 </control>
 
@@ -298,6 +319,7 @@
                     <height>66</height>
                     <texturenofocus colordiffuse="dialog_fg_12" border="5">common/box.png</texturenofocus>
                     <align>left</align>
+                    <visible>String.IsEqual(Container(211).ListItem.Property(skinshortcuts-disabled),False)</visible>
                     <include>Dialog_Standard_Right_Buttons</include>
                 </control>
 
@@ -308,6 +330,7 @@
                     <height>66</height>
                     <texturenofocus colordiffuse="dialog_fg_12" border="5">common/box.png</texturenofocus>
                     <align>left</align>
+                    <visible>String.IsEqual(Container(211).ListItem.Property(skinshortcuts-disabled),False)</visible>
                     <include>Dialog_Standard_Right_Buttons</include>
                     <!-- <visible>String.IsEqual(Window.Property(groupname),mainmenu)</visible> -->
                 </control>
