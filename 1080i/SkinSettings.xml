@@ -589,6 +589,14 @@
                             <onclick>Skin.ToggleSetting(BounceAnimations)</onclick>
                         </control>
                         
+                        <control type="radiobutton" id="9612" description="Alphabet Strip">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9006)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31026]</label>
+                            <selected>Skin.HasSetting(AlphabetStrip)</selected>
+                            <onclick>Skin.ToggleSetting(AlphabetStrip)</onclick>
+                        </control>
+                        
                         <control type="button" id="9613" description="Startup Video">
                             <visible>Integer.IsEqual(Window.Property(CurrentFocus),9006)</visible>
                             <include>Defs_Settings_Button</include>
