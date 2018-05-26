@@ -562,8 +562,6 @@
                     <texture>$INFO[$PARAM[artwork]]</texture>
                 </control>
                 <control type="group">
-                    <visible>!String.IsEmpty($PARAM[fallback]) | !String.IsEmpty($PARAM[artwork])</visible>
-                    <include>Animation_FadeIn</include>
                     <height>430</height>
                     <top>view_top</top>
                     <right>view_pad</right>
@@ -574,19 +572,30 @@
                         <top>-10</top>
                         <bottom>-10</bottom>
                         <include>Defs_PosterBack</include>
-                        <control type="image">
-                            <bordersize>10</bordersize>
-                            <fadetime>100</fadetime>
-                            <aspectratio scalediffuse="false">scale</aspectratio>
-                            <texture diffuse="diffuse/mediainfo.png">$INFO[$PARAM[artwork]]</texture>
-                            <visible>!String.IsEmpty($PARAM[artwork]) + !String.StartsWith(Control.GetLabel(9123),Default)</visible>
-                        </control>
+                        <visible>!String.IsEmpty($PARAM[fallback]) + [String.IsEmpty(Control.GetLabel(9123)) | String.StartsWith(Control.GetLabel(9123),Default)]</visible>
                         <control type="image">
                             <bordersize>10</bordersize>
                             <fadetime>100</fadetime>
                             <aspectratio scalediffuse="false">scale</aspectratio>
                             <texture diffuse="diffuse/mediainfo.png">$INFO[$PARAM[fallback]]</texture>
-                            <visible>!String.IsEmpty($PARAM[fallback]) + [String.IsEmpty($PARAM[artwork]) | String.StartsWith(Control.GetLabel(9123),Default)]</visible>
+                        </control>
+                        <control type="image">
+                            <bordersize>10</bordersize>
+                            <texture colordiffuse="PixelLines" border="20">common/outline.png</texture>
+                        </control>
+                    </control>
+                    <control type="group">
+                        <left>-10</left>
+                        <right>-10</right>
+                        <top>-10</top>
+                        <bottom>-10</bottom>
+                        <include>Defs_PosterBack</include>
+                        <visible>!String.IsEmpty(Control.GetLabel(9123)) + !String.StartsWith(Control.GetLabel(9123),Default)</visible>
+                        <control type="image">
+                            <bordersize>10</bordersize>
+                            <fadetime>100</fadetime>
+                            <aspectratio scalediffuse="false">scale</aspectratio>
+                            <texture diffuse="diffuse/mediainfo.png">$INFO[$PARAM[artwork]]</texture>
                         </control>
                         <control type="image">
                             <bordersize>10</bordersize>
@@ -595,7 +604,7 @@
                     </control>
                 </control>
                 <control type="grouplist">
-                    <visible>[!String.IsEmpty($PARAM[artwork]) + !String.StartsWith(Control.GetLabel(9123),Default)] | [!String.IsEmpty($PARAM[fallback]) + [String.IsEmpty($PARAM[artwork]) | String.StartsWith(Control.GetLabel(9123),Default)]]</visible>
+                    <visible>[[!String.IsEmpty($PARAM[fallback]) + [String.IsEmpty(Control.GetLabel(9123)) | String.StartsWith(Control.GetLabel(9123),Default)]] | [!String.IsEmpty(Control.GetLabel(9123)) + !String.StartsWith(Control.GetLabel(9123),Default)]]</visible>
                     <height>430</height>
                     <top>view_top</top>
                     <left>view_pad</left>
@@ -606,7 +615,7 @@
                     <include>Object_PVR_Info_Content</include>
                 </control>
                 <control type="grouplist">
-                    <visible>![[!String.IsEmpty($PARAM[artwork]) + !String.StartsWith(Control.GetLabel(9123),Default)] | [!String.IsEmpty($PARAM[fallback]) + [String.IsEmpty($PARAM[artwork]) | String.StartsWith(Control.GetLabel(9123),Default)]]]</visible>
+                    <visible>![[!String.IsEmpty($PARAM[fallback]) + [String.IsEmpty(Control.GetLabel(9123)) | String.StartsWith(Control.GetLabel(9123),Default)]] | [!String.IsEmpty(Control.GetLabel(9123)) + !String.StartsWith(Control.GetLabel(9123),Default)]]</visible>
                     <height>430</height>
                     <top>view_top</top>
                     <left>view_pad</left>
