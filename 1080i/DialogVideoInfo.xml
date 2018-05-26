@@ -636,32 +636,45 @@
         <control type="button" id="9002">
             <label>20339</label>
             <onclick condition="!String.IsEmpty(Window(Home).Property(TrailerPlaying)) + Player.HasMedia">Stop</onclick>
+            <onclick condition="String.IsEmpty(Window(Home).Property(TrailerPlaying))">SetFocus(300)</onclick>
+            <onclick condition="!String.IsEmpty(Window(Home).Property(TrailerPlaying))">SetFocus($INFO[Window(Home).Property(TrailerPlaying)])</onclick>
+            <onclick>ClearProperty(TrailerPlaying,Home)</onclick>
+
             <onleft condition="!String.IsEmpty(Window(Home).Property(TrailerPlaying)) + Player.HasMedia">Stop</onleft>
+            <onleft condition="String.IsEmpty(Window(Home).Property(TrailerPlaying))">SetFocus(300)</onleft>
+            <onleft condition="!String.IsEmpty(Window(Home).Property(TrailerPlaying))">SetFocus($INFO[Window(Home).Property(TrailerPlaying)])</onleft>
+            <onleft>ClearProperty(TrailerPlaying,Home)</onleft>
+
             <onright condition="!String.IsEmpty(Window(Home).Property(TrailerPlaying)) + Player.HasMedia">Stop</onright>
-            <ondown condition="!String.IsEmpty(Window(Home).Property(TrailerPlaying)) + Player.HasMedia">Stop</ondown>
+            <onright condition="String.IsEmpty(Window(Home).Property(TrailerPlaying))">SetFocus(300)</onright>
+            <onright condition="!String.IsEmpty(Window(Home).Property(TrailerPlaying))">SetFocus($INFO[Window(Home).Property(TrailerPlaying)])</onright>
+            <onright>ClearProperty(TrailerPlaying,Home)</onright>
+
             <onup condition="!String.IsEmpty(Window(Home).Property(TrailerPlaying)) + Player.HasMedia">Stop</onup>
+            <onup condition="String.IsEmpty(Window(Home).Property(TrailerPlaying))">SetFocus(300)</onup>
+            <onup condition="!String.IsEmpty(Window(Home).Property(TrailerPlaying))">SetFocus($INFO[Window(Home).Property(TrailerPlaying)])</onup>
+            <onup>ClearProperty(TrailerPlaying,Home)</onup>
+
+            <ondown condition="!String.IsEmpty(Window(Home).Property(TrailerPlaying)) + Player.HasMedia">Stop</ondown>
+            <ondown condition="String.IsEmpty(Window(Home).Property(TrailerPlaying))">SetFocus(300)</ondown>
+            <ondown condition="!String.IsEmpty(Window(Home).Property(TrailerPlaying))">SetFocus($INFO[Window(Home).Property(TrailerPlaying)])</ondown>
+            <ondown>ClearProperty(TrailerPlaying,Home)</ondown>
+
+            <onback>300</onback>
             <onback condition="!String.IsEmpty(Window(Home).Property(TrailerPlaying)) + Player.HasMedia">Stop</onback>
+            <onback condition="String.IsEmpty(Window(Home).Property(TrailerPlaying))">SetFocus(300)</onback>
+            <onback condition="!String.IsEmpty(Window(Home).Property(TrailerPlaying))">SetFocus($INFO[Window(Home).Property(TrailerPlaying)])</onback>
+            <onback>ClearProperty(TrailerPlaying,Home)</onback>
+
+            <oninfo>300</oninfo>
             <oninfo condition="!String.IsEmpty(Window(Home).Property(TrailerPlaying)) + Player.HasMedia">Stop</oninfo>
-
-            <onclick>SetFocus(9003)</onclick>
-            <onleft>SetFocus(9003)</onleft>
-            <onright>SetFocus(9003)</onright>
-            <onup>SetFocus(9003)</onup>
-            <ondown>SetFocus(9003)</ondown>
-            <onback>SetFocus(9003)</onback>
-            <oninfo>SetFocus(9003)</oninfo>
-            <onback>9003</onback>
-            <oninfo>9003</oninfo>
+            <oninfo condition="String.IsEmpty(Window(Home).Property(TrailerPlaying))">SetFocus(300)</oninfo>
+            <oninfo condition="!String.IsEmpty(Window(Home).Property(TrailerPlaying))">SetFocus($INFO[Window(Home).Property(TrailerPlaying)])</oninfo>
+            <oninfo>ClearProperty(TrailerPlaying,Home)</oninfo>
 
             <include>Defs_Hidden_Button</include>
         </control>
 
-        <control type="button" id="9003">
-            <onclick>SetFocus(300)</onclick>
-            <onfocus>SetFocus($INFO[Window(Home).Property(TrailerPlaying)])</onfocus>
-            <onfocus>ClearProperty(TrailerPlaying,Home)</onfocus>
-            <include>Defs_Hidden_Button</include>
-        </control>
 
         <control type="button" id="9004">
             <label>$LOCALIZE[31221]</label>
