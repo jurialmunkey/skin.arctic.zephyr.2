@@ -681,7 +681,15 @@
                             <onclick>Skin.ToggleSetting(DontPauseOSD)</onclick>
                         </control>
 
-                        <control type="button" id="9707" description="Close OSD Auto">
+                        <control type="radiobutton" id="9707" description="Subs button opens subtitle settings">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9007)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31401]</label>
+                            <selected>Skin.HasSetting(OSDSubtitleSettings)</selected>
+                            <onclick>Skin.ToggleSetting(OSDSubtitleSettings)</onclick>
+                        </control>
+
+                        <control type="button" id="9708" description="Close OSD Auto">
                             <visible>Integer.IsEqual(Window.Property(CurrentFocus),9007)</visible>
                             <include>Defs_Settings_Button</include>
                             <label>$LOCALIZE[31386]</label>
@@ -690,14 +698,14 @@
                             <onclick condition="String.IsEmpty(SkinHelper.AutoCloseVideoOSD)">Skin.SetNumeric(SkinHelper.AutoCloseVideoOSD)</onclick>
                         </control>
 
-                        <control type="label" id="9708" description="LABEL MUSIC OSD">
+                        <control type="label" id="9710" description="LABEL MUSIC OSD">
                             <visible>Integer.IsEqual(Window.Property(CurrentFocus),9007)</visible>
                             <font>font_button</font>
                             <textcolor>main_fg_30</textcolor>
                             <include>Defs_Settings_Button</include>
                             <label>$LOCALIZE[31347]</label>
                         </control>
-                        <control type="radiobutton" id="9709" description="Show Fanart">
+                        <control type="radiobutton" id="9711" description="Show Fanart">
                             <visible>Integer.IsEqual(Window.Property(CurrentFocus),9007)</visible>
                             <include>Defs_Settings_Button</include>
                             <label>31121</label>
@@ -705,14 +713,14 @@
                             <enable>Skin.HasSetting(ArtistSlideShow.Disabled)</enable>
                             <onclick>Skin.ToggleSetting(musicvis.fanartfallback)</onclick>
                         </control>
-                        <control type="radiobutton" id="9710" description="Show slideshow in background">
+                        <control type="radiobutton" id="9712" description="Show slideshow in background">
                             <visible>Integer.IsEqual(Window.Property(CurrentFocus),9007)</visible>
                             <include>Defs_Settings_Button</include>
                             <label>31118</label>
                             <selected>!Skin.HasSetting(ArtistSlideShow.Disabled)</selected>
                             <onclick>Skin.ToggleSetting(ArtistSlideShow.Disabled)</onclick>
                         </control>
-                        <control type="radiobutton" id="9711" description="Show slideshow in background">
+                        <control type="radiobutton" id="9713" description="Show slideshow in background">
                             <visible>Integer.IsEqual(Window.Property(CurrentFocus),9007)</visible>
                             <include>Defs_Settings_Button</include>
                             <label>31119</label>
@@ -720,28 +728,28 @@
                             <onclick>Skin.ToggleSetting(OSDVisualisation.ShowFanart)</onclick>
                             <enable>Skin.HasSetting(musicvis.fanartfallback) | [!Skin.HasSetting(ArtistSlideShow.Disabled) + System.HasAddon(script.artistslideshow)]</enable>
                         </control>
-                        <control type="radiobutton" id="9712" description="Colour overlay">
+                        <control type="radiobutton" id="9714" description="Colour overlay">
                             <visible>Integer.IsEqual(Window.Property(CurrentFocus),9007)</visible>
                             <include>Defs_Settings_Button</include>
                             <label>$LOCALIZE[31087]</label>
                             <selected>!Skin.HasSetting(HideOSDDiffuseColors)</selected>
                             <onclick>Skin.ToggleSetting(HideOSDDiffuseColors)</onclick>
                         </control>
-                        <control type="radiobutton" id="9713" description="Scrolling Text">
+                        <control type="radiobutton" id="9715" description="Scrolling Text">
                             <visible>Integer.IsEqual(Window.Property(CurrentFocus),9007)</visible>
                             <include>Defs_Settings_Button</include>
                             <label>$LOCALIZE[31088]</label>
                             <selected>!Skin.HasSetting(HideOSDScrollingText)</selected>
                             <onclick>Skin.ToggleSetting(HideOSDScrollingText)</onclick>
                         </control>
-                        <control type="radiobutton" id="9714" description="Video Lyrics">
+                        <control type="radiobutton" id="9716" description="Video Lyrics">
                             <visible>Integer.IsEqual(Window.Property(CurrentFocus),9007)</visible>
                             <include>Defs_Settings_Button</include>
                             <label>$LOCALIZE[31377]</label>
                             <selected>!Skin.HasSetting(NormalLyrics)</selected>
                             <onclick>Skin.ToggleSetting(NormalLyrics)</onclick>
                         </control>
-                        <control type="radiobutton" id="9715" description="Animate Artist slideshow">
+                        <control type="radiobutton" id="9717" description="Animate Artist slideshow">
                             <visible>Integer.IsEqual(Window.Property(CurrentFocus),9007)</visible>
                             <include>Defs_Settings_Button</include>
                             <label>31120</label>
@@ -750,7 +758,7 @@
                             <enable>Skin.HasSetting(musicvis.fanartfallback) | !Skin.HasSetting(ArtistSlideShow.Disabled)</enable>
                         </control>
                         
-                        <control type="radiobutton" id="9716" description="Musicvideo auto info">
+                        <control type="radiobutton" id="9718" description="Musicvideo auto info">
                             <visible>Integer.IsEqual(Window.Property(CurrentFocus),9007)</visible>
                             <include>Defs_Settings_Button</include>
                             <label>$LOCALIZE[31314]</label>
@@ -758,14 +766,14 @@
                             <onclick>Skin.ToggleSetting(DisableMusicVideoAutoInfo)</onclick>
                             <visible>!Skin.HasSetting(BigMusicVis)</visible>
                         </control>
-                        <control type="radiobutton" id="9717" description="AutoMusicVis">
+                        <control type="radiobutton" id="9719" description="AutoMusicVis">
                             <visible>Integer.IsEqual(Window.Property(CurrentFocus),9007)</visible>
                             <include>Defs_Settings_Button</include>
                             <label>$LOCALIZE[31158]</label>
                             <selected>Skin.HasSetting(AutoMusicVis)</selected>
                             <onclick>Skin.ToggleSetting(AutoMusicVis)</onclick>
                         </control>
-                        <control type="button" id="9718" description="Close OSD Auto">
+                        <control type="button" id="9720" description="Close OSD Auto">
                             <visible>Integer.IsEqual(Window.Property(CurrentFocus),9007)</visible>
                             <include>Defs_Settings_Button</include>
                             <label>$LOCALIZE[31386]</label>
