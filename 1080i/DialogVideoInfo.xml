@@ -339,7 +339,7 @@
                             <include content="Dialog_VideoInfo_BusyIndicator">
                                 <param name="id" value="50" />
                             </include>
-                            <include content="Object_VideoInfo_CastList" condition="String.IsEmpty(ListItem.DBID) + String.IsEqual(ListItem.DBTYPE,movie)">
+                            <include content="Object_VideoInfo_CastList" condition="String.IsEmpty(ListItem.DBID) + String.IsEqual(ListItem.DBTYPE,movie) + System.HasAddon(script.skin.helper.service)">
                                 <param name="onup" value="9570" />
                                 <param name="id" value="9550" />
                                 <param name="ondown" value="9501" />
@@ -349,7 +349,7 @@
                                 <param name="pad" value="0" />
                                 <param name="top" value="0" />
                             </include>
-                            <include content="Object_VideoInfo_CastList" condition="String.IsEmpty(ListItem.DBID) + String.IsEqual(ListItem.DBTYPE,tvshow)">
+                            <include content="Object_VideoInfo_CastList" condition="String.IsEmpty(ListItem.DBID) + String.IsEqual(ListItem.DBTYPE,tvshow) + System.HasAddon(script.skin.helper.service)">
                                 <param name="onup" value="9570" />
                                 <param name="id" value="9550" />
                                 <param name="ondown" value="9501" />
@@ -359,7 +359,7 @@
                                 <param name="pad" value="0" />
                                 <param name="top" value="0" />
                             </include>
-                            <include content="Object_VideoInfo_CastList" condition="String.IsEmpty(ListItem.DBID) + String.IsEqual(ListItem.DBTYPE,season)">
+                            <include content="Object_VideoInfo_CastList" condition="String.IsEmpty(ListItem.DBID) + String.IsEqual(ListItem.DBTYPE,season) + System.HasAddon(script.skin.helper.service)">
                                 <param name="onup" value="9570" />
                                 <param name="id" value="9550" />
                                 <param name="ondown" value="9501" />
@@ -369,7 +369,7 @@
                                 <param name="pad" value="0" />
                                 <param name="top" value="0" />
                             </include>
-                            <include content="Object_VideoInfo_CastList" condition="String.IsEmpty(ListItem.DBID) + String.IsEqual(ListItem.DBTYPE,episode)">
+                            <include content="Object_VideoInfo_CastList" condition="String.IsEmpty(ListItem.DBID) + String.IsEqual(ListItem.DBTYPE,episode) + System.HasAddon(script.skin.helper.service)">
                                 <param name="onup" value="9570" />
                                 <param name="id" value="9550" />
                                 <param name="ondown" value="9501" />
