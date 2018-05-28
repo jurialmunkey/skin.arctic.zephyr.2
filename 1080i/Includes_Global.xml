@@ -82,7 +82,7 @@
             <!-- Fanart and backgrounds with parallax -->
             <control type="group">
                 <control type="multiimage" description="Fanart">
-                    <visible>!Player.HasMedia | [!Skin.HasSetting(global.showvideo) + Player.HasVideo + String.IsEmpty(Window(Home).Property(TrailerPlaying))] | [!Skin.HasSetting(global.showvisualisation) + Player.HasAudio] | [Player.HasAudio + !String.IsEmpty(Window(10025).Property(PlayingBackgroundMedia))]</visible>
+                    <visible>!Player.HasMedia | [Player.HasVideo + [!Skin.HasSetting(global.showvideo) | !String.IsEmpty(Window(Home).Property(TrailerPlaying))]] | [!Skin.HasSetting(global.showvisualisation) + Player.HasAudio] | [Player.HasAudio + !String.IsEmpty(Window(10025).Property(PlayingBackgroundMedia))]</visible>
                     <include>Dimensions_Fullscreen</include>
                     <timeperimage>7000</timeperimage>
                     <randomize>true</randomize>
