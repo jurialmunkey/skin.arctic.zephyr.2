@@ -25,7 +25,7 @@
         <include>Topbar_Info</include>
 
         <control type="group">
-            <visible allowhiddenfocus="true">![Control.HasFocus(9601) | [System.IdleTime(4) + Skin.HasSetting(AutoPlotOverlay) + [Window.IsVisible(MyVideoNav.xml) | Window.IsVisible(MyMusicNav.xml) | Window.IsVisible(Home)] + ![Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(DialogAddonInfo.xml)]]]</visible>
+            <visible allowhiddenfocus="true">!$EXP[Exp_PlotOverlay_Visible]</visible>
             <include>Animation_FadeInOut</include>
             <include>Object_UpDownInfoArrows</include>
             <control type="group">

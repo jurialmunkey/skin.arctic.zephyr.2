@@ -1843,7 +1843,7 @@
                     <right>view_pad</right>
                     <top>view_top</top>
                     <bottom>view_pad</bottom>
-                    <visible>[Control.HasFocus(9601) | [System.IdleTime(4) + Skin.HasSetting(AutoPlotOverlay) + [Window.IsVisible(MyVideoNav.xml) | Window.IsVisible(MyMusicNav.xml) | Window.IsVisible(Home)] + ![Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(DialogAddonInfo.xml)]]]</visible>
+                    <visible>$EXP[Exp_PlotOverlay_Visible]</visible>
                     <include>Animation_FadeIn</include>
                     <control type="group">
                         <top>12</top>
