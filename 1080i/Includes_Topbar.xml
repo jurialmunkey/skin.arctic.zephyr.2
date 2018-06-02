@@ -107,7 +107,7 @@
                 </animation>
                 <control type="group">
                     <height>view_pad</height>
-                    <visible allowhiddenfocus="true">!$EXP[Exp_PlotOverlay_Visible]</visible>
+                    <visible allowhiddenfocus="true">!$EXP[Exp_HideFurniture]</visible>
                     <include>Animation_FadeInOut</include>
                     <!-- Left Info -->
                     <control type="grouplist">
@@ -295,7 +295,7 @@
                     </control>
                 </control>
                 <control type="group">
-                    <visible allowhiddenfocus="true">!$EXP[Exp_PlotOverlay_Visible]</visible>
+                    <visible allowhiddenfocus="true">!$EXP[Exp_HideFurniture]</visible>
                     <include>Animation_FadeInOut</include>
                     <include condition="Window.IsVisible(Home) + !Window.IsVisible(script-globalsearch.xml)">Topbar_Home_TextButtons</include>
                     <include condition="Window.IsVisible(script-globalsearch.xml)">Topbar_GlobalSearch_TextButtons</include>
@@ -742,7 +742,7 @@
                 <control type="group">
                     <height>view_pad</height>
                     <include>Animation_FadeInOut</include>
-                    <visible allowhiddenfocus="true">!$EXP[Exp_PlotOverlay_Visible]</visible>
+                    <visible allowhiddenfocus="true">!$EXP[Exp_HideFurniture]</visible>
                     <!-- Left Info -->
                     <control type="grouplist">
                         <itemgap>0</itemgap>

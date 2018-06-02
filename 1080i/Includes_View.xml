@@ -19,7 +19,7 @@
 
     <include name="View_Library">
         <control type="group">
-            <visible allowhiddenfocus="true">!$EXP[Exp_PlotOverlay_Visible]</visible>
+            <visible allowhiddenfocus="true">!$EXP[Exp_HideFurniture]</visible>
             <include>Animation_FadeInOut</include>
             <control type="group">
                 <include>View_Group</include>
@@ -352,19 +352,22 @@
     </include>
 
     <include name="View_Selectbox">
-        <control type="group">
-            <left>3</left>
-            <top>3</top>
-            <right>3</right>
-            <bottom>3</bottom>
-            <control type="image">
-                <texture colordiffuse="$VAR[ColorHighlight]" border="20">common/selectbox.png</texture>
+        <param name="overlay" default="true" />
+        <definition>
+            <control type="group">
+                <left>3</left>
+                <top>3</top>
+                <right>3</right>
+                <bottom>3</bottom>
+                <control type="image">
+                    <texture colordiffuse="$VAR[ColorHighlight]" border="20">common/selectbox.png</texture>
+                </control>
+                <control type="image">
+                    <texture colordiffuse="$VAR[ColorHighlight2]" border="20">common/gradient-diffuse-selectbox.png</texture>
+                </control>
             </control>
-            <control type="image">
-                <texture colordiffuse="$VAR[ColorHighlight2]" border="20">common/gradient-diffuse-selectbox.png</texture>
-            </control>
-        </control>
-        <include>View_WatchedOverlay_Focus</include>
+            <include condition="$PARAM[overlay]">View_WatchedOverlay_Focus</include>
+        </definition>
     </include>
 
     <include name="View_Actor_Layout">
