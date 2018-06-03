@@ -249,6 +249,7 @@
         <param name="aspect" default="scale" />
         <param name="fallbackimage" default="DefaultAddonImages.png" />
         <param name="showfocuslabel" default="true" />
+        <param name="visible" default="true" />
         <definition>
             <control type="group">
                 <visible>Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating</visible>
@@ -257,7 +258,7 @@
                 <height>$PARAM[height]</height>
                 <top>$PARAM[top]</top>
                 <visible>!Container.Content(musicvideos)</visible>
-
+                <visible>$PARAM[visible]</visible>
                 <control type="grouplist">
                     <top>20</top>
                     <height>42</height>

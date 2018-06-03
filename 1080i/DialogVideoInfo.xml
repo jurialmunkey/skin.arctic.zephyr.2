@@ -159,6 +159,7 @@
                         <right>view_pad</right>
                         <height>455</height>
                         <top>-15</top>
+                        <visible>!Skin.HasSetting(VideoInfo.CastList)</visible>
                         <visible>!String.IsEqual(ListItem.DBType,musicvideo)</visible>
                         <visible>Integer.IsGreater(Container(50).NumItems,0) | Container(50).IsUpdating</visible>
                         <!-- Info Label -->
@@ -392,6 +393,7 @@
                         <param name="infolabel" value="false" />
                         <param name="include_onclick" value="true" />
                         <param name="onclick" value="RunScript(script.extendedinfo,info=extendedinfo,name=$INFO[ListItem.Label],imdb_id=$INFO[ListItem.IMDBNumber])" />
+                        <param name="visible" value="!Skin.HasSetting(VideoInfo.DirectorMovies)" />
                     </include>
 
                     <!-- Next Up Episodes 9501 -->
@@ -405,6 +407,7 @@
                         <param name="infolabel" value="false" />
                         <param name="include_content" value="false" />
                         <param name="include_content_nextup" value="true" />
+                        <param name="visible" value="!Skin.HasSetting(VideoInfo.NextUp)" />
                     </include>
 
                     <!-- Similar Movies 9502 -->
@@ -417,6 +420,7 @@
                         <param name="infolabel" value="false" />
                         <param name="include_onclick" value="true" />
                         <param name="onclick" value="RunScript(script.extendedinfo,info=extendedinfo,name=$INFO[ListItem.Label],imdb_id=$INFO[ListItem.IMDBNumber])" />
+                        <param name="visible" value="!Skin.HasSetting(VideoInfo.SimilarMovies)" />
                     </include>
 
                     <!-- Similar TvShows 9502 -->
@@ -429,6 +433,7 @@
                         <param name="infolabel" value="false" />
                         <param name="include_onclick" value="true" />
                         <param name="onclick" value="RunScript(script.extendedinfo,info=extendedtvinfo,name=$INFO[ListItem.Label])" />
+                        <param name="visible" value="!Skin.HasSetting(VideoInfo.SimilarTvShows)" />
                     </include>
 
                     <!-- Studio Movies 9503 -->
@@ -441,6 +446,7 @@
                         <param name="infolabel" value="false" />
                         <param name="include_onclick" value="true" />
                         <param name="onclick" value="RunScript(script.extendedinfo,info=extendedinfo,name=$INFO[ListItem.Label],imdb_id=$INFO[ListItem.IMDBNumber])" />
+                        <param name="visible" value="!Skin.HasSetting(VideoInfo.StudioMovies)" />
                     </include>
 
                     <!-- Images -->
@@ -457,6 +463,7 @@
                         <param name="showfocuslabel" value="false" />
                         <param name="include_onclick" value="true" />
                         <param name="onclick" value="SetFocus(9991)" />
+                        <param name="visible" value="!Skin.HasSetting(VideoInfo.ExtraFanart)" />
                     </include>
 
                     <!-- Extras -->
@@ -474,6 +481,7 @@
                         <param name="onclick" value="SetProperty(TrailerPlaying,9505,Home)" />
                         <param name="onclick2" value="PlayMedia($INFO[ListItem.FileNameAndPath],1)" />
                         <param name="onclick3" value="SetFocus(9002)" />
+                        <param name="visible" value="!Skin.HasSetting(VideoInfo.SpecialFeatures)" />
                     </include>
 
                     <control type="group">

@@ -519,7 +519,14 @@
                             <onclick>ActivateWindow(1118)</onclick>
                         </control>
 
-                        <control type="radiobutton" id="9510" description="Show media flags instead of ratings in library views">
+                        <control type="button" id="9510" description="Enable video info lists">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9005)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31407]</label>
+                            <onclick>ActivateWindow(1119)</onclick>
+                        </control>
+
+                        <control type="radiobutton" id="9511" description="Show media flags instead of ratings in library views">
                             <visible>Integer.IsEqual(Window.Property(CurrentFocus),9005)</visible>
                             <include>Defs_Settings_Button</include>
                             <label>$LOCALIZE[31393]</label>
@@ -527,7 +534,7 @@
                             <selected>Skin.HasSetting(DisableInfoRatings)</selected>
                         </control>
 
-                        <control type="radiobutton" id="9511" description="Monochrome Flags">
+                        <control type="radiobutton" id="9512" description="Monochrome Flags">
                             <visible>Integer.IsEqual(Window.Property(CurrentFocus),9005)</visible>
                             <include>Defs_Settings_Button</include>
                             <label>$LOCALIZE[31394]</label>
@@ -682,7 +689,7 @@
                         <control type="radiobutton" id="9707" description="Subs button opens subtitle settings">
                             <visible>Integer.IsEqual(Window.Property(CurrentFocus),9007)</visible>
                             <include>Defs_Settings_Button</include>
-                            <label>$LOCALIZE[31401]</label>
+                            <label>$LOCALIZE[31409]</label>
                             <selected>Skin.HasSetting(OSDSubtitleSettings)</selected>
                             <onclick>Skin.ToggleSetting(OSDSubtitleSettings)</onclick>
                         </control>
