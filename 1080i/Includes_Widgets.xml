@@ -930,12 +930,60 @@
         </definition>
     </include>
 
-    <include name="Widget_Items_Square">
+    <include name="Widget_Items_Default">
         <param name="color" default="PosterFront_70" />
         <definition>
             <control type="group">
                 <height>240</height>
                 <visible>String.IsEmpty(ListItem.Art(poster)) + [String.IsEmpty(ListItem.Art(tvshow.poster)) | String.IsEqual(ListItem.DBType,episode)]</visible>
+                <control type="image">
+                    <top>0</top>
+                    <left>0</left>
+                    <right>0</right>
+                    <bottom>0</bottom>
+                    <texture background="true" diffuse="diffuse/widgetsquare.png">$INFO[ListItem.Icon]</texture>
+                    <aspectratio scalediffuse="false">scale</aspectratio>
+                    <visible>!String.Contains(ListItem.Icon,/extras/icons/) + !String.Contains(ListItem.Icon,Default)</visible>
+                    <visible>String.IsEmpty(ListItem.ChannelName) + String.IsEmpty(ListItem.ChannelNumber) + !String.Contains(ListItem.FileNameAndPath,channelid)</visible>
+                </control>
+                <control type="image">
+                    <top>0</top>
+                    <left>0</left>
+                    <right>0</right>
+                    <bottom>0</bottom>
+                    <texture background="true" colordiffuse="$PARAM[color]" diffuse="diffuse/widgetsquare.png">$INFO[ListItem.Icon]</texture>
+                    <aspectratio scalediffuse="false">scale</aspectratio>
+                    <visible>!String.Contains(ListItem.Icon,/extras/icons/) + String.Contains(ListItem.Icon,Default)</visible>
+                    <visible>String.IsEmpty(ListItem.ChannelName) + String.IsEmpty(ListItem.ChannelNumber) + !String.Contains(ListItem.FileNameAndPath,channelid)</visible>
+                </control>
+                <control type="image">
+                    <top>0</top>
+                    <left>0</left>
+                    <right>0</right>
+                    <bottom>0</bottom>
+                    <texture background="true" diffuse="diffuse/widgetsquare.png">$INFO[ListItem.Icon]</texture>
+                    <aspectratio scalediffuse="false">keep</aspectratio>
+                    <visible>!String.Contains(ListItem.Icon,/extras/icons/)</visible>
+                    <visible>!String.IsEmpty(ListItem.ChannelName) | !String.IsEmpty(ListItem.ChannelNumber) | String.Contains(ListItem.FileNameAndPath,channelid)</visible>
+                </control>
+                <control type="image">
+                    <top>47</top>
+                    <left>47</left>
+                    <right>47</right>
+                    <bottom>47</bottom>
+                    <texture background="true" colordiffuse="$PARAM[color]">$INFO[ListItem.Icon]</texture>
+                    <aspectratio scalediffuse="false">keep</aspectratio>
+                    <visible>String.Contains(ListItem.Icon,/extras/icons/)</visible>
+                </control>
+            </control>
+        </definition>
+    </include>
+
+    <include name="Widget_Items_Square">
+        <param name="color" default="PosterFront_70" />
+        <definition>
+            <control type="group">
+                <height>240</height>
                 <control type="image">
                     <top>0</top>
                     <left>0</left>
@@ -1051,7 +1099,8 @@
                     <include condition="$PARAM[genres]">Widget_Items_Genres</include>
                     <include condition="$PARAM[studios] + !$PARAM[genres]">Widget_Items_Studios</include>
                     <include condition="$PARAM[text] + !$PARAM[genres] + !$PARAM[studios]">Widget_Items_Text</include>
-                    <include condition="[$PARAM[square] + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text]] | [!$PARAM[poster] + !$PARAM[landscape] + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text]]">Widget_Items_Square</include>
+                    <include condition="$PARAM[square] + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text]">Widget_Items_Square</include>
+                    <include condition="!$PARAM[poster] + !$PARAM[landscape] + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text] + !$PARAM[square]">Widget_Items_Default</include>
                     <include condition="[$PARAM[poster] + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text]] | [!$PARAM[landscape] + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text] + !$PARAM[square]]" content="Widget_Items_Poster">
                         <param name="poster" value="$PARAM[poster]" />
                     </include>
@@ -1100,7 +1149,10 @@
                     <include condition="$PARAM[text] + !$PARAM[genres] + !$PARAM[studios]" content="Widget_Items_Text">
                         <param name="color" value="PosterFront" />
                     </include>
-                    <include condition="[$PARAM[square] + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text]] | [!$PARAM[poster] + !$PARAM[landscape] + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text]]" content="Widget_Items_Square">
+                    <include condition="$PARAM[square] + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text]" content="Widget_Items_Square">
+                        <param name="color" value="PosterFront" />
+                    </include>
+                    <include condition="!$PARAM[poster] + !$PARAM[landscape] + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text] + !$PARAM[square]" content="Widget_Items_Default">
                         <param name="color" value="PosterFront" />
                     </include>
                     <include condition="[$PARAM[poster] + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text]] | [!$PARAM[landscape] + !$PARAM[studios] + !$PARAM[genres] + !$PARAM[text] + !$PARAM[square]]" content="Widget_Items_Poster">
