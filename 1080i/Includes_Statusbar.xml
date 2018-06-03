@@ -62,16 +62,28 @@
             <visible>Pvr.IsPlayingTv</visible>
         </control>
 
-        <control type="progress" id="401">
+        <control type="slider" id="401">
             <width>100%</width>
             <height>12</height>
             <bottom>70</bottom>
             <visible>Player.HasMedia</visible>
             <visible>Player.Seeking</visible>
-            <texturebg colordiffuse="00ffffff" border="4">diffuse/progress-bg.png</texturebg>
-            <lefttexture colordiffuse="00ffffff" border="4">diffuse/progress-left.png</lefttexture>
-            <midtexture colordiffuse="00ffffff" border="4" diffuse="progress/diffuse.png">diffuse/progress-end.png</midtexture>
-            <righttexture colordiffuse="panel_fg_100" border="4" diffuse="progress/diffuse-end.png">diffuse/progress-nib.png</righttexture>
+            <texturesliderbar colordiffuse="00ffffff" border="4">diffuse/progress-bg.png</texturesliderbar>
+            <textureslidernib colordiffuse="panel_fg_100" border="4" diffuse="progress/diffuse-end.png">diffuse/progress-nib.png</textureslidernib>
+            <textureslidernibfocus colordiffuse="panel_fg_100" border="4" diffuse="progress/diffuse-end.png">diffuse/progress-nib.png</textureslidernibfocus>
+            <visible>Player.SeekEnabled + !Pvr.IsPlayingTv + !Player.ChannelPreviewActive</visible>
+        </control>
+
+        <control type="slider" id="402">
+            <width>100%</width>
+            <height>12</height>
+            <bottom>70</bottom>
+            <visible>Player.HasMedia</visible>
+            <visible>Player.Seeking</visible>
+            <texturesliderbar colordiffuse="00ffffff" border="4">diffuse/progress-bg.png</texturesliderbar>
+            <textureslidernib colordiffuse="panel_fg_100" border="4" diffuse="progress/diffuse-end.png">diffuse/progress-nib.png</textureslidernib>
+            <textureslidernibfocus colordiffuse="panel_fg_100" border="4" diffuse="progress/diffuse-end.png">diffuse/progress-nib.png</textureslidernibfocus>
+            <visible>Player.SeekEnabled + Pvr.IsPlayingTv + !Player.ChannelPreviewActive</visible>
         </control>
     </include>
 
