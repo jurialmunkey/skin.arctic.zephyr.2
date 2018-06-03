@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
+    <variable name="Label_OSD_Time">
+        <value condition="PVR.IsPlayingTV + !String.IsEmpty(PVR.EpgEventElapsedTime)">$INFO[PVR.EpgEventElapsedTime]</value>
+        <value>$INFO[Player.Time]</value>
+    </variable>
+
+    <variable name="Label_OSD_Duration">
+        <value condition="PVR.IsPlayingTV + !String.IsEmpty(PVR.EpgEventElapsedDuration)">$INFO[PVR.EpgEventElapsedDuration]</value>
+        <value>$INFO[Player.Duration]</value>
+    </variable>
     
     <variable name="Label_OSD_FinishTime">
         <value condition="VideoPlayer.Content(livetv)">$INFO[System.Time,$LOCALIZE[555]  ,]$INFO[VideoPlayer.EndTime,[COLOR=main_fg_70]  •  $LOCALIZE[31106] ,[/COLOR]]</value>

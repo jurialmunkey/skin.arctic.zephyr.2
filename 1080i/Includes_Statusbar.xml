@@ -15,12 +15,13 @@
             <visible>!Player.Seeking</visible>
             <visible>Player.HasMedia</visible>
         </control>
+
         <control type="progress" id="499">
             <width>100%</width>
             <height>12</height>
             <bottom>70</bottom>
             <info>Player.Progress</info>
-            <visible>Player.HasMedia</visible>
+            <visible>Player.HasMedia + !Pvr.IsPlayingTv</visible>
         </control>
         <control type="progress">
             <description>Progressbar</description>
@@ -35,7 +36,32 @@
             <include content="Defs_Progress_Colorfade">
                 <param name="id" value="499" />
             </include>
+            <visible>Player.HasMedia + !Pvr.IsPlayingTv</visible>
         </control>
+
+        <control type="progress" id="498">
+            <width>100%</width>
+            <height>12</height>
+            <bottom>70</bottom>
+            <info>PVR.EpgEventProgress</info>
+            <visible>Pvr.IsPlayingTv</visible>
+        </control>
+        <control type="progress">
+            <description>Progressbar</description>
+            <width>100%</width>
+            <height>12</height>
+            <bottom>70</bottom>
+            <info>PVR.EpgEventProgress</info>
+            <texturebg colordiffuse="00ffffff" border="4">diffuse/progress-bg.png</texturebg>
+            <lefttexture colordiffuse="00ffffff" border="4">diffuse/progress-left.png</lefttexture>
+            <midtexture colordiffuse="$VAR[ColorHighlight2]" border="4" diffuse="progress/diffuse.png">diffuse/progress-end.png</midtexture>
+            <righttexture colordiffuse="$VAR[ColorHighlight2]" border="4" diffuse="progress/diffuse-end.png">diffuse/progress-right.png</righttexture>
+            <include content="Defs_Progress_Colorfade">
+                <param name="id" value="498" />
+            </include>
+            <visible>Pvr.IsPlayingTv</visible>
+        </control>
+
         <control type="progress" id="401">
             <width>100%</width>
             <height>12</height>
@@ -112,7 +138,7 @@
             <control type="label">
                 <textcolor>main_fg_100</textcolor>
                 <include>Statusbar_Menubar_Items</include>
-                <label>$INFO[Player.Time]</label>
+                <label>$VAR[Label_OSD_Time]</label>
             </control>
             <control type="label">
                 <textcolor>main_fg_100</textcolor>
@@ -122,7 +148,7 @@
             <control type="label">
                 <textcolor>main_fg_100</textcolor>
                 <include>Statusbar_Menubar_Items</include>
-                <label>$INFO[Player.Duration]</label>
+                <label>$VAR[Label_OSD_Duration]</label>
             </control>
         </control>
     </include>
