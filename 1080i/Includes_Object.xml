@@ -203,6 +203,7 @@
 
     <include name="Object_VideoInfo_InfoSection">
         <param name="haspath" default="false" />
+        <param name="label3" default="" />
         <definition>
             <control type="group">
                 <height>32</height>
@@ -220,7 +221,7 @@
                     <align>left</align>
                     <font>font_tiny</font>
                     <textcolor>main_fg_70</textcolor>
-                    <label>$INFO[$PARAM[label2]]</label>
+                    <label>$INFO[$PARAM[label2],, ]$PARAM[label3]</label>
                     <haspath>$PARAM[haspath]</haspath>
                     <scroll>true</scroll>
                 </control>
