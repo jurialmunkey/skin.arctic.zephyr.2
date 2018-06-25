@@ -467,7 +467,7 @@
                     </include>
 
                     <!-- Extras -->
-                    <include content="Object_VideoInfo_CastList">
+                    <include content="Object_VideoInfo_CastList" condition="!Skin.HasSetting(DisableTrailerPreview)">
                         <param name="onup" value="9504" />
                         <param name="id" value="9505" />
                         <param name="ondown" value="9506" />
@@ -481,6 +481,20 @@
                         <param name="onclick" value="SetProperty(TrailerPlaying,9505,Home)" />
                         <param name="onclick2" value="PlayMedia($INFO[ListItem.FileNameAndPath],1)" />
                         <param name="onclick3" value="SetFocus(9002)" />
+                        <param name="visible" value="!Skin.HasSetting(VideoInfo.SpecialFeatures)" />
+                    </include>
+                    <include content="Object_VideoInfo_CastList" condition="Skin.HasSetting(DisableTrailerPreview)">
+                        <param name="onup" value="9504" />
+                        <param name="id" value="9505" />
+                        <param name="ondown" value="9506" />
+                        <param name="label" value="$LOCALIZE[31169]" />
+                        <param name="focuslabel" value="$INFO[Container(9505).ListItem.Duration, - , $LOCALIZE[31020]]" />
+                        <param name="content" value="$VAR[Defs_VideoInfo_Extras]" />
+                        <param name="infolabel" value="false" />
+                        <param name="itemwidth" value="606.66" />
+                        <param name="fallbackimage" value="common/playring.png" />
+                        <param name="include_onclick" value="true" />
+                        <param name="onclick" value="PlayMedia($INFO[ListItem.FileNameAndPath])" />
                         <param name="visible" value="!Skin.HasSetting(VideoInfo.SpecialFeatures)" />
                     </include>
 
@@ -625,7 +639,7 @@
 
         <control type="group">
             <visible>Player.HasVideo</visible>
-            <visible>!String.IsEmpty(Window(Home).Property(TrailerPlaying))</visible>
+            <visible>!String.IsEmpty(Window(Home).Property(TrailerPlaying)) + !Skin.HasSetting(DisableTrailerPreview)</visible>
             <include>Animation_FadeIn_Slide</include>
             <include>Animation_FadeOut</include>
             <centerleft>50%</centerleft>

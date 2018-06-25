@@ -214,10 +214,10 @@
             <item>
                 <label>$INFO[Control.GetLabel(11)]</label>
                 <icon>special://skin/extras/icons/video.png</icon>
-                <!-- <onclick>SendClick(11)</onclick> -->
-                <onclick>SetProperty(TrailerPlaying,300,Home)</onclick>
-                <onclick>SetFocus(9002)</onclick>
-                <onclick>PlayMedia($INFO[ListItem.Trailer],false,1)</onclick>
+                <onclick condition="Skin.HasSetting(DisableTrailerPreview)">SendClick(11)</onclick>
+                <onclick condition="!Skin.HasSetting(DisableTrailerPreview)">SetProperty(TrailerPlaying,300,Home)</onclick>
+                <onclick condition="!Skin.HasSetting(DisableTrailerPreview)">SetFocus(9002)</onclick>
+                <onclick condition="!Skin.HasSetting(DisableTrailerPreview)">PlayMedia($INFO[ListItem.Trailer],false,1)</onclick>
                 <visible>Control.IsEnabled(11)</visible>
                 <visible>!String.IsEmpty(ListItem.Trailer)</visible>
             </item>

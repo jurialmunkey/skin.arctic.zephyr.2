@@ -636,6 +636,14 @@
                             <onclick>Skin.ToggleSetting(ForceExtendedInfo)</onclick>
                         </control>
 
+                        <control type="radiobutton" id="9617" description="Fullscreen trailer">
+                            <visible>Integer.IsEqual(Window.Property(CurrentFocus),9006)</visible>
+                            <include>Defs_Settings_Button</include>
+                            <label>$LOCALIZE[31410]</label>
+                            <selected>!Skin.HasSetting(DisableTrailerPreview)</selected>
+                            <onclick>Skin.ToggleSetting(DisableTrailerPreview)</onclick>
+                        </control>
+
                         <!-- ================= -->
                         <!-- Video / Music OSD -->
                         <!-- ================= -->
