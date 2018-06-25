@@ -58,6 +58,24 @@
                 <include content="Object_Scrollbar_Horz">
                     <param name="visible" value="Control.IsVisible(55) | Control.IsVisible(56) | Control.IsVisible(57) | Control.IsVisible(58) | Control.IsVisible(59)" />
                 </include>
+                <control type="scrollbar" id="8060">
+                    <onback>50</onback>
+                    <right>0</right>
+                    <width>8</width>
+                    <top>-60</top>
+                    <bottom>0</bottom>
+                    <visible>Window.IsVisible(MyPVRGuide.xml) + Skin.HasSetting(MouseMode)</visible>
+                    <showonepage>false</showonepage>
+                    <orientation>vertical</orientation>
+                    <onright>50</onright>
+                    <onleft>50</onleft>
+                    <texturesliderbackground colordiffuse="main_fg_12" border="4">common/white.png</texturesliderbackground>
+                    <texturesliderbar colordiffuse="main_fg_30" border="4">scrollbar/scrollv.png</texturesliderbar>
+                    <texturesliderbarfocus colordiffuse="$VAR[ColorHighlight]" border="4">scrollbar/scrollv.png</texturesliderbarfocus>
+                    <animation effect="fade" start="100" end="33" time="400" condition="!Control.HasFocus(8060) + !Container.Scrolling">Conditional</animation>
+                    <include>Animation_FadeIn</include>
+                    <include>Animation_FadeOut</include>
+                </control>
             </control>
 
         </control>
@@ -609,6 +627,7 @@
                     <scrolltime tween="quadratic">300</scrolltime>
                     <timeblocks>24</timeblocks>
                     <rulerunit>6</rulerunit>
+                    <pagecontrol>8060</pagecontrol>
                     <rulerlayout height="74" width="262">
                         <control type="label" id="2">
                             <posx>0</posx>
