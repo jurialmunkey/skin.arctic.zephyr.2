@@ -118,13 +118,14 @@
         <control type="group">
             <height>view_pad</height>
             <bottom>0</bottom>
-            <left>0</left>
-            <right>0</right>
+            <left>250</left>
+            <right>250</right>
             <visible>!Window.IsVisible(videoosd)</visible>
             <animation effect="fade" end="100" start="0" delay="200" time="200" reversible="false">Visible</animation>
             <control type="label">
                 <align>center</align>
                 <width>100%</width>
+                <scroll>true</scroll>
                 <textcolor>main_fg_100</textcolor>
                 <include>Statusbar_Menubar_Items</include>
                 <label>$INFO[VideoPlayer.TvShowTitle,[COLOR=main_fg_70],[/COLOR][COLOR=main_fg_30]  •  [/COLOR]]$INFO[MusicPlayer.Artist,[COLOR=main_fg_70],[/COLOR][COLOR=main_fg_30]  •  [/COLOR]]$INFO[VideoPlayer.Season,,x]$INFO[VideoPlayer.Episode,,. ]$INFO[Player.Title]</label>
