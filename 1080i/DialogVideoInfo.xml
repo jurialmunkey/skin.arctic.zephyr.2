@@ -151,60 +151,9 @@
                                 </include>
                             </control>
                         </control>
-                    </control>
-
-                    <!-- Cast / Directed By -->
-                    <control type="group">
-                        <left>view_pad</left>
-                        <right>view_pad</right>
-                        <height>455</height>
-                        <top>-15</top>
-                        <visible>!Skin.HasSetting(VideoInfo.CastList)</visible>
-                        <visible>!String.IsEqual(ListItem.DBType,musicvideo)</visible>
-                        <visible>Integer.IsGreater(Container(50).NumItems,0) | Container(50).IsUpdating</visible>
-                        <!-- Info Label -->
-                        <control type="grouplist">
-                            <visible>!String.IsEmpty(ListItem.DBID) | Integer.IsEqual(Container(9550).NumItems,0)</visible>
-                            <top>20</top>
-                            <height>42</height>
-                            <left>0</left>
-                            <align>left</align>
-                            <itemgap>12</itemgap>
-                            <usecontrolcoords>true</usecontrolcoords>
-                            <orientation>horizontal</orientation>
-                            <include>Object_DownArrows</include>
-                            <control type="label">
-                                <font>font_small</font>
-                                <textcolor>main_fg_100</textcolor>
-                                <aligny>center</aligny>
-                                <width>auto</width>
-                                <height>100%</height>
-                                <label>$LOCALIZE[206]</label>
-                            </control>
-                            <control type="label">
-                                <font>font_small</font>
-                                <textcolor>$VAR[ColorHighlight]</textcolor>
-                                <aligny>center</aligny>
-                                <width>auto</width>
-                                <height>100%</height>
-                                <label>|</label>
-                                <visible>Control.HasFocus(50)</visible>
-                            </control>
-                            <control type="label">
-                                <font>font_small</font>
-                                <textcolor>main_fg_100</textcolor>
-                                <aligny>center</aligny>
-                                <width>auto</width>
-                                <height>100%</height>
-                                <label>$INFO[Container(50).ListItem.Label]$INFO[Container(50).ListItem.Label2, [COLOR=main_fg_30]$LOCALIZE[20347][/COLOR] ,]</label>
-                                <visible>Control.HasFocus(50)</visible>
-                            </control>
-
-                        </control>
-
                         <!-- Audio Flags -->
                         <control type="grouplist">
-                            <top>24</top>
+                            <bottom>-44</bottom>
                             <usecontrolcoords>true</usecontrolcoords>
                             <itemgap>10</itemgap>
                             <orientation>horizontal</orientation>
@@ -305,6 +254,58 @@
                                 <visible>!String.IsEmpty(ListItem.Property(SubtitleLanguage.5))</visible>
                             </control>
                         </control>
+                    </control>
+
+                    <!-- Cast -->
+                    <control type="group">
+                        <left>view_pad</left>
+                        <right>view_pad</right>
+                        <height>455</height>
+                        <top>-15</top>
+                        <visible>!Skin.HasSetting(VideoInfo.CastList)</visible>
+                        <visible>!String.IsEqual(ListItem.DBType,musicvideo)</visible>
+                        <visible>Integer.IsGreater(Container(50).NumItems,0) | Container(50).IsUpdating</visible>
+                        <!-- Info Label -->
+                        <control type="grouplist">
+                            <visible>!String.IsEmpty(ListItem.DBID) | Integer.IsEqual(Container(9550).NumItems,0)</visible>
+                            <top>20</top>
+                            <height>42</height>
+                            <left>0</left>
+                            <align>left</align>
+                            <itemgap>12</itemgap>
+                            <usecontrolcoords>true</usecontrolcoords>
+                            <orientation>horizontal</orientation>
+                            <include>Object_DownArrows</include>
+                            <control type="label">
+                                <font>font_small</font>
+                                <textcolor>main_fg_100</textcolor>
+                                <aligny>center</aligny>
+                                <width>auto</width>
+                                <height>100%</height>
+                                <label>$LOCALIZE[206]</label>
+                            </control>
+                            <control type="label">
+                                <font>font_small</font>
+                                <textcolor>$VAR[ColorHighlight]</textcolor>
+                                <aligny>center</aligny>
+                                <width>auto</width>
+                                <height>100%</height>
+                                <label>|</label>
+                                <visible>Control.HasFocus(50)</visible>
+                            </control>
+                            <control type="label">
+                                <font>font_small</font>
+                                <textcolor>main_fg_100</textcolor>
+                                <aligny>center</aligny>
+                                <width>auto</width>
+                                <height>100%</height>
+                                <label>$INFO[Container(50).ListItem.Label]$INFO[Container(50).ListItem.Label2, [COLOR=main_fg_30]$LOCALIZE[20347][/COLOR] ,]</label>
+                                <visible>Control.HasFocus(50)</visible>
+                            </control>
+
+                        </control>
+
+                        
 
                         <!-- Cast -->
                         <control type="group" id="9500">
