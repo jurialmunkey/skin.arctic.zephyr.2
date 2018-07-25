@@ -1,5 +1,98 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
+    <variable name="Defs_PictureBack_DBID">
+        <value condition="String.EndsWith(ListItem.DBID,0)">$NUMBER[0]</value>
+        <value condition="String.EndsWith(ListItem.DBID,1)">$NUMBER[1]</value>
+        <value condition="String.EndsWith(ListItem.DBID,2)">$NUMBER[2]</value>
+        <value condition="String.EndsWith(ListItem.DBID,3)">$NUMBER[3]</value>
+        <value condition="String.EndsWith(ListItem.DBID,4)">$NUMBER[4]</value>
+        <value condition="String.EndsWith(ListItem.DBID,5)">$NUMBER[5]</value>
+        <value condition="String.EndsWith(ListItem.DBID,6)">$NUMBER[6]</value>
+        <value condition="String.EndsWith(ListItem.DBID,7)">$NUMBER[7]</value>
+        <value condition="String.EndsWith(ListItem.DBID,8)">$NUMBER[8]</value>
+        <value condition="String.EndsWith(ListItem.DBID,9)">$NUMBER[9]</value>
+
+        <value condition="String.EndsWith(ListItem.Label,a)">$NUMBER[0]</value>
+        <value condition="String.EndsWith(ListItem.Label,b)">$NUMBER[1]</value>
+        <value condition="String.EndsWith(ListItem.Label,c)">$NUMBER[2]</value>
+        <value condition="String.EndsWith(ListItem.Label,d)">$NUMBER[3]</value>
+        <value condition="String.EndsWith(ListItem.Label,e)">$NUMBER[4]</value>
+        <value condition="String.EndsWith(ListItem.Label,f)">$NUMBER[5]</value>
+        <value condition="String.EndsWith(ListItem.Label,g)">$NUMBER[6]</value>
+        <value condition="String.EndsWith(ListItem.Label,h)">$NUMBER[7]</value>
+        <value condition="String.EndsWith(ListItem.Label,i)">$NUMBER[8]</value>
+        <value condition="String.EndsWith(ListItem.Label,j)">$NUMBER[9]</value>
+
+        <value condition="String.EndsWith(ListItem.Label,k)">$NUMBER[0]</value>
+        <value condition="String.EndsWith(ListItem.Label,l)">$NUMBER[1]</value>
+        <value condition="String.EndsWith(ListItem.Label,m)">$NUMBER[2]</value>
+        <value condition="String.EndsWith(ListItem.Label,n)">$NUMBER[3]</value>
+        <value condition="String.EndsWith(ListItem.Label,o)">$NUMBER[4]</value>
+        <value condition="String.EndsWith(ListItem.Label,p)">$NUMBER[5]</value>
+        <value condition="String.EndsWith(ListItem.Label,q)">$NUMBER[6]</value>
+        <value condition="String.EndsWith(ListItem.Label,r)">$NUMBER[7]</value>
+        <value condition="String.EndsWith(ListItem.Label,s)">$NUMBER[8]</value>
+        <value condition="String.EndsWith(ListItem.Label,t)">$NUMBER[9]</value>
+
+        <value condition="String.EndsWith(ListItem.Label,u)">$NUMBER[0]</value>
+        <value condition="String.EndsWith(ListItem.Label,v)">$NUMBER[1]</value>
+        <value condition="String.EndsWith(ListItem.Label,w)">$NUMBER[2]</value>
+        <value condition="String.EndsWith(ListItem.Label,x)">$NUMBER[3]</value>
+        <value condition="String.EndsWith(ListItem.Label,y)">$NUMBER[4]</value>
+        <value condition="String.EndsWith(ListItem.Label,z)">$NUMBER[5]</value>
+        <value condition="String.EndsWith(ListItem.Label,0)">$NUMBER[6]</value>
+        <value condition="String.EndsWith(ListItem.Label,1)">$NUMBER[7]</value>
+        <value condition="String.EndsWith(ListItem.Label,2)">$NUMBER[8]</value>
+        <value condition="String.EndsWith(ListItem.Label,3)">$NUMBER[9]</value>
+
+        <value condition="String.EndsWith(ListItem.Label,4)">$NUMBER[0]</value>
+        <value condition="String.EndsWith(ListItem.Label,5)">$NUMBER[1]</value>
+        <value condition="String.EndsWith(ListItem.Label,6)">$NUMBER[2]</value>
+        <value condition="String.EndsWith(ListItem.Label,7)">$NUMBER[3]</value>
+        <value condition="String.EndsWith(ListItem.Label,8)">$NUMBER[4]</value>
+        <value condition="String.EndsWith(ListItem.Label,9)">$NUMBER[5]</value>
+        <value condition="String.EndsWith(ListItem.Label,!)">$NUMBER[6]</value>
+        <value condition="String.EndsWith(ListItem.Label,?)">$NUMBER[7]</value>
+        <value condition="String.EndsWith(ListItem.Label,.)">$NUMBER[8]</value>
+        <value>$NUMBER[9]</value>
+    </variable>
+    <include name="Defs_PictureBack">
+        <param name="textcolor" default="PosterFront_70" />
+        <param name="diffuse" default="diffuse/widgetposter.png" />
+        <param name="pad" default="0" />
+        <param name="showtext" default="true" />
+        <param name="colordiffuse" default="ff888888" />
+        <param name="visible" default="String.StartsWith(ListItem.Icon,Default)" />
+        <definition>
+            <control type="group">
+                <left>$PARAM[pad]</left>
+                <right>$PARAM[pad]</right>
+                <top>$PARAM[pad]</top>
+                <bottom>$PARAM[pad]</bottom>
+                <visible>$PARAM[visible]</visible>
+                <visible>String.IsEqual(ListItem.DBType,album) | String.IsEqual(ListItem.DBType,artist)</visible>
+                <control type="image">
+                    <bordersize>10</bordersize>
+                    <fadetime>0</fadetime>
+                    <aspectratio aligny="center" scalediffuse="false">scale</aspectratio>
+                    <texture colordiffuse="$PARAM[colordiffuse]" diffuse="$PARAM[diffuse]">$VAR[Defs_PictureBack_DBID,special://skin/extras/albumbacks/,.jpg]</texture>
+                </control>
+                <control type="textbox">
+                    <left>20</left>
+                    <right>20</right>
+                    <top>20</top>
+                    <bottom>20</bottom>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <font>font_small_bold</font>
+                    <textcolor>$PARAM[textcolor]</textcolor>
+                    <label>$INFO[ListItem.Label]</label>
+                    <visible>!ListItem.IsParentFolder</visible>
+                    <visible>$PARAM[showtext]</visible>
+                </control>
+            </control>
+        </definition>
+    </include>
     <include name="Defs_ShadowBack_Fullscreen">
         <right>-250</right>
         <top>-50</top>

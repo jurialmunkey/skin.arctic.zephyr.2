@@ -113,6 +113,11 @@
                             <visible>String.IsEmpty(ListItem.Art(landscape)) + String.IsEmpty(ListItem.Art(tvshow.landscape)) + String.IsEmpty(ListItem.Art(season.landscape))</visible>
                             <visible>Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons)</visible>
                         </control>
+                        <include content="Defs_PictureBack">
+                            <param name="diffuse" value="diffuse/mediainfo.png" />
+                            <param name="showtext" value="false" />
+                            <param name="colordiffuse" value="ffffffff" />
+                        </include>
                     </control>
                     <control type="image">
                         <texture colordiffuse="PixelLines" border="20">common/outline.png</texture>
@@ -161,6 +166,12 @@
                             <param name="width" value="poster_width" />
                             <param name="height" value="poster_width" />
                             <param name="aspect" value="scale" />
+                        </include>
+                        <include content="Defs_PictureBack">
+                            <param name="diffuse" value="diffuse/mediainfo.png" />
+                            <param name="showtext" value="false" />
+                            <param name="colordiffuse" value="ffffffff" />
+                            <param name="pad" value="-10" />
                         </include>
                         <control type="image">
                             <texture colordiffuse="PixelLines" border="20">common/outline.png</texture>

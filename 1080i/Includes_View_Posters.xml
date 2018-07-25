@@ -380,6 +380,13 @@
                             <aspectratio scalediffuse="false">scale</aspectratio>
                             <texture background="true" diffuse="diffuse/lovefilm.png">$INFO[ListItem.Art(fanart)]</texture>
                         </control>
+                        <include content="Defs_PictureBack">
+                            <param name="pad" value="-10" />
+                            <param name="diffuse" value="diffuse/lovefilm.png" />
+                            <param name="showtext" value="false" />
+                            <param name="colordiffuse" value="ffffffff" />
+                            <param name="visible" value="String.IsEmpty(ListItem.Art(fanart))" />
+                        </include>
                     </itemlayout>
                     <focusedlayout width="1800" height="900">
                         <control type="image">
@@ -391,6 +398,13 @@
                             <aspectratio scalediffuse="false">scale</aspectratio>
                             <texture background="true" diffuse="diffuse/lovefilm.png">$INFO[ListItem.Art(fanart)]</texture>
                         </control>
+                        <include content="Defs_PictureBack">
+                            <param name="pad" value="-10" />
+                            <param name="diffuse" value="diffuse/lovefilm.png" />
+                            <param name="showtext" value="false" />
+                            <param name="colordiffuse" value="ffffffff" />
+                            <param name="visible" value="String.IsEmpty(ListItem.Art(fanart))" />
+                        </include>
                     </focusedlayout>
                 </control>
                 <control type="group">
@@ -863,6 +877,7 @@
                             <texture background="true" diffuse="diffuse/banner.png">$VAR[Image_ClearLogo]</texture>
                             <visible>String.IsEmpty(ListItem.Art(tvshow.banner)) + String.IsEmpty(ListItem.Art(banner))</visible>
                         </control>
+                        <include>Defs_PictureBack</include>
                         <include>View_WatchedOverlay</include>
                         <control type="image">
                             <bordersize>10</bordersize>
@@ -914,6 +929,7 @@
                             <texture background="true" diffuse="diffuse/banner.png">$VAR[Image_ClearLogo]</texture>
                             <visible>String.IsEmpty(ListItem.Art(tvshow.banner)) + String.IsEmpty(ListItem.Art(banner))</visible>
                         </control>
+                        <include>Defs_PictureBack</include>
                         <include>View_WatchedOverlay</include>
                         <control type="image">
                             <bordersize>10</bordersize>
@@ -1266,6 +1282,7 @@
             <visible>String.IsEmpty(ListItem.Art(landscape)) + String.IsEmpty(ListItem.Art(tvshow.landscape)) + String.IsEmpty(ListItem.Art(season.landscape))</visible>
             <visible>Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons)</visible>
         </control>
+        <include>Defs_PictureBack</include>
         <include>View_WatchedOverlay</include>
         <control type="image">
             <bordersize>10</bordersize>
@@ -1341,6 +1358,7 @@
                 <visible>!ListItem.IsParentFolder</visible>
                 <visible>Container.Content(years) | Container.Content(directors) | Container.Content(countries) | Container.Content(tags) | Container.Content(playlists)</visible>
             </control>
+            <include>Defs_PictureBack</include>
         </control>
         <control type="image" description="Poster">
             <bordersize>10</bordersize>
@@ -1407,6 +1425,7 @@
                 <visible>!ListItem.IsParentFolder</visible>
                 <visible>Container.Content(years) | Container.Content(directors) | Container.Content(countries) | Container.Content(tags) | Container.Content(playlists)</visible>
             </control>
+            <include>Defs_PictureBack</include>
         </control>
         <control type="image" description="Poster">
             <bordersize>10</bordersize>
