@@ -873,6 +873,13 @@
             <ondown condition="Window.IsVisible(script-NextAired-TVGuide.xml) | Window.IsVisible(script-NextAired-TVGuide2.xml)">9500</ondown>
             <ondown condition="!Window.IsVisible(MyPVRGuide.xml)">50</ondown>
 
+            <onup condition="!Skin.HasSetting(EnablePressingUp) + Window.IsVisible(SettingsCategory.xml)">3</onup>
+            <onup condition="!Skin.HasSetting(EnablePressingUp) + Window.IsVisible(SettingsProfile.xml)">4</onup>
+            <onup condition="!Skin.HasSetting(EnablePressingUp) + Window.IsVisible(SettingsSystemInfo.xml)">95</onup>
+            <onup condition="!Skin.HasSetting(EnablePressingUp) + Window.IsVisible(SkinSettings.xml)">9000</onup>
+            <onup condition="!Skin.HasSetting(EnablePressingUp) + [Window.IsVisible(script-NextAired-TVGuide.xml) | Window.IsVisible(script-NextAired-TVGuide2.xml)]">9500</onup>
+            <onup condition="!Window.IsVisible(MyPVRGuide.xml)">50</onup>
+
             <!-- Special Conditions for Scroll Around from Menu on PVR Guide -->
             <include condition="Window.IsVisible(MyPVRGuide.xml)">View_PVRGuide_Movement</include>
             <height>120</height>
