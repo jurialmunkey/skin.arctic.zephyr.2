@@ -202,7 +202,7 @@
                             <include>Defs_Settings_Button</include>
                             <label>$LOCALIZE[31371]</label>
                             <enable>!Skin.HasSetting(HideSubmenuWidget)</enable>
-                            <selected>Skin.HasSetting(SubmenuLabel)</selected>
+                            <selected>!Skin.HasSetting(DisableCategoriesWidgetLabel)</selected>
                             <onclick>Skin.ToggleSetting(SubmenuLabel)</onclick>
                             <onclick>ReloadSkin()</onclick>
                         </control>

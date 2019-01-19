@@ -28,8 +28,8 @@
 
     <include file="Constants_Main.xml" />
     <include condition="Skin.HasSetting(MouseMode)" file="Constants_Home_Mouse.xml" />
-    <include condition="!Skin.HasSetting(MouseMode) + !Skin.HasSetting(SubmenuLabel)" file="Constants_Home_NoMouse.xml" />
-    <include condition="!Skin.HasSetting(MouseMode) + Skin.HasSetting(SubmenuLabel)" file="Constants_Home_NoMouse_BigSubmenu.xml" />
+    <include condition="!Skin.HasSetting(MouseMode) + Skin.HasSetting(DisableCategoriesWidgetLabel)" file="Constants_Home_NoMouse.xml" />
+    <include condition="!Skin.HasSetting(MouseMode) + !Skin.HasSetting(DisableCategoriesWidgetLabel)" file="Constants_Home_NoMouse_BigSubmenu.xml" />
 
     <variable name="ColorHighlight">
         <value condition="[Skin.HasSetting(CycleColors) | Skin.HasSetting(MatchColors)] + !String.IsEqual(Window(home).Property(SEVEN_daemon_set),None) + !String.IsEmpty(Window(home).Property(ImageColorSEVEN)) + !String.IsEqual(Window(home).Property(ImageColorSEVEN),ffffffff) + !String.IsEqual(Window(home).Property(ImageColorSEVEN),ff000000)">$INFO[Window(home).Property(ImageColorSEVEN)]</value>
