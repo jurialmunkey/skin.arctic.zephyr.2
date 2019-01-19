@@ -175,6 +175,9 @@
         <value condition="[Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(DialogAddonInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml)]">$LOCALIZE[19033]</value>
         <value condition="Window.IsVisible(script-globalsearch-main.xml)">$LOCALIZE[283]...</value>
 
+        <value condition="Window.IsVisible(MyGames.xml) + !String.IsEmpty(Container.FolderName)">$INFO[Container.FolderName,$LOCALIZE[10821] / ,]</value>
+        <value condition="Window.IsVisible(MyGames.xml)">$LOCALIZE[10821]</value>
+
         <value condition="String.Contains(Container.FolderPath,videodb://recentlyaddedmovies/)">$LOCALIZE[20386]</value>
         <value condition="String.Contains(Container.FolderPath,videodb://recentlyaddedepisodes/)">$LOCALIZE[20387]</value>
         <value condition="Container.Content(episodes) + !String.IsEmpty(Container.ShowTitle) + !String.IsEqual(Container.ShowTitle,Container.FolderName)">$LOCALIZE[20343]$INFO[Container.ShowTitle, / ,]$INFO[Container.FolderName, (,)]</value>

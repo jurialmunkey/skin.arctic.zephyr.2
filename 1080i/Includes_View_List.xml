@@ -103,8 +103,8 @@
     <include name="View_List">
         <definition>
             <include>View_List_Default</include>
-            <include condition="!Skin.HasSetting(DisableViewMode.MediaInfo) + [Window.IsVisible(MyVideoNav.xml) | Window.IsVisible(MyMusicNav.xml) | Window.IsVisible(MyPrograms.xml)]">View_List_MediaInfo</include>            
-            <include condition="!Skin.HasSetting(DisableViewMode.InfoList) + [Window.IsVisible(MyVideoNav.xml) | Window.IsVisible(MyPrograms.xml)]">View_List_PosterInfo</include>
+            <include condition="!Skin.HasSetting(DisableViewMode.MediaInfo) + [Window.IsVisible(MyVideoNav.xml) | Window.IsVisible(MyMusicNav.xml) | Window.IsVisible(MyPrograms.xml) | Window.IsVisible(MyGames.xml)]">View_List_MediaInfo</include>            
+            <include condition="!Skin.HasSetting(DisableViewMode.InfoList) + [Window.IsVisible(MyVideoNav.xml) | Window.IsVisible(MyPrograms.xml) | Window.IsVisible(MyGames.xml)]">View_List_PosterInfo</include>
         </definition>
     </include>
 

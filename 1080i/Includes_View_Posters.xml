@@ -2,16 +2,16 @@
 <includes>
     <include name="View_Posters">
         <definition>
-            <include condition="!Skin.HasSetting(DisableViewMode.PosterWall) + [Window.IsVisible(MyPrograms.xml) | Window.IsVisible(MyVideoNav.xml)]">View_Posters_Wall</include>
-            <include condition="!Skin.HasSetting(DisableViewMode.LandscapeWall) + [Window.IsVisible(MyPrograms.xml) | Window.IsVisible(MyVideoNav.xml) | Window.IsVisible(MyMusicNav.xml) | Window.IsVisible(MyPics.xml)]">View_Posters_LandscapeWall</include>
-            <include condition="Window.IsVisible(MyPrograms.xml) | Window.IsVisible(MyVideoNav.xml) | Window.IsVisible(MyMusicNav.xml) | Window.IsVisible(MyPics.xml) | Window.IsVisible(MyPrograms.xml) | Window.IsVisible(AddonBrowser.xml)">View_Posters_SquareWall</include>
-            <include condition="!Skin.HasSetting(DisableViewMode.BannerWall) + [Window.IsVisible(MyPrograms.xml) | Window.IsVisible(MyVideoNav.xml)]">View_Posters_BannerWall</include>
-            <include condition="!Skin.HasSetting(DisableViewMode.PosterShowcase) + [Window.IsVisible(MyPrograms.xml) | Window.IsVisible(MyVideoNav.xml)]">View_Posters_Showcase</include>
-            <include condition="!Skin.HasSetting(DisableViewMode.LandscapeShowcase) + [Window.IsVisible(MyPrograms.xml) | Window.IsVisible(MyVideoNav.xml) | Window.IsVisible(MyMusicNav.xml)]">View_Posters_LandscapeShowcase</include>
-            <include condition="!Skin.HasSetting(DisableViewMode.SquareShowcase) + [Window.IsVisible(MyMusicNav.xml) | Window.IsVisible(MyPrograms.xml)]">View_Posters_SquareShowcase</include>
-            <include condition="!Skin.HasSetting(DisableViewMode.BigPosters) + [Window.IsVisible(MyPrograms.xml) | Window.IsVisible(MyVideoNav.xml)]">View_Posters_BigPosters</include>
-            <include condition="!Skin.HasSetting(DisableViewMode.Lovefilm) + [Window.IsVisible(MyPrograms.xml) | Window.IsVisible(MyVideoNav.xml) | Window.IsVisible(MyMusicNav.xml)]">View_Posters_Lovefilm</include>
-            <include condition="!Skin.HasSetting(DisableViewMode.EpisodeList) + [Window.IsVisible(MyVideoNav.xml) | Window.IsVisible(MyMusicNav.xml)]">View_Posters_EpisodeList</include>
+            <include condition="!Skin.HasSetting(DisableViewMode.PosterWall) + [Window.IsVisible(MyPrograms.xml) | Window.IsVisible(MyVideoNav.xml) | Window.IsVisible(MyGames.xml)]">View_Posters_Wall</include>
+            <include condition="!Skin.HasSetting(DisableViewMode.LandscapeWall) + [Window.IsVisible(MyPrograms.xml) | Window.IsVisible(MyVideoNav.xml) | Window.IsVisible(MyMusicNav.xml) | Window.IsVisible(MyPics.xml) | Window.IsVisible(MyGames.xml)]">View_Posters_LandscapeWall</include>
+            <include condition="Window.IsVisible(MyPrograms.xml) | Window.IsVisible(MyVideoNav.xml) | Window.IsVisible(MyMusicNav.xml) | Window.IsVisible(MyPics.xml) | Window.IsVisible(MyPrograms.xml) | Window.IsVisible(AddonBrowser.xml) | Window.IsVisible(MyGames.xml)">View_Posters_SquareWall</include>
+            <include condition="!Skin.HasSetting(DisableViewMode.BannerWall) + [Window.IsVisible(MyPrograms.xml) | Window.IsVisible(MyVideoNav.xml) | Window.IsVisible(MyGames.xml)]">View_Posters_BannerWall</include>
+            <include condition="!Skin.HasSetting(DisableViewMode.PosterShowcase) + [Window.IsVisible(MyPrograms.xml) | Window.IsVisible(MyVideoNav.xml) | Window.IsVisible(MyGames.xml)]">View_Posters_Showcase</include>
+            <include condition="!Skin.HasSetting(DisableViewMode.LandscapeShowcase) + [Window.IsVisible(MyPrograms.xml) | Window.IsVisible(MyVideoNav.xml) | Window.IsVisible(MyMusicNav.xml) | Window.IsVisible(MyGames.xml)]">View_Posters_LandscapeShowcase</include>
+            <include condition="!Skin.HasSetting(DisableViewMode.SquareShowcase) + [Window.IsVisible(MyMusicNav.xml) | Window.IsVisible(MyPrograms.xml) | Window.IsVisible(MyGames.xml)]">View_Posters_SquareShowcase</include>
+            <include condition="!Skin.HasSetting(DisableViewMode.BigPosters) + [Window.IsVisible(MyPrograms.xml) | Window.IsVisible(MyVideoNav.xml) | Window.IsVisible(MyGames.xml)]">View_Posters_BigPosters</include>
+            <include condition="!Skin.HasSetting(DisableViewMode.Lovefilm) + [Window.IsVisible(MyPrograms.xml) | Window.IsVisible(MyVideoNav.xml) | Window.IsVisible(MyMusicNav.xml) | Window.IsVisible(MyGames.xml)]">View_Posters_Lovefilm</include>
+            <include condition="!Skin.HasSetting(DisableViewMode.EpisodeList) + [Window.IsVisible(MyVideoNav.xml) | Window.IsVisible(MyMusicNav.xml) | Window.IsVisible(MyGames.xml)]">View_Posters_EpisodeList</include>
         </definition>
     </include>
     
