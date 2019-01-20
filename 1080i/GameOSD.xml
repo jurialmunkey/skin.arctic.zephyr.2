@@ -3,11 +3,13 @@
     <defaultcontrol always="true">1103</defaultcontrol>
     <controls>
         <control type="group" id="1">
-            <visible>!Window.IsActive(GameVideoFilter) + !Window.IsActive(GameStretchMode) + !Window.IsActive(GameControllers) + !Window.IsActive(GameVideoRotation)</visible>
-            <include>Global_Overlay</include>
-
+            <control type="group">
+                <visible>!Window.IsActive(GameVideoFilter) + !Window.IsActive(GameStretchMode) + !Window.IsActive(GameControllers) + !Window.IsActive(GameVideoRotation)</visible>
+                <include>Global_Overlay</include>
+            </control>
             <control type="group" id="10">
                 <visible>System.GetBool(gamesgeneral.showosdhelp)</visible>
+                <visible>!Window.IsActive(GameVideoFilter) + !Window.IsActive(GameStretchMode) + !Window.IsActive(GameControllers) + !Window.IsActive(GameVideoRotation)</visible>
                 <include content="Dialog_Standard_Group">
                     <param name="width" value="700" />
                     <param name="height" value="1000" />
@@ -69,6 +71,7 @@
 
             <control type="group" id="20">
                 <visible>!System.GetBool(gamesgeneral.showosdhelp)</visible>
+                <visible>!Window.IsActive(GameVideoFilter) + !Window.IsActive(GameStretchMode) + !Window.IsActive(GameControllers) + !Window.IsActive(GameVideoRotation)</visible>
                 <include>Animation_FadeIn_SlideUp</include>
                 <control type="group">
                     <visible>Integer.IsGreater(Container(1103).NumItems,7)</visible>
