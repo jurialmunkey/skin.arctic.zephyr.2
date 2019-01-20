@@ -426,6 +426,14 @@
                 <visible>Control.IsEnabled(9)</visible>
                 <visible>!Skin.HasSetting(global.kioskmode)</visible>
             </item>
+            <!-- Dependencies -->
+            <item>
+                <label>$INFO[Control.GetLabel(10)]</label>
+                <icon>special://skin/extras/icons/dependencies.png</icon>
+                <onclick>SendClick(10)</onclick>
+                <visible>Control.IsEnabled(10)</visible>
+                <visible>!Skin.HasSetting(global.kioskmode)</visible>
+            </item>
             <!-- Auto Update -->
             <item>
                 <label>$INFO[Control.GetLabel(13)]</label>
