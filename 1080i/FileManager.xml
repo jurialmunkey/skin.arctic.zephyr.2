@@ -93,6 +93,7 @@
                                 <align>left</align>
                                 <textcolor>dialog_fg_70</textcolor>
                                 <info>ListItem.Label</info>
+                                <animation effect="slide" start="0" end="54,0" condition="ListItem.IsSelected">Conditional</animation>
                             </control>
 
                             <control type="label">
@@ -102,6 +103,16 @@
                                 <font>font_tiny</font>
                                 <textcolor>dialog_fg_70</textcolor>
                                 <info>ListItem.Label2</info>
+
+                            </control>
+
+                            <control type="image">
+                                <left>30</left>
+                                <centertop>50%</centertop>
+                                <width>24</width>
+                                <height>24</height>
+                                <texture colordiffuse="$VAR[ColorHighlight]">osd/minicheck.png</texture>
+                                <visible>ListItem.IsSelected</visible>
                             </control>
 
                         </itemlayout>
@@ -124,17 +135,30 @@
                                 <left>30</left>
                                 <width>720</width>
                                 <align>left</align>
+                                <selectedcolor>Selected</selectedcolor>
                                 <textcolor>Selected</textcolor>
                                 <info>ListItem.Label</info>
+                                <animation effect="slide" start="0" end="54,0" condition="ListItem.IsSelected">Conditional</animation>
                             </control>
 
                             <control type="label">
                                 <right>30</right>
                                 <width>720</width>
                                 <align>right</align>
+                                <selectedcolor>Selected</selectedcolor>
                                 <textcolor>Selected</textcolor>
                                 <font>font_tiny</font>
                                 <info>ListItem.Label2</info>
+                                
+                            </control>
+
+                            <control type="image">
+                                <left>30</left>
+                                <centertop>50%</centertop>
+                                <width>24</width>
+                                <height>24</height>
+                                <texture colordiffuse="Selected">osd/minicheck.png</texture>
+                                <visible>ListItem.IsSelected</visible>
                             </control>
 
                         </focusedlayout>
@@ -193,6 +217,7 @@
                                 <align>left</align>
                                 <textcolor>dialog_fg_70</textcolor>
                                 <info>ListItem.Label</info>
+                                <animation effect="slide" start="0" end="54,0" condition="ListItem.IsSelected">Conditional</animation>
                             </control>
                             <control type="label">
                                 <right>30</right>
@@ -201,6 +226,14 @@
                                 <font>font_tiny</font>
                                 <textcolor>dialog_fg_70</textcolor>
                                 <info>ListItem.Label2</info>
+                            </control>
+                            <control type="image">
+                                <left>30</left>
+                                <centertop>50%</centertop>
+                                <width>24</width>
+                                <height>24</height>
+                                <texture colordiffuse="$VAR[ColorHighlight]">osd/minicheck.png</texture>
+                                <visible>ListItem.IsSelected</visible>
                             </control>
                         </itemlayout>
                         <focusedlayout height="75" width="890">
@@ -219,16 +252,27 @@
                                 <left>30</left>
                                 <width>720</width>
                                 <align>left</align>
+                                <selectedcolor>Selected</selectedcolor>
                                 <textcolor>Selected</textcolor>
                                 <info>ListItem.Label</info>
+                                <animation effect="slide" start="0" end="54,0" condition="ListItem.IsSelected">Conditional</animation>
                             </control>
                             <control type="label">
                                 <right>30</right>
                                 <width>720</width>
                                 <align>right</align>
+                                <selectedcolor>Selected</selectedcolor>
                                 <textcolor>Selected</textcolor>
                                 <font>font_tiny</font>
                                 <info>ListItem.Label2</info>
+                            </control>
+                            <control type="image">
+                                <left>30</left>
+                                <centertop>50%</centertop>
+                                <width>24</width>
+                                <height>24</height>
+                                <texture colordiffuse="Selected">osd/minicheck.png</texture>
+                                <visible>ListItem.IsSelected</visible>
                             </control>
                         </focusedlayout>
                     </control>

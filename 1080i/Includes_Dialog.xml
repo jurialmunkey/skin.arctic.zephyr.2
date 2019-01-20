@@ -91,9 +91,9 @@
     </include>
 
     <include name="Dialog_Standard_List_Left_Label2">
-        <left>170</left>
         <centerbottom>35%</centerbottom>
-        <width>496</width>
+        <left>170</left>
+        <right>30</right>
         <height>30</height>
         <font>font_tiny</font>
         <textcolor>dialog_fg_70</textcolor>
@@ -327,6 +327,7 @@
                         <height>66</height>
                         <aligny>center</aligny>
                         <info>ListItem.Label</info>
+                        <animation effect="slide" start="0" end="54,0" condition="ListItem.IsSelected">Conditional</animation>
                     </control>
                     <control type="label">
                         <left>30</left>
@@ -336,6 +337,14 @@
                         <height>66</height>
                         <aligny>center</aligny>
                         <info>ListItem.Label2</info>
+                    </control>
+                    <control type="image">
+                        <left>30</left>
+                        <centertop>50%</centertop>
+                        <width>24</width>
+                        <height>24</height>
+                        <texture colordiffuse="$VAR[ColorHighlight]">osd/minicheck.png</texture>
+                        <visible>ListItem.IsSelected</visible>
                     </control>
                 </itemlayout>
                 <focusedlayout height="69" width="1080">
@@ -355,8 +364,10 @@
                         <height>66</height>
                         <font>font_small_bold</font>
                         <aligny>center</aligny>
+                        <selectedcolor>Selected</selectedcolor>
                         <textcolor>Selected</textcolor>
                         <info>ListItem.Label</info>
+                        <animation effect="slide" start="0" end="54,0" condition="ListItem.IsSelected">Conditional</animation>
                     </control>
                     <control type="label">
                         <left>30</left>
@@ -364,8 +375,17 @@
                         <align>right</align>
                         <height>66</height>
                         <aligny>center</aligny>
+                        <selectedcolor>Selected</selectedcolor>
                         <textcolor>Selected</textcolor>
                         <info>ListItem.Label2</info>
+                    </control>
+                    <control type="image">
+                        <left>30</left>
+                        <centertop>50%</centertop>
+                        <width>24</width>
+                        <height>24</height>
+                        <texture colordiffuse="Selected">osd/minicheck.png</texture>
+                        <visible>ListItem.IsSelected</visible>
                     </control>
                 </focusedlayout>
             </control>
@@ -388,12 +408,34 @@
                         <include>Dialog_Standard_List_Left_Icon</include>
                         <visible>String.Contains(ListItem.Icon,special://skin/) | String.Contains(ListItem.Icon,Default)</visible>
                     </control>
-                    <control type="label">
-                        <animation effect="slide" end="0,18" condition="String.IsEmpty(ListItem.Label2)">Conditional</animation>
-                        <include>Dialog_Standard_List_Left_Label</include>
+                    <control type="group">
+                        <visible>ListItem.IsSelected</visible>
+                        <control type="label">
+                            <animation effect="slide" end="0,18" condition="String.IsEmpty(ListItem.Label2)">Conditional</animation>
+                            <right>84</right>
+                            <include>Dialog_Standard_List_Left_Label</include>
+                        </control>
+                        <control type="label">
+                            <right>84</right>
+                            <include>Dialog_Standard_List_Left_Label2</include>
+                        </control>
+                        <control type="image">
+                            <right>30</right>
+                            <centertop>50%</centertop>
+                            <width>24</width>
+                            <height>24</height>
+                            <texture colordiffuse="$VAR[ColorHighlight]">osd/minicheck.png</texture>
+                        </control>
                     </control>
-                    <control type="label">
-                        <include>Dialog_Standard_List_Left_Label2</include>
+                    <control type="group">
+                        <visible>!ListItem.IsSelected</visible>
+                        <control type="label">
+                            <animation effect="slide" end="0,18" condition="String.IsEmpty(ListItem.Label2)">Conditional</animation>
+                            <include>Dialog_Standard_List_Left_Label</include>
+                        </control>
+                        <control type="label">
+                            <include>Dialog_Standard_List_Left_Label2</include>
+                        </control>
                     </control>
                 </itemlayout>
                 <focusedlayout height="138" width="700">
@@ -410,14 +452,42 @@
                     <control type="image">
                         <include>Dialog_Standard_List_Left_Icon</include>
                     </control>
-                    <control type="label">
-                        <textcolor>Selected</textcolor>
-                        <animation effect="slide" end="0,18" condition="String.IsEmpty(ListItem.Label2)">Conditional</animation>
-                        <include>Dialog_Standard_List_Left_Label</include>
+                    <control type="group">
+                        <visible>ListItem.IsSelected</visible>
+                        <control type="label">
+                            <right>84</right>
+                            <selectedcolor>Selected</selectedcolor>
+                            <textcolor>Selected</textcolor>
+                            <animation effect="slide" end="0,18" condition="String.IsEmpty(ListItem.Label2)">Conditional</animation>
+                            <include>Dialog_Standard_List_Left_Label</include>
+                        </control>
+                        <control type="label">
+                            <right>84</right>
+                            <selectedcolor>Selected</selectedcolor>
+                            <textcolor>Selected</textcolor>
+                            <include>Dialog_Standard_List_Left_Label2</include>
+                        </control>
+                        <control type="image">
+                            <right>30</right>
+                            <centertop>50%</centertop>
+                            <width>24</width>
+                            <height>24</height>
+                            <texture colordiffuse="Selected">osd/minicheck.png</texture>
+                        </control>
                     </control>
-                    <control type="label">
-                        <textcolor>Selected</textcolor>
-                        <include>Dialog_Standard_List_Left_Label2</include>
+                    <control type="group">
+                        <visible>!ListItem.IsSelected</visible>
+                        <control type="label">
+                            <selectedcolor>Selected</selectedcolor>
+                            <textcolor>Selected</textcolor>
+                            <animation effect="slide" end="0,18" condition="String.IsEmpty(ListItem.Label2)">Conditional</animation>
+                            <include>Dialog_Standard_List_Left_Label</include>
+                        </control>
+                        <control type="label">
+                            <selectedcolor>Selected</selectedcolor>
+                            <textcolor>Selected</textcolor>
+                            <include>Dialog_Standard_List_Left_Label2</include>
+                        </control>
                     </control>
                 </focusedlayout>
             </control>
