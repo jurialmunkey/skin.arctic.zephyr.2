@@ -7,9 +7,89 @@
     <onload condition="System.HasAddon(script.tv.show.next.aired)">RunScript(script.tv.show.next.aired,backend=True)</onload>
     <controls>
 
-        <!-- Standard Furniture -->
-        <include>Global_Background</include>
-        <include>View_Library</include>
+        <control type="image">
+            <texture colordiffuse="main_bg_100">common/white.png</texture>
+        </control>
+
+        <control type="group">
+            <left>view_pad</left>
+            <right>view_pad</right>
+            <top>view_top</top>
+            <height>560</height>
+            <control type="fixedlist" id="50">
+                <animation effect="zoom" start="110" end="130" center="auto" time="10000" tween="sine" easing="inout" pulse="true" condition="true">Conditional</animation>
+                <animation effect="slide" start="-30,-30" end="30,30" time="6000" tween="sine" easing="inout" pulse="true" condition="true">Conditional</animation>
+                <left>-view_pad</left>
+                <right>-view_pad</right>
+                <top>-view_top</top>
+                <height>1080</height>
+                <width>1920</width>
+                <orientation>horizontal</orientation>
+                <itemlayout width="1920" height="1080">
+                    <control type="image">
+                        <aspectratio>scale</aspectratio>
+                        <texture background="true">$INFO[ListItem.Art(fanart)]</texture>
+                    </control>
+                </itemlayout>
+                <focusedlayout width="1920" height="1080">
+                    <control type="image">
+                        <aspectratio>scale</aspectratio>
+                        <texture background="true">$INFO[ListItem.Art(fanart)]</texture>
+                    </control>
+                </focusedlayout>
+            </control>
+            <control type="image">
+                <top>-view_top</top>
+                <left>-view_pad</left>
+                <right>-view_pad</right>
+                <height>view_top</height>
+                <texture colordiffuse="main_bg_100">common/white.png</texture>
+            </control>
+            <control type="image">
+                <bottom>-600</bottom>
+                <left>-view_pad</left>
+                <right>-view_pad</right>
+                <height>600</height>
+                <texture colordiffuse="main_bg_100">common/white.png</texture>
+            </control>
+            <control type="image">
+                <left>-view_pad</left>
+                <width>view_pad</width>
+                <texture colordiffuse="main_bg_100">common/white.png</texture>
+            </control>
+            <control type="image">
+                <right>-view_pad</right>
+                <width>view_pad</width>
+                <texture colordiffuse="main_bg_100">common/white.png</texture>
+            </control>
+        </control>
+
+        <!-- <control type="image">
+            <width>view_pad</width>
+            <height>100%</height>
+            <texture colordiffuse="main_bg_100">common/white.png</texture>
+        </control>
+        <control type="image">
+            <right>0</right>
+            <width>view_pad</width>
+            <height>100%</height>
+            <texture colordiffuse="main_bg_100">common/white.png</texture>
+        </control>
+        <control type="image">
+            <height>view_top</height>
+            <width>100%</width>
+            <texture colordiffuse="main_bg_100">common/white.png</texture>
+        </control>
+        <control type="group">
+            <top>view_top</top>
+            <control type="image">
+                <top>480</top>
+                <width>100%</width>
+                <bottom>0</bottom>
+                <texture colordiffuse="main_bg_100">common/white.png</texture>
+            </control>
+        </control>
+ -->
         <include>Topbar</include>
         <include>Object_PlotOverlay</include>
        
