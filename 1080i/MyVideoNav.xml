@@ -28,32 +28,143 @@
             <control type="group" id="5601">
                 <width>100%</width>
                 <height>720</height>
-                <control type="fixedlist" id="5600">
+                <control type="group">
                     <height>560</height>
                     <width>1680</width>
-                    <ondown>50</ondown>
-                    <orientation>horizontal</orientation>
-                    <itemlayout width="1680" height="560">
-                        <control type="image">
-                            <centerleft>50%</centerleft>
-                            <top>-view_top</top>
-                            <width>1920</width>
-                            <height>1080</height>
-                            <aspectratio>scale</aspectratio>
-                            <texture background="true">$INFO[ListItem.Art(fanart)]</texture>
+                    <control type="fixedlist" id="5600">
+                        <height>560</height>
+                        <width>1680</width>
+                        <ondown>50</ondown>
+                        <autoscroll time="7000">System.IdleTime(1)</autoscroll>
+                        <orientation>horizontal</orientation>
+                        <itemlayout width="1680" height="560">
+                            <control type="image">
+                                <centerleft>50%</centerleft>
+                                <top>-view_top</top>
+                                <width>1920</width>
+                                <height>1080</height>
+                                <aspectratio>scale</aspectratio>
+                                <texture background="true">$INFO[ListItem.Art(fanart)]</texture>
+                            </control>
+                        </itemlayout>
+                        <focusedlayout width="1680" height="560">
+                            <control type="image">
+                                <centerleft>50%</centerleft>
+                                <top>-view_top</top>
+                                <width>1920</width>
+                                <height>1080</height>
+                                <aspectratio>scale</aspectratio>
+                                <texture background="true">$INFO[ListItem.Art(fanart)]</texture>
+                            </control>
+                        </focusedlayout>
+                        <content limit="10" sortby="random">$INFO[Container.FolderPath]</content>
+                    </control>
+                    <control type="group">
+                        <left>-3</left>
+                        <top>-3</top>
+                        <right>-3</right>
+                        <bottom>-3</bottom>
+                        <include>View_Selectbox</include>
+                    </control>
+                    <!-- <control type="image">
+                        <bordersize>2</bordersize>
+                        <texture border="10" colordiffuse="main_bg_100">common/selectbox.png</texture>
+                    </control>
+                    <control type="image">
+                        <texture border="10" colordiffuse="main_fg_100">common/selectbox.png</texture>
+                    </control> -->
+                </control>
+
+
+                <control type="group">
+                    <top>600</top>
+                    <bottom>0</bottom>
+                    
+                    <!-- Information About Movie -->
+                    <control type="label">
+                        <font>font_small_bold</font>
+                        <textcolor>main_fg_100</textcolor>
+                        <aligny>top</aligny>
+                        <align>right</align>
+                        <label>$INFO[Container(5600).ListItem.Label]$INFO[Container(5600).ListItem.Year,  |  ,]</label>
+                    </control>
+
+
+                    <!-- Dotted Item Position -->
+                    <control type="group">
+                        <top>56</top>
+                        <control type="grouplist">
+                            <orientation>horizontal</orientation>
+                            <align>right</align>
+                            <height>16</height>
+                            <itemgap>16</itemgap>
+                            <control type="image">
+                                <width>16</width>
+                                <height>16</height>
+                                <texture colordiffuse="main_fg_30">common/circle.png</texture>
+                            </control>
+                            <control type="image">
+                                <width>16</width>
+                                <height>16</height>
+                                <texture colordiffuse="main_fg_30">common/circle.png</texture>
+                            </control>
+                            <control type="image">
+                                <width>16</width>
+                                <height>16</height>
+                                <texture colordiffuse="main_fg_30">common/circle.png</texture>
+                            </control>
+                            <control type="image">
+                                <width>16</width>
+                                <height>16</height>
+                                <texture colordiffuse="main_fg_30">common/circle.png</texture>
+                            </control>
+                            <control type="image">
+                                <width>16</width>
+                                <height>16</height>
+                                <texture colordiffuse="main_fg_30">common/circle.png</texture>
+                            </control>
+                            <control type="image">
+                                <width>16</width>
+                                <height>16</height>
+                                <texture colordiffuse="main_fg_30">common/circle.png</texture>
+                            </control>
+                            <control type="image">
+                                <width>16</width>
+                                <height>16</height>
+                                <texture colordiffuse="main_fg_30">common/circle.png</texture>
+                            </control>
+                            <control type="image">
+                                <width>16</width>
+                                <height>16</height>
+                                <texture colordiffuse="main_fg_30">common/circle.png</texture>
+                            </control>
+                            <control type="image">
+                                <width>16</width>
+                                <height>16</height>
+                                <texture colordiffuse="main_fg_30">common/circle.png</texture>
+                            </control>
+                            <control type="image">
+                                <width>16</width>
+                                <height>16</height>
+                                <texture colordiffuse="main_fg_30">common/circle.png</texture>
+                            </control>
                         </control>
-                    </itemlayout>
-                    <focusedlayout width="1680" height="560">
                         <control type="image">
-                            <centerleft>50%</centerleft>
-                            <top>-view_top</top>
-                            <width>1920</width>
-                            <height>1080</height>
-                            <aspectratio>scale</aspectratio>
-                            <texture background="true">$INFO[ListItem.Art(fanart)]</texture>
+                            <animation effect="slide" end="32" condition="Integer.IsGreater(Container(5600).CurrentItem,1)">Conditional</animation>
+                            <animation effect="slide" end="32" condition="Integer.IsGreater(Container(5600).CurrentItem,2)">Conditional</animation>
+                            <animation effect="slide" end="32" condition="Integer.IsGreater(Container(5600).CurrentItem,3)">Conditional</animation>
+                            <animation effect="slide" end="32" condition="Integer.IsGreater(Container(5600).CurrentItem,4)">Conditional</animation>
+                            <animation effect="slide" end="32" condition="Integer.IsGreater(Container(5600).CurrentItem,5)">Conditional</animation>
+                            <animation effect="slide" end="32" condition="Integer.IsGreater(Container(5600).CurrentItem,6)">Conditional</animation>
+                            <animation effect="slide" end="32" condition="Integer.IsGreater(Container(5600).CurrentItem,7)">Conditional</animation>
+                            <animation effect="slide" end="32" condition="Integer.IsGreater(Container(5600).CurrentItem,8)">Conditional</animation>
+                            <animation effect="slide" end="32" condition="Integer.IsGreater(Container(5600).CurrentItem,9)">Conditional</animation>
+                            <right>320</right>
+                            <width>16</width>
+                            <height>16</height>
+                            <texture colordiffuse="main_fg_70">common/circle.png</texture>
                         </control>
-                    </focusedlayout>
-                    <content limit="10" sortby="random">$INFO[Container.FolderPath]</content>
+                    </control>
                 </control>
             </control>
             <control type="panel" id="50">
@@ -67,13 +178,26 @@
                 <orientation>vertical</orientation>
                 <itemlayout width="570" height="412.5">
                     <control type="image">
+                        <height>333.75</height>
                         <bordersize>15</bordersize>
                         <aspectratio>scale</aspectratio>
                         <texture background="true">$INFO[ListItem.Art(fanart)]</texture>
                     </control>
+                    <control type="label">
+                        <left>15</left>
+                        <right>15</right>
+                        <font>font_small_bold</font>
+                        <textcolor>main_fg_100</textcolor>
+                        <top>333.75</top>
+                        <bottom>30</bottom>
+                        <aligny>center</aligny>
+                        <align>center</align>
+                        <label>$INFO[ListItem.Label]</label>
+                    </control>
                 </itemlayout>
                 <focusedlayout width="570" height="412.5">
                     <control type="image">
+                        <height>333.75</height>
                         <bordersize>15</bordersize>
                         <aspectratio>scale</aspectratio>
                         <texture background="true">$INFO[ListItem.Art(fanart)]</texture>
