@@ -143,6 +143,7 @@
                         <height>32</height>
                         <texture colordiffuse="main_fg_70">$VAR[Image_Overlay_List]</texture>
                         <visible>!String.IsEmpty(ListItem.Overlay)</visible>
+                        <visible>!ListItem.IsPlaying + !ListItem.IsSelected</visible>
                     </control>
                     <!-- Fallback Icon -->
                     <control type="image">
@@ -152,6 +153,16 @@
                         <height>64</height>
                         <texture colordiffuse="main_fg_70" fallback="DefaultFolder.png">$VAR[Image_FallbackIcon]</texture>
                         <visible>String.IsEmpty(ListItem.Overlay)</visible>
+                        <visible>!ListItem.IsPlaying + !ListItem.IsSelected</visible>
+                    </control>
+                    <!-- Playling -->
+                    <control type="image">
+                        <centertop>50%</centertop>
+                        <left>30</left>
+                        <width>40</width>
+                        <height>40</height>
+                        <texture colordiffuse="$VAR[ColorHighlight]" fallback="DefaultFolder.png">indicator/playwhite.png</texture>
+                        <visible>ListItem.IsPlaying | ListItem.IsSelected</visible>
                     </control>
                     <!-- HDSD Flag -->
                     <control type="image">
@@ -382,6 +393,7 @@
                                 <height>32</height>
                                 <texture colordiffuse="PosterFront">$VAR[Image_Overlay_List]</texture>
                                 <visible>!String.IsEmpty(ListItem.Overlay)</visible>
+                                <visible>!ListItem.IsPlaying + !ListItem.IsSelected</visible>
                             </control>
                             <!-- Fallback Icon -->
                             <control type="image">
@@ -391,6 +403,16 @@
                                 <height>64</height>
                                 <texture colordiffuse="PosterFront" fallback="DefaultFolder.png">$VAR[Image_FallbackIcon]</texture>
                                 <visible>String.IsEmpty(ListItem.Overlay)</visible>
+                                <visible>!ListItem.IsPlaying + !ListItem.IsSelected</visible>
+                            </control>
+                            <!-- Playling -->
+                            <control type="image">
+                                <centertop>50%</centertop>
+                                <left>30</left>
+                                <width>40</width>
+                                <height>40</height>
+                                <texture colordiffuse="$VAR[ColorHighlight]" fallback="DefaultFolder.png">indicator/playwhite.png</texture>
+                                <visible>ListItem.IsPlaying | ListItem.IsSelected</visible>
                             </control>
                             <!-- HDSD Flag -->
                             <control type="image">
