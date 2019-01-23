@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Foundation -->
 <window id="6">
-    <defaultcontrol always="true">50</defaultcontrol>
+    <defaultcontrol always="true">5600</defaultcontrol>
     <menucontrol>300</menucontrol>
     <include>View_ViewIDs</include>
     <onload condition="System.HasAddon(script.tv.show.next.aired)">RunScript(script.tv.show.next.aired,backend=True)</onload>
@@ -10,57 +10,75 @@
         <control type="image">
             <texture colordiffuse="main_bg_100">common/white.png</texture>
         </control>
+        <control type="image">
+            <width>1920</width>
+            <height>1080</height>
+            <aspectratio>scale</aspectratio>
+            <fadetime>600</fadetime>
+            <texture background="true" colordiffuse="27ffffff">$INFO[Container(5600).ListItem.Art(fanart)]</texture>
+        </control>
 
-        <control type="group">
+        <control type="grouplist">
             <left>view_pad</left>
             <right>view_pad</right>
             <top>view_top</top>
-            <height>560</height>
-            <control type="fixedlist" id="50">
-                <animation effect="zoom" start="110" end="130" center="auto" time="10000" tween="sine" easing="inout" pulse="true" condition="true">Conditional</animation>
-                <animation effect="slide" start="-30,-30" end="30,30" time="6000" tween="sine" easing="inout" pulse="true" condition="true">Conditional</animation>
-                <left>-view_pad</left>
-                <right>-view_pad</right>
-                <top>-view_top</top>
-                <height>1080</height>
-                <width>1920</width>
-                <orientation>horizontal</orientation>
-                <itemlayout width="1920" height="1080">
+            <orientation>vertical</orientation>
+            <itemgap>30</itemgap>
+            <usecontrolcoords>true</usecontrolcoords>
+            <control type="group" id="5601">
+                <width>100%</width>
+                <height>720</height>
+                <control type="fixedlist" id="5600">
+                    <height>560</height>
+                    <width>1680</width>
+                    <ondown>50</ondown>
+                    <orientation>horizontal</orientation>
+                    <itemlayout width="1680" height="560">
+                        <control type="image">
+                            <centerleft>50%</centerleft>
+                            <top>-view_top</top>
+                            <width>1920</width>
+                            <height>1080</height>
+                            <aspectratio>scale</aspectratio>
+                            <texture background="true">$INFO[ListItem.Art(fanart)]</texture>
+                        </control>
+                    </itemlayout>
+                    <focusedlayout width="1680" height="560">
+                        <control type="image">
+                            <centerleft>50%</centerleft>
+                            <top>-view_top</top>
+                            <width>1920</width>
+                            <height>1080</height>
+                            <aspectratio>scale</aspectratio>
+                            <texture background="true">$INFO[ListItem.Art(fanart)]</texture>
+                        </control>
+                    </focusedlayout>
+                    <content limit="10" sortby="random">$INFO[Container.FolderPath]</content>
+                </control>
+            </control>
+            <control type="panel" id="50">
+                <left>-15</left>
+                <top>-15</top>
+                <height>930</height>
+                <height>810</height>
+                <width>1720</width>
+                <onup>5600</onup>
+                <preloaditems>2</preloaditems>
+                <orientation>vertical</orientation>
+                <itemlayout width="570" height="412.5">
                     <control type="image">
+                        <bordersize>15</bordersize>
                         <aspectratio>scale</aspectratio>
                         <texture background="true">$INFO[ListItem.Art(fanart)]</texture>
                     </control>
                 </itemlayout>
-                <focusedlayout width="1920" height="1080">
+                <focusedlayout width="570" height="412.5">
                     <control type="image">
+                        <bordersize>15</bordersize>
                         <aspectratio>scale</aspectratio>
                         <texture background="true">$INFO[ListItem.Art(fanart)]</texture>
                     </control>
                 </focusedlayout>
-            </control>
-            <control type="image">
-                <top>-view_top</top>
-                <left>-view_pad</left>
-                <right>-view_pad</right>
-                <height>view_top</height>
-                <texture colordiffuse="main_bg_100">common/white.png</texture>
-            </control>
-            <control type="image">
-                <bottom>-600</bottom>
-                <left>-view_pad</left>
-                <right>-view_pad</right>
-                <height>600</height>
-                <texture colordiffuse="main_bg_100">common/white.png</texture>
-            </control>
-            <control type="image">
-                <left>-view_pad</left>
-                <width>view_pad</width>
-                <texture colordiffuse="main_bg_100">common/white.png</texture>
-            </control>
-            <control type="image">
-                <right>-view_pad</right>
-                <width>view_pad</width>
-                <texture colordiffuse="main_bg_100">common/white.png</texture>
             </control>
         </control>
 
