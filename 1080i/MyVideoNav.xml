@@ -29,17 +29,17 @@
                 <orientation>vertical</orientation>
                 <itemgap>30</itemgap>
                 <usecontrolcoords>true</usecontrolcoords>
+                <!-- TODO: Have Seasons View Show Next Up Episodes For Show -->
                 <control type="group">
+                    <visible>Container.Content(movies) | Container.Content(tvshows)</visible>
                     <left>15</left>
                     <top>15</top>
                     <right>15</right>
-                    <height>720</height>
+                    <height>780</height>
                     <control type="group">
-                        <height>560</height>
+                        <height>620</height>
                         <width>1680</width>
                         <control type="wraplist" id="5600">
-                            <height>560</height>
-                            <width>1680</width>
                             <ondown>50</ondown>
                             <autoscroll time="7000">System.IdleTime(1)</autoscroll>
                             <orientation>horizontal</orientation>
@@ -63,7 +63,7 @@
                                     <texture background="true">$INFO[ListItem.Art(fanart)]</texture>
                                 </control>
                             </focusedlayout>
-                            <content limit="10" sortby="random">$INFO[Container.FolderPath]</content>
+                            <content limit="10" sortby="random" target="videos">$INFO[Container.FolderPath]</content>
                         </control>
                         <control type="group">
                             <left>-15</left>
@@ -74,7 +74,7 @@
                         </control>
                     </control>
                     <control type="group">
-                        <top>600</top>
+                        <top>660</top>
                         <bottom>0</bottom>
                         
                         <!-- Information About Movie -->
@@ -171,9 +171,9 @@
                         <ondown>noop</ondown>
                         <preloaditems>2</preloaditems>
                         <orientation>vertical</orientation>
-                        <itemlayout width="570" height="412.5">
+                        <!-- <itemlayout width="570" height="412.5">
                             <control type="image">
-                                <height>333.75</height>
+                                <height>345</height>
                                 <bordersize>15</bordersize>
                                 <aspectratio>scale</aspectratio>
                                 <texture background="true">$INFO[ListItem.Art(fanart)]</texture>
@@ -181,9 +181,9 @@
                             <control type="label">
                                 <left>15</left>
                                 <right>15</right>
-                                <font>font_small_bold</font>
+                                <font>font_tiny</font>
                                 <textcolor>main_fg_100</textcolor>
-                                <top>333.75</top>
+                                <top>345</top>
                                 <bottom>30</bottom>
                                 <aligny>center</aligny>
                                 <align>center</align>
@@ -192,21 +192,63 @@
                         </itemlayout>
                         <focusedlayout width="570" height="412.5">
                             <control type="image">
-                                <height>333.75</height>
+                                <height>345</height>
                                 <bordersize>15</bordersize>
                                 <aspectratio>scale</aspectratio>
                                 <texture background="true">$INFO[ListItem.Art(fanart)]</texture>
                             </control>
                             <control type="group">
-                                <height>333.75</height>
+                                <height>345</height>
                                 <include>View_Selectbox</include>
                             </control>
                             <control type="label">
                                 <left>15</left>
                                 <right>15</right>
-                                <font>font_small_bold</font>
+                                <font>font_tiny</font>
                                 <textcolor>main_fg_100</textcolor>
-                                <top>333.75</top>
+                                <top>345</top>
+                                <bottom>30</bottom>
+                                <aligny>center</aligny>
+                                <align>center</align>
+                                <label>$INFO[ListItem.Label]</label>
+                            </control>
+                        </focusedlayout> -->
+                        <itemlayout width="244.28" height="412.5">
+                            <control type="image">
+                                <height>345</height>
+                                <bordersize>15</bordersize>
+                                <aspectratio>scale</aspectratio>
+                                <texture background="true">$INFO[ListItem.Art(poster)]</texture>
+                            </control>
+                            <control type="label">
+                                <left>15</left>
+                                <right>15</right>
+                                <font>font_tiny</font>
+                                <textcolor>main_fg_100</textcolor>
+                                <top>345</top>
+                                <bottom>30</bottom>
+                                <aligny>center</aligny>
+                                <align>center</align>
+                                <label>$INFO[ListItem.Label]</label>
+                            </control>
+                        </itemlayout>
+                        <focusedlayout width="244.28" height="412.5">
+                            <control type="image">
+                                <height>345</height>
+                                <bordersize>15</bordersize>
+                                <aspectratio>scale</aspectratio>
+                                <texture background="true">$INFO[ListItem.Art(poster)]</texture>
+                            </control>
+                            <control type="group">
+                                <height>345</height>
+                                <include>View_Selectbox</include>
+                            </control>
+                            <control type="label">
+                                <left>15</left>
+                                <right>15</right>
+                                <font>font_tiny</font>
+                                <textcolor>main_fg_100</textcolor>
+                                <top>345</top>
                                 <bottom>30</bottom>
                                 <aligny>center</aligny>
                                 <align>center</align>
