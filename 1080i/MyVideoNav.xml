@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Foundation -->
 <window id="6">
-    <defaultcontrol always="true">5600</defaultcontrol>
+    <defaultcontrol always="true">5601</defaultcontrol>
     <menucontrol>300</menucontrol>
     <include>View_ViewIDs</include>
     <onload condition="System.HasAddon(script.tv.show.next.aired)">RunScript(script.tv.show.next.aired,backend=True)</onload>
     <controls>
 
+        <control type="button" id="5601">
+            <onfocus condition="Control.IsVisible(5600)">SetFocus(5600)</onfocus>
+            <onfocus condition="!Control.IsVisible(5600)">SetFocus(50)</onfocus>
+            <include>Defs_Hidden_Button</include>
+        </control>
         <control type="image">
             <texture colordiffuse="main_bg_100">common/white.png</texture>
         </control>
@@ -40,7 +45,9 @@
                         <height>620</height>
                         <width>1680</width>
                         <control type="wraplist" id="5600">
-                            <ondown>50</ondown>
+                            <visible>Container.Content(movies) | Container.Content(tvshows)</visible>
+                            <onup>SetFocus(50,999999,absolute)</onup>
+                            <ondown>SetFocus(50,0,absolute)</ondown>
                             <autoscroll time="7000">System.IdleTime(1)</autoscroll>
                             <orientation>horizontal</orientation>
                             <itemlayout width="1680" height="560">
@@ -168,7 +175,8 @@
                     <width>1720</width>
                     <control type="panel" id="50">
                         <onup>5600</onup>
-                        <ondown>noop</ondown>
+                        <ondown>SetFocus(50,0,absolute)</ondown>
+                        <ondown>SetFocus(5600)</ondown>
                         <preloaditems>2</preloaditems>
                         <orientation>vertical</orientation>
                         <!-- <itemlayout width="570" height="412.5">
