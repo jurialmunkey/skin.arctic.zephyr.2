@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
 
+    <include name="Object_PositionDot">
+        <param name="left" default="0" />
+        <param name="visible" default="true" />
+        <param name="colordiffuse" default="main_fg_30" />
+        <definition>
+            <control type="image">
+                <left>$PARAM[left]</left>
+                <width>16</width>
+                <height>16</height>
+                <texture colordiffuse="$PARAM[colordiffuse]">common/circle.png</texture>
+                <visible>$PARAM[visible]</visible>
+            </control>
+        </definition>
+    </include>
+
     <include name="Object_Info">
         <param name="hdsd_flag" default="false" />
         <param name="rottentomatoes" default="true" />

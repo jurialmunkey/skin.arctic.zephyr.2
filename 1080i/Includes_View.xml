@@ -350,14 +350,14 @@
                 <right>10</right>
                 <width>48</width>
                 <height>48</height>
-                <texture colordiffuse="$VAR[ColorHighlight]" border="10">$VAR[Image_Overlay_Corner]</texture>
+                <texture colordiffuse="Selected" border="10">$VAR[Image_Overlay_Corner]</texture>
             </control>
             <control type="image">
                 <top>11</top>
                 <right>11</right>
                 <width>24</width>
                 <height>24</height>
-                <texture colordiffuse="ffffffff">$VAR[Image_Overlay_Focus]</texture>
+                <texture colordiffuse="panel_bg">$VAR[Image_Overlay_Focus]</texture>
                 <visible>!Integer.IsGreater(ListItem.Property(UnWatchedEpisodes),0) | ![Container.Content(tvshows) | Container.Content(seasons) | Window.IsVisible(Home)]</visible>
             </control>
             <control type="label">
@@ -367,7 +367,7 @@
                 <height>28</height>
                 <font>font_unwatched</font>
                 <align>center</align>
-                <textcolor>Selected</textcolor>
+                <textcolor>panel_bg</textcolor>
                 <label>$INFO[ListItem.Property(UnWatchedEpisodes)]</label>
                 <include>View_UnwatchedEpisodes_Visible</include>
             </control>
@@ -389,10 +389,7 @@
                 <right>8</right>
                 <bottom>8</bottom>
                 <control type="image">
-                    <texture colordiffuse="$VAR[ColorHighlight]" border="20">common/selectbox.png</texture>
-                </control>
-                <control type="image">
-                    <texture colordiffuse="$VAR[ColorHighlight2]" border="20">common/gradient-diffuse-selectbox.png</texture>
+                    <texture border="20">common/selectbox.png</texture>
                 </control>
             </control>
             <include condition="$PARAM[overlay]">View_WatchedOverlay_Focus</include>

@@ -6,174 +6,192 @@
     <include>View_ViewIDs</include>
     <onload condition="System.HasAddon(script.tv.show.next.aired)">RunScript(script.tv.show.next.aired,backend=True)</onload>
     <controls>
-
-        <control type="button" id="5601">
-            <onfocus condition="Control.IsVisible(5600)">SetFocus(5600)</onfocus>
-            <onfocus condition="!Control.IsVisible(5600)">SetFocus(50)</onfocus>
-            <include>Defs_Hidden_Button</include>
-        </control>
-        <control type="image">
-            <texture colordiffuse="main_bg_100">common/white.png</texture>
-        </control>
         <control type="image">
             <width>1920</width>
             <height>1080</height>
             <aspectratio>scale</aspectratio>
             <fadetime>600</fadetime>
-            <texture background="true" colordiffuse="27ffffff">$INFO[Container(5600).ListItem.Art(fanart)]</texture>
+            <texture background="true">$INFO[Container(50).ListItem.Art(fanart)]</texture>
+        </control>
+        <control type="wraplist" id="5601">
+            <animation effect="fade" start="0" end="100" time="0" reversible="false" condition="Control.HasFocus(5600)">Conditional</animation>
+            <animation effect="fade" start="100" end="0" time="600" reversible="false" condition="!Control.HasFocus(5600)">Conditional</animation>
+            <height>1080</height>
+            <width>1920</width>    
+            <visible>Container.Content(movies) | Container.Content(tvshows)</visible>
+            <onup>SetFocus(50,999999,absolute)</onup>
+            <ondown>SetFocus(50,0,absolute)</ondown>
+            <autoscroll time="7000">System.IdleTime(1)</autoscroll>
+            <orientation>horizontal</orientation>
+            <itemlayout width="1920" height="1080">
+                <control type="image">
+                    <centerleft>50%</centerleft>
+                    <top>0</top>
+                    <width>1920</width>
+                    <height>1080</height>
+                    <aspectratio>scale</aspectratio>
+                    <texture background="true">$INFO[ListItem.Art(fanart)]</texture>
+                </control>
+            </itemlayout>
+            <focusedlayout width="1920" height="1080">
+                <control type="image">
+                    <centerleft>50%</centerleft>
+                    <top>0</top>
+                    <width>1920</width>
+                    <height>1080</height>
+                    <aspectratio>scale</aspectratio>
+                    <texture background="true">$INFO[ListItem.Art(fanart)]</texture>
+                </control>
+            </focusedlayout>
+            <content limit="10" sortby="random" target="videos">$INFO[Container.FolderPath]</content>
         </control>
 
-        <control type="group">
-            <left>view_pad</left>
-            <right>view_pad</right>
-            <top>view_top</top>
-            <control type="grouplist">
-                <left>-15</left>
-                <right>-15</right>
-                <top>-15</top>
-                <orientation>vertical</orientation>
-                <itemgap>30</itemgap>
-                <usecontrolcoords>true</usecontrolcoords>
-                <!-- TODO: Have Seasons View Show Next Up Episodes For Show -->
-                <control type="group">
-                    <visible>Container.Content(movies) | Container.Content(tvshows)</visible>
-                    <left>15</left>
-                    <top>15</top>
-                    <right>15</right>
-                    <height>780</height>
-                    <control type="group">
-                        <height>620</height>
-                        <width>1680</width>
-                        <control type="wraplist" id="5600">
-                            <visible>Container.Content(movies) | Container.Content(tvshows)</visible>
-                            <onup>SetFocus(50,999999,absolute)</onup>
-                            <ondown>SetFocus(50,0,absolute)</ondown>
-                            <autoscroll time="7000">System.IdleTime(1)</autoscroll>
-                            <orientation>horizontal</orientation>
-                            <itemlayout width="1680" height="560">
-                                <control type="image">
-                                    <centerleft>50%</centerleft>
-                                    <top>-view_top</top>
-                                    <width>1920</width>
-                                    <height>1080</height>
-                                    <aspectratio>scale</aspectratio>
-                                    <texture background="true">$INFO[ListItem.Art(fanart)]</texture>
-                                </control>
-                            </itemlayout>
-                            <focusedlayout width="1680" height="560">
-                                <control type="image">
-                                    <centerleft>50%</centerleft>
-                                    <top>-view_top</top>
-                                    <width>1920</width>
-                                    <height>1080</height>
-                                    <aspectratio>scale</aspectratio>
-                                    <texture background="true">$INFO[ListItem.Art(fanart)]</texture>
-                                </control>
-                            </focusedlayout>
-                            <content limit="10" sortby="random" target="videos">$INFO[Container.FolderPath]</content>
-                        </control>
-                        <control type="group">
-                            <left>-15</left>
-                            <top>-15</top>
-                            <right>-15</right>
-                            <bottom>-15</bottom>
-                            <include>View_Selectbox</include>
-                        </control>
+        <control type="grouplist">
+            <orientation>vertical</orientation>
+            <itemgap>0</itemgap>
+            <usecontrolcoords>true</usecontrolcoords>
+            <control type="group">
+                <height>1080</height>
+                <width>1920</width>
+                <control type="image">
+                    <top>640</top>
+                    <bottom>-120</bottom>
+                    <texture colordiffuse="Background">common/white.png</texture>
+                </control>
+                <control type="grouplist">
+                    <top>710</top>
+                    <bottom>0</bottom>
+                    <left>400</left>
+                    <right>400</right>
+                    <orientation>vertical</orientation>
+                    <itemgap>10</itemgap>
+                    <usecontrolcoords>true</usecontrolcoords>
+                    <control type="label">
+                        <align>center</align>
+                        <font>font_osd_submenu</font>
+                        <textcolor>main_fg_70</textcolor>
+                        <label>R  a  n  d  o  m     m  o  v  i  e  s</label>
+                        <height>30</height>
                     </control>
-                    <control type="group">
-                        <top>660</top>
-                        <bottom>0</bottom>
-                        
-                        <!-- Information About Movie -->
-                        <control type="label">
-                            <font>font_small_bold</font>
-                            <textcolor>main_fg_100</textcolor>
-                            <aligny>top</aligny>
-                            <align>right</align>
-                            <label>$INFO[Container(5600).ListItem.Label]$INFO[Container(5600).ListItem.Year,  |  ,]</label>
-                        </control>
-
-                        <!-- Dotted Item Position -->
+                    <control type="label">
+                        <top>30</top>
+                        <aligny>top</aligny>
+                        <align>center</align>
+                        <font>font_title</font>
+                        <textcolor>main_fg_100</textcolor>
+                        <label>$INFO[Container(5601).ListItem.Label,[B],[/B]]</label>
+                        <height>80</height>
+                    </control>
+                    <control type="label">
+                        <align>center</align>
+                        <aligny>top</aligny>
+                        <font>font_tiny</font>
+                        <textcolor>main_fg_70</textcolor>
+                        <label>$INFO[Container(5601).ListItem.Genre]</label>
+                        <height>80</height>
+                    </control>
+                    <control type="grouplist">
+                        <orientation>horizontal</orientation>
+                        <height>80</height>
+                        <align>center</align>
+                        <itemgap>10</itemgap>
                         <control type="group">
-                            <top>56</top>
-                            <control type="grouplist">
-                                <orientation>horizontal</orientation>
-                                <align>right</align>
-                                <height>16</height>
-                                <itemgap>16</itemgap>
-                                <control type="image">
-                                    <width>16</width>
-                                    <height>16</height>
-                                    <texture colordiffuse="main_fg_30">common/circle.png</texture>
-                                </control>
-                                <control type="image">
-                                    <width>16</width>
-                                    <height>16</height>
-                                    <texture colordiffuse="main_fg_30">common/circle.png</texture>
-                                </control>
-                                <control type="image">
-                                    <width>16</width>
-                                    <height>16</height>
-                                    <texture colordiffuse="main_fg_30">common/circle.png</texture>
-                                </control>
-                                <control type="image">
-                                    <width>16</width>
-                                    <height>16</height>
-                                    <texture colordiffuse="main_fg_30">common/circle.png</texture>
-                                </control>
-                                <control type="image">
-                                    <width>16</width>
-                                    <height>16</height>
-                                    <texture colordiffuse="main_fg_30">common/circle.png</texture>
-                                </control>
-                                <control type="image">
-                                    <width>16</width>
-                                    <height>16</height>
-                                    <texture colordiffuse="main_fg_30">common/circle.png</texture>
-                                </control>
-                                <control type="image">
-                                    <width>16</width>
-                                    <height>16</height>
-                                    <texture colordiffuse="main_fg_30">common/circle.png</texture>
-                                </control>
-                                <control type="image">
-                                    <width>16</width>
-                                    <height>16</height>
-                                    <texture colordiffuse="main_fg_30">common/circle.png</texture>
-                                </control>
-                                <control type="image">
-                                    <width>16</width>
-                                    <height>16</height>
-                                    <texture colordiffuse="main_fg_30">common/circle.png</texture>
-                                </control>
-                                <control type="image">
-                                    <width>16</width>
-                                    <height>16</height>
-                                    <texture colordiffuse="main_fg_30">common/circle.png</texture>
-                                </control>
-                            </control>
+                            <width>64</width>
                             <control type="image">
-                                <animation effect="slide" end="32" condition="Integer.IsGreater(Container(5600).CurrentItem,1)">Conditional</animation>
-                                <animation effect="slide" end="32" condition="Integer.IsGreater(Container(5600).CurrentItem,2)">Conditional</animation>
-                                <animation effect="slide" end="32" condition="Integer.IsGreater(Container(5600).CurrentItem,3)">Conditional</animation>
-                                <animation effect="slide" end="32" condition="Integer.IsGreater(Container(5600).CurrentItem,4)">Conditional</animation>
-                                <animation effect="slide" end="32" condition="Integer.IsGreater(Container(5600).CurrentItem,5)">Conditional</animation>
-                                <animation effect="slide" end="32" condition="Integer.IsGreater(Container(5600).CurrentItem,6)">Conditional</animation>
-                                <animation effect="slide" end="32" condition="Integer.IsGreater(Container(5600).CurrentItem,7)">Conditional</animation>
-                                <animation effect="slide" end="32" condition="Integer.IsGreater(Container(5600).CurrentItem,8)">Conditional</animation>
-                                <animation effect="slide" end="32" condition="Integer.IsGreater(Container(5600).CurrentItem,9)">Conditional</animation>
-                                <right>320</right>
-                                <width>16</width>
-                                <height>16</height>
-                                <texture colordiffuse="main_fg_70">common/circle.png</texture>
+                                <top>0</top>
+                                <centerleft>50%</centerleft>
+                                <width>32</width>
+                                <height>32</height>
+                                <texture colordiffuse="main_fg_70">flags/monochrome/ratings/metacritic.png</texture>
+                                <!-- <visible>!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.MetaCritic.Rating))</visible> -->
+                                <visible>!Skin.HasSetting(Ratings.Metacritic)</visible>
+                            </control>
+                            <control type="label">
+                                <textcolor>main_fg_70</textcolor>
+                                <top>40</top>
+                                <width>auto</width>
+                                <height>28</height>
+                                <align>center</align>
+                                <font>font_tiny_bold</font>
+                                <label>$NUMBER[78]</label>
+                                <!-- <visible>!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.MetaCritic.Rating))</visible> -->
+                                <visible>!Skin.HasSetting(Ratings.Metacritic)</visible>
+                            </control>
+                        </control>
+                        <control type="group">
+                            <width>64</width>
+                            <control type="image">
+                                <top>0</top>
+                                <centerleft>50%</centerleft>
+                                <width>32</width>
+                                <height>32</height>
+                                <texture colordiffuse="main_fg_70">flags/monochrome/ratings/rtfresh.png</texture>
+                                <!-- <visible>!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.MetaCritic.Rating))</visible> -->
+                                <visible>!Skin.HasSetting(Ratings.Metacritic)</visible>
+                            </control>
+                            <control type="label">
+                                <textcolor>main_fg_70</textcolor>
+                                <top>40</top>
+                                <width>auto</width>
+                                <height>28</height>
+                                <align>center</align>
+                                <font>font_tiny_bold</font>
+                                <label>$NUMBER[83]</label>
+                                <!-- <visible>!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.MetaCritic.Rating))</visible> -->
+                                <visible>!Skin.HasSetting(Ratings.Metacritic)</visible>
+                            </control>
+                        </control>
+                        <control type="group">
+                            <width>64</width>
+                            <control type="image">
+                                <top>0</top>
+                                <centerleft>50%</centerleft>
+                                <width>40</width>
+                                <height>32</height>
+                                <texture colordiffuse="main_fg_70">flags/monochrome/ratings/imdbicon.png</texture>
+                                <!-- <visible>!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.MetaCritic.Rating))</visible> -->
+                                <visible>!Skin.HasSetting(Ratings.Metacritic)</visible>
+                            </control>
+                            <control type="label">
+                                <textcolor>main_fg_70</textcolor>
+                                <top>40</top>
+                                <width>auto</width>
+                                <height>28</height>
+                                <align>center</align>
+                                <font>font_tiny_bold</font>
+                                <label>$NUMBER[72]</label>
+                                <!-- <visible>!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.MetaCritic.Rating))</visible> -->
+                                <visible>!Skin.HasSetting(Ratings.Metacritic)</visible>
                             </control>
                         </control>
                     </control>
                 </control>
+                <control type="button" id="5600">
+                    <animation effect="fade" start="0" end="0" condition="true">Conditional</animation>
+                    <onleft>Control.Move(5601,-1)</onleft>
+                    <onright>Control.Move(5601,1)</onright>
+                    <onup>SetFocus(50,999999,absolute)</onup>
+                    <ondown>SetFocus(50,0,absolute)</ondown>
+                    <onclick>SetFocus(5601)</onclick>
+                    <onclick>Action(Select)</onclick>
+                </control>
+            </control>
+
+            <control type="group">
+                <top>120</top>
+                <height>1080</height>
+                <width>1920</width>
+                <control type="image">
+                    <texture colordiffuse="Background">common/white.png</texture>
+                </control>
+                <include>Topbar</include>
                 <control type="group">
-                    <height>915</height>
-                    <width>1720</width>
+                    <top>view_top</top>
+                    <left>view_pad</left>
+                    <right>view_pad</right>
                     <control type="panel" id="50">
+                        <left>-15</left>
+                        <right>-15</right>
                         <onup>5600</onup>
                         <ondown>SetFocus(50,0,absolute)</ondown>
                         <ondown>SetFocus(5600)</ondown>
@@ -268,7 +286,7 @@
             </control>
         </control>
 
-        <include>Topbar</include>
+
         <include>Object_PlotOverlay</include>
        
         <!-- Hidden Buttons -->
