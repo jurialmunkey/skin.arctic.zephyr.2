@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Foundation -->
-<window id="6">
+<window type="window" id="1101">
     <defaultcontrol always="true">5600</defaultcontrol>
-    <menucontrol>300</menucontrol>
-    <include>View_ViewIDs</include>
-    <onload condition="System.HasAddon(script.tv.show.next.aired)">RunScript(script.tv.show.next.aired,backend=True)</onload>
     <controls>
         <control type="image">
             <width>1920</width>
@@ -12,38 +8,6 @@
             <aspectratio>scale</aspectratio>
             <fadetime>600</fadetime>
             <texture background="true">$INFO[Container(50).ListItem.Art(fanart)]</texture>
-        </control>
-        <control type="wraplist" id="5601">
-            <animation effect="fade" start="0" end="100" time="0" reversible="false" condition="Control.HasFocus(5600)">Conditional</animation>
-            <animation effect="fade" start="100" end="0" time="600" reversible="false" condition="!Control.HasFocus(5600)">Conditional</animation>
-            <height>1080</height>
-            <width>1920</width>    
-            <visible>Container.Content(movies) | Container.Content(tvshows)</visible>
-            <onup>SetFocus(50,999999,absolute)</onup>
-            <ondown>SetFocus(50,0,absolute)</ondown>
-            <autoscroll time="7000">System.IdleTime(1)</autoscroll>
-            <orientation>horizontal</orientation>
-            <itemlayout width="1920" height="1080">
-                <control type="image">
-                    <centerleft>50%</centerleft>
-                    <top>0</top>
-                    <width>1920</width>
-                    <height>1080</height>
-                    <aspectratio>scale</aspectratio>
-                    <texture background="true">$INFO[ListItem.Art(fanart)]</texture>
-                </control>
-            </itemlayout>
-            <focusedlayout width="1920" height="1080">
-                <control type="image">
-                    <centerleft>50%</centerleft>
-                    <top>0</top>
-                    <width>1920</width>
-                    <height>1080</height>
-                    <aspectratio>scale</aspectratio>
-                    <texture background="true">$INFO[ListItem.Art(fanart)]</texture>
-                </control>
-            </focusedlayout>
-            <content limit="10" sortby="random" target="videos">$INFO[Container.FolderPath]</content>
         </control>
 
         <control type="grouplist">
@@ -53,9 +17,48 @@
             <control type="group">
                 <height>1080</height>
                 <width>1920</width>
-                <control type="image">
+                <control type="wraplist" id="5600">
+                    <animation effect="fade" start="0" end="100" time="0" reversible="false" condition="Control.HasFocus(5600)">Conditional</animation>
+                    <animation effect="fade" start="100" end="0" time="600" reversible="false" condition="!Control.HasFocus(5600)">Conditional</animation>
+                    <height>1080</height>
+                    <width>1920</width>    
+                    <onup>SetFocus(50,999999,absolute)</onup>
+                    <ondown>SetFocus(50,0,absolute)</ondown>
+                    <autoscroll time="7000">System.IdleTime(1)</autoscroll>
+                    <orientation>horizontal</orientation>
+                    <itemlayout width="1920" height="1080">
+                        <control type="image">
+                            <aspectratio>scale</aspectratio>
+                            <texture colordiffuse="main_fg_100">common/geometric1.jpg</texture>
+                        </control>
+                        <control type="image">
+                            <centerleft>50%</centerleft>
+                            <top>0</top>
+                            <width>1920</width>
+                            <height>1080</height>
+                            <aspectratio>scale</aspectratio>
+                            <texture background="true">$INFO[ListItem.Art(fanart)]</texture>
+                        </control>
+                    </itemlayout>
+                    <focusedlayout width="1920" height="1080">
+                        <control type="image">
+                            <aspectratio>scale</aspectratio>
+                            <texture colordiffuse="main_fg_100">common/geometric1.jpg</texture>
+                        </control>
+                        <control type="image">
+                            <centerleft>50%</centerleft>
+                            <top>0</top>
+                            <width>1920</width>
+                            <height>1080</height>
+                            <aspectratio>scale</aspectratio>
+                            <texture background="true">$INFO[ListItem.Art(fanart)]</texture>
+                        </control>
+                    </focusedlayout>
+                    <content limit="10" sortby="random" target="videos">videodb://movies/titles/</content>
+                </control>
+                 <control type="image">
                     <top>640</top>
-                    <bottom>-120</bottom>
+                    <height>1720</height>
                     <texture colordiffuse="Background">common/bg.jpg</texture>
                 </control>
                 <control type="grouplist">
@@ -79,7 +82,7 @@
                         <align>center</align>
                         <font>font_title</font>
                         <textcolor>main_fg_100</textcolor>
-                        <label>$INFO[Container(5601).ListItem.Label,[B],[/B]]</label>
+                        <label>$INFO[Container(5600).ListItem.Label,[B],[/B]]</label>
                         <height>80</height>
                     </control>
                     <control type="label">
@@ -87,7 +90,7 @@
                         <aligny>top</aligny>
                         <font>font_tiny</font>
                         <textcolor>main_fg_70</textcolor>
-                        <label>$INFO[Container(5601).ListItem.Genre]</label>
+                        <label>$INFO[Container(5600).ListItem.Genre]</label>
                         <height>80</height>
                     </control>
                     <control type="grouplist">
@@ -166,26 +169,12 @@
                         </control>
                     </control>
                 </control>
-                <control type="button" id="5600">
-                    <animation effect="fade" start="0" end="0" condition="true">Conditional</animation>
-                    <onleft>Control.Move(5601,-1)</onleft>
-                    <onright>Control.Move(5601,1)</onright>
-                    <onup>SetFocus(50,999999,absolute)</onup>
-                    <ondown>SetFocus(50,0,absolute)</ondown>
-                    <onclick>SetFocus(5601)</onclick>
-                    <onclick>Action(Select)</onclick>
-                    <oninfo>SetFocus(5601)</oninfo>
-                    <oninfo>Action(Info)</oninfo>
-                </control>
             </control>
 
             <control type="group">
                 <top>120</top>
                 <height>1080</height>
                 <width>1920</width>
-                <control type="image">
-                    <texture colordiffuse="Background">common/bg.jpg</texture>
-                </control>
                 <include>Topbar</include>
                 <control type="group">
                     <top>view_top</top>
@@ -199,48 +188,6 @@
                         <ondown>SetFocus(5600)</ondown>
                         <preloaditems>2</preloaditems>
                         <orientation>vertical</orientation>
-                        <!-- <itemlayout width="570" height="412.5">
-                            <control type="image">
-                                <height>345</height>
-                                <bordersize>15</bordersize>
-                                <aspectratio>scale</aspectratio>
-                                <texture background="true">$INFO[ListItem.Art(fanart)]</texture>
-                            </control>
-                            <control type="label">
-                                <left>15</left>
-                                <right>15</right>
-                                <font>font_tiny</font>
-                                <textcolor>main_fg_100</textcolor>
-                                <top>345</top>
-                                <bottom>30</bottom>
-                                <aligny>center</aligny>
-                                <align>center</align>
-                                <label>$INFO[ListItem.Label]</label>
-                            </control>
-                        </itemlayout>
-                        <focusedlayout width="570" height="412.5">
-                            <control type="image">
-                                <height>345</height>
-                                <bordersize>15</bordersize>
-                                <aspectratio>scale</aspectratio>
-                                <texture background="true">$INFO[ListItem.Art(fanart)]</texture>
-                            </control>
-                            <control type="group">
-                                <height>345</height>
-                                <include>View_Selectbox</include>
-                            </control>
-                            <control type="label">
-                                <left>15</left>
-                                <right>15</right>
-                                <font>font_tiny</font>
-                                <textcolor>main_fg_100</textcolor>
-                                <top>345</top>
-                                <bottom>30</bottom>
-                                <aligny>center</aligny>
-                                <align>center</align>
-                                <label>$INFO[ListItem.Label]</label>
-                            </control>
-                        </focusedlayout> -->
                         <itemlayout width="244.28" height="412.5">
                             <control type="group">
                                 <height>345</height>
@@ -314,37 +261,10 @@
                                 <label>$INFO[ListItem.Label]</label>
                             </control>
                         </focusedlayout>
+                        <content limit="21" sortby="random" target="videos">videodb://movies/titles/</content>
                     </control>
                 </control>
             </control>
-        </control>
-
-
-        <include>Object_PlotOverlay</include>
-       
-        <!-- Hidden Buttons -->
-        <include>Defs_Options_StandardButtons</include>
-        <control type="button" id="8">
-            <label>137</label>
-            <include>Defs_Hidden_Button</include>
-        </control>
-        <control type="togglebutton" id="14">
-            <label>$LOCALIZE[20367]: $LOCALIZE[16039]</label>
-            <altlabel>$LOCALIZE[20367]: $LOCALIZE[16041]</altlabel>
-            <usealttexture>System.Setting(hidewatched)</usealttexture>
-            <description>Watched Unwatched</description>
-            <include>Defs_Hidden_Button</include>
-        </control>
-        <control type="button" id="20">
-            <description>Library</description>
-            <label>653</label>
-            <include>Defs_Hidden_Button</include>
-        </control>
-        <control type="button" id="6005">
-            <description>Extra fanart</description>
-            <label>$VAR[Label_ExtraFanart]</label>
-            <onclick>Skin.ToggleSetting(SkinHelper.EnableExtraFanart)</onclick>
-            <include>Defs_Hidden_Button</include>
         </control>
     </controls>
 </window>
