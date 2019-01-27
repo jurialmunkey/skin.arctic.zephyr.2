@@ -1,6 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
 
+    <include name="Object_Info_TextPairs">
+        <param name="haspath" default="false" />
+        <definition>
+            <control type="group">
+                <visible>!String.IsEmpty($PARAM[label])</visible>
+                <top>$PARAM[pad]</top>
+                <height>30</height>
+                <control type="label">
+                    <left>0</left>
+                    <width>148</width>
+                    <align>right</align>
+                    <aligny>top</aligny>
+                    <font>font_tiny_bold</font>
+                    <textcolor>main_fg_100</textcolor>
+                    <label>$PARAM[name]</label>
+                    <height>30</height>
+                </control>
+                <control type="label">
+                    <left>176</left>
+                    <align>left</align>
+                    <aligny>top</aligny>
+                    <font>font_tiny</font>
+                    <textcolor>main_fg_70</textcolor>
+                    <label>$INFO[$PARAM[label]]</label>
+                    <height>30</height>
+                    <haspath>$PARAM[haspath]</haspath>
+                </control>
+            </control>
+        </definition>
+    </include>
+
+    <include name="Object_Info_Button">
+        <control type="group">
+            <width>128</width>
+            <height>96</height>
+            <control type="image">
+                <centerleft>50%</centerleft>
+                <width>64</width>
+                <height>64</height>
+                <texture colordiffuse="main_fg_100">$PARAM[icon]</texture>
+            </control>
+            <control type="button" id="$PARAM[buttonid]">
+                <top>64</top>
+                <width>128</width>
+                <height>32</height>
+                <align>center</align>
+                <aligny>center</aligny>
+                <font>font_tiny</font>
+                <textcolor>main_fg_70</textcolor>
+                <textoffsetx>0</textoffsetx>
+                <label>$PARAM[label]</label>
+            </control>
+        </control>
+    </include>
+
     <include name="Object_PositionDot">
         <param name="left" default="0" />
         <param name="visible" default="true" />
@@ -893,9 +948,9 @@
     <include name="Object_Flags_Content">
         <param name="container" default="" />
         <param name="source" default="ListItem." />
-        <param name="directory" default="color" />
-        <param name="align" default="right" />
-        <param name="colordiffuse" default="panel_fg_100" />
+        <param name="directory" default="monochrome" />
+        <param name="align" default="left" />
+        <param name="colordiffuse" default="main_fg_100" />
         <param name="ratings" default="false" />
         <param name="fps" default="false" />
         <definition>
@@ -904,13 +959,10 @@
                 <visible>!Window.IsVisible(script-script.extendedinfo-DialogInfo.xml)</visible>
                 <visible>!$PARAM[container]ListItem.IsParentFolder</visible>
                 <animation effect="fade" start="0" end="100" delay="30" time="1" reversible="false">Visible</animation>
-                <right>30</right>
-                <left>-30</left>
                 <height>120</height>
                 <orientation>horizontal</orientation>
                 <align>$PARAM[align]</align>
                 <itemgap>0</itemgap>
-                <centertop>50%</centertop>
                 <usecontrolcoords>true</usecontrolcoords>
      
                 <control type="image">
@@ -1133,7 +1185,6 @@
     <include name="Object_Ratings_Content">
         <param name="directory" default="monochrome" />
         <param name="align" default="right" />
-        <param name="width" default="900" />
         <param name="rottentomatoes" default="true" />
         <param name="imdbvotes" default="true" />
         <param name="usermeter" default="true" />
@@ -1145,7 +1196,6 @@
         <param name="top250" default="true" />
         <definition>
             <control type="grouplist">
-                <width>$PARAM[width]</width>
                 <right>0</right>
                 <height>32</height>
                 <orientation>horizontal</orientation>
@@ -1313,9 +1363,9 @@
                 </control>
                 <control type="image">
                     <top>1</top>
-                    <width>40</width>
+                    <width>52</width>
                     <height>32</height>
-                    <texture colordiffuse="$PARAM[colordiffuse]">flags/$PARAM[directory]/ratings/imdbicon.png</texture>
+                    <texture colordiffuse="$PARAM[colordiffuse]">flags/$PARAM[directory]/ratings/imdb.png</texture>
                     <visible>!String.IsEmpty(ListItem.RatingAndVotes) | !String.IsEmpty(Window(home).Property(SkinHelper.ListItem.Rating.IMDB))</visible>
                     <visible>$PARAM[imdb]</visible>
                     <visible>!Skin.HasSetting(Ratings.IMDB)</visible>

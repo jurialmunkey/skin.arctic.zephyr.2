@@ -21,10 +21,11 @@
                 <width>1920</width>
                 <control type="wraplist" id="5600">
                     <height>1080</height>
-                    <width>1920</width>    
+                    <width>1920</width>
+                    <onfocus>SetProperty(SkinHelper.WidgetContainer,5600,Home)</onfocus>
                     <onup>SetFocus(50,999999,absolute)</onup>
                     <ondown>SetFocus(50,0,absolute)</ondown>
-                    <autoscroll time="7000">System.IdleTime(1)</autoscroll>
+                    <!-- <autoscroll time="7000">System.IdleTime(1)</autoscroll> -->
                     <orientation>horizontal</orientation>
                     <itemlayout width="1920" height="1080">
                         <control type="image">
@@ -105,7 +106,7 @@
                                 <centerleft>50%</centerleft>
                                 <width>32</width>
                                 <height>32</height>
-                                <texture colordiffuse="main_fg_70">flags/monochrome/ratings/metacritic.png</texture>
+                                <texture colordiffuse="main_fg_100">flags/monochrome/ratings/metacritic.png</texture>
                                 <!-- <visible>!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.MetaCritic.Rating))</visible> -->
                                 <visible>!Skin.HasSetting(Ratings.Metacritic)</visible>
                             </control>
@@ -128,7 +129,7 @@
                                 <centerleft>50%</centerleft>
                                 <width>32</width>
                                 <height>32</height>
-                                <texture colordiffuse="main_fg_70">flags/monochrome/ratings/rtfresh.png</texture>
+                                <texture colordiffuse="main_fg_100">flags/monochrome/ratings/rtfresh.png</texture>
                                 <!-- <visible>!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.MetaCritic.Rating))</visible> -->
                                 <visible>!Skin.HasSetting(Ratings.Metacritic)</visible>
                             </control>
@@ -149,9 +150,9 @@
                             <control type="image">
                                 <top>0</top>
                                 <centerleft>50%</centerleft>
-                                <width>40</width>
+                                <width>52</width>
                                 <height>32</height>
-                                <texture colordiffuse="main_fg_70">flags/monochrome/ratings/imdbicon.png</texture>
+                                <texture colordiffuse="main_fg_100">flags/monochrome/ratings/imdb.png</texture>
                                 <!-- <visible>!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.MetaCritic.Rating))</visible> -->
                                 <visible>!Skin.HasSetting(Ratings.Metacritic)</visible>
                             </control>
@@ -182,7 +183,7 @@
                     <align>center</align>
                     <font>font_byline</font>
                     <textcolor>main_fg_70</textcolor>
-                    <label>Recently Added Movies</label>
+                    <label>Information</label>
                     <height>30</height>
                 </control>
                 <control type="group">
@@ -194,9 +195,9 @@
                     <control type="panel" id="50">
                         <left>-15</left>
                         <right>-15</right>
+                        <onfocus>SetProperty(SkinHelper.WidgetContainer,50,Home)</onfocus>
                         <onup>5600</onup>
-                        <ondown>SetFocus(50,0,absolute)</ondown>
-                        <ondown>SetFocus(5600)</ondown>
+                        <ondown>5600</ondown>
                         <preloaditems>2</preloaditems>
                         <orientation>vertical</orientation>
                         <itemlayout width="244.28" height="412.5">
@@ -272,7 +273,7 @@
                                 <label>$INFO[ListItem.Label]</label>
                             </control>
                         </focusedlayout>
-                        <content limit="21" sortby="random" target="videos">videodb://movies/titles/</content>
+                        <content target="videos">videodb://movies/titles/</content>
                     </control>
                     
                 </control>

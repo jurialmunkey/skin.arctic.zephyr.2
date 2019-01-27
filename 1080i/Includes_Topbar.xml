@@ -167,14 +167,14 @@
                         <usecontrolcoords>true</usecontrolcoords>
                         <control type="group">
                             <visible>!Control.HasFocus(60)</visible>
-                            <width>view_pad</width>
+                            <width>64</width>
                             <visible>![Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml) | Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(DialogAddonInfo.xml)]</visible>
                             <visible>!Control.HasFocus(300) | Window.IsVisible(Home)</visible>
                             <visible>[String.IsEmpty(Window(10025).Property(PlayingBackgroundMedia)) + Player.HasMedia]</visible>
                             <include>Animation_FadeIn_Delay</include>
                             <control type="multiimage">
                                 <centertop>50%</centertop>
-                                <imagepath colordiffuse="$VAR[ColorHighlight]">eq</imagepath>
+                                <imagepath colordiffuse="main_fg_100">eq</imagepath>
                                 <width>40</width>
                                 <height>23</height>
                                 <fadetime>50</fadetime>
@@ -225,7 +225,7 @@
                         </control>
                         <control type="group">
                             <visible>!Control.HasFocus(60)</visible>
-                            <width>view_pad</width>
+                            <width>64</width>
                             <control type="image">
                                 <centertop>50%</centertop>
                                 <height>40</height>

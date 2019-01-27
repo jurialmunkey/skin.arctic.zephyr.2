@@ -14,19 +14,11 @@
     <onunload>ClearProperty(TrailerPlaying,Home)</onunload>
     <controls>
 
-
-        <control type="list" id="300">
-            <top>30</top>
-            <onup condition="Skin.HasSetting(EnablePressingUp)">9601</onup>
-            <ondown>9500</ondown>
-            <include>Topbar_Menu_Layout</include>
-            <include>Items_Info</include>
-        </control>
-
         <control type="group">
             <top>view_top</top>
             <right>view_pad</right>
             <left>view_pad</left>
+            <bottom>view_pad</bottom>
             <!-- Poster -->
             <control type="group">
                 <left>-15</left>
@@ -56,96 +48,240 @@
             </control>
 
             <!-- Info -->
-            <control type="grouplist">
+            <control type="group">
                 <left>575</left>
                 <right>0</right>
-                <orientation>vertical</orientation>
-                <usecontrolcoords>true</usecontrolcoords>
-                <itemgap>0</itemgap>
                 <include>Animation_Right_Delay</include>
-                <control type="label">
-                    <label>$INFO[ListItem.Label]</label>
-                    <height>80</height>
-                    <aligny>top</aligny>
-                    <textcolor>main_fg_100</textcolor>
-                    <font>font_showcase_title</font>
-                </control>
                 <control type="grouplist">
-                    <height>40</height>
-                    <orientation>horizontal</orientation>
+                    <orientation>vertical</orientation>
                     <usecontrolcoords>true</usecontrolcoords>
                     <itemgap>0</itemgap>
-                    <left>0</left>
-                    <right>0</right>
-                    <control type="image">
+                    <control type="label">
+                        <label>$INFO[ListItem.Label]</label>
+                        <height>80</height>
+                        <aligny>top</aligny>
+                        <textcolor>main_fg_100</textcolor>
+                        <font>font_showcase_title</font>
+                    </control>
+                    <control type="grouplist">
+                        <height>40</height>
+                        <orientation>horizontal</orientation>
+                        <usecontrolcoords>true</usecontrolcoords>
+                        <itemgap>0</itemgap>
                         <left>0</left>
-                        <top>10</top>
-                        <width>37</width>
-                        <height>24</height>
-                        <texture colordiffuse="main_fg_100">$VAR[Image_HDSD]</texture>
-                        <visible>Container.Content(movies) | Container.Content(episodes)</visible>
+                        <right>0</right>
+                        <control type="image">
+                            <left>0</left>
+                            <top>10</top>
+                            <width>37</width>
+                            <height>24</height>
+                            <texture colordiffuse="main_fg_100">$VAR[Image_HDSD]</texture>
+                            <visible>Container.Content(movies) | Container.Content(episodes)</visible>
+                        </control>
+                        <control type="label">
+                            <label>  |  </label>
+                            <width>auto</width>
+                            <height>40</height>
+                            <aligny>top</aligny>
+                            <textcolor>$VAR[ColorHighlight]</textcolor>
+                            <font>font_small</font>
+                            <visible>Container.Content(movies) | Container.Content(episodes)</visible>
+                        </control>
+                        <control type="label">
+                            <width>auto</width>
+                            <label>$VAR[Label_ShowCase_InfoLine]</label>
+                            <height>40</height>
+                            <aligny>top</aligny>
+                            <textcolor>$VAR[ColorHighlight]</textcolor>
+                            <font>font_small</font>
+                        </control>
+                        <control type="label">
+                            <width>auto</width>
+                            <label>$VAR[Label_Info_NextAired_Status,  |  [COLOR=main_fg_100],[/COLOR]]$VAR[Label_Info_NextAired_Date, [COLOR=main_fg_100],[/COLOR]]</label>
+                            <height>40</height>
+                            <aligny>top</aligny>
+                            <textcolor>$VAR[ColorHighlight]</textcolor>
+                            <font>font_small</font>
+                            <visible>Container.Content(tvshows)</visible>
+                        </control>
                     </control>
-                    <control type="label">
-                        <label>  |  </label>
-                        <width>auto</width>
-                        <height>40</height>
+                    <control type="textbox">
+                        <top>30</top>
+                        <label fallback="19055">$VAR[Label_Plot]</label>
+                        <height max="160">auto</height>
                         <aligny>top</aligny>
-                        <textcolor>$VAR[ColorHighlight]</textcolor>
-                        <font>font_small</font>
-                        <visible>Container.Content(movies) | Container.Content(episodes)</visible>
+                        <textcolor>main_fg_70</textcolor>
+                        <font>font_plotbox</font>
                     </control>
-                    <control type="label">
-                        <width>auto</width>
-                        <label>$VAR[Label_ShowCase_InfoLine]</label>
-                        <height>40</height>
-                        <aligny>top</aligny>
-                        <textcolor>$VAR[ColorHighlight]</textcolor>
-                        <font>font_small</font>
+                    
+                    <control type="group">
+                        <top>0</top>
+                        <height>80</height>
+                        <control type="group">
+                            <left>-14</left>
+                            <include>Object_StarRating</include>
+                        </control>
+                        <control type="group">
+                            <top>41</top>
+                            <left>260</left>
+                            <include content="Object_Ratings_Content">
+                                <param name="colordiffuse" value="main_fg_100" />
+                                <param name="align" value="left" />
+                                <param name="tmdb" value="false" />
+                            </include>
+                        </control>
                     </control>
-                    <control type="label">
-                        <width>auto</width>
-                        <label>$VAR[Label_Info_NextAired_Status,  |  [COLOR=main_fg_100],[/COLOR]]$VAR[Label_Info_NextAired_Date, [COLOR=main_fg_100],[/COLOR]]</label>
-                        <height>40</height>
-                        <aligny>top</aligny>
-                        <textcolor>$VAR[ColorHighlight]</textcolor>
-                        <font>font_small</font>
-                        <visible>Container.Content(tvshows)</visible>
+                    <include content="Object_Info_TextPairs">
+                        <param name="pad" value="32" />
+                        <param name="name" value="Genre" />
+                        <param name="label" value="ListItem.Genre" />
+                    </include>
+                    <include content="Object_Info_TextPairs">
+                        <param name="pad" value="20" />
+                        <param name="name" value="Director" />
+                        <param name="label" value="ListItem.Director" />
+                    </include>
+                    <include content="Object_Info_TextPairs">
+                        <param name="pad" value="20" />
+                        <param name="name" value="Writer" />
+                        <param name="label" value="ListItem.Writer" />
+                    </include>
+                    <include content="Object_Info_TextPairs">
+                        <param name="pad" value="20" />
+                        <param name="name" value="Path" />
+                        <param name="label" value="ListItem.FileNameAndPath" />
+                        <param name="haspath" value="true" />
+                    </include>
+                    <control type="grouplist">
+                        <top>40</top>
+                        <height>32</height>
+                        <align>center</align>
+                        <orientation>horizontal</orientation>
+                        <usecontrolcoords>true</usecontrolcoords>
+                        <control type="image">
+                            <top>5</top>
+                            <height>24</height>
+                            <width>24</width>
+                            <texture colordiffuse="main_fg_100">flags/video.png</texture>
+                        </control>
+                        <control type="label">
+                            <top>0</top>
+                            <left>20</left>
+                            <align>left</align>
+                            <aligny>center</aligny>
+                            <font>font_osd_submenu</font>
+                            <textcolor>main_fg_70</textcolor>
+                            <width>auto</width>
+                            <label>$INFO[ListItem.VideoCodec,,  •  ]$INFO[ListItem.VideoResolution,,  •  ]$INFO[ListItem.VideoAspect]</label>
+                            <height>32</height>
+                        </control>
+                        <control type="image">
+                            <left>50</left>
+                            <top>5</top>
+                            <height>24</height>
+                            <width>24</width>
+                            <texture colordiffuse="main_fg_100">flags/audio.png</texture>
+                        </control>
+                        <control type="label">
+                            <top>0</top>
+                            <left>20</left>
+                            <align>left</align>
+                            <aligny>center</aligny>
+                            <width>auto</width>
+                            <font>font_osd_submenu</font>
+                            <textcolor>main_fg_70</textcolor>
+                            <label>AC3  •  5.1</label>
+                            <!-- <label>$INFO[ListItem.AudioCodec,,  •  ]$INFO[ListItem.AudioChannels]</label> -->
+                            <height>32</height>
+                        </control>
+                        <control type="image">
+                            <left>50</left>
+                            <top>5</top>
+                            <height>24</height>
+                            <width>24</width>
+                            <texture colordiffuse="main_fg_100">flags/lang.png</texture>
+                        </control>
+                        <control type="label">
+                            <top>0</top>
+                            <left>20</left>
+                            <align>left</align>
+                            <aligny>center</aligny>
+                            <width>auto</width>
+                            <font>font_osd_submenu</font>
+                            <textcolor>main_fg_70</textcolor>
+                            <label>ENG</label>
+                            <!-- <label>$INFO[ListItem.AudioCodec,,  •  ]$INFO[ListItem.AudioChannels]</label> -->
+                            <height>32</height>
+                        </control>
+                        <control type="image">
+                            <left>50</left>
+                            <top>5</top>
+                            <height>24</height>
+                            <width>24</width>
+                            <texture colordiffuse="main_fg_100">flags/subs.png</texture>
+                        </control>
+                        <control type="label">
+                            <top>0</top>
+                            <left>20</left>
+                            <align>left</align>
+                            <aligny>center</aligny>
+                            <width>auto</width>
+                            <font>font_osd_submenu</font>
+                            <textcolor>main_fg_70</textcolor>
+                            <label>ENG  •  GER</label>
+                            <!-- <label>$INFO[ListItem.AudioCodec,,  •  ]$INFO[ListItem.AudioChannels]</label> -->
+                            <height>32</height>
+                        </control>
                     </control>
+                    
+                    <!-- <control type="image">
+                        <top>30</top>
+                        <centerleft>50%</centerleft>
+                        <width>192</width>
+                        <height>192</height>
+                        <aspectratio align="left">keep</aspectratio>
+                        <texture colordiffuse="main_fg_100">$INFO[ListItem.Studio,resource://resource.images.studios.white/,.png]</texture>
+                    </control> -->
                 </control>
-                <control type="textbox">
-                    <top>30</top>
-                    <label fallback="19055">$VAR[Label_Plot]</label>
-                    <height max="160">auto</height>
-                    <aligny>top</aligny>
-                    <textcolor>main_fg_70</textcolor>
-                    <font>font_plotbox</font>
+                <control type="grouplist">
+                    <bottom>-16</bottom>
+                    <height>96</height>
+                    <orientation>horizontal</orientation>
+                    <align>center</align>
+                    <itemgap>0</itemgap>
+                    <include content="Object_Info_Button" description="Play">
+                        <param name="buttonid" value="8" />
+                        <param name="label" value="$LOCALIZE[208]" />
+                        <param name="icon" value="special://skin/extras/icons/play3.png" />
+                    </include>
+                    <include content="Object_Info_Button" description="Trailer">
+                        <param name="buttonid" value="11" />
+                        <param name="label" value="$LOCALIZE[20410]" />
+                        <param name="icon" value="special://skin/extras/icons/video.png" />
+                    </include>
+                    <include content="Object_Info_Button" description="Artwork">
+                        <param name="buttonid" value="10" />
+                        <param name="label" value="$LOCALIZE[13405]" />
+                        <param name="icon" value="special://skin/extras/icons/paintbrush.png" />
+                    </include>
+                    <include content="Object_Info_Button" description="Update">
+                        <param name="buttonid" value="6" />
+                        <param name="label" value="$LOCALIZE[184]" />
+                        <param name="icon" value="special://skin/extras/icons/update.png" />
+                    </include>
+                    <include content="Object_Info_Button" description="User Rating">
+                        <param name="buttonid" value="7" />
+                        <param name="label" value="$LOCALIZE[31310]$INFO[ListItem.UserRating,: ,]" />
+                        <param name="icon" value="special://skin/extras/icons/userrating.png" />
+                    </include>
+                    <include content="Object_Info_Button" description="Options">
+                        <param name="buttonid" value="99" />
+                        <param name="label" value="$LOCALIZE[33063]" />
+                        <param name="icon" value="special://skin/extras/icons/settings.png" />
+                    </include>
                 </control>
-                <control type="label">
-                    <top>30</top>
-                    <align>left</align>
-                    <aligny>top</aligny>
-                    <font>font_tiny</font>
-                    <textcolor>main_fg_70</textcolor>
-                    <label>$INFO[ListItem.Studio]</label>
-                    <height>30</height>
-                </control>
-                <control type="image">
-                    <texutre>$INFO[ListItem.Studio,resource://resource.images.studios.white/,.png]</texutre>
-                </control>
+                
             </control>
-        </control>
-
-        <control type="button" id ="8">
-            <description>Play</description>
-            <label>$LOCALIZE[208]</label>
-            <include>Defs_Hidden_Button</include>
-        </control>
-
-        <control type="button" id="11">
-            <description>Trailer button</description>
-            <label>20410</label>
-            <include>Defs_Hidden_Button</include>
-            <visible>!String.IsEmpty(ListItem.Trailer)</visible>
         </control>
 
         <control type="button" id="9002">
@@ -214,12 +350,6 @@
             <include>Defs_Hidden_Button</include>
         </control>
 
-        <control type="button" id ="10">
-            <description>Artwork (Get Thumb)</description>
-            <label>$LOCALIZE[13405]</label>
-            <include>Defs_Hidden_Button</include>
-        </control>
-
         <control type="button" id="9001">
             <label>$LOCALIZE[31389]</label>
             <!-- If ADownloader installed but not ABeef then use AD otherwise prefer AB -->
@@ -250,12 +380,6 @@
             <description>Get Artwork</description>
             <include>Defs_Hidden_Button</include>
             <visible>[String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,musicvideo) | String.IsEqual(ListItem.DBType,episode)] + [system.hasaddon(script.artwork.downloader) | system.hasaddon(script.artwork.beef)]</visible>
-        </control>
-
-        <control type="button" id ="6">
-            <description>Refresh</description>
-            <label>184</label>
-            <include>Defs_Hidden_Button</include>
         </control>
 
         <control type="button" id ="7">
