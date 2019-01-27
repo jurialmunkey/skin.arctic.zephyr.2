@@ -152,7 +152,7 @@
 
 
     <variable name="Label_Header_Content">
-        <value>Home</value>
+        <value>Movies</value>
         <value condition="Container.Scrolling + [String.IsEqual(Container.SortMethod,$LOCALIZE[551]) | String.IsEqual(Container.SortMethod,$LOCALIZE[556]) | String.IsEqual(Container.SortMethod,$LOCALIZE[557]) | String.IsEqual(Container.SortMethod,$LOCALIZE[558])] + !Container.Content(seasons) + [Control.IsEnabled(3) | Control.IsEnabled(4)]">$INFO[ListItem.SortLetter,$LOCALIZE[31392]: ,]</value>
         <value condition="Window.IsVisible(script-script.extendedinfo-VideoList.xml)">$LOCALIZE[31086]</value>
         <value condition="Window.IsVisible(script-NextAired-TVGuide2.xml) | Window.IsVisible(script-NextAired-TVGuide.xml)">$LOCALIZE[31220]</value>

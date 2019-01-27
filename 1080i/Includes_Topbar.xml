@@ -95,7 +95,6 @@
 
     <include name="Topbar">
         <control type="group">
-            <visible>!$EXP[Exp_Info_Visible]</visible>
             <visible allowhiddenfocus="true">!Control.HasFocus(9602)</visible>
             <!-- Darker bar when scrolling home -->
             <include condition="Window.IsVisible(Home)">Topbar_Home_Dim</include>

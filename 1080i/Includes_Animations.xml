@@ -21,6 +21,25 @@
         </animation>
     </include>
 
+    <include name="Animation_Down">
+        <animation type="Visible" reversible="false">
+            <effect type="fade" start="0" end="100" time="300" tween="sine" easing="out"/>
+            <effect type="slide" start="0,320" end="0" time="400" tween="cubic" easing="out" />
+        </animation>
+        <animation type="Hidden" reversible="false">
+            <effect type="fade" start="100" end="0" time="300" tween="sine" easing="out" />
+            <effect type="slide" start="0" end="0,320" time="300" tween="cubic" easing="out" />
+        </animation>
+        <animation type="WindowOpen" reversible="false">
+            <effect type="fade" start="0" end="100" time="300" tween="sine" easing="out"/>
+            <effect type="slide" start="0,320" end="0" time="400" tween="cubic" easing="out" />
+        </animation>
+        <animation type="WindowClose" reversible="false">
+            <effect type="fade" start="100" end="0" time="300" tween="sine" easing="out" />
+            <effect type="slide" start="0" end="0,320" time="300" tween="cubic" easing="out" />
+        </animation>
+    </include>
+
     <include name="Animation_Left">
         <animation type="Visible" reversible="false">
             <effect type="fade" start="0" end="100" time="300" tween="sine" easing="out"/>
@@ -56,6 +75,25 @@
         <animation type="WindowClose" reversible="false">
             <effect type="fade" start="100" end="0" time="300" tween="sine" easing="out" />
             <effect type="slide" start="0" end="320" time="300" tween="cubic" easing="out" />
+        </animation>
+    </include>
+
+    <include name="Animation_Left_Delay">
+        <animation type="Visible" reversible="false">
+            <effect type="fade" start="0" end="100" time="300" delay="400" tween="sine" easing="out"/>
+            <effect type="slide" start="-320" end="0" time="400" delay="400" tween="cubic" easing="out" />
+        </animation>
+        <animation type="Hidden" reversible="false">
+            <effect type="fade" start="100" end="0" time="300" tween="sine" easing="out" />
+            <effect type="slide" start="0" end="-320" time="300" tween="cubic" easing="out" />
+        </animation>
+        <animation type="WindowOpen" reversible="false">
+            <effect type="fade" start="0" end="100" time="300" delay="400" tween="sine" easing="out"/>
+            <effect type="slide" start="-320" end="0" time="400" delay="400" tween="cubic" easing="out" />
+        </animation>
+        <animation type="WindowClose" reversible="false">
+            <effect type="fade" start="100" end="0" time="300" tween="sine" easing="out" />
+            <effect type="slide" start="0" end="-320" time="300" tween="cubic" easing="out" />
         </animation>
     </include>
 
