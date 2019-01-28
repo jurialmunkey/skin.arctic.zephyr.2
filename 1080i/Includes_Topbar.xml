@@ -110,6 +110,7 @@
                     <include>Animation_FadeInOut</include>
                     <!-- Left Info -->
                     <control type="grouplist">
+                        <top>0</top>
                         <include>Animation_FadeInOut</include>
                         <itemgap>0</itemgap>
                         <left>view_pad</left>
@@ -131,7 +132,7 @@
                             <visible>Skin.HasSetting(MouseMode) + ![Window.IsVisible(script-globalsearch.xml) | Window.IsVisible(Home)]</visible>
                         </control>
                         <control type="label">
-                            <top>0</top>
+                            <aligny>center</aligny>
                             <width max="1140">auto</width>
                             <font>font_topbar</font>
                             <textcolor>main_fg_100</textcolor>
@@ -140,7 +141,7 @@
                             <visible>!Control.HasFocus(300)</visible>
                         </control>
                         <control type="label">
-                            <top>0</top>
+                            <aligny>center</aligny>
                             <width>auto</width>
                             <font>font_topbar</font>
                             <textcolor>main_fg_100</textcolor>
@@ -151,7 +152,14 @@
                     </control>
                     
                     <include condition="![Window.IsVisible(script-globalsearch.xml) | Window.IsVisible(Home)]">Topbar_Menu</include>
-                    <include condition="[Window.IsVisible(MyVideoNav.xml) | Window.IsVisible(MyMusicNav.xml)] + Skin.HasSetting(AlphabetStrip) + System.HasAddon(script.skin.helper.service)">Object_AlphabetStrip</include>
+
+                    <control type="label">
+                        <aligny>center</aligny>
+                        <align>center</align>
+                        <font>font_byline</font>
+                        <textcolor>main_fg_70</textcolor>
+                        <label>$VAR[Label_Header_Center]</label>
+                    </control>
 
                     <!-- Right Info -->
                     <control type="grouplist">

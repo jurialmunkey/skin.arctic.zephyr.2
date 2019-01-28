@@ -1,6 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
 
+    <include name="Object_Icon_Ratings">
+        <control type="grouplist">
+            <orientation>horizontal</orientation>
+            <height>80</height>
+            <align>center</align>
+            <itemgap>10</itemgap>
+            <control type="group">
+                <width>64</width>
+                <visible>!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.MetaCritic.Rating))</visible>
+                <visible>!Skin.HasSetting(Ratings.Metacritic)</visible>
+                <control type="image">
+                    <top>0</top>
+                    <centerleft>50%</centerleft>
+                    <width>32</width>
+                    <height>32</height>
+                    <texture colordiffuse="main_fg_100">flags/monochrome/ratings/metacritic.png</texture>
+                </control>
+                <control type="label">
+                    <textcolor>main_fg_70</textcolor>
+                    <top>40</top>
+                    <width>auto</width>
+                    <height>28</height>
+                    <align>center</align>
+                    <font>font_tiny_bold</font>
+                    <label>$INFO[Window(Home).Property(SkinHelper.ListItem.MetaCritic.Rating)]</label>
+                </control>
+            </control>
+            <control type="group">
+                <width>64</width>
+                <visible>!String.IsEmpty(ListItem.Rating) | !String.IsEmpty(Window(home).Property(SkinHelper.ListItem.Rating.IMDB))</visible>
+                <visible>!Skin.HasSetting(Ratings.IMDB)</visible>
+                <control type="image">
+                    <top>0</top>
+                    <centerleft>50%</centerleft>
+                    <width>52</width>
+                    <height>32</height>
+                    <texture colordiffuse="main_fg_100">flags/monochrome/ratings/imdb.png</texture>
+                </control>
+                <control type="label">
+                    <textcolor>main_fg_70</textcolor>
+                    <top>40</top>
+                    <width>auto</width>
+                    <height>28</height>
+                    <align>center</align>
+                    <font>font_tiny_bold</font>
+                    <label>$VAR[Label_Rating_IMDB]</label>
+                </control>
+            </control>
+            <control type="group">
+                <width>64</width>
+                <visible>!Skin.HasSetting(Ratings.RottenTomatoes)</visible>
+                <visible>!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.RottenTomatoes.Rating))</visible>
+                <control type="image">
+                    <top>0</top>
+                    <centerleft>50%</centerleft>
+                    <width>32</width>
+                    <height>32</height>
+                    <texture colordiffuse="main_fg_100">flags/monochrome/ratings/rtrotten.png</texture>
+                    <visible>!Integer.IsGreater(Window(home).Property(SkinHelper.ListItem.RottenTomatoes.Rating),59)</visible>
+                </control>
+                <control type="image">
+                    <top>0</top>
+                    <centerleft>50%</centerleft>
+                    <width>32</width>
+                    <height>32</height>
+                    <texture colordiffuse="main_fg_100">flags/monochrome/ratings/rtfresh.png</texture>
+                    <visible>Integer.IsGreater(Window(home).Property(SkinHelper.ListItem.RottenTomatoes.Rating),59)</visible>
+                </control>
+                <control type="label">
+                    <textcolor>main_fg_70</textcolor>
+                    <top>40</top>
+                    <width>auto</width>
+                    <height>28</height>
+                    <align>center</align>
+                    <font>font_tiny_bold</font>
+                    <label>$INFO[Window(Home).Property(SkinHelper.ListItem.RottenTomatoes.Rating)]</label>
+                </control>
+            </control>
+        </control>
+    </include>
+
     <include name="Object_Info_TextPairs">
         <param name="haspath" default="false" />
         <definition>
@@ -11,7 +92,7 @@
                 <control type="label">
                     <left>0</left>
                     <width>148</width>
-                    <align>right</align>
+                    <align>left</align>
                     <aligny>top</aligny>
                     <font>font_tiny_bold</font>
                     <textcolor>main_fg_100</textcolor>
@@ -36,13 +117,16 @@
         <control type="group">
             <width>128</width>
             <height>96</height>
-            <control type="image">
+            <control type="button" id="$PARAM[buttonid]">
+                <onleft>$PARAM[onleft]</onleft>
+                <onright>$PARAM[onright]</onright>
                 <centerleft>50%</centerleft>
                 <width>64</width>
                 <height>64</height>
-                <texture colordiffuse="main_fg_100">$PARAM[icon]</texture>
+                <texturenofocus colordiffuse="main_fg_100">$PARAM[icon]</texturenofocus>
+                <texturefocus colordiffuse="$VAR[ColorHighlight]">$PARAM[icon]</texturefocus>
             </control>
-            <control type="button" id="$PARAM[buttonid]">
+            <control type="label">
                 <top>64</top>
                 <width>128</width>
                 <height>32</height>
@@ -52,6 +136,19 @@
                 <textcolor>main_fg_70</textcolor>
                 <textoffsetx>0</textoffsetx>
                 <label>$PARAM[label]</label>
+                <visible>!Control.HasFocus($PARAM[buttonid])</visible>
+            </control>
+            <control type="label">
+                <top>64</top>
+                <width>128</width>
+                <height>32</height>
+                <align>center</align>
+                <aligny>center</aligny>
+                <font>font_tiny_bold</font>
+                <textcolor>$VAR[ColorHighlight]</textcolor>
+                <textoffsetx>0</textoffsetx>
+                <label>$PARAM[label]</label>
+                <visible>Control.HasFocus($PARAM[buttonid])</visible>
             </control>
         </control>
     </include>

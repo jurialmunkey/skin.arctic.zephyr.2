@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Foundation -->
 <window id="2003">
-    <defaultcontrol always="true">9570</defaultcontrol>
+    <defaultcontrol always="true">9000</defaultcontrol>
     <onload condition="Skin.HasSetting(ForceExtendedInfo) + System.HasAddon(script.extendedinfo) + [Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)]">Action(close)</onload>
     <onload condition="Skin.HasSetting(ForceExtendedInfo) + System.HasAddon(script.extendedinfo) + Container.Content(movies) + Skin.String(ListItem.IMDBNumber)">RunScript(script.extendedinfo,info=extendedinfo,dbid=$INFO[ListItem.DBID],imdb_id=$INFO[ListItem.IMDBNumber],name=$INFO[ListItem.Title])</onload>
     <onload condition="Skin.HasSetting(ForceExtendedInfo) + System.HasAddon(script.extendedinfo) + Container.Content(movies) + !Skin.String(ListItem.IMDBNumber)">RunScript(script.extendedinfo,info=extendedinfo,dbid=$INFO[ListItem.DBID],name=$INFO[ListItem.Title])</onload>
@@ -119,7 +119,15 @@
                         <height>80</height>
                         <control type="group">
                             <left>-14</left>
+                            <visible>String.IsEmpty(ListItem.UserRating)</visible>
                             <include>Object_StarRating</include>
+                        </control>
+                        <control type="group">
+                            <left>-14</left>
+                            <visible>!String.IsEmpty(ListItem.UserRating)</visible>
+                            <include content="Object_StarRating">
+                                <param name="rating_prop" value="ListItem.UserRating" />
+                            </include>
                         </control>
                         <control type="group">
                             <top>41</top>
@@ -148,14 +156,19 @@
                     </include>
                     <include content="Object_Info_TextPairs">
                         <param name="pad" value="20" />
+                        <param name="name" value="Studio" />
+                        <param name="label" value="ListItem.Studio" />
+                    </include>
+                    <!-- <include content="Object_Info_TextPairs">
+                        <param name="pad" value="20" />
                         <param name="name" value="Path" />
                         <param name="label" value="ListItem.FileNameAndPath" />
                         <param name="haspath" value="true" />
-                    </include>
+                    </include> -->
                     <control type="grouplist">
                         <top>40</top>
                         <height>32</height>
-                        <align>center</align>
+                        <align>left</align>
                         <orientation>horizontal</orientation>
                         <usecontrolcoords>true</usecontrolcoords>
                         <control type="image">
@@ -190,8 +203,7 @@
                             <width>auto</width>
                             <font>font_osd_submenu</font>
                             <textcolor>main_fg_70</textcolor>
-                            <label>AC3  •  5.1</label>
-                            <!-- <label>$INFO[ListItem.AudioCodec,,  •  ]$INFO[ListItem.AudioChannels]</label> -->
+                            <label>$INFO[ListItem.AudioCodec]$VAR[Label_AudioChannels,  •  ,]</label>
                             <height>32</height>
                         </control>
                         <control type="image">
@@ -200,6 +212,7 @@
                             <height>24</height>
                             <width>24</width>
                             <texture colordiffuse="main_fg_100">flags/lang.png</texture>
+                            <visible>!String.IsEmpty(ListItem.Property(AudioLanguage.1))</visible>
                         </control>
                         <control type="label">
                             <top>0</top>
@@ -209,8 +222,8 @@
                             <width>auto</width>
                             <font>font_osd_submenu</font>
                             <textcolor>main_fg_70</textcolor>
-                            <label>ENG</label>
-                            <!-- <label>$INFO[ListItem.AudioCodec,,  •  ]$INFO[ListItem.AudioChannels]</label> -->
+                            <label>$INFO[ListItem.Property(AudioLanguage.1)]$INFO[ListItem.Property(AudioLanguage.2),  •  ,]$INFO[ListItem.Property(AudioLanguage.3),  •  ,]$INFO[ListItem.Property(AudioLanguage.4),  •  ,]$INFO[ListItem.Property(AudioLanguage.5),  •  ,]</label>
+                            <visible>!String.IsEmpty(ListItem.Property(AudioLanguage.1))</visible>
                             <height>32</height>
                         </control>
                         <control type="image">
@@ -219,6 +232,7 @@
                             <height>24</height>
                             <width>24</width>
                             <texture colordiffuse="main_fg_100">flags/subs.png</texture>
+                            <visible>!String.IsEmpty(ListItem.Property(SubtitleLanguage.1))</visible>
                         </control>
                         <control type="label">
                             <top>0</top>
@@ -228,9 +242,9 @@
                             <width>auto</width>
                             <font>font_osd_submenu</font>
                             <textcolor>main_fg_70</textcolor>
-                            <label>ENG  •  GER</label>
-                            <!-- <label>$INFO[ListItem.AudioCodec,,  •  ]$INFO[ListItem.AudioChannels]</label> -->
+                            <label>$INFO[ListItem.Property(SubtitleLanguage.1)]$INFO[ListItem.Property(SubtitleLanguage.2),  •  ,]$INFO[ListItem.Property(SubtitleLanguage.3),  •  ,]$INFO[ListItem.Property(SubtitleLanguage.4),  •  ,]$INFO[ListItem.Property(SubtitleLanguage.5),  •  ,]</label>
                             <height>32</height>
+                            <visible>!String.IsEmpty(ListItem.Property(SubtitleLanguage.1))</visible>
                         </control>
                     </control>
                     
@@ -243,7 +257,7 @@
                         <texture colordiffuse="main_fg_100">$INFO[ListItem.Studio,resource://resource.images.studios.white/,.png]</texture>
                     </control> -->
                 </control>
-                <control type="grouplist">
+                <control type="grouplist" id="9000">
                     <bottom>-16</bottom>
                     <height>96</height>
                     <orientation>horizontal</orientation>
@@ -253,31 +267,44 @@
                         <param name="buttonid" value="8" />
                         <param name="label" value="$LOCALIZE[208]" />
                         <param name="icon" value="special://skin/extras/icons/play3.png" />
+                        <param name="onleft" value="99" />
+                        <param name="onright" value="11" />
                     </include>
                     <include content="Object_Info_Button" description="Trailer">
                         <param name="buttonid" value="11" />
                         <param name="label" value="$LOCALIZE[20410]" />
                         <param name="icon" value="special://skin/extras/icons/video.png" />
+                        <param name="onleft" value="8" />
+                        <param name="onright" value="10" />
                     </include>
                     <include content="Object_Info_Button" description="Artwork">
                         <param name="buttonid" value="10" />
-                        <param name="label" value="$LOCALIZE[13405]" />
+                        <param name="label" value="$LOCALIZE[31203]" />
                         <param name="icon" value="special://skin/extras/icons/paintbrush.png" />
+                        <param name="onleft" value="11" />
+                        <param name="onright" value="6" />
                     </include>
                     <include content="Object_Info_Button" description="Update">
                         <param name="buttonid" value="6" />
                         <param name="label" value="$LOCALIZE[184]" />
                         <param name="icon" value="special://skin/extras/icons/update.png" />
+                        <param name="onleft" value="10" />
+                        <param name="onright" value="7" />
                     </include>
                     <include content="Object_Info_Button" description="User Rating">
                         <param name="buttonid" value="7" />
-                        <param name="label" value="$LOCALIZE[31310]$INFO[ListItem.UserRating,: ,]" />
+                        <param name="label" value="$LOCALIZE[31310]" />
+                        <!-- <param name="label" value="$LOCALIZE[31310]$INFO[ListItem.UserRating,: ,]" /> -->
                         <param name="icon" value="special://skin/extras/icons/userrating.png" />
+                        <param name="onleft" value="6" />
+                        <param name="onright" value="99" />
                     </include>
                     <include content="Object_Info_Button" description="Options">
                         <param name="buttonid" value="99" />
                         <param name="label" value="$LOCALIZE[33063]" />
                         <param name="icon" value="special://skin/extras/icons/settings.png" />
+                        <param name="onleft" value="7" />
+                        <param name="onright" value="8" />
                     </include>
                 </control>
                 

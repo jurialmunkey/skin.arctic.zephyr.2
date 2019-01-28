@@ -92,82 +92,15 @@
                         <font>font_tiny</font>
                         <textcolor>main_fg_70</textcolor>
                         <label>$INFO[Container(5600).ListItem.Genre]</label>
-                        <height>80</height>
+                        <height>60</height>
                     </control>
-                    <control type="grouplist">
-                        <orientation>horizontal</orientation>
-                        <height>80</height>
-                        <align>center</align>
-                        <itemgap>10</itemgap>
-                        <control type="group">
-                            <width>64</width>
-                            <control type="image">
-                                <top>0</top>
-                                <centerleft>50%</centerleft>
-                                <width>32</width>
-                                <height>32</height>
-                                <texture colordiffuse="main_fg_100">flags/monochrome/ratings/metacritic.png</texture>
-                                <!-- <visible>!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.MetaCritic.Rating))</visible> -->
-                                <visible>!Skin.HasSetting(Ratings.Metacritic)</visible>
-                            </control>
-                            <control type="label">
-                                <textcolor>main_fg_70</textcolor>
-                                <top>40</top>
-                                <width>auto</width>
-                                <height>28</height>
-                                <align>center</align>
-                                <font>font_tiny_bold</font>
-                                <label>$NUMBER[78]</label>
-                                <!-- <visible>!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.MetaCritic.Rating))</visible> -->
-                                <visible>!Skin.HasSetting(Ratings.Metacritic)</visible>
-                            </control>
-                        </control>
-                        <control type="group">
-                            <width>64</width>
-                            <control type="image">
-                                <top>0</top>
-                                <centerleft>50%</centerleft>
-                                <width>32</width>
-                                <height>32</height>
-                                <texture colordiffuse="main_fg_100">flags/monochrome/ratings/rtfresh.png</texture>
-                                <!-- <visible>!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.MetaCritic.Rating))</visible> -->
-                                <visible>!Skin.HasSetting(Ratings.Metacritic)</visible>
-                            </control>
-                            <control type="label">
-                                <textcolor>main_fg_70</textcolor>
-                                <top>40</top>
-                                <width>auto</width>
-                                <height>28</height>
-                                <align>center</align>
-                                <font>font_tiny_bold</font>
-                                <label>$NUMBER[83]</label>
-                                <!-- <visible>!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.MetaCritic.Rating))</visible> -->
-                                <visible>!Skin.HasSetting(Ratings.Metacritic)</visible>
-                            </control>
-                        </control>
-                        <control type="group">
-                            <width>64</width>
-                            <control type="image">
-                                <top>0</top>
-                                <centerleft>50%</centerleft>
-                                <width>52</width>
-                                <height>32</height>
-                                <texture colordiffuse="main_fg_100">flags/monochrome/ratings/imdb.png</texture>
-                                <!-- <visible>!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.MetaCritic.Rating))</visible> -->
-                                <visible>!Skin.HasSetting(Ratings.Metacritic)</visible>
-                            </control>
-                            <control type="label">
-                                <textcolor>main_fg_70</textcolor>
-                                <top>40</top>
-                                <width>auto</width>
-                                <height>28</height>
-                                <align>center</align>
-                                <font>font_tiny_bold</font>
-                                <label>$NUMBER[72]</label>
-                                <!-- <visible>!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.MetaCritic.Rating))</visible> -->
-                                <visible>!Skin.HasSetting(Ratings.Metacritic)</visible>
-                            </control>
-                        </control>
+                    <include>Object_Icon_Ratings</include>
+                    <control type="image">
+                        <top>0</top>
+                        <centerleft>50%</centerleft>
+                        <width>32</width>
+                        <height>32</height>
+                        <texture flipy="false" colordiffuse="main_fg_70">buttons/spin-down.png</texture>
                     </control>
                 </control>
             </control>
@@ -177,29 +110,46 @@
                 <height>1080</height>
                 <width>1920</width>
                 <include>Topbar</include>
-                <control type="label">
-                    <height>view_top</height>
-                    <aligny>center</aligny>
-                    <align>center</align>
-                    <font>font_byline</font>
-                    <textcolor>main_fg_70</textcolor>
-                    <label>Information</label>
-                    <height>30</height>
-                </control>
                 <control type="group">
                     <top>view_top</top>
                     <left>view_pad</left>
                     <right>view_pad</right>
                     <include>Animation_Down</include>
                     <include>Defs_InfoDialog_Visible</include>
+                    <control type="grouplist">
+                        <top>0</top>
+                        <left>400</left>
+                        <right>400</right>
+                        <orientation>vertical</orientation>
+                        <itemgap>10</itemgap>
+                        <usecontrolcoords>true</usecontrolcoords>
+                        <control type="label">
+                            <aligny>top</aligny>
+                            <align>center</align>
+                            <font>font_title</font>
+                            <textcolor>main_fg_100</textcolor>
+                            <label>$INFO[Container(50).ListItem.Label,[B],[/B]]</label>
+                            <height>80</height>
+                        </control>
+                        <control type="label">
+                            <align>center</align>
+                            <aligny>top</aligny>
+                            <font>font_tiny</font>
+                            <textcolor>main_fg_70</textcolor>
+                            <label>$INFO[Container(50).ListItem.Genre]</label>
+                            <height>60</height>
+                        </control>
+                    </control>
                     <control type="panel" id="50">
-                        <left>-15</left>
+                        <top>168</top>
+                        <height>412.5</height>
                         <right>-15</right>
+                        <left>-15</left>
                         <onfocus>SetProperty(SkinHelper.WidgetContainer,50,Home)</onfocus>
                         <onup>5600</onup>
                         <ondown>5600</ondown>
                         <preloaditems>2</preloaditems>
-                        <orientation>vertical</orientation>
+                        <orientation>horizontal</orientation>
                         <itemlayout width="244.28" height="412.5">
                             <control type="group">
                                 <height>345</height>
@@ -227,7 +177,7 @@
                             <control type="label">
                                 <left>15</left>
                                 <right>15</right>
-                                <font>font_tiny</font>
+                                <font>font_statusbar</font>
                                 <textcolor>main_fg_100</textcolor>
                                 <top>345</top>
                                 <bottom>30</bottom>
@@ -264,18 +214,55 @@
                             <control type="label">
                                 <left>15</left>
                                 <right>15</right>
-                                <font>font_tiny</font>
+                                <font>font_statusbar</font>
                                 <textcolor>main_fg_100</textcolor>
                                 <top>345</top>
                                 <bottom>30</bottom>
                                 <aligny>center</aligny>
                                 <align>center</align>
+                                <scroll>false</scroll>
                                 <label>$INFO[ListItem.Label]</label>
                             </control>
                         </focusedlayout>
-                        <content target="videos">videodb://movies/titles/</content>
+                        <content target="videos">videodb://recentlyaddedmovies/</content>
+                    </control>
+
+                    <control type="grouplist">
+                        <orientation>vertical</orientation>
+                        <top>600</top>
+                        <itemgap>40</itemgap>
+                        <usecontrolcoords>true</usecontrolcoords>
+                        <control type="textbox">
+                            <centerleft>50%</centerleft>
+                            <width>1350</width>
+                            <label fallback="19055">$VAR[Label_Plot]</label>
+                            <height>120</height>
+                            <aligny>top</aligny>
+                            <align>center</align>
+                            <textcolor>main_fg_70</textcolor>
+                            <font>font_plotbox</font>
+                        </control>
+                        <include>Object_Icon_Ratings</include>
                     </control>
                     
+                    <!-- <control type="list">
+                        <left>978</left>
+                        <height>742.5</height>
+                        <itemlayout width="702" height="82.5"></itemlayout>
+                        <focusedlayout width="702" height="82.5">
+                            <control type="group">
+                                <top>15</top>
+                                <left>0</left>
+                                <right>0</right>
+                                <control type="image">
+                                    <texture border="10" colordiffuse="main_fg_100">diffuse/box.png</texture>
+                                </control>
+                            </control>
+                        </focusedlayout>
+                        <include>Items_Settings</include>
+                    </control>
+ -->
+
                 </control>
             </control>
         </control>
