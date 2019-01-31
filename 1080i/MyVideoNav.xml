@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Foundation -->
 <window id="6">
-    <defaultcontrol always="true">5600</defaultcontrol>
+    <defaultcontrol always="true">50</defaultcontrol>
     <menucontrol>300</menucontrol>
-    <include>View_ViewIDs</include>
+    <views>50,51,52</views>
     <onload condition="System.HasAddon(script.tv.show.next.aired)">RunScript(script.tv.show.next.aired,backend=True)</onload>
     <controls>
         <control type="image">
@@ -11,75 +11,35 @@
             <height>1080</height>
             <aspectratio>scale</aspectratio>
             <fadetime>600</fadetime>
-            <texture background="true">$INFO[Container(50).ListItem.Art(fanart)]</texture>
-        </control>
-        <control type="wraplist" id="5601">
-            <animation effect="fade" start="0" end="100" time="0" reversible="false" condition="Control.HasFocus(5600)">Conditional</animation>
-            <animation effect="fade" start="100" end="0" time="600" reversible="false" condition="!Control.HasFocus(5600)">Conditional</animation>
-            <height>1080</height>
-            <width>1920</width>    
-            <visible>Container.Content(movies) | Container.Content(tvshows)</visible>
-            <onup>SetFocus(50,999999,absolute)</onup>
-            <ondown>SetFocus(50,0,absolute)</ondown>
-            <autoscroll time="7000">System.IdleTime(1)</autoscroll>
-            <orientation>horizontal</orientation>
-            <itemlayout width="1920" height="1080">
-                <control type="image">
-                    <centerleft>50%</centerleft>
-                    <top>0</top>
-                    <width>1920</width>
-                    <height>1080</height>
-                    <aspectratio>scale</aspectratio>
-                    <texture background="true">$INFO[ListItem.Art(fanart)]</texture>
-                </control>
-            </itemlayout>
-            <focusedlayout width="1920" height="1080">
-                <control type="image">
-                    <centerleft>50%</centerleft>
-                    <top>0</top>
-                    <width>1920</width>
-                    <height>1080</height>
-                    <aspectratio>scale</aspectratio>
-                    <texture background="true">$INFO[ListItem.Art(fanart)]</texture>
-                </control>
-            </focusedlayout>
-            <content limit="10" sortby="random" target="videos">$INFO[Container.FolderPath]</content>
+            <texture background="true">$INFO[ListItem.Art(fanart)]</texture>
         </control>
 
-        <control type="grouplist">
-            <orientation>vertical</orientation>
-            <itemgap>0</itemgap>
-            <usecontrolcoords>true</usecontrolcoords>
+        <control type="group">
+            <animation effect="slide" end="0,900" start="0" time="200" condition="Window.Next(Home)">WindowClose</animation>
+            <control type="image">
+                <texture colordiffuse="Background">common/bg.jpg</texture>
+            </control>
+            <include>Topbar</include>
+                
+            <!-- ============= -->
+            <!-- Showcase View -->
+            <!-- ============= -->
             <control type="group">
-                <height>1080</height>
-                <width>1920</width>
-                <control type="image">
-                    <top>640</top>
-                    <bottom>-120</bottom>
-                    <texture colordiffuse="Background">common/bg.jpg</texture>
-                </control>
+                <visible>Control.IsVisible(52)</visible>
+                <include>View_Group</include>
                 <control type="grouplist">
-                    <top>710</top>
-                    <bottom>0</bottom>
+                    <top>0</top>
                     <left>400</left>
                     <right>400</right>
                     <orientation>vertical</orientation>
                     <itemgap>10</itemgap>
                     <usecontrolcoords>true</usecontrolcoords>
                     <control type="label">
-                        <align>center</align>
-                        <font>font_byline</font>
-                        <textcolor>main_fg_70</textcolor>
-                        <label>Random Movies</label>
-                        <height>30</height>
-                    </control>
-                    <control type="label">
-                        <top>30</top>
                         <aligny>top</aligny>
                         <align>center</align>
                         <font>font_title</font>
                         <textcolor>main_fg_100</textcolor>
-                        <label>$INFO[Container(5601).ListItem.Label,[B],[/B]]</label>
+                        <label>$INFO[Container(52).ListItem.Label,[B],[/B]]</label>
                         <height>80</height>
                     </control>
                     <control type="label">
@@ -87,233 +47,384 @@
                         <aligny>top</aligny>
                         <font>font_tiny</font>
                         <textcolor>main_fg_70</textcolor>
-                        <label>$INFO[Container(5601).ListItem.Genre]</label>
-                        <height>80</height>
-                    </control>
-                    <control type="grouplist">
-                        <orientation>horizontal</orientation>
-                        <height>80</height>
-                        <align>center</align>
-                        <itemgap>10</itemgap>
-                        <control type="group">
-                            <width>64</width>
-                            <control type="image">
-                                <top>0</top>
-                                <centerleft>50%</centerleft>
-                                <width>32</width>
-                                <height>32</height>
-                                <texture colordiffuse="main_fg_70">flags/monochrome/ratings/metacritic.png</texture>
-                                <!-- <visible>!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.MetaCritic.Rating))</visible> -->
-                                <visible>!Skin.HasSetting(Ratings.Metacritic)</visible>
-                            </control>
-                            <control type="label">
-                                <textcolor>main_fg_70</textcolor>
-                                <top>40</top>
-                                <width>auto</width>
-                                <height>28</height>
-                                <align>center</align>
-                                <font>font_tiny_bold</font>
-                                <label>$NUMBER[78]</label>
-                                <!-- <visible>!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.MetaCritic.Rating))</visible> -->
-                                <visible>!Skin.HasSetting(Ratings.Metacritic)</visible>
-                            </control>
-                        </control>
-                        <control type="group">
-                            <width>64</width>
-                            <control type="image">
-                                <top>0</top>
-                                <centerleft>50%</centerleft>
-                                <width>32</width>
-                                <height>32</height>
-                                <texture colordiffuse="main_fg_70">flags/monochrome/ratings/rtfresh.png</texture>
-                                <!-- <visible>!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.MetaCritic.Rating))</visible> -->
-                                <visible>!Skin.HasSetting(Ratings.Metacritic)</visible>
-                            </control>
-                            <control type="label">
-                                <textcolor>main_fg_70</textcolor>
-                                <top>40</top>
-                                <width>auto</width>
-                                <height>28</height>
-                                <align>center</align>
-                                <font>font_tiny_bold</font>
-                                <label>$NUMBER[83]</label>
-                                <!-- <visible>!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.MetaCritic.Rating))</visible> -->
-                                <visible>!Skin.HasSetting(Ratings.Metacritic)</visible>
-                            </control>
-                        </control>
-                        <control type="group">
-                            <width>64</width>
-                            <control type="image">
-                                <top>0</top>
-                                <centerleft>50%</centerleft>
-                                <width>40</width>
-                                <height>32</height>
-                                <texture colordiffuse="main_fg_70">flags/monochrome/ratings/imdbicon.png</texture>
-                                <!-- <visible>!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.MetaCritic.Rating))</visible> -->
-                                <visible>!Skin.HasSetting(Ratings.Metacritic)</visible>
-                            </control>
-                            <control type="label">
-                                <textcolor>main_fg_70</textcolor>
-                                <top>40</top>
-                                <width>auto</width>
-                                <height>28</height>
-                                <align>center</align>
-                                <font>font_tiny_bold</font>
-                                <label>$NUMBER[72]</label>
-                                <!-- <visible>!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.MetaCritic.Rating))</visible> -->
-                                <visible>!Skin.HasSetting(Ratings.Metacritic)</visible>
-                            </control>
-                        </control>
+                        <label>$INFO[Container(52).ListItem.Genre]</label>
+                        <height>60</height>
                     </control>
                 </control>
-                <control type="button" id="5600">
-                    <animation effect="fade" start="0" end="0" condition="true">Conditional</animation>
-                    <onleft>Control.Move(5601,-1)</onleft>
-                    <onright>Control.Move(5601,1)</onright>
-                    <onup>SetFocus(50,999999,absolute)</onup>
-                    <ondown>SetFocus(50,0,absolute)</ondown>
-                    <onclick>SetFocus(5601)</onclick>
-                    <onclick>Action(Select)</onclick>
-                    <oninfo>SetFocus(5601)</oninfo>
-                    <oninfo>Action(Info)</oninfo>
+                <control type="fixedlist" id="52">
+                    <onfocus>ClearProperty(SkinHelper.WidgetContainer,Home)</onfocus>
+                    <focusposition>3</focusposition>
+                    <movement>3</movement>
+                    <top>168</top>
+                    <height>412.5</height>
+                    <right>-15</right>
+                    <left>-15</left>
+                    <preloaditems>2</preloaditems>
+                    <orientation>horizontal</orientation>
+                    <visible>Container.Content(sets) | Container.Content(seasons)</visible>
+                    <itemlayout width="244.28" height="412.5">
+                        <control type="group">
+                            <height>345</height>
+                            <control type="image">
+                                <bordersize>15</bordersize>
+                                <aspectratio>scale</aspectratio>
+                                <bordertexture border="30" colordiffuse="55ffffff">common/shadow-15.png</bordertexture>
+                                <texture colordiffuse="main_fg_100">common/geometric.png</texture>
+                            </control>
+                            <control type="image">
+                                <centertop>50%</centertop>
+                                <centerleft>50%</centerleft>
+                                <width>160</width>
+                                <height>160</height>
+                                <texture background="true">$INFO[ListItem.Icon]</texture>
+                                <visible>String.StartsWith(ListItem.Icon,Default)</visible>
+                            </control>
+                            <control type="image">
+                                <bordersize>15</bordersize>
+                                <aspectratio>scale</aspectratio>
+                                <texture background="true">$VAR[Image_Poster]</texture>
+                                <visible>!String.StartsWith(ListItem.Icon,Default)</visible>
+                            </control>
+                        </control>
+                        <control type="label">
+                            <left>15</left>
+                            <right>15</right>
+                            <font>font_statusbar</font>
+                            <textcolor>main_fg_100</textcolor>
+                            <top>345</top>
+                            <bottom>30</bottom>
+                            <aligny>center</aligny>
+                            <align>center</align>
+                            <label>$INFO[ListItem.Label]</label>
+                        </control>
+                    </itemlayout>
+                    <focusedlayout width="244.28" height="412.5">
+                        <control type="group">
+                            <height>345</height>
+                            <control type="image">
+                                <bordersize>15</bordersize>
+                                <aspectratio>scale</aspectratio>
+                                <bordertexture border="30" colordiffuse="55ffffff">common/shadow-15.png</bordertexture>
+                                <texture colordiffuse="main_fg_100">common/geometric.png</texture>
+                            </control>
+                            <control type="image">
+                                <centertop>50%</centertop>
+                                <centerleft>50%</centerleft>
+                                <width>160</width>
+                                <height>160</height>
+                                <texture background="true">$INFO[ListItem.Icon]</texture>
+                                <visible>String.StartsWith(ListItem.Icon,Default)</visible>
+                            </control>
+                            <control type="image">
+                                <bordersize>15</bordersize>
+                                <aspectratio>scale</aspectratio>
+                                <texture background="true">$VAR[Image_Poster]</texture>
+                                <visible>!String.StartsWith(ListItem.Icon,Default)</visible>
+                            </control>
+                            <include>View_Selectbox</include>
+                        </control>
+                        <control type="label">
+                            <left>15</left>
+                            <right>15</right>
+                            <font>font_statusbar</font>
+                            <textcolor>main_fg_100</textcolor>
+                            <top>345</top>
+                            <bottom>30</bottom>
+                            <aligny>center</aligny>
+                            <align>center</align>
+                            <scroll>false</scroll>
+                            <label>$INFO[ListItem.Label]</label>
+                        </control>
+                    </focusedlayout>
+                </control>
+
+                <control type="grouplist">
+                    <orientation>vertical</orientation>
+                    <top>600</top>
+                    <itemgap>40</itemgap>
+                    <usecontrolcoords>true</usecontrolcoords>
+                    <control type="textbox">
+                        <centerleft>50%</centerleft>
+                        <width>1350</width>
+                        <label fallback="19055">$VAR[Label_Plot]</label>
+                        <height>120</height>
+                        <aligny>top</aligny>
+                        <align>center</align>
+                        <textcolor>main_fg_70</textcolor>
+                        <font>font_plotbox</font>
+                    </control>
+                    <include content="Object_Icon_Ratings">
+                        <param name="id" value="52" />
+                    </include>
                 </control>
             </control>
 
+            <!-- ================ -->
+            <!-- Poster Wall View -->
+            <!-- ================ -->
             <control type="group">
-                <top>120</top>
-                <height>1080</height>
-                <width>1920</width>
-                <control type="image">
-                    <texture colordiffuse="Background">common/bg.jpg</texture>
+                <include>View_Group</include>
+                <visible>Control.IsVisible(51)</visible>
+                <control type="panel" id="51">
+                    <onfocus>ClearProperty(SkinHelper.WidgetContainer,Home)</onfocus>
+                    <visible>![Container.Content() | Container.Content(genres) | Container.Content(years) | Container.Content(directors) | Container.Content(countries) | Container.Content(tags) | Container.Content(studios) | Container.Content(sets) | Container.Content(seasons)]</visible>
+
+                    <height>825</height>
+                    <left>-15</left>
+                    <right>-15</right>
+                    <preloaditems>2</preloaditems>
+                    <orientation>vertical</orientation>
+                    <itemlayout width="342" height="412.5" condition="Container.Content(addons) | Container.Content(files)">
+                        <control type="group">
+                            <height>345</height>
+                            <control type="image">
+                                <bordersize>15</bordersize>
+                                <aspectratio>scale</aspectratio>
+                                <bordertexture border="30" colordiffuse="55ffffff">common/shadow-15.png</bordertexture>
+                                <texture colordiffuse="PosterBack">common/geometric.png</texture>
+                            </control>
+                            <control type="image">
+                                <centertop>50%</centertop>
+                                <centerleft>50%</centerleft>
+                                <width>160</width>
+                                <height>160</height>
+                                <texture background="true">$INFO[ListItem.Icon]</texture>
+                                <visible>String.StartsWith(ListItem.Icon,Default)</visible>
+                            </control>
+                            <control type="image">
+                                <bordersize>15</bordersize>
+                                <aspectratio>scale</aspectratio>
+                                <texture background="true">$VAR[Image_Poster]</texture>
+                                <visible>!String.StartsWith(ListItem.Icon,Default)</visible>
+                            </control>
+                        </control>
+                        <control type="label">
+                            <left>15</left>
+                            <right>15</right>
+                            <font>font_tiny</font>
+                            <textcolor>main_fg_100</textcolor>
+                            <top>345</top>
+                            <bottom>30</bottom>
+                            <aligny>center</aligny>
+                            <align>center</align>
+                            <label>$INFO[ListItem.Label]</label>
+                        </control>
+                    </itemlayout>
+                    <focusedlayout width="342" height="412.5" condition="Container.Content(addons) | Container.Content(files)">
+                        <control type="group">
+                            <height>345</height>
+                            <control type="image">
+                                <bordersize>15</bordersize>
+                                <aspectratio>scale</aspectratio>
+                                <bordertexture border="30" colordiffuse="55ffffff">common/shadow-15.png</bordertexture>
+                                <texture colordiffuse="PosterBack">common/geometric.png</texture>
+                            </control>
+                            <control type="image">
+                                <centertop>50%</centertop>
+                                <centerleft>50%</centerleft>
+                                <width>160</width>
+                                <height>160</height>
+                                <texture background="true">$INFO[ListItem.Icon]</texture>
+                                <visible>String.StartsWith(ListItem.Icon,Default)</visible>
+                            </control>
+                            <control type="image">
+                                <bordersize>15</bordersize>
+                                <aspectratio>scale</aspectratio>
+                                <texture background="true">$VAR[Image_Poster]</texture>
+                                <visible>!String.StartsWith(ListItem.Icon,Default)</visible>
+                            </control>
+                            <include>View_Selectbox</include>
+                        </control>
+                        <control type="label">
+                            <left>15</left>
+                            <right>15</right>
+                            <font>font_tiny</font>
+                            <textcolor>main_fg_100</textcolor>
+                            <top>345</top>
+                            <bottom>30</bottom>
+                            <aligny>center</aligny>
+                            <align>center</align>
+                            <label>$INFO[ListItem.Label]</label>
+                        </control>
+                    </focusedlayout>
+                    <itemlayout width="570" height="412.5" condition="Container.Content(episodes) | Container.Content(videos)">
+                        <control type="group">
+                            <height>345</height>
+                            <control type="image">
+                                <bordersize>15</bordersize>
+                                <aspectratio>scale</aspectratio>
+                                <bordertexture border="30" colordiffuse="55ffffff">common/shadow-15.png</bordertexture>
+                                <texture colordiffuse="PosterBack">common/geometric.png</texture>
+                            </control>
+                            <control type="image">
+                                <centertop>50%</centertop>
+                                <centerleft>50%</centerleft>
+                                <width>160</width>
+                                <height>160</height>
+                                <texture background="true">$INFO[ListItem.Icon]</texture>
+                                <visible>String.StartsWith(ListItem.Icon,Default)</visible>
+                            </control>
+                            <control type="image">
+                                <bordersize>15</bordersize>
+                                <aspectratio>scale</aspectratio>
+                                <texture background="true">$VAR[Image_Fanart]</texture>
+                                <visible>!String.StartsWith(ListItem.Icon,Default)</visible>
+                            </control>
+                        </control>
+                        <control type="label">
+                            <left>15</left>
+                            <right>15</right>
+                            <font>font_tiny</font>
+                            <textcolor>main_fg_100</textcolor>
+                            <top>345</top>
+                            <bottom>30</bottom>
+                            <aligny>center</aligny>
+                            <align>center</align>
+                            <label>$INFO[ListItem.Label]</label>
+                        </control>
+                    </itemlayout>
+                    <focusedlayout width="570" height="412.5" condition="Container.Content(episodes) | Container.Content(videos)">
+                        <control type="group">
+                            <height>345</height>
+                            <control type="image">
+                                <bordersize>15</bordersize>
+                                <aspectratio>scale</aspectratio>
+                                <bordertexture border="30" colordiffuse="55ffffff">common/shadow-15.png</bordertexture>
+                                <texture colordiffuse="PosterBack">common/geometric.png</texture>
+                            </control>
+                            <control type="image">
+                                <centertop>50%</centertop>
+                                <centerleft>50%</centerleft>
+                                <width>160</width>
+                                <height>160</height>
+                                <texture background="true">$INFO[ListItem.Icon]</texture>
+                                <visible>String.StartsWith(ListItem.Icon,Default)</visible>
+                            </control>
+                            <control type="image">
+                                <bordersize>15</bordersize>
+                                <aspectratio>scale</aspectratio>
+                                <texture background="true">$VAR[Image_Fanart]</texture>
+                                <visible>!String.StartsWith(ListItem.Icon,Default)</visible>
+                            </control>
+                            <include>View_Selectbox</include>
+                        </control>
+                        <control type="label">
+                            <left>15</left>
+                            <right>15</right>
+                            <font>font_tiny</font>
+                            <textcolor>main_fg_100</textcolor>
+                            <top>345</top>
+                            <bottom>30</bottom>
+                            <aligny>center</aligny>
+                            <align>center</align>
+                            <label>$INFO[ListItem.Label]</label>
+                        </control>
+                    </focusedlayout>
+                    <itemlayout width="244.28" height="412.5" condition="![Container.Content(episodes) | Container.Content(videos) | Container.Content(addons)]">
+                        <control type="group">
+                            <height>345</height>
+                            <control type="image">
+                                <bordersize>15</bordersize>
+                                <aspectratio>scale</aspectratio>
+                                <bordertexture border="30" colordiffuse="55ffffff">common/shadow-15.png</bordertexture>
+                                <texture colordiffuse="PosterBack">common/geometric.png</texture>
+                            </control>
+                            <control type="image">
+                                <centertop>50%</centertop>
+                                <centerleft>50%</centerleft>
+                                <width>160</width>
+                                <height>160</height>
+                                <texture background="true">$INFO[ListItem.Icon]</texture>
+                                <visible>String.StartsWith(ListItem.Icon,Default)</visible>
+                            </control>
+                            <control type="image">
+                                <bordersize>15</bordersize>
+                                <aspectratio>scale</aspectratio>
+                                <texture background="true">$VAR[Image_Poster]</texture>
+                                <visible>!String.StartsWith(ListItem.Icon,Default)</visible>
+                            </control>
+                        </control>
+                        <control type="label">
+                            <left>15</left>
+                            <right>15</right>
+                            <font>font_tiny</font>
+                            <textcolor>main_fg_100</textcolor>
+                            <top>345</top>
+                            <bottom>30</bottom>
+                            <aligny>center</aligny>
+                            <align>center</align>
+                            <label>$INFO[ListItem.Label]</label>
+                        </control>
+                    </itemlayout>
+                    <focusedlayout width="244.28" height="412.5" condition="![Container.Content(episodes) | Container.Content(videos) | Container.Content(addons)]">
+                        <control type="group">
+                            <height>345</height>
+                            <control type="image">
+                                <bordersize>15</bordersize>
+                                <aspectratio>scale</aspectratio>
+                                <bordertexture border="30" colordiffuse="55ffffff">common/shadow-15.png</bordertexture>
+                                <texture colordiffuse="PosterBack">common/geometric.png</texture>
+                            </control>
+                            <control type="image">
+                                <centertop>50%</centertop>
+                                <centerleft>50%</centerleft>
+                                <width>160</width>
+                                <height>160</height>
+                                <texture background="true">$INFO[ListItem.Icon]</texture>
+                                <visible>String.StartsWith(ListItem.Icon,Default)</visible>
+                            </control>
+                            <control type="image">
+                                <bordersize>15</bordersize>
+                                <aspectratio>scale</aspectratio>
+                                <texture background="true">$VAR[Image_Poster]</texture>
+                                <visible>!String.StartsWith(ListItem.Icon,Default)</visible>
+                            </control>
+                            <include>View_Selectbox</include>
+                        </control>
+                        <control type="label">
+                            <left>15</left>
+                            <right>15</right>
+                            <font>font_tiny</font>
+                            <textcolor>main_fg_100</textcolor>
+                            <top>345</top>
+                            <bottom>30</bottom>
+                            <aligny>center</aligny>
+                            <align>center</align>
+                            <label>$INFO[ListItem.Label]</label>
+                        </control>
+                    </focusedlayout>
                 </control>
-                <include>Topbar</include>
+            </control>
+
+            <!-- ================ -->
+            <!-- Hub Library View -->
+            <!-- ================ -->
+            <control type="group">
+                <visible>Control.IsVisible(50)</visible>
+                <include>View_Group</include>
+                <control type="panel" id="50">
+                    <visible>Container.Content() | Container.Content(genres) | Container.Content(years) | Container.Content(directors) | Container.Content(countries) | Container.Content(tags) | Container.Content(studios)</visible>
+                    <ondown>5000</ondown>
+                    <include>View_SixItems</include>
+                </control>
+
                 <control type="group">
-                    <top>view_top</top>
-                    <left>view_pad</left>
-                    <right>view_pad</right>
-                    <control type="panel" id="50">
-                        <left>-15</left>
-                        <right>-15</right>
-                        <onup>5600</onup>
-                        <ondown>SetFocus(50,0,absolute)</ondown>
-                        <ondown>SetFocus(5600)</ondown>
-                        <preloaditems>2</preloaditems>
-                        <orientation>vertical</orientation>
-                        <!-- <itemlayout width="570" height="412.5">
-                            <control type="image">
-                                <height>345</height>
-                                <bordersize>15</bordersize>
-                                <aspectratio>scale</aspectratio>
-                                <texture background="true">$INFO[ListItem.Art(fanart)]</texture>
-                            </control>
-                            <control type="label">
-                                <left>15</left>
-                                <right>15</right>
-                                <font>font_tiny</font>
-                                <textcolor>main_fg_100</textcolor>
-                                <top>345</top>
-                                <bottom>30</bottom>
-                                <aligny>center</aligny>
-                                <align>center</align>
-                                <label>$INFO[ListItem.Label]</label>
-                            </control>
-                        </itemlayout>
-                        <focusedlayout width="570" height="412.5">
-                            <control type="image">
-                                <height>345</height>
-                                <bordersize>15</bordersize>
-                                <aspectratio>scale</aspectratio>
-                                <texture background="true">$INFO[ListItem.Art(fanart)]</texture>
-                            </control>
-                            <control type="group">
-                                <height>345</height>
-                                <include>View_Selectbox</include>
-                            </control>
-                            <control type="label">
-                                <left>15</left>
-                                <right>15</right>
-                                <font>font_tiny</font>
-                                <textcolor>main_fg_100</textcolor>
-                                <top>345</top>
-                                <bottom>30</bottom>
-                                <aligny>center</aligny>
-                                <align>center</align>
-                                <label>$INFO[ListItem.Label]</label>
-                            </control>
-                        </focusedlayout> -->
-                        <itemlayout width="244.28" height="412.5">
-                            <control type="group">
-                                <height>345</height>
-                                <control type="image">
-                                    <bordersize>15</bordersize>
-                                    <aspectratio>scale</aspectratio>
-                                    <bordertexture border="30" colordiffuse="55ffffff">common/shadow-15.png</bordertexture>
-                                    <texture colordiffuse="main_fg_100">common/geometric.png</texture>
-                                </control>
-                                <control type="image">
-                                    <centertop>50%</centertop>
-                                    <centerleft>50%</centerleft>
-                                    <width>160</width>
-                                    <height>160</height>
-                                    <texture background="true">$INFO[ListItem.Icon]</texture>
-                                    <visible>String.StartsWith(ListItem.Icon,Default)</visible>
-                                </control>
-                                <control type="image">
-                                    <bordersize>15</bordersize>
-                                    <aspectratio>scale</aspectratio>
-                                    <texture background="true">$VAR[Image_Poster]</texture>
-                                    <visible>!String.StartsWith(ListItem.Icon,Default)</visible>
-                                </control>
-                            </control>
-                            <control type="label">
-                                <left>15</left>
-                                <right>15</right>
-                                <font>font_tiny</font>
-                                <textcolor>main_fg_100</textcolor>
-                                <top>345</top>
-                                <bottom>30</bottom>
-                                <aligny>center</aligny>
-                                <align>center</align>
-                                <label>$INFO[ListItem.Label]</label>
-                            </control>
-                        </itemlayout>
-                        <focusedlayout width="244.28" height="412.5">
-                            <control type="group">
-                                <height>345</height>
-                                <control type="image">
-                                    <bordersize>15</bordersize>
-                                    <aspectratio>scale</aspectratio>
-                                    <bordertexture border="30" colordiffuse="55ffffff">common/shadow-15.png</bordertexture>
-                                    <texture colordiffuse="main_fg_100">common/geometric.png</texture>
-                                </control>
-                                <control type="image">
-                                    <centertop>50%</centertop>
-                                    <centerleft>50%</centerleft>
-                                    <width>160</width>
-                                    <height>160</height>
-                                    <texture background="true">$INFO[ListItem.Icon]</texture>
-                                    <visible>String.StartsWith(ListItem.Icon,Default)</visible>
-                                </control>
-                                <control type="image">
-                                    <bordersize>15</bordersize>
-                                    <aspectratio>scale</aspectratio>
-                                    <texture background="true">$VAR[Image_Poster]</texture>
-                                    <visible>!String.StartsWith(ListItem.Icon,Default)</visible>
-                                </control>
-                                <include>View_Selectbox</include>
-                            </control>
-                            <control type="label">
-                                <left>15</left>
-                                <right>15</right>
-                                <font>font_tiny</font>
-                                <textcolor>main_fg_100</textcolor>
-                                <top>345</top>
-                                <bottom>30</bottom>
-                                <aligny>center</aligny>
-                                <align>center</align>
-                                <label>$INFO[ListItem.Label]</label>
-                            </control>
-                        </focusedlayout>
+                    <control type="label">
+                        <top>267</top>
+                        <height>100</height>
+                        <aligny>center</aligny>
+                        <align>center</align>
+                        <font>font_byline</font>
+                        <textcolor>main_fg_70</textcolor>
+                        <label>$INFO[Container(50).ListItem.Label]</label>
+                    </control>
+                    <control type="panel" id="5000">
+                        <top>352.5</top>
+                        <onup>50</onup>
+                        <onfocus>SetProperty(SkinHelper.WidgetContainer,5000,Home)</onfocus>
+                        <height>472.5</height>
+                        <include>View_SixPosters</include>
+                        <content target="videos" sortby="random" limit="6">$VAR[Defs_HubSpotlight_Path]</content>
                     </control>
                 </control>
             </control>

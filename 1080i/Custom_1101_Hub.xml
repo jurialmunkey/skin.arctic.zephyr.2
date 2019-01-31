@@ -7,264 +7,139 @@
             <height>1080</height>
             <aspectratio>scale</aspectratio>
             <fadetime>600</fadetime>
-            <texture background="true">$INFO[Container(50).ListItem.Art(fanart)]</texture>
+            <texture background="true">$INFO[Container(5610).ListItem.Art(fanart)]</texture>
         </control>
-
+    
         <control type="group">
-            <animation effect="slide" start="0" end="0,-1080" time="200" condition="!Control.HasFocus(5600) | Window.IsVisible(DialogVideoInfo.xml)">Conditional</animation>
-            <height>2160</height>
-            <orientation>vertical</orientation>
-            <itemgap>0</itemgap>
-            <usecontrolcoords>true</usecontrolcoords>
-            <control type="group">
-                <height>1080</height>
-                <width>1920</width>
-                <control type="wraplist" id="5600">
-                    <height>1080</height>
-                    <width>1920</width>
-                    <onfocus>SetProperty(SkinHelper.WidgetContainer,5600,Home)</onfocus>
-                    <onup>SetFocus(50,999999,absolute)</onup>
-                    <ondown>SetFocus(50,0,absolute)</ondown>
-                    <!-- <autoscroll time="7000">System.IdleTime(1)</autoscroll> -->
-                    <orientation>horizontal</orientation>
-                    <itemlayout width="1920" height="1080">
-                        <control type="image">
-                            <aspectratio>scale</aspectratio>
-                            <texture colordiffuse="main_fg_100">common/geometric1.jpg</texture>
-                        </control>
-                        <control type="image">
-                            <centerleft>50%</centerleft>
-                            <top>0</top>
-                            <width>1920</width>
-                            <height>1080</height>
-                            <aspectratio>scale</aspectratio>
-                            <texture background="true">$INFO[ListItem.Art(fanart)]</texture>
-                        </control>
-                    </itemlayout>
-                    <focusedlayout width="1920" height="1080">
-                        <control type="image">
-                            <aspectratio>scale</aspectratio>
-                            <texture colordiffuse="main_fg_100">common/geometric1.jpg</texture>
-                        </control>
-                        <control type="image">
-                            <centerleft>50%</centerleft>
-                            <top>0</top>
-                            <width>1920</width>
-                            <height>1080</height>
-                            <aspectratio>scale</aspectratio>
-                            <texture background="true">$INFO[ListItem.Art(fanart)]</texture>
-                        </control>
-                    </focusedlayout>
-                    <content limit="10" sortby="random" target="videos">videodb://movies/titles/</content>
-                </control>
-                 <control type="image">
-                    <top>640</top>
-                    <height>1720</height>
-                    <texture colordiffuse="Background">common/bg.jpg</texture>
-                </control>
-                <control type="grouplist">
-                    <top>710</top>
-                    <bottom>0</bottom>
-                    <left>400</left>
-                    <right>400</right>
-                    <orientation>vertical</orientation>
-                    <itemgap>10</itemgap>
-                    <usecontrolcoords>true</usecontrolcoords>
-                    <control type="label">
-                        <align>center</align>
-                        <font>font_byline</font>
-                        <textcolor>main_fg_70</textcolor>
-                        <label>Random Movies</label>
-                        <height>30</height>
-                    </control>
-                    <control type="label">
-                        <top>30</top>
-                        <aligny>top</aligny>
-                        <align>center</align>
-                        <font>font_title</font>
-                        <textcolor>main_fg_100</textcolor>
-                        <label>$INFO[Container(5600).ListItem.Label,[B],[/B]]</label>
-                        <height>80</height>
-                    </control>
-                    <control type="label">
-                        <align>center</align>
-                        <aligny>top</aligny>
-                        <font>font_tiny</font>
-                        <textcolor>main_fg_70</textcolor>
-                        <label>$INFO[Container(5600).ListItem.Genre]</label>
-                        <height>60</height>
-                    </control>
-                    <include>Object_Icon_Ratings</include>
-                    <control type="image">
-                        <top>0</top>
-                        <centerleft>50%</centerleft>
-                        <width>32</width>
-                        <height>32</height>
-                        <texture flipy="false" colordiffuse="main_fg_70">buttons/spin-down.png</texture>
-                    </control>
-                </control>
+            <animation effect="slide" end="0,900" start="0" time="200" condition="Window.Next(Home)">WindowClose</animation>
+            <control type="image">
+                <texture colordiffuse="Background">common/bg.jpg</texture>
             </control>
-
+            <include>Topbar</include>
             <control type="group">
-                <top>1080</top>
-                <height>1080</height>
-                <width>1920</width>
-                <include>Topbar</include>
-                <control type="group">
-                    <top>view_top</top>
-                    <left>view_pad</left>
-                    <right>view_pad</right>
-                    <include>Animation_Down</include>
-                    <include>Defs_InfoDialog_Visible</include>
-                    <control type="grouplist">
-                        <top>0</top>
-                        <left>400</left>
-                        <right>400</right>
-                        <orientation>vertical</orientation>
-                        <itemgap>10</itemgap>
-                        <usecontrolcoords>true</usecontrolcoords>
-                        <control type="label">
-                            <aligny>top</aligny>
-                            <align>center</align>
-                            <font>font_title</font>
-                            <textcolor>main_fg_100</textcolor>
-                            <label>$INFO[Container(50).ListItem.Label,[B],[/B]]</label>
-                            <height>80</height>
-                        </control>
-                        <control type="label">
-                            <align>center</align>
-                            <aligny>top</aligny>
-                            <font>font_tiny</font>
-                            <textcolor>main_fg_70</textcolor>
-                            <label>$INFO[Container(50).ListItem.Genre]</label>
-                            <height>60</height>
-                        </control>
-                    </control>
-                    <control type="panel" id="50">
-                        <top>168</top>
-                        <height>412.5</height>
-                        <right>-15</right>
-                        <left>-15</left>
-                        <onfocus>SetProperty(SkinHelper.WidgetContainer,50,Home)</onfocus>
-                        <onup>5600</onup>
-                        <ondown>5600</ondown>
-                        <preloaditems>2</preloaditems>
-                        <orientation>horizontal</orientation>
-                        <itemlayout width="244.28" height="412.5">
-                            <control type="group">
-                                <height>345</height>
-                                <control type="image">
-                                    <bordersize>15</bordersize>
-                                    <aspectratio>scale</aspectratio>
-                                    <bordertexture border="30" colordiffuse="55ffffff">common/shadow-15.png</bordertexture>
-                                    <texture colordiffuse="main_fg_100">common/geometric.png</texture>
-                                </control>
-                                <control type="image">
-                                    <centertop>50%</centertop>
-                                    <centerleft>50%</centerleft>
-                                    <width>160</width>
-                                    <height>160</height>
-                                    <texture background="true">$INFO[ListItem.Icon]</texture>
-                                    <visible>String.StartsWith(ListItem.Icon,Default)</visible>
-                                </control>
-                                <control type="image">
-                                    <bordersize>15</bordersize>
-                                    <aspectratio>scale</aspectratio>
-                                    <texture background="true">$VAR[Image_Poster]</texture>
-                                    <visible>!String.StartsWith(ListItem.Icon,Default)</visible>
-                                </control>
-                            </control>
-                            <control type="label">
-                                <left>15</left>
-                                <right>15</right>
-                                <font>font_statusbar</font>
-                                <textcolor>main_fg_100</textcolor>
-                                <top>345</top>
-                                <bottom>30</bottom>
-                                <aligny>center</aligny>
-                                <align>center</align>
-                                <label>$INFO[ListItem.Label]</label>
-                            </control>
-                        </itemlayout>
-                        <focusedlayout width="244.28" height="412.5">
-                            <control type="group">
-                                <height>345</height>
-                                <control type="image">
-                                    <bordersize>15</bordersize>
-                                    <aspectratio>scale</aspectratio>
-                                    <bordertexture border="30" colordiffuse="55ffffff">common/shadow-15.png</bordertexture>
-                                    <texture colordiffuse="main_fg_100">common/geometric.png</texture>
-                                </control>
-                                <control type="image">
-                                    <centertop>50%</centertop>
-                                    <centerleft>50%</centerleft>
-                                    <width>160</width>
-                                    <height>160</height>
-                                    <texture background="true">$INFO[ListItem.Icon]</texture>
-                                    <visible>String.StartsWith(ListItem.Icon,Default)</visible>
-                                </control>
-                                <control type="image">
-                                    <bordersize>15</bordersize>
-                                    <aspectratio>scale</aspectratio>
-                                    <texture background="true">$VAR[Image_Poster]</texture>
-                                    <visible>!String.StartsWith(ListItem.Icon,Default)</visible>
-                                </control>
-                                <include>View_Selectbox</include>
-                            </control>
-                            <control type="label">
-                                <left>15</left>
-                                <right>15</right>
-                                <font>font_statusbar</font>
-                                <textcolor>main_fg_100</textcolor>
-                                <top>345</top>
-                                <bottom>30</bottom>
-                                <aligny>center</aligny>
-                                <align>center</align>
-                                <scroll>false</scroll>
-                                <label>$INFO[ListItem.Label]</label>
-                            </control>
-                        </focusedlayout>
-                        <content target="videos">videodb://recentlyaddedmovies/</content>
-                    </control>
+                <top>view_top</top>
+                <left>view_pad</left>
+                <right>view_pad</right>
+                <include>Animation_Down</include>
+                <include>Animation_FadeIn</include>
+                <include>Animation_FadeOut</include>
+                <include>Defs_InfoDialog_Visible</include>
+                <control type="panel" id="5600">
+                    <top>0</top>
+                    <ondown>5610</ondown>
+                    <include>View_SixItems</include>
+                    <content>
+                        <item id="0">
+                            <label>Movies</label>
+                            <label2>Spotlight</label2>
+                            <icon>special://skin/extras/icons/film.png</icon>
+                            <onclick>ActivateWindow(videos,movietitles,return)</onclick>
+                            <property name="widget">special://skin/extras/playlists/RandomMovies.xsp</property>
+                        </item>
+                        <item id="1">
+                            <label>Recently Added</label>
+                            <label2>Recently Added</label2>
+                            <icon>special://skin/extras/icons/recentlyadded.png</icon>
+                            <onclick>ActivateWindow(videos,recentlyaddedmovies,return)</onclick>
+                            <property name="widget">special://skin/extras/playlists/NewMovies.xsp</property>
+                        </item>
+                        <item id="2">
+                            <label>Recently Watched</label>
+                            <label2>Recently Watched</label2>
+                            <icon>special://skin/extras/icons/recent.png</icon>
+                            <onclick>ActivateWindow(videos,special://skin/extras/playlists/RecentMovies.xsp,return)</onclick>
+                            <property name="widget">special://skin/extras/playlists/RecentMovies.xsp</property>
+                        </item>
+                        <item id="3">
+                            <label>Genres</label>
+                            <label2>Spotlight</label2>
+                            <icon>special://skin/extras/icons/genre.png</icon>
+                            <onclick>ActivateWindow(videos,moviegenres,return)</onclick>
+                            <property name="widget">special://skin/extras/playlists/RandomMovies.xsp</property>
+                        </item>
+                        <item id="4">
+                            <label>Years</label>
+                            <label2>Spotlight</label2>
+                            <icon>special://skin/extras/icons/calendar2.png</icon>
+                            <onclick>ActivateWindow(videos,movieyears,return)</onclick>
+                            <property name="widget">special://skin/extras/playlists/RandomMovies.xsp</property>
+                        </item>
+                        <item id="5">
+                            <label>Directors</label>
+                            <label2>Spotlight</label2>
+                            <icon>special://skin/extras/icons/director.png</icon>
+                            <onclick>ActivateWindow(videos,moviedirectors,return)</onclick>
+                            <property name="widget">special://skin/extras/playlists/RandomMovies.xsp</property>
+                        </item>
+                        <item id="6">
+                            <label>Countries</label>
+                            <label2>Spotlight</label2>
+                            <icon>special://skin/extras/icons/world.png</icon>
+                            <onclick>ActivateWindow(videos,moviecountries,return)</onclick>
+                            <property name="widget">special://skin/extras/playlists/RandomMovies.xsp</property>
+                        </item>
+                    </content>
+                </control>
 
-                    <control type="grouplist">
-                        <orientation>vertical</orientation>
-                        <top>600</top>
-                        <itemgap>40</itemgap>
-                        <usecontrolcoords>true</usecontrolcoords>
-                        <control type="textbox">
-                            <centerleft>50%</centerleft>
-                            <width>1350</width>
-                            <label fallback="19055">$VAR[Label_Plot]</label>
-                            <height>120</height>
-                            <aligny>top</aligny>
-                            <align>center</align>
-                            <textcolor>main_fg_70</textcolor>
-                            <font>font_plotbox</font>
-                        </control>
-                        <include>Object_Icon_Ratings</include>
-                    </control>
-                    
-                    <!-- <control type="list">
-                        <left>978</left>
-                        <height>742.5</height>
-                        <itemlayout width="702" height="82.5"></itemlayout>
-                        <focusedlayout width="702" height="82.5">
-                            <control type="group">
-                                <top>15</top>
-                                <left>0</left>
-                                <right>0</right>
-                                <control type="image">
-                                    <texture border="10" colordiffuse="main_fg_100">diffuse/box.png</texture>
-                                </control>
-                            </control>
-                        </focusedlayout>
-                        <include>Items_Settings</include>
-                    </control>
- -->
-
+                <control type="label">
+                    <top>267</top>
+                    <height>100</height>
+                    <aligny>center</aligny>
+                    <align>center</align>
+                    <font>font_byline</font>
+                    <textcolor>main_fg_70</textcolor>
+                    <label>$INFO[Container(5600).ListItem.Label2]</label>
+                </control>
+                <control type="panel" id="5610">
+                    <top>352.5</top>
+                    <onup>5600</onup>
+                    <height>472.5</height>
+                    <include>View_SixPosters</include>
+                    <visible>Container(5600).HasFocus(0)</visible>
+                    <content>$INFO[Container(5600).ListItemAbsolute(0).Property(widget)]</content>
+                </control>
+                <control type="panel" id="5610">
+                    <top>352.5</top>
+                    <onup>5600</onup>
+                    <height>472.5</height>
+                    <include>View_SixPosters</include>
+                    <visible>Container(5600).HasFocus(1)</visible>
+                    <content>$INFO[Container(5600).ListItemAbsolute(1).Property(widget)]</content>
+                </control>
+                <control type="panel" id="5610">
+                    <top>352.5</top>
+                    <onup>5600</onup>
+                    <height>472.5</height>
+                    <include>View_SixPosters</include>
+                    <visible>Container(5600).HasFocus(2)</visible>
+                    <content>$INFO[Container(5600).ListItemAbsolute(2).Property(widget)]</content>
+                </control>
+                <control type="panel" id="5610">
+                    <top>352.5</top>
+                    <onup>5600</onup>
+                    <height>472.5</height>
+                    <include>View_SixPosters</include>
+                    <visible>Container(5600).HasFocus(3)</visible>
+                    <content>$INFO[Container(5600).ListItemAbsolute(3).Property(widget)]</content>
+                </control>
+                <control type="panel" id="5610">
+                    <top>352.5</top>
+                    <onup>5600</onup>
+                    <height>472.5</height>
+                    <include>View_SixPosters</include>
+                    <visible>Container(5600).HasFocus(4)</visible>
+                    <content>$INFO[Container(5600).ListItemAbsolute(4).Property(widget)]</content>
+                </control>
+                <control type="panel" id="5610">
+                    <top>352.5</top>
+                    <onup>5600</onup>
+                    <height>472.5</height>
+                    <include>View_SixPosters</include>
+                    <visible>Container(5600).HasFocus(5)</visible>
+                    <content>$INFO[Container(5600).ListItemAbsolute(5).Property(widget)]</content>
                 </control>
             </control>
         </control>
+        
     </controls>
 </window>

@@ -30,7 +30,7 @@
             </control>
             <control type="group">
                 <width>64</width>
-                <visible>!String.IsEmpty(ListItem.Rating) | !String.IsEmpty(Window(home).Property(SkinHelper.ListItem.Rating.IMDB))</visible>
+                <visible>!String.IsEmpty(Container($PARAM[id]).ListItem.Rating) | !String.IsEmpty(Window(home).Property(SkinHelper.ListItem.Rating.IMDB))</visible>
                 <visible>!Skin.HasSetting(Ratings.IMDB)</visible>
                 <control type="image">
                     <top>0</top>
@@ -46,7 +46,18 @@
                     <height>28</height>
                     <align>center</align>
                     <font>font_tiny_bold</font>
-                    <label>$VAR[Label_Rating_IMDB]</label>
+                    <label>$INFO[Window(home).Property(SkinHelper.ListItem.Rating.IMDB)]</label>
+                    <visible>!String.IsEmpty(Window(home).Property(SkinHelper.ListItem.Rating.IMDB))</visible>
+                </control>
+                <control type="label">
+                    <textcolor>main_fg_70</textcolor>
+                    <top>40</top>
+                    <width>auto</width>
+                    <height>28</height>
+                    <align>center</align>
+                    <font>font_tiny_bold</font>
+                    <label>$INFO[Container($PARAM[id]).ListItem.Rating]</label>
+                    <visible>String.IsEmpty(Window(home).Property(SkinHelper.ListItem.Rating.IMDB))</visible>
                 </control>
             </control>
             <control type="group">

@@ -1,5 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
+
+    <variable name="Defs_HubSpotlight_Path">
+        <value condition="Container.Content(genres) + !Container(50).ListItem.IsParentFolder + String.StartsWith(Container.FolderPath,videodb://movies)">videodb://movies/genres/$INFO[Container(50).ListItem.DBID]</value>
+        <value condition="Container.Content(genres) + !Container(50).ListItem.IsParentFolder + String.StartsWith(Container.FolderPath,videodb://tvshows)">videodb://tvshows/genres/$INFO[Container(50).ListItem.DBID]</value>
+        <value condition="Container.Content(years) + !Container(50).ListItem.IsParentFolder + String.StartsWith(Container.FolderPath,videodb://movies)">videodb://movies/years/$INFO[Container(50).ListItem.Label]</value>
+        <value condition="Container.Content(years) + !Container(50).ListItem.IsParentFolder + String.StartsWith(Container.FolderPath,videodb://tvshows)">videodb://tvshows/years/$INFO[Container(50).ListItem.Label]</value>
+        <value condition="Container.Content(countries) + !Container(50).ListItem.IsParentFolder + String.StartsWith(Container.FolderPath,videodb://movies)">videodb://movies/countries/$INFO[Container(50).ListItem.DBID]</value>
+        <value condition="Container.Content(countries) + !Container(50).ListItem.IsParentFolder + String.StartsWith(Container.FolderPath,videodb://tvshows)">videodb://tvshows/countries/$INFO[Container(50).ListItem.DBID]</value>
+        <value condition="Container.Content(studios) + !Container(50).ListItem.IsParentFolder + String.StartsWith(Container.FolderPath,videodb://movies)">videodb://movies/studios/$INFO[Container(50).ListItem.DBID]</value>
+        <value condition="Container.Content(studios) + !Container(50).ListItem.IsParentFolder + String.StartsWith(Container.FolderPath,videodb://tvshows)">videodb://tvshows/studios/$INFO[Container(50).ListItem.DBID]</value>
+        <value condition="Container.Content(directors) + !Container(50).ListItem.IsParentFolder + String.StartsWith(Container.FolderPath,videodb://movies)">videodb://movies/directors/$INFO[Container(50).ListItem.DBID]</value>
+        <value condition="Container.Content(directors) + !Container(50).ListItem.IsParentFolder + String.StartsWith(Container.FolderPath,videodb://tvshows)">videodb://tvshows/directors/$INFO[Container(50).ListItem.DBID]</value>
+        <value condition="Container.Content(tags) + !Container(50).ListItem.IsParentFolder + String.StartsWith(Container.FolderPath,videodb://movies)">videodb://movies/tags/$INFO[Container(50).ListItem.Label]</value>
+        <value condition="Container.Content(tags) + !Container(50).ListItem.IsParentFolder + String.StartsWith(Container.FolderPath,videodb://tvshows)">videodb://tvshows/tags/$INFO[Container(50).ListItem.Label]</value>
+        <value condition="String.StartsWith(Container.FolderPath,videodb://movies) | String.StartsWith(Container.FolderPath,library://video/movies)">videodb://recentlyaddedmovies/</value>
+        <value condition="String.StartsWith(Container.FolderPath,videodb://tvshows) | String.StartsWith(Container.FolderPath,library://video/tvshows)">videodb://recentlyaddedtvshows/</value>
+    </variable>
+
     <variable name="Defs_PictureBack_DBID">
         <value condition="String.EndsWith(ListItem.DBID,0)">$NUMBER[0]</value>
         <value condition="String.EndsWith(ListItem.DBID,1)">$NUMBER[1]</value>

@@ -2,13 +2,15 @@
 <includes>
     <variable name="Label_Rating_IMDB">
         <value condition="!String.IsEmpty(Window(home).Property(SkinHelper.ListItem.Rating.IMDB))">$INFO[Window(home).Property(SkinHelper.ListItem.Rating.IMDB)]</value>
-        <value condition="!String.IsEmpty(ListItem.Rating)">$INFO[ListItem.Rating]</value>
+        <value condition="!String.IsEmpty(Container(5600).ListItem.Rating)">$INFO[Container(5600).ListItem.Rating]</value>
     </variable>
 
     <variable name="Label_Header_Center">
         <value condition="Window.IsVisible(DialogVideoInfo.xml)">$LOCALIZE[19033]</value>
-        <value>Recently Added</value>
-        <value>Library Titles</value>
+        <value>$INFO[Container.FolderName]</value>
+        <value>Library</value>
+        <!-- <value>Recently Added</value> -->
+        <!-- <value>Library Titles</value> -->
     </variable>
 
     <variable name="Label_AudioChannels">

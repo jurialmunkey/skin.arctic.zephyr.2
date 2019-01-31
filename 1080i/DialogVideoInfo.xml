@@ -268,13 +268,20 @@
                         <param name="label" value="$LOCALIZE[208]" />
                         <param name="icon" value="special://skin/extras/icons/play3.png" />
                         <param name="onleft" value="99" />
+                        <param name="onright" value="8800" />
+                    </include>
+                    <include content="Object_Info_Button" description="Cast">
+                        <param name="buttonid" value="8800" />
+                        <param name="label" value="$LOCALIZE[206]" />
+                        <param name="icon" value="special://skin/extras/icons/person.png" />
+                        <param name="onleft" value="8" />
                         <param name="onright" value="11" />
                     </include>
                     <include content="Object_Info_Button" description="Trailer">
                         <param name="buttonid" value="11" />
                         <param name="label" value="$LOCALIZE[20410]" />
                         <param name="icon" value="special://skin/extras/icons/video.png" />
-                        <param name="onleft" value="8" />
+                        <param name="onleft" value="8800" />
                         <param name="onright" value="10" />
                     </include>
                     <include content="Object_Info_Button" description="Artwork">
@@ -301,7 +308,7 @@
                     </include>
                     <include content="Object_Info_Button" description="Options">
                         <param name="buttonid" value="99" />
-                        <param name="label" value="$LOCALIZE[33063]" />
+                        <param name="label" value="$LOCALIZE[31411]" />
                         <param name="icon" value="special://skin/extras/icons/settings.png" />
                         <param name="onleft" value="7" />
                         <param name="onright" value="8" />
@@ -409,10 +416,6 @@
             <visible>[String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,musicvideo) | String.IsEqual(ListItem.DBType,episode)] + [system.hasaddon(script.artwork.downloader) | system.hasaddon(script.artwork.beef)]</visible>
         </control>
 
-        <control type="button" id ="7">
-            <description>Userrating</description>
-            <include>Defs_Hidden_Button</include>
-        </control>
 
         <control type="button" id="430">
             <width>1</width>

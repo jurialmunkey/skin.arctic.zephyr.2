@@ -1,10 +1,163 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
 
+    <include name="View_SixPosters">
+        <left>-15</left>
+        <right>-15</right>
+        <preloaditems>2</preloaditems>
+        <orientation>horizontal</orientation>
+        <itemlayout width="285" height="472.5">
+            <control type="group">
+                <height>405</height>
+                <control type="image">
+                    <bordersize>15</bordersize>
+                    <aspectratio>scale</aspectratio>
+                    <bordertexture border="30" colordiffuse="55ffffff">common/shadow-15.png</bordertexture>
+                    <texture colordiffuse="PosterBack">common/geometric.png</texture>
+                </control>
+                <control type="image">
+                    <centertop>50%</centertop>
+                    <centerleft>50%</centerleft>
+                    <width>160</width>
+                    <height>160</height>
+                    <texture background="true">$INFO[ListItem.Icon]</texture>
+                    <visible>String.StartsWith(ListItem.Icon,Default)</visible>
+                </control>
+                <control type="image">
+                    <bordersize>15</bordersize>
+                    <aspectratio>scale</aspectratio>
+                    <texture background="true">$VAR[Image_Poster]</texture>
+                    <visible>!String.StartsWith(ListItem.Icon,Default)</visible>
+                </control>
+            </control>
+            <control type="label">
+                <left>15</left>
+                <right>15</right>
+                <font>font_tiny</font>
+                <textcolor>main_fg_100</textcolor>
+                <top>405</top>
+                <bottom>30</bottom>
+                <aligny>center</aligny>
+                <align>center</align>
+                <label>$INFO[ListItem.Label]</label>
+            </control>
+        </itemlayout>
+        <focusedlayout width="285" height="472.5">
+            <control type="group">
+                <height>405</height>
+                <control type="image">
+                    <bordersize>15</bordersize>
+                    <aspectratio>scale</aspectratio>
+                    <bordertexture border="30" colordiffuse="55ffffff">common/shadow-15.png</bordertexture>
+                    <texture colordiffuse="PosterBack">common/geometric.png</texture>
+                </control>
+                <control type="image">
+                    <centertop>50%</centertop>
+                    <centerleft>50%</centerleft>
+                    <width>160</width>
+                    <height>160</height>
+                    <texture background="true">$INFO[ListItem.Icon]</texture>
+                    <visible>String.StartsWith(ListItem.Icon,Default)</visible>
+                </control>
+                <control type="image">
+                    <bordersize>15</bordersize>
+                    <aspectratio>scale</aspectratio>
+                    <texture background="true">$VAR[Image_Poster]</texture>
+                    <visible>!String.StartsWith(ListItem.Icon,Default)</visible>
+                </control>
+                <include>View_Selectbox</include>
+            </control>
+            <control type="label">
+                <left>15</left>
+                <right>15</right>
+                <font>font_tiny</font>
+                <textcolor>main_fg_100</textcolor>
+                <top>405</top>
+                <bottom>30</bottom>
+                <aligny>center</aligny>
+                <align>center</align>
+                <label>$INFO[ListItem.Label]</label>
+            </control>
+        </focusedlayout>
+    </include>
+
+    <include name="View_SixItems">
+        <height>352.5</height>
+        <left>-15</left>
+        <right>-15</right>
+        <preloaditems>2</preloaditems>
+        <orientation>horizontal</orientation>
+        <itemlayout width="285" height="252.5">
+            <control type="group">
+                <height>185</height>
+                <control type="image">
+                    <bordersize>15</bordersize>
+                    <aspectratio>scale</aspectratio>
+                    <bordertexture border="30" colordiffuse="55ffffff">common/shadow-15.png</bordertexture>
+                    <texture colordiffuse="PosterBack">common/geometric.png</texture>
+                </control>
+                <control type="image">
+                    <centertop>50%</centertop>
+                    <centerleft>50%</centerleft>
+                    <width>96</width>
+                    <height>96</height>
+                    <texture background="true">$INFO[ListItem.Icon]</texture>
+                </control>
+            </control>
+            <control type="label">
+                <left>15</left>
+                <right>15</right>
+                <font>font_tiny</font>
+                <textcolor>main_fg_100</textcolor>
+                <top>185</top>
+                <bottom>30</bottom>
+                <aligny>center</aligny>
+                <align>center</align>
+                <label>$INFO[ListItem.Label]</label>
+            </control>
+        </itemlayout>
+        <focusedlayout width="285" height="252.5">
+            <control type="group">
+                <height>185</height>
+                <control type="image">
+                    <bordersize>15</bordersize>
+                    <aspectratio>scale</aspectratio>
+                    <bordertexture border="30" colordiffuse="55ffffff">common/shadow-15.png</bordertexture>
+                    <texture colordiffuse="PosterBack">common/geometric.png</texture>
+                </control>
+                <control type="image">
+                    <centertop>50%</centertop>
+                    <centerleft>50%</centerleft>
+                    <width>96</width>
+                    <height>96</height>
+                    <texture background="true">$INFO[ListItem.Icon]</texture>
+                </control>
+                <control type="group">
+                    <include>View_Selectbox</include>
+                </control>
+            </control>
+            <control type="label">
+                <left>15</left>
+                <right>15</right>
+                <font>font_tiny</font>
+                <textcolor>main_fg_100</textcolor>
+                <top>185</top>
+                <bottom>30</bottom>
+                <aligny>center</aligny>
+                <align>center</align>
+                <label>$INFO[ListItem.Label]</label>
+            </control>
+        </focusedlayout>
+    </include>
+
     <include name="View_ViewIDs"><views>50,51,52,53,503,54,55,56,57,58,59,500,501,502</views></include>
 
     <include name="View_Group">
-        <top>view_pad</top>
+        <top>view_top</top>
+        <left>view_pad</left>
+        <right>view_pad</right>
+        <include>Animation_Common</include>
+        <include>Defs_InfoDialog_Visible</include>
     </include>
 
     <include name="View_Pad">
