@@ -1,6 +1,118 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
 
+    <include name="View_Genres">
+        <control type="panel" id="$PARAM[id]">
+            <onback>AlarmClock(resetfocus,SetFocus(50),00:00,silent)</onback>
+            <visible>!String.IsEmpty(Container(53).ListItemAbsolute($PARAM[pos]).DBID)</visible>
+            <visible>Container.Content(genres)</visible>
+            <!-- <height>487.5</height> -->
+            <height>412.5</height>
+            <preloaditems>2</preloaditems>
+            <orientation>horizontal</orientation>
+            <itemlayout width="244.28" height="412.5">
+                <control type="group">
+                    <height>345</height>
+                    <control type="image">
+                        <bordersize>15</bordersize>
+                        <aspectratio>scale</aspectratio>
+                        <bordertexture border="30" colordiffuse="55ffffff">common/shadow-15.png</bordertexture>
+                        <texture colordiffuse="PosterBack">common/geometric.png</texture>
+                    </control>
+                    <control type="image">
+                        <centertop>50%</centertop>
+                        <centerleft>50%</centerleft>
+                        <width>96</width>
+                        <height>96</height>
+                        <texture background="true">$INFO[ListItem.Icon]</texture>
+                        <visible>String.StartsWith(ListItem.Icon,resource)</visible>
+                    </control>
+                    <control type="image">
+                        <centertop>50%</centertop>
+                        <centerleft>50%</centerleft>
+                        <width>160</width>
+                        <height>160</height>
+                        <texture background="true">$INFO[ListItem.Icon]</texture>
+                        <visible>String.StartsWith(ListItem.Icon,Default)</visible>
+                    </control>
+                    <control type="image">
+                        <bordersize>15</bordersize>
+                        <aspectratio>scale</aspectratio>
+                        <texture background="true">$VAR[Image_Poster]</texture>
+                        <visible>!String.StartsWith(ListItem.Icon,Default) + !String.StartsWith(ListItem.Icon,resource)</visible>
+                    </control>
+                </control>
+                <control type="label">
+                    <left>15</left>
+                    <right>15</right>
+                    <font>font_tiny</font>
+                    <textcolor>main_fg_100</textcolor>
+                    <top>345</top>
+                    <bottom>30</bottom>
+                    <aligny>center</aligny>
+                    <align>center</align>
+                    <label>$INFO[ListItem.Label]</label>
+                </control>
+            </itemlayout>
+            <focusedlayout width="244.28" height="412.5">
+                <control type="group">
+                    <height>345</height>
+                    <control type="image">
+                        <bordersize>15</bordersize>
+                        <aspectratio>scale</aspectratio>
+                        <bordertexture border="30" colordiffuse="55ffffff">common/shadow-15.png</bordertexture>
+                        <texture colordiffuse="PosterBack">common/geometric.png</texture>
+                    </control>
+                    <control type="image">
+                        <centertop>50%</centertop>
+                        <centerleft>50%</centerleft>
+                        <width>96</width>
+                        <height>96</height>
+                        <texture background="true">$INFO[ListItem.Icon]</texture>
+                        <visible>String.StartsWith(ListItem.Icon,resource)</visible>
+                    </control>
+                    <control type="image">
+                        <centertop>50%</centertop>
+                        <centerleft>50%</centerleft>
+                        <width>160</width>
+                        <height>160</height>
+                        <texture background="true">$INFO[ListItem.Icon]</texture>
+                        <visible>String.StartsWith(ListItem.Icon,Default)</visible>
+                    </control>
+                    <control type="image">
+                        <bordersize>15</bordersize>
+                        <aspectratio>scale</aspectratio>
+                        <texture background="true">$VAR[Image_Poster]</texture>
+                        <visible>!String.StartsWith(ListItem.Icon,Default) + !String.StartsWith(ListItem.Icon,resource)</visible>
+                    </control>
+                    <include>View_Selectbox</include>
+                </control>
+                <control type="label">
+                    <left>15</left>
+                    <right>15</right>
+                    <font>font_tiny</font>
+                    <textcolor>main_fg_100</textcolor>
+                    <top>345</top>
+                    <bottom>30</bottom>
+                    <aligny>center</aligny>
+                    <align>center</align>
+                    <label>$INFO[ListItem.Label]</label>
+                </control>
+            </focusedlayout>
+            <content>
+                <item>
+                    <label>$INFO[Container(53).ListItemAbsolute($PARAM[pos]).Label]</label>
+                    <icon>resource://resource.images.moviegenreicons.transparent/$INFO[Container(53).ListItemAbsolute($PARAM[pos]).Label].png</icon>
+                    <!-- <onclick>ActivateWindow(videos,videodb://movies/genres/$INFO[Container(53).ListItemAbsolute($PARAM[pos]).DBID]/,return)</onclick> -->
+                    <onclick>SetFocus(53,$PARAM[pos])</onclick>
+                    <onclick>Action(Select)</onclick>
+                    <onclick>AlarmClock(refocus,SetFocus(50),00:00,silent)</onclick>
+                </item>
+            </content>
+            <content limit="6" sortby="random">$INFO[Container(53).ListItemAbsolute($PARAM[pos]).DBID,videodb://movies/genres/,]</content>
+        </control>
+    </include>
+
     <include name="View_SixPosters">
         <left>-15</left>
         <right>-15</right>
@@ -81,13 +193,13 @@
         </focusedlayout>
     </include>
 
-    <include name="View_SixItems">
+    <include name="View_TopItems">
         <height>352.5</height>
         <left>-15</left>
         <right>-15</right>
         <preloaditems>2</preloaditems>
         <orientation>horizontal</orientation>
-        <itemlayout width="285" height="252.5">
+        <itemlayout width="244.28" height="252.5">
             <control type="group">
                 <height>185</height>
                 <control type="image">
@@ -116,7 +228,7 @@
                 <label>$INFO[ListItem.Label]</label>
             </control>
         </itemlayout>
-        <focusedlayout width="285" height="252.5">
+        <focusedlayout width="244.28" height="252.5">
             <control type="group">
                 <height>185</height>
                 <control type="image">
@@ -148,6 +260,44 @@
                 <label>$INFO[ListItem.Label]</label>
             </control>
         </focusedlayout>
+    </include>
+
+    <include name="View_Layout_Posters">
+        <control type="group">
+            <height>345</height>
+            <control type="image">
+                <bordersize>15</bordersize>
+                <aspectratio>scale</aspectratio>
+                <bordertexture border="30" colordiffuse="55ffffff">common/shadow-15.png</bordertexture>
+                <texture colordiffuse="PosterBack">common/geometric.png</texture>
+            </control>
+            <control type="image">
+                <centertop>50%</centertop>
+                <centerleft>50%</centerleft>
+                <width>160</width>
+                <height>160</height>
+                <texture background="true">$INFO[ListItem.Icon]</texture>
+                <visible>String.StartsWith(ListItem.Icon,Default)</visible>
+            </control>
+            <control type="image">
+                <bordersize>15</bordersize>
+                <aspectratio>scale</aspectratio>
+                <texture background="true">$VAR[Image_Poster]</texture>
+                <visible>!String.StartsWith(ListItem.Icon,Default)</visible>
+            </control>
+            <include condition="$PARAM[selectbox]">View_Selectbox</include>
+        </control>
+        <control type="label">
+            <left>15</left>
+            <right>15</right>
+            <font>font_tiny</font>
+            <textcolor>main_fg_100</textcolor>
+            <top>345</top>
+            <bottom>30</bottom>
+            <aligny>center</aligny>
+            <align>center</align>
+            <label>$INFO[ListItem.Label]</label>
+        </control>
     </include>
 
     <include name="View_ViewIDs"><views>50,51,52,53,503,54,55,56,57,58,59,500,501,502</views></include>

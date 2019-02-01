@@ -35,21 +35,9 @@
             <content>$INFO[Container(300).ListItem.Property(backgroundPlaylist)]</content>
         </control>
 
-        <control type="list" id="302">
-            <onup>430</onup>
-            <onback>300</onback>
-            <ondown>300</ondown>
-            <orientation>horizontal</orientation>
-            <height>10</height>
-            <top>-1000</top>
-            <onfocus>ClearProperty(WidgetFocus,Home)</onfocus>
-            <itemlayout width="10" />
-            <focusedlayout width="10" />
-            <content><include>skinshortcuts-submenu</include></content>
-            <visible>Skin.HasSetting(HideSubmenuWidget)</visible>
-        </control>
         <control type="list" id="300">
-            <ondown>5600</ondown>
+            <ondown>5610</ondown>
+            <onup>5600</onup>
             <onfocus>ClearProperty(WidgetFocus,Home)</onfocus>
             <onfocus>ClearProperty(WidgetLoading,Home)</onfocus>
             <onfocus>AlarmClock(SetLoad,SetProperty(WidgetLoading,1,Home),00:00,silent)</onfocus>
@@ -63,21 +51,29 @@
 
 
         <control type="image">
+            <texture colordiffuse="Background">common/bg.jpg</texture>
+        </control>
+        <control type="image">
+            <include>Animation_FadeIn</include>
+            <include>Animation_FadeOut</include>
             <width>1920</width>
             <height>1080</height>
             <aspectratio>scale</aspectratio>
             <fadetime>600</fadetime>
+            <animation effect="fade" start="100" end="0" time="600" condition="!Control.HasFocus(5610)">Conditional</animation>
             <texture background="true">$INFO[Container(5610).ListItem.Art(fanart)]</texture>
         </control>
         <control type="wraplist" id="5600">
-            <animation effect="fade" start="100" end="0" time="500" condition="!Control.HasFocus(5600) + !Control.HasFocus(300)">Conditional</animation>
+            <include>Animation_FadeIn</include>
+            <include>Animation_FadeOut</include>
+            <animation effect="fade" start="100" end="0" time="600" condition="!Control.HasFocus(5600) + !Control.HasFocus(300)">Conditional</animation>
             <height>1080</height>
             <width>1920</width>
             <onfocus>SetProperty(SkinHelper.WidgetContainer,5600,Home)</onfocus>
             <onup>300</onup>
-            <ondown>5610</ondown>
+            <ondown>300</ondown>
             <onback>300</onback>
-            <autoscroll time="7000">!Control.HasFocus(5600) + System.IdleTime(1)</autoscroll>
+            <!-- <autoscroll time="7000">!Control.HasFocus(5600) + System.IdleTime(1)</autoscroll> -->
             <orientation>horizontal</orientation>
             <itemlayout width="1920" height="1080">
                 <control type="image">
@@ -111,121 +107,81 @@
         </control>
 
         <control type="group">
-            <animation effect="slide" start="0" end="0,-1080" time="200" condition="[!Control.HasFocus(5600) + !Control.HasFocus(300)] | Window.IsVisible(DialogVideoInfo.xml)">Conditional</animation>
-            <animation effect="slide" start="0" end="0,-900" time="200">WindowClose</animation>
-            <height>2160</height>
-            <orientation>vertical</orientation>
-            <itemgap>0</itemgap>
-            <usecontrolcoords>true</usecontrolcoords>
+            <top>900</top>
+            <height>1080</height>
+            <animation effect="slide" start="0" end="0,-900" time="350" tween="quadratic" easing="out" condition="Control.HasFocus(5610)">Conditional</animation>
+            <animation effect="slide" start="0" end="0,-260" time="250" tween="quadratic" easing="out" condition="Control.HasFocus(5600)">Conditional</animation>
+            <animation effect="slide" start="0" end="0,-640" time="300" tween="quadratic" easing="out" condition="Control.HasFocus(5600) + Window.IsVisible(DialogVideoInfo.xml)">Conditional</animation>
+            <animation effect="slide" start="0" end="0,250" time="150">WindowClose</animation>
+            <animation effect="slide" end="0" start="0,250" time="150">WindowOpen</animation>
+            <control type="image">
+                <texture colordiffuse="HomePanel">common/bg.jpg</texture>
+            </control>
+            <!-- Menubar -->
             <control type="group">
-                <height>1080</height>
-                <width>1920</width>
+                <animation effect="fade" start="100" end="0" time="350" tween="cubic" easing="inout" condition="!Control.HasFocus(300)">Conditional</animation>
+                <include>Defs_InfoDialog_Visible</include>
+                <include>Topbar_Home_TextButtons</include>
                 <control type="group">
-                    <animation effect="slide" start="0" end="0,260" time="200" condition="Control.HasFocus(300)">Conditional</animation>
-                    <control type="image">
-                        <top>640</top>
-                        <height>1720</height>
-                        <texture colordiffuse="Background">common/bg.jpg</texture>
-                    </control>
-                    <!-- Topbar -->
-                    <control type="group">
-                        <top>640</top>
-                        <animation effect="fade" start="100" end="0" time="200" condition="!Control.HasFocus(300)">Conditional</animation>
-                        <include>Topbar_Home_TextButtons</include>
-                        <control type="group">
-                            <top>30</top>
-                            <height>view_pad</height>
-                            <visible allowhiddenfocus="true">!$EXP[Exp_HideFurniture]</visible>
-                            <include>Animation_FadeInOut</include>
-                            <include>Topbar_Right</include>
-                        </control>
-                    </control>
-
-                    <control type="group">
-                        <animation effect="fade" start="100" end="0" time="200" condition="Control.HasFocus(300)">Conditional</animation>
-                        <!-- <control type="image">
-                            <centertop>675</centertop>
-                            <centerleft>50%</centerleft>
-                            <width>32</width>
-                            <height>32</height>
-                            <texture flipy="true" colordiffuse="main_fg_100">buttons/spin-down.png</texture>
-                            <visible>Control.HasFocus(5600)</visible>
-                        </control> -->
-                        <control type="grouplist">
-                            <top>710</top>
-                            <bottom>0</bottom>
-                            <left>400</left>
-                            <right>400</right>
-                            <orientation>vertical</orientation>
-                            <itemgap>10</itemgap>
-                            <usecontrolcoords>true</usecontrolcoords>
-                            <control type="label">
-                                <align>center</align>
-                                <font>font_byline</font>
-                                <textcolor>main_fg_70</textcolor>
-                                <label>Random Movies</label>
-                                <height>30</height>
-                            </control>
-                            <control type="label">
-                                <top>30</top>
-                                <aligny>top</aligny>
-                                <align>center</align>
-                                <font>font_title</font>
-                                <textcolor>main_fg_100</textcolor>
-                                <label>$INFO[Container(5600).ListItem.Label,[B],[/B]]</label>
-                                <height>80</height>
-                            </control>
-                            <control type="label">
-                                <align>center</align>
-                                <aligny>top</aligny>
-                                <font>font_tiny</font>
-                                <textcolor>main_fg_70</textcolor>
-                                <label>$INFO[Container(5600).ListItem.Genre]</label>
-                                <height>60</height>
-                            </control>
-                            <include content="Object_Icon_Ratings">
-                                <param name="id" value="5600" />
-                            </include>
-                            <control type="image">
-                                <top>0</top>
-                                <centerleft>50%</centerleft>
-                                <width>32</width>
-                                <height>32</height>
-                                <texture flipy="false" colordiffuse="main_fg_100">buttons/spin-down.png</texture>
-                                <visible>Control.HasFocus(5600)</visible>
-                            </control>
-                        </control>
-                    </control>
+                    <top>30</top>
+                    <height>view_pad</height>
+                    <visible allowhiddenfocus="true">!$EXP[Exp_HideFurniture]</visible>
+                    <include>Animation_FadeInOut</include>
+                    <include>Topbar_Right</include>
                 </control>
             </control>
+            <!-- Up Widget -->
             <control type="group">
-                <top>1080</top>
-                <height>1080</height>
-                <width>1920</width>
-                <include>Topbar</include>
-                <animation effect="fade" start="100" end="0" time="0" condition="!Control.HasFocus(5610)">Conditional</animation>
-                <control type="image">
-                    <centertop>40</centertop>
-                    <centerleft>50%</centerleft>
-                    <width>32</width>
-                    <height>32</height>
-                    <texture flipy="true" colordiffuse="main_fg_100">buttons/spin-down.png</texture>
-                    <include>Defs_InfoDialog_Visible</include>
+                <animation effect="fade" start="100" end="0" time="350" tween="cubic" easing="inout" condition="!Control.HasFocus(5600)">Conditional</animation>
+                <include>Defs_InfoDialog_Visible</include>
+                <control type="grouplist">
+                    <top>75</top>
+                    <bottom>0</bottom>
+                    <left>400</left>
+                    <right>400</right>
+                    <orientation>vertical</orientation>
+                    <itemgap>10</itemgap>
+                    <usecontrolcoords>true</usecontrolcoords>
+                    <control type="label">
+                        <align>center</align>
+                        <font>font_byline</font>
+                        <textcolor>main_fg_70</textcolor>
+                        <label>Random Movies</label>
+                        <height>30</height>
+                    </control>
+                    <control type="label">
+                        <top>30</top>
+                        <aligny>top</aligny>
+                        <align>center</align>
+                        <font>font_title</font>
+                        <textcolor>main_fg_100</textcolor>
+                        <label>$INFO[Container(5600).ListItem.Label,[B],[/B]]</label>
+                        <height>80</height>
+                    </control>
+                    <control type="label">
+                        <align>center</align>
+                        <aligny>top</aligny>
+                        <font>font_tiny</font>
+                        <textcolor>main_fg_70</textcolor>
+                        <label>$INFO[Container(5600).ListItem.Genre]</label>
+                        <height>80</height>
+                    </control>
+                    <include content="Object_Icon_Ratings">
+                        <param name="id" value="5600" />
+                    </include>
                 </control>
-                <!-- <control type="image">
-                    <centerbottom>40</centerbottom>
-                    <centerleft>50%</centerleft>
-                    <width>32</width>
-                    <height>32</height>
-                    <texture flipy="false" colordiffuse="main_fg_100">buttons/spin-down.png</texture>
-                </control> -->
+            </control>
+            <!-- Down Widget -->
+            <control type="group">
+                <animation effect="fade" condition="!Control.HasFocus(5610) + !Window.IsVisible(DialogVideoInfo.xml)" time="350" tween="cubic" easing="inout" start="100" end="0">Conditional</animation>
+                <include>Topbar</include>
                 <control type="group">
                     <top>view_top</top>
                     <left>view_pad</left>
                     <right>view_pad</right>
-                    <include>Animation_Down</include>
-                    <animation effect="fade" condition="!Control.HasFocus(5610)" time="0" start="100" end="0">Conditional</animation>
+                    <include>Animation_Common</include>
                     <include>Defs_InfoDialog_Visible</include>
+                    <animation effect="fade" condition="!Control.HasFocus(5610)" time="350" tween="cubic" easing="inout" start="100" end="0">Conditional</animation>
                     <control type="grouplist">
                         <top>0</top>
                         <left>400</left>
@@ -256,7 +212,8 @@
                         <right>-15</right>
                         <left>-15</left>
                         <onfocus>SetProperty(SkinHelper.WidgetContainer,5610,Home)</onfocus>
-                        <onup>5600</onup>
+                        <onup>300</onup>
+                        <ondown>300</ondown>
                         <onback>300</onback>
                         <preloaditems>2</preloaditems>
                         <orientation>horizontal</orientation>
@@ -340,7 +297,7 @@
                     <control type="grouplist">
                         <orientation>vertical</orientation>
                         <top>600</top>
-                        <itemgap>40</itemgap>
+                        <itemgap>60</itemgap>
                         <usecontrolcoords>true</usecontrolcoords>
                         <control type="textbox">
                             <centerleft>50%</centerleft>
@@ -356,8 +313,6 @@
                             <param name="id" value="5610" />
                         </include>
                     </control>
-                    
-
                 </control>
             </control>
         </control>
