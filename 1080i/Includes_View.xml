@@ -195,6 +195,7 @@
 
     <include name="View_TopItems">
         <height>352.5</height>
+        <top>-15</top>
         <left>-15</left>
         <right>-15</right>
         <preloaditems>2</preloaditems>
@@ -260,44 +261,6 @@
                 <label>$INFO[ListItem.Label]</label>
             </control>
         </focusedlayout>
-    </include>
-
-    <include name="View_Layout_Posters">
-        <control type="group">
-            <height>345</height>
-            <control type="image">
-                <bordersize>15</bordersize>
-                <aspectratio>scale</aspectratio>
-                <bordertexture border="30" colordiffuse="55ffffff">common/shadow-15.png</bordertexture>
-                <texture colordiffuse="PosterBack">common/geometric.png</texture>
-            </control>
-            <control type="image">
-                <centertop>50%</centertop>
-                <centerleft>50%</centerleft>
-                <width>160</width>
-                <height>160</height>
-                <texture background="true">$INFO[ListItem.Icon]</texture>
-                <visible>String.StartsWith(ListItem.Icon,Default)</visible>
-            </control>
-            <control type="image">
-                <bordersize>15</bordersize>
-                <aspectratio>scale</aspectratio>
-                <texture background="true">$VAR[Image_Poster]</texture>
-                <visible>!String.StartsWith(ListItem.Icon,Default)</visible>
-            </control>
-            <include condition="$PARAM[selectbox]">View_Selectbox</include>
-        </control>
-        <control type="label">
-            <left>15</left>
-            <right>15</right>
-            <font>font_tiny</font>
-            <textcolor>main_fg_100</textcolor>
-            <top>345</top>
-            <bottom>30</bottom>
-            <aligny>center</aligny>
-            <align>center</align>
-            <label>$INFO[ListItem.Label]</label>
-        </control>
     </include>
 
     <include name="View_ViewIDs"><views>50,51,52,53,503,54,55,56,57,58,59,500,501,502</views></include>
@@ -578,31 +541,32 @@
     </include>
 
     <include name="View_WatchedOverlay">
-        <include condition="Skin.HasSetting(LightWatchedOverlay)">View_WatchedOverlay_White</include>
-        <include condition="!Skin.HasSetting(LightWatchedOverlay)">View_WatchedOverlay_Black</include>
+        <include>View_WatchedOverlay_Black</include>
+        <!-- <include condition="Skin.HasSetting(LightWatchedOverlay)">View_WatchedOverlay_White</include> -->
+        <!-- <include condition="!Skin.HasSetting(LightWatchedOverlay)">View_WatchedOverlay_Black</include> -->
     </include>
 
     <include name="View_WatchedOverlay_White">
         <control type="group">
             <visible>!Skin.HasSetting(DisableWatchedOverlay)</visible>
             <control type="image">
-                <top>10</top>
-                <right>10</right>
+                <top>15</top>
+                <right>15</right>
                 <width>48</width>
                 <height>48</height>
-                <texture colordiffuse="dddddddd" border="10">$VAR[Image_Overlay_Corner]</texture>
+                <texture colordiffuse="panel_fg_100" border="10">$VAR[Image_Overlay_Corner]</texture>
             </control>
             <control type="image">
-                <top>11</top>
-                <right>11</right>
+                <top>16</top>
+                <right>16</right>
                 <width>24</width>
                 <height>24</height>
                 <texture colordiffuse="ff181818">$VAR[Image_Overlay_Focus]</texture>
                 <visible>!Integer.IsGreater(ListItem.Property(UnWatchedEpisodes),0) | ![Container.Content(tvshows) | Container.Content(seasons) | Window.IsVisible(Home)]</visible>
             </control>
             <control type="label">
-                <top>10</top>
-                <right>10</right>
+                <top>15</top>
+                <right>15</right>
                 <width>28</width>
                 <height>28</height>
                 <font>font_unwatched</font>
@@ -618,23 +582,23 @@
         <control type="group">
             <visible>!Skin.HasSetting(DisableWatchedOverlay)</visible>
             <control type="image">
-                <top>10</top>
-                <right>10</right>
+                <top>15</top>
+                <right>15</right>
                 <width>48</width>
                 <height>48</height>
                 <texture colordiffuse="ff000000" border="10">$VAR[Image_Overlay_Corner]</texture>
             </control>
             <control type="image">
-                <top>11</top>
-                <right>11</right>
+                <top>16</top>
+                <right>16</right>
                 <width>24</width>
                 <height>24</height>
                 <texture colordiffuse="ffffffff">$VAR[Image_Overlay]</texture>
                 <visible>!Integer.IsGreater(ListItem.Property(UnWatchedEpisodes),0) | ![Container.Content(tvshows) | Container.Content(seasons) | Window.IsVisible(Home)]</visible>
             </control>
             <control type="label">
-                <top>10</top>
-                <right>10</right>
+                <top>15</top>
+                <right>15</right>
                 <width>28</width>
                 <height>28</height>
                 <font>font_unwatched</font>
@@ -650,23 +614,23 @@
         <control type="group">
             <visible>!Skin.HasSetting(DisableWatchedOverlay)</visible>
             <control type="image">
-                <top>10</top>
-                <right>10</right>
+                <top>15</top>
+                <right>15</right>
                 <width>48</width>
                 <height>48</height>
                 <texture colordiffuse="Selected" border="10">$VAR[Image_Overlay_Corner]</texture>
             </control>
             <control type="image">
-                <top>11</top>
-                <right>11</right>
+                <top>16</top>
+                <right>16</right>
                 <width>24</width>
                 <height>24</height>
                 <texture colordiffuse="panel_bg">$VAR[Image_Overlay_Focus]</texture>
                 <visible>!Integer.IsGreater(ListItem.Property(UnWatchedEpisodes),0) | ![Container.Content(tvshows) | Container.Content(seasons) | Window.IsVisible(Home)]</visible>
             </control>
             <control type="label">
-                <top>10</top>
-                <right>10</right>
+                <top>15</top>
+                <right>15</right>
                 <width>28</width>
                 <height>28</height>
                 <font>font_unwatched</font>
@@ -688,10 +652,10 @@
         <param name="overlay" default="true" />
         <definition>
             <control type="group">
-                <left>-8</left>
-                <top>-8</top>
-                <right>-8</right>
-                <bottom>-8</bottom>
+                <left>-7</left>
+                <top>-7</top>
+                <right>-7</right>
+                <bottom>-7</bottom>
                 <control type="image">
                     <bordersize>15</bordersize>
                     <bordertexture border="30" colordiffuse="55ffffff">common/shadow-15.png</bordertexture>

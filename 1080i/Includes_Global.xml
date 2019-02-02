@@ -55,65 +55,21 @@
     <include name="Global_FadeTime_600"><fadetime>600</fadetime></include>
 
     <include name="Global_Background">
-        <control type="multiimage" id="7975">
-            <left>-2160</left>
-            <width>1</width>
-            <height>1</height>
-            <timeperimage>7000</timeperimage>
-            <randomize>true</randomize>
+        <control type="image">
+            <texture colordiffuse="Background">common/bg.jpg</texture>
+        </control>
+        <control type="image">
+            <include>Animation_FadeFromHome</include>
+            <width>1920</width>
+            <height>1080</height>
+            <aspectratio>scale</aspectratio>
             <fadetime>600</fadetime>
-            <imagepath background="true">$VAR[Global_Background_Image_Var]</imagepath>
-            <visible>System.HasAddon(script.colorbox)</visible>
-            <visible>Skin.HasSetting(EnableBlur)</visible>
+            <texture background="true" colordiffuse="FanartFade">$INFO[ListItem.Art(fanart)]</texture>
         </control>
-        <control type="multiimage" id="7977">
-            <left>-2160</left>
-            <width>1</width>
-            <height>1</height>
-            <timeperimage>5000</timeperimage>
-            <randomize>true</randomize>
-            <imagepath background="true">$VAR[Image_Poster_Color]</imagepath>
-            <visible>System.HasAddon(script.colorbox)</visible>
-            <visible>Skin.HasSetting(CycleColors) | Skin.HasSetting(MatchOverlayColors) | Skin.HasSetting(MatchColors)</visible>
-        </control>
-        <include>Global_Videowindow</include>
-        <include>Global_Visualisation</include>
         <control type="group">
-            <!-- Fanart and backgrounds with parallax -->
-            <control type="group">
-                <control type="multiimage" description="Fanart">
-                    <visible>!Player.HasMedia | [Player.HasVideo + [!Skin.HasSetting(global.showvideo) | !String.IsEmpty(Window(Home).Property(TrailerPlaying))]] | [!Skin.HasSetting(global.showvisualisation) + Player.HasAudio] | [Player.HasAudio + !String.IsEmpty(Window(10025).Property(PlayingBackgroundMedia))]</visible>
-                    <include>Dimensions_Fullscreen</include>
-                    <timeperimage>7000</timeperimage>
-                    <randomize>true</randomize>
-                    <include condition="!Window.IsVisible(SettingsCategory.xml) + !Window.IsVisible(SkinSettings.xml) + !Window.IsVisible(SettingsProfile.xml) + !Window.IsVisible(SettingsSystemInfo.xml)">Global_FadeTime_600</include>
-                    <aspectratio>scale</aspectratio>
-                    <imagepath background="true">$VAR[Global_Background_Image]</imagepath>
-                </control>
-            </control>
-
-            <!-- Texture Overlay -->
-            <control type="group">
-                <visible>!Window.IsVisible(Home) | [Window.IsVisible(Home) + [String.IsEqual(Container(300).ListItem.Property(widget),Weather) | !String.IsEmpty(Container(300).ListItem.Property(widgetPath)) | !String.IsEmpty(Container(300).ListItem.Property(widgetPath.Widget1)) | !String.IsEmpty(Container(300).ListItem.Property(widgetPath.Widget2)) | !String.IsEmpty(Container(300).ListItem.Property(widgetPath.Widget3)) | !String.IsEmpty(Container(300).ListItem.Property(widgetPath.Widget4)) | !String.IsEmpty(Container(300).ListItem.Property(widgetPath.Widget5)) | !String.IsEmpty(Container(300).ListItem.Property(widgetPath.Widget6)) | !String.IsEmpty(Container(300).ListItem.Property(widgetPath.Widget7)) | !String.IsEmpty(Container(300).ListItem.Property(widgetPath.Widget8)) | [String.IsEmpty(Container(300).ListItem.Property(Background)) + String.IsEmpty(Container(300).ListItem.Property(backgroundPlaylist)) + String.IsEmpty(Skin.String(home.slideshowpath))] | [String.IsEqual(Container(300).ListItem.Property(hasSubmenu),True) + !Skin.HasSetting(HideSubmenuWidget)]]] | [Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(DialogAddonInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml)]</visible>
-                <animation effect="fade" condition="Control.HasFocus(9602)" start="100" end="0" delay="200" time="300" reversible="false">Conditional</animation>
-                <animation effect="fade" condition="!Control.HasFocus(9602)" start="0" end="100" delay="0" time="300" reversible="false">Conditional</animation>
-                <include>Animation_FadeInOut</include>
-                <control type="image">
-                    <texture colordiffuse="$VAR[Global_FanartDim]">common/white.png</texture>
-                </control>
-                <!-- Vignette Overlay -->
-                <control type="image">
-                    <texture colordiffuse="$VAR[ColorOverlay]" background="true">common/vignette-white.png</texture>
-                    <visible>!Skin.HasSetting(DisableOverlayColor)</visible>
-                </control>
-                <control type="image">
-                    <texture background="true">common/vignette-full.png</texture>
-                    <visible>!Skin.HasSetting(DisableVignette)</visible>
-                </control>
-            </control>
-
-            <!-- Topbar Home Dim -->
-            <include condition="Window.IsVisible(Home)">Global_Home_Topbar_Image_Dim</include>
+            <include>Animation_FadeIn</include>
+            <include>Animation_FadeOut</include>
+            <include>Topbar</include>
         </control>
     </include>
 

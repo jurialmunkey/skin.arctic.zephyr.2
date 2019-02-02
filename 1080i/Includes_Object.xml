@@ -1,6 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
 
+    <include name="Object_Geometric">
+        <control type="image">
+            <bordersize>15</bordersize>
+            <aspectratio>scale</aspectratio>
+            <bordertexture border="30" colordiffuse="55ffffff">common/shadow-15.png</bordertexture>
+            <texture colordiffuse="main_fg_100">common/geometric.png</texture>
+        </control>
+    </include>
+
+    <include name="Object_DefaultIcon">
+        <control type="image">
+            <centertop>50%</centertop>
+            <centerleft>50%</centerleft>
+            <width>160</width>
+            <height>160</height>
+            <texture background="true">$INFO[ListItem.Icon]</texture>
+            <visible>String.StartsWith(ListItem.Icon,Default)</visible>
+        </control>
+    </include>
+
+    <include name="Object_Poster">
+        <param name="icon" default="$VAR[Image_Poster]" />
+        <definition>
+            <control type="image">
+                <bordersize>15</bordersize>
+                <aspectratio>scale</aspectratio>
+                <texture background="true">$PARAM[icon]</texture>
+                <visible>!String.StartsWith(ListItem.Icon,Default)</visible>
+            </control>
+        </definition>
+    </include>
+
     <include name="Object_Icon_Ratings">
         <control type="grouplist">
             <orientation>horizontal</orientation>

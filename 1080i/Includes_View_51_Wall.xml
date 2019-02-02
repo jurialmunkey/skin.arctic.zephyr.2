@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+    <include name="View_51_Wall_Label">
+        <control type="label">
+            <left>15</left>
+            <right>15</right>
+            <font>font_tiny</font>
+            <textcolor>main_fg_100</textcolor>
+            <top>$PARAM[iconheight]</top>
+            <bottom>30</bottom>
+            <aligny>center</aligny>
+            <align>center</align>
+            <label>$INFO[ListItem.Label]</label>
+        </control>
+    </include>
+
+    <include name="View_51_Wall_Landscape_Label">
+        <control type="label">
+            <left>15</left>
+            <right>15</right>
+            <font>font_tiny</font>
+            <textcolor>main_fg_100</textcolor>
+            <top>343.75</top>
+            <height>20</height>
+            <aligny>center</aligny>
+            <align>left</align>
+            <label>$INFO[ListItem.Label]</label>
+        </control>
+        <control type="label">
+            <left>15</left>
+            <right>15</right>
+            <font>font_tiny</font>
+            <textcolor>main_fg_100</textcolor>
+            <top>343.75</top>
+            <height>20</height>
+            <aligny>center</aligny>
+            <align>right</align>
+            <label>$INFO[ListItem.Label2]</label>
+        </control>
+    </include>
+
+    <include name="View_51_Wall_Itemlayout">
+        <param name="icon" default="$VAR[Image_Poster]" />
+        <param name="iconheight" default="345" />
+        <param name="labelinclude" default="View_51_Wall_Label" />
+        <definition>
+            <control type="group">
+                <height>$PARAM[iconheight]</height>
+                <include>Object_Geometric</include>
+                <include>Object_DefaultIcon</include>
+                <include content="Object_Poster">
+                    <param name="icon" value="$PARAM[icon]" />
+                </include>
+                <include>View_WatchedOverlay</include>
+                <include condition="$PARAM[selectbox]">View_Selectbox</include>
+            </control>
+            <include content="$PARAM[labelinclude]">
+                <param name="iconheight" value="$PARAM[iconheight]" />
+            </include>
+        </definition>
+    </include>
+
+    <include name="View_51_Wall_Control">
+        <param name="itemlayout" default="View_51_Wall_Itemlayout" />
+        <param name="itemwidth" default="244.28" />
+        <param name="itemheight" default="412.5" />
+        <definition>
+            <control type="group">
+                <include>View_Group</include>
+                <visible>Control.IsVisible($PARAM[id])</visible>
+                <control type="panel" id="$PARAM[id]">
+                    <top>-15</top>
+                    <left>-15</left>
+                    <right>-15</right>
+                    <height>$PARAM[height]</height>
+                    <preloaditems>2</preloaditems>
+                    <orientation>vertical</orientation>
+                    <itemlayout width="$PARAM[itemwidth]" height="$PARAM[itemheight]">
+                        <include content="$PARAM[itemlayout]">
+                            <param name="selectbox" value="false" />
+                            <param name="icon" value="$PARAM[icon]" />
+                            <param name="iconheight" value="$PARAM[iconheight]" />
+                            <param name="labelinclude" value="$PARAM[labelinclude]" />
+                        </include>
+                    </itemlayout>
+                    <focusedlayout width="$PARAM[itemwidth]" height="$PARAM[itemheight]">
+                        <include content="$PARAM[itemlayout]">
+                            <param name="selectbox" value="true" />
+                            <param name="icon" value="$PARAM[icon]" />
+                            <param name="iconheight" value="$PARAM[iconheight]" />
+                            <param name="labelinclude" value="$PARAM[labelinclude]" />
+                        </include>
+                    </focusedlayout>
+                </control>
+            </control>
+        </definition>
+    </include>
+
+    <include name="View_51_Wall">
+        <include content="View_51_Wall_Control">
+            <param name="id" value="51" />
+            <param name="height" value="825" />
+        </include>
+    </include>
+    <include name="View_510_Wall_Square">
+        <include content="View_51_Wall_Control">
+            <param name="itemwidth" value="342" />
+            <param name="id" value="510" />
+            <param name="height" value="825" />
+        </include>
+    </include>
+    <include name="View_511_Wall_Landscape">
+        <include content="View_51_Wall_Control">
+            <param name="itemlayout" value="View_51_Wall_Itemlayout" />
+            <param name="itemwidth" value="570" />
+            <param name="itemheight" value="423.75" />
+            <param name="id" value="511" />
+            <param name="height" value="847.5" />
+            <param name="icon" value="$VAR[Image_Fanart]" />
+            <param name="iconheight" value="333.75" />
+            <param name="labelinclude" value="View_51_Wall_Landscape_Label" />
+        </include>
+    </include>
+</includes>
+
