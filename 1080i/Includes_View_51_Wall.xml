@@ -37,6 +37,32 @@
             <align>right</align>
             <label>$INFO[ListItem.Label2]</label>
         </control>
+        <control type="group">
+            <top>30</top>
+            <visible>String.StartsWith(Container.FolderPath,plugin://plugin.video.youtube)</visible>
+            <control type="label">
+                <left>15</left>
+                <right>15</right>
+                <font>font_tiny</font>
+                <textcolor>main_fg_70</textcolor>
+                <top>343.75</top>
+                <height>20</height>
+                <aligny>center</aligny>
+                <align>left</align>
+                <label>$INFO[ListItem.Studio]</label>
+            </control>
+            <control type="label">
+                <left>15</left>
+                <right>15</right>
+                <font>font_tiny</font>
+                <textcolor>main_fg_70</textcolor>
+                <top>343.75</top>
+                <height>20</height>
+                <aligny>center</aligny>
+                <align>right</align>
+                <label>$INFO[ListItem.Premiered]</label>
+            </control>
+        </control>
     </include>
 
     <include name="View_51_Wall_Itemlayout">
