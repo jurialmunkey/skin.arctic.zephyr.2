@@ -95,14 +95,20 @@
         <param name="controlorientation" default="View_Vertical" />
         <param name="include" default="" />
         <param name="includeid" default="" />
+        <param name="visible" default="true" />
+        <param name="onfocus" default="" />
         <definition>
             <control type="group">
-                <include>View_Group</include>
+                <include content="View_Group">
+                    <param name="infohide" value="$PARAM[infohide]" />
+                </include>
                 <visible>Control.IsVisible($PARAM[id])</visible>
+                <visible>$PARAM[visible]</visible>
                 <control type="$PARAM[controltype]" id="$PARAM[id]">
                     <include>$PARAM[controllayout]</include>
                     <include>$PARAM[controlorientation]</include>
                     <height>$PARAM[height]</height>
+                    <onfocus>$PARAM[onfocus]</onfocus>
                     <itemlayout width="$PARAM[itemwidth]" height="$PARAM[itemheight]">
                         <include content="$PARAM[itemlayout]">
                             <param name="selectbox" value="false" />

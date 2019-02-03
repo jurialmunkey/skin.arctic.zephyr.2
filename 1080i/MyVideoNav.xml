@@ -3,7 +3,7 @@
 <window id="6">
     <defaultcontrol always="true">50</defaultcontrol>
     <menucontrol>300</menucontrol>
-    <views>50,500,51,510,511,52,520,521,53,54</views>
+    <views>50,500,51,510,511,52,520,521</views>
     <onload condition="System.HasAddon(script.tv.show.next.aired)">RunScript(script.tv.show.next.aired,backend=True)</onload>
     <controls>
         <include>Global_Background</include>
@@ -17,52 +17,12 @@
             <include>View_520_Showcase_Square</include>
             <include>View_521_Showcase_Landscape</include>
 
-
-            
-            <!-- ================ -->
-            <!-- Hub Library View -->
-            <!-- ================ -->
-            <control type="group">
-                <visible>Control.IsVisible(54)</visible>
-                <include>View_Group</include>
-                <control type="panel" id="54">
-                    <visible>Container.Content() | Container.Content(years) | Container.Content(directors) | Container.Content(countries) | Container.Content(tags) | Container.Content(studios)</visible>
-                    <ondown>5000</ondown>
-                    <include>View_TopItems</include>
-                </control>
-
-                <control type="group">
-                    <top>-15</top>
-                    <control type="label">
-                        <top>312.5</top>
-                        <height>100</height>
-                        <aligny>center</aligny>
-                        <align>center</align>
-                        <font>font_byline</font>
-                        <textcolor>main_fg_70</textcolor>
-                        <label>$LOCALIZE[20382]</label>
-                    </control>
-                    <control type="panel" id="5000">
-                        <top>412.5</top>
-                        <left>-15</left>
-                        <right>-15</right>
-                        <onup>50</onup>
-                        <onfocus>SetProperty(SkinHelper.WidgetContainer,5000,Home)</onfocus>
-                        <height>472.5</height>
-                        <itemlayout width="244.28" height="412.5" condition="![Container.Content(episodes) | Container.Content(videos) | Container.Content(addons)]">
-                            <include content="View_51_Wall_Itemlayout">
-                                <param name="selectbox" value="false" />
-                            </include>
-                        </itemlayout>
-                        <focusedlayout width="244.28" height="412.5" condition="![Container.Content(episodes) | Container.Content(videos) | Container.Content(addons)]">
-                            <include content="View_51_Wall_Itemlayout">
-                                <param name="selectbox" value="true" />
-                            </include>
-                        </focusedlayout>
-                        <content target="videos" limit="7">$VAR[Defs_HubSpotlight_Path]</content>
-                    </control>
-                </control>
-            </control>
+            <include content="Object_Scrollbar_Vert">
+                <param name="visible" value="Control.IsVisible(50) | Control.IsVisible(500) | Control.IsVisible(51) | Control.IsVisible(510) | Control.IsVisible(511)" />
+            </include>
+            <include content="Object_Scrollbar_Horz">
+                <param name="visible" value="Control.IsVisible(52) | Control.IsVisible(520) | Control.IsVisible(521)" />
+            </include>
         </control>
 
 

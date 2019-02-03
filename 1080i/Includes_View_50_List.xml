@@ -44,6 +44,7 @@
             <right>$PARAM[right]</right>
             <height>780</height>
             <include>View_Vertical</include>
+            <pagecontrol>60</pagecontrol>
             <itemlayout height="78">
                 <include>View_50_Itemlayout</include>
             </itemlayout>
@@ -172,11 +173,15 @@
     <include name="View_50_Poster">
         <param name="height" default="810" />
         <param name="width" default="560" />
+        <param name="include" default="" />
+        <param name="visible" default="true" />
         <definition>
             <control type="group">
                 <top>-15</top>
                 <left>-15</left>
                 <width>$PARAM[width]</width>
+                <include>$PARAM[include]</include>
+                <visible>$PARAM[visible]</visible>
                 <control type="group">
                     <height>$PARAM[height]</height>
                     <include>Object_Geometric</include>

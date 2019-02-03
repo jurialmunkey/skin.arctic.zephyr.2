@@ -118,7 +118,7 @@
                         <orientation>horizontal</orientation>
                         <usecontrolcoords>true</usecontrolcoords>
                         <visible>!Control.HasFocus(8001)</visible>
-                        <visible>!Control.HasFocus(300)</visible>
+                        <visible>!Control.HasFocus(300) | !Window.IsVisible(Home)</visible>
                         <control type="button">
                             <centertop>51%</centertop>
                             <width>36</width>
@@ -161,6 +161,7 @@
                         <textcolor>main_fg_70</textcolor>
                         <label>$VAR[Label_Header_Center]</label>
                         <visible>!Control.HasFocus(300)</visible>
+                        <include>Animation_FadeInOut</include>
                     </control>
 
                     <!-- Right Info -->
@@ -879,6 +880,7 @@
             <movement>5</movement>
             <centerleft>50%</centerleft>
             <orientation>horizontal</orientation>
+            <top>30</top>
             <onup condition="Skin.HasSetting(EnablePressingUp) + !Window.IsVisible(MyPVRGuide.xml)">9602</onup>
             <ondown condition="Window.IsVisible(SettingsCategory.xml)">3</ondown>
             <ondown condition="Window.IsVisible(SettingsProfile.xml)">4</ondown>
@@ -897,26 +899,28 @@
             <!-- Special Conditions for Scroll Around from Menu on PVR Guide -->
             <include condition="Window.IsVisible(MyPVRGuide.xml)">View_PVRGuide_Movement</include>
             <height>120</height>
-            <itemlayout width="70" height="view_pad">
+            <itemlayout width="70" height="60">
                 <control type="image">
                     <centerleft>50%</centerleft>
-                    <width>view_pad</width>
+                    <width>60</width>
+                    <aspectratio>keep</aspectratio>
                     <texture colordiffuse="main_fg_30">$INFO[ListItem.Icon]</texture>
                 </control>
             </itemlayout>
-            <focusedlayout width="70" height="view_pad">
+            <focusedlayout width="70" height="60">
                 <include condition="Window.IsVisible(SettingsCategory.xml) | Window.IsVisible(SettingsProfile.xml) | Window.IsVisible(SettingsSystemInfo.xml) | Window.IsVisible(SkinSettings.xml)">Topbar_Menu_SettingsTrick_Button</include>
                 <control type="image">
                     <visible>!Control.HasFocus(300)</visible>
                     <centerleft>50%</centerleft>
-                    <width>view_pad</width>
+                    <width>60</width>
+                    <aspectratio>keep</aspectratio>
                     <texture colordiffuse="main_fg_30">$INFO[ListItem.Icon]</texture>
                 </control>
                 <control type="group">
                     <visible>Control.HasFocus(300)</visible>
                     <control type="group">
                         <centerleft>50%</centerleft>
-                        <width>view_pad</width>
+                        <width>60</width>
                         <control type="image">
                             <texture colordiffuse="$VAR[ColorHighlight]">common/white.png</texture>
                             <bottom>0</bottom>
@@ -928,7 +932,8 @@
                             <height>6</height>
                         </control>
                         <control type="image">
-                            <texture colordiffuse="Selected">$INFO[ListItem.Icon]</texture>
+                            <aspectratio>keep</aspectratio>
+                            <texture colordiffuse="main_fg_100">$INFO[ListItem.Icon]</texture>
                         </control>
                     </control>
                 </control>

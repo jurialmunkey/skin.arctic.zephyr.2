@@ -1,6 +1,367 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
 
+    <include name="Object_Info_Cast_Details">
+        <control type="grouplist">
+            <top>-15</top>
+            <left>400</left>
+            <right>400</right>
+            <orientation>vertical</orientation>
+            <itemgap>10</itemgap>
+            <usecontrolcoords>true</usecontrolcoords>
+            <control type="label">
+                <aligny>top</aligny>
+                <align>center</align>
+                <font>font_title</font>
+                <textcolor>main_fg_100</textcolor>
+                <label>$INFO[ListItem.Label,[B],[/B]]</label>
+                <height>80</height>
+            </control>
+            <control type="label">
+                <align>center</align>
+                <aligny>top</aligny>
+                <font>font_tiny</font>
+                <textcolor>main_fg_70</textcolor>
+                <label>Cast Members</label>
+                <height>60</height>
+            </control>
+        </control>
+        <control type="grouplist">
+            <orientation>vertical</orientation>
+            <bottom>0</bottom>
+            <align>bottom</align>
+            <itemgap>40</itemgap>
+            <usecontrolcoords>true</usecontrolcoords>
+            <control type="textbox">
+                <centerleft>50%</centerleft>
+                <width>1350</width>
+                <label fallback="19055">$INFO[Container(50).ListItem.Label]$INFO[Container(50).ListItem.Label2, $LOCALIZE[20347] ]</label>
+                <height>60</height>
+                <aligny>center</aligny>
+                <align>center</align>
+                <textcolor>main_fg_70</textcolor>
+                <font>font_plotbox</font>
+            </control>
+            <control type="grouplist" id="6000">
+                <height>96</height>
+                <orientation>horizontal</orientation>
+                <align>center</align>
+                <itemgap>0</itemgap>
+                <include content="Object_Info_Button" description="Plot">
+                    <param name="buttonid" value="6001" />
+                    <param name="label" value="Plot" />
+                    <param name="icon" value="special://skin/extras/icons/quote.png" />
+                    <param name="onleft" value="6005" />
+                    <param name="onright" value="6002" />
+                    <param name="onclick" value="SetProperty(CurrentList,7000)" />
+                    <param name="onclick2" value="SetFocus(7000)" />
+                </include>
+                <include content="Object_Info_Button" description="Similar">
+                    <param name="buttonid" value="6002" />
+                    <param name="label" value="Similar" />
+                    <param name="icon" value="special://skin/extras/icons/playlist2.png" />
+                    <param name="onleft" value="6001" />
+                    <param name="onright" value="6003" />
+                </include>
+                <include content="Object_Info_Button" description="Cast">
+                    <param name="buttonid" value="6003" />
+                    <param name="label" value="$LOCALIZE[206]" />
+                    <param name="icon" value="special://skin/extras/icons/person.png" />
+                    <param name="onleft" value="6002" />
+                    <param name="onright" value="6004" />
+                    <param name="onclick" value="SetFocus(50)" />
+                </include>
+                <include content="Object_Info_Button" description="Trailer">
+                    <param name="buttonid" value="6004" />
+                    <param name="label" value="Director" />
+                    <param name="icon" value="special://skin/extras/icons/director.png" />
+                    <param name="onleft" value="6003" />
+                    <param name="onright" value="6005" />
+                </include>
+                <include content="Object_Info_Button" description="Studio">
+                    <param name="buttonid" value="6005" />
+                    <param name="label" value="Studio" />
+                    <param name="icon" value="special://skin/extras/icons/cinemavision.png" />
+                    <param name="onleft" value="6004" />
+                    <param name="onright" value="6001" />
+                </include>
+            </control>
+        </control>
+    </include>
+
+    <include name="Object_Info_Buttons">
+        <control type="grouplist" id="9000">
+            <bottom>0</bottom>
+            <height>96</height>
+            <orientation>horizontal</orientation>
+            <align>center</align>
+            <itemgap>0</itemgap>
+            <include content="Object_Info_Button" description="Play">
+                <param name="buttonid" value="8" />
+                <param name="label" value="$LOCALIZE[208]" />
+                <param name="icon" value="special://skin/extras/icons/play3.png" />
+                <param name="onleft" value="99" />
+                <param name="onright" value="8800" />
+                <param name="onfocus" value="ClearProperty(CurrentList)" />
+            </include>
+            <include content="Object_Info_Button" description="Cast">
+                <param name="buttonid" value="8800" />
+                <param name="label" value="$LOCALIZE[206]" />
+                <param name="icon" value="special://skin/extras/icons/person.png" />
+                <param name="onleft" value="8" />
+                <param name="onright" value="11" />
+                <param name="onclick" value="SetFocus(50)" />
+                <param name="onfocus" value="ClearProperty(CurrentList)" />
+            </include>
+            <include content="Object_Info_Button" description="Trailer">
+                <param name="buttonid" value="11" />
+                <param name="label" value="$LOCALIZE[20410]" />
+                <param name="icon" value="special://skin/extras/icons/video.png" />
+                <param name="onleft" value="8800" />
+                <param name="onright" value="10" />
+                <param name="onfocus" value="ClearProperty(CurrentList)" />
+            </include>
+            <include content="Object_Info_Button" description="Artwork">
+                <param name="buttonid" value="10" />
+                <param name="label" value="$LOCALIZE[31203]" />
+                <param name="icon" value="special://skin/extras/icons/paintbrush.png" />
+                <param name="onleft" value="11" />
+                <param name="onright" value="6" />
+                <param name="onfocus" value="ClearProperty(CurrentList)" />
+            </include>
+            <include content="Object_Info_Button" description="Update">
+                <param name="buttonid" value="6" />
+                <param name="label" value="$LOCALIZE[184]" />
+                <param name="icon" value="special://skin/extras/icons/update.png" />
+                <param name="onleft" value="10" />
+                <param name="onright" value="7" />
+                <param name="onfocus" value="ClearProperty(CurrentList)" />
+            </include>
+            <include content="Object_Info_Button" description="User Rating">
+                <param name="buttonid" value="7" />
+                <param name="label" value="$LOCALIZE[31310]" />
+                <param name="icon" value="special://skin/extras/icons/userrating.png" />
+                <param name="onleft" value="6" />
+                <param name="onright" value="99" />
+                <param name="onfocus" value="ClearProperty(CurrentList)" />
+            </include>
+            <include content="Object_Info_Button" description="Options">
+                <param name="buttonid" value="99" />
+                <param name="label" value="$LOCALIZE[31411]" />
+                <param name="icon" value="special://skin/extras/icons/settings.png" />
+                <param name="onleft" value="7" />
+                <param name="onright" value="8" />
+                <param name="onfocus" value="ClearProperty(CurrentList)" />
+            </include>
+        </control>
+    </include>
+
+    <include name="Object_Info_Codecs">
+        <control type="grouplist">
+            <top>40</top>
+            <height>32</height>
+            <align>left</align>
+            <orientation>horizontal</orientation>
+            <usecontrolcoords>true</usecontrolcoords>
+            <control type="image">
+                <top>5</top>
+                <height>24</height>
+                <width>24</width>
+                <texture colordiffuse="main_fg_100">flags/video.png</texture>
+            </control>
+            <control type="label">
+                <top>0</top>
+                <left>20</left>
+                <align>left</align>
+                <aligny>center</aligny>
+                <font>font_osd_submenu</font>
+                <textcolor>main_fg_70</textcolor>
+                <width>auto</width>
+                <label>$INFO[ListItem.VideoCodec,,  •  ]$INFO[ListItem.VideoResolution,,  •  ]$INFO[ListItem.VideoAspect]</label>
+                <height>32</height>
+            </control>
+            <control type="image">
+                <left>50</left>
+                <top>5</top>
+                <height>24</height>
+                <width>24</width>
+                <texture colordiffuse="main_fg_100">flags/audio.png</texture>
+            </control>
+            <control type="label">
+                <top>0</top>
+                <left>20</left>
+                <align>left</align>
+                <aligny>center</aligny>
+                <width>auto</width>
+                <font>font_osd_submenu</font>
+                <textcolor>main_fg_70</textcolor>
+                <label>$INFO[ListItem.AudioCodec]$VAR[Label_AudioChannels,  •  ,]</label>
+                <height>32</height>
+            </control>
+            <control type="image">
+                <left>50</left>
+                <top>5</top>
+                <height>24</height>
+                <width>24</width>
+                <texture colordiffuse="main_fg_100">flags/lang.png</texture>
+                <visible>!String.IsEmpty(ListItem.Property(AudioLanguage.1))</visible>
+            </control>
+            <control type="label">
+                <top>0</top>
+                <left>20</left>
+                <align>left</align>
+                <aligny>center</aligny>
+                <width>auto</width>
+                <font>font_osd_submenu</font>
+                <textcolor>main_fg_70</textcolor>
+                <label>$INFO[ListItem.Property(AudioLanguage.1)]$INFO[ListItem.Property(AudioLanguage.2),  •  ,]$INFO[ListItem.Property(AudioLanguage.3),  •  ,]$INFO[ListItem.Property(AudioLanguage.4),  •  ,]$INFO[ListItem.Property(AudioLanguage.5),  •  ,]</label>
+                <visible>!String.IsEmpty(ListItem.Property(AudioLanguage.1))</visible>
+                <height>32</height>
+            </control>
+            <control type="image">
+                <left>50</left>
+                <top>5</top>
+                <height>24</height>
+                <width>24</width>
+                <texture colordiffuse="main_fg_100">flags/subs.png</texture>
+                <visible>!String.IsEmpty(ListItem.Property(SubtitleLanguage.1))</visible>
+            </control>
+            <control type="label">
+                <top>0</top>
+                <left>20</left>
+                <align>left</align>
+                <aligny>center</aligny>
+                <width>auto</width>
+                <font>font_osd_submenu</font>
+                <textcolor>main_fg_70</textcolor>
+                <label>$INFO[ListItem.Property(SubtitleLanguage.1)]$INFO[ListItem.Property(SubtitleLanguage.2),  •  ,]$INFO[ListItem.Property(SubtitleLanguage.3),  •  ,]$INFO[ListItem.Property(SubtitleLanguage.4),  •  ,]$INFO[ListItem.Property(SubtitleLanguage.5),  •  ,]</label>
+                <height>32</height>
+                <visible>!String.IsEmpty(ListItem.Property(SubtitleLanguage.1))</visible>
+            </control>
+        </control>
+    </include>
+
+    <include name="Object_Info_Details">
+        <include content="Object_Info_TextPairs">
+            <param name="pad" value="32" />
+            <param name="name" value="Genre" />
+            <param name="label" value="ListItem.Genre" />
+        </include>
+        <include content="Object_Info_TextPairs">
+            <param name="pad" value="20" />
+            <param name="name" value="Director" />
+            <param name="label" value="ListItem.Director" />
+        </include>
+        <include content="Object_Info_TextPairs">
+            <param name="pad" value="20" />
+            <param name="name" value="Writer" />
+            <param name="label" value="ListItem.Writer" />
+        </include>
+        <include content="Object_Info_TextPairs">
+            <param name="pad" value="20" />
+            <param name="name" value="Studio" />
+            <param name="label" value="ListItem.Studio" />
+        </include>
+    </include>
+
+    <include name="Object_Info_Ratings">
+        <control type="group">
+            <top>0</top>
+            <height>80</height>
+            <control type="group">
+                <left>-14</left>
+                <visible>String.IsEmpty(ListItem.UserRating)</visible>
+                <include>Object_StarRating</include>
+            </control>
+            <control type="group">
+                <left>-14</left>
+                <visible>!String.IsEmpty(ListItem.UserRating)</visible>
+                <include content="Object_StarRating">
+                    <param name="rating_prop" value="ListItem.UserRating" />
+                </include>
+            </control>
+            <control type="group">
+                <top>41</top>
+                <left>260</left>
+                <include content="Object_Ratings_Content">
+                    <param name="colordiffuse" value="main_fg_100" />
+                    <param name="align" value="left" />
+                    <param name="tmdb" value="false" />
+                </include>
+            </control>
+        </control>
+    </include>
+
+    <include name="Object_Info_Line">
+        <control type="grouplist">
+            <height>40</height>
+            <orientation>horizontal</orientation>
+            <usecontrolcoords>true</usecontrolcoords>
+            <itemgap>0</itemgap>
+            <left>0</left>
+            <right>0</right>
+            <control type="image">
+                <left>0</left>
+                <top>10</top>
+                <width>37</width>
+                <height>24</height>
+                <texture colordiffuse="main_fg_100">$VAR[Image_HDSD]</texture>
+                <visible>Container.Content(movies) | Container.Content(episodes)</visible>
+            </control>
+            <control type="label">
+                <label>  |  </label>
+                <width>auto</width>
+                <height>40</height>
+                <aligny>top</aligny>
+                <textcolor>$VAR[ColorHighlight]</textcolor>
+                <font>font_small</font>
+                <visible>Container.Content(movies) | Container.Content(episodes)</visible>
+            </control>
+            <control type="label">
+                <width>auto</width>
+                <label>$VAR[Label_ShowCase_InfoLine]</label>
+                <height>40</height>
+                <aligny>top</aligny>
+                <textcolor>$VAR[ColorHighlight]</textcolor>
+                <font>font_small</font>
+            </control>
+            <control type="label">
+                <width>auto</width>
+                <label>$VAR[Label_Info_NextAired_Status,  |  [COLOR=main_fg_100],[/COLOR]]$VAR[Label_Info_NextAired_Date, [COLOR=main_fg_100],[/COLOR]]</label>
+                <height>40</height>
+                <aligny>top</aligny>
+                <textcolor>$VAR[ColorHighlight]</textcolor>
+                <font>font_small</font>
+                <visible>Container.Content(tvshows)</visible>
+            </control>
+        </control>
+    </include>
+
+    <include name="Object_Info_Title">
+        <control type="label">
+            <label>$INFO[ListItem.Label]</label>
+            <height>80</height>
+            <aligny>top</aligny>
+            <textcolor>main_fg_100</textcolor>
+            <font>font_showcase_title</font>
+        </control>
+    </include>
+
+    <include name="Object_Info_Plot">
+        <param name="maxheight" default="164" />
+        <param name="height" default="auto" />
+        <definition>
+            <control type="textbox">
+                <top>30</top>
+                <label fallback="19055">$VAR[Label_Plot]</label>
+                <height max="$PARAM[maxheight]">$PARAM[height]</height>
+                <aligny>top</aligny>
+                <textcolor>main_fg_70</textcolor>
+                <font>font_plotbox</font>
+            </control>
+        </definition>
+    </include>
+
     <include name="Object_Geometric">
         <control type="image">
             <bordersize>15</bordersize>
@@ -23,10 +384,11 @@
 
     <include name="Object_Poster">
         <param name="icon" default="$VAR[Image_Poster]" />
+        <param name="aspectratio" default="scale" />
         <definition>
             <control type="image">
                 <bordersize>15</bordersize>
-                <aspectratio>scale</aspectratio>
+                <aspectratio>$PARAM[aspectratio]</aspectratio>
                 <texture background="true">$PARAM[icon]</texture>
                 <visible>!String.StartsWith(ListItem.Icon,Default)</visible>
             </control>
@@ -168,6 +530,9 @@
                 <height>64</height>
                 <texturenofocus colordiffuse="main_fg_100">$PARAM[icon]</texturenofocus>
                 <texturefocus colordiffuse="$VAR[ColorHighlight]">$PARAM[icon]</texturefocus>
+                <onclick>$PARAM[onclick]</onclick>
+                <onclick>$PARAM[onclick2]</onclick>
+                <onfocus>$PARAM[onfocus]</onfocus>
             </control>
             <control type="label">
                 <top>64</top>
@@ -1979,14 +2344,11 @@
             <onback>50</onback>
             <right>0</right>
             <width>8</width>
-            <top>-60</top>
+            <top>0</top>
             <bottom>0</bottom>
             <visible>$PARAM[visible]</visible>
             <showonepage>false</showonepage>
             <orientation>vertical</orientation>
-            <onright condition="[String.IsEqual(Container.SortMethod,$LOCALIZE[551]) | String.IsEqual(Container.SortMethod,$LOCALIZE[556]) | String.IsEqual(Container.SortMethod,$LOCALIZE[557]) | String.IsEqual(Container.SortMethod,$LOCALIZE[558])] + !Container.Content(seasons) + [Control.IsEnabled(3) | Control.IsEnabled(4)] + Skin.HasSetting(AlphabetStrip) + System.HasAddon(script.skin.helper.service)">SetFocus(8000)</onright>
-            <onright condition="![[String.IsEqual(Container.SortMethod,$LOCALIZE[551]) | String.IsEqual(Container.SortMethod,$LOCALIZE[556]) | String.IsEqual(Container.SortMethod,$LOCALIZE[557]) | String.IsEqual(Container.SortMethod,$LOCALIZE[558])] + !Container.Content(seasons) + [Control.IsEnabled(3) | Control.IsEnabled(4)]] + Skin.HasSetting(AlphabetStrip) + System.HasAddon(script.skin.helper.service)">Notification($LOCALIZE[161],$LOCALIZE[31334])</onright>
-            <onright condition="!Skin.HasSetting(AlphabetStrip) | !System.HasAddon(script.skin.helper.service)">300</onright>
             <onleft>50</onleft>
             <texturesliderbackground colordiffuse="main_fg_12" border="4">common/white.png</texturesliderbackground>
             <texturesliderbar colordiffuse="main_fg_30" border="4">scrollbar/scrollv.png</texturesliderbar>
@@ -2010,9 +2372,6 @@
             <orientation>horizontal</orientation>
             <onup>50</onup>
             <visible>$PARAM[visible]</visible>
-            <ondown condition="[String.IsEqual(Container.SortMethod,$LOCALIZE[551]) | String.IsEqual(Container.SortMethod,$LOCALIZE[556]) | String.IsEqual(Container.SortMethod,$LOCALIZE[557]) | String.IsEqual(Container.SortMethod,$LOCALIZE[558])] + !Container.Content(seasons) + [Control.IsEnabled(3) | Control.IsEnabled(4)] + Skin.HasSetting(AlphabetStrip) + System.HasAddon(script.skin.helper.service)">SetFocus(8000)</ondown>
-            <ondown condition="![[String.IsEqual(Container.SortMethod,$LOCALIZE[551]) | String.IsEqual(Container.SortMethod,$LOCALIZE[556]) | String.IsEqual(Container.SortMethod,$LOCALIZE[557]) | String.IsEqual(Container.SortMethod,$LOCALIZE[558])] + !Container.Content(seasons) + [Control.IsEnabled(3) | Control.IsEnabled(4)]] + Skin.HasSetting(AlphabetStrip) + System.HasAddon(script.skin.helper.service)">Notification($LOCALIZE[161],$LOCALIZE[31334])</ondown>
-            <ondown condition="!Skin.HasSetting(AlphabetStrip) | !System.HasAddon(script.skin.helper.service)">300</ondown>
             <texturesliderbackground colordiffuse="main_fg_12" border="4">common/white.png</texturesliderbackground>
             <texturesliderbar colordiffuse="main_fg_30" border="4">scrollbar/scrollv.png</texturesliderbar>
             <texturesliderbarfocus colordiffuse="$VAR[ColorHighlight]" border="4">scrollbar/scrollv.png</texturesliderbarfocus>

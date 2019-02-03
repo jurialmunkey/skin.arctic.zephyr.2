@@ -6,17 +6,24 @@
         <left>-15</left>
         <right>-15</right>
         <preloaditems>2</preloaditems>
+        <pagecontrol>60</pagecontrol>
     </include>
 
     <include name="View_Vertical">    
-        <onleft>300</onleft>
-        <onright>300</onright>
+        <onleft>SetFocus(300)</onleft>
+        <onright>60</onright>
         <orientation>vertical</orientation>
     </include>
 
     <include name="View_Horizontal">    
-        <onup>300</onup>
-        <ondown>300</ondown>
+        <onup>SetFocus(300)</onup>
+        <ondown>60</ondown>
+        <orientation>horizontal</orientation>
+    </include>
+
+    <include name="View_Horizontal_Cast">    
+        <onup>SetFocus(9000)</onup>
+        <ondown>SetFocus(6000)</ondown>
         <orientation>horizontal</orientation>
     </include>
 
@@ -435,18 +442,19 @@
     <include name="View_ViewIDs"><views>50,51,52,53,503,54,55,56,57,58,59,500,501,502</views></include>
 
     <include name="View_Group">
-        <top>view_top</top>
-        <left>view_pad</left>
-        <right>view_pad</right>
-        <bottom>view_pad</bottom>
-        <include>Animation_Common</include>
-        <include>Defs_InfoDialog_Visible</include>
+        <param name="infohide" default="true" />
+        <definition>
+            <include>View_Pad</include>
+            <include>Animation_Common</include>
+            <include condition="$PARAM[infohide]">Defs_InfoDialog_Visible</include>
+        </definition>
     </include>
 
     <include name="View_Pad">
+        <top>view_top</top>
+        <bottom>view_pad</bottom>
         <left>view_pad</left>
         <right>view_pad</right>
-        <top>view_pad</top>
     </include>
 
     <include name="View_NotTheseWindows">
