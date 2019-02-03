@@ -90,17 +90,19 @@
         <param name="itemlayout" default="View_51_Wall_Itemlayout" />
         <param name="itemwidth" default="244.28" />
         <param name="itemheight" default="412.5" />
+        <param name="controltype" default="panel" />
+        <param name="controllayout" default="View_Standard" />
+        <param name="controlorientation" default="View_Vertical" />
+        <param name="include" default="" />
+        <param name="includeid" default="" />
         <definition>
             <control type="group">
                 <include>View_Group</include>
                 <visible>Control.IsVisible($PARAM[id])</visible>
-                <control type="panel" id="$PARAM[id]">
-                    <top>-15</top>
-                    <left>-15</left>
-                    <right>-15</right>
+                <control type="$PARAM[controltype]" id="$PARAM[id]">
+                    <include>$PARAM[controllayout]</include>
+                    <include>$PARAM[controlorientation]</include>
                     <height>$PARAM[height]</height>
-                    <preloaditems>2</preloaditems>
-                    <orientation>vertical</orientation>
                     <itemlayout width="$PARAM[itemwidth]" height="$PARAM[itemheight]">
                         <include content="$PARAM[itemlayout]">
                             <param name="selectbox" value="false" />
@@ -118,6 +120,9 @@
                         </include>
                     </focusedlayout>
                 </control>
+                <include content="$PARAM[include]">
+                    <param name="id" value="$PARAM[includeid]" />
+                </include>
             </control>
         </definition>
     </include>
@@ -137,7 +142,6 @@
     </include>
     <include name="View_511_Wall_Landscape">
         <include content="View_51_Wall_Control">
-            <param name="itemlayout" value="View_51_Wall_Itemlayout" />
             <param name="itemwidth" value="570" />
             <param name="itemheight" value="423.75" />
             <param name="id" value="511" />

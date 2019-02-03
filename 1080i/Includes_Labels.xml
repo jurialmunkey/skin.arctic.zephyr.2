@@ -8,6 +8,7 @@
     <variable name="Label_Header_Center">
         <value condition="Window.IsVisible(DialogVideoInfo.xml)">$LOCALIZE[19033]</value>
         <value condition="Container.Content() + String.StartsWith(Container.FolderPath,library://video/movies/)">$LOCALIZE[14022]</value>
+        <!-- <value>$INFO[Container.Content]</value> -->
         <value>$INFO[Container.FolderName]</value>
     </variable>
 

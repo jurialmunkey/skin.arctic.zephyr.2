@@ -1,6 +1,175 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
 
+    <include name="View_Standard">
+        <top>-15</top>
+        <left>-15</left>
+        <right>-15</right>
+        <preloaditems>2</preloaditems>
+    </include>
+
+    <include name="View_Vertical">    
+        <onleft>300</onleft>
+        <onright>300</onright>
+        <orientation>vertical</orientation>
+    </include>
+
+    <include name="View_Horizontal">    
+        <onup>300</onup>
+        <ondown>300</ondown>
+        <orientation>horizontal</orientation>
+    </include>
+
+    <include name="View_Genres_Wall">
+        <control type="group">
+            <include>View_Group</include>
+            <visible>Control.IsVisible(53)</visible>
+            <control type="list" id="53">
+                <left>-2160</left>
+                <onfocus condition="Control.IsVisible(5301)">SetFocus(5300)</onfocus>
+                <visible>Container.Content(genres)</visible>
+                <height>3200</height>
+                <width>32</width>
+                <orientation>vertical</orientation>
+                <itemlayout width="32" height="32" />
+                <focusedlayout width="32" height="32" />
+            </control>
+
+            <control type="grouplist" id="5300">
+                <left>-15</left>
+                <right>-15</right>
+                <!-- <usecontrolcoords>true</usecontrolcoords> -->
+                <height>825</height>
+                <itemgap>0</itemgap>
+                <orientation>vertical</orientation>
+                <!-- <itemgap>-75</itemgap> -->
+                <!-- <control type="group" id="5399">
+                    <height>75</height>
+                </control> -->
+                <include content="View_Genres">
+                    <param name="id" value="5301" />
+                    <param name="pos" value="0" />
+                </include>
+                <include content="View_Genres">
+                    <param name="id" value="5302" />
+                    <param name="pos" value="1" />
+                </include>
+                <include content="View_Genres">
+                    <param name="id" value="5303" />
+                    <param name="pos" value="2" />
+                </include>
+                <include content="View_Genres">
+                    <param name="id" value="5304" />
+                    <param name="pos" value="3" />
+                </include>
+                <include content="View_Genres">
+                    <param name="id" value="5305" />
+                    <param name="pos" value="4" />
+                </include>
+                <include content="View_Genres">
+                    <param name="id" value="5306" />
+                    <param name="pos" value="5" />
+                </include>
+                <include content="View_Genres">
+                    <param name="id" value="5307" />
+                    <param name="pos" value="6" />
+                </include>
+                <include content="View_Genres">
+                    <param name="id" value="5308" />
+                    <param name="pos" value="7" />
+                </include>
+                <include content="View_Genres">
+                    <param name="id" value="5309" />
+                    <param name="pos" value="8" />
+                </include>
+                <include content="View_Genres">
+                    <param name="id" value="5310" />
+                    <param name="pos" value="9" />
+                </include>
+                <include content="View_Genres">
+                    <param name="id" value="5311" />
+                    <param name="pos" value="10" />
+                </include>
+                <include content="View_Genres">
+                    <param name="id" value="5312" />
+                    <param name="pos" value="11" />
+                </include>
+                <include content="View_Genres">
+                    <param name="id" value="5313" />
+                    <param name="pos" value="12" />
+                </include>
+                <include content="View_Genres">
+                    <param name="id" value="5314" />
+                    <param name="pos" value="13" />
+                </include>
+                <include content="View_Genres">
+                    <param name="id" value="5315" />
+                    <param name="pos" value="14" />
+                </include>
+                <include content="View_Genres">
+                    <param name="id" value="5316" />
+                    <param name="pos" value="15" />
+                </include>
+                <include content="View_Genres">
+                    <param name="id" value="5317" />
+                    <param name="pos" value="16" />
+                </include>
+                <include content="View_Genres">
+                    <param name="id" value="5318" />
+                    <param name="pos" value="17" />
+                </include>
+                <include content="View_Genres">
+                    <param name="id" value="5319" />
+                    <param name="pos" value="18" />
+                </include>
+                <include content="View_Genres">
+                    <param name="id" value="5320" />
+                    <param name="pos" value="19" />
+                </include>
+                <include content="View_Genres">
+                    <param name="id" value="5321" />
+                    <param name="pos" value="20" />
+                </include>
+                <include content="View_Genres">
+                    <param name="id" value="5322" />
+                    <param name="pos" value="21" />
+                </include>
+                <include content="View_Genres">
+                    <param name="id" value="5323" />
+                    <param name="pos" value="22" />
+                </include>
+                <include content="View_Genres">
+                    <param name="id" value="5324" />
+                    <param name="pos" value="23" />
+                </include>
+                <include content="View_Genres">
+                    <param name="id" value="5325" />
+                    <param name="pos" value="24" />
+                </include>
+                <include content="View_Genres">
+                    <param name="id" value="5326" />
+                    <param name="pos" value="25" />
+                </include>
+                <include content="View_Genres">
+                    <param name="id" value="5327" />
+                    <param name="pos" value="26" />
+                </include>
+                <include content="View_Genres">
+                    <param name="id" value="5328" />
+                    <param name="pos" value="27" />
+                </include>
+                <include content="View_Genres">
+                    <param name="id" value="5329" />
+                    <param name="pos" value="28" />
+                </include>
+                <include content="View_Genres">
+                    <param name="id" value="5330" />
+                    <param name="pos" value="29" />
+                </include>
+            </control>
+        </control>
+    </include>
+
     <include name="View_Genres">
         <control type="panel" id="$PARAM[id]">
             <onback>AlarmClock(resetfocus,SetFocus(50),00:00,silent)</onback>
