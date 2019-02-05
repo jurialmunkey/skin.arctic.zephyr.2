@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
+    <include name="View_Include_Content">
+        <content>$PARAM[content]</content>
+    </include>
 
     <include name="View_Standard">
         <top>-15</top>
@@ -443,18 +446,24 @@
 
     <include name="View_Group">
         <param name="infohide" default="true" />
+        <param name="bottom" default="view_pad" />
         <definition>
-            <include>View_Pad</include>
+            <include content="View_Pad">
+                <param name="view_pad" value="$PARAM[view_pad]" />
+            </include>
             <include>Animation_Common</include>
             <include condition="$PARAM[infohide]">Defs_InfoDialog_Visible</include>
         </definition>
     </include>
 
     <include name="View_Pad">
-        <top>view_top</top>
-        <bottom>view_pad</bottom>
-        <left>view_pad</left>
-        <right>view_pad</right>
+        <param name="bottom" default="view_pad" />
+        <definition>
+            <top>view_top</top>
+            <bottom>$PARAM[bottom]</bottom>
+            <left>view_pad</left>
+            <right>view_pad</right>
+        </definition>
     </include>
 
     <include name="View_NotTheseWindows">

@@ -12,8 +12,6 @@
             <include>View_Pad</include>
             <!-- Poster -->
             <include content="View_50_Poster">
-                <param name="height" value="810" />
-                <param name="width" value="560" />
                 <param name="include" value="Animation_Left_Delay" />
                 <param name="visible" value="String.IsEmpty(Window.Property(CurrentList))" />
             </include>
@@ -22,7 +20,6 @@
             <control type="group">
                 <top>-15</top>
                 <left>575</left>
-                <right>0</right>
                 <visible>String.IsEmpty(Window.Property(CurrentList))</visible>
                 <include>Animation_Right_Delay</include>
                 <control type="grouplist">
@@ -33,10 +30,16 @@
                     <include>Object_Info_Line</include>
                     <include>Object_Info_Plot</include>
                     <include>Object_Info_Ratings</include>
+                </control>
+                <control type="grouplist">
+                    <align>bottom</align>
+                    <orientation>vertical</orientation>
+                    <usecontrolcoords>true</usecontrolcoords>
+                    <itemgap>0</itemgap>
                     <include>Object_Info_Details</include>
                     <include>Object_Info_Codecs</include>
                 </control>
-                <include>Object_Info_Buttons</include>
+                <!-- <include>Object_Info_Buttons</include> -->
             </control>
         </control>
 
@@ -64,7 +67,7 @@
                     <height>187</height>
                     <include>Object_Geometric</include>
                     <include content="Object_Poster">
-                        <param name="icon" value="$VAR[Image_Fanart]" />
+                        <param name="icon" value="$INFO[ListItem.Art(fanart)]" />
                     </include>
                     <control type="image">
                         <bordersize>25</bordersize>
@@ -106,79 +109,44 @@
             <param name="controllayout" value="View_52_Showcase_Layout" />
             <param name="infohide" value="false" />
             <param name="visible" value="!String.IsEmpty(Window.Property(CurrentList)) + String.IsEqual(Window.Property(CurrentList),$NUMBER[50])" />
-            <param name="include" value="Object_Info_Cast_Details" />
             <param name="onfocus" value="SetProperty(CurrentList,50)" />
         </include>
 
+        <include content="View_51_Wall_Control">
+            <param name="id" value="5001" />
+            <param name="height" value="412.5" />
+            <param name="controlorientation" value="View_Horizontal_Cast" />
+            <param name="controltype" value="fixedlist" />
+            <param name="controllayout" value="View_52_Showcase_Layout" />
+            <param name="infohide" value="false" />
+            <param name="visible" value="!String.IsEmpty(Window.Property(CurrentList)) + String.IsEqual(Window.Property(CurrentList),$NUMBER[5001])" />
+            <param name="onfocus" value="SetProperty(CurrentList,5001)" />
+            <param name="includecontent" value="true" />
+            <param name="content" value="plugin://script.skin.helper.widgets/?action=similar&amp;mediatype=movies&amp;imdbid=$INFO[ListItem.IMDBNumber]" />
+        </include>
 
+        <include content="View_51_Wall_Control">
+            <param name="id" value="5004" />
+            <param name="height" value="412.5" />
+            <param name="controlorientation" value="View_Horizontal_Cast" />
+            <param name="controltype" value="fixedlist" />
+            <param name="controllayout" value="View_52_Showcase_Layout" />
+            <param name="infohide" value="false" />
+            <param name="visible" value="!String.IsEmpty(Window.Property(CurrentList)) + String.IsEqual(Window.Property(CurrentList),$NUMBER[5004])" />
+            <param name="onfocus" value="SetProperty(CurrentList,5004)" />
+            <param name="includecontent" value="true" />
+            <param name="content" value="$VAR[Defs_VideoInfo_StudioMovies]" />
+        </include>
+
+        <!-- Surrounding Info and Buttons -->
         <control type="group">
-            <visible>!String.IsEmpty(Window.Property(CurrentList)) + String.IsEqual(Window.Property(CurrentList),$NUMBER[7000])</visible>
+            <include>View_Pad</include>
             <include>Animation_Common</include>
-            <control type="grouplist">
-                <include>View_Pad</include>
-                <orientation>horizontal</orientation>
-                <itemgap>0</itemgap>
-                <pagecontrol>7000</pagecontrol>
-                <control type="image">
-                    <width>1680</width>
-                    <aspectratio>scale</aspectratio>
-                    <texture background="true">$INFO[ListItem.Art(fanart)]</texture>
-                    <visible>!String.IsEmpty(ListItem.Art(fanart))</visible>
-                </control>
-                <control type="image">
-                    <width>1680</width>
-                    <aspectratio>scale</aspectratio>
-                    <texture background="true">$INFO[ListItem.Art(fanart1)]</texture>
-                    <visible>!String.IsEmpty(ListItem.Art(fanart1))</visible>
-                </control>
-                <control type="image">
-                    <width>1680</width>
-                    <aspectratio>scale</aspectratio>
-                    <texture background="true">$INFO[ListItem.Art(fanart2)]</texture>
-                    <visible>!String.IsEmpty(ListItem.Art(fanart2))</visible>
-                </control>
-                <control type="image">
-                    <width>1680</width>
-                    <aspectratio>scale</aspectratio>
-                    <texture background="true">$INFO[ListItem.Art(fanart3)]</texture>
-                    <visible>!String.IsEmpty(ListItem.Art(fanart3))</visible>
-                </control>
-                <control type="image">
-                    <width>1680</width>
-                    <aspectratio>scale</aspectratio>
-                    <texture background="true">$INFO[ListItem.Art(fanart4)]</texture>
-                    <visible>!String.IsEmpty(ListItem.Art(fanart4))</visible>
-                </control>
-                <control type="image">
-                    <width>1680</width>
-                    <aspectratio>scale</aspectratio>
-                    <texture background="true">$INFO[ListItem.Art(fanart5)]</texture>
-                    <visible>!String.IsEmpty(ListItem.Art(fanart5))</visible>
-                </control>
-            </control>
-            <control type="image">
-                <include>View_Pad</include>
-                <texture border="20">common/selectbox.png</texture>
-            </control>
+            <include>Object_Info_Cast_Details</include>
+            <visible>!String.IsEmpty(Window.Property(CurrentList))</visible>
         </control>
-        <control type="scrollbar" id="7000">
-            <onback>50</onback>
-            <height>8</height>
-            <left>0</left>
-            <right>0</right>
-            <width>100%</width>
-            <bottom>-10</bottom>
-            <showonepage>false</showonepage>
-            <orientation>horizontal</orientation>
-            <onup>6000</onup>
-            <texturesliderbackground colordiffuse="main_fg_12" border="4">common/white.png</texturesliderbackground>
-            <texturesliderbar colordiffuse="main_fg_30" border="4">scrollbar/scrollv.png</texturesliderbar>
-            <texturesliderbarfocus colordiffuse="$VAR[ColorHighlight]" border="4">scrollbar/scrollv.png</texturesliderbarfocus>
-            <animation effect="fade" start="100" end="33" time="400" condition="!Control.HasFocus(7000) + !Container.Scrolling">Conditional</animation>
-            <visible>!Window.IsVisible(home)</visible>
-            <include>Animation_FadeIn</include>
-            <include>Animation_FadeOut</include>
-        </control>
+
+        
 
     </controls>
 

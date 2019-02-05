@@ -176,36 +176,13 @@
                 <animation effect="fade" condition="!Control.HasFocus(5610) + !Window.IsVisible(DialogVideoInfo.xml)" time="350" tween="cubic" easing="inout" start="100" end="0">Conditional</animation>
                 <include>Topbar</include>
                 <control type="group">
-                    <top>view_top</top>
-                    <left>view_pad</left>
-                    <right>view_pad</right>
-                    <include>Animation_Common</include>
-                    <include>Defs_InfoDialog_Visible</include>
+                    <include content="View_Group">
+                        <param name="bottom" value="0" />
+                    </include>
                     <animation effect="fade" condition="!Control.HasFocus(5610)" time="350" tween="cubic" easing="inout" start="100" end="0">Conditional</animation>
-                    <control type="grouplist">
-                        <top>0</top>
-                        <left>400</left>
-                        <right>400</right>
-                        <orientation>vertical</orientation>
-                        <itemgap>10</itemgap>
-                        <usecontrolcoords>true</usecontrolcoords>
-                        <control type="label">
-                            <aligny>top</aligny>
-                            <align>center</align>
-                            <font>font_title</font>
-                            <textcolor>main_fg_100</textcolor>
-                            <label>$INFO[Container(5610).ListItem.Label,[B],[/B]]</label>
-                            <height>80</height>
-                        </control>
-                        <control type="label">
-                            <align>center</align>
-                            <aligny>top</aligny>
-                            <font>font_tiny</font>
-                            <textcolor>main_fg_70</textcolor>
-                            <label>$INFO[Container(5610).ListItem.Genre]</label>
-                            <height>60</height>
-                        </control>
-                    </control>
+                    <include content="View_52_Showcase_Header">
+                        <param name="id" value="5610" />
+                    </include>
                     <control type="panel" id="5610">
                         <top>168</top>
                         <height>412.5</height>
@@ -218,78 +195,18 @@
                         <preloaditems>2</preloaditems>
                         <orientation>horizontal</orientation>
                         <itemlayout width="244.28" height="412.5">
-                            <control type="group">
-                                <height>345</height>
-                                <control type="image">
-                                    <bordersize>15</bordersize>
-                                    <aspectratio>scale</aspectratio>
-                                    <bordertexture border="30" colordiffuse="55ffffff">common/shadow-15.png</bordertexture>
-                                    <texture colordiffuse="main_fg_100">common/geometric.png</texture>
-                                </control>
-                                <control type="image">
-                                    <centertop>50%</centertop>
-                                    <centerleft>50%</centerleft>
-                                    <width>160</width>
-                                    <height>160</height>
-                                    <texture background="true">$INFO[ListItem.Icon]</texture>
-                                    <visible>String.StartsWith(ListItem.Icon,Default)</visible>
-                                </control>
-                                <control type="image">
-                                    <bordersize>15</bordersize>
-                                    <aspectratio>scale</aspectratio>
-                                    <texture background="true">$VAR[Image_Poster]</texture>
-                                    <visible>!String.StartsWith(ListItem.Icon,Default)</visible>
-                                </control>
-                            </control>
-                            <control type="label">
-                                <left>15</left>
-                                <right>15</right>
-                                <font>font_statusbar</font>
-                                <textcolor>main_fg_100</textcolor>
-                                <top>345</top>
-                                <bottom>30</bottom>
-                                <aligny>center</aligny>
-                                <align>center</align>
-                                <label>$INFO[ListItem.Label]</label>
-                            </control>
+                            <include content="View_51_Wall_Itemlayout">
+                                <param name="selectbox" value="false" />
+                                <param name="icon" value="$VAR[Image_Poster]" />
+                                <param name="id" value="5610" />
+                            </include>
                         </itemlayout>
                         <focusedlayout width="244.28" height="412.5">
-                            <control type="group">
-                                <height>345</height>
-                                <control type="image">
-                                    <bordersize>15</bordersize>
-                                    <aspectratio>scale</aspectratio>
-                                    <bordertexture border="30" colordiffuse="55ffffff">common/shadow-15.png</bordertexture>
-                                    <texture colordiffuse="main_fg_100">common/geometric.png</texture>
-                                </control>
-                                <control type="image">
-                                    <centertop>50%</centertop>
-                                    <centerleft>50%</centerleft>
-                                    <width>160</width>
-                                    <height>160</height>
-                                    <texture background="true">$INFO[ListItem.Icon]</texture>
-                                    <visible>String.StartsWith(ListItem.Icon,Default)</visible>
-                                </control>
-                                <control type="image">
-                                    <bordersize>15</bordersize>
-                                    <aspectratio>scale</aspectratio>
-                                    <texture background="true">$VAR[Image_Poster]</texture>
-                                    <visible>!String.StartsWith(ListItem.Icon,Default)</visible>
-                                </control>
-                                <include>View_Selectbox</include>
-                            </control>
-                            <control type="label">
-                                <left>15</left>
-                                <right>15</right>
-                                <font>font_statusbar</font>
-                                <textcolor>main_fg_100</textcolor>
-                                <top>345</top>
-                                <bottom>30</bottom>
-                                <aligny>center</aligny>
-                                <align>center</align>
-                                <scroll>false</scroll>
-                                <label>$INFO[ListItem.Label]</label>
-                            </control>
+                            <include content="View_51_Wall_Itemlayout">
+                                <param name="selectbox" value="true" />
+                                <param name="icon" value="$VAR[Image_Poster]" />
+                                <param name="id" value="5610" />
+                            </include>
                         </focusedlayout>
                         <content target="videos">videodb://recentlyaddedmovies/</content>
                     </control>

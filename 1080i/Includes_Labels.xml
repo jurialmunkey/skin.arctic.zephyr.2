@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
+    <variable name="Label_Info_SpecialContainer_Type">
+        <value condition="String.IsEqual(Window.Property(CurrentList),$NUMBER[50])">Cast Members</value>
+        <value condition="String.IsEqual(Window.Property(CurrentList),$NUMBER[5001])">Movies Similar to $INFO[ListItem.Title]</value>
+        <value condition="String.IsEqual(Window.Property(CurrentList),$NUMBER[5004])">Movies from $INFO[ListItem.Studio]</value>
+    </variable>
+
     <variable name="Label_Rating_IMDB">
         <value condition="!String.IsEmpty(Window(home).Property(SkinHelper.ListItem.Rating.IMDB))">$INFO[Window(home).Property(SkinHelper.ListItem.Rating.IMDB)]</value>
         <value condition="!String.IsEmpty(Container(5600).ListItem.Rating)">$INFO[Container(5600).ListItem.Rating]</value>

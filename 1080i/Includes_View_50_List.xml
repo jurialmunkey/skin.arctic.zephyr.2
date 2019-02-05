@@ -175,10 +175,11 @@
         <param name="width" default="560" />
         <param name="include" default="" />
         <param name="visible" default="true" />
+        <param name="left" default="-15" />
         <definition>
             <control type="group">
                 <top>-15</top>
-                <left>-15</left>
+                <left>$PARAM[left]</left>
                 <width>$PARAM[width]</width>
                 <include>$PARAM[include]</include>
                 <visible>$PARAM[visible]</visible>

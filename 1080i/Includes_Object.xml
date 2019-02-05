@@ -22,7 +22,7 @@
                 <aligny>top</aligny>
                 <font>font_tiny</font>
                 <textcolor>main_fg_70</textcolor>
-                <label>Cast Members</label>
+                <label>$VAR[Label_Info_SpecialContainer_Type]</label>
                 <height>60</height>
             </control>
         </control>
@@ -53,8 +53,7 @@
                     <param name="icon" value="special://skin/extras/icons/quote.png" />
                     <param name="onleft" value="6005" />
                     <param name="onright" value="6002" />
-                    <param name="onclick" value="SetProperty(CurrentList,7000)" />
-                    <param name="onclick2" value="SetFocus(7000)" />
+                    <param name="onclick" value="SetFocus(9000)" />
                 </include>
                 <include content="Object_Info_Button" description="Similar">
                     <param name="buttonid" value="6002" />
@@ -62,6 +61,8 @@
                     <param name="icon" value="special://skin/extras/icons/playlist2.png" />
                     <param name="onleft" value="6001" />
                     <param name="onright" value="6003" />
+                    <param name="onclick" value="SetFocus(5001)" />
+                    <param name="onfocus" value="SetProperty(CurrentList,5001)" />
                 </include>
                 <include content="Object_Info_Button" description="Cast">
                     <param name="buttonid" value="6003" />
@@ -70,8 +71,9 @@
                     <param name="onleft" value="6002" />
                     <param name="onright" value="6004" />
                     <param name="onclick" value="SetFocus(50)" />
+                    <param name="onfocus" value="SetProperty(CurrentList,50)" />
                 </include>
-                <include content="Object_Info_Button" description="Trailer">
+                <include content="Object_Info_Button" description="Director">
                     <param name="buttonid" value="6004" />
                     <param name="label" value="Director" />
                     <param name="icon" value="special://skin/extras/icons/director.png" />
@@ -84,6 +86,8 @@
                     <param name="icon" value="special://skin/extras/icons/cinemavision.png" />
                     <param name="onleft" value="6004" />
                     <param name="onright" value="6001" />
+                    <param name="onclick" value="SetFocus(5004)" />
+                    <param name="onfocus" value="SetProperty(CurrentList,5004)" />
                 </include>
             </control>
         </control>
@@ -261,6 +265,17 @@
             <param name="pad" value="20" />
             <param name="name" value="Studio" />
             <param name="label" value="ListItem.Studio" />
+        </include>
+        <include content="Object_Info_TextPairs">
+            <param name="pad" value="20" />
+            <param name="name" value="Country" />
+            <param name="label" value="ListItem.Country" />
+        </include>
+        <include content="Object_Info_TextPairs">
+            <param name="pad" value="20" />
+            <param name="name" value="Path" />
+            <param name="haspath" value="true" />
+            <param name="label" value="ListItem.Path" />
         </include>
     </include>
 

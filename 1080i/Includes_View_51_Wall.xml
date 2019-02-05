@@ -78,7 +78,10 @@
                     <param name="icon" value="$PARAM[icon]" />
                 </include>
                 <include>View_WatchedOverlay</include>
-                <include condition="$PARAM[selectbox]">View_Selectbox</include>
+                <control type="group">
+                    <visible>Control.HasFocus($PARAM[id])</visible>
+                    <include condition="$PARAM[selectbox]">View_Selectbox</include>
+                </control>
             </control>
             <include content="$PARAM[labelinclude]">
                 <param name="iconheight" value="$PARAM[iconheight]" />
@@ -97,6 +100,7 @@
         <param name="includeid" default="" />
         <param name="visible" default="true" />
         <param name="onfocus" default="" />
+        <param name="includecontent" default="false" />
         <definition>
             <control type="group">
                 <include content="View_Group">
@@ -115,6 +119,7 @@
                             <param name="icon" value="$PARAM[icon]" />
                             <param name="iconheight" value="$PARAM[iconheight]" />
                             <param name="labelinclude" value="$PARAM[labelinclude]" />
+                            <param name="id" value="$PARAM[id]" />
                         </include>
                     </itemlayout>
                     <focusedlayout width="$PARAM[itemwidth]" height="$PARAM[itemheight]">
@@ -123,8 +128,12 @@
                             <param name="icon" value="$PARAM[icon]" />
                             <param name="iconheight" value="$PARAM[iconheight]" />
                             <param name="labelinclude" value="$PARAM[labelinclude]" />
+                            <param name="id" value="$PARAM[id]" />
                         </include>
                     </focusedlayout>
+                    <include content="View_Include_Content" condition="$PARAM[includecontent]">
+                        <param name="content" value="$PARAM[content]" />
+                    </include>
                 </control>
                 <include content="$PARAM[include]">
                     <param name="id" value="$PARAM[includeid]" />
