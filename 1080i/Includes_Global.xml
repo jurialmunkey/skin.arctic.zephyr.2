@@ -58,13 +58,15 @@
         <control type="image">
             <texture colordiffuse="Background">common/bg.jpg</texture>
         </control>
-        <control type="image">
+        <control type="multiimage">
+            <timeperimage>10000</timeperimage>
+            <randomize>true</randomize>
             <include>Animation_FadeFromHome</include>
             <width>1920</width>
             <height>1080</height>
             <aspectratio>scale</aspectratio>
             <fadetime>600</fadetime>
-            <texture background="true" colordiffuse="FanartFade">$INFO[ListItem.Art(fanart)]</texture>
+            <imagepath background="true" colordiffuse="FanartFade">$VAR[Global_Background_Image]</imagepath>
         </control>
         <control type="group">
             <include>Animation_FadeIn</include>

@@ -186,8 +186,13 @@
                 <control type="group">
                     <height>$PARAM[height]</height>
                     <include>Object_Geometric</include>
-                    <include>Object_DefaultIcon</include>
-                    <include>Object_Poster</include>
+                    <include content="Object_DefaultIcon">
+                        <param name="icon" value="$PARAM[defaulticon]" />
+                        <param name="visible" value="$PARAM[defaulticonvisible]" />
+                    </include>
+                    <include content="Object_Poster">
+                        <param name="icon" value="$PARAM[icon]" />
+                    </include>
                 </control>
             </control>
         </definition>

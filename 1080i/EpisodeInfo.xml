@@ -1,0 +1,102 @@
+       <!-- Episode / Video Info -->
+        <control type="group">
+            <visible>String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,video)</visible>
+            <include>View_Pad</include>
+
+            <!-- Thumb and Banner -->
+            <control type="group">
+                <right>-15</right>
+                <width>870</width>
+                <include>Animation_Right_Delay</include>
+                <control type="group">
+                    <top>-15</top>
+                    <height>502.5</height>
+                    <include>Object_Geometric</include>
+                    <include>Object_DefaultIcon</include>
+                    <include content="Object_Poster">
+                        <param name="icon" value="$VAR[Image_Fanart]" />
+                    </include>
+                </control>
+                <control type="group">
+                    <top>487</top>
+                    <height>187</height>
+                    <include>Object_Geometric</include>
+                    <include content="Object_Poster">
+                        <param name="icon" value="$INFO[ListItem.Art(fanart)]" />
+                    </include>
+                    <control type="image">
+                        <bordersize>25</bordersize>
+                        <aspectratio align="right">keep</aspectratio>
+                        <texture background="true">$VAR[Image_ClearLogo]</texture>
+                    </control>
+                    <include content="Object_Poster">
+                        <param name="icon" value="$VAR[Image_Banner]" />
+                    </include>
+                </control>
+            </control>
+
+            <include>Object_Info_Buttons</include>
+
+            <!-- Info -->
+            <control type="group">
+                <top>-15</top>
+                <right>870</right>
+                <include>Animation_Left_Delay</include>
+                <control type="grouplist">
+                    <orientation>vertical</orientation>
+                    <usecontrolcoords>true</usecontrolcoords>
+                    <itemgap>0</itemgap>
+                    <include>Object_Info_Title</include>
+                    <include>Object_Info_Line</include>
+                    <include>Object_Info_Plot</include>
+                    <include>Object_Info_Ratings</include>
+                    <include>Object_Info_Details</include>
+                    <include>Object_Info_Codecs</include>
+                </control>
+            </control>            
+        </control>
+
+        <include content="View_51_Wall_Control">
+            <param name="id" value="50" />
+            <param name="height" value="412.5" />
+            <param name="controlorientation" value="View_Horizontal_Cast" />
+            <param name="controltype" value="fixedlist" />
+            <param name="controllayout" value="View_52_Showcase_Layout" />
+            <param name="infohide" value="false" />
+            <param name="visible" value="!String.IsEmpty(Window.Property(CurrentList)) + String.IsEqual(Window.Property(CurrentList),$NUMBER[50])" />
+            <param name="onfocus" value="SetProperty(CurrentList,50)" />
+        </include>
+
+        <include content="View_51_Wall_Control">
+            <param name="id" value="5001" />
+            <param name="height" value="412.5" />
+            <param name="controlorientation" value="View_Horizontal_Cast" />
+            <param name="controltype" value="fixedlist" />
+            <param name="controllayout" value="View_52_Showcase_Layout" />
+            <param name="infohide" value="false" />
+            <param name="visible" value="!String.IsEmpty(Window.Property(CurrentList)) + String.IsEqual(Window.Property(CurrentList),$NUMBER[5001])" />
+            <param name="onfocus" value="SetProperty(CurrentList,5001)" />
+            <param name="includecontent" value="true" />
+            <param name="content" value="plugin://script.skin.helper.widgets/?action=similar&amp;mediatype=movies&amp;imdbid=$INFO[ListItem.IMDBNumber]" />
+        </include>
+
+        <include content="View_51_Wall_Control">
+            <param name="id" value="5004" />
+            <param name="height" value="412.5" />
+            <param name="controlorientation" value="View_Horizontal_Cast" />
+            <param name="controltype" value="fixedlist" />
+            <param name="controllayout" value="View_52_Showcase_Layout" />
+            <param name="infohide" value="false" />
+            <param name="visible" value="!String.IsEmpty(Window.Property(CurrentList)) + String.IsEqual(Window.Property(CurrentList),$NUMBER[5004])" />
+            <param name="onfocus" value="SetProperty(CurrentList,5004)" />
+            <param name="includecontent" value="true" />
+            <param name="content" value="$VAR[Defs_VideoInfo_StudioMovies]" />
+        </include>
+
+        <!-- Surrounding Info and Buttons -->
+        <control type="group">
+            <include>View_Pad</include>
+            <include>Animation_Common</include>
+            <include>Object_Info_Cast_Details</include>
+            <visible>!String.IsEmpty(Window.Property(CurrentList))</visible>
+        </control>

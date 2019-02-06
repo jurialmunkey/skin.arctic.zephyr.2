@@ -1,5 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
+
+    <include name="View_Cast_Label">
+        <param name="label2" default="$INFO[ListItem.Label2]" />
+        <definition>
+            <control type="label">
+                <left>15</left>
+                <right>15</right>
+                <font>font_statusbar</font>
+                <textcolor>main_fg_100</textcolor>
+                <top>$PARAM[iconheight]</top>
+                <bottom>40</bottom>
+                <aligny>center</aligny>
+                <align>center</align>
+                <label>$INFO[ListItem.Label]</label>
+            </control>
+            <control type="label">
+                <left>15</left>
+                <right>15</right>
+                <font>font_statusbar</font>
+                <textcolor>main_fg_70</textcolor>
+                <top>$PARAM[iconheight]</top>
+                <bottom>-10</bottom>
+                <aligny>center</aligny>
+                <align>center</align>
+                <label>$PARAM[label2]</label>
+            </control>
+        </definition>
+    </include>
+
+    <include name="View_Cast_Job_Label">
+        <include content="View_Cast_Label">
+            <param name="label2" value="$INFO[ListItem.Property(job)]" />
+            <param name="iconheight" value="$PARAM[iconheight]" />
+        </include>
+    </include>
+    <include name="View_Cast_Character_Label">
+        <include content="View_Cast_Label">
+            <param name="label2" value="$INFO[ListItem.Property(character)]" />
+            <param name="iconheight" value="$PARAM[iconheight]" />
+        </include>
+    </include>
+
     <include name="View_Include_Content">
         <content>$PARAM[content]</content>
     </include>
@@ -24,9 +66,19 @@
         <orientation>horizontal</orientation>
     </include>
 
-    <include name="View_Horizontal_Cast">    
-        <onup>SetFocus(9000)</onup>
-        <ondown>SetFocus(6000)</ondown>
+    <include name="View_Vertical_Cast">
+        <onright>5006</onright>
+        <onleft>8</onleft>
+        <onback>8</onback>
+        <orientation>vertical</orientation>
+    </include>
+
+    <include name="View_Vertical_Back">
+        <onback>8</onback>
+        <orientation>vertical</orientation>
+    </include>
+    <include name="View_Horizontal_Back">
+        <onback>8</onback>
         <orientation>horizontal</orientation>
     </include>
 
@@ -446,12 +498,13 @@
 
     <include name="View_Group">
         <param name="infohide" default="true" />
+        <param name="animation" default="Animation_Common" />
         <param name="bottom" default="view_pad" />
         <definition>
             <include content="View_Pad">
                 <param name="view_pad" value="$PARAM[view_pad]" />
             </include>
-            <include>Animation_Common</include>
+            <include>$PARAM[animation]</include>
             <include condition="$PARAM[infohide]">Defs_InfoDialog_Visible</include>
         </definition>
     </include>
@@ -836,12 +889,13 @@
 
     <include name="View_Selectbox">
         <param name="overlay" default="true" />
+        <param name="pad" default="-7" />
         <definition>
             <control type="group">
-                <left>-7</left>
-                <top>-7</top>
-                <right>-7</right>
-                <bottom>-7</bottom>
+                <left>$PARAM[pad]</left>
+                <top>$PARAM[pad]</top>
+                <right>$PARAM[pad]</right>
+                <bottom>$PARAM[pad]</bottom>
                 <control type="image">
                     <bordersize>15</bordersize>
                     <bordertexture border="30" colordiffuse="55ffffff">common/shadow-15.png</bordertexture>

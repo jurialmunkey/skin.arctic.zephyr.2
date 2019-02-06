@@ -1,6 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
 
+    <include name="Object_Info_Arrows">
+        <control type="group">
+            <include>View_Pad</include>
+            <visible>Window.IsActive(DialogVideoInfo.xml)</visible>
+            <control type="image">
+                <centerleft>-60</centerleft>
+                <centertop>50%</centertop>
+                <width>32</width>
+                <height>32</height>
+                <texture colordiffuse="main_fg_100">buttons/spin-left.png</texture>
+                <visible>Container(9000).HasPrevious</visible>
+                <include>Animation_FadeInOut_Delay</include>
+                <visible>Control.HasFocus($PARAM[id])</visible>
+            </control>
+            <control type="image">
+                <centerright>-60</centerright>
+                <centertop>50%</centertop>
+                <width>32</width>
+                <height>32</height>
+                <texture colordiffuse="main_fg_100" flipx="true">buttons/spin-left.png</texture>
+                <visible>Container(9000).HasNext</visible>
+                <include>Animation_FadeInOut_Delay</include>
+                <visible>Control.HasFocus($PARAM[id])</visible>
+            </control>
+        </control>
+    </include>
+
+    <include name="Object_Info_Artwork">
+        <control type="group">
+            <visible>$PARAM[visible]</visible>
+            <width>1920</width>
+            <height>1080</height>
+            <control type="button" id="$PARAM[id]">
+                <include>Defs_Hidden_Button</include>
+                <onleft>$PARAM[onleft]</onleft>
+                <onright>$PARAM[onright]</onright>
+                <onback>8</onback>
+            </control>
+            <control type="group">
+                <include>View_Pad</include>
+                <include content="Object_Geometric">
+                    <param name="pad" value="-15" />
+                </include>
+                <control type="image">
+                    <texture background="true">$PARAM[artwork]</texture>
+                    <aspectratio>scale</aspectratio>
+                </control>
+                <include>Animation_FadeInOut_Delay</include>
+            </control>
+        </control>
+    </include>
+
     <include name="Object_Info_Cast_Details">
         <control type="grouplist">
             <top>-15</top>
@@ -162,6 +214,7 @@
 
     <include name="Object_Info_Codecs">
         <control type="grouplist">
+            <visible>!ListItem.IsFolder</visible>
             <top>40</top>
             <height>32</height>
             <align>left</align>
@@ -308,67 +361,79 @@
     </include>
 
     <include name="Object_Info_Line">
-        <control type="grouplist">
-            <height>40</height>
-            <orientation>horizontal</orientation>
-            <usecontrolcoords>true</usecontrolcoords>
-            <itemgap>0</itemgap>
-            <left>0</left>
-            <right>0</right>
-            <control type="image">
+        <param name="label" default="$VAR[Label_ShowCase_InfoLine]" />
+        <param name="hdsd" default="true" />
+        <param name="nextaired" default="true" />
+        <definition>
+            <control type="grouplist">
+                <height>40</height>
+                <orientation>horizontal</orientation>
+                <usecontrolcoords>true</usecontrolcoords>
+                <itemgap>0</itemgap>
                 <left>0</left>
-                <top>10</top>
-                <width>37</width>
-                <height>24</height>
-                <texture colordiffuse="main_fg_100">$VAR[Image_HDSD]</texture>
-                <visible>Container.Content(movies) | Container.Content(episodes)</visible>
+                <right>0</right>
+                <control type="image">
+                    <left>0</left>
+                    <top>10</top>
+                    <width>37</width>
+                    <height>24</height>
+                    <texture colordiffuse="main_fg_100">$VAR[Image_HDSD]</texture>
+                    <visible>Container.Content(movies) | Container.Content(episodes)</visible>
+                    <visible>$PARAM[hdsd]</visible>
+                </control>
+                <control type="label">
+                    <label>  |  </label>
+                    <width>auto</width>
+                    <height>40</height>
+                    <aligny>top</aligny>
+                    <textcolor>$VAR[ColorHighlight]</textcolor>
+                    <font>font_small</font>
+                    <visible>Container.Content(movies) | Container.Content(episodes)</visible>
+                    <visible>$PARAM[hdsd]</visible>
+                </control>
+                <control type="label">
+                    <width>auto</width>
+                    <label>$PARAM[label]</label>
+                    <height>40</height>
+                    <aligny>top</aligny>
+                    <textcolor>$VAR[ColorHighlight]</textcolor>
+                    <font>font_small</font>
+                </control>
+                <control type="label">
+                    <width>auto</width>
+                    <label>$VAR[Label_Info_NextAired_Status,  |  [COLOR=main_fg_100],[/COLOR]]$VAR[Label_Info_NextAired_Date, [COLOR=main_fg_100],[/COLOR]]</label>
+                    <height>40</height>
+                    <aligny>top</aligny>
+                    <textcolor>$VAR[ColorHighlight]</textcolor>
+                    <font>font_small</font>
+                    <visible>Container.Content(tvshows)</visible>
+                    <visible>$PARAM[nextaired]</visible>
+                </control>
             </control>
-            <control type="label">
-                <label>  |  </label>
-                <width>auto</width>
-                <height>40</height>
-                <aligny>top</aligny>
-                <textcolor>$VAR[ColorHighlight]</textcolor>
-                <font>font_small</font>
-                <visible>Container.Content(movies) | Container.Content(episodes)</visible>
-            </control>
-            <control type="label">
-                <width>auto</width>
-                <label>$VAR[Label_ShowCase_InfoLine]</label>
-                <height>40</height>
-                <aligny>top</aligny>
-                <textcolor>$VAR[ColorHighlight]</textcolor>
-                <font>font_small</font>
-            </control>
-            <control type="label">
-                <width>auto</width>
-                <label>$VAR[Label_Info_NextAired_Status,  |  [COLOR=main_fg_100],[/COLOR]]$VAR[Label_Info_NextAired_Date, [COLOR=main_fg_100],[/COLOR]]</label>
-                <height>40</height>
-                <aligny>top</aligny>
-                <textcolor>$VAR[ColorHighlight]</textcolor>
-                <font>font_small</font>
-                <visible>Container.Content(tvshows)</visible>
-            </control>
-        </control>
+        </definition>
     </include>
 
     <include name="Object_Info_Title">
-        <control type="label">
-            <label>$INFO[ListItem.Label]</label>
-            <height>80</height>
-            <aligny>top</aligny>
-            <textcolor>main_fg_100</textcolor>
-            <font>font_showcase_title</font>
-        </control>
+        <param name="label" default="$INFO[ListItem.Label]" />
+        <definition>
+            <control type="label">
+                <label>$PARAM[label]</label>
+                <height>80</height>
+                <aligny>top</aligny>
+                <textcolor>main_fg_100</textcolor>
+                <font>font_showcase_title</font>
+            </control>
+        </definition>
     </include>
 
     <include name="Object_Info_Plot">
         <param name="maxheight" default="164" />
         <param name="height" default="auto" />
+        <param name="label" default="$VAR[Label_Plot]" />
         <definition>
             <control type="textbox">
                 <top>30</top>
-                <label fallback="19055">$VAR[Label_Plot]</label>
+                <label fallback="19055">$PARAM[label]</label>
                 <height max="$PARAM[maxheight]">$PARAM[height]</height>
                 <aligny>top</aligny>
                 <textcolor>main_fg_70</textcolor>
@@ -378,23 +443,34 @@
     </include>
 
     <include name="Object_Geometric">
-        <control type="image">
-            <bordersize>15</bordersize>
-            <aspectratio>scale</aspectratio>
-            <bordertexture border="30" colordiffuse="55ffffff">common/shadow-15.png</bordertexture>
-            <texture colordiffuse="main_fg_100">common/geometric.png</texture>
-        </control>
+        <param name="pad" default="0" />
+        <definition>
+            <control type="image">
+                <left>$PARAM[pad]</left>
+                <right>$PARAM[pad]</right>
+                <top>$PARAM[pad]</top>
+                <bottom>$PARAM[pad]</bottom>
+                <bordersize>15</bordersize>
+                <aspectratio>scale</aspectratio>
+                <bordertexture border="30" colordiffuse="55ffffff">common/shadow-15.png</bordertexture>
+                <texture colordiffuse="main_fg_100">common/geometric.png</texture>
+            </control>
+        </definition>
     </include>
 
     <include name="Object_DefaultIcon">
-        <control type="image">
-            <centertop>50%</centertop>
-            <centerleft>50%</centerleft>
-            <width>160</width>
-            <height>160</height>
-            <texture background="true">$INFO[ListItem.Icon]</texture>
-            <visible>String.StartsWith(ListItem.Icon,Default)</visible>
-        </control>
+        <param name="icon" default="$INFO[ListItem.Icon]" />
+        <param name="visible" default="String.StartsWith(ListItem.Icon,Default)" />
+        <definition>
+            <control type="image">
+                <centertop>50%</centertop>
+                <centerleft>50%</centerleft>
+                <width>160</width>
+                <height>160</height>
+                <texture background="true">$PARAM[icon]</texture>
+                <visible>$PARAM[visible]</visible>
+            </control>
+        </definition>
     </include>
 
     <include name="Object_Poster">
