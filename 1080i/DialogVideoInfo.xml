@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Foundation -->
 <window id="2003">
-    <defaultcontrol always="true">8</defaultcontrol>
-    <onload>ClearProperty(CurrentList)</onload>
-    <onunload>ClearProperty(CurrentList)</onunload>
+    <defaultcontrol always="true">8000</defaultcontrol>
     <controls>
 
         <control type="grouplist" id="9000">
@@ -49,7 +47,7 @@
             <include content="Object_Info_Artwork">
                 <param name="id" value="5005" />
                 <param name="onleft" value="5004" />
-                <param name="onright" value="8" />
+                <param name="onright" value="8000" />
                 <param name="artwork" value="$INFO[ListItem.Art(fanart)]" />
                 <param name="visible" value="!String.IsEmpty(ListItem.Art(fanart))" />
             </include>
@@ -59,30 +57,26 @@
             <control type="group">
                 <width>1920</width>
                 <height>1080</height>
-                <!-- <include content="Object_Info_Arrows">
-                    <param name="id" value="8" />
-                </include> -->
                 <control type="group">
-                    <!-- <visible>![String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,video)]</visible> -->
                     <include>View_Pad</include>
-                    <control type="button" id="8">
+                    <control type="button" id="8000">
                         <include>Defs_Hidden_Button</include>
+                        <onclick>SendClick(8)</onclick>
                         <onleft>5005</onleft>
                         <onright>SetFocus(50,0,absolute)</onright>
-                        <onfocus>ClearProperty(CurrentList)</onfocus>
                     </control>
 
                     <!-- Poster -->
                     <include content="View_50_Poster">
                         <param name="include" value="Animation_Left_Delay" />
-                        <param name="visible" value="String.IsEmpty(Window.Property(CurrentList))" />
+                        <param name="visible" value="true" />
                     </include>
+
 
                     <!-- Info -->
                     <control type="group">
                         <top>-15</top>
-                        <left>575</left>
-                        <visible>String.IsEmpty(Window.Property(CurrentList))</visible>
+                        <left>580</left>
                         <include>Animation_Right_Delay</include>
                         <control type="grouplist">
                             <orientation>vertical</orientation>
@@ -99,7 +93,6 @@
                             <orientation>vertical</orientation>
                             <usecontrolcoords>true</usecontrolcoords>
                             <itemgap>0</itemgap>
-                            
                             <include>Object_Info_Codecs</include>
                         </control>
                         <!-- <include>Object_Info_Buttons</include> -->
@@ -111,9 +104,6 @@
             <control type="group">
                 <width>1920</width>
                 <height>1080</height>
-                <!-- <include content="Object_Info_Arrows">
-                    <param name="id" value="50" />
-                </include> -->
                 <include content="View_51_Wall_Control">
                     <param name="id" value="50" />
                     <param name="height" value="825" />
@@ -159,6 +149,7 @@
                             <height>350</height>
                             <align>right</align>
                             <aligny>center</aligny>
+                            <textcolor>main_fg_70</textcolor>
                             <label>$INFO[ListItem.Tagline]</label>
                             <font>font_info_display</font>
                         </control>
@@ -228,6 +219,10 @@
                 </control>
             </control>
         </control> -->
+
+        <control type="button" id="10">
+            <include>Defs_Hidden_Button</include>
+        </control>
 
     </controls>
 

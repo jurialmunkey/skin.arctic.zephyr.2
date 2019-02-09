@@ -11,7 +11,7 @@
         <control type="group">
             <include content="Dialog_Standard_Group">
                 <param name="width" value="1820" />
-                <param name="height" value="956" />
+                <param name="height" value="930" />
             </include>
 
             <control type="label" id="2">
@@ -20,118 +20,71 @@
 
             <control type="grouplist" id="3">
                 <description>button area</description>
-                <left>20</left>
-                <top>110</top>
-                <width>400</width>
-                <bottom>20</bottom>
-                <itemgap>10</itemgap>
+                <left>0</left>
+                <top>dialog_top</top>
+                <width>dialog_side_grouplist</width>
+                <bottom>dialog_pad</bottom>
+                <itemgap>0</itemgap>
                 <onleft>9001</onleft>
                 <onright>5</onright>
                 <onup>3</onup>
                 <ondown>3</ondown>
             </control>
 
+            <include>Dialog_Separator</include>
+
             <control type="grouplist" id="5">
                 <description>control area</description>
-                <left>440</left>
-                <top>110</top>
-                <width>940</width>
-                <bottom>20</bottom>
-                <itemgap>10</itemgap>
+                <left>dialog_side_grouplist</left>
+                <top>dialog_top</top>
+                <right>dialog_side_grouplist</right>
+                <bottom>dialog_pad</bottom>
+                <itemgap>0</itemgap>
                 <onup>5</onup>
                 <ondown>5</ondown>
-                <onright>9001</onright>
+                <onright>61</onright>
                 <onleft>3</onleft>
+                <pagecontrol>61</pagecontrol>
                 <usecontrolcoords>true</usecontrolcoords>
             </control>
 
-            
-
-            <control type="button" id="7">
-                <description>Default Button</description>
-                <include>Dialog_Standard_ListButton</include>
-            </control>
-
-            <control type="radiobutton" id="8">
-                <description>Default RadioButton</description>
-                <radioposx>885</radioposx>
-                <textwidth>835</textwidth>
-                <include>Dialog_Standard_ListButton</include>
-            </control>
-
-            <control type="spincontrolex" id="9">
-                <description>Default spincontrolex</description>
-                <reverse>true</reverse>
-                <include>Dialog_Standard_ListButton</include>
-            </control>
-
-            <control type="togglebutton" id="10">
-                <description>Default Category Button</description>
-                <width>400</width>
-                <include>Dialog_Standard_ListButton</include>
-            </control>
-
-            <control type="image" id="11">
-                <description>Default Seperator</description>
-                <visible>false</visible>
-            </control>
-
-            <control type="edit" id="12">
-                <description>Default Edit</description>
-                <include>Dialog_Standard_ListButton</include>
-            </control>
-
-            <control type="sliderex" id="13">
-                <description>Default Slider</description>
-                <width>969</width>
-                <include>Dialog_Standard_ListButton</include>
-            </control>
-
-            <control type="label" id="14">
-                <include>Dialog_Standard_HintLabel</include>
-            </control>
-
-
-            <control type="image">
-                <right>20</right>
-                <bottom>20</bottom>
-                <width>400</width>
-                <height>400</height>
-                <texture>$VAR[Image_AddonImage]</texture>
-                <aspectratio align="center" aligny="bottom">keep</aspectratio>
-            </control>
-
-            <!-- Ok Cancel -->
-            <control type="grouplist" id="9001">
-                <onleft>5</onleft>
-                <right>20</right>
-                <orientation>vertical</orientation>
-                <itemgap>10</itemgap>
-                <width>400</width>
-                <top>110</top>
-                <control type="button" id="28" description="OK">
-                    <label>186</label>
-                    <height>66</height>
-                    <width>400</width>
-                    <include>Dialog_Standard_OkCancel</include>
+            <include content="Dialog_Scrollbar">
+                <param name="onleft" value="5" />
+            </include>
+           
+            <control type="group">
+                <include>Dialog_Standard_Right_Group</include>
+                <control type="image">
+                    <bottom>0</bottom>
+                    <height>dialog_right_iconwidth</height>
+                    <texture>$VAR[Image_AddonImage]</texture>
+                    <aspectratio align="center" aligny="bottom">keep</aspectratio>
                 </control>
-
-                <control type="button" id="29" description="Cancel">
-                    <label>222</label>
-                    <height>66</height>
-                    <width>400</width>
-                    <include>Dialog_Standard_OkCancel</include>
+                <control type="grouplist" id="8000">
+                    <onleft>61</onleft>
+                    <orientation>vertical</orientation>
+                    <itemgap>0</itemgap>
+                    <control type="button" id="28" description="OK">
+                        <label>186</label>
+                        <include>Dialog_Standard_Right_Buttons</include>
+                    </control>
+                    <control type="button" id="29" description="Cancel">
+                        <label>222</label>
+                        <include>Dialog_Standard_Right_Buttons</include>
+                    </control>
+                    <control type="button" id="30" description="Cancel">
+                        <label>409</label>
+                        <include>Dialog_Standard_Right_Buttons</include>
+                    </control>
                 </control>
-
-                <control type="button" id="30" description="Cancel">
-                    <label>409</label>
-                    <height>66</height>
-                    <width>400</width>
-                    <include>Dialog_Standard_OkCancel</include>
-                </control>
-
             </control>
+        </control>
 
+        <include>Dialog_Default_Buttons</include>
+        <control type="togglebutton" id="10">
+            <description>Default Category Button</description>
+            <width>dialog_side_grouplist</width>
+            <include>Dialog_Standard_Button</include>
         </control>
 
     </controls>

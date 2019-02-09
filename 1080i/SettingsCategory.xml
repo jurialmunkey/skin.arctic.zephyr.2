@@ -7,7 +7,6 @@
     <controls>
 
         <include>Global_Background</include>
-        <include>Topbar</include>
         
         <!-- GroupList -->
         <control type="group">
@@ -15,53 +14,14 @@
             <control type="group">
                 <control type="label">
                     <left>view_pad</left>
-                    <height>80</height>
-                    <label>$INFO[System.AddonVersion(skin.aura),Aura ,]</label>
+                    <height>view_list_height</height>
+                    <label>$INFO[System.AddonVersion(skin.arctic.zephyr.2),Arctic Zephyr 2 - ,]</label>
                     <font>font_button</font>
                     <textcolor>main_fg_30</textcolor>
                 </control>
 
                 <control type="group">
-                    <top>80</top>
-                    <height>800</height>
-
-                    <!-- Left Gradient Fade -->
-                    <control type="image">
-                        <top>0</top>
-                        <height>80</height>
-                        <width>450</width>
-                        <texture colordiffuse="$VAR[ColorHighlight]">common/white.png</texture>
-                        <visible>![Control.HasFocus(3901) | Control.HasFocus(3902) | Control.HasFocus(3903) | Control.HasFocus(300)] + !Control.HasFocus(20)</visible>
-                        <animation effect="slide" end="0,80" condition="Integer.IsGreater(Container(3).Position,0)">Conditional</animation>
-                        <animation effect="slide" end="0,80" condition="Integer.IsGreater(Container(3).Position,1)">Conditional</animation>
-                        <animation effect="slide" end="0,80" condition="Integer.IsGreater(Container(3).Position,2)">Conditional</animation>
-                        <animation effect="slide" end="0,80" condition="Integer.IsGreater(Container(3).Position,3)">Conditional</animation>
-                        <animation effect="slide" end="0,80" condition="Integer.IsGreater(Container(3).Position,4)">Conditional</animation>
-                        <animation effect="slide" end="0,80" condition="Integer.IsGreater(Container(3).Position,5)">Conditional</animation>
-                        <animation effect="slide" end="0,80" condition="Integer.IsGreater(Container(3).Position,6)">Conditional</animation>
-                        <animation effect="slide" end="0,80" condition="Integer.IsGreater(Container(3).Position,7)">Conditional</animation>
-                        <animation effect="slide" end="0,80" condition="Integer.IsGreater(Container(3).Position,8)">Conditional</animation>
-                    </control>
-
-                    <!-- Right Gradient Fade -->
-                    <control type="image">
-                        <top>0</top>
-                        <left>450</left>
-                        <height>80</height>
-                        <right>0</right>
-                        <texture colordiffuse="$VAR[ColorHighlight]">common/white.png</texture>
-                        <visible>ControlGroup(5).HasFocus()</visible>
-                        <animation effect="slide" end="0,80" condition="Integer.IsGreater(Container(5).Position,0)">Conditional</animation>
-                        <animation effect="slide" end="0,80" condition="Integer.IsGreater(Container(5).Position,1)">Conditional</animation>
-                        <animation effect="slide" end="0,80" condition="Integer.IsGreater(Container(5).Position,2)">Conditional</animation>
-                        <animation effect="slide" end="0,80" condition="Integer.IsGreater(Container(5).Position,3)">Conditional</animation>
-                        <animation effect="slide" end="0,80" condition="Integer.IsGreater(Container(5).Position,4)">Conditional</animation>
-                        <animation effect="slide" end="0,80" condition="Integer.IsGreater(Container(5).Position,5)">Conditional</animation>
-                        <animation effect="slide" end="0,80" condition="Integer.IsGreater(Container(5).Position,6)">Conditional</animation>
-                        <animation effect="slide" end="0,80" condition="Integer.IsGreater(Container(5).Position,7)">Conditional</animation>
-                        <animation effect="slide" end="0,80" condition="Integer.IsGreater(Container(5).Position,8)">Conditional</animation>
-                    </control>
-
+                    <top>view_list_height</top>
                     <!-- Right Group -->
                     <control type="grouplist" id="5">
                         <description>Control Area</description>
@@ -90,20 +50,13 @@
                     </control>
 
                     <!-- Settings Change -->
-                    <control type="image">
-                        <height>80</height>
-                        <width>450</width>
-                        <bottom>80</bottom>
-                        <texture colordiffuse="$VAR[ColorHighlight]">common/white.png</texture>
-                        <visible>Control.HasFocus(20)</visible>
-                    </control>
                     <control type="button" id="20">
                         <width>450</width>
-                        <bottom>80</bottom>
+                        <bottom>0</bottom>
                         <onup>3</onup>
                         <onright>3</onright>
                         <onclick>SettingsLevelChange</onclick>
-                        <texturefocus colordiffuse="$VAR[ColorHighlight2]">common/gradient-diffuse-horizontal.png</texturefocus>
+                        <texturefocus colordiffuse="$VAR[ColorHighlight]">common/white.png</texturefocus>
                         <include>Defs_Settings_Button</include>
                     </control>
 
@@ -117,30 +70,17 @@
                     </include>
                 </control>
 
-                <!-- Info -->
-                <control type="grouplist">
-                    <left>view_pad</left>
-                    <right>30</right>
-                    <top>806</top>
-                    <bottom>0</bottom>
-                    <orientation>vertical</orientation>
-                    <itemgap>0</itemgap>
-                    <control type="label">
-                        <height>50</height>
-                        <label>$LOCALIZE[19033]</label>
-                        <font>font_button</font>
-                        <textcolor>main_fg_30</textcolor>
-                    </control>
-                    <control type="textbox" id="6">
-                        <height>64</height>
-                        <font>font_tiny</font>
-                        <textcolor>main_fg_70</textcolor>
-                    </control>
-                </control>
+               
             </control>
         </control>
 
-        
+        <control type="group">
+            <include content="Dialog_Notification_Group">
+                <param name="main_id" value="9901" />
+                <param name="sub_id" value="6" />
+                <param name="label" value="19033" />
+            </include>
+        </control>
 
         <control type="button" id="7">
             <description>Default Button</description>

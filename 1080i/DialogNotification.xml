@@ -2,30 +2,15 @@
 <!-- Foundation -->
 <window id="107">
     <controls>
-        <control type="image">
-            <include>Defs_ShadowBack_Fullscreen</include>
-            <visible>!Window.IsVisible(DialogVolumeBar.xml) | Player.Muted</visible>
-        </control>
         <control type="group">
-            <height>view_top</height>
-            <control type="group">
-                <include>Dialog_Notification_Group</include>
-                <visible>!Window.IsVisible(DialogVolumeBar.xml) | Player.Muted</visible>
-                <control type="group">
-                    <control type="image">
-                        <include>Dialog_Notification_Icon</include>
-                        <aspectratio>keep</aspectratio>
-                        <texture colordiffuse="panel_fg_100">DefaultIconInfo.png</texture>
-                    </control>
-                    <control type="label" id="401">
-                        <include>Dialog_Notification_MainLabel</include>
-                    </control>
-                    <control type="label" id="402">
-                        <textcolor>$VAR[ColorHighlight]</textcolor>
-                        <include>Dialog_Notification_SubLabel</include>
-                    </control>
-                </control>
-            </control>
+            <visible>!Window.IsVisible(fullscreenvideo)</visible>
+            <visible>!Window.IsVisible(visualisation)</visible>
+            <visible>!Window.IsVisible(Startup.xml)</visible>
+            <visible>!Window.IsVisible(Home.xml) | [Control.HasFocus(302) | Control.HasFocus(5610)]</visible>
+            <include content="Dialog_Notification_Group">
+                <param name="main_id" value="401" />
+                <param name="sub_id" value="402" />
+            </include>
         </control>
     </controls>
 </window>

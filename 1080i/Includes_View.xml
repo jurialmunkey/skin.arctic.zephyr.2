@@ -68,17 +68,17 @@
 
     <include name="View_Vertical_Cast">
         <onright>5006</onright>
-        <onleft>8</onleft>
-        <onback>8</onback>
+        <onleft>8000</onleft>
+        <onback>8000</onback>
         <orientation>vertical</orientation>
     </include>
 
     <include name="View_Vertical_Back">
-        <onback>8</onback>
+        <onback>8000</onback>
         <orientation>vertical</orientation>
     </include>
     <include name="View_Horizontal_Back">
-        <onback>8</onback>
+        <onback>8000</onback>
         <orientation>horizontal</orientation>
     </include>
 
@@ -424,74 +424,62 @@
         </focusedlayout>
     </include>
 
+    <include name="View_TopItems_Itemlayout">
+        <control type="group">
+            <top>0</top>
+            <bottom>$PARAM[textbox_height]</bottom>
+            <control type="image">
+                <bordersize>15</bordersize>
+                <aspectratio>scale</aspectratio>
+                <bordertexture border="30" colordiffuse="55ffffff">common/shadow-15.png</bordertexture>
+                <texture colordiffuse="PosterBack">common/geometric.png</texture>
+            </control>
+            <control type="image">
+                <centertop>50%</centertop>
+                <centerleft>50%</centerleft>
+                <width>96</width>
+                <height>96</height>
+                <texture background="true">$INFO[ListItem.Icon]</texture>
+            </control>
+            <nested />
+        </control>
+        <control type="textbox">
+            <bottom>0</bottom>
+            <left>15</left>
+            <right>15</right>
+            <font>font_tiny</font>
+            <textcolor>main_fg_100</textcolor>
+            <height>$PARAM[textbox_height]</height>
+            <aligny>top</aligny>
+            <align>center</align>
+            <label>$INFO[ListItem.Label]</label>
+        </control>
+    </include>
+
     <include name="View_TopItems">
-        <height>352.5</height>
-        <top>-15</top>
-        <left>-15</left>
-        <right>-15</right>
-        <preloaditems>2</preloaditems>
-        <orientation>horizontal</orientation>
-        <itemlayout width="244.28" height="252.5">
-            <control type="group">
-                <height>185</height>
-                <control type="image">
-                    <bordersize>15</bordersize>
-                    <aspectratio>scale</aspectratio>
-                    <bordertexture border="30" colordiffuse="55ffffff">common/shadow-15.png</bordertexture>
-                    <texture colordiffuse="PosterBack">common/geometric.png</texture>
-                </control>
-                <control type="image">
-                    <centertop>50%</centertop>
-                    <centerleft>50%</centerleft>
-                    <width>96</width>
-                    <height>96</height>
-                    <texture background="true">$INFO[ListItem.Icon]</texture>
-                </control>
-            </control>
-            <control type="label">
-                <left>15</left>
-                <right>15</right>
-                <font>font_tiny</font>
-                <textcolor>main_fg_100</textcolor>
-                <top>185</top>
-                <bottom>30</bottom>
-                <aligny>center</aligny>
-                <align>center</align>
-                <label>$INFO[ListItem.Label]</label>
-            </control>
-        </itemlayout>
-        <focusedlayout width="244.28" height="252.5">
-            <control type="group">
-                <height>185</height>
-                <control type="image">
-                    <bordersize>15</bordersize>
-                    <aspectratio>scale</aspectratio>
-                    <bordertexture border="30" colordiffuse="55ffffff">common/shadow-15.png</bordertexture>
-                    <texture colordiffuse="PosterBack">common/geometric.png</texture>
-                </control>
-                <control type="image">
-                    <centertop>50%</centertop>
-                    <centerleft>50%</centerleft>
-                    <width>96</width>
-                    <height>96</height>
-                    <texture background="true">$INFO[ListItem.Icon]</texture>
-                </control>
-                <control type="group">
+        <param name="item_width" default="244.28" />
+        <param name="item_height" default="294.28" />
+        <param name="height" default="294.28" />
+        <param name="textbox_height" default="100" />
+        <definition>
+            <top>-15</top>
+            <left>-15</left>
+            <right>-15</right>
+            <height>$PARAM[height]</height>
+            <preloaditems>2</preloaditems>
+            <orientation>horizontal</orientation>
+            <itemlayout width="$PARAM[item_width]" height="$PARAM[item_height]">
+                <include content="View_TopItems_Itemlayout">
+                    <param name="textbox_height" value="$PARAM[textbox_height]" />
+                </include>
+            </itemlayout>
+            <focusedlayout width="$PARAM[item_width]" height="$PARAM[item_height]">
+                <include content="View_TopItems_Itemlayout">
+                    <param name="textbox_height" value="$PARAM[textbox_height]" />
                     <include>View_Selectbox</include>
-                </control>
-            </control>
-            <control type="label">
-                <left>15</left>
-                <right>15</right>
-                <font>font_tiny</font>
-                <textcolor>main_fg_100</textcolor>
-                <top>185</top>
-                <bottom>30</bottom>
-                <aligny>center</aligny>
-                <align>center</align>
-                <label>$INFO[ListItem.Label]</label>
-            </control>
-        </focusedlayout>
+                </include>
+            </focusedlayout>
+        </definition>
     </include>
 
     <include name="View_ViewIDs"><views>50,51,52,53,503,54,55,56,57,58,59,500,501,502</views></include>

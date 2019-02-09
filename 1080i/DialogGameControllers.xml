@@ -7,7 +7,7 @@
 
         <control type="group">
             <include content="Dialog_Standard_Group">
-                <param name="width" value="1800" />
+                <param name="width" value="1830" />
                 <param name="height" value="1000" />
             </include>
 
@@ -17,26 +17,17 @@
                 <include>Dialog_Standard_Header</include>
             </control>
 
-            <!-- Left Side List -->
             <control type="group">
-                <left>0</left>
-                <width>380</width>
-                <top>100</top>
-                <height>630</height>
-                <control type="image">
-                    <width>380</width>
-                    <height>70</height>
-                    <animation effect="fade" start="100" end="50" time="0" condition="ControlGroup(5).HasFocus() | ControlGroup(8000).HasFocus()">Conditional</animation>
-                    <texture colordiffuse="$VAR[ColorHighlight]">common/white.png</texture>
-                    <animation effect="slide" end="0,70" condition="Integer.IsGreater(Container(3).Position,0)">Conditional</animation>
-                    <animation effect="slide" end="0,70" condition="Integer.IsGreater(Container(3).Position,1)">Conditional</animation>
-                    <animation effect="slide" end="0,70" condition="Integer.IsGreater(Container(3).Position,2)">Conditional</animation>
-                    <animation effect="slide" end="0,70" condition="Integer.IsGreater(Container(3).Position,3)">Conditional</animation>
-                    <animation effect="slide" end="0,70" condition="Integer.IsGreater(Container(3).Position,4)">Conditional</animation>
-                    <animation effect="slide" end="0,70" condition="Integer.IsGreater(Container(3).Position,5)">Conditional</animation>
-                    <animation effect="slide" end="0,70" condition="Integer.IsGreater(Container(3).Position,6)">Conditional</animation>
-                    <animation effect="slide" end="0,70" condition="Integer.IsGreater(Container(3).Position,7)">Conditional</animation>
-                    <animation effect="slide" end="0,70" condition="Integer.IsGreater(Container(3).Position,8)">Conditional</animation>
+                <top>dialog_top</top>
+                <height>624</height>
+                <control type="group">
+                    <top>-78</top>
+                    <left>0</left>
+                    <width>dialog_side_grouplist</width>
+                    <control type="label">
+                        <label>Controllers</label>
+                        <include>Dialog_Standard_HintLabel</include>
+                    </control>
                 </control>
                 <control type="grouplist" id="3">
                     <description>Control Area</description>
@@ -46,46 +37,27 @@
                     <onright>18</onright>
                     <onup>18</onup>
                     <ondown>18</ondown>
+                    <width>dialog_side_grouplist</width>
                 </control>
                 <control type="button" id="10">
-                    <width>380</width>
-                    <include>Defs_Context_Button</include>
+                    <include>Dialog_Standard_Button</include>
                 </control>
                 <control type="label" id="8">
-                    <width>380</width>
-                    <font>font_osd_submenu</font>
-                    <include>Defs_Context_Button</include>
+                    <include>Dialog_Standard_HintLabel</include>
                 </control>
-                <control type="image">
+                <control type="group">
+                    <top>-78</top>
                     <right>0</right>
-                    <width>1</width>
-                    <height>100%</height>
-                    <texture colordiffuse="dialog_fg_12">common/white.png</texture>
-                </control>
-            </control>
-
-            <!-- Right Side List -->
-            <control type="group">
-                <right>0</right>
-                <width>380</width>
-                <top>100</top>
-                <height>630</height>
-                <control type="image">
-                    <width>380</width>
-                    <height>70</height>
-                    <animation effect="fade" start="100" end="0" time="0" condition="!ControlGroup(5).HasFocus()">Conditional</animation>
-                    <texture colordiffuse="$VAR[ColorHighlight]">common/white.png</texture>
-                    <animation effect="slide" end="0,70" condition="Integer.IsGreater(Container(5).Position,0)">Conditional</animation>
-                    <animation effect="slide" end="0,70" condition="Integer.IsGreater(Container(5).Position,1)">Conditional</animation>
-                    <animation effect="slide" end="0,70" condition="Integer.IsGreater(Container(5).Position,2)">Conditional</animation>
-                    <animation effect="slide" end="0,70" condition="Integer.IsGreater(Container(5).Position,3)">Conditional</animation>
-                    <animation effect="slide" end="0,70" condition="Integer.IsGreater(Container(5).Position,4)">Conditional</animation>
-                    <animation effect="slide" end="0,70" condition="Integer.IsGreater(Container(5).Position,5)">Conditional</animation>
-                    <animation effect="slide" end="0,70" condition="Integer.IsGreater(Container(5).Position,6)">Conditional</animation>
-                    <animation effect="slide" end="0,70" condition="Integer.IsGreater(Container(5).Position,7)">Conditional</animation>
-                    <animation effect="slide" end="0,70" condition="Integer.IsGreater(Container(5).Position,8)">Conditional</animation>
+                    <width>dialog_side_grouplist</width>
+                    <control type="label">
+                        <label>Configure</label>
+                        <include>Dialog_Standard_HintLabel</include>
+                    </control>
                 </control>
                 <control type="grouplist" id="5">
+                    <usecontrolcoords>true</usecontrolcoords>
+                    <right>0</right>
+                    <width>dialog_side_grouplist</width>
                     <description>Control Area</description>
                     <itemgap>0</itemgap>
                     <orientation>vertical</orientation>
@@ -95,16 +67,18 @@
                     <ondown>5</ondown>
                 </control>
                 <control type="button" id="7">
-                    <width>380</width>
-                    <include>Defs_Context_Button</include>
-                </control>
-                <control type="image">
-                    <left>0</left>
-                    <width>1</width>
-                    <height>100%</height>
-                    <texture colordiffuse="dialog_fg_12">common/white.png</texture>
+                    <include>Dialog_Standard_Button</include>
                 </control>
             </control>
+            <control type="group">
+                <bottom>220</bottom>
+                <include>Dialog_Separator</include>
+                <include>Dialog_Separator_Right</include>
+            </control>
+
+            
+
+      
 
             <!-- Controller Image -->
             <control type="group">
@@ -136,9 +110,9 @@
 
             
             <control type="grouplist" id="8000">
-                <left>20</left>
-                <right>20</right>
-                <bottom>20</bottom>
+                <left>40</left>
+                <right>40</right>
+                <bottom>40</bottom>
                 <orientation>horizontal</orientation>
                 <onup>3</onup>
                 <ondown>3</ondown>
@@ -150,31 +124,43 @@
                 <control type="button" id="18">
                     <height>70</height>
                     <label>$LOCALIZE[186]</label>
+                    
+                    <width>275</width>
                     <include>Dialog_Standard_OkCancel</include>
                 </control>
                 <control type="button" id="19">
                     <height>70</height>
                     <label>$LOCALIZE[13007]</label>
+                    
+                    <width>275</width>
                     <include>Dialog_Standard_OkCancel</include>
                 </control>
                 <control type="button" id="20">
                     <height>70</height>
                     <label>$LOCALIZE[21452]</label>
+                    
+                    <width>275</width>
                     <include>Dialog_Standard_OkCancel</include>
                 </control>
                 <control type="button" id="22">
                     <height>70</height>
                     <label>$LOCALIZE[35021]</label>
+                    
+                    <width>275</width>
                     <include>Dialog_Standard_OkCancel</include>
                 </control>
                 <control type="button" id="17">
                     <height>70</height>
                     <label>$LOCALIZE[10043]</label>
+                    
+                    <width>275</width>
                     <include>Dialog_Standard_OkCancel</include>
                 </control>
                 <control type="button" id="21">
                     <height>70</height>
                     <label>$LOCALIZE[35019]</label>
+                    
+                    <width>275</width>
                     <include>Dialog_Standard_OkCancel</include>
                 </control>
             </control>

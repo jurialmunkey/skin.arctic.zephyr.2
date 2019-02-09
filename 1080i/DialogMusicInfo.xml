@@ -1,241 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Foundation -->
 <window id="2001">
-    <defaultcontrol always="true">300</defaultcontrol>
+    <defaultcontrol always="true">8000</defaultcontrol>
     <controls>
         
-        <control type="list" id="300">
-            <top>30</top>
-            <onup condition="Skin.HasSetting(EnablePressingUp)">9601</onup>
-            <ondown>9601</ondown>
-            <include>Topbar_Menu_Layout</include>
-            <include>Items_Info</include>
-        </control>
-        <include>Topbar_Info</include>
-        
+        <control type="grouplist" id="9000">
+            <orientation>horizontal</orientation>
+            <itemgap>0</itemgap>
 
-        <control type="group">
-            <visible allowhiddenfocus="true">!$EXP[Exp_HideFurniture]</visible>
-            <include>Object_UpDownInfoArrows</include>
-            <include>Animation_FadeInOut</include>
+            <include content="Object_Info_Artwork">
+                <param name="id" value="5005" />
+                <param name="onleft" value="noop" />
+                <param name="onright" value="8000" />
+                <param name="artwork" value="$INFO[ListItem.Art(fanart)]" />
+                <param name="visible" value="!String.IsEmpty(ListItem.Art(fanart))" />
+            </include>
+            
+            
+            <!-- Movie / TvShow Info -->
             <control type="group">
-                <include>Animation_Right_Delay</include>
-
-                <control type="scrollbar" id="9560">
-                    <top>0</top>
-                    <right>0</right>
-                    <width>8</width>
-                    <bottom>0</bottom>
-                    <showonepage>false</showonepage>
-                    <orientation>vertical</orientation>
-                    <texturesliderbackground colordiffuse="main_fg_12">common/white.png</texturesliderbackground>
-                    <texturesliderbar colordiffuse="main_fg_30">common/white.png</texturesliderbar>
-                    <texturesliderbarfocus colordiffuse="$VAR[ColorHighlight]">common/white.png</texturesliderbarfocus>
-                    <animation effect="fade" start="100" end="33" time="400" condition="!Control.HasFocus(9560) + !Container.Scrolling">Conditional</animation>
-                    <include>Animation_FadeIn</include>
-                    <include>Animation_FadeOut</include>
-                </control>
-
-                <control type="grouplist" id="9000">
-                    <pagecontrol>9560</pagecontrol>
-                    <top>90</top>
-                    <bottom>110</bottom>
-                    <itemgap>0</itemgap>
-                    <usecontrolcoords>true</usecontrolcoords>
-                    <orientation>vertical</orientation>
-                    <visible>!Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) + !Window.IsVisible(script-script.extendedinfo-DialogInfo.xml)</visible>
-                    <control type="group">
-                        <top>30</top>
-                        <height>380</height>
-                        <left>view_pad</left>
-                        <right>view_pad</right>
-                        <control type="group">
-                            <left>0</left>
-                            <width>360</width>
-                            <height>360</height>
-                            <control type="group">
-                                <left>-10</left>
-                                <right>-10</right>
-                                <bottom>-10</bottom>
-                                <top>-10</top>
-                                <include>Defs_PosterBack</include>
-                                <control type="image">
-                                    <bordersize>10</bordersize>
-                                    <aspectratio scalediffuse="false">scale</aspectratio>
-                                    <texture diffuse="diffuse/widgetposter.png" fallback="DefaultAddonImages.png">$VAR[Image_Poster]</texture>
-                                </control>
-                                <control type="image">
-                                    <bordersize>10</bordersize>
-                                    <texture colordiffuse="PixelLines" border="20">common/outline.png</texture>
-                                </control>
-                            </control>
-                        </control>
-                        <control type="group">
-                            <left>390</left>
-                            <height>360</height>
-                            <include content="Object_Info">
-                                <param name="id" value="50" />
-                                <param name="width" value="1654" />
-                                <param name="discart" value="true" />
-                                <param name="hdsd_flag" value="true" />
-                                <param name="visible" value="true" />
-                                <param name="plot_height" value="170" />
-                            </include>
-                        </control>
-                    </control>
-
-                    <control type="group">
-                        <top>15</top>
-                        <height>455</height>
-                        <left>view_pad</left>
-                        <right>view_pad</right>
-                        <control type="button" id="9503">
-                            <onup>300</onup>
-                            <ondown>SetFocus(300)</ondown>
-                            <texturefocus />
-                            <texturenofocus />
-                        </control>
-                        <!-- Info Label -->
-                        <control type="grouplist">
-                            <top>20</top>
-                            <height>42</height>
-                            <left>0</left>
-                            <align>left</align>
-                            <itemgap>12</itemgap>
-                            <usecontrolcoords>true</usecontrolcoords>
-                            <orientation>horizontal</orientation>
-                            <include>Object_DownArrows</include>
-                            <control type="label">
-                                <font>font_small</font>
-                                <textcolor>main_fg_100</textcolor>
-                                <aligny>center</aligny>
-                                <width>auto</width>
-                                <height>100%</height>
-                                <label>$LOCALIZE[19033]</label>
-                            </control>
-                        </control>
-                        <control type="grouplist">
-                            <top>90</top>
-                            <right>390</right>
-                            <orientation>vertical</orientation>
-                            <itemgap>9</itemgap>
-                            <usecontrolcoords>true</usecontrolcoords>
-                            <include content="Object_VideoInfo_InfoSection">
-                                <param name="label" value="$LOCALIZE[561]" />
-                                <param name="label2" value="ListItem.FileName" />
-                            </include>
-                            <include content="Object_VideoInfo_InfoSection">
-                                <param name="label" value="$LOCALIZE[573]" />
-                                <param name="label2" value="ListItem.Path" />
-                                <param name="haspath" value="true" />
-                            </include>
-                            <include content="Object_VideoInfo_InfoSection">
-                                <param name="label" value="$LOCALIZE[21893]" />
-                                <param name="label2" value="ListItem.Property(Artist_Born)" />
-                            </include>
-                            <include content="Object_VideoInfo_InfoSection">
-                                <param name="label" value="$LOCALIZE[21897]" />
-                                <param name="label2" value="ListItem.Property(Artist_Died)" />
-                            </include>
-                            <include content="Object_VideoInfo_InfoSection">
-                                <param name="label" value="$LOCALIZE[21894]" />
-                                <param name="label2" value="ListItem.Property(Artist_Formed)" />
-                            </include>
-                            <include content="Object_VideoInfo_InfoSection">
-                                <param name="label" value="$LOCALIZE[21896]" />
-                                <param name="label2" value="ListItem.Property(Artist_Disbanded)" />
-                            </include>
-                            <include content="Object_VideoInfo_InfoSection">
-                                <param name="label" value="$LOCALIZE[31354]" />
-                                <param name="label2" value="ListItem.Property(Artist_Instrument)" />
-                            </include>
-                            <include content="Object_VideoInfo_InfoSection">
-                                <param name="label" value="$LOCALIZE[31355]" />
-                                <param name="label2" value="ListItem.Property(Artist_Mood)" />
-                            </include>
-                            <include content="Object_VideoInfo_InfoSection">
-                                <param name="label" value="$LOCALIZE[736]" />
-                                <param name="label2" value="ListItem.Property(Artist_Style)" />
-                            </include>
-                            <include content="Object_VideoInfo_InfoSection">
-                                <param name="label" value="$LOCALIZE[31355]" />
-                                <param name="label2" value="ListItem.Property(Album_Mood)" />
-                            </include>
-                            <include content="Object_VideoInfo_InfoSection">
-                                <param name="label" value="$LOCALIZE[736]" />
-                                <param name="label2" value="ListItem.Property(Album_Style)" />
-                            </include>
-                            <include content="Object_VideoInfo_InfoSection">
-                                <param name="label" value="$LOCALIZE[15111]" />
-                                <param name="label2" value="ListItem.Property(Album_Theme)" />
-                            </include>
-                            <include content="Object_VideoInfo_InfoSection">
-                                <param name="label" value="$LOCALIZE[467]" />
-                                <param name="label2" value="ListItem.Property(Album_Type)" />
-                            </include>
-                            <include content="Object_VideoInfo_InfoSection">
-                                <param name="label" value="$LOCALIZE[21899]" />
-                                <param name="label2" value="ListItem.Property(Album_Label)" />
-                            </include>
-                        </control>
-                        <control type="image">
-                            <top>60</top>
-                            <right>0</right>
-                            <width>360</width>
-                            <height>360</height>
-                            <aspectratio>keep</aspectratio>
-                            <texture background="true">$INFO[Window(Home).Property(SkinHelper.ListItem.Art.Discart)]</texture>
-                            <visible>!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Art.Discart)) + [String.IsEqual(ListItem.DBType,album) | String.IsEqual(ListItem.DBType,song)]</visible>
-                        </control>
-                        <control type="image">
-                            <top>60</top>
-                            <right>0</right>
-                            <width>360</width>
-                            <height>360</height>
-                            <aspectratio>keep</aspectratio>
-                            <texture background="true">$VAR[Image_ClearLogo]</texture>
-                            <visible>String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Art.Discart)) | ![String.IsEqual(ListItem.DBType,album) | String.IsEqual(ListItem.DBType,song)]</visible>
-                        </control>
-                    </control>
-                </control>
-
-                <!-- Flags -->
+                <width>1920</width>
+                <height>1080</height>
                 <control type="group">
-                    <bottom>view_pad</bottom>
-                    <height>40</height>
-                    <left>view_pad</left>
-                    <right>view_pad</right>
-                    <control type="group">
-                        <include content="Object_Flags">
-                            <param name="container" value="" />
-                            <param name="directory" value="color" />
-                            <param name="align" value="left" />
-                        </include>
+                    <include>View_Pad</include>
+                    <control type="button" id="8000">
+                        <include>Defs_Hidden_Button</include>
+                        <onleft>5005</onleft>
+                        <onright>SetFocus(50,0,absolute)</onright>
                     </control>
+
+
+                    <control type="group">
+                        <include>Animation_Left_Delay</include>
+                        <include content="View_50_Poster">
+                            <param name="height" value="654" />
+                            <param name="width" value="654" />
+                        </include>
+                        <include>View_50_Info</include>
+                    </control>
+
                     <!-- Info -->
-                    <control type="grouplist">
-                        <align>right</align>
-                        <right>0</right>
-                        <height>40</height>
-                        <itemgap>50</itemgap>
-                        <orientation>horizontal</orientation>
-                        <control type="label">
-                            <height>40</height>
-                            <font>font_small</font>
-                            <textcolor>main_fg_100</textcolor>
-                            <aligny>center</aligny>
-                            <width max="1200">auto</width>
-                            <label>$INFO[ListItem.Director,[COLOR=main_fg_30]$LOCALIZE[20339]   [/COLOR],]</label>
-                            <visible>!String.IsEmpty(ListItem.Director)</visible>
+                    <control type="group">
+                        <top>-15</top>
+                        <left>669</left>
+                        <include>Animation_Right_Delay</include>
+                        <control type="grouplist">
+                            <orientation>vertical</orientation>
+                            <usecontrolcoords>true</usecontrolcoords>
+                            <itemgap>0</itemgap>
+                            <include content="Object_Info_Title">
+                                <param name="label" value="$INFO[ListItem.TrackNumber,,. ]$INFO[ListItem.Title]" />
+                            </include>
+                            <include>Object_Info_Line</include>
+                            <include content="Object_Info_Plot">
+                                <param name="maxheight" value="650" />
+                            </include>
+                        </control>
+                        <control type="grouplist">
+                            <align>bottom</align>
+                            <orientation>vertical</orientation>
+                            <usecontrolcoords>true</usecontrolcoords>
+                            <itemgap>0</itemgap>
+                            <include>Object_Info_Codecs</include>
                         </control>
                     </control>
                 </control>
             </control>
-        </control>
-
-        <control type="group">
-            <visible>!Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) + !Window.IsVisible(script-script.extendedinfo-DialogInfo.xml)</visible>
-            <include>Object_PlotOverlay</include>
         </control>
 
         <!-- Hidden Buttons -->

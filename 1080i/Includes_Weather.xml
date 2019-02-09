@@ -3,10 +3,12 @@
     
     <include name="Weather">
         <control type="grouplist">
-            <include>View_Pad</include>
+            <top>view_top</top>
+            <left>50</left>
+            <right>50</right>
             <height>332</height>
             <orientation>horizontal</orientation>
-            <itemgap>0</itemgap>
+            <itemgap>32</itemgap>
             <include>Animation_FadeIn</include>
             <include>Animation_FadeOut</include>
             <control type="group">
@@ -45,7 +47,7 @@
                 <width>336</width>
                 <control type="label">
                     <top>0</top>
-                    <centerleft>50%</centerleft>
+                    <centerleft>55%</centerleft>
                     <height>256</height>
                     <width>320</width>
                     <align>center</align>
@@ -59,42 +61,54 @@
                 <width>336</width>
                 <control type="grouplist">
                     <top>32</top>
-                    <left>80</left>
-                    <width>260</width>
+                    <left>30</left>
+                    <right>30</right>
                     <itemgap>0</itemgap>
                     <usecontrolcoords>true</usecontrolcoords>
                     <orientation>vertical</orientation>
-                    <control type="button">
+                    <control type="grouplist">
+                        <orientation>horizontal</orientation>
+                        <align>center</align>
                         <height>48</height>
-                        <font>font_weather_small</font>
-                        <align>left</align>
-                        <textoffsetx>0</textoffsetx>
-                        <width>auto</width>
-                        <texturenofocus border="8" colordiffuse="main_fg_30">common/underline.png</texturenofocus>
-                        <textcolor>main_fg_70</textcolor>
-                        <label>$LOCALIZE[31003]</label>
+                        <control type="button">
+                            <height>48</height>
+                            <font>font_weather_small</font>
+                            <align>left</align>
+                            <textoffsetx>0</textoffsetx>
+                            <width>auto</width>
+                            <texturenofocus border="8" colordiffuse="main_fg_30">common/underline.png</texturenofocus>
+                            <textcolor>main_fg_70</textcolor>
+                            <label>$LOCALIZE[31003]</label>
+                        </control>
                     </control>
                     <control type="label">
                         <height>32</height>
                         <aligny>top</aligny>
+                        <align>center</align>
                         <font>font_weather_small</font>
                         <textcolor>main_fg_90</textcolor>
                         <label>$INFO[Window(Weather).Property(Current.Condition)]</label>
                     </control>
-                    <control type="button">
+                    <control type="grouplist">
                         <top>24</top>
+                        <orientation>horizontal</orientation>
+                        <align>center</align>
                         <height>48</height>
-                        <font>font_weather_small</font>
-                        <align>left</align>
-                        <textoffsetx>0</textoffsetx>
-                        <width>auto</width>
-                        <texturenofocus border="8" colordiffuse="main_fg_30">common/underline.png</texturenofocus>
-                        <textcolor>main_fg_70</textcolor>
-                        <label>$LOCALIZE[402]$INFO[Window(Weather).Property(Current.FeelsLike), ,°]</label>
+                        <control type="button">
+                            <height>48</height>
+                            <font>font_weather_small</font>
+                            <align>left</align>
+                            <textoffsetx>0</textoffsetx>
+                            <width>auto</width>
+                            <texturenofocus border="8" colordiffuse="main_fg_30">common/underline.png</texturenofocus>
+                            <textcolor>main_fg_70</textcolor>
+                            <label>$LOCALIZE[402]$INFO[Window(Weather).Property(Current.FeelsLike), ,°]</label>
+                        </control>
                     </control>
                     <control type="label">
                         <height>32</height>
                         <aligny>top</aligny>
+                        <align>center</align>
                         <font>font_weather_small</font>
                         <textcolor>main_fg_90</textcolor>
                         <label>$INFO[Window(Weather).Property(Current.Humidity),, [LOWERCASE]$LOCALIZE[406][/LOWERCASE]]</label>
@@ -105,42 +119,54 @@
                 <width>336</width>
                 <control type="grouplist">
                     <top>32</top>
-                    <left>80</left>
-                    <width>260</width>
+                    <left>30</left>
+                    <right>30</right>
                     <itemgap>0</itemgap>
                     <usecontrolcoords>true</usecontrolcoords>
                     <orientation>vertical</orientation>
-                    <control type="button">
+                    <control type="grouplist">
+                        <orientation>horizontal</orientation>
+                        <align>center</align>
                         <height>48</height>
-                        <font>font_weather_small</font>
-                        <align>left</align>
-                        <textoffsetx>0</textoffsetx>
-                        <width>auto</width>
-                        <texturenofocus border="8" colordiffuse="main_fg_30">common/underline.png</texturenofocus>
-                        <textcolor>main_fg_70</textcolor>
-                        <label>$VAR[Weather_Sunrise]</label>
+                        <control type="button">
+                            <height>48</height>
+                            <font>font_weather_small</font>
+                            <align>left</align>
+                            <textoffsetx>0</textoffsetx>
+                            <width>auto</width>
+                            <texturenofocus border="8" colordiffuse="main_fg_30">common/underline.png</texturenofocus>
+                            <textcolor>main_fg_70</textcolor>
+                            <label>$VAR[Weather_Sunrise]</label>
+                        </control>
                     </control>
                     <control type="label">
                         <height>32</height>
                         <aligny>top</aligny>
+                        <align>center</align>
                         <font>font_weather_small</font>
                         <textcolor>main_fg_90</textcolor>
                         <label>$INFO[Window(Weather).Property(Current.DewPoint),$LOCALIZE[405] ,°]</label>
                     </control>
-                    <control type="button">
+                    <control type="grouplist">
                         <top>24</top>
+                        <orientation>horizontal</orientation>
+                        <align>center</align>
                         <height>48</height>
-                        <font>font_weather_small</font>
-                        <align>left</align>
-                        <textoffsetx>0</textoffsetx>
-                        <width>auto</width>
-                        <texturenofocus border="8" colordiffuse="main_fg_30">common/underline.png</texturenofocus>
-                        <textcolor>main_fg_70</textcolor>
-                        <label>$VAR[Weather_Sunset]</label>
+                        <control type="button">
+                            <height>48</height>
+                            <font>font_weather_small</font>
+                            <align>left</align>
+                            <textoffsetx>0</textoffsetx>
+                            <width>auto</width>
+                            <texturenofocus border="8" colordiffuse="main_fg_30">common/underline.png</texturenofocus>
+                            <textcolor>main_fg_70</textcolor>
+                            <label>$VAR[Weather_Sunset]</label>
+                        </control>
                     </control>
                     <control type="label">
                         <height>32</height>
                         <aligny>top</aligny>
+                        <align>center</align>
                         <font>font_weather_small</font>
                         <textcolor>main_fg_90</textcolor>
                         <label>$VAR[Weather_LowTemp,$LOCALIZE[391] ,]$VAR[Weather_HighTemp,  -  $LOCALIZE[393] ,]</label>
@@ -151,44 +177,56 @@
                 <width>336</width>
                 <control type="grouplist">
                     <top>32</top>
-                    <left>80</left>
-                    <width>260</width>
+                    <left>30</left>
+                    <right>30</right>
                     <itemgap>0</itemgap>
                     <usecontrolcoords>true</usecontrolcoords>
                     <orientation>vertical</orientation>
                     <include>Animation_FadeIn</include>
                     <include>Animation_FadeOut</include>
-                    <control type="button">
+                    <control type="grouplist">
+                        <orientation>horizontal</orientation>
+                        <align>center</align>
                         <height>48</height>
-                        <font>font_weather_small</font>
-                        <align>left</align>
-                        <textoffsetx>0</textoffsetx>
-                        <width>auto</width>
-                        <texturenofocus border="8" colordiffuse="main_fg_30">common/underline.png</texturenofocus>
-                        <textcolor>main_fg_70</textcolor>
-                        <label>$LOCALIZE[383]</label>
+                        <control type="button">
+                            <height>48</height>
+                            <font>font_weather_small</font>
+                            <align>left</align>
+                            <textoffsetx>0</textoffsetx>
+                            <width>auto</width>
+                            <texturenofocus border="8" colordiffuse="main_fg_30">common/underline.png</texturenofocus>
+                            <textcolor>main_fg_70</textcolor>
+                            <label>$LOCALIZE[383]</label>
+                        </control>
                     </control>
                     <control type="label">
                         <height>32</height>
                         <aligny>top</aligny>
+                        <align>center</align>
                         <font>font_weather_small</font>
                         <textcolor>main_fg_90</textcolor>
                         <label>$INFO[Window(Weather).Property(Current.Wind)]</label>
                     </control>
-                    <control type="button">
+                    <control type="grouplist">
                         <top>24</top>
+                        <orientation>horizontal</orientation>
+                        <align>center</align>
                         <height>48</height>
-                        <font>font_weather_small</font>
-                        <align>left</align>
-                        <textoffsetx>0</textoffsetx>
-                        <width>auto</width>
-                        <texturenofocus border="8" colordiffuse="main_fg_30">common/underline.png</texturenofocus>
-                        <textcolor>main_fg_70</textcolor>
-                        <label>$VAR[Weather_UVIndex_Label]</label>
+                        <control type="button">
+                            <height>48</height>
+                            <font>font_weather_small</font>
+                            <align>left</align>
+                            <textoffsetx>0</textoffsetx>
+                            <width>auto</width>
+                            <texturenofocus border="8" colordiffuse="main_fg_30">common/underline.png</texturenofocus>
+                            <textcolor>main_fg_70</textcolor>
+                            <label>$VAR[Weather_UVIndex_Label]</label>
+                        </control>
                     </control>
                     <control type="label">
                         <height>32</height>
                         <aligny>top</aligny>
+                        <align>center</align>
                         <font>font_weather_small</font>
                         <textcolor>main_fg_90</textcolor>
                         <label>$VAR[Weather_UVIndex_Info]</label>
@@ -197,10 +235,10 @@
             </control>      
         </control>
         <control type="grouplist">
-            <left>view_pad</left>
-            <right>view_pad</right>
+            <left>50</left>
+            <right>50</right>
             <orientation>horizontal</orientation>
-            <itemgap>0</itemgap>
+            <itemgap>32</itemgap>
             <bottom>view_pad</bottom>
             <height>460</height>
             <include>Animation_FadeIn</include>

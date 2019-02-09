@@ -4,39 +4,33 @@
     <!-- Common -->
     <!-- ====== -->
     <include name="Topbar_HomeMenu_Item">
-        <control type="togglebutton">
+        <control type="button">
             <width>auto</width>
             <align>left</align>
             <height>70</height>
             <onfocus>SetFocus($PARAM[id],$PARAM[pos])</onfocus>
             <onclick>$INFO[Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Property(path)]</onclick>
-            <usealttexture>Control.HasFocus($PARAM[id]) + String.IsEqual(Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Label,Container($PARAM[id]).ListItem.Label)</usealttexture>
             <font>font_topbar_small</font>
             <textcolor>main_fg_100</textcolor>
             <textoffsetx>1</textoffsetx>
             <animation effect="fade" start="100" end="33" condition="!String.IsEqual(Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Label,Container($PARAM[id]).ListItem.Label)">Conditional</animation>
             <texturenofocus />
             <texturefocus />
-            <alttexturenofocus />
-            <alttexturefocus />
             <label>$INFO[Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Label]</label>
             <visible>!String.IsEqual(Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Label,Container($PARAM[id]).ListItem.Label)</visible>
         </control>
-        <control type="togglebutton">
+        <control type="button">
             <width>auto</width>
             <align>left</align>
             <height>70</height>
             <onfocus>SetFocus($PARAM[id],$PARAM[pos])</onfocus>
             <onclick>$INFO[Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Property(path)]</onclick>
-            <usealttexture>Control.HasFocus($PARAM[id]) + String.IsEqual(Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Label,Container($PARAM[id]).ListItem.Label)</usealttexture>
             <font>font_topbar</font>
             <textcolor>main_fg_100</textcolor>
             <textoffsetx>1</textoffsetx>
             <animation effect="fade" start="100" end="33" condition="!String.IsEqual(Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Label,Container($PARAM[id]).ListItem.Label)">Conditional</animation>
             <texturenofocus />
             <texturefocus />
-            <alttexturenofocus />
-            <alttexturefocus />
             <label>$INFO[Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Label]</label>
             <visible>String.IsEqual(Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Label,Container($PARAM[id]).ListItem.Label)</visible>
         </control>
@@ -177,10 +171,7 @@
 
     <include name="Topbar_Right">
         <control type="grouplist">
-            <visible>!Window.IsVisible(DialogNotification.xml)</visible>
-            <visible>!Window.IsVisible(DialogExtendedProgressBar.xml)</visible>
             <visible>!Window.IsVisible(DialogVolumeBar.xml) | Player.Muted</visible>
-            <visible>!Skin.HasSetting(MinimalBusyLoader) | [Skin.HasSetting(MinimalBusyLoader) + !Window.IsVisible(DialogBusy.xml)]</visible>
             <right>view_pad</right>
             <align>right</align>
             <orientation>horizontal</orientation>
@@ -389,66 +380,6 @@
                     <param name="pos" value="12" />
                 </include>
             </control>
-            <!-- <control type="grouplist">
-                <itemgap>30</itemgap>
-                <height>70</height>
-                <left>view_pad</left>
-                <orientation>horizontal</orientation>
-                <visible>Window.IsVisible(Home) + !$EXP[Exp_Info_Visible]</visible>
-                <usecontrolcoords>true</usecontrolcoords>
-                <include content="Topbar_HomeMenu_Item_Gradient">
-                    <param name="id" value="302" />
-                    <param name="pos" value="0" />
-                </include>
-                <include content="Topbar_HomeMenu_Item_Gradient">
-                    <param name="id" value="302" />
-                    <param name="pos" value="1" />
-                </include>
-                <include content="Topbar_HomeMenu_Item_Gradient">
-                    <param name="id" value="302" />
-                    <param name="pos" value="2" />
-                </include>
-                <include content="Topbar_HomeMenu_Item_Gradient">
-                    <param name="id" value="302" />
-                    <param name="pos" value="3" />
-                </include>
-                <include content="Topbar_HomeMenu_Item_Gradient">
-                    <param name="id" value="302" />
-                    <param name="pos" value="4" />
-                </include>
-                <include content="Topbar_HomeMenu_Item_Gradient">
-                    <param name="id" value="302" />
-                    <param name="pos" value="5" />
-                </include>
-                <include content="Topbar_HomeMenu_Item_Gradient">
-                    <param name="id" value="302" />
-                    <param name="pos" value="6" />
-                </include>
-                <include content="Topbar_HomeMenu_Item_Gradient">
-                    <param name="id" value="302" />
-                    <param name="pos" value="7" />
-                </include>
-                <include content="Topbar_HomeMenu_Item_Gradient">
-                    <param name="id" value="302" />
-                    <param name="pos" value="8" />
-                </include>
-                <include content="Topbar_HomeMenu_Item_Gradient">
-                    <param name="id" value="302" />
-                    <param name="pos" value="9" />
-                </include>
-                <include content="Topbar_HomeMenu_Item_Gradient">
-                    <param name="id" value="302" />
-                    <param name="pos" value="10" />
-                </include>
-                <include content="Topbar_HomeMenu_Item_Gradient">
-                    <param name="id" value="302" />
-                    <param name="pos" value="11" />
-                </include>
-                <include content="Topbar_HomeMenu_Item_Gradient">
-                    <param name="id" value="302" />
-                    <param name="pos" value="12" />
-                </include>
-            </control> -->
         </control>
         <control type="group">
             <top>55</top>
@@ -521,66 +452,6 @@
                     <param name="pos" value="12" />
                 </include>
             </control>
-            <!-- <control type="grouplist">
-                <itemgap>30</itemgap>
-                <height>70</height>
-                <left>view_pad</left>
-                <orientation>horizontal</orientation>
-                <visible>Window.IsVisible(Home) + !$EXP[Exp_Info_Visible]</visible>
-                <usecontrolcoords>true</usecontrolcoords>
-                <include content="Topbar_HomeMenu_Item_Gradient">
-                    <param name="id" value="300" />
-                    <param name="pos" value="0" />
-                </include>
-                <include content="Topbar_HomeMenu_Item_Gradient">
-                    <param name="id" value="300" />
-                    <param name="pos" value="1" />
-                </include>
-                <include content="Topbar_HomeMenu_Item_Gradient">
-                    <param name="id" value="300" />
-                    <param name="pos" value="2" />
-                </include>
-                <include content="Topbar_HomeMenu_Item_Gradient">
-                    <param name="id" value="300" />
-                    <param name="pos" value="3" />
-                </include>
-                <include content="Topbar_HomeMenu_Item_Gradient">
-                    <param name="id" value="300" />
-                    <param name="pos" value="4" />
-                </include>
-                <include content="Topbar_HomeMenu_Item_Gradient">
-                    <param name="id" value="300" />
-                    <param name="pos" value="5" />
-                </include>
-                <include content="Topbar_HomeMenu_Item_Gradient">
-                    <param name="id" value="300" />
-                    <param name="pos" value="6" />
-                </include>
-                <include content="Topbar_HomeMenu_Item_Gradient">
-                    <param name="id" value="300" />
-                    <param name="pos" value="7" />
-                </include>
-                <include content="Topbar_HomeMenu_Item_Gradient">
-                    <param name="id" value="300" />
-                    <param name="pos" value="8" />
-                </include>
-                <include content="Topbar_HomeMenu_Item_Gradient">
-                    <param name="id" value="300" />
-                    <param name="pos" value="9" />
-                </include>
-                <include content="Topbar_HomeMenu_Item_Gradient">
-                    <param name="id" value="300" />
-                    <param name="pos" value="10" />
-                </include>
-                <include content="Topbar_HomeMenu_Item_Gradient">
-                    <param name="id" value="300" />
-                    <param name="pos" value="11" />
-                </include>
-                <include content="Topbar_HomeMenu_Item_Gradient">
-                    <param name="id" value="300" />
-                    <param name="pos" value="12" />
-                </include>
-            </control> -->
         </control>
     </include>
 

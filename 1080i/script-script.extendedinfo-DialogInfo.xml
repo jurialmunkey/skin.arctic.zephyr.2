@@ -8,7 +8,7 @@
         <include>Topbar</include>
 
         <control type="grouplist" id="9000">
-            <orientation>vertical</orientation>
+            <orientation>horizontal</orientation>
             <itemgap>0</itemgap>
 
             <!-- Movie / TvShow Info -->
@@ -20,7 +20,7 @@
                     <control type="button" id="8">
                         <include>Defs_Hidden_Button</include>
                         <onleft>noop</onleft>
-                        <ondown>SetFocus(150)</ondown>
+                        <onright>SetFocus(150,0,absolute)</onright>
                     </control>
 
                     <!-- Poster -->

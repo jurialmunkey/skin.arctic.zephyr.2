@@ -153,8 +153,6 @@
         <param name="controltype" default="panel" />
         <param name="controllayout" default="View_Standard" />
         <param name="controlorientation" default="View_Vertical" />
-        <param name="include" default="" />
-        <param name="includeid" default="" />
         <param name="visible" default="true" />
         <param name="onfocus" default="" />
         <param name="includecontent" default="false" />
@@ -186,9 +184,7 @@
                     <param name="includecontent" value="$PARAM[includecontent]" />
                     <param name="content" value="$PARAM[content]" />
                 </include>
-                <include content="$PARAM[include]">
-                    <param name="id" value="$PARAM[includeid]" />
-                </include>
+                <nested />
             </control>
         </definition>
     </include>

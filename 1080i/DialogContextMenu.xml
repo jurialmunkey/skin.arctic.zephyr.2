@@ -3,7 +3,6 @@
 <window id="106">
     <defaultcontrol always="true">1000</defaultcontrol>
 
-
     <coordinates>
         <origin x="0" y="0" />
     </coordinates>
@@ -16,47 +15,31 @@
             <include>Animation_FadeIn_SlideUp</include>
             <include>Animation_FadeOut</include>
             <width>506</width>
-            <height>624</height>
-            <animation effect="slide" end="0,35" condition="true">Conditional</animation>
-            <animation effect="slide" end="0,35" condition="Integer.IsLess(Container(996).NumItems,8)">Conditional</animation>
-            <animation effect="slide" end="0,35" condition="Integer.IsLess(Container(996).NumItems,7)">Conditional</animation>
-            <animation effect="slide" end="0,35" condition="Integer.IsLess(Container(996).NumItems,6)">Conditional</animation>
-            <animation effect="slide" end="0,35" condition="Integer.IsLess(Container(996).NumItems,5)">Conditional</animation>
-            <animation effect="slide" end="0,35" condition="Integer.IsLess(Container(996).NumItems,4)">Conditional</animation>
-            <animation effect="slide" end="0,35" condition="Integer.IsLess(Container(996).NumItems,3)">Conditional</animation>
-            <animation effect="slide" end="0,35" condition="Integer.IsLess(Container(996).NumItems,2)">Conditional</animation>
-
-            
+            <height>844</height>
+            <animation effect="slide" end="0,39" condition="true">Conditional</animation>
+            <animation effect="slide" end="0,39" condition="Integer.IsLess(Container(996).NumItems,10)">Conditional</animation>
+            <animation effect="slide" end="0,39" condition="Integer.IsLess(Container(996).NumItems,9)">Conditional</animation>
+            <animation effect="slide" end="0,39" condition="Integer.IsLess(Container(996).NumItems,8)">Conditional</animation>
+            <animation effect="slide" end="0,39" condition="Integer.IsLess(Container(996).NumItems,7)">Conditional</animation>
+            <animation effect="slide" end="0,39" condition="Integer.IsLess(Container(996).NumItems,6)">Conditional</animation>
+            <animation effect="slide" end="0,39" condition="Integer.IsLess(Container(996).NumItems,5)">Conditional</animation>
+            <animation effect="slide" end="0,39" condition="Integer.IsLess(Container(996).NumItems,4)">Conditional</animation>
+            <animation effect="slide" end="0,39" condition="Integer.IsLess(Container(996).NumItems,3)">Conditional</animation>
+            <animation effect="slide" end="0,39" condition="Integer.IsLess(Container(996).NumItems,2)">Conditional</animation>
 
             <control type="image" id="999">
                 <description>background image</description>
                 <bottom>0</bottom>
                 <width>506</width>
-                <height>694</height>
+                <height>914</height>
                 <bordertexture border="32">common/dark-shadow-24.png</bordertexture>
                 <bordersize>24</bordersize>
                 <texture border="16" colordiffuse="dialog_bg_100">common/rounded-dialog.png</texture>
             </control>
-            <control type="image">
-                <top>32</top>
-                <left>24</left>
-                <width>458</width>
-                <height>70</height>
-                <texture colordiffuse="$VAR[ColorHighlight]">common/white.png</texture>
-                <animation effect="slide" end="0,70" condition="Integer.IsGreater(Container(996).Position,0)">Conditional</animation>
-                <animation effect="slide" end="0,70" condition="Integer.IsGreater(Container(996).Position,1)">Conditional</animation>
-                <animation effect="slide" end="0,70" condition="Integer.IsGreater(Container(996).Position,2)">Conditional</animation>
-                <animation effect="slide" end="0,70" condition="Integer.IsGreater(Container(996).Position,3)">Conditional</animation>
-                <animation effect="slide" end="0,70" condition="Integer.IsGreater(Container(996).Position,4)">Conditional</animation>
-                <animation effect="slide" end="0,70" condition="Integer.IsGreater(Container(996).Position,5)">Conditional</animation>
-                <animation effect="slide" end="0,70" condition="Integer.IsGreater(Container(996).Position,6)">Conditional</animation>
-                <animation effect="slide" end="0,70" condition="Integer.IsGreater(Container(996).Position,7)">Conditional</animation>
-                <animation effect="slide" end="0,70" condition="Integer.IsGreater(Container(996).Position,8)">Conditional</animation>
-            </control>
             <control type="label">
                 <top>-46</top>
                 <width>458</width>
-                <height>78</height>
+                <height>view_list_height</height>
                 <left>24</left>
                 <textcolor>dialog_fg_70</textcolor>
                 <font>font_small_bold</font>
@@ -65,7 +48,7 @@
                 <textoffsetx>30</textoffsetx>
             </control>
             <control type="image">
-                <top>-40</top>
+                <top>-36</top>
                 <width>458</width>
                 <height>64</height>
                 <left>16</left>
@@ -77,11 +60,10 @@
                 <left>24</left>
                 <bottom>32</bottom>
                 <width>458</width>
-                <height>560</height>
+                <height>780</height>
                 <itemgap>0</itemgap>
                 <onleft>Back</onleft>
                 <onright>Back</onright>
-                <scrolltime>0</scrolltime>
             </control>
             <control type="button" id="1000">
                 <description>Buttons</description>
