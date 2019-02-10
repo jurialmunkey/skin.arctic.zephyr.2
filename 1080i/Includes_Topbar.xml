@@ -88,15 +88,11 @@
     </include>
 
     <include name="Topbar">
-        <control type="group">
-            <visible allowhiddenfocus="true">!Control.HasFocus(9602)</visible>
-            <!-- Darker bar when scrolling home -->
+        <param name="info_hide" default="true" />
+        <definition>
             <control type="group">
                 <top>30</top>
-                <animation type="Conditional" condition="Control.IsVisible(430)" reversible="false">
-                    <effect type="slide" end="0,20" time="60" tween="sine" />
-                    <effect type="slide" end="0,-20" time="180" tween="sine" delay="80" />
-                </animation>
+                <include condition="$PARAM[info_hide]">Defs_InfoDialog_Visible</include>
                 <control type="group">
                     <height>view_pad</height>
                     <visible allowhiddenfocus="true">!$EXP[Exp_HideFurniture]</visible>
@@ -110,21 +106,6 @@
                         <align>left</align>
                         <orientation>horizontal</orientation>
                         <usecontrolcoords>true</usecontrolcoords>
-                        <visible>!Control.HasFocus(8001)</visible>
-                        <visible>!Control.HasFocus(300) | !Window.IsVisible(Home)</visible>
-                        <control type="button">
-                            <centertop>51%</centertop>
-                            <width>36</width>
-                            <height>36</height>
-                            <onclick>Back</onclick>
-                            <texturenofocus colordiffuse="main_fg_100" flipx="true">common/arrow-48.png</texturenofocus>
-                            <texturefocus colordiffuse="$VAR[ColorHighlight]" flipx="true">common/arrow-48.png</texturefocus>
-                            <visible>Skin.HasSetting(MouseMode) + ![Window.IsVisible(script-globalsearch.xml)]</visible>
-                        </control>
-                        <control type="group">
-                            <width>32</width>
-                            <visible>Skin.HasSetting(MouseMode) + ![Window.IsVisible(script-globalsearch.xml)]</visible>
-                        </control>
                         <control type="label">
                             <aligny>center</aligny>
                             <width max="1140">auto</width>
@@ -145,8 +126,7 @@
                         </control>
                     </control>
                     
-                    <include condition="![Window.IsVisible(script-globalsearch.xml) | Window.IsVisible(Home)]">Topbar_Menu</include>
-
+                    <!-- Center Label -->
                     <control type="label">
                         <aligny>center</aligny>
                         <align>center</align>
@@ -160,13 +140,15 @@
                     <!-- Right Info -->
                     <include>Topbar_Right</include>
                 </control>
+
+                <!-- Global Search -->
                 <control type="group">
                     <visible allowhiddenfocus="true">!$EXP[Exp_HideFurniture]</visible>
                     <include>Animation_FadeInOut</include>
                     <include condition="Window.IsVisible(script-globalsearch.xml)">Topbar_GlobalSearch_TextButtons</include>
                 </control>
             </control>
-        </control>
+        </definition>
     </include>
 
     <include name="Topbar_Right">
@@ -310,8 +292,6 @@
     <include name="Topbar_Home_TextButtons">
         <control type="group">
             <top>55</top>
-            <visible>Control.HasFocus(302) | [Control.HasFocus(430) + Integer.IsGreater(Container(302).NumItems,0)]</visible>
-            <visible>Skin.HasSetting(HideSubmenuWidget)</visible>
             <animation type="Visible">
                 <effect type="fade" start="0" end="100" time="200" tween="sine" easing="in" delay="200" />
                 <effect type="slide" start="0,-30" end="0,0" time="250" tween="sine" easing="out" delay="200" />
@@ -328,127 +308,55 @@
                 <visible>Window.IsVisible(Home) + !$EXP[Exp_Info_Visible]</visible>
                 <usecontrolcoords>true</usecontrolcoords>
                 <include content="Topbar_HomeMenu_Item">
-                    <param name="id" value="302" />
+                    <param name="id" value="301" />
                     <param name="pos" value="0" />
                 </include>
                 <include content="Topbar_HomeMenu_Item">
-                    <param name="id" value="302" />
+                    <param name="id" value="301" />
                     <param name="pos" value="1" />
                 </include>
                 <include content="Topbar_HomeMenu_Item">
-                    <param name="id" value="302" />
+                    <param name="id" value="301" />
                     <param name="pos" value="2" />
                 </include>
                 <include content="Topbar_HomeMenu_Item">
-                    <param name="id" value="302" />
+                    <param name="id" value="301" />
                     <param name="pos" value="3" />
                 </include>
                 <include content="Topbar_HomeMenu_Item">
-                    <param name="id" value="302" />
+                    <param name="id" value="301" />
                     <param name="pos" value="4" />
                 </include>
                 <include content="Topbar_HomeMenu_Item">
-                    <param name="id" value="302" />
+                    <param name="id" value="301" />
                     <param name="pos" value="5" />
                 </include>
                 <include content="Topbar_HomeMenu_Item">
-                    <param name="id" value="302" />
+                    <param name="id" value="301" />
                     <param name="pos" value="6" />
                 </include>
                 <include content="Topbar_HomeMenu_Item">
-                    <param name="id" value="302" />
+                    <param name="id" value="301" />
                     <param name="pos" value="7" />
                 </include>
                 <include content="Topbar_HomeMenu_Item">
-                    <param name="id" value="302" />
+                    <param name="id" value="301" />
                     <param name="pos" value="8" />
                 </include>
                 <include content="Topbar_HomeMenu_Item">
-                    <param name="id" value="302" />
+                    <param name="id" value="301" />
                     <param name="pos" value="9" />
                 </include>
                 <include content="Topbar_HomeMenu_Item">
-                    <param name="id" value="302" />
+                    <param name="id" value="301" />
                     <param name="pos" value="10" />
                 </include>
                 <include content="Topbar_HomeMenu_Item">
-                    <param name="id" value="302" />
+                    <param name="id" value="301" />
                     <param name="pos" value="11" />
                 </include>
                 <include content="Topbar_HomeMenu_Item">
-                    <param name="id" value="302" />
-                    <param name="pos" value="12" />
-                </include>
-            </control>
-        </control>
-        <control type="group">
-            <top>55</top>
-            <visible>[!Control.HasFocus(302) + ![Control.HasFocus(430) + Integer.IsGreater(Container(302).NumItems,0)]] | !Skin.HasSetting(HideSubmenuWidget)</visible>
-            <animation type="Visible">
-                <effect type="fade" start="0" end="100" time="200" tween="sine" easing="in" delay="200" />
-                <effect type="slide" start="0,-30" end="0,0" time="250" tween="sine" easing="out" delay="200" />
-            </animation>
-            <animation type="Hidden">
-                <effect type="fade" start="100" end="0" time="150" tween="sine" easing="out" />
-                <effect type="slide" start="0,0" end="0,-30" time="200" tween="sine" easing="out" />
-            </animation>
-            <control type="grouplist">
-                <itemgap>30</itemgap>
-                <height>70</height>
-                <left>view_pad</left>
-                <orientation>horizontal</orientation>
-                <visible>Window.IsVisible(Home) + !$EXP[Exp_Info_Visible]</visible>
-                <usecontrolcoords>true</usecontrolcoords>
-                <include content="Topbar_HomeMenu_Item">
-                    <param name="id" value="300" />
-                    <param name="pos" value="0" />
-                </include>
-                <include content="Topbar_HomeMenu_Item">
-                    <param name="id" value="300" />
-                    <param name="pos" value="1" />
-                </include>
-                <include content="Topbar_HomeMenu_Item">
-                    <param name="id" value="300" />
-                    <param name="pos" value="2" />
-                </include>
-                <include content="Topbar_HomeMenu_Item">
-                    <param name="id" value="300" />
-                    <param name="pos" value="3" />
-                </include>
-                <include content="Topbar_HomeMenu_Item">
-                    <param name="id" value="300" />
-                    <param name="pos" value="4" />
-                </include>
-                <include content="Topbar_HomeMenu_Item">
-                    <param name="id" value="300" />
-                    <param name="pos" value="5" />
-                </include>
-                <include content="Topbar_HomeMenu_Item">
-                    <param name="id" value="300" />
-                    <param name="pos" value="6" />
-                </include>
-                <include content="Topbar_HomeMenu_Item">
-                    <param name="id" value="300" />
-                    <param name="pos" value="7" />
-                </include>
-                <include content="Topbar_HomeMenu_Item">
-                    <param name="id" value="300" />
-                    <param name="pos" value="8" />
-                </include>
-                <include content="Topbar_HomeMenu_Item">
-                    <param name="id" value="300" />
-                    <param name="pos" value="9" />
-                </include>
-                <include content="Topbar_HomeMenu_Item">
-                    <param name="id" value="300" />
-                    <param name="pos" value="10" />
-                </include>
-                <include content="Topbar_HomeMenu_Item">
-                    <param name="id" value="300" />
-                    <param name="pos" value="11" />
-                </include>
-                <include content="Topbar_HomeMenu_Item">
-                    <param name="id" value="300" />
+                    <param name="id" value="301" />
                     <param name="pos" value="12" />
                 </include>
             </control>
@@ -750,22 +658,7 @@
             <movement>5</movement>
             <centerleft>50%</centerleft>
             <orientation>horizontal</orientation>
-            <top>30</top>
-            <onup condition="Skin.HasSetting(EnablePressingUp) + !Window.IsVisible(MyPVRGuide.xml)">9602</onup>
-            <ondown condition="Window.IsVisible(SettingsCategory.xml)">3</ondown>
-            <ondown condition="Window.IsVisible(SettingsProfile.xml)">4</ondown>
-            <ondown condition="Window.IsVisible(SettingsSystemInfo.xml)">95</ondown>
-            <ondown condition="Window.IsVisible(SkinSettings.xml)">9000</ondown>
-            <ondown condition="Window.IsVisible(script-NextAired-TVGuide.xml) | Window.IsVisible(script-NextAired-TVGuide2.xml)">9500</ondown>
-            <ondown condition="!Window.IsVisible(MyPVRGuide.xml)">50</ondown>
-
-            <onup condition="!Skin.HasSetting(EnablePressingUp) + Window.IsVisible(SettingsCategory.xml)">3</onup>
-            <onup condition="!Skin.HasSetting(EnablePressingUp) + Window.IsVisible(SettingsProfile.xml)">4</onup>
-            <onup condition="!Skin.HasSetting(EnablePressingUp) + Window.IsVisible(SettingsSystemInfo.xml)">95</onup>
-            <onup condition="!Skin.HasSetting(EnablePressingUp) + Window.IsVisible(SkinSettings.xml)">9000</onup>
-            <onup condition="!Skin.HasSetting(EnablePressingUp) + [Window.IsVisible(script-NextAired-TVGuide.xml) | Window.IsVisible(script-NextAired-TVGuide2.xml)]">9500</onup>
-            <onup condition="!Window.IsVisible(MyPVRGuide.xml)">50</onup>
-
+            <top>60</top>
             <!-- Special Conditions for Scroll Around from Menu on PVR Guide -->
             <include condition="Window.IsVisible(MyPVRGuide.xml)">View_PVRGuide_Movement</include>
             <height>120</height>
@@ -793,11 +686,6 @@
                         <width>60</width>
                         <control type="image">
                             <texture colordiffuse="$VAR[ColorHighlight]">common/white.png</texture>
-                            <bottom>0</bottom>
-                            <height>6</height>
-                        </control>
-                        <control type="image">
-                            <texture colordiffuse="$VAR[ColorHighlight2]">common/gradient-diffuse-horizontal.png</texture>
                             <bottom>0</bottom>
                             <height>6</height>
                         </control>

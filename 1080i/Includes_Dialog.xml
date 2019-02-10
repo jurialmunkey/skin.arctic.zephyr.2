@@ -73,6 +73,7 @@
                     <centertop>50%</centertop>
                     <height>26</height>
                     <width>auto</width>
+                    <textcolor>main_fg_100</textcolor>
                     <font>font_statusbar</font>
                     <label>$INFO[Control.GetLabel(32),,%]</label>
                 </control>
@@ -193,13 +194,16 @@
     </include>
 
     <include name="Dialog_Separator">
-        <control type="image">
-            <left>dialog_side_grouplist</left>
-            <width>1</width>
-            <top>dialog_top</top>
-            <bottom>dialog_pad</bottom>
-            <texture colordiffuse="dialog_fg_12">common/white.png</texture>
-        </control>
+        <param name="left" default="dialog_side_grouplist" />
+        <definition>
+            <control type="image">
+                <left>$PARAM[left]</left>
+                <width>1</width>
+                <top>dialog_top</top>
+                <bottom>dialog_pad</bottom>
+                <texture colordiffuse="dialog_fg_12">common/white.png</texture>
+            </control>
+        </definition>
     </include>
 
     <include name="Dialog_Separator_Right">
@@ -482,6 +486,22 @@
         </control>
     </include>
 
+    <include name="Dialog_Standard_List_Itemlayout_GroupManager">
+        <include content="Dialog_Standard_List_Itemlayout_Simple">
+            <param name="left_pad" value="0" />
+            <param name="right_pad" value="$PARAM[item_height]" />
+            <param name="color_70" value="$PARAM[color_70]" />
+            <param name="color_highlight" value="$PARAM[color_highlight]" />
+        </include>
+        <control type="image">
+            <right>15</right>
+            <width>$PARAM[item_height]</width>
+            <aspectratio>keep</aspectratio>
+            <bordersize>10</bordersize>
+            <texture>$INFO[ListItem.Icon]</texture>
+        </control>
+    </include>
+
     <include name="Dialog_Standard_List_Itemlayout_Complex">
         <param name="left_pad" default="54" />
         <definition>
@@ -564,11 +584,14 @@
         <param name="checkmark" default="true" />
         <param name="itemlayout_condition" default="true" />
         <param name="onright" default="61" />
+        <param name="onleft" default="noop" />
         <param name="width" default="936" />
+        <param name="list_type" default="panel" />
         <definition>
-            <control type="panel" id="$PARAM[id]">
+            <control type="$PARAM[list_type]" id="$PARAM[id]">
                 <top>dialog_top</top>
                 <bottom>dialog_pad</bottom>
+                <onleft>$PARAM[onleft]</onleft>
                 <onright>$PARAM[onright]</onright>
                 <onup>$PARAM[onup]</onup>
                 <ondown>$PARAM[ondown]</ondown>

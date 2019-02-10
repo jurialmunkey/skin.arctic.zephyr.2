@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Foundation -->
 <window id="0">
-    <defaultcontrol always="false">300</defaultcontrol>
+    <defaultcontrol always="false">301</defaultcontrol>
     
-    <onload>RunScript(script.skinshortcuts,type=buildxml&amp;mainmenuID=300&amp;mode=single&amp;group=mainmenu|powermenu)</onload>
+    <onload>RunScript(script.skinshortcuts,type=buildxml&amp;mainmenuID=301&amp;mode=single&amp;group=mainmenu|powermenu)</onload>
     <onload condition="!Skin.HasSetting(SkinHelper.EnablePVRThumbs)">Skin.SetBool(SkinHelper.EnablePVRThumbs)</onload>
     <onload condition="!Skin.HasSetting(SkinHelper.EnableMusicArt)">Skin.SetBool(SkinHelper.EnableMusicArt)</onload>
     <onload>ClearProperty(HomeFocus,Home)</onload>
@@ -32,10 +32,10 @@
             </itemlayout>
             <focusedlayout height="1" width="1">
             </focusedlayout>
-            <content>$INFO[Container(300).ListItem.Property(backgroundPlaylist)]</content>
+            <content>$INFO[Container(301).ListItem.Property(backgroundPlaylist)]</content>
         </control>
 
-        <control type="list" id="300">
+        <control type="list" id="301">
             <ondown condition="Integer.IsGreater(Container(302).NumItems,0)">302</ondown>
             <onup>5600</onup>
             <onfocus>ClearProperty(WidgetFocus,Home)</onfocus>
@@ -60,15 +60,15 @@
             <height>1080</height>
             <width>1920</width>
             <onfocus>SetProperty(SkinHelper.WidgetContainer,5600,Home)</onfocus>
-            <onup>300</onup>
-            <ondown>300</ondown>
-            <onback>300</onback>
-            <autoscroll time="7000">Control.HasFocus(300) + System.IdleTime(1)</autoscroll>
+            <onup>301</onup>
+            <ondown>301</ondown>
+            <onback>301</onback>
+            <autoscroll time="7000">Control.HasFocus(301) + System.IdleTime(1)</autoscroll>
             <orientation>horizontal</orientation>
             <itemlayout width="1920" height="1080">
                 <control type="image">
                     <aspectratio>scale</aspectratio>
-                    <texture colordiffuse="main_fg_100">common/geometric1.jpg</texture>
+                    <texture colordiffuse="Background">common/bg.jpg</texture>
                 </control>
                 <control type="image">
                     <centerleft>50%</centerleft>
@@ -82,7 +82,7 @@
             <focusedlayout width="1920" height="1080">
                 <control type="image">
                     <aspectratio>scale</aspectratio>
-                    <texture colordiffuse="main_fg_100">common/geometric1.jpg</texture>
+                    <texture colordiffuse="Background">common/bg.jpg</texture>
                 </control>
                 <control type="image">
                     <centerleft>50%</centerleft>
@@ -118,9 +118,17 @@
             <control type="image">
                 <texture colordiffuse="HomePanel">common/bg.jpg</texture>
             </control>
+            <control type="group">
+                <animation effect="fade" condition="![Control.HasFocus(5610) | Control.HasFocus(302)] + !Window.IsVisible(DialogVideoInfo.xml)" time="350" tween="cubic" easing="inout" start="100" end="0">Conditional</animation>
+                <animation effect="fade" condition="Window.IsVisible(DialogVideoInfo.xml) + [Control.HasFocus(5610) | Control.HasFocus(302)]" time="1" delay="350" start="100" end="0">Condition</animation>
+                <animation effect="fade" condition="Window.IsVisible(DialogVideoInfo.xml) + ![Control.HasFocus(5610) | Control.HasFocus(302)]" time="1" delay="0" start="100" end="0">Condition</animation>
+                <include content="Topbar">
+                    <param name="info_hide" value="false" />
+                </include>
+            </control>
             <!-- Menubar -->
             <control type="group">
-                <animation effect="fade" start="100" end="0" time="350" tween="cubic" easing="inout" condition="!Control.HasFocus(300)">Conditional</animation>
+                <animation effect="fade" start="100" end="0" time="350" tween="cubic" easing="inout" condition="!Control.HasFocus(301)">Conditional</animation>
                 <include>Defs_InfoDialog_Visible</include>
                 <include>Topbar_Home_TextButtons</include>
                 <control type="group">
@@ -175,14 +183,13 @@
             <!-- Down Widget -->
             <control type="group">
                 <animation effect="fade" condition="![Control.HasFocus(5610) | Control.HasFocus(302)] + !Window.IsVisible(DialogVideoInfo.xml)" time="350" tween="cubic" easing="inout" start="100" end="0">Conditional</animation>
-                <include>Topbar</include>
                 <control type="group">
                     <include>View_Group</include>
                     <animation effect="fade" condition="![Control.HasFocus(5610) | Control.HasFocus(302)]" time="350" tween="cubic" easing="inout" start="100" end="0">Conditional</animation>
                 
                     <control type="panel" id="302">
-                        <onback>300</onback>
-                        <onup>300</onup>
+                        <onback>301</onback>
+                        <onup>301</onup>
                         <ondown>5610</ondown>
                         <include>View_TopItems</include>
                         <content><include>skinshortcuts-submenu</include></content>
@@ -205,7 +212,7 @@
                         <onfocus>SetProperty(SkinHelper.WidgetContainer,5610,Home)</onfocus>
                         <onup>302</onup>
                         <ondown>noop</ondown>
-                        <onback>300</onback>
+                        <onback>301</onback>
                         <preloaditems>2</preloaditems>
                         <orientation>horizontal</orientation>
                         <itemlayout width="244.28" height="412.5">
@@ -237,21 +244,21 @@
         <control type="image" description="Background">
             <include>Dimensions_Fullscreen</include>
             <texture colordiffuse="ff000000">common/white.png</texture>
-            <visible>String.IsEmpty(Window(Home).Property(SkinSplashStarted)) | Integer.IsEqual(Container(300).NumItems,0) | Container(300).IsUpdating</visible>
+            <visible>String.IsEmpty(Window(Home).Property(SkinSplashStarted)) | Integer.IsEqual(Container(301).NumItems,0) | Container(301).IsUpdating</visible>
             <animation effect="fade" start="100" end="0" delay="600" time="600" tween="quadratic">Hidden</animation>
             <visible>String.IsEmpty(Skin.String(StartupPlaylist))</visible>
         </control>
         <control type="image" description="Background">
             <include>Dimensions_Fullscreen</include>
             <texture fallback="special://skin/fanart.jpg">$INFO[Skin.String(StartupSplash)]</texture>
-            <visible>String.IsEmpty(Window(Home).Property(SkinSplashStarted)) | Integer.IsEqual(Container(300).NumItems,0) | Container(300).IsUpdating</visible>
+            <visible>String.IsEmpty(Window(Home).Property(SkinSplashStarted)) | Integer.IsEqual(Container(301).NumItems,0) | Container(301).IsUpdating</visible>
             <animation effect="fade" start="100" end="0" time="600" tween="quadratic">Hidden</animation>
             <visible>String.IsEmpty(Skin.String(StartupPlaylist))</visible>
         </control>
         <control type="group">
             <top>800</top>
             <visible>String.IsEmpty(Skin.String(StartupPlaylist))</visible>
-            <visible>String.IsEmpty(Window(Home).Property(SkinSplashStarted)) | Integer.IsEqual(Container(300).NumItems,0) | Container(300).IsUpdating</visible>
+            <visible>String.IsEmpty(Window(Home).Property(SkinSplashStarted)) | Integer.IsEqual(Container(301).NumItems,0) | Container(301).IsUpdating</visible>
             <animation effect="fade" start="100" end="0" time="600" tween="quadratic">Hidden</animation>
             <include content="Defs_BusySpinner">
                 <param name="label" value="$LOCALIZE[31348]..." />

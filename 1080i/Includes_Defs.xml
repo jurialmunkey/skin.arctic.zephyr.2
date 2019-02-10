@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
 
+    <variable name="Defs_Cast_Content">
+        <value condition="String.IsEqual(ListItem.DBType,movie)">plugin://script.skin.helper.service/?action=getcast&amp;movie=$INFO[ListItem.Title]&amp;downloadthumbs=tru&amp;castaction=extendedinfo</value>
+        <value condition="String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season)">plugin://script.skin.helper.service/?action=getcast&amp;tvshow=$INFO[ListItem.TvShowTitle]&amp;downloadthumbs=tru&amp;castaction=extendedinfo</value>
+        <value condition="String.IsEqual(ListItem.DBType,episode)">plugin://script.skin.helper.service/?action=getcast&amp;episode=$INFO[ListItem.Label]&amp;downloadthumbs=tru&amp;castaction=extendedinfo</value>
+    </variable>
+
     <variable name="Defs_HubSpotlight_Path">
         <value condition="Container.Content(genres) + !Container(50).ListItem.IsParentFolder + String.StartsWith(Container.FolderPath,videodb://movies)">videodb://movies/genres/$INFO[Container(50).ListItem.DBID]</value>
         <value condition="Container.Content(genres) + !Container(50).ListItem.IsParentFolder + String.StartsWith(Container.FolderPath,videodb://tvshows)">videodb://tvshows/genres/$INFO[Container(50).ListItem.DBID]</value>

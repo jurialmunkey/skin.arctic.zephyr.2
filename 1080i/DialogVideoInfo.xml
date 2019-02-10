@@ -4,14 +4,70 @@
     <defaultcontrol always="true">8000</defaultcontrol>
     <controls>
 
+        <control type="list" id="300">
+            <ondown>8000</ondown>
+            <include>Topbar_Menu_Layout</include>
+            <include>Items_Info</include>
+        </control>
+
+        <control type="group">
+            <animation effect="fade" condition="Window.IsVisible(Home.xml)" time="1" delay="350" start="0" end="100">WindowOpen</animation>
+            <include content="Topbar">
+                <param name="info_hide" value="false" />
+            </include>
+        </control>
+
         <control type="grouplist" id="9000">
             <orientation>horizontal</orientation>
             <itemgap>0</itemgap>
-
+            <!-- Discart and CleartArt -->
+            <control type="group">
+                <include>Animation_FadeInOut_Delay</include>
+                <visible>!String.IsEmpty(ListItem.Art(discart))</visible>
+                <width>1920</width>
+                <height>1080</height>
+                <control type="button" id="5006">
+                    <include>Defs_Hidden_Button</include>
+                    <onright>5000</onright>
+                    <onback>8</onback>
+                </control>
+                <control type="group">
+                    <include>View_Pad</include>
+                    <control type="image">
+                        <texture background="true">$INFO[ListItem.Art(discart)]</texture>
+                        <aspectratio align="left">keep</aspectratio>
+                    </control>
+                    <control type="grouplist">
+                        <orientation>vertical</orientation>
+                        <itemgap>40</itemgap>
+                        <width>700</width>
+                        <right>0</right>
+                        <align>center</align>
+                        <control type="textbox">
+                            <right>0</right>
+                            <width>700</width>
+                            <height>350</height>
+                            <align>right</align>
+                            <aligny>center</aligny>
+                            <textcolor>main_fg_70</textcolor>
+                            <label>$INFO[ListItem.Tagline]</label>
+                            <font>font_info_display</font>
+                        </control>
+                        <control type="image">
+                            <right>0</right>
+                            <width>700</width>
+                            <height>390</height>
+                            <texture background="true">$INFO[ListItem.Art(clearlogo)]</texture>
+                            <aspectratio align="right" aligny="center">keep</aspectratio>
+                            <visible>!String.IsEmpty(ListItem.Art(clearlogo))</visible>
+                        </control>
+                    </control>
+                </control>
+            </control>  
             <!-- Artwork -->
             <include content="Object_Info_Artwork">
                 <param name="id" value="5000" />
-                <param name="onleft" value="noop" />
+                <param name="onleft" value="5006" />
                 <param name="onright" value="5001" />
                 <param name="artwork" value="$INFO[ListItem.Art(fanart5)]" />
                 <param name="visible" value="!String.IsEmpty(ListItem.Art(fanart5))" />
@@ -61,9 +117,12 @@
                     <include>View_Pad</include>
                     <control type="button" id="8000">
                         <include>Defs_Hidden_Button</include>
-                        <onclick>SendClick(8)</onclick>
+                        <onup>300</onup>
+                        <ondown>300</ondown>
+                        <onclick>SetFocus(300)</onclick>
                         <onleft>5005</onleft>
-                        <onright>SetFocus(50,0,absolute)</onright>
+                        <onright condition="Control.IsVisible(50)">SetFocus(50,0,absolute)</onright>
+                        <onright condition="Control.IsVisible(5050) + Integer.IsGreater(Container(5050).NumItems,0)">SetFocus(5050,0,absolute)</onright>
                     </control>
 
                     <!-- Poster -->
@@ -107,69 +166,32 @@
                 <include content="View_51_Wall_Control">
                     <param name="id" value="50" />
                     <param name="height" value="825" />
+                    <param name="visible" value="!Integer.IsGreater(Container(5050).NumItems,0) | Container(5050).IsUpdating" />
+                    <param name="infohide" value="false" />
+                    <param name="animation" value="Animation_FadeInOut_Delay" />
+                    <param name="labelinclude" value="View_Cast_Label" />
+                    <param name="controlorientation" value="View_Vertical_Cast" />
+                </include>
+                <include content="View_51_Wall_Control">
+                    <param name="id" value="5050" />
+                    <param name="height" value="825" />
                     <param name="visible" value="true" />
                     <param name="infohide" value="false" />
                     <param name="animation" value="Animation_FadeInOut_Delay" />
                     <param name="labelinclude" value="View_Cast_Label" />
                     <param name="includecontent" value="true" />
-                    <param name="content" value="plugin://script.skin.helper.service/?action=getcast&amp;movie=$INFO[ListItem.Title]&amp;downloadthumbs=tru&amp;castaction=extendedinfo" />
+                    <param name="content" value="$VAR[Defs_Cast_Content]" />
                     <param name="controlorientation" value="View_Vertical_Cast" />
                 </include>
-            </control>
-
-            <!-- Discart and CleartArt -->
-            <control type="group">
-                <visible>!String.IsEmpty(ListItem.Art(discart))</visible>
-                <width>1920</width>
-                <height>1080</height>
-                <!-- <include content="Object_Info_Arrows">
-                    <param name="id" value="5006" />
-                </include> -->
-                <control type="button" id="5006">
-                    <include>Defs_Hidden_Button</include>
-                    <onleft>SetFocus(50,6,absolute)</onleft>
-                    <onright>noop</onright>
-                    <onback>8</onback>
-                </control>
-                <control type="group">
-                    <include>View_Pad</include>
-                    <control type="image">
-                        <texture background="true">$INFO[ListItem.Art(discart)]</texture>
-                        <aspectratio align="left">keep</aspectratio>
-                    </control>
-                    <control type="grouplist">
-                        <orientation>vertical</orientation>
-                        <itemgap>40</itemgap>
-                        <width>780</width>
-                        <right>0</right>
-                        <align>center</align>
-                        <control type="textbox">
-                            <right>0</right>
-                            <width>780</width>
-                            <height>350</height>
-                            <align>right</align>
-                            <aligny>center</aligny>
-                            <textcolor>main_fg_70</textcolor>
-                            <label>$INFO[ListItem.Tagline]</label>
-                            <font>font_info_display</font>
-                        </control>
-                        <control type="image">
-                            <right>0</right>
-                            <width>780</width>
-                            <height>390</height>
-                            <texture background="true">$INFO[ListItem.Art(clearart)]</texture>
-                            <aspectratio align="right" aligny="bottom">keep</aspectratio>
-                            <visible>!String.IsEmpty(ListItem.Art(clearart))</visible>
-                        </control>
-                    </control>
-                </control>
-            </control>            
+            </control>          
         </control>
 
-        <!-- <control type="group">
+        <control type="group">
             <include>Animation_FadeInOut_Delay</include>
             <visible>System.IdleTime(1)</visible>
-            <visible>Control.HasFocus(8)</visible>
+            <visible>Control.HasFocus(8000)</visible>
+            <visible>!Window.IsVisible(DialogNotification.xml)</visible>
+            <visible>!Window.IsVisible(DialogExtendedProgressBar.xml)</visible>
             <control type="grouplist">
                 <orientation>horizontal</orientation>
                 <align>left</align>
@@ -191,8 +213,18 @@
                     <width>auto</width>
                     <font>font_statusbar</font>
                     <textcolor>main_fg_70</textcolor>
-                    <label>ARTWORK</label>
+                    <label>$LOCALIZE[31203]</label>
                 </control>
+            </control>
+            <control type="label">
+                <bottom>0</bottom>
+                <height>view_pad</height>
+                <aligny>center</aligny>
+                <align>center</align>
+                <width>auto</width>
+                <font>font_statusbar</font>
+                <textcolor>main_fg_70</textcolor>
+                <label>$LOCALIZE[31413]</label>
             </control>
             <control type="grouplist">
                 <orientation>horizontal</orientation>
@@ -209,7 +241,7 @@
                     <width>auto</width>
                     <font>font_statusbar</font>
                     <textcolor>main_fg_70</textcolor>
-                    <label>CAST</label>
+                    <label>$LOCALIZE[206]</label>
                 </control>
                 <control type="image">
                     <centertop>50%</centertop>
@@ -218,10 +250,84 @@
                     <texture colordiffuse="main_fg_90" flipx="true">buttons/spin-left.png</texture>
                 </control>
             </control>
-        </control> -->
+        </control>
 
-        <control type="button" id="10">
+        
+        <!-- Hidden Buttons -->
+        <control type="button" id ="6">
+            <description>Refresh</description>
+            <label>184</label>
             <include>Defs_Hidden_Button</include>
+        </control>
+
+        <control type="button" id ="7">
+            <description>Userrating</description>
+            <include>Defs_Hidden_Button</include>
+        </control>
+
+        <control type="button" id ="8">
+            <description>Play</description>
+            <label>$LOCALIZE[208]</label>
+            <include>Defs_Hidden_Button</include>
+        </control>
+
+        <control type="button" id ="10">
+            <description>Artwork (Get Thumb)</description>
+            <label>$LOCALIZE[13405]</label>
+            <include>Defs_Hidden_Button</include>
+        </control>
+
+        <control type="button" id="11">
+            <description>Trailer button</description>
+            <label>20410</label>
+            <include>Defs_Hidden_Button</include>
+            <visible>!String.IsEmpty(ListItem.Trailer)</visible>
+        </control>
+
+        <control type="button" id="13">
+            <description>Director button</description>
+            <include>Defs_Hidden_Button</include>
+        </control>
+
+        <control type="button" id="9005">
+            <label>$LOCALIZE[29915]</label>
+            <include>Defs_Hidden_Button</include>
+            <onclick condition="String.IsEqual(ListItem.DbType,movie)">RunScript(script.extendedinfo,info=extendedinfo,name=$INFO[ListItem.Title],imdb_id=$INFO[ListItem.IMDBNumber])</onclick>
+            <onclick condition="String.IsEqual(ListItem.DbType,tvshow) | String.IsEqual(ListItem.DbType,episode)">RunScript(script.extendedinfo,info=extendedtvinfo,name=$INFO[ListItem.TvShowTitle])</onclick>
+            <visible>System.hasAddon(script.extendedinfo) + [String.IsEqual(ListItem.DbType,movie) | String.IsEqual(ListItem.DbType,tvshow) | String.IsEqual(ListItem.DbType,episode)]</visible>
+            <onclick>SetFocus(300)</onclick>
+        </control>
+
+        <control type="button" id="9001">
+            <label>$LOCALIZE[31389]</label>
+            <!-- If ADownloader installed but not ABeef then use AD otherwise prefer AB -->
+            <!-- AD has been depreciated but some still use it -->
+
+            <onclick condition="String.IsEqual(ListItem.DBType,tvshow) + System.HasAddon(script.artwork.downloader) + !System.HasAddon(script.artwork.beef)">XBMC.RunScript(script.artwork.downloader, mode=gui, mediatype=tvshow, dbid=$INFO[ListItem.DBID])</onclick>
+            <onclick condition="String.IsEqual(ListItem.DBType,movie) + System.HasAddon(script.artwork.downloader) + !System.HasAddon(script.artwork.beef)">XBMC.RunScript(script.artwork.downloader, mode=gui, mediatype=movie, dbid=$INFO[ListItem.DBID])</onclick>
+
+            <onclick condition="String.IsEqual(ListItem.DBType,episode) + System.HasAddon(script.artwork.beef)">XBMC.RunScript(script.artwork.beef, mode=gui, mediatype=episode, dbid=$INFO[ListItem.DBID])</onclick>
+            <onclick condition="String.IsEqual(ListItem.DBType,tvshow) + System.HasAddon(script.artwork.beef)">XBMC.RunScript(script.artwork.beef, mode=gui, mediatype=tvshow, dbid=$INFO[ListItem.DBID])</onclick>
+            <onclick condition="String.IsEqual(ListItem.DBType,movie) + System.HasAddon(script.artwork.beef)">XBMC.RunScript(script.artwork.beef, mode=gui, mediatype=movie, dbid=$INFO[ListItem.DBID])</onclick>
+            <description>Get Artwork</description>
+            <include>Defs_Hidden_Button</include>
+            <visible>[String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,musicvideo) | String.IsEqual(ListItem.DBType,episode)] + [system.hasaddon(script.artwork.downloader) | system.hasaddon(script.artwork.beef)]</visible>
+        </control>
+
+        <control type="button" id="9011">
+            <label>$LOCALIZE[31388]</label>
+            <!-- If ADownloader installed but not ABeef then use AD otherwise prefer AB -->
+            <!-- AD has been depreciated but some still use it -->
+
+            <onclick condition="String.IsEqual(ListItem.DBType,tvshow) + System.HasAddon(script.artwork.downloader) + !System.HasAddon(script.artwork.beef)">XBMC.RunScript(script.artwork.downloader, mediatype=tvshow, dbid=$INFO[ListItem.DBID])</onclick>
+            <onclick condition="String.IsEqual(ListItem.DBType,movie) + System.HasAddon(script.artwork.downloader) + !System.HasAddon(script.artwork.beef)">XBMC.RunScript(script.artwork.downloader, mediatype=movie, dbid=$INFO[ListItem.DBID])</onclick>
+
+            <onclick condition="String.IsEqual(ListItem.DBType,episode) + System.HasAddon(script.artwork.beef)">XBMC.RunScript(script.artwork.beef, mode=auto, mediatype=tvshow, dbid=$INFO[ListItem.DBID])</onclick>
+            <onclick condition="String.IsEqual(ListItem.DBType,tvshow) + System.HasAddon(script.artwork.beef)">XBMC.RunScript(script.artwork.beef, mode=auto, mediatype=tvshow, dbid=$INFO[ListItem.DBID])</onclick>
+            <onclick condition="String.IsEqual(ListItem.DBType,movie) + System.HasAddon(script.artwork.beef)">XBMC.RunScript(script.artwork.beef, mode=auto, mediatype=movie, dbid=$INFO[ListItem.DBID])</onclick>
+            <description>Get Artwork</description>
+            <include>Defs_Hidden_Button</include>
+            <visible>[String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,musicvideo) | String.IsEqual(ListItem.DBType,episode)] + [system.hasaddon(script.artwork.downloader) | system.hasaddon(script.artwork.beef)]</visible>
         </control>
 
     </controls>

@@ -7,7 +7,13 @@
     <onload condition="System.HasAddon(script.tv.show.next.aired)">RunScript(script.tv.show.next.aired,backend=True)</onload>
     <controls>
         <include>Global_Background</include>
-
+        <include>Topbar</include>
+        <control type="list" id="300">
+            <ondown>50</ondown>
+            <include>Topbar_Menu_Layout</include>
+            <include>Items_View</include>
+        </control>
+        
         <control type="group">
             <include>View_50_List</include>
             <include>View_500_List_Square</include>
