@@ -2,7 +2,18 @@
 <!-- Foundation -->
 <window id="2003">
     <defaultcontrol always="true">8000</defaultcontrol>
+    <onunload>ClearProperty(windowopen)</onunload>
+    <onload>SetProperty(windowopen,1)</onload>
+    <onload>AlarmClock(setprop,ClearProperty(windowopen),00:01,silent)</onload>
     <controls>
+
+        
+        <control type="group">
+            <animation effect="fade" condition="Window.IsVisible(Home.xml)" time="1" delay="350" start="0" end="100">WindowOpen</animation>
+            <include content="Topbar">
+                <param name="info_hide" value="false" />
+            </include>
+        </control>
 
         <control type="list" id="300">
             <ondown>8000</ondown>
@@ -11,156 +22,251 @@
         </control>
 
         <control type="group">
-            <animation effect="fade" condition="Window.IsVisible(Home.xml)" time="1" delay="350" start="0" end="100">WindowOpen</animation>
-            <include content="Topbar">
-                <param name="info_hide" value="false" />
-            </include>
-        </control>
+            <animation effect="slide" end="1920" time="200" condition="ControlGroup(9000).HasFocus()">Conditional</animation>
+            <animation effect="slide" end="-1920" time="200" condition="Control.HasFocus(50) | Control.HasFocus(5050)">Conditional</animation>
 
-        <control type="grouplist" id="9000">
-            <orientation>horizontal</orientation>
-            <itemgap>0</itemgap>
-            <!-- Discart and CleartArt -->
-            <control type="group">
-                <include>Animation_FadeInOut_Delay</include>
-                <visible>!String.IsEmpty(ListItem.Art(discart))</visible>
-                <width>1920</width>
-                <height>1080</height>
-                <control type="button" id="5006">
-                    <include>Defs_Hidden_Button</include>
-                    <onright>5000</onright>
-                    <onback>8</onback>
-                </control>
-                <control type="group">
-                    <include>View_Pad</include>
-                    <control type="image">
-                        <texture background="true">$INFO[ListItem.Art(discart)]</texture>
-                        <aspectratio align="left">keep</aspectratio>
-                    </control>
-                    <control type="grouplist">
-                        <orientation>vertical</orientation>
-                        <itemgap>40</itemgap>
-                        <width>700</width>
-                        <right>0</right>
-                        <align>center</align>
-                        <control type="textbox">
-                            <right>0</right>
-                            <width>700</width>
-                            <height>350</height>
-                            <align>right</align>
-                            <aligny>center</aligny>
-                            <textcolor>main_fg_70</textcolor>
-                            <label>$INFO[ListItem.Tagline]</label>
-                            <font>font_info_display</font>
-                        </control>
-                        <control type="image">
-                            <right>0</right>
-                            <width>700</width>
-                            <height>390</height>
-                            <texture background="true">$INFO[ListItem.Art(clearlogo)]</texture>
-                            <aspectratio align="right" aligny="center">keep</aspectratio>
-                            <visible>!String.IsEmpty(ListItem.Art(clearlogo))</visible>
-                        </control>
-                    </control>
-                </control>
-            </control>  
-            <!-- Artwork -->
-            <include content="Object_Info_Artwork">
-                <param name="id" value="5000" />
-                <param name="onleft" value="5006" />
-                <param name="onright" value="5001" />
-                <param name="artwork" value="$INFO[ListItem.Art(fanart5)]" />
-                <param name="visible" value="!String.IsEmpty(ListItem.Art(fanart5))" />
-            </include>
-            <include content="Object_Info_Artwork">
-                <param name="id" value="5001" />
-                <param name="onleft" value="5000" />
-                <param name="onright" value="5002" />
-                <param name="artwork" value="$INFO[ListItem.Art(fanart4)]" />
-                <param name="visible" value="!String.IsEmpty(ListItem.Art(fanart4))" />
-            </include>
-            <include content="Object_Info_Artwork">
-                <param name="id" value="5002" />
-                <param name="onleft" value="5001" />
-                <param name="onright" value="5003" />
-                <param name="artwork" value="$INFO[ListItem.Art(fanart3)]" />
-                <param name="visible" value="!String.IsEmpty(ListItem.Art(fanart3))" />
-            </include>
-            <include content="Object_Info_Artwork">
-                <param name="id" value="5003" />
-                <param name="onleft" value="5002" />
-                <param name="onright" value="5004" />
-                <param name="artwork" value="$INFO[ListItem.Art(fanart2)]" />
-                <param name="visible" value="!String.IsEmpty(ListItem.Art(fanart2))" />
-            </include>
-            <include content="Object_Info_Artwork">
-                <param name="id" value="5004" />
-                <param name="onleft" value="5003" />
-                <param name="onright" value="5005" />
-                <param name="artwork" value="$INFO[ListItem.Art(fanart1)]" />
-                <param name="visible" value="!String.IsEmpty(ListItem.Art(fanart1))" />
-            </include>
-            <include content="Object_Info_Artwork">
-                <param name="id" value="5005" />
-                <param name="onleft" value="5004" />
-                <param name="onright" value="8000" />
-                <param name="artwork" value="$INFO[ListItem.Art(fanart)]" />
-                <param name="visible" value="!String.IsEmpty(ListItem.Art(fanart))" />
-            </include>
-            
-            
-            <!-- Movie / TvShow Info -->
-            <control type="group">
+            <!-- Left | Artwork -->
+            <control type="grouplist" id="9000">
+                <left>-1920</left>
+                <orientation>horizontal</orientation>
+                <itemgap>0</itemgap>
                 <width>1920</width>
                 <height>1080</height>
                 <control type="group">
-                    <include>View_Pad</include>
-                    <control type="button" id="8000">
+                    <include>Animation_Info_Fade_Delay</include>
+                    <visible>!String.IsEmpty(ListItem.Art(discart))</visible>
+                    <width>1920</width>
+                    <height>1080</height>
+                    <control type="button" id="5006">
                         <include>Defs_Hidden_Button</include>
-                        <onup>300</onup>
-                        <ondown>300</ondown>
-                        <onclick>SetFocus(300)</onclick>
-                        <onleft>5005</onleft>
-                        <onright condition="Control.IsVisible(50)">SetFocus(50,0,absolute)</onright>
-                        <onright condition="Control.IsVisible(5050) + Integer.IsGreater(Container(5050).NumItems,0)">SetFocus(5050,0,absolute)</onright>
+                        <onright>5000</onright>
+                        <onback>SetFocus(5005)</onback>
+                        <onback>8000</onback>
                     </control>
-
-                    <!-- Poster -->
-                    <include content="View_50_Poster">
-                        <param name="include" value="Animation_Left_Delay" />
-                        <param name="visible" value="true" />
-                    </include>
-
-
-                    <!-- Info -->
                     <control type="group">
+                        <include>View_Pad</include>
+                        <control type="image">
+                            <texture background="true">$INFO[ListItem.Art(discart)]</texture>
+                            <aspectratio align="left">keep</aspectratio>
+                        </control>
+                        <control type="grouplist">
+                            <orientation>vertical</orientation>
+                            <itemgap>40</itemgap>
+                            <width>700</width>
+                            <right>0</right>
+                            <align>center</align>
+                            <control type="textbox">
+                                <right>0</right>
+                                <width>700</width>
+                                <height>350</height>
+                                <align>right</align>
+                                <aligny>center</aligny>
+                                <textcolor>main_fg_70</textcolor>
+                                <label>$INFO[ListItem.Tagline]</label>
+                                <font>font_info_display</font>
+                            </control>
+                            <control type="image">
+                                <right>0</right>
+                                <width>700</width>
+                                <height>390</height>
+                                <texture background="true">$INFO[ListItem.Art(clearlogo)]</texture>
+                                <aspectratio align="right" aligny="center">keep</aspectratio>
+                                <visible>!String.IsEmpty(ListItem.Art(clearlogo))</visible>
+                            </control>
+                        </control>
+                    </control>
+                </control>  
+                <!-- Artwork -->
+                <include content="Object_Info_Artwork">
+                    <param name="id" value="5000" />
+                    <param name="onleft" value="5006" />
+                    <param name="onright" value="5001" />
+                    <param name="artwork" value="$INFO[ListItem.Art(fanart5)]" />
+                    <param name="visible" value="!String.IsEmpty(ListItem.Art(fanart5))" />
+                </include>
+                <include content="Object_Info_Artwork">
+                    <param name="id" value="5001" />
+                    <param name="onleft" value="5000" />
+                    <param name="onright" value="5002" />
+                    <param name="artwork" value="$INFO[ListItem.Art(fanart4)]" />
+                    <param name="visible" value="!String.IsEmpty(ListItem.Art(fanart4))" />
+                </include>
+                <include content="Object_Info_Artwork">
+                    <param name="id" value="5002" />
+                    <param name="onleft" value="5001" />
+                    <param name="onright" value="5003" />
+                    <param name="artwork" value="$INFO[ListItem.Art(fanart3)]" />
+                    <param name="visible" value="!String.IsEmpty(ListItem.Art(fanart3))" />
+                </include>
+                <include content="Object_Info_Artwork">
+                    <param name="id" value="5003" />
+                    <param name="onleft" value="5002" />
+                    <param name="onright" value="5004" />
+                    <param name="artwork" value="$INFO[ListItem.Art(fanart2)]" />
+                    <param name="visible" value="!String.IsEmpty(ListItem.Art(fanart2))" />
+                </include>
+                <include content="Object_Info_Artwork">
+                    <param name="id" value="5004" />
+                    <param name="onleft" value="5003" />
+                    <param name="onright" value="5005" />
+                    <param name="artwork" value="$INFO[ListItem.Art(fanart1)]" />
+                    <param name="visible" value="!String.IsEmpty(ListItem.Art(fanart1))" />
+                </include>
+                <include content="Object_Info_Artwork">
+                    <param name="id" value="5005" />
+                    <param name="onleft" value="5004" />
+                    <param name="onright" value="8000" />
+                    <param name="artwork" value="$INFO[ListItem.Art(fanart)]" />
+                    <param name="visible" value="!String.IsEmpty(ListItem.Art(fanart))" />
+                </include>
+            </control>
+
+            <!-- Center | Information -->
+            <control type="group">
+                <width>1920</width>
+                <height>1080</height>
+                <control type="group">
+                    <include>View_Pad</include>
+                    <control type="grouplist" id="8100">
+                        <orientation>vertical</orientation>
+                        <itemgap>825</itemgap>
                         <top>-15</top>
-                        <left>580</left>
-                        <include>Animation_Right_Delay</include>
-                        <control type="grouplist">
-                            <orientation>vertical</orientation>
-                            <usecontrolcoords>true</usecontrolcoords>
-                            <itemgap>0</itemgap>
-                            <include>Object_Info_Title</include>
-                            <include>Object_Info_Line</include>
-                            <include>Object_Info_Plot</include>
-                            <include>Object_Info_Ratings</include>
-                            <include>Object_Info_Details</include>
+                        <left>-15</left>
+                        <right>-15</right>
+                        <height>825</height>
+                        <control type="group" id="8101">
+                            <height>825</height>
+                            <control type="button" id="8000">
+                                <include>Defs_Hidden_Button</include>
+                                <onup>300</onup>
+                                <ondown>5101</ondown>
+                                <onclick>SetFocus(300)</onclick>
+                                <onleft>5005</onleft>
+                                <onright condition="Control.IsVisible(50)">SetFocus(50,0,absolute)</onright>
+                                <onright condition="Control.IsVisible(5050) + Integer.IsGreater(Container(5050).NumItems,0) + !Container.IsUpdating(5050)">SetFocus(5050,0,absolute)</onright>
+                            </control>
+                            <control type="group">
+                                <top>15</top>
+                                <left>15</left>
+                                <right>15</right>
+                                <height>780</height>
+                                <!-- Poster -->
+                                <include content="View_50_Poster">
+                                    <param name="include" value="Animation_Left_Delay" />
+                                    <param name="visible" value="true" />
+                                </include>
+
+                                <!-- Info -->
+                                <control type="group">
+                                    <top>-15</top>
+                                    <left>580</left>
+                                    <include>Animation_Right_Delay</include>
+                                    <control type="grouplist">
+                                        <orientation>vertical</orientation>
+                                        <usecontrolcoords>true</usecontrolcoords>
+                                        <itemgap>0</itemgap>
+                                        <include>Object_Info_Title</include>
+                                        <include>Object_Info_Line</include>
+                                        <include>Object_Info_Plot</include>
+                                        <include>Object_Info_Ratings</include>
+                                        <include>Object_Info_Details</include>
+                                    </control>
+
+                                    <control type="grouplist">
+                                        <align>bottom</align>
+                                        <orientation>vertical</orientation>
+                                        <usecontrolcoords>true</usecontrolcoords>
+                                        <itemgap>0</itemgap>
+                                        <include>Object_Info_Codecs</include>
+                                    </control>
+                                    <!-- <include>Object_Info_Buttons</include> -->
+                                </control>
+                            </control>
                         </control>
-                        <control type="grouplist">
-                            <align>bottom</align>
+                        <control type="grouplist" id="5100">
+                            <height>825</height>
                             <orientation>vertical</orientation>
-                            <usecontrolcoords>true</usecontrolcoords>
                             <itemgap>0</itemgap>
-                            <include>Object_Info_Codecs</include>
+                            <include content="View_51_Wall_Container">
+                                <param name="id" value="5101" />
+                                <param name="height" value="412.5" />
+                                <param name="controlorientation" value="View_Horizontal_Back" />
+                                <param name="onleft" value="5101" />
+                                <param name="onright" value="5101" />
+                                <param name="visible" value="Integer.IsGreater(Container(5101).NumItems,1) | Container(5101).IsUpdating" />
+                                <content>
+                                    <item>
+                                        <label>$INFO[ListItem.Set]</label>
+                                        <icon>DefaultSets.png</icon>
+                                        <onclick>Close</onclick>
+                                        <onclick>Close</onclick>
+                                        <onclick>ActivateWindow(videos,$INFO[ListItem.SetID,videodb://movies/sets/,/],return)</onclick>
+                                    </item>
+                                </content>
+                                <content limit="6" target="videos">$INFO[ListItem.SetID,videodb://movies/sets/,/]</content>
+                            </include>
+                            <include content="View_51_Wall_Container">
+                                <param name="id" value="5102" />
+                                <param name="height" value="412.5" />
+                                <param name="controlorientation" value="View_Horizontal_Back" />
+                                <param name="onleft" value="5102" />
+                                <param name="onright" value="5102" />
+                                <param name="visible" value="Integer.IsGreater(Container(5102).NumItems,1) | Container(5102).IsUpdating" />
+                                <content>
+                                    <item>
+                                        <label>Similar Movies</label>
+                                        <icon>DefaultTags.png</icon>
+                                        <onclick>Close</onclick>
+                                        <onclick>Close</onclick>
+                                        <onclick>ActivateWindow(videos,$INFO[ListItem.IMDBNumber,plugin://script.skin.helper.widgets/?action=similar&amp;mediatype=movies&amp;imdbid=,],return)</onclick>
+                                    </item>
+                                </content>
+                                <content limit="6" target="videos">$INFO[ListItem.IMDBNumber,plugin://script.skin.helper.widgets/?action=similar&amp;mediatype=movies&amp;imdbid=,]</content>
+                            </include>
+                            <include content="View_51_Wall_Container">
+                                <param name="id" value="5103" />
+                                <param name="height" value="412.5" />
+                                <param name="controlorientation" value="View_Horizontal_Back" />
+                                <param name="onleft" value="5103" />
+                                <param name="onright" value="5103" />
+                                <param name="visible" value="Integer.IsGreater(Container(5103).NumItems,1) | Container(5103).IsUpdating" />
+                                <content>
+                                    <item>
+                                        <label>$INFO[ListItem.Director,By ,]</label>
+                                        <icon>DefaultDirector.png</icon>
+                                        <onclick>SendClick(13)</onclick>
+                                    </item>
+                                </content>
+                                <content limit="6" target="videos">$INFO[ListItem.Director,plugin://script.extendedinfo?info=personmovies&amp;&amp;person=,]</content>
+                            </include>
+                            <include content="View_51_Wall_Container">
+                                <param name="id" value="5104" />
+                                <param name="height" value="412.5" />
+                                <param name="controlorientation" value="View_Horizontal_Back" />
+                                <param name="onleft" value="5104" />
+                                <param name="onright" value="5104" />
+                                <param name="visible" value="Integer.IsGreater(Container(5104).NumItems,1) | Container(5104).IsUpdating" />
+                                <content>
+                                    <item>
+                                        <label>$INFO[ListItem.Studio]</label>
+                                        <onclick>Close</onclick>
+                                        <onclick>Close</onclick>
+                                        <onclick>ActivateWindow(videos,$INFO[ListItem.Studio,plugin://script.extendedinfo?info=studio&amp;&amp;studio=,],return)</onclick>
+                                        <icon>DefaultStudios.png</icon>
+                                    </item>
+                                </content>
+                                <content limit="6" target="videos">$INFO[ListItem.Studio,plugin://script.extendedinfo?info=studio&amp;&amp;studio=,]</content>
+                            </include>
+                            <control type="group" description="StopScrolling">
+                            </control>
                         </control>
-                        <!-- <include>Object_Info_Buttons</include> -->
                     </control>
                 </control>
             </control>
 
-            <!-- Cast -->
+            <!-- Right | Cast -->
             <control type="group">
+                <left>1920</left>
                 <width>1920</width>
                 <height>1080</height>
                 <include content="View_51_Wall_Control">
@@ -168,7 +274,7 @@
                     <param name="height" value="825" />
                     <param name="visible" value="!Integer.IsGreater(Container(5050).NumItems,0) | Container(5050).IsUpdating" />
                     <param name="infohide" value="false" />
-                    <param name="animation" value="Animation_FadeInOut_Delay" />
+                    <param name="animation" value="Animation_Info_Fade_Delay" />
                     <param name="labelinclude" value="View_Cast_Label" />
                     <param name="controlorientation" value="View_Vertical_Cast" />
                 </include>
@@ -177,22 +283,21 @@
                     <param name="height" value="825" />
                     <param name="visible" value="true" />
                     <param name="infohide" value="false" />
-                    <param name="animation" value="Animation_FadeInOut_Delay" />
+                    <param name="animation" value="Animation_Info_Fade_Delay" />
                     <param name="labelinclude" value="View_Cast_Label" />
                     <param name="includecontent" value="true" />
                     <param name="content" value="$VAR[Defs_Cast_Content]" />
                     <param name="controlorientation" value="View_Vertical_Cast" />
+                    <animation effect="fade" condition="!Integer.IsGreater(Container(5050).NumItems,0) | Container(5050).IsUpdating" start="100" end="0" time="1">Conditional</animation>
                 </include>
-            </control>          
+            </control>
         </control>
-
+            
         <control type="group">
-            <include>Animation_FadeInOut_Delay</include>
-            <visible>System.IdleTime(1)</visible>
-            <visible>Control.HasFocus(8000)</visible>
             <visible>!Window.IsVisible(DialogNotification.xml)</visible>
             <visible>!Window.IsVisible(DialogExtendedProgressBar.xml)</visible>
             <control type="grouplist">
+                <visible>[Container(9000).HasPrevious + ControlGroup(9000).HasFocus()] | [Control.HasFocus(8000) + !String.IsEmpty(ListItem.Art(fanart))] | Control.HasFocus(50) | Control.HasFocus(5050)</visible>
                 <orientation>horizontal</orientation>
                 <align>left</align>
                 <bottom>0</bottom>
@@ -213,20 +318,33 @@
                     <width>auto</width>
                     <font>font_statusbar</font>
                     <textcolor>main_fg_70</textcolor>
-                    <label>$LOCALIZE[31203]</label>
+                    <label>$VAR[Label_Info_LeftHint]</label>
                 </control>
             </control>
-            <control type="label">
+            <control type="group">
                 <bottom>0</bottom>
                 <height>view_pad</height>
-                <aligny>center</aligny>
-                <align>center</align>
-                <width>auto</width>
-                <font>font_statusbar</font>
-                <textcolor>main_fg_70</textcolor>
-                <label>$LOCALIZE[31413]</label>
+                <visible>Control.HasFocus(8000)</visible>
+                <control type="label">
+                    <aligny>center</aligny>
+                    <align>center</align>
+                    <width>auto</width>
+                    <font>font_statusbar</font>
+                    <textcolor>main_fg_70</textcolor>
+                    <!-- <label>$LOCALIZE[31413]</label> -->
+                    <label>Explore</label>
+                    <include>Animation_FadeIn</include>
+                </control>
+                <control type="image">
+                    <centerleft>50%</centerleft>
+                    <centerbottom>25%</centerbottom>
+                    <width>24</width>
+                    <height>24</height>
+                    <texture colordiffuse="main_fg_90">buttons/spin-down.png</texture>
+                </control>
             </control>
             <control type="grouplist">
+                <visible>ControlGroup(9000).HasFocus() | [Control.HasFocus(8000) + [Control.IsVisible(50) | Control.IsVisible(5050)]]</visible>
                 <orientation>horizontal</orientation>
                 <align>right</align>
                 <bottom>0</bottom>
@@ -241,7 +359,7 @@
                     <width>auto</width>
                     <font>font_statusbar</font>
                     <textcolor>main_fg_70</textcolor>
-                    <label>$LOCALIZE[206]</label>
+                    <label>$VAR[Label_Info_RightHint]</label>
                 </control>
                 <control type="image">
                     <centertop>50%</centertop>

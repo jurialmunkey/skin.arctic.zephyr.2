@@ -179,12 +179,9 @@
         <animation effect="fade" start="0" end="100" time="350" tween="cubic" easing="inout" reversible="false" delay="150">Visible</animation>
     </include>
 
-    <include name="Animation_FadeInOut_Delay">
-        <animation type="Visible" reversible="false">
-            <effect type="fade" start="0" end="100" time="300" delay="400" tween="sine" easing="out" />
-        </animation>
-        <animation type="WindowOpen" reversible="false">
-            <effect type="fade" start="0" end="100" time="300" delay="400" tween="sine" easing="out" />
+    <include name="Animation_Info_Fade_Delay">
+        <animation type="Conditional" condition="Control.HasFocus(8000) + !String.IsEmpty(Window.Property(windowopen))">
+            <effect type="fade" start="100" end="0" time="1" delay="0" />
         </animation>
     </include>
 

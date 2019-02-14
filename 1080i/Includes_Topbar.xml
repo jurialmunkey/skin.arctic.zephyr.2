@@ -163,64 +163,6 @@
             <control type="group">
                 <visible>!Control.HasFocus(60)</visible>
                 <width>64</width>
-                <visible>![Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml) | Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(DialogAddonInfo.xml)]</visible>
-                <visible>!Control.HasFocus(300) | Window.IsVisible(Home)</visible>
-                <visible>[String.IsEmpty(Window(10025).Property(PlayingBackgroundMedia)) + Player.HasMedia]</visible>
-                <include>Animation_FadeIn_Delay</include>
-                <control type="multiimage">
-                    <centertop>50%</centertop>
-                    <imagepath colordiffuse="main_fg_100">eq</imagepath>
-                    <width>40</width>
-                    <height>23</height>
-                    <fadetime>50</fadetime>
-                    <timeperimage>50</timeperimage>
-                    <visible>!Player.Paused + !Player.Caching</visible>
-                </control>
-                <control type="image">
-                    <centertop>50%</centertop>
-                    <centerleft>50%</centerleft>
-                    <texture colordiffuse="main_fg_100">osd/pause.png</texture>
-                    <width>32</width>
-                    <height>32</height>
-                    <fadetime>50</fadetime>
-                    <visible>Player.Paused + !Player.Caching</visible>
-                </control>
-                <control type="image">
-                    <centertop>50%</centertop>
-                    <left>-16</left>
-                    <texture colordiffuse="main_fg_100">special://skin/extras/icons/download.png</texture>
-                    <width>64</width>
-                    <height>64</height>
-                    <fadetime>50</fadetime>
-                    <visible>Player.Caching</visible>
-                </control>
-                <visible>Player.HasMedia</visible>
-            </control>
-            <control type="label">
-                <width max="350">auto</width>
-                <font>font_small</font>
-                <textcolor>main_fg_100</textcolor>
-                <label>$INFO[Player.Title]</label>
-                <visible>Player.HasMedia</visible>
-                <visible>[String.IsEmpty(Window(10025).Property(PlayingBackgroundMedia)) + Player.HasMedia]</visible>
-                <visible>![Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml) | Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(DialogAddonInfo.xml)]</visible>
-                <visible>!Control.HasFocus(300) | Window.IsVisible(Home)</visible>
-                <include>Animation_FadeIn_Delay</include>
-                <visible>!Control.HasFocus(60)</visible>
-            </control>
-            <control type="label">
-                <width>auto</width>
-                <font>font_small</font>
-                <textcolor>$VAR[ColorHighlight]</textcolor>
-                <label>  |  </label>
-                <visible>Player.HasMedia</visible>
-                <visible>![Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml) | Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(DialogAddonInfo.xml)]</visible>
-                <visible>!Control.HasFocus(300) | Window.IsVisible(Home)</visible>
-                <visible>!Control.HasFocus(60)</visible>
-            </control>
-            <control type="group">
-                <visible>!Control.HasFocus(60)</visible>
-                <width>64</width>
                 <control type="image">
                     <centertop>50%</centertop>
                     <height>40</height>
@@ -228,7 +170,6 @@
                     <texture colordiffuse="main_fg_100">$INFO[Weather.FanartCode,resource://resource.images.weathericons.white/,.png]</texture>
                 </control>
                 <visible>Weather.IsFetched</visible>
-                <visible>!Player.HasMedia | [Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml) | Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(DialogAddonInfo.xml)] | [Control.HasFocus(300) + !Window.IsVisible(Home)]</visible>
             </control>
             <control type="label">
                 <visible>!Control.HasFocus(60)</visible>
@@ -237,7 +178,6 @@
                 <textcolor>main_fg_100</textcolor>
                 <label>$INFO[Weather.Temperature]</label>
                 <visible>Weather.IsFetched</visible>
-                <visible>!Player.HasMedia | [Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml) | Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(DialogAddonInfo.xml)] | [Control.HasFocus(300) + !Window.IsVisible(Home)]</visible>
             </control>
             <control type="label">
                 <visible>!Control.HasFocus(60)</visible>
@@ -247,7 +187,6 @@
                 <label>  |  </label>
                 <visible>!String.IsEmpty(Weather.Temperature)</visible>
                 <visible>Weather.IsFetched</visible>
-                <visible>!Player.HasMedia | [Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml) | Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(DialogAddonInfo.xml)] | [Control.HasFocus(300) + !Window.IsVisible(Home)]</visible>
             </control>
             <control type="label">
                 <width>auto</width>
@@ -528,86 +467,6 @@
         </control>
     </include>
 
-    <include name="Topbar_Info">
-        <control type="group">
-            <control type="group">
-                <top>30</top>
-                <control type="group">
-                    <height>view_pad</height>
-                    <include>Animation_FadeInOut</include>
-                    <visible allowhiddenfocus="true">!$EXP[Exp_HideFurniture]</visible>
-                    <!-- Left Info -->
-                    <control type="grouplist">
-                        <itemgap>0</itemgap>
-                        <left>view_pad</left>
-                        <align>left</align>
-                        <orientation>horizontal</orientation>
-                        <usecontrolcoords>true</usecontrolcoords>
-                        <control type="label">
-                            <top>0</top>
-                            <width>auto</width>
-                            <font>font_topbar</font>
-                            <textcolor>main_fg_100</textcolor>
-                            <label>$VAR[Label_Header_Content]</label>
-                            <visible>!Control.HasFocus(300)</visible>
-                        </control>
-                        <control type="label">
-                            <top>0</top>
-                            <width>auto</width>
-                            <font>font_topbar</font>
-                            <textcolor>main_fg_100</textcolor>
-                            <label>$INFO[Container(300).ListItem.Label]</label>
-                            <visible>Control.HasFocus(300)</visible>
-                        </control>
-                    </control>
-                
-                    <!-- Right Info -->
-                    <control type="grouplist">
-                        <right>view_pad</right>
-                        <align>right</align>
-                        <orientation>horizontal</orientation>
-                        <itemgap>0</itemgap>
-                        <visible>!Window.IsVisible(DialogNotification.xml)</visible>
-                        <visible>!Window.IsVisible(DialogExtendedProgressBar.xml)</visible>
-                        <visible>!Window.IsVisible(DialogVolumeBar.xml) | Player.Muted</visible>
-                        <visible>!Skin.HasSetting(MinimalBusyLoader) | [Skin.HasSetting(MinimalBusyLoader) + !Window.IsVisible(DialogBusy.xml)]</visible>
-                        <control type="group">
-                            <width>view_pad</width>
-                            <control type="image">
-                                <centertop>50%</centertop>
-                                <height>40</height>
-                                <aspectratio>keep</aspectratio>
-                                <texture colordiffuse="main_fg_100">$INFO[Weather.FanartCode,resource://resource.images.weathericons.white/,.png]</texture>
-                            </control>
-                            <visible>Weather.IsFetched</visible>
-                        </control>
-                        <control type="label">
-                            <width>auto</width>
-                            <font>font_small</font>
-                            <textcolor>main_fg_100</textcolor>
-                            <label>$INFO[Weather.Temperature]</label>
-                            <visible>Weather.IsFetched</visible>
-                        </control>
-                        <control type="label">
-                            <width>auto</width>
-                            <font>font_small</font>
-                            <textcolor>$VAR[ColorHighlight]</textcolor>
-                            <label>  |  </label>
-                            <visible>!String.IsEmpty(Weather.Temperature)</visible>
-                            <visible>Weather.IsFetched</visible>
-                        </control>
-                        <control type="label">
-                            <width>auto</width>
-                            <font>font_small</font>
-                            <textcolor>main_fg_100</textcolor>
-                            <label>$INFO[System.Time]</label>
-                        </control>
-                    </control>
-                </control>
-            </control>
-        </control>
-    </include>
-
     <include name="Topbar_Menu">
         <control type="list" id="300">
             <include>Topbar_Menu_Layout</include>
@@ -672,27 +531,18 @@
             </itemlayout>
             <focusedlayout width="70" height="60">
                 <include condition="Window.IsVisible(SettingsCategory.xml) | Window.IsVisible(SettingsProfile.xml) | Window.IsVisible(SettingsSystemInfo.xml) | Window.IsVisible(SkinSettings.xml)">Topbar_Menu_SettingsTrick_Button</include>
-                <control type="image">
-                    <visible>!Control.HasFocus(300)</visible>
+       
+                <control type="group">
                     <centerleft>50%</centerleft>
                     <width>60</width>
-                    <aspectratio>keep</aspectratio>
-                    <texture colordiffuse="main_fg_30">$INFO[ListItem.Icon]</texture>
-                </control>
-                <control type="group">
-                    <visible>Control.HasFocus(300)</visible>
-                    <control type="group">
-                        <centerleft>50%</centerleft>
-                        <width>60</width>
-                        <control type="image">
-                            <texture colordiffuse="$VAR[ColorHighlight]">common/white.png</texture>
-                            <bottom>0</bottom>
-                            <height>6</height>
-                        </control>
-                        <control type="image">
-                            <aspectratio>keep</aspectratio>
-                            <texture colordiffuse="main_fg_100">$INFO[ListItem.Icon]</texture>
-                        </control>
+                    <control type="image">
+                        <texture colordiffuse="$VAR[ColorHighlight]">common/white.png</texture>
+                        <bottom>0</bottom>
+                        <height>6</height>
+                    </control>
+                    <control type="image">
+                        <aspectratio>keep</aspectratio>
+                        <texture colordiffuse="main_fg_100">$INFO[ListItem.Icon]</texture>
                     </control>
                 </control>
             </focusedlayout>

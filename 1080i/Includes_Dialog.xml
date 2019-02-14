@@ -22,25 +22,26 @@
             <right>view_pad</right>
             <height>view_pad</height>
             <control type="image" description="Back">
-                <left>-16</left>
+                <left>-24</left>
                 <centertop>50%</centertop>
                 <width>80</width>
                 <height>80</height>
                 <aspectratio align="center" aligny="center">keep</aspectratio>
                 <texture>dialog/loading-back.png</texture>
                 <colordiffuse>main_fg_70</colordiffuse>
-                <!-- <animation effect="fade" condition="true" start="100" end="33" time="2000" pulse="true" >Conditional</animation> -->
+                <visible>Window.IsVisible(DialogExtendedProgressBar.xml) + Control.IsVisible(32)</visible>
             </control>
             <control type="image">
-                <left>-16</left>
+                <left>-24</left>
                 <centertop>50%</centertop>
                 <width>80</width>
                 <height>80</height>
                 <texture colordiffuse="$VAR[ColorHighlight]">$INFO[Control.GetLabel(32),progress/circle/p,.png]</texture>
                 <aspectratio align="center" aligny="center">keep</aspectratio>
+                <visible>Window.IsVisible(DialogExtendedProgressBar.xml) + Control.IsVisible(32)</visible>
             </control>
             <control type="grouplist">
-                <left>8</left>
+                <left>0</left>
                 <centertop>50%</centertop>
                 <height>32</height>
                 <orientation>horizontal</orientation>
@@ -76,6 +77,7 @@
                     <textcolor>main_fg_100</textcolor>
                     <font>font_statusbar</font>
                     <label>$INFO[Control.GetLabel(32),,%]</label>
+                    <visible>Window.IsVisible(DialogExtendedProgressBar.xml) + Control.IsVisible(32)</visible>
                 </control>
             </control>
         </definition>
@@ -694,7 +696,11 @@
         <param name="onleft" default="6" />
         <param name="onright" default="8000" />
         <definition>
-            <include>Dialog_Separator_Right</include>
+            <control type="group">
+                <visible>!Control.HasFocus(61)</visible>
+                <include>Animation_FadeInOut</include>
+                <include>Dialog_Separator_Right</include>
+            </control>
             <control type="scrollbar" id="61">
                 <centerright>dialog_side_grouplist</centerright>
                 <orientation>vertical</orientation>

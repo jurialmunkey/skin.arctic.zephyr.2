@@ -1,6 +1,131 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
 
+    <include name="Object_Codecs">
+        <control type="group">
+            <bottom>0</bottom>
+            <left>view_pad</left>
+            <height>view_pad</height>
+            <control type="grouplist">
+                <centertop>50%</centertop>
+                <height>32</height>
+                <include>Object_Info_Codecs</include>
+            </control>
+        </control>
+    </include>
+
+    <include name="Object_NowPlaying">
+        <control type="group">
+            <height>view_pad</height>
+            <left>view_pad</left>
+            <right>view_pad</right>
+            <bottom>0</bottom>
+            <visible>Player.HasMedia</visible>
+            <include>Defs_InfoDialog_Visible</include>
+            <control type="grouplist">
+                <align>right</align>
+                <orientation>horizontal</orientation>
+                <usecontrolcoords>true</usecontrolcoords>
+                <itemgap>10</itemgap>
+                
+                <control type="label">
+                    <centertop>50%</centertop>
+                    <height>26</height>
+                    <label>$INFO[MusicPlayer.Artist]</label>
+                    <width>auto</width>
+                    <font>font_statusbar</font>
+                    <textcolor>main_fg_100</textcolor>
+                </control>
+                <control type="label">
+                    <centertop>50%</centertop>
+                    <height>26</height>
+                    <label></label>
+                    <width>auto</width>
+                    <font>font_statusbar</font>
+                    <textcolor>main_fg_30</textcolor>
+                </control>
+                <control type="label">
+                    <centertop>50%</centertop>
+                    <height>26</height>
+                    <label>$INFO[Player.Title]</label>
+                    <width>auto</width>
+                    <font>font_statusbar_bold</font>
+                    <textcolor>main_fg_100</textcolor>
+                </control>
+                <control type="label">
+                    <centertop>50%</centertop>
+                    <height>26</height>
+                    <label></label>
+                    <width>auto</width>
+                    <font>font_statusbar</font>
+                    <textcolor>main_fg_70</textcolor>
+                </control>
+                <control type="label">
+                    <centertop>50%</centertop>
+                    <height>26</height>
+                    <label>$INFO[Player.Time]</label>
+                    <width>auto</width>
+                    <font>font_statusbar</font>
+                    <textcolor>main_fg_100</textcolor>
+                </control>
+                <control type="label">
+                    <centertop>50%</centertop>
+                    <height>26</height>
+                    <label>|</label>
+                    <width>auto</width>
+                    <font>font_statusbar</font>
+                    <textcolor>main_fg_30</textcolor>
+                </control>
+                <control type="label">
+                    <centertop>50%</centertop>
+                    <height>26</height>
+                    <label>$INFO[Player.Duration]</label>
+                    <width>auto</width>
+                    <font>font_statusbar</font>
+                    <textcolor>main_fg_100</textcolor>
+                </control>
+                <control type="group">
+                    <width>5</width>
+                </control>
+                <control type="multiimage">
+                    <centertop>49%</centertop>
+                    <imagepath colordiffuse="main_fg_100">eq</imagepath>
+                    <width>30</width>
+                    <height>20</height>
+                    <fadetime>50</fadetime>
+                    <timeperimage>50</timeperimage>
+                    <visible>!Player.Paused + !Player.Caching</visible>
+                </control>
+                <control type="image">
+                    <centertop>50%</centertop>
+                    <texture colordiffuse="main_fg_100">buttons/pause.png</texture>
+                    <width>24</width>
+                    <height>24</height>
+                    <visible>Player.Paused + !Player.Caching</visible>
+                </control>
+                <control type="group">
+                    <width>48</width>
+                    <visible>Player.Caching</visible>
+                    <control type="image" description="Back">
+                        <centertop>50%</centertop>
+                        <width>48</width>
+                        <height>48</height>
+                        <aspectratio align="center" aligny="center">keep</aspectratio>
+                        <texture>dialog/loading-back.png</texture>
+                        <colordiffuse>main_fg_70</colordiffuse>
+                    </control>
+                    <control type="image">
+                        <centertop>50%</centertop>
+                        <width>48</width>
+                        <height>48</height>
+                        <texture colordiffuse="$VAR[ColorHighlight]">$INFO[Player.CacheLevel,progress/circle/p,.png]</texture>
+                        <aspectratio align="center" aligny="center">keep</aspectratio>
+                    </control>
+                </control>
+            </control>
+        </control>
+    </include>
+
     <include name="Object_Dialog_Arrows">
         <param name="visible_down" value="Container(6).HasNext | Container(3).HasNext" />
         <param name="visible_up" value="Container(6).HasPrevious | Container(3).HasPrevious" />
@@ -24,35 +149,9 @@
         </definition>
     </include>
 
-    <include name="Object_Info_Arrows">
-        <control type="group">
-            <include>View_Pad</include>
-            <visible>Window.IsActive(DialogVideoInfo.xml)</visible>
-            <control type="image">
-                <centerleft>-60</centerleft>
-                <centertop>50%</centertop>
-                <width>32</width>
-                <height>32</height>
-                <texture colordiffuse="main_fg_100">buttons/spin-left.png</texture>
-                <visible>Container(9000).HasPrevious</visible>
-                <include>Animation_FadeInOut_Delay</include>
-                <visible>Control.HasFocus($PARAM[id])</visible>
-            </control>
-            <control type="image">
-                <centerright>-60</centerright>
-                <centertop>50%</centertop>
-                <width>32</width>
-                <height>32</height>
-                <texture colordiffuse="main_fg_100" flipx="true">buttons/spin-left.png</texture>
-                <visible>Container(9000).HasNext</visible>
-                <include>Animation_FadeInOut_Delay</include>
-                <visible>Control.HasFocus($PARAM[id])</visible>
-            </control>
-        </control>
-    </include>
-
     <include name="Object_Info_Artwork">
         <control type="group">
+            <include>Animation_Info_Fade_Delay</include>
             <visible>$PARAM[visible]</visible>
             <width>1920</width>
             <height>1080</height>
@@ -60,6 +159,7 @@
                 <include>Defs_Hidden_Button</include>
                 <onleft>$PARAM[onleft]</onleft>
                 <onright>$PARAM[onright]</onright>
+                <onback>SetFocus(5005)</onback>
                 <onback>8000</onback>
                 <onclick condition="!System.HasAddon(script.artwork.beef) | ![String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,movie)]">SendClick(10)</onclick>
                 <onclick condition="String.IsEqual(ListItem.DBType,episode) + System.HasAddon(script.artwork.beef)">XBMC.RunScript(script.artwork.beef, mode=gui, mediatype=episode, dbid=$INFO[ListItem.DBID])</onclick>
@@ -75,7 +175,6 @@
                     <texture background="true">$PARAM[artwork]</texture>
                     <aspectratio>scale</aspectratio>
                 </control>
-                <include>Animation_FadeInOut_Delay</include>
             </control>
         </control>
     </include>
@@ -351,40 +450,43 @@
             <param name="name" value="Country" />
             <param name="label" value="ListItem.Country" />
         </include>
-        <include content="Object_Info_TextPairs">
+        <!-- <include content="Object_Info_TextPairs">
             <param name="pad" value="24" />
             <param name="name" value="Path" />
             <param name="haspath" value="true" />
             <param name="label" value="ListItem.Path" />
-        </include>
+        </include> -->
     </include>
 
     <include name="Object_Info_Ratings">
-        <control type="group">
-            <top>0</top>
-            <height>80</height>
+        <param name="top" default="0" />
+        <definition>
             <control type="group">
-                <left>-14</left>
-                <visible>String.IsEmpty(ListItem.UserRating)</visible>
-                <include>Object_StarRating</include>
+                <top>$PARAM[top]</top>
+                <height>80</height>
+                <control type="group">
+                    <left>-14</left>
+                    <visible>String.IsEmpty(ListItem.UserRating)</visible>
+                    <include>Object_StarRating</include>
+                </control>
+                <control type="group">
+                    <left>-14</left>
+                    <visible>!String.IsEmpty(ListItem.UserRating)</visible>
+                    <include content="Object_StarRating">
+                        <param name="rating_prop" value="ListItem.UserRating" />
+                    </include>
+                </control>
+                <control type="group">
+                    <top>41</top>
+                    <left>260</left>
+                    <include content="Object_Ratings_Content">
+                        <param name="colordiffuse" value="main_fg_100" />
+                        <param name="align" value="left" />
+                        <param name="tmdb" value="false" />
+                    </include>
+                </control>
             </control>
-            <control type="group">
-                <left>-14</left>
-                <visible>!String.IsEmpty(ListItem.UserRating)</visible>
-                <include content="Object_StarRating">
-                    <param name="rating_prop" value="ListItem.UserRating" />
-                </include>
-            </control>
-            <control type="group">
-                <top>41</top>
-                <left>260</left>
-                <include content="Object_Ratings_Content">
-                    <param name="colordiffuse" value="main_fg_100" />
-                    <param name="align" value="left" />
-                    <param name="tmdb" value="false" />
-                </include>
-            </control>
-        </control>
+        </definition>
     </include>
 
     <include name="Object_Info_Line">

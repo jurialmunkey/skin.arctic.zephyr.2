@@ -12,13 +12,17 @@
     <include name="Global_Videowindow">
         <control type="image" description="Background">
             <include>Dimensions_Fullscreen</include>
-            <texture colordiffuse="Background">common/white.png</texture>
+            <texture colordiffuse="black">common/white.png</texture>
         </control>
         <control type="videowindow">
             <visible>Skin.HasSetting(global.showvideo)</visible>
             <visible>Player.HasVideo</visible>
             <visible>String.IsEmpty(Window(Home).Property(TrailerPlaying))</visible>
             <include>Dimensions_Fullscreen</include>
+        </control>
+        <control type="image" description="Background">
+            <include>Dimensions_Fullscreen</include>
+            <texture colordiffuse="HomePanel">common/bg.jpg</texture>
         </control>
     </include>
     
@@ -55,18 +59,23 @@
     <include name="Global_FadeTime_600"><fadetime>600</fadetime></include>
 
     <include name="Global_Background">
-        <control type="image">
-            <texture colordiffuse="Background">common/bg.jpg</texture>
-        </control>
-        <control type="multiimage">
-            <timeperimage>10000</timeperimage>
-            <randomize>true</randomize>
-            <include>Animation_FadeFromHome</include>
-            <width>1920</width>
-            <height>1080</height>
-            <aspectratio>scale</aspectratio>
-            <fadetime>600</fadetime>
-            <imagepath background="true" colordiffuse="FanartFade">$VAR[Global_Background_Image]</imagepath>
+        <include>Global_Videowindow</include>
+        <include>Global_Visualisation</include>
+        <control type="group">
+            <visible>!Player.HasMedia | [Player.HasVideo + [!Skin.HasSetting(global.showvideo) | !String.IsEmpty(Window(Home).Property(TrailerPlaying))]] | [!Skin.HasSetting(global.showvisualisation) + Player.HasAudio] | [Player.HasAudio + !String.IsEmpty(Window(Home).Property(PlayingBackgroundMedia))]</visible>
+            <control type="image">
+                <texture colordiffuse="Background">common/bg.jpg</texture>
+            </control>
+            <control type="multiimage">
+                <timeperimage>10000</timeperimage>
+                <randomize>true</randomize>
+                <include>Animation_FadeFromHome</include>
+                <width>1920</width>
+                <height>1080</height>
+                <aspectratio>scale</aspectratio>
+                <fadetime>600</fadetime>
+                <imagepath background="true" colordiffuse="FanartFade">$VAR[Global_Background_Image]</imagepath>
+            </control>
         </control>
     </include>
 

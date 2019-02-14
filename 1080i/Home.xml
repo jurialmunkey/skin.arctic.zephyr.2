@@ -243,16 +243,21 @@
         <!-- Splash -->
         <control type="image" description="Background">
             <include>Dimensions_Fullscreen</include>
-            <texture colordiffuse="ff000000">common/white.png</texture>
+            <texture colordiffuse="Background">common/bg.jpg</texture>
+            <visible>String.IsEmpty(Skin.String(StartupPlaylist))</visible>
             <visible>String.IsEmpty(Window(Home).Property(SkinSplashStarted)) | Integer.IsEqual(Container(301).NumItems,0) | Container(301).IsUpdating</visible>
             <animation effect="fade" start="100" end="0" delay="600" time="600" tween="quadratic">Hidden</animation>
-            <visible>String.IsEmpty(Skin.String(StartupPlaylist))</visible>
         </control>
-        <control type="image" description="Background">
+        <control type="label">
+            <description>Loading</description>
             <include>Dimensions_Fullscreen</include>
-            <texture fallback="special://skin/fanart.jpg">$INFO[Skin.String(StartupSplash)]</texture>
+            <align>center</align>
+            <aligny>center</aligny>
+            <label>Arctic [COLOR=$VAR[ColorHighlight]]Zephyr[/COLOR][COLOR=main_fg_12] 2[/COLOR]</label>
+            <font>font_splash</font>
+            <textcolor>main_fg_100</textcolor>
             <visible>String.IsEmpty(Window(Home).Property(SkinSplashStarted)) | Integer.IsEqual(Container(301).NumItems,0) | Container(301).IsUpdating</visible>
-            <animation effect="fade" start="100" end="0" time="600" tween="quadratic">Hidden</animation>
+            <animation effect="fade" start="100" end="0" delay="0" time="600" tween="quadratic">Hidden</animation>
             <visible>String.IsEmpty(Skin.String(StartupPlaylist))</visible>
         </control>
         <control type="group">
@@ -261,7 +266,7 @@
             <visible>String.IsEmpty(Window(Home).Property(SkinSplashStarted)) | Integer.IsEqual(Container(301).NumItems,0) | Container(301).IsUpdating</visible>
             <animation effect="fade" start="100" end="0" time="600" tween="quadratic">Hidden</animation>
             <include content="Defs_BusySpinner">
-                <param name="label" value="$LOCALIZE[31348]..." />
+                <param name="label" value="$LOCALIZE[31349]..." />
             </include>
         </control>
 

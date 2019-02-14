@@ -67,12 +67,10 @@
     </include>
 
     <include name="View_Vertical_Cast">
-        <onright>noop</onright>
         <onleft>8000</onleft>
         <onback>8000</onback>
         <orientation>vertical</orientation>
     </include>
-
     <include name="View_Vertical_Back">
         <onback>8000</onback>
         <orientation>vertical</orientation>
@@ -80,6 +78,32 @@
     <include name="View_Horizontal_Back">
         <onback>8000</onback>
         <orientation>horizontal</orientation>
+    </include>
+
+    <include name="View_ExtendedInfo_Panel">
+        <param name="labelinclude" default="View_Cast_Character_Label" />
+        <definition>
+            <control type="group">
+                <width>1920</width>
+                <height>1080</height>
+                <control type="group">
+                    <include>View_Pad</include>
+                    <include content="View_51_Wall_Container" description="Movies">
+                        <param name="id" value="$PARAM[id]" />
+                        <param name="height" value="825" />
+                        <param name="visible" value="Integer.IsGreater(Container($PARAM[id]).NumItems,0)" />
+                        <param name="labelinclude" value="$PARAM[labelinclude]" />
+                        <param name="controlorientation" value="View_Vertical_Back" />
+                        <param name="onleft" value="$PARAM[onleft]" />
+                        <param name="onright" value="$PARAM[onright]" />
+                        <param name="onback" value="8000" />
+                        <param name="itemwidth" value="$PARAM[itemwidth]" />
+                        <param name="itemheight" value="$PARAM[itemheight]" />
+                        <param name="iconheight" value="$PARAM[iconheight]" />
+                    </include>
+                </control>
+            </control>
+        </definition>
     </include>
 
     <include name="View_Genres_Wall">
@@ -490,7 +514,7 @@
         <param name="bottom" default="view_pad" />
         <definition>
             <include content="View_Pad">
-                <param name="view_pad" value="$PARAM[view_pad]" />
+                <param name="bottom" value="$PARAM[bottom]" />
             </include>
             <include>$PARAM[animation]</include>
             <include condition="$PARAM[infohide]">Defs_InfoDialog_Visible</include>
@@ -845,7 +869,7 @@
                 <right>15</right>
                 <width>48</width>
                 <height>48</height>
-                <texture colordiffuse="Selected" border="10">$VAR[Image_Overlay_Corner]</texture>
+                <texture colordiffuse="$VAR[ColorHighlight2]" border="10">$VAR[Image_Overlay_Corner]</texture>
             </control>
             <control type="image">
                 <top>16</top>
@@ -887,7 +911,7 @@
                 <control type="image">
                     <bordersize>15</bordersize>
                     <bordertexture border="30" colordiffuse="55ffffff">common/shadow-15.png</bordertexture>
-                    <texture border="20">common/selectbox.png</texture>
+                    <texture border="20" colordiffuse="$VAR[ColorHighlight2]">common/selectbox.png</texture>
                 </control>
             </control>
             <include condition="$PARAM[overlay]">View_WatchedOverlay_Focus</include>
