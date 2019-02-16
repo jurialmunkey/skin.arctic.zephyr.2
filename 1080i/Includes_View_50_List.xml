@@ -25,6 +25,7 @@
                 <include content="View_50_Poster">
                     <param name="height" value="654" />
                     <param name="width" value="654" />
+                    <param name="aspectratio" value="keep" />
                 </include>
                 <include>View_50_Info</include>
                 <include content="View_50_List_Control">
@@ -186,13 +187,16 @@
                 <visible>$PARAM[visible]</visible>
                 <control type="group">
                     <height>$PARAM[height]</height>
-                    <include>Object_Geometric</include>
+                    <include content="Object_Geometric">
+                        <param name="shadowdiffuse" value="$PARAM[shadowdiffuse]" />
+                    </include>
                     <include content="Object_DefaultIcon">
                         <param name="icon" value="$PARAM[defaulticon]" />
                         <param name="visible" value="$PARAM[defaulticonvisible]" />
                     </include>
                     <include content="Object_Poster">
                         <param name="icon" value="$PARAM[icon]" />
+                        <param name="aspectratio" value="$PARAM[aspectratio]" />
                     </include>
                 </control>
             </control>

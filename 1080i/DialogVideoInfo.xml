@@ -171,15 +171,6 @@
                                         <include>Object_Info_Ratings</include>
                                         <include>Object_Info_Details</include>
                                     </control>
-
-                                    <control type="grouplist">
-                                        <align>bottom</align>
-                                        <orientation>vertical</orientation>
-                                        <usecontrolcoords>true</usecontrolcoords>
-                                        <itemgap>0</itemgap>
-                                        <include>Object_Info_Codecs</include>
-                                    </control>
-                                    <!-- <include>Object_Info_Buttons</include> -->
                                 </control>
                             </control>
                         </control>
@@ -292,8 +283,15 @@
                 </include>
             </control>
         </control>
-            
+
+        <include>Object_Info_Codecs</include>
+
+        <include content="Object_Codecs">
+            <param name="infohide" value="false" />
+        </include>
+
         <control type="group">
+            <visible>false</visible>
             <visible>!Window.IsVisible(DialogNotification.xml)</visible>
             <visible>!Window.IsVisible(DialogExtendedProgressBar.xml)</visible>
             <control type="grouplist">

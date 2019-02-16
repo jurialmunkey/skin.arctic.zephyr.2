@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
 
+    <variable name="Image_RipSource">
+        <value condition="String.Contains(ListItem.FileNameAndPath,2160p) | String.Contains(ListItem.FileNameAndPath,UHD) | String.Contains(ListItem.FileNameAndPath,UltraHD) | String.Contains(ListItem.FileNameAndPath,Ultra-HD) | String.Contains(ListItem.FileNameAndPath,4K)">flags/monochrome/other/4K.png</value>
+        <value condition="String.Contains(ListItem.FileNameAndPath,blu-ray) | String.Contains(ListItem.FileNameAndPath,bluray) | String.Contains(ListItem.FileNameAndPath,bdrip) | String.Contains(ListItem.FileNameAndPath,bd25) | String.Contains(ListItem.FileNameAndPath,bd50)">flags/monochrome/other/bluray.png</value>
+        <value condition="String.Contains(ListItem.FileNameAndPath,dvd)">flags/monochrome/other/dvd.png</value>
+        <value condition="String.Contains(ListItem.FileNameAndPath,hdtv) | String.Contains(ListItem.FileNameAndPath,pdtv) | String.Contains(ListItem.FileNameAndPath,dsr)">flags/monochrome/other/hdtv.png</value>
+        <value condition="String.Contains(ListItem.FileNameAndPath,web-dl) | String.Contains(ListItem.FileNameAndPath,webdl) | String.Contains(ListItem.FileNameAndPath,WEBRip)">flags/monochrome/other/web-dl.png</value>
+    </variable>
+
+    <variable name="Image_AudioCodec">
+        <value condition="String.Contains(ListItem.FileNameAndPath,atmos)">flags/monochrome/audio/atmos.png</value>
+        <value condition="String.Contains(ListItem.FileNameAndPath,dtsx) | String.Contains(ListItem.FileNameAndPath,dts-x) | String.Contains(ListItem.FileNameAndPath,dts:x)">flags/monochrome/audio/dtsx.png</value>
+        <value>$INFO[ListItem.AudioCodec,flags/monochrome/audio/,.png]</value>
+    </variable>
+
     <variable name="Image_OSD_Artwork">
         <value condition="!String.IsEmpty(Player.Art(tvshow.poster))">$INFO[Player.Art(tvshow.poster)]</value>
         <value condition="!String.IsEmpty(Player.Art(poster))">$INFO[Player.Art(poster)]</value>

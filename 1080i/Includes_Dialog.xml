@@ -22,7 +22,7 @@
             <right>view_pad</right>
             <height>view_pad</height>
             <control type="image" description="Back">
-                <left>-24</left>
+                <left>-16</left>
                 <centertop>50%</centertop>
                 <width>80</width>
                 <height>80</height>
@@ -32,7 +32,7 @@
                 <visible>Window.IsVisible(DialogExtendedProgressBar.xml) + Control.IsVisible(32)</visible>
             </control>
             <control type="image">
-                <left>-24</left>
+                <left>-16</left>
                 <centertop>50%</centertop>
                 <width>80</width>
                 <height>80</height>
@@ -41,6 +41,7 @@
                 <visible>Window.IsVisible(DialogExtendedProgressBar.xml) + Control.IsVisible(32)</visible>
             </control>
             <control type="grouplist">
+                <animation effect="slide" end="8" condition="Window.IsVisible(DialogExtendedProgressBar.xml) + Control.IsVisible(32)">Conditional</animation>
                 <left>0</left>
                 <centertop>50%</centertop>
                 <height>32</height>
@@ -589,6 +590,8 @@
         <param name="onleft" default="noop" />
         <param name="width" default="936" />
         <param name="list_type" default="panel" />
+        <param name="onup" default="3" />
+        <param name="ondown" default="3" />
         <definition>
             <control type="$PARAM[list_type]" id="$PARAM[id]">
                 <top>dialog_top</top>
@@ -668,6 +671,8 @@
                 <param name="id" value="6" />
                 <param name="item_height" value="view_biglist_height" />
                 <param name="list_style" value="Dialog_Standard_List_Itemlayout_Complex" />
+                <param name="onup" value="6" />
+                <param name="ondown" value="6" />
             </include>
 
             <control type="group">
@@ -695,13 +700,14 @@
     <include name="Dialog_Scrollbar">
         <param name="onleft" default="6" />
         <param name="onright" default="8000" />
+        <param name="id" default="61" />
         <definition>
             <control type="group">
-                <visible>!Control.HasFocus(61)</visible>
+                <visible>!Control.HasFocus($PARAM[id])</visible>
                 <include>Animation_FadeInOut</include>
                 <include>Dialog_Separator_Right</include>
             </control>
-            <control type="scrollbar" id="61">
+            <control type="scrollbar" id="$PARAM[id]">
                 <centerright>dialog_side_grouplist</centerright>
                 <orientation>vertical</orientation>
                 <width>8</width>
@@ -711,7 +717,7 @@
                 <onright>$PARAM[onright]</onright>
                 <texturesliderbackground colordiffuse="dialog_fg_12">common/white.png</texturesliderbackground>
                 <texturesliderbar colordiffuse="dialog_fg_12">common/white.png</texturesliderbar>
-                <animation effect="fade" condition="!Control.HasFocus(61)" start="100" end="0" time="200">Conditional</animation>
+                <animation effect="fade" condition="!Control.HasFocus($PARAM[id])" start="100" end="0" time="200">Conditional</animation>
             </control>
         </definition>
     </include>

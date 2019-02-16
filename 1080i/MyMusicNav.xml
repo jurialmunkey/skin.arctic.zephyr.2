@@ -8,7 +8,12 @@
 
         <include>Global_Background</include>
         <include>Topbar</include>
-        <include>Object_NowPlaying</include>
+        <control type="list" id="300">
+            <visible allowhiddenfocus="true">Control.HasFocus(300)</visible>
+            <ondown>500</ondown>
+            <include>Topbar_Menu_Layout</include>
+            <include>Items_View</include>
+        </control>
         
         <include>View_500_List_Square</include>
         <include>View_510_Wall_Square</include>

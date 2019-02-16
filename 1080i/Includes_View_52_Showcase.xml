@@ -5,10 +5,10 @@
         <definition>
             <control type="grouplist">
                 <top>-15</top>
-                <left>400</left>
-                <right>400</right>
+                <left>view_pad</left>
+                <right>view_pad</right>
                 <orientation>vertical</orientation>
-                <itemgap>10</itemgap>
+                <itemgap>25</itemgap>
                 <usecontrolcoords>true</usecontrolcoords>
                 <control type="label">
                     <aligny>top</aligny>
@@ -32,20 +32,20 @@
 
     <include name="View_52_Showcase_Plot">
         <param name="id" default="52" />
-        <param name="plotheight" default="90" />
+        <param name="plotheight" default="120" />
         <definition>
             <control type="grouplist">
                 <orientation>vertical</orientation>
-                <bottom>-15</bottom>
+                <bottom>-48</bottom>
                 <align>bottom</align>
-                <itemgap>40</itemgap>
+                <itemgap>50</itemgap>
                 <usecontrolcoords>true</usecontrolcoords>
                 <control type="textbox">
-                    <centerleft>50%</centerleft>
-                    <width>1350</width>
+                    <left>view_pad</left>
+                    <right>view_pad</right>
                     <label fallback="19055">$VAR[Label_Plot]</label>
                     <height>$PARAM[plotheight]</height>
-                    <aligny>top</aligny>
+                    <aligny>center</aligny>
                     <align>center</align>
                     <textcolor>main_fg_70</textcolor>
                     <font>font_plotbox</font>
@@ -58,7 +58,7 @@
     </include>
 
     <include name="View_52_Showcase_Layout_Standard">
-        <top>160</top>
+        <top>185</top>
         <right>-15</right>
         <left>-15</left>
         <preloaditems>2</preloaditems>
@@ -88,8 +88,10 @@
             <param name="id" value="52" />
             <param name="height" value="412.5" />
             <param name="controlorientation" value="View_Horizontal" />
+            <param name="labelinclude" value="" />
             <param name="controltype" value="fixedlist" />
             <param name="controllayout" value="View_52_Showcase_Layout" />
+            <param name="containervisible" value="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons)" />
             <include content="View_52_Showcase_Header">
                 <param name="id" value="52" />
             </include>
@@ -104,9 +106,11 @@
             <param name="id" value="520" />
             <param name="itemwidth" value="342" />
             <param name="height" value="412.5" />
+            <param name="labelinclude" value="" />
             <param name="controlorientation" value="View_Horizontal" />
             <param name="controltype" value="fixedlist" />
             <param name="controllayout" value="View_520_Showcase_Layout" />
+            <param name="containervisible" value="Container.Content(artists) | Container.Content(albums) | Container.Content(addons)" />
             <include content="View_52_Showcase_Header">
                 <param name="id" value="520" />
             </include>
@@ -120,6 +124,7 @@
         <include content="View_51_Wall_Control">
             <param name="id" value="521" />
             <param name="height" value="423.75" />
+            <param name="labelinclude" value="" />
             <param name="controlorientation" value="View_Horizontal" />
             <param name="controltype" value="fixedlist" />
             <param name="controllayout" value="View_521_Showcase_Layout" />
@@ -127,6 +132,7 @@
             <param name="itemheight" value="423.75" />
             <param name="icon" value="$VAR[Image_Fanart]" />
             <param name="iconheight" value="333.75" />
+            <param name="containervisible" value="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(videos)" />
             <include content="View_52_Showcase_Header">
                 <param name="id" value="521" />
             </include>

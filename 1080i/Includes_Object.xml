@@ -2,128 +2,59 @@
 <includes>
 
     <include name="Object_Codecs">
-        <control type="group">
-            <bottom>0</bottom>
-            <left>view_pad</left>
-            <height>view_pad</height>
+        <param name="infohide" default="true" />
+        <definition>
             <control type="grouplist">
-                <centertop>50%</centertop>
-                <height>32</height>
-                <include>Object_Info_Codecs</include>
-            </control>
-        </control>
-    </include>
-
-    <include name="Object_NowPlaying">
-        <control type="group">
-            <height>view_pad</height>
-            <left>view_pad</left>
-            <right>view_pad</right>
-            <bottom>0</bottom>
-            <visible>Player.HasMedia</visible>
-            <include>Defs_InfoDialog_Visible</include>
-            <control type="grouplist">
-                <align>right</align>
+                <include condition="$PARAM[infohide]">Defs_InfoDialog_Visible</include>
+                <include condition="Window.IsVisible(Home)">Animation_FadeIn_Delay</include>
+                <include condition="Window.IsVisible(Home)">Animation_FadeOut</include>
                 <orientation>horizontal</orientation>
+                <align>right</align>
+                <height>view_pad</height>
+                <right>view_pad</right>
+                <left>view_pad</left>
+                <bottom>0</bottom>
+                <itemgap>20</itemgap>
                 <usecontrolcoords>true</usecontrolcoords>
-                <itemgap>10</itemgap>
-                
-                <control type="label">
+                <control type="image">
+                    <fadetime>100</fadetime>
                     <centertop>50%</centertop>
-                    <height>26</height>
-                    <label>$INFO[MusicPlayer.Artist]</label>
-                    <width>auto</width>
-                    <font>font_statusbar</font>
-                    <textcolor>main_fg_100</textcolor>
-                </control>
-                <control type="label">
-                    <centertop>50%</centertop>
-                    <height>26</height>
-                    <label></label>
-                    <width>auto</width>
-                    <font>font_statusbar</font>
-                    <textcolor>main_fg_30</textcolor>
-                </control>
-                <control type="label">
-                    <centertop>50%</centertop>
-                    <height>26</height>
-                    <label>$INFO[Player.Title]</label>
-                    <width>auto</width>
-                    <font>font_statusbar_bold</font>
-                    <textcolor>main_fg_100</textcolor>
-                </control>
-                <control type="label">
-                    <centertop>50%</centertop>
-                    <height>26</height>
-                    <label></label>
-                    <width>auto</width>
-                    <font>font_statusbar</font>
-                    <textcolor>main_fg_70</textcolor>
-                </control>
-                <control type="label">
-                    <centertop>50%</centertop>
-                    <height>26</height>
-                    <label>$INFO[Player.Time]</label>
-                    <width>auto</width>
-                    <font>font_statusbar</font>
-                    <textcolor>main_fg_100</textcolor>
-                </control>
-                <control type="label">
-                    <centertop>50%</centertop>
-                    <height>26</height>
-                    <label>|</label>
-                    <width>auto</width>
-                    <font>font_statusbar</font>
-                    <textcolor>main_fg_30</textcolor>
-                </control>
-                <control type="label">
-                    <centertop>50%</centertop>
-                    <height>26</height>
-                    <label>$INFO[Player.Duration]</label>
-                    <width>auto</width>
-                    <font>font_statusbar</font>
-                    <textcolor>main_fg_100</textcolor>
-                </control>
-                <control type="group">
-                    <width>5</width>
-                </control>
-                <control type="multiimage">
-                    <centertop>49%</centertop>
-                    <imagepath colordiffuse="main_fg_100">eq</imagepath>
-                    <width>30</width>
-                    <height>20</height>
-                    <fadetime>50</fadetime>
-                    <timeperimage>50</timeperimage>
-                    <visible>!Player.Paused + !Player.Caching</visible>
+                    <width>64</width>
+                    <height>56</height>
+                    <aspectratio align="left">keep</aspectratio>
+                    <texture colordiffuse="main_fg_90">flags/monochrome/other/3D.png</texture>
+                    <visible>Container.Content(movies) | Container.Content(episodes)</visible>
+                    <visible>ListItem.IsStereoscopic</visible>
                 </control>
                 <control type="image">
+                    <fadetime>100</fadetime>
                     <centertop>50%</centertop>
-                    <texture colordiffuse="main_fg_100">buttons/pause.png</texture>
-                    <width>24</width>
-                    <height>24</height>
-                    <visible>Player.Paused + !Player.Caching</visible>
+                    <width>62</width>
+                    <height>56</height>
+                    <aspectratio align="left">keep</aspectratio>
+                    <texture colordiffuse="main_fg_90">$VAR[Image_RipSource]</texture>
+                    <visible>Container.Content(movies) | Container.Content(episodes)</visible>
                 </control>
-                <control type="group">
-                    <width>48</width>
-                    <visible>Player.Caching</visible>
-                    <control type="image" description="Back">
-                        <centertop>50%</centertop>
-                        <width>48</width>
-                        <height>48</height>
-                        <aspectratio align="center" aligny="center">keep</aspectratio>
-                        <texture>dialog/loading-back.png</texture>
-                        <colordiffuse>main_fg_70</colordiffuse>
-                    </control>
-                    <control type="image">
-                        <centertop>50%</centertop>
-                        <width>48</width>
-                        <height>48</height>
-                        <texture colordiffuse="$VAR[ColorHighlight]">$INFO[Player.CacheLevel,progress/circle/p,.png]</texture>
-                        <aspectratio align="center" aligny="center">keep</aspectratio>
-                    </control>
+                <control type="image">
+                    <fadetime>100</fadetime>
+                    <centertop>50%</centertop>
+                    <width>71</width>
+                    <height>48</height>
+                    <aspectratio>keep</aspectratio>
+                    <texture colordiffuse="main_fg_90">$INFO[ListItem.VideoCodec,flags/monochrome/source/,.png]</texture>
+                    <visible>Container.Content(movies) | Container.Content(episodes)</visible>
+                </control>
+                <control type="image">
+                    <fadetime>100</fadetime>
+                    <centertop>50%</centertop>
+                    <width>71</width>
+                    <height>48</height>
+                    <aspectratio>keep</aspectratio>
+                    <texture colordiffuse="main_fg_90">$VAR[Image_AudioCodec]</texture>
+                    <visible>Container.Content(movies) | Container.Content(episodes)</visible>
                 </control>
             </control>
-        </control>
+        </definition>
     </include>
 
     <include name="Object_Dialog_Arrows">
@@ -340,8 +271,12 @@
 
     <include name="Object_Info_Codecs">
         <control type="grouplist">
+            <include>Animation_FadeIn_Delay</include>
+            <include>Animation_FadeOut</include>
             <visible>!ListItem.IsFolder</visible>
-            <top>40</top>
+            <centerbottom>60</centerbottom>
+            <left>view_pad</left>
+            <right>view_pad</right>
             <height>32</height>
             <align>left</align>
             <orientation>horizontal</orientation>
@@ -431,31 +366,31 @@
             <param name="label" value="ListItem.Genre" />
         </include>
         <include content="Object_Info_TextPairs">
-            <param name="pad" value="24" />
+            <param name="pad" value="22" />
             <param name="name" value="Director" />
             <param name="label" value="ListItem.Director" />
         </include>
         <include content="Object_Info_TextPairs">
-            <param name="pad" value="24" />
+            <param name="pad" value="22" />
             <param name="name" value="Writer" />
             <param name="label" value="ListItem.Writer" />
         </include>
         <include content="Object_Info_TextPairs">
-            <param name="pad" value="24" />
+            <param name="pad" value="22" />
             <param name="name" value="Studio" />
             <param name="label" value="ListItem.Studio" />
         </include>
         <include content="Object_Info_TextPairs">
-            <param name="pad" value="24" />
+            <param name="pad" value="22" />
             <param name="name" value="Country" />
             <param name="label" value="ListItem.Country" />
         </include>
-        <!-- <include content="Object_Info_TextPairs">
-            <param name="pad" value="24" />
+        <include content="Object_Info_TextPairs">
+            <param name="pad" value="22" />
             <param name="name" value="Path" />
             <param name="haspath" value="true" />
             <param name="label" value="ListItem.Path" />
-        </include> -->
+        </include>
     </include>
 
     <include name="Object_Info_Ratings">
@@ -556,7 +491,7 @@
     </include>
 
     <include name="Object_Info_Plot">
-        <param name="maxheight" default="164" />
+        <param name="maxheight" default="240" />
         <param name="height" default="auto" />
         <param name="label" default="$VAR[Label_Plot]" />
         <definition>
@@ -573,6 +508,7 @@
 
     <include name="Object_Geometric">
         <param name="pad" default="0" />
+        <param name="shadowdiffuse" default="Shadow" />
         <definition>
             <control type="image">
                 <left>$PARAM[pad]</left>
@@ -581,7 +517,7 @@
                 <bottom>$PARAM[pad]</bottom>
                 <bordersize>15</bordersize>
                 <aspectratio>scale</aspectratio>
-                <bordertexture border="30" colordiffuse="55ffffff">common/shadow-15.png</bordertexture>
+                <bordertexture border="30" colordiffuse="$PARAM[shadowdiffuse]">common/shadow-15.png</bordertexture>
                 <texture colordiffuse="PosterBack">common/geometric.png</texture>
             </control>
         </definition>
@@ -590,13 +526,14 @@
     <include name="Object_DefaultIcon">
         <param name="icon" default="$INFO[ListItem.Icon]" />
         <param name="visible" default="String.StartsWith(ListItem.Icon,Default)" />
+        <param name="fallback" default="$INFO[ListItem.Icon]" />
         <definition>
             <control type="image">
                 <centertop>50%</centertop>
                 <centerleft>50%</centerleft>
                 <width>160</width>
                 <height>160</height>
-                <texture background="true">$PARAM[icon]</texture>
+                <texture background="true" fallback="$PARAM[fallback]">$PARAM[icon]</texture>
                 <visible>$PARAM[visible]</visible>
             </control>
         </definition>
@@ -605,12 +542,13 @@
     <include name="Object_Poster">
         <param name="icon" default="$VAR[Image_Poster]" />
         <param name="aspectratio" default="scale" />
+        <param name="visible" default="!String.StartsWith(ListItem.Icon,Default)" />
         <definition>
             <control type="image">
                 <bordersize>15</bordersize>
                 <aspectratio>$PARAM[aspectratio]</aspectratio>
                 <texture background="true">$PARAM[icon]</texture>
-                <visible>!String.StartsWith(ListItem.Icon,Default)</visible>
+                <visible>$PARAM[visible]</visible>
             </control>
         </definition>
     </include>
@@ -1666,243 +1604,6 @@
                 <param name="colordiffuse" value="panel_fg_100" />
                 <param name="ratings" value="$PARAM[ratings]" />
                 <param name="fps" value="$PARAM[fps]" />
-            </include>
-        </definition>
-    </include>
-
-    <include name="Object_Flags_Content">
-        <param name="container" default="" />
-        <param name="source" default="ListItem." />
-        <param name="directory" default="monochrome" />
-        <param name="align" default="left" />
-        <param name="colordiffuse" default="main_fg_100" />
-        <param name="ratings" default="false" />
-        <param name="fps" default="false" />
-        <definition>
-            <control type="grouplist">
-                <visible>!Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml)</visible>
-                <visible>!Window.IsVisible(script-script.extendedinfo-DialogInfo.xml)</visible>
-                <visible>!$PARAM[container]ListItem.IsParentFolder</visible>
-                <animation effect="fade" start="0" end="100" delay="30" time="1" reversible="false">Visible</animation>
-                <height>120</height>
-                <orientation>horizontal</orientation>
-                <align>$PARAM[align]</align>
-                <itemgap>0</itemgap>
-                <usecontrolcoords>true</usecontrolcoords>
-     
-                <control type="image">
-                    <width>88</width>
-                    <height>48</height>
-                    <centertop>50%</centertop>
-                    <texture colordiffuse="$PARAM[colordiffuse]" fallback="flags/fallback.png">$INFO[$PARAM[container]$PARAM[source]VideoResolution,flags/$PARAM[directory]/resolution/,.png]</texture>
-                    <aspectratio align="right">keep</aspectratio>
-                    <visible>!String.IsEmpty($PARAM[container]$PARAM[source]VideoResolution) + !String.StartsWith($PARAM[container]$PARAM[source]Path,videodb://movies/sets)</visible>
-                </control>
-                <control type="group">
-                    <width>88</width>
-                    <height>48</height>
-                    <centertop>50%</centertop>
-                    <visible>!String.IsEmpty(Player.Process(VideoFPS)) + Integer.IsGreater(Player.Process(VideoFPS),0)</visible>
-                    <visible>$PARAM[fps]</visible>
-                    <control type="image">
-                        <texture colordiffuse="$PARAM[colordiffuse]">flags/$PARAM[directory]/other/fps.png</texture>
-                        <aspectratio align="right">keep</aspectratio>
-                    </control>
-                    <control type="label">
-                        <left>21</left>
-                        <width>64</width>
-                        <height>24</height>
-                        <bottom>2</bottom>
-                        <textcolor>ff8f9799</textcolor>
-                        <font>font_fps</font>
-                        <label>$INFO[Player.Process(VideoFPS)]</label>
-                        <align>center</align>
-                        <aligny>center</aligny>
-                    </control>
-                </control>
-                <control type="image">
-                    <width>88</width>
-                    <height>48</height>
-                    <centertop>50%</centertop>
-                    <texture colordiffuse="$PARAM[colordiffuse]" fallback="flags/fallback.png">$INFO[$PARAM[container]$PARAM[source]VideoCodec,flags/$PARAM[directory]/source/,.png]</texture>
-                    <aspectratio align="right">keep</aspectratio>
-                    <visible>!String.IsEmpty($PARAM[container]$PARAM[source]VideoCodec)</visible>
-                </control>
-                <control type="image">
-                    <width>88</width>
-                    <height>48</height>
-                    <centertop>50%</centertop>
-                    <texture colordiffuse="$PARAM[colordiffuse]" fallback="flags/fallback.png">$INFO[$PARAM[container]$PARAM[source]VideoAspect,flags/$PARAM[directory]/aspectratio/,.png]</texture>
-                    <aspectratio align="right">keep</aspectratio>
-                    <visible>!String.IsEmpty($PARAM[container]$PARAM[source]VideoAspect)</visible>
-                </control>
-                <control type="image">
-                    <width>88</width>
-                    <height>48</height>
-                    <centertop>50%</centertop>
-                    <texture colordiffuse="$PARAM[colordiffuse]" fallback="flags/fallback.png">$INFO[$PARAM[container]$PARAM[source]AudioCodec,flags/$PARAM[directory]/audio/,.png]</texture>
-                    <aspectratio align="right">keep</aspectratio>
-                    <visible>!String.IsEmpty($PARAM[container]$PARAM[source]AudioCodec)</visible>
-                </control>
-                
-                <control type="image">
-                    <width>88</width>
-                    <height>48</height>
-                    <centertop>50%</centertop>
-                    <texture colordiffuse="$PARAM[colordiffuse]" fallback="flags/fallback.png">$INFO[$PARAM[container]$PARAM[source]AudioChannels,flags/$PARAM[directory]/channels/,.png]</texture>
-                    <aspectratio align="right">keep</aspectratio>
-                    <visible>!String.IsEmpty($PARAM[container]$PARAM[source]AudioChannels)</visible>
-                </control>
-                <control type="image">
-                    <width>88</width>
-                    <height>48</height>
-                    <centertop>50%</centertop>
-                    <texture colordiffuse="$PARAM[colordiffuse]">$INFO[$PARAM[container]$PARAM[source]FileExtension,flags/$PARAM[directory]/audio/,.png]</texture>
-                    <aspectratio align="right">keep</aspectratio>
-                    <visible>Container.Content(songs)</visible>
-                </control>
-                <control type="image">
-                    <width>88</width>
-                    <aspectratio align="right">keep</aspectratio>
-                    <centertop>50%</centertop>
-                    <height>64</height>
-                    <texture colordiffuse="$PARAM[colordiffuse]">flags/$PARAM[directory]/other/4K.png</texture>
-                    <visible>[String.Contains($PARAM[container]$PARAM[source]FileNameAndPath,2160p) | String.Contains($PARAM[container]$PARAM[source]FileNameAndPath,UHD) | String.Contains($PARAM[container]$PARAM[source]FileNameAndPath,UltraHD) | String.Contains($PARAM[container]$PARAM[source]FileNameAndPath,Ultra-HD) | String.Contains($PARAM[container]$PARAM[source]FileNameAndPath,4K)]</visible>
-                </control>
-                <control type="image">
-                    <width>88</width>
-                    <aspectratio align="right">keep</aspectratio>
-                    <centertop>50%</centertop>
-                    <height>64</height>
-                    <texture colordiffuse="$PARAM[colordiffuse]">flags/$PARAM[directory]/other/HDR.png</texture>
-                    <visible>String.Contains($PARAM[container]$PARAM[source]FileNameAndPath,HDR)</visible>
-                </control>
-                <control type="image">
-                    <width>88</width>
-                    <aspectratio align="right">keep</aspectratio>
-                    <centertop>50%</centertop>
-                    <height>48</height>
-                    <texture colordiffuse="$PARAM[colordiffuse]">flags/$PARAM[directory]/audio/atmos.png</texture>
-                    <visible>String.Contains($PARAM[container]$PARAM[source]FileNameAndPath,atmos)</visible>
-                </control>
-                <control type="image">
-                    <width>88</width>
-                    <aspectratio align="right">keep</aspectratio>
-                    <centertop>50%</centertop>
-                    <height>48</height>
-                    <texture colordiffuse="$PARAM[colordiffuse]">flags/$PARAM[directory]/audio/dtsx.png</texture>
-                    <visible>String.Contains($PARAM[container]$PARAM[source]FileNameAndPath,dtsx) | String.Contains($PARAM[container]$PARAM[source]FileNameAndPath,dts-x) | String.Contains($PARAM[container]$PARAM[source]FileNameAndPath,dts:x)</visible>
-                </control>
-                <control type="image">
-                    <width>88</width>
-                    <aspectratio align="right">keep</aspectratio>
-                    <centertop>50%</centertop>
-                    <height>64</height>
-                    <texture colordiffuse="$PARAM[colordiffuse]">flags/$PARAM[directory]/other/bluray.png</texture>
-                    <visible>[String.Contains($PARAM[container]$PARAM[source]FileNameAndPath,blu-ray) | String.Contains($PARAM[container]$PARAM[source]FileNameAndPath,bluray) | String.Contains($PARAM[container]$PARAM[source]FileNameAndPath,bdrip) | String.Contains($PARAM[container]$PARAM[source]FileNameAndPath,bd25) | String.Contains($PARAM[container]$PARAM[source]FileNameAndPath,bd50)]</visible>
-                    <visible>![String.Contains($PARAM[container]$PARAM[source]FileNameAndPath,2160p) | String.Contains($PARAM[container]$PARAM[source]FileNameAndPath,UHD) | String.Contains($PARAM[container]$PARAM[source]FileNameAndPath,UltraHD) | String.Contains($PARAM[container]$PARAM[source]FileNameAndPath,Ultra-HD) | String.Contains($PARAM[container]$PARAM[source]FileNameAndPath,4K)]</visible>
-                </control>
-                <control type="image">
-                    <width>88</width>
-                    <aspectratio align="right">keep</aspectratio>
-                    <centertop>50%</centertop>
-                    <height>64</height>
-                    <texture colordiffuse="$PARAM[colordiffuse]">flags/$PARAM[directory]/other/dvd.png</texture>
-                    <visible>String.Contains($PARAM[container]$PARAM[source]FileNameAndPath,dvd)</visible>
-                </control>
-                <control type="image">
-                    <width>88</width>
-                    <aspectratio align="right">keep</aspectratio>
-                    <centertop>50%</centertop>
-                    <height>64</height>
-                    <texture colordiffuse="$PARAM[colordiffuse]">flags/$PARAM[directory]/other/hdtv.png</texture>
-                    <visible>String.Contains($PARAM[container]$PARAM[source]FileNameAndPath,hdtv) | String.Contains($PARAM[container]$PARAM[source]FileNameAndPath,pdtv) | String.Contains($PARAM[container]$PARAM[source]FileNameAndPath,dsr)</visible>
-                </control>
-                <control type="image">
-                    <width>88</width>
-                    <aspectratio align="right">keep</aspectratio>
-                    <centertop>50%</centertop>
-                    <height>64</height>
-                    <texture colordiffuse="$PARAM[colordiffuse]">flags/$PARAM[directory]/other/web-dl.png</texture>
-                    <visible>String.Contains($PARAM[container]$PARAM[source]FileNameAndPath,web-dl) | String.Contains($PARAM[container]$PARAM[source]FileNameAndPath,webdl) | String.Contains($PARAM[container]$PARAM[source]FileNameAndPath,WEBRip)</visible>
-                </control>
-                <control type="image">
-                    <width>88</width>
-                    <aspectratio align="right">keep</aspectratio>
-                    <centertop>50%</centertop>
-                    <height>64</height>
-                    <texture colordiffuse="$PARAM[colordiffuse]">flags/$PARAM[directory]/other/3D.png</texture>
-                    <visible>$PARAM[container]$PARAM[source]IsStereoscopic</visible>
-                </control>
-                <control type="group">
-                    <width>1000</width>
-                    <left>28</left>
-                    <height>32</height>
-                    <centertop>50%</centertop>
-                    <visible>$PARAM[ratings]</visible>
-                    <control type="group">
-                        <include content="Object_Ratings" condition="Window.IsVisible(MyVideoNav.xml) | Window.IsVisible(Home.xml)">
-                            <param name="directory" value="color" />
-                            <param name="align" value="left" />
-                            <param name="width" value="1000" />
-                            <param name="rottentomatoes" value="false" />
-                            <param name="imdbvotes" value="false" />
-                            <param name="usermeter" value="false" />
-                            <param name="imdb" value="true" />
-                            <param name="tmdb" value="false" />
-                            <param name="metacritic" value="false" />
-                            <param name="oscars" value="true" />
-                            <param name="top250" value="false" />
-                        </include>
-                    </control>
-                </control>
-            </control>
-        </definition>
-    </include>
-
-    <include name="Object_Ratings">
-        <param name="directory" default="monochrome" />
-        <param name="align" default="right" />
-        <param name="width" default="900" />
-        <param name="rottentomatoes" default="true" />
-        <param name="imdbvotes" default="true" />
-        <param name="usermeter" default="true" />
-        <param name="imdb" default="true" />
-        <param name="tmdb" default="true" />
-        <param name="tvdb" default="true" />
-        <param name="metacritic" default="true" />
-        <param name="oscars" default="true" />
-        <param name="top250" default="true" />
-        <definition>
-            <include content="Object_Ratings_Content" condition="Skin.HasSetting(MonochromeFlags)">
-                <param name="directory" value="monochrome" />
-                <param name="colordiffuse" value="main_fg_100" />
-                <param name="align" value="$PARAM[align]" />
-                <param name="width" value="$PARAM[width]" />
-                <param name="rottentomatoes" value="$PARAM[rottentomatoes]" />
-                <param name="imdbvotes" value="$PARAM[imdbvotes]" />
-                <param name="usermeter" value="$PARAM[usermeter]" />
-                <param name="imdb" value="$PARAM[imdb]" />
-                <param name="tmdb" value="$PARAM[tmdb]" />
-                <param name="tvdb" value="$PARAM[tvdb]" />
-                <param name="metacritic" value="$PARAM[metacritic]" />
-                <param name="oscars" value="$PARAM[oscars]" />
-                <param name="top250" value="$PARAM[top250]" />
-            </include>
-            <include content="Object_Ratings_Content" condition="!Skin.HasSetting(MonochromeFlags)">
-                <param name="directory" value="color" />
-                <param name="colordiffuse" value="panel_fg_100" />
-                <param name="align" value="$PARAM[align]" />
-                <param name="width" value="$PARAM[width]" />
-                <param name="rottentomatoes" value="$PARAM[rottentomatoes]" />
-                <param name="imdbvotes" value="$PARAM[imdbvotes]" />
-                <param name="usermeter" value="$PARAM[usermeter]" />
-                <param name="imdb" value="$PARAM[imdb]" />
-                <param name="tmdb" value="$PARAM[tmdb]" />
-                <param name="tvdb" value="$PARAM[tvdb]" />
-                <param name="metacritic" value="$PARAM[metacritic]" />
-                <param name="oscars" value="$PARAM[oscars]" />
-                <param name="top250" value="$PARAM[top250]" />
             </include>
         </definition>
     </include>

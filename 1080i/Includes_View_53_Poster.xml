@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+    <include name="View_53_Poster">
+        <control type="group">
+            <visible>Control.IsVisible(53)</visible>
+            <include>Defs_InfoDialog_Visible</include>
+            <include>Animation_Common</include>
+            <control type="grouplist">
+                <left>700</left>
+                <top>200</top>
+                <right>view_pad</right>
+                <orientation>vertical</orientation>
+                <usecontrolcoords>true</usecontrolcoords>
+                <itemgap>0</itemgap>
+                <include>Object_Info_Title</include>
+                <include>Object_Info_Line</include>
+            </control>
+            <control type="textbox">
+                <left>700</left>
+                <top>820</top>
+                <right>view_pad</right>
+                <label fallback="19055">$INFO[ListItem.PlotOutline]</label>
+                <label fallback="19055">$INFO[ListItem.Tagline]</label>
+                <height>120</height>
+                <aligny>center</aligny>
+                <textcolor>main_fg_70</textcolor>
+                <font>font_plotbox</font>
+            </control>
+            <control type="wraplist" id="53">
+                <left>-91</left>
+                <width>2500</width>
+                <focusposition>1</focusposition>
+                <movement>0</movement>
+                <preloaditems>0</preloaditems>
+                <include>View_Horizontal</include>
+                <scrolltime tween="quadratic">400</scrolltime>
+                <visible>Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons)</visible>
+                <itemlayout width="318">
+                    <control type="group">
+                        <top>view_top</top>
+                        <width>560</width>
+                        <height>810</height>
+                        <centerleft>50%</centerleft>
+                        <animation effect="Conditional" condition="true">
+                            <effect type="zoom" end="53" time="0" center="auto" />
+                        </animation>
+                        <include content="View_50_Poster">
+                            <param name="left" value="0" />
+                            <param name="height" value="810" />
+                            <param name="width" value="560" />
+                        </include>
+                    </control>
+                </itemlayout>
+                <focusedlayout width="318">
+                    <control type="group">
+                        <animation condition="Container(53).OnNext | Container(53).OnPrevious" effect="zoom" start="53" end="100" delay="0" time="350" tween="sine" easing="out" center="auto">Focus</animation>
+                        <animation condition="Container(53).OnNext | Container(53).OnPrevious" effect="zoom" start="100" end="53" delay="0" time="250" tween="sine" easing="out" center="auto">UnFocus</animation>
+                        <top>view_top</top>
+                        <width>560</width>
+                        <height>810</height>
+                        <centerleft>50%</centerleft>
+                        <include content="View_50_Poster">
+                            <param name="left" value="0" />
+                            <param name="height" value="810" />
+                            <param name="width" value="560" />
+                        </include>
+                    </control>
+                </focusedlayout>
+            </control>
+        </control>
+    </include>
+</includes>
+

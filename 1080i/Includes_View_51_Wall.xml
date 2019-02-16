@@ -91,6 +91,64 @@
         </definition>
     </include>
 
+    <include name="View_512_Wall_Itemlayout">
+        <param name="icon" default="$INFO[ListItem.Icon]" />
+        <param name="iconheight" default="345" />
+        <param name="labelinclude" default="View_51_Wall_Label" />
+        <param name="aspectratio" default="scale" />
+        <definition>
+            <control type="group">
+                <height>$PARAM[iconheight]</height>
+                <include>Object_Geometric</include>
+                <control type="image">
+                    <centertop>50%</centertop>
+                    <centerleft>50%</centerleft>
+                    <width>80</width>
+                    <height>80</height>
+                    <texture background="true" fallback="DefaultGenres.png">$VAR[Image_GenreIcons]</texture>
+                    <visible>Container.Content(genres)</visible>
+                </control>
+                <control type="image">
+                    <bordersize>15</bordersize>
+                    <aspectratio>keep</aspectratio>
+                    <texture background="true" fallback="DefaultCountry.png" colordiffuse="panel_fg_30">$INFO[ListItem.Label,resource://resource.images.moviecountryicons.maps/,.png]</texture>
+                    <visible>Container.Content(countries)</visible>
+                </control>
+                <control type="image">
+                    <bordersize>30</bordersize>
+                    <aspectratio>keep</aspectratio>
+                    <texture background="true" fallback="DefaultStudios.png" colordiffuse="panel_fg_100">$INFO[ListItem.Label,resource://resource.images.studios.white/,.png]</texture>
+                    <visible>Container.Content(studios)</visible>
+                </control>
+                <control type="textbox">
+                    <left>50</left>
+                    <right>50</right>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <font>font_medium_bold</font>
+                    <textcolor>panel_fg_100</textcolor>
+                    <label>$INFO[ListItem.Label]</label>
+                    <visible>Container.Content(countries) | Container.Content(directors) | Container.Content(years)</visible>
+                </control>
+                <control type="group">
+                    <visible>Control.HasFocus($PARAM[id])</visible>
+                    <include condition="$PARAM[selectbox]">View_Selectbox</include>
+                </control>
+            </control>
+            <control type="label">
+                <left>15</left>
+                <right>15</right>
+                <font>font_tiny</font>
+                <textcolor>main_fg_100</textcolor>
+                <top>$PARAM[iconheight]</top>
+                <bottom>30</bottom>
+                <aligny>center</aligny>
+                <align>center</align>
+                <label>$VAR[Label_IconWall]</label>
+            </control>
+        </definition>
+    </include>
+
     <include name="View_51_Wall_Container">
         <param name="itemlayout" default="View_51_Wall_Itemlayout" />
         <param name="itemwidth" default="244.28" />
@@ -176,6 +234,8 @@
                     <param name="onfocus" value="$PARAM[onfocus]" />
                     <param name="onleft" value="$PARAM[onleft]" />
                     <param name="onright" value="$PARAM[onright]" />
+                    <param name="onup" value="$PARAM[onup]" />
+                    <param name="ondown" value="$PARAM[ondown]" />
                     <param name="itemwidth" value="$PARAM[itemwidth]" />
                     <param name="itemheight" value="$PARAM[itemheight]" />
                     <param name="itemlayout" value="$PARAM[itemlayout]" />
@@ -184,6 +244,8 @@
                     <param name="labelinclude" value="$PARAM[labelinclude]" />
                     <param name="includecontent" value="$PARAM[includecontent]" />
                     <param name="content" value="$PARAM[content]" />
+                    <param name="visible" value="$PARAM[containervisible]" />
+                    <param name="aspectratio" value="$PARAM[aspectratio]" />
                 </include>
                 <nested />
             </control>
@@ -194,13 +256,19 @@
         <include content="View_51_Wall_Control">
             <param name="id" value="51" />
             <param name="height" value="825" />
+            <param name="containervisible" value="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(actors)" />
         </include>
     </include>
     <include name="View_510_Wall_Square">
         <include content="View_51_Wall_Control">
+            <param name="aspectratio" value="keep" />
             <param name="itemwidth" value="342" />
+            <param name="iconheight" value="342" />
             <param name="id" value="510" />
+            <param name="onup" value="510" />
+            <param name="ondown" value="510" />
             <param name="height" value="825" />
+            <param name="containervisible" value="Container.Content(artists) | Container.Content(albums) | Container.Content(games) | Container.Content(programs) | Container.Content(addons) | Container.Content(images)" />
         </include>
     </include>
     <include name="View_511_Wall_Landscape">
@@ -208,10 +276,26 @@
             <param name="itemwidth" value="570" />
             <param name="itemheight" value="423.75" />
             <param name="id" value="511" />
+            <param name="onup" value="511" />
+            <param name="ondown" value="511" />
             <param name="height" value="847.5" />
             <param name="icon" value="$VAR[Image_Fanart]" />
             <param name="iconheight" value="333.75" />
             <param name="labelinclude" value="View_51_Wall_Landscape_Label" />
+            <param name="containervisible" value="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(videos) | Container.Content(images)" />
+        </include>
+    </include>
+    <include name="View_512_Wall_Icons">
+        <include content="View_51_Wall_Control">
+            <param name="itemwidth" value="342" />
+            <param name="itemheight" value="275" />
+            <param name="iconheight" value="220" />
+            <param name="id" value="512" />
+            <param name="onup" value="512" />
+            <param name="ondown" value="512" />
+            <param name="height" value="825" />
+            <param name="containervisible" value="Container.Content(genres) | Container.Content(countries) | Container.Content(directors) | Container.Content(studios) | Container.Content(years)" />
+            <param name="itemlayout" value="View_512_Wall_Itemlayout" />
         </include>
     </include>
 </includes>
