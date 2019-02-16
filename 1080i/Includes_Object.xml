@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
-
+    <include name="Object_AZ_Version">
+        <control type="label">
+            <left>view_pad</left>
+            <height>view_list_height</height>
+            <label>$INFO[System.AddonVersion(skin.arctic.zephyr.2),Arctic Zephyr 2-,]</label>
+            <font>font_button</font>
+            <textcolor>main_fg_30</textcolor>
+        </control>
+    </include>
     <include name="Object_Codecs">
         <param name="infohide" default="true" />
         <definition>
@@ -273,7 +281,8 @@
         <control type="grouplist">
             <include>Animation_FadeIn_Delay</include>
             <include>Animation_FadeOut</include>
-            <visible>!ListItem.IsFolder</visible>
+            <visible>!Window.IsVisible(DialogNotification.xml)</visible>
+            <visible>!Window.IsVisible(DialogExtendedProgressBar.xml)</visible>
             <centerbottom>60</centerbottom>
             <left>view_pad</left>
             <right>view_pad</right>

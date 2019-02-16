@@ -7,6 +7,14 @@
     <onload>AlarmClock(setprop,ClearProperty(windowopen),00:01,silent)</onload>
     <controls>
 
+        <control type="group">
+            <animation effect="fade" end="0" start="100" time="300" tween="cubic" easing="inout" reversible="false" delay="0">Hidden</animation>
+            <visible>!ControlGroup(5100).HasFocus() + !ControlGroup(9000).HasFocus() + !Control.HasFocus(50) + !Control.HasFocus(5050)</visible>
+            <include>Object_Info_Codecs</include>
+            <include content="Object_Codecs">
+                <param name="infohide" value="false" />
+            </include>
+        </control>
         
         <control type="group">
             <animation effect="fade" condition="Window.IsVisible(Home.xml)" time="1" delay="350" start="0" end="100">WindowOpen</animation>
@@ -284,16 +292,11 @@
             </control>
         </control>
 
-        <include>Object_Info_Codecs</include>
-
-        <include content="Object_Codecs">
-            <param name="infohide" value="false" />
-        </include>
-
         <control type="group">
-            <visible>false</visible>
+            <visible>ControlGroup(5100).HasFocus() | ControlGroup(9000).HasFocus() | Control.HasFocus(50) | Control.HasFocus(5050)</visible>
             <visible>!Window.IsVisible(DialogNotification.xml)</visible>
             <visible>!Window.IsVisible(DialogExtendedProgressBar.xml)</visible>
+            <animation effect="fade" start="0" end="100" time="300" tween="cubic" easing="inout" reversible="false" delay="0">Visible</animation>
             <control type="grouplist">
                 <visible>[Container(9000).HasPrevious + ControlGroup(9000).HasFocus()] | [Control.HasFocus(8000) + !String.IsEmpty(ListItem.Art(fanart))] | Control.HasFocus(50) | Control.HasFocus(5050)</visible>
                 <orientation>horizontal</orientation>
@@ -317,28 +320,6 @@
                     <font>font_statusbar</font>
                     <textcolor>main_fg_70</textcolor>
                     <label>$VAR[Label_Info_LeftHint]</label>
-                </control>
-            </control>
-            <control type="group">
-                <bottom>0</bottom>
-                <height>view_pad</height>
-                <visible>Control.HasFocus(8000)</visible>
-                <control type="label">
-                    <aligny>center</aligny>
-                    <align>center</align>
-                    <width>auto</width>
-                    <font>font_statusbar</font>
-                    <textcolor>main_fg_70</textcolor>
-                    <!-- <label>$LOCALIZE[31413]</label> -->
-                    <label>Explore</label>
-                    <include>Animation_FadeIn</include>
-                </control>
-                <control type="image">
-                    <centerleft>50%</centerleft>
-                    <centerbottom>25%</centerbottom>
-                    <width>24</width>
-                    <height>24</height>
-                    <texture colordiffuse="main_fg_90">buttons/spin-down.png</texture>
                 </control>
             </control>
             <control type="grouplist">

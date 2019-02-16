@@ -17,61 +17,18 @@
         <control type="group">
             <include>Dialog_Settings_Panel</include>
             <control type="group">
-                <control type="label">
-                    <left>view_pad</left>
-                    <height>80</height>
-                    <label>$INFO[System.AddonVersion(skin.arctic.zephyr.2),Arctic Zephyr 2-,]</label>
-                    <font>font_button</font>
-                    <textcolor>main_fg_30</textcolor>
-                </control>
+                <include>Object_AZ_Version</include>
 
                 <control type="group">
-                    <top>80</top>
+                    <top>view_list_height</top>
                     <height>800</height>
-
-                    <!-- Left Gradient Fade -->
-                    <control type="image">
-                        <top>0</top>
-                        <height>80</height>
-                        <width>450</width>
-                        <texture colordiffuse="$VAR[ColorHighlight]">common/white.png</texture>
-                        <visible>![Control.HasFocus(3901) | Control.HasFocus(3902) | Control.HasFocus(3903) | Control.HasFocus(300)] + !Control.HasFocus(302)</visible>
-                        <animation effect="slide" end="0,80" condition="Integer.IsGreater(Container(9000).Position,0)">Conditional</animation>
-                        <animation effect="slide" end="0,80" condition="Integer.IsGreater(Container(9000).Position,1)">Conditional</animation>
-                        <animation effect="slide" end="0,80" condition="Integer.IsGreater(Container(9000).Position,2)">Conditional</animation>
-                        <animation effect="slide" end="0,80" condition="Integer.IsGreater(Container(9000).Position,3)">Conditional</animation>
-                        <animation effect="slide" end="0,80" condition="Integer.IsGreater(Container(9000).Position,4)">Conditional</animation>
-                        <animation effect="slide" end="0,80" condition="Integer.IsGreater(Container(9000).Position,5)">Conditional</animation>
-                        <animation effect="slide" end="0,80" condition="Integer.IsGreater(Container(9000).Position,6)">Conditional</animation>
-                        <animation effect="slide" end="0,80" condition="Integer.IsGreater(Container(9000).Position,7)">Conditional</animation>
-                        <animation effect="slide" end="0,80" condition="Integer.IsGreater(Container(9000).Position,8)">Conditional</animation>
-                    </control>
-
-                    <!-- Right Gradient Fade -->
-                    <control type="image">
-                        <top>0</top>
-                        <left>450</left>
-                        <height>80</height>
-                        <right>0</right>
-                        <texture colordiffuse="$VAR[ColorHighlight]">common/white.png</texture>
-                        <visible>ControlGroup(9999).HasFocus()</visible>
-                        <animation effect="slide" end="0,80" condition="Integer.IsGreater(Container(9999).Position,0)">Conditional</animation>
-                        <animation effect="slide" end="0,80" condition="Integer.IsGreater(Container(9999).Position,1)">Conditional</animation>
-                        <animation effect="slide" end="0,80" condition="Integer.IsGreater(Container(9999).Position,2)">Conditional</animation>
-                        <animation effect="slide" end="0,80" condition="Integer.IsGreater(Container(9999).Position,3)">Conditional</animation>
-                        <animation effect="slide" end="0,80" condition="Integer.IsGreater(Container(9999).Position,4)">Conditional</animation>
-                        <animation effect="slide" end="0,80" condition="Integer.IsGreater(Container(9999).Position,5)">Conditional</animation>
-                        <animation effect="slide" end="0,80" condition="Integer.IsGreater(Container(9999).Position,6)">Conditional</animation>
-                        <animation effect="slide" end="0,80" condition="Integer.IsGreater(Container(9999).Position,7)">Conditional</animation>
-                        <animation effect="slide" end="0,80" condition="Integer.IsGreater(Container(9999).Position,8)">Conditional</animation>
-                    </control>
 
                     <!-- Left Group -->
                     <control type="grouplist" id="9000">
                         <description>Button Area</description>
                         <width>450</width>
                         <top>0</top>
-                        <bottom>0</bottom>
+                        <height>702</height>
                         <itemgap>0</itemgap>
                         <include>Defs_Settings_OnLeft</include>
                         <onright>9999</onright>
@@ -79,81 +36,90 @@
                         <control type="togglebutton" id="9001" description="Home">
                             <onfocus>SetProperty(CurrentFocus,$NUMBER[9001])</onfocus>
                             <usealttexture>![Control.HasFocus(3901) | Control.HasFocus(3902) | Control.HasFocus(3903) | Control.HasFocus(300)] + !Control.HasFocus(302) + Integer.IsEqual(Window.Property(CurrentFocus),9001)</usealttexture>
-                            <alttexturenofocus colordiffuse="$VAR[Defs_Settings_ColorHighlight]">common/gradient-diffuse-horizontal.png</alttexturenofocus>
-                            <width>450</width>
+                            <alttexturenofocus colordiffuse="main_fg_100">common/white.png</alttexturenofocus>
+                            <width>550</width>
                             <include>Defs_Settings_Button</include>
-                            <label>10000</label>
+                            <label>$LOCALIZE[10000]</label>
+                            <altlabel>[COLOR=main_bg_100]$LOCALIZE[10000][/COLOR]</altlabel>
                         </control>
                         <control type="togglebutton" id="9002" description="Background">
                             <onfocus>SetProperty(CurrentFocus,$NUMBER[9002])</onfocus>
                             <usealttexture>![Control.HasFocus(3901) | Control.HasFocus(3902) | Control.HasFocus(3903) | Control.HasFocus(300)] + !Control.HasFocus(302) + Integer.IsEqual(Window.Property(CurrentFocus),9002)</usealttexture>
-                            <alttexturenofocus colordiffuse="$VAR[Defs_Settings_ColorHighlight]">common/gradient-diffuse-horizontal.png</alttexturenofocus>
-                            <width>450</width>
+                            <alttexturenofocus colordiffuse="main_fg_100">common/white.png</alttexturenofocus>
+                            <width>550</width>
                             <include>Defs_Settings_Button</include>
-                            <label>31110</label>
+                            <label>$LOCALIZE[31110]</label>
+                            <altlabel>[COLOR=main_bg_100]$LOCALIZE[31110][/COLOR]</altlabel>
                         </control>
 
                         <control type="togglebutton" id="9003" description="Background Effects">
                             <onfocus>SetProperty(CurrentFocus,$NUMBER[9003])</onfocus>
                             <usealttexture>![Control.HasFocus(3901) | Control.HasFocus(3902) | Control.HasFocus(3903) | Control.HasFocus(300)] + !Control.HasFocus(302) + Integer.IsEqual(Window.Property(CurrentFocus),9003)</usealttexture>
-                            <alttexturenofocus colordiffuse="$VAR[Defs_Settings_ColorHighlight]">common/gradient-diffuse-horizontal.png</alttexturenofocus>
-                            <width>450</width>
+                            <alttexturenofocus colordiffuse="main_fg_100">common/white.png</alttexturenofocus>
+                            <width>550</width>
                             <include>Defs_Settings_Button</include>
                             <label>$LOCALIZE[31339]</label>
+                            <altlabel>[COLOR=main_bg_100]$LOCALIZE[31339][/COLOR]</altlabel>
                         </control>
 
                         <control type="togglebutton" id="9004" description="Colors">
                             <onfocus>SetProperty(CurrentFocus,$NUMBER[9004])</onfocus>
                             <usealttexture>![Control.HasFocus(3901) | Control.HasFocus(3902) | Control.HasFocus(3903) | Control.HasFocus(300)] + !Control.HasFocus(302) + Integer.IsEqual(Window.Property(CurrentFocus),9004)</usealttexture>
-                            <alttexturenofocus colordiffuse="$VAR[Defs_Settings_ColorHighlight]">common/gradient-diffuse-horizontal.png</alttexturenofocus>
-                            <width>450</width>
+                            <alttexturenofocus colordiffuse="main_fg_100">common/white.png</alttexturenofocus>
+                            <width>550</width>
                             <include>Defs_Settings_Button</include>
                             <label>$LOCALIZE[31021]</label>
+                            <altlabel>[COLOR=main_bg_100]$LOCALIZE[31021][/COLOR]</altlabel>
                         </control>
 
                         <control type="togglebutton" id="9005" description="Views">
                             <onfocus>SetProperty(CurrentFocus,$NUMBER[9005])</onfocus>
                             <usealttexture>![Control.HasFocus(3901) | Control.HasFocus(3902) | Control.HasFocus(3903) | Control.HasFocus(300)] + !Control.HasFocus(302) + Integer.IsEqual(Window.Property(CurrentFocus),9005)</usealttexture>
-                            <alttexturenofocus colordiffuse="$VAR[Defs_Settings_ColorHighlight]">common/gradient-diffuse-horizontal.png</alttexturenofocus>
-                            <width>450</width>
+                            <alttexturenofocus colordiffuse="main_fg_100">common/white.png</alttexturenofocus>
+                            <width>550</width>
                             <include>Defs_Settings_Button</include>
                             <label>$LOCALIZE[14022]</label>
+                            <altlabel>[COLOR=main_bg_100]$LOCALIZE[14022][/COLOR]</altlabel>
                         </control>
 
                         <control type="togglebutton" id="9006" description="Miscellaneous">
                             <onfocus>SetProperty(CurrentFocus,$NUMBER[9006])</onfocus>
                             <usealttexture>![Control.HasFocus(3901) | Control.HasFocus(3902) | Control.HasFocus(3903) | Control.HasFocus(300)] + !Control.HasFocus(302) + Integer.IsEqual(Window.Property(CurrentFocus),9006)</usealttexture>
-                            <alttexturenofocus colordiffuse="$VAR[Defs_Settings_ColorHighlight]">common/gradient-diffuse-horizontal.png</alttexturenofocus>
-                            <width>450</width>
+                            <alttexturenofocus colordiffuse="main_fg_100">common/white.png</alttexturenofocus>
+                            <width>550</width>
                             <include>Defs_Settings_Button</include>
                             <label>$LOCALIZE[31024]</label>
+                            <altlabel>[COLOR=main_bg_100]$LOCALIZE[31024][/COLOR]</altlabel>
                         </control>
 
                         <control type="togglebutton" id="9007" description="OSD">
                             <onfocus>SetProperty(CurrentFocus,$NUMBER[9007])</onfocus>
                             <usealttexture>![Control.HasFocus(3901) | Control.HasFocus(3902) | Control.HasFocus(3903) | Control.HasFocus(300)] + !Control.HasFocus(302) + Integer.IsEqual(Window.Property(CurrentFocus),9007)</usealttexture>
-                            <alttexturenofocus colordiffuse="$VAR[Defs_Settings_ColorHighlight]">common/gradient-diffuse-horizontal.png</alttexturenofocus>
-                            <width>450</width>
+                            <alttexturenofocus colordiffuse="main_fg_100">common/white.png</alttexturenofocus>
+                            <width>550</width>
                             <include>Defs_Settings_Button</include>
-                            <label>31270</label>
+                            <label>$LOCALIZE[31270]</label>
+                            <altlabel>[COLOR=main_bg_100]$LOCALIZE[31270][/COLOR]</altlabel>
                         </control>
 
                         <control type="togglebutton" id="9008" description="Dependencies">
                             <onfocus>SetProperty(CurrentFocus,$NUMBER[9008])</onfocus>
                             <usealttexture>![Control.HasFocus(3901) | Control.HasFocus(3902) | Control.HasFocus(3903) | Control.HasFocus(300)] + !Control.HasFocus(302) + Integer.IsEqual(Window.Property(CurrentFocus),9008)</usealttexture>
-                            <alttexturenofocus colordiffuse="$VAR[Defs_Settings_ColorHighlight]">common/gradient-diffuse-horizontal.png</alttexturenofocus>
-                            <width>450</width>
+                            <alttexturenofocus colordiffuse="main_fg_100">common/white.png</alttexturenofocus>
+                            <width>550</width>
                             <include>Defs_Settings_Button</include>
                             <label>$LOCALIZE[24996]</label>
+                            <altlabel>[COLOR=main_bg_100]$LOCALIZE[24996][/COLOR]</altlabel>
                         </control>
 
                         <control type="togglebutton" id="9009" description="Reset Backup">
                             <onfocus>SetProperty(CurrentFocus,$NUMBER[9009])</onfocus>
                             <usealttexture>![Control.HasFocus(3901) | Control.HasFocus(3902) | Control.HasFocus(3903) | Control.HasFocus(300)] + !Control.HasFocus(302) + Integer.IsEqual(Window.Property(CurrentFocus),9009)</usealttexture>
-                            <alttexturenofocus colordiffuse="$VAR[Defs_Settings_ColorHighlight]">common/gradient-diffuse-horizontal.png</alttexturenofocus>
-                            <width>450</width>
+                            <alttexturenofocus colordiffuse="main_fg_100">common/white.png</alttexturenofocus>
+                            <width>550</width>
                             <include>Defs_Settings_Button</include>
                             <label>$LOCALIZE[31030]</label>
+                            <altlabel>[COLOR=main_bg_100]$LOCALIZE[31030][/COLOR]</altlabel>
                         </control>
                     </control>
 
@@ -163,7 +129,7 @@
                         <left>450</left>
                         <right>0</right>
                         <top>0</top>
-                        <bottom>80</bottom>
+                        <height>702</height>
                         <itemgap>0</itemgap>
                         <onleft>9000</onleft>
                         <include>Defs_Settings_OnRight</include>
@@ -1043,27 +1009,6 @@
                     <include content="Defs_Settings_Arrows">
                         <param name="id" value="9999" />
                     </include>
-                </control>
-                <!-- Info -->
-                <control type="grouplist">
-                    <left>view_pad</left>
-                    <right>view_pad</right>
-                    <top>806</top>
-                    <bottom>0</bottom>
-                    <orientation>vertical</orientation>
-                    <itemgap>0</itemgap>
-                    <control type="label">
-                        <height>50</height>
-                        <label>$LOCALIZE[19033]</label>
-                        <font>font_button</font>
-                        <textcolor>main_fg_30</textcolor>
-                    </control>
-                    <control type="textbox">
-                        <height>64</height>
-                        <label>19055</label>
-                        <font>font_tiny</font>
-                        <textcolor>main_fg_70</textcolor>
-                    </control>
                 </control>
             </control>
         </control>

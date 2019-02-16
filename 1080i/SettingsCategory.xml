@@ -18,13 +18,7 @@
         <control type="group">
             <include>Dialog_Settings_Panel</include>
             <control type="group">
-                <control type="label">
-                    <left>view_pad</left>
-                    <height>view_list_height</height>
-                    <label>$INFO[System.AddonVersion(skin.arctic.zephyr.2),Arctic Zephyr 2 - ,]</label>
-                    <font>font_button</font>
-                    <textcolor>main_fg_30</textcolor>
-                </control>
+                <include>Object_AZ_Version</include>
 
                 <control type="group">
                     <top>view_list_height</top>
@@ -34,7 +28,7 @@
                         <left>450</left>
                         <right>0</right>
                         <top>0</top>
-                        <bottom>80</bottom>
+                        <height>702</height>
                         <itemgap>0</itemgap>
                         <onleft>3</onleft>
                         <include>Defs_Settings_OnRight</include>
@@ -47,7 +41,7 @@
                         <description>Button Area</description>
                         <width>450</width>
                         <top>0</top>
-                        <bottom>0</bottom>
+                        <height>702</height>
                         <itemgap>0</itemgap>
                         <onright>5</onright>
                         <ondown>20</ondown>
@@ -62,7 +56,7 @@
                         <onup>3</onup>
                         <onright>3</onright>
                         <onclick>SettingsLevelChange</onclick>
-                        <texturefocus colordiffuse="$VAR[ColorHighlight]">common/white.png</texturefocus>
+                        <texturefocus colordiffuse="main_fg_100">common/white.png</texturefocus>
                         <include>Defs_Settings_Button</include>
                     </control>
 
