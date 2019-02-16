@@ -68,15 +68,15 @@
 
     <include name="View_Vertical_Cast">
         <onleft>8000</onleft>
-        <onback>8000</onback>
+        <onback condition="!Window.IsVisible(script-script.extendedinfo-DialogInfo.xml) + !Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml)">8000</onback>
         <orientation>vertical</orientation>
     </include>
     <include name="View_Vertical_Back">
-        <onback>8000</onback>
+        <onback condition="!Window.IsVisible(script-script.extendedinfo-DialogInfo.xml) + !Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml)">8000</onback>
         <orientation>vertical</orientation>
     </include>
     <include name="View_Horizontal_Back">
-        <onback>8000</onback>
+        <onback condition="!Window.IsVisible(script-script.extendedinfo-DialogInfo.xml) + !Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml)">8000</onback>
         <orientation>horizontal</orientation>
     </include>
 

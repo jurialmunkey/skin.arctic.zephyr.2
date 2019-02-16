@@ -2,6 +2,21 @@
 <!-- Foundation -->
 <window>
     <defaultcontrol always="true">8000</defaultcontrol>
+    <onload>SetProperty(150_onback,SetFocus(8000))</onload>
+    <onload>SetProperty(250_onback,SetFocus(8000))</onload>
+    <onload>SetProperty(350_onback,SetFocus(8000))</onload>
+    <onload>SetProperty(450_onback,SetFocus(8000))</onload>
+    <onload>SetProperty(550_onback,SetFocus(8000))</onload>
+    <onload>SetProperty(650_onback,SetFocus(8000))</onload>
+    <onload>SetProperty(750_onback,SetFocus(8000))</onload>
+    <onload>SetProperty(850_onback,SetFocus(8000))</onload>
+    <onload>SetProperty(950_onback,SetFocus(8000))</onload>
+    <onload>SetProperty(1000_onback,SetFocus(8000))</onload>
+    <onload>SetProperty(1050_onback,SetFocus(8000))</onload>
+    <onload>SetProperty(1150_onback,SetFocus(8000))</onload>
+    <onload>SetProperty(1250_onback,SetFocus(8000))</onload>
+    <onload>SetProperty(1350_onback,SetFocus(8000))</onload>
+    <onload>SetProperty(1450_onback,SetFocus(8000))</onload>
     <controls>
 
         <include>Global_Background</include>
@@ -11,142 +26,197 @@
         </include>
 
         <control type="group">
-            <width>1920</width>
-            <height>1080</height>
-            <control type="group">
-                <include>View_Pad</include>
-                <control type="grouplist" id="8100">
-                    <orientation>vertical</orientation>
-                    <itemgap>825</itemgap>
-                    <top>-15</top>
-                    <left>-15</left>
-                    <right>-15</right>
-                    <height>825</height>
-                    <control type="group" id="5200">
-                        <height>825</height>
-                        <control type="button" id="8000">
-                            <include>Defs_Hidden_Button</include>
-                            <ondown>SetFocus(150,0,absolute)</ondown>
+            <animation effect="slide" end="-1920" time="200" condition="Control.HasFocus(150)">Conditional</animation>
+            <animation effect="slide" end="1920" time="200" condition="Control.HasFocus(750)">Conditional</animation>
+            <control type="list" id="750">
+                <left>-1920</left>
+                <orientation>horizontal</orientation>
+                <width>1920</width>
+                <height>1080</height>
+                <onright>8000</onright>
+                <onleft>noop</onleft>
+                <preloaditems>2</preloaditems>
+                <itemlayout width="1920" height="1080">
+                    <control type="group">
+                        <include>View_Pad</include>
+                        <include content="Object_Geometric">
+                            <param name="pad" value="-15" />
+                        </include>
+                        <control type="image">
+                            <texture background="true">$INFO[ListItem.Art(original)]</texture>
+                            <aspectratio>scale</aspectratio>
                         </control>
-                        <control type="group">
-                            <top>15</top>
-                            <left>15</left>
-                            <right>15</right>
-                            <height>780</height>
-                            <!-- Poster -->
-                            <include content="View_50_Poster">
-                                <param name="include" value="Animation_Left_Delay" />
-                                <param name="defaulticonvisible" value="false" />
-                                <param name="icon" value="$INFO[Window.Property(thumb)]" />
-                            </include>
-                            <!-- Info -->
+                    </control>
+                </itemlayout>
+                <focusedlayout width="1920" height="1080">
+                    <control type="group">
+                        <include>View_Pad</include>
+                        <include content="Object_Geometric">
+                            <param name="pad" value="-15" />
+                        </include>
+                        <control type="image">
+                            <texture background="true">$INFO[ListItem.Art(original)]</texture>
+                            <aspectratio>scale</aspectratio>
+                        </control>
+                    </control>
+                </focusedlayout>
+            </control>
+            <control type="group">
+                <width>1920</width>
+                <height>1080</height>
+                <control type="group">
+                    <include>View_Pad</include>
+                    <control type="grouplist" id="8100">
+                        <orientation>vertical</orientation>
+                        <itemgap>825</itemgap>
+                        <top>-15</top>
+                        <left>-15</left>
+                        <right>-15</right>
+                        <height>825</height>
+                        <control type="group" id="5200">
+                            <height>825</height>
+                            <control type="button" id="8000">
+                                <include>Defs_Hidden_Button</include>
+                                <ondown>SetFocus(250,0,absolute)</ondown>
+                                <onright>SetFocus(150,0,absolute)</onright>
+                                <onleft>SetFocus(750,9999,absolute)</onleft>
+                            </control>
                             <control type="group">
-                                <top>-15</top>
-                                <left>575</left>
-                                <include>Animation_Right_Delay</include>
-                                <control type="grouplist">
-                                    <orientation>vertical</orientation>
-                                    <usecontrolcoords>true</usecontrolcoords>
-                                    <itemgap>0</itemgap>
-                                    <include content="Object_Info_Title">
-                                        <param name="label" value="$INFO[Window.Property(label)]" />
-                                    </include>
-                                    <include content="Object_Info_Line">
-                                        <param name="hdsd" value="false" />
-                                        <param name="nextaired" value="false" />
-                                        <param name="label" value="[CAPITALIZE]$INFO[Window.Property(Birthday),[COLOR=main_fg_100],[/COLOR]]$INFO[Window.Property(PlaceOfBirth),  |  [COLOR=main_fg_100],[/COLOR]]$INFO[Window.Property(Age),  |  [COLOR=main_fg_100], $LOCALIZE[31356][/COLOR]]$INFO[Window.Property(Deathday),  |  [COLOR=main_fg_100]$LOCALIZE[21897] ,[/COLOR]][/CAPITALIZE]" />
-                                    </include>
-                                    <include content="Object_Info_Plot">
-                                        <param name="label" value="$INFO[Window.Property(biography)]" />
-                                        <param name="maxheight" value="600" />
-                                        <param name="height" value="600" />
-                                    </include>
-                                    <!-- <include>Object_Info_Ratings</include> -->
-                                    <!-- <include>Object_Info_Details</include> -->
+                                <top>15</top>
+                                <left>15</left>
+                                <right>15</right>
+                                <height>780</height>
+                                <!-- Poster -->
+                                <include content="View_50_Poster">
+                                    <param name="include" value="Animation_Left_Delay" />
+                                    <param name="defaulticonvisible" value="false" />
+                                    <param name="icon" value="$INFO[Window.Property(thumb)]" />
+                                </include>
+                                <!-- Info -->
+                                <control type="group">
+                                    <top>-15</top>
+                                    <left>575</left>
+                                    <include>Animation_Right_Delay</include>
+                                    <control type="grouplist">
+                                        <orientation>vertical</orientation>
+                                        <usecontrolcoords>true</usecontrolcoords>
+                                        <itemgap>0</itemgap>
+                                        <include content="Object_Info_Title">
+                                            <param name="label" value="$INFO[Window.Property(label)]" />
+                                        </include>
+                                        <include content="Object_Info_Line">
+                                            <param name="hdsd" value="false" />
+                                            <param name="nextaired" value="false" />
+                                            <param name="label" value="[CAPITALIZE]$INFO[Window.Property(Birthday),[COLOR=main_fg_100],[/COLOR]]$INFO[Window.Property(PlaceOfBirth),  |  [COLOR=main_fg_100],[/COLOR]]$INFO[Window.Property(Age),  |  [COLOR=main_fg_100], $LOCALIZE[31356][/COLOR]]$INFO[Window.Property(Deathday),  |  [COLOR=main_fg_100]$LOCALIZE[21897] ,[/COLOR]][/CAPITALIZE]" />
+                                        </include>
+                                        <include content="Object_Info_Plot">
+                                            <param name="label" value="$INFO[Window.Property(biography)]" />
+                                            <param name="maxheight" value="600" />
+                                            <param name="height" value="600" />
+                                        </include>
+                                        <!-- <include>Object_Info_Ratings</include> -->
+                                        <!-- <include>Object_Info_Details</include> -->
+                                    </control>
                                 </control>
                             </control>
                         </control>
-                    </control>
-                    <control type="grouplist" id="5100">
-                        <height>825</height>
-                        <orientation>vertical</orientation>
-                        <itemgap>0</itemgap>
-                        <include content="View_51_Wall_Container">
-                            <param name="id" value="150" />
-                            <param name="height" value="412.5" />
-                            <param name="controlorientation" value="View_Horizontal_Back" />
-                            <param name="onleft" value="150" />
-                            <param name="onright" value="150" />
-                            <param name="visible" value="Integer.IsGreater(Container(150).NumItems,1) | Container(150).IsUpdating" />
-                            <param name="labelinclude" value="View_Cast_Character_Label" />
-                        </include>
-                        <include content="View_51_Wall_Container">
-                            <param name="id" value="250" />
-                            <param name="height" value="412.5" />
-                            <param name="controlorientation" value="View_Horizontal_Back" />
-                            <param name="onleft" value="250" />
-                            <param name="onright" value="250" />
-                            <param name="visible" value="Integer.IsGreater(Container(250).NumItems,1) | Container(250).IsUpdating" />
-                            <param name="labelinclude" value="View_Cast_Character_Label" />
-                        </include>
-                        <include content="View_51_Wall_Container">
-                            <param name="id" value="550" />
-                            <param name="height" value="412.5" />
-                            <param name="controlorientation" value="View_Horizontal_Back" />
-                            <param name="onleft" value="550" />
-                            <param name="onright" value="550" />
-                            <param name="visible" value="Integer.IsGreater(Container(550).NumItems,1) | Container(550).IsUpdating" />
-                            <param name="labelinclude" value="View_Cast_Job_Label" />
-                        </include>
-                        <include content="View_51_Wall_Container">
-                            <param name="id" value="650" />
-                            <param name="height" value="412.5" />
-                            <param name="controlorientation" value="View_Horizontal_Back" />
-                            <param name="onleft" value="650" />
-                            <param name="onright" value="650" />
-                            <param name="visible" value="Integer.IsGreater(Container(650).NumItems,1) | Container(650).IsUpdating" />
-                            <param name="labelinclude" value="View_Cast_Job_Label" />
-                        </include>
+                        <control type="grouplist" id="5100">
+                            <height>825</height>
+                            <orientation>vertical</orientation>
+                            <itemgap>0</itemgap>
+                            <!-- <include content="View_51_Wall_Container">
+                                <param name="id" value="150" />
+                                <param name="height" value="412.5" />
+                                <param name="controlorientation" value="View_Horizontal_Back" />
+                                <param name="onleft" value="150" />
+                                <param name="onright" value="150" />
+                                <param name="visible" value="Integer.IsGreater(Container(150).NumItems,1) | Container(150).IsUpdating" />
+                                <param name="labelinclude" value="View_Cast_Character_Label" />
+                            </include> -->
+                            <include content="View_51_Wall_Container">
+                                <param name="id" value="250" />
+                                <param name="height" value="412.5" />
+                                <param name="controlorientation" value="View_Horizontal_Back" />
+                                <param name="onleft" value="250" />
+                                <param name="onright" value="250" />
+                                <param name="visible" value="Integer.IsGreater(Container(250).NumItems,1) | Container(250).IsUpdating" />
+                                <param name="labelinclude" value="View_Cast_Character_Label" />
+                            </include>
+                            <include content="View_51_Wall_Container">
+                                <param name="id" value="550" />
+                                <param name="height" value="412.5" />
+                                <param name="controlorientation" value="View_Horizontal_Back" />
+                                <param name="onleft" value="550" />
+                                <param name="onright" value="550" />
+                                <param name="visible" value="Integer.IsGreater(Container(550).NumItems,1) | Container(550).IsUpdating" />
+                                <param name="labelinclude" value="View_Cast_Job_Label" />
+                            </include>
+                            <include content="View_51_Wall_Container">
+                                <param name="id" value="650" />
+                                <param name="height" value="412.5" />
+                                <param name="controlorientation" value="View_Horizontal_Back" />
+                                <param name="onleft" value="650" />
+                                <param name="onright" value="650" />
+                                <param name="visible" value="Integer.IsGreater(Container(650).NumItems,1) | Container(650).IsUpdating" />
+                                <param name="labelinclude" value="View_Cast_Job_Label" />
+                            </include>
 
-                        <include content="View_51_Wall_Container">
-                            <param name="id" value="350" />
-                            <param name="height" value="412.5" />
-                            <param name="controlorientation" value="View_Horizontal_Back" />
-                            <param name="onleft" value="350" />
-                            <param name="onright" value="350" />
-                            <param name="visible" value="Integer.IsGreater(Container(350).NumItems,1) | Container(350).IsUpdating" />
-                            <param name="itemwidth" value="570" />
-                            <param name="itemheight" value="423.75" />
-                            <param name="iconheight" value="333.75" />
-                        </include>
+                            <include content="View_51_Wall_Container">
+                                <param name="id" value="350" />
+                                <param name="height" value="412.5" />
+                                <param name="controlorientation" value="View_Horizontal_Back" />
+                                <param name="onleft" value="350" />
+                                <param name="onright" value="350" />
+                                <param name="visible" value="Integer.IsGreater(Container(350).NumItems,1) | Container(350).IsUpdating" />
+                                <param name="itemwidth" value="570" />
+                                <param name="itemheight" value="423.75" />
+                                <param name="iconheight" value="333.75" />
+                            </include>
 
-                        <include content="View_51_Wall_Container">
-                            <param name="id" value="750" />
-                            <param name="height" value="412.5" />
-                            <param name="controlorientation" value="View_Horizontal_Back" />
-                            <param name="onleft" value="750" />
-                            <param name="onright" value="750" />
-                            <param name="visible" value="Integer.IsGreater(Container(750).NumItems,1) | Container(750).IsUpdating" />
-                            <param name="itemwidth" value="342" />
-                            <param name="aspectratio" value="keep" />
-                            <param name="labelinclude" value="View_Cast_Job_Label" />
-                        </include>
+                            <!-- <include content="View_51_Wall_Container">
+                                <param name="id" value="750" />
+                                <param name="height" value="412.5" />
+                                <param name="controlorientation" value="View_Horizontal_Back" />
+                                <param name="onleft" value="750" />
+                                <param name="onright" value="750" />
+                                <param name="visible" value="Integer.IsGreater(Container(750).NumItems,1) | Container(750).IsUpdating" />
+                                <param name="itemwidth" value="342" />
+                                <param name="aspectratio" value="keep" />
+                                <param name="labelinclude" value="View_Cast_Job_Label" />
+                            </include> -->
 
-                        <include content="View_51_Wall_Container">
-                            <param name="id" value="450" />
-                            <param name="height" value="412.5" />
-                            <param name="controlorientation" value="View_Horizontal_Back" />
-                            <param name="onleft" value="450" />
-                            <param name="onright" value="450" />
-                            <param name="visible" value="Integer.IsGreater(Container(450).NumItems,1) | Container(450).IsUpdating" />
-                            <param name="labelinclude" value="View_Cast_Job_Label" />
-                        </include>
+                            <include content="View_51_Wall_Container">
+                                <param name="id" value="450" />
+                                <param name="height" value="412.5" />
+                                <param name="controlorientation" value="View_Horizontal_Back" />
+                                <param name="onleft" value="450" />
+                                <param name="onright" value="450" />
+                                <param name="visible" value="Integer.IsGreater(Container(450).NumItems,1) | Container(450).IsUpdating" />
+                                <param name="labelinclude" value="View_Cast_Job_Label" />
+                            </include>
 
-                        <control type="group"></control>
+                            <control type="group"></control>
+                        </control>
                     </control>
                 </control>
             </control>
-
+            <!-- Right | Cast -->
+            <control type="group">
+                <left>1920</left>
+                <width>1920</width>
+                <height>1080</height>
+                <include content="View_51_Wall_Control">
+                    <param name="id" value="150" />
+                    <param name="height" value="825" />
+                    <param name="infohide" value="false" />
+                    <param name="animation" value="Animation_Info_Fade_Delay" />
+                    <param name="controlorientation" value="View_Vertical_Cast" />
+                    <param name="visible" value="Integer.IsGreater(Container(150).NumItems,1) | Container(150).IsUpdating" />
+                    <param name="labelinclude" value="View_Cast_Character_Label" />
+                </include>
+            </control>
         </control>
+
+
     </controls>
 </window>
