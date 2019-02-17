@@ -5,14 +5,14 @@
         <value>$INFO[ListItem.Label]</value>
     </variable>
 
-    <variable name="Label_Info_RightHint">
+    <variable name="Label_Info_LeftHint">
         <value condition="Control.HasFocus(8000) | Control.HasFocus(300)">$LOCALIZE[206]</value>
-        <value condition="Control.HasFocus(5005)">$LOCALIZE[29915]</value>
-        <value condition="Control.HasFocus(5001) | Control.HasFocus(5002) | Control.HasFocus(5003) | Control.HasFocus(5004) | Control.HasFocus(5000) | Control.HasFocus(5006)">$LOCALIZE[31203]</value>
+        <value condition="Control.HasFocus(5000)">$LOCALIZE[29915]</value>
+        <value condition="Control.HasFocus(5001) | Control.HasFocus(5002) | Control.HasFocus(5003) | Control.HasFocus(5004) | Control.HasFocus(5005) | Control.HasFocus(5006)">$LOCALIZE[31203]</value>
         <value>$LOCALIZE[31411]</value>
     </variable>
 
-    <variable name="Label_Info_LeftHint">
+    <variable name="Label_Info_RightHint">
         <value condition="Control.HasFocus(8000) | Control.HasFocus(300) | Control.HasFocus(5001) | Control.HasFocus(5002) | Control.HasFocus(5003) | Control.HasFocus(5004) | Control.HasFocus(5000) | Control.HasFocus(5006) | Control.HasFocus(5005)">$LOCALIZE[31203]</value>
         <value condition="Control.HasFocus(50) | Control.HasFocus(5050)">$LOCALIZE[29915]</value>
         <value condition="ControlGroup(5100).HasFocus()">$LOCALIZE[206]</value>
@@ -41,7 +41,7 @@
     <variable name="Label_Header_Content">
         <value condition="[Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml)] + [Control.HasFocus(50) | Control.HasFocus(5050)]">$LOCALIZE[206]</value>
         <value condition="[Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml)] + ControlGroup(5100).HasFocus()">Explore</value>
-        <value condition="[Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml)] + !Control.HasFocus(300) + !Control.HasFocus(8000)">Artwork</value>
+        <value condition="[Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml)] + !Control.HasFocus(300) + !Control.HasFocus(8000) + !ControlGroup(300).HasFocus()">Artwork</value>
         <value condition="Window.IsVisible(SettingsCategory.xml) | Window.IsVisible(SkinSettings.xml) | Window.IsVisible(SettingsProfile.xml) | Window.IsVisible(SettingsSystemInfo.xml)">$VAR[Label_Settings_Header]</value>
         <value condition="Window.IsVisible(Home) + [Control.HasFocus(302) | Control.HasFocus(5610)]">$INFO[Container(301).ListItem.Label]</value>
         <value condition="Window.IsVisible(MyWeather.xml)">$LOCALIZE[8]</value>

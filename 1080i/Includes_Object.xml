@@ -61,6 +61,40 @@
                     <texture colordiffuse="main_fg_90">$VAR[Image_AudioCodec]</texture>
                     <visible>Container.Content(movies) | Container.Content(episodes)</visible>
                 </control>
+                <control type="image">
+                    <left>7</left>
+                    <fadetime>100</fadetime>
+                    <centertop>50%</centertop>
+                    <width>32</width>
+                    <height>32</height>
+                    <aspectratio>keep</aspectratio>
+                    <texture colordiffuse="main_fg_90">$INFO[ListItem.AudioChannels,flags/monochrome/channels/,.png]</texture>
+                    <visible>Container.Content(movies) | Container.Content(episodes)</visible>
+                </control>
+                <!-- <control type="group">
+                    <centertop>50%</centertop>
+                    <width>71</width>
+                    <height>48</height>
+                    <control type="image">
+                        <left>6</left>
+                        <fadetime>100</fadetime>
+                        <centertop>50%</centertop>
+                        <width>24</width>
+                        <height>24</height>
+                        <aspectratio>keep</aspectratio>
+                        <texture colordiffuse="main_fg_90">flags/audio.png</texture>
+                        <visible>Container.Content(movies) | Container.Content(episodes)</visible>
+                    </control>
+                    <control type="label">
+                        <top>-4</top>
+                        <align>right</align>
+                        <aligny>center</aligny>
+                        <textcolor>main_fg_90</textcolor>
+                        <font>font_audio</font>
+                        <label>$VAR[Label_AudioChannels]</label>
+                        <visible>Container.Content(movies) | Container.Content(episodes)</visible>
+                    </control>
+                </control> -->
             </control>
         </definition>
     </include>
@@ -118,166 +152,7 @@
         </control>
     </include>
 
-    <include name="Object_Info_Cast_Details">
-        <control type="grouplist">
-            <top>-15</top>
-            <left>400</left>
-            <right>400</right>
-            <orientation>vertical</orientation>
-            <itemgap>10</itemgap>
-            <usecontrolcoords>true</usecontrolcoords>
-            <control type="label">
-                <aligny>top</aligny>
-                <align>center</align>
-                <font>font_title</font>
-                <textcolor>main_fg_100</textcolor>
-                <label>$INFO[ListItem.Label,[B],[/B]]</label>
-                <height>80</height>
-            </control>
-            <control type="label">
-                <align>center</align>
-                <aligny>top</aligny>
-                <font>font_tiny</font>
-                <textcolor>main_fg_70</textcolor>
-                <label>$VAR[Label_Info_SpecialContainer_Type]</label>
-                <height>60</height>
-            </control>
-        </control>
-        <control type="grouplist">
-            <orientation>vertical</orientation>
-            <bottom>0</bottom>
-            <align>bottom</align>
-            <itemgap>40</itemgap>
-            <usecontrolcoords>true</usecontrolcoords>
-            <control type="textbox">
-                <centerleft>50%</centerleft>
-                <width>1350</width>
-                <label fallback="19055">$INFO[Container(50).ListItem.Label]$INFO[Container(50).ListItem.Label2, $LOCALIZE[20347] ]</label>
-                <height>60</height>
-                <aligny>center</aligny>
-                <align>center</align>
-                <textcolor>main_fg_70</textcolor>
-                <font>font_plotbox</font>
-            </control>
-            <control type="grouplist" id="6000">
-                <height>96</height>
-                <orientation>horizontal</orientation>
-                <align>center</align>
-                <itemgap>0</itemgap>
-                <include content="Object_Info_Button" description="Plot">
-                    <param name="buttonid" value="6001" />
-                    <param name="label" value="Plot" />
-                    <param name="icon" value="special://skin/extras/icons/quote.png" />
-                    <param name="onleft" value="6005" />
-                    <param name="onright" value="6002" />
-                    <param name="onclick" value="SetFocus(9000)" />
-                </include>
-                <include content="Object_Info_Button" description="Similar">
-                    <param name="buttonid" value="6002" />
-                    <param name="label" value="Similar" />
-                    <param name="icon" value="special://skin/extras/icons/playlist2.png" />
-                    <param name="onleft" value="6001" />
-                    <param name="onright" value="6003" />
-                    <param name="onclick" value="SetFocus(5001)" />
-                    <param name="onfocus" value="SetProperty(CurrentList,5001)" />
-                </include>
-                <include content="Object_Info_Button" description="Cast">
-                    <param name="buttonid" value="6003" />
-                    <param name="label" value="$LOCALIZE[206]" />
-                    <param name="icon" value="special://skin/extras/icons/person.png" />
-                    <param name="onleft" value="6002" />
-                    <param name="onright" value="6004" />
-                    <param name="onclick" value="SetFocus(50)" />
-                    <param name="onfocus" value="SetProperty(CurrentList,50)" />
-                </include>
-                <include content="Object_Info_Button" description="Director">
-                    <param name="buttonid" value="6004" />
-                    <param name="label" value="Director" />
-                    <param name="icon" value="special://skin/extras/icons/director.png" />
-                    <param name="onleft" value="6003" />
-                    <param name="onright" value="6005" />
-                </include>
-                <include content="Object_Info_Button" description="Studio">
-                    <param name="buttonid" value="6005" />
-                    <param name="label" value="Studio" />
-                    <param name="icon" value="special://skin/extras/icons/cinemavision.png" />
-                    <param name="onleft" value="6004" />
-                    <param name="onright" value="6001" />
-                    <param name="onclick" value="SetFocus(5004)" />
-                    <param name="onfocus" value="SetProperty(CurrentList,5004)" />
-                </include>
-            </control>
-        </control>
-    </include>
-
-    <include name="Object_Info_Buttons">
-        <control type="grouplist" id="9000">
-            <bottom>0</bottom>
-            <height>96</height>
-            <orientation>horizontal</orientation>
-            <align>center</align>
-            <itemgap>0</itemgap>
-            <include content="Object_Info_Button" description="Play">
-                <param name="buttonid" value="8" />
-                <param name="label" value="$LOCALIZE[208]" />
-                <param name="icon" value="special://skin/extras/icons/play3.png" />
-                <param name="onleft" value="99" />
-                <param name="onright" value="8800" />
-                <param name="onfocus" value="ClearProperty(CurrentList)" />
-            </include>
-            <include content="Object_Info_Button" description="Cast">
-                <param name="buttonid" value="8800" />
-                <param name="label" value="$LOCALIZE[206]" />
-                <param name="icon" value="special://skin/extras/icons/person.png" />
-                <param name="onleft" value="8" />
-                <param name="onright" value="11" />
-                <param name="onclick" value="SetFocus(50)" />
-                <param name="onfocus" value="ClearProperty(CurrentList)" />
-            </include>
-            <include content="Object_Info_Button" description="Trailer">
-                <param name="buttonid" value="11" />
-                <param name="label" value="$LOCALIZE[20410]" />
-                <param name="icon" value="special://skin/extras/icons/video.png" />
-                <param name="onleft" value="8800" />
-                <param name="onright" value="10" />
-                <param name="onfocus" value="ClearProperty(CurrentList)" />
-            </include>
-            <include content="Object_Info_Button" description="Artwork">
-                <param name="buttonid" value="10" />
-                <param name="label" value="$LOCALIZE[31203]" />
-                <param name="icon" value="special://skin/extras/icons/paintbrush.png" />
-                <param name="onleft" value="11" />
-                <param name="onright" value="6" />
-                <param name="onfocus" value="ClearProperty(CurrentList)" />
-            </include>
-            <include content="Object_Info_Button" description="Update">
-                <param name="buttonid" value="6" />
-                <param name="label" value="$LOCALIZE[184]" />
-                <param name="icon" value="special://skin/extras/icons/update.png" />
-                <param name="onleft" value="10" />
-                <param name="onright" value="7" />
-                <param name="onfocus" value="ClearProperty(CurrentList)" />
-            </include>
-            <include content="Object_Info_Button" description="User Rating">
-                <param name="buttonid" value="7" />
-                <param name="label" value="$LOCALIZE[31310]" />
-                <param name="icon" value="special://skin/extras/icons/userrating.png" />
-                <param name="onleft" value="6" />
-                <param name="onright" value="99" />
-                <param name="onfocus" value="ClearProperty(CurrentList)" />
-            </include>
-            <include content="Object_Info_Button" description="Options">
-                <param name="buttonid" value="99" />
-                <param name="label" value="$LOCALIZE[31411]" />
-                <param name="icon" value="special://skin/extras/icons/settings.png" />
-                <param name="onleft" value="7" />
-                <param name="onright" value="8" />
-                <param name="onfocus" value="ClearProperty(CurrentList)" />
-            </include>
-        </control>
-    </include>
-
-    <include name="Object_Info_Codecs">
+    <include name="Object_Info_Languages">
         <control type="grouplist">
             <include>Animation_FadeIn_Delay</include>
             <include>Animation_FadeOut</include>
@@ -290,7 +165,7 @@
             <align>left</align>
             <orientation>horizontal</orientation>
             <usecontrolcoords>true</usecontrolcoords>
-            <control type="image">
+            <!-- <control type="image">
                 <top>5</top>
                 <height>24</height>
                 <width>24</width>
@@ -306,8 +181,8 @@
                 <width>auto</width>
                 <label>$INFO[ListItem.VideoCodec,,  •  ]$INFO[ListItem.VideoResolution,,  •  ]$INFO[ListItem.VideoAspect]</label>
                 <height>32</height>
-            </control>
-            <control type="image">
+            </control> -->
+            <!-- <control type="image">
                 <left>50</left>
                 <top>5</top>
                 <height>24</height>
@@ -324,9 +199,9 @@
                 <textcolor>main_fg_70</textcolor>
                 <label>$INFO[ListItem.AudioCodec]$VAR[Label_AudioChannels,  •  ,]</label>
                 <height>32</height>
-            </control>
+            </control> -->
             <control type="image">
-                <left>50</left>
+                <!-- <left>50</left> -->
                 <top>5</top>
                 <height>24</height>
                 <width>24</width>
@@ -350,7 +225,7 @@
                 <top>5</top>
                 <height>24</height>
                 <width>24</width>
-                <texture colordiffuse="main_fg_100">flags/subs.png</texture>
+                <texture colordiffuse="main_fg_100">flags/lang.png</texture>
                 <visible>!String.IsEmpty(ListItem.Property(SubtitleLanguage.1))</visible>
             </control>
             <control type="label">
@@ -396,14 +271,15 @@
         </include>
         <include content="Object_Info_TextPairs">
             <param name="pad" value="22" />
-            <param name="name" value="Path" />
-            <param name="haspath" value="true" />
-            <param name="label" value="ListItem.Path" />
+            <param name="name" value="Premiered" />
+            <param name="label" value="ListItem.Premiered" />
         </include>
     </include>
 
     <include name="Object_Info_Ratings">
         <param name="top" default="0" />
+        <param name="imdbvotes" default="true" />
+        <param name="top250" default="true" />
         <definition>
             <control type="group">
                 <top>$PARAM[top]</top>
@@ -427,6 +303,8 @@
                         <param name="colordiffuse" value="main_fg_100" />
                         <param name="align" value="left" />
                         <param name="tmdb" value="false" />
+                        <param name="imdbvotes" value="$PARAM[imdbvotes]" />
+                        <param name="top250" value="$PARAM[top250]" />
                     </include>
                 </control>
             </control>
@@ -686,46 +564,48 @@
     </include>
 
     <include name="Object_Info_Button">
-        <control type="group">
-            <width>128</width>
-            <height>96</height>
-            <control type="button" id="$PARAM[buttonid]">
-                <onleft>$PARAM[onleft]</onleft>
-                <onright>$PARAM[onright]</onright>
-                <centerleft>50%</centerleft>
-                <width>64</width>
-                <height>64</height>
-                <texturenofocus colordiffuse="main_fg_100">$PARAM[icon]</texturenofocus>
-                <texturefocus colordiffuse="$VAR[ColorHighlight]">$PARAM[icon]</texturefocus>
-                <onclick>$PARAM[onclick]</onclick>
-                <onclick>$PARAM[onclick2]</onclick>
-                <onfocus>$PARAM[onfocus]</onfocus>
+        <param name="left" default="20" />
+        <param name="width" default="100" />
+        <param name="visible" default="true" />
+        <definition>
+            <control type="group" id="$PARAM[groupid]">
+                <left>$PARAM[left]</left>
+                <width>60</width>
+                <height>60</height>
+                <visible>$PARAM[visible]</visible>
+                <control type="image">
+                    <texture colordiffuse="main_fg_100">$PARAM[icon]</texture>
+                    <visible>Control.HasFocus($PARAM[id])</visible>
+                </control>
+                <control type="image">
+                    <texture colordiffuse="main_fg_30">$PARAM[icon]</texture>
+                    <visible>!Control.HasFocus($PARAM[id])</visible>
+                </control>
             </control>
-            <control type="label">
-                <top>64</top>
-                <width>128</width>
-                <height>32</height>
-                <align>center</align>
-                <aligny>center</aligny>
-                <font>font_tiny</font>
-                <textcolor>main_fg_70</textcolor>
+            <control type="button" id="$PARAM[id]">
+                <left>-60</left>
                 <textoffsetx>0</textoffsetx>
-                <label>$PARAM[label]</label>
-                <visible>!Control.HasFocus($PARAM[buttonid])</visible>
+                <left>$PARAM[left]</left>
+                <height>60</height>
+                <width>60</width>
+                <align>left</align>
+                <visible>$PARAM[visible]</visible>
+                <texturefocus />
+                <texturenofocus />
+                <nested />
             </control>
-            <control type="label">
-                <top>64</top>
-                <width>128</width>
-                <height>32</height>
-                <align>center</align>
-                <aligny>center</aligny>
-                <font>font_tiny_bold</font>
-                <textcolor>$VAR[ColorHighlight]</textcolor>
+            <control type="label" id="1$PARAM[groupid]">
                 <textoffsetx>0</textoffsetx>
+                <width>$PARAM[width]</width>
+                <align>left</align>
                 <label>$PARAM[label]</label>
-                <visible>Control.HasFocus($PARAM[buttonid])</visible>
+                <textcolor>main_fg_100</textcolor>
+                <focusedcolor>main_fg_100</focusedcolor>
+                <font>font_info_buttons</font>
+                <visible>Control.HasFocus($PARAM[id])</visible>
+                <visible>$PARAM[visible]</visible>
             </control>
-        </control>
+        </definition>
     </include>
 
     <include name="Object_PositionDot">

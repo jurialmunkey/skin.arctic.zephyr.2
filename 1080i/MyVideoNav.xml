@@ -3,24 +3,17 @@
 <window id="6">
     <defaultcontrol always="true">50</defaultcontrol>
     <menucontrol>300</menucontrol>
-    <views>50,500,51,510,511,512,52,520,521,53</views>
+    <views>50,500,501,51,510,511,512,52,520,521,53</views>
     <onload condition="System.HasAddon(script.tv.show.next.aired)">RunScript(script.tv.show.next.aired,backend=True)</onload>
     <controls>
         <include>Global_Background</include>
         <include>Topbar</include>
         <include>Object_Codecs</include>
-
-
-        <control type="list" id="300">
-            <visible allowhiddenfocus="true">Control.HasFocus(300)</visible>
-            <ondown>50</ondown>
-            <include>Topbar_Menu_Layout</include>
-            <include>Items_View</include>
-        </control>
         
         <control type="group">
             <include>View_50_List</include>
             <include>View_500_List_Square</include>
+            <include>View_501_List_Landscape</include>
             <include>View_51_Wall</include>
             <include>View_510_Wall_Square</include>
             <include>View_511_Wall_Landscape</include>
@@ -38,6 +31,70 @@
             </include>
         </control>
 
+        <control type="grouplist" id="300">
+            <visible allowhiddenfocus="true">ControlGroup(300).HasFocus()</visible>
+            <onup>50</onup>
+            <ondown>60</ondown>
+            <include>Defs_ButtonList</include>
+            <include content="Object_Info_Button" description="View">
+                <param name="left" value="-14" />
+                <param name="id" value="8002" />
+                <param name="visible" value="Control.IsEnabled(2)" />
+                <param name="groupid" value="8302" />
+                <param name="label" value="$INFO[Container.Viewmode]" />
+                <param name="icon" value="special://skin/extras/icons/viewmode.png" />
+                <!-- <param name="width" value="auto" /> -->
+                <include>Items_LockUnlock</include>
+                <onclick>Container.NextViewMode</onclick>
+            </include>
+            <include content="Object_Info_Button" description="Sort">
+                <param name="id" value="8003" />
+                <param name="groupid" value="8303" />
+                <param name="visible" value="Control.IsEnabled(3)" />
+                <param name="label" value="$INFO[Container.SortMethod]" />
+                <param name="icon" value="special://skin/extras/icons/sort2.png" />
+                <!-- <param name="width" value="auto" /> -->
+                <onclick>SendClick(3)</onclick>
+            </include>
+            <include content="Object_Info_Button" description="Order">
+                <param name="id" value="8004" />
+                <param name="groupid" value="8304" />
+                <param name="visible" value="Control.IsEnabled(4)" />
+                <param name="label" value="$INFO[Control.GetLabel(4)]" />
+                <param name="icon" value="special://skin/extras/icons/sort.png" />
+                <!-- <param name="width" value="auto" /> -->
+                <onclick>SendClick(4)</onclick>
+            </include>
+            <include content="Object_Info_Button" description="Search">
+                <param name="id" value="8005" />
+                <param name="groupid" value="8305" />
+                <param name="visible" value="Control.IsEnabled(8)" />
+                <param name="label" value="$LOCALIZE[137]" />
+                <param name="icon" value="special://skin/extras/icons/search.png" />
+                <!-- <param name="width" value="auto" /> -->
+                <onclick condition="!System.HasAddon(script.globalsearch)">SendClick(8)</onclick>
+                <onclick condition="System.HasAddon(script.globalsearch)">SetFocus(50)</onclick>
+                <onclick condition="System.HasAddon(script.globalsearch)">RunScript(script.globalsearch)</onclick>
+            </include>
+            <include content="Object_Info_Button" description="Filter">
+                <param name="id" value="8006" />
+                <param name="groupid" value="8306" />
+                <param name="visible" value="Container.CanFilterAdvanced" />
+                <param name="label" value="$LOCALIZE[587]" />
+                <param name="icon" value="$VAR[Image_Filtered]" />
+                <!-- <param name="width" value="auto" /> -->
+                <onclick>Filter</onclick>
+            </include>
+            <include content="Object_Info_Button" description="Hide Watched">
+                <param name="id" value="8007" />
+                <param name="groupid" value="8307" />
+                <param name="visible" value="Control.IsEnabled(14)" />
+                <param name="label" value="Watched" />
+                <param name="icon" value="$VAR[Image_Watched]" />
+                <!-- <param name="width" value="auto" /> -->
+                <onclick>SendClick(14)</onclick>
+            </include>
+        </control>
 
         <include>Object_PlotOverlay</include>
        

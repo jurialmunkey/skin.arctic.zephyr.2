@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
 
+    <include name="Defs_ButtonList">
+        <left>view_pad</left>
+        <width>545</width>
+        <align>center</align>
+        <align>left</align>
+        <height>60</height>
+        <bottom>30</bottom>
+        <orientation>horizontal</orientation>
+        <usecontrolcoords>true</usecontrolcoords>
+        <itemgap>0</itemgap>
+        <include>Animation_FadeIn</include>
+        <visible allowhiddenfocus="true">ControlGroup(300).HasFocus()</visible>
+    </include>
+
     <variable name="Defs_Cast_Content">
         <value condition="String.IsEqual(ListItem.DBType,movie)">plugin://script.skin.helper.service/?action=getcast&amp;movie=$INFO[ListItem.Title]&amp;downloadthumbs=tru&amp;castaction=extendedinfo</value>
         <value condition="String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season)">plugin://script.skin.helper.service/?action=getcast&amp;tvshow=$INFO[ListItem.TvShowTitle]&amp;downloadthumbs=tru&amp;castaction=extendedinfo</value>

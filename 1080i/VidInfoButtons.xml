@@ -1,0 +1,76 @@
+<!-- Hidden Buttons -->
+        <control type="button" id ="6">
+            <description>Refresh</description>
+            <label>184</label>
+            <include>Defs_Hidden_Button</include>
+        </control>
+
+        <control type="button" id ="7">
+            <description>Userrating</description>
+            <include>Defs_Hidden_Button</include>
+        </control>
+
+        <control type="button" id ="8">
+            <description>Play</description>
+            <label>$LOCALIZE[208]</label>
+            <include>Defs_Hidden_Button</include>
+        </control>
+
+        <control type="button" id ="10">
+            <description>Artwork (Get Thumb)</description>
+            <label>$LOCALIZE[13405]</label>
+            <include>Defs_Hidden_Button</include>
+        </control>
+
+        <control type="button" id="11">
+            <description>Trailer button</description>
+            <label>20410</label>
+            <include>Defs_Hidden_Button</include>
+            <visible>!String.IsEmpty(ListItem.Trailer)</visible>
+        </control>
+
+        <control type="button" id="13">
+            <description>Director button</description>
+            <include>Defs_Hidden_Button</include>
+        </control>
+
+        <control type="button" id="9005">
+            <label>$LOCALIZE[29915]</label>
+            <include>Defs_Hidden_Button</include>
+            <onclick condition="String.IsEqual(ListItem.DbType,movie)">RunScript(script.extendedinfo,info=extendedinfo,name=$INFO[ListItem.Title],imdb_id=$INFO[ListItem.IMDBNumber])</onclick>
+            <onclick condition="String.IsEqual(ListItem.DbType,tvshow) | String.IsEqual(ListItem.DbType,episode)">RunScript(script.extendedinfo,info=extendedtvinfo,name=$INFO[ListItem.TvShowTitle])</onclick>
+            <visible>System.hasAddon(script.extendedinfo) + [String.IsEqual(ListItem.DbType,movie) | String.IsEqual(ListItem.DbType,tvshow) | String.IsEqual(ListItem.DbType,episode)]</visible>
+            <onclick>SetFocus(300)</onclick>
+        </control>
+
+        <control type="button" id="9001">
+            <label>$LOCALIZE[31389]</label>
+            <!-- If ADownloader installed but not ABeef then use AD otherwise prefer AB -->
+            <!-- AD has been depreciated but some still use it -->
+
+            <onclick condition="String.IsEqual(ListItem.DBType,tvshow) + System.HasAddon(script.artwork.downloader) + !System.HasAddon(script.artwork.beef)">XBMC.RunScript(script.artwork.downloader, mode=gui, mediatype=tvshow, dbid=$INFO[ListItem.DBID])</onclick>
+            <onclick condition="String.IsEqual(ListItem.DBType,movie) + System.HasAddon(script.artwork.downloader) + !System.HasAddon(script.artwork.beef)">XBMC.RunScript(script.artwork.downloader, mode=gui, mediatype=movie, dbid=$INFO[ListItem.DBID])</onclick>
+
+            <onclick condition="String.IsEqual(ListItem.DBType,episode) + System.HasAddon(script.artwork.beef)">XBMC.RunScript(script.artwork.beef, mode=gui, mediatype=episode, dbid=$INFO[ListItem.DBID])</onclick>
+            <onclick condition="String.IsEqual(ListItem.DBType,tvshow) + System.HasAddon(script.artwork.beef)">XBMC.RunScript(script.artwork.beef, mode=gui, mediatype=tvshow, dbid=$INFO[ListItem.DBID])</onclick>
+            <onclick condition="String.IsEqual(ListItem.DBType,movie) + System.HasAddon(script.artwork.beef)">XBMC.RunScript(script.artwork.beef, mode=gui, mediatype=movie, dbid=$INFO[ListItem.DBID])</onclick>
+            <description>Get Artwork</description>
+            <include>Defs_Hidden_Button</include>
+            <visible>[String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,musicvideo) | String.IsEqual(ListItem.DBType,episode)] + [system.hasaddon(script.artwork.downloader) | system.hasaddon(script.artwork.beef)]</visible>
+        </control>
+
+        <control type="button" id="9011">
+            <label>$LOCALIZE[31388]</label>
+            <!-- If ADownloader installed but not ABeef then use AD otherwise prefer AB -->
+            <!-- AD has been depreciated but some still use it -->
+
+            <onclick condition="String.IsEqual(ListItem.DBType,tvshow) + System.HasAddon(script.artwork.downloader) + !System.HasAddon(script.artwork.beef)">XBMC.RunScript(script.artwork.downloader, mediatype=tvshow, dbid=$INFO[ListItem.DBID])</onclick>
+            <onclick condition="String.IsEqual(ListItem.DBType,movie) + System.HasAddon(script.artwork.downloader) + !System.HasAddon(script.artwork.beef)">XBMC.RunScript(script.artwork.downloader, mediatype=movie, dbid=$INFO[ListItem.DBID])</onclick>
+
+            <onclick condition="String.IsEqual(ListItem.DBType,episode) + System.HasAddon(script.artwork.beef)">XBMC.RunScript(script.artwork.beef, mode=auto, mediatype=tvshow, dbid=$INFO[ListItem.DBID])</onclick>
+            <onclick condition="String.IsEqual(ListItem.DBType,tvshow) + System.HasAddon(script.artwork.beef)">XBMC.RunScript(script.artwork.beef, mode=auto, mediatype=tvshow, dbid=$INFO[ListItem.DBID])</onclick>
+            <onclick condition="String.IsEqual(ListItem.DBType,movie) + System.HasAddon(script.artwork.beef)">XBMC.RunScript(script.artwork.beef, mode=auto, mediatype=movie, dbid=$INFO[ListItem.DBID])</onclick>
+            <description>Get Artwork</description>
+            <include>Defs_Hidden_Button</include>
+            <visible>[String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,musicvideo) | String.IsEqual(ListItem.DBType,episode)] + [system.hasaddon(script.artwork.downloader) | system.hasaddon(script.artwork.beef)]</visible>
+        </control>

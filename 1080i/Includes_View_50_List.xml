@@ -38,6 +38,53 @@
         </control>
     </include>
 
+    <include name="View_501_List_Landscape">
+        <control type="group">
+            <visible>Control.IsVisible(501)</visible>
+            <include>View_Group</include>
+            <include content="View_50_Poster">
+                <param name="height" value="420" />
+                <param name="width" value="723" />
+                <param name="icon" value="$VAR[Image_Fanart]" />
+            </include>
+            <control type="grouplist">
+                <top>420</top>
+                <width>703</width>
+                <bottom>-15</bottom>
+                <orientation>vertical</orientation>
+                <usecontrolcoords>true</usecontrolcoords>
+                <itemgap>0</itemgap>
+                <control type="label">
+                    <label>$INFO[ListItem.Label]</label>
+                    <height>60</height>
+                    <aligny>top</aligny>
+                    <textcolor>main_fg_100</textcolor>
+                    <font>font_title</font>
+                </control>
+                <include>Object_Info_Line</include>
+                <include content="Object_Info_Ratings">
+                    <param name="top" value="-15" />
+                    <param name="imdbvotes" value="false" />
+                    <param name="top250" value="false" />
+                </include>
+                <control type="textbox">
+                    <top>15</top>
+                    <label fallback="19055">$VAR[Label_Plot]</label>
+                    <height>160</height>
+                    <aligny>top</aligny>
+                    <textcolor>main_fg_70</textcolor>
+                    <font>font_plotbox</font>
+                </control>
+            </control>
+            <include content="View_50_List_Control">
+                <param name="left" value="733" />
+                <param name="right" value="0" />
+                <param name="id" value="501" />
+                <param name="visible" value="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(episodes)" />
+            </include>
+        </control>
+    </include>
+
     <include name="View_50_List_Control">
         <control type="panel" id="$PARAM[id]">
             <visible>$PARAM[visible]</visible>
