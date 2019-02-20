@@ -414,15 +414,81 @@
         <texturefocus colordiffuse="$VAR[ColorHighlight]">common/white.png</texturefocus>
     </include>
 
+
+    <include name="Defs_Settings_Changer">
+        <definition>
+            <control type="list" id="300">
+                <nested />
+                <onleft>Up</onleft>
+                <top>dialog_top</top>
+                <bottom>dialog_pad</bottom>
+                <width>view_list_height</width>
+                <orientation>vertical</orientation>
+                <itemlayout height="view_list_height" width="view_list_height">
+                    <control type="group">
+                        <width>view_list_height</width>
+                        <control type="image">
+                            <centerleft>50%</centerleft>
+                            <centertop>50%</centertop>
+                            <width>60</width>
+                            <height>60</height>
+                            <texture colordiffuse="dialog_fg_30">$INFO[ListItem.Icon]</texture>
+                        </control>
+                    </control>
+                    <control type="label">
+                        <left>view_list_height</left>
+                        <label>$INFO[ListItem.Label]</label>
+                        <font>font_small</font>
+                        <textcolor>dialog_fg_70</textcolor>
+                    </control>
+                </itemlayout>
+                <focusedlayout height="view_list_height" width="view_list_height">
+                    <include>Topbar_Menu_SettingsTrick_Button</include>
+                    <control type="image">
+                        <texture colordiffuse="$VAR[ColorHighlight]">common/white.png</texture>
+                    </control>
+                    <control type="group">
+                        <width>view_list_height</width>
+                        <control type="image">
+                            <centerleft>50%</centerleft>
+                            <centertop>50%</centertop>
+                            <width>60</width>
+                            <height>60</height>
+                            <texture colordiffuse="Selected">$INFO[ListItem.Icon]</texture>
+                        </control>
+                    </control>
+                    <control type="label">
+                        <left>view_list_height</left>
+                        <label>$INFO[ListItem.Label]</label>
+                        <font>font_small</font>
+                        <textcolor>Selected</textcolor>
+                    </control>
+                </focusedlayout>
+                <include>Items_Settings</include>
+            </control>
+        </definition>
+    </include>
     <!-- Settings Buttons -->
+    <variable name="Defs_Settings_ToggleButton_Color">
+        <value condition="Control.HasFocus(300) | Control.HasFocus(20)">00ffffff</value>
+        <value>$VAR[ColorHighlight]</value>
+    </variable>
+    <variable name="Defs_Settings_ToggleButton_Text">
+        <value condition="Control.HasFocus(300) | Control.HasFocus(20)">dialog_fg_70</value>
+        <value>Selected</value>
+    </variable>
     <include name="Defs_Settings_Button">
         <align>left</align>
         <font>font_small</font>
-        <radioposx>1320</radioposx>
-        <textcolor>main_fg_100</textcolor>
+        <radioposx>1280</radioposx>
+        <height>view_list_height</height>
+        <textoffsetx>30</textoffsetx>
+        <focusedcolor>$VAR[Defs_Settings_ToggleButton_Text]</focusedcolor>
+        <texturefocus colordiffuse="$VAR[Defs_Settings_ToggleButton_Color]">common/white.png</texturefocus>
+        <alttexturefocus colordiffuse="$VAR[Defs_Settings_ToggleButton_Color]">common/white.png</alttexturefocus>
+        <!-- <textcolor>main_fg_100</textcolor>
         <disabledcolor>main_fg_12</disabledcolor>
         <focusedcolor>main_bg_100</focusedcolor>
-        <height>view_list_height</height>
         <textoffsetx>view_pad</textoffsetx>
         <textureup flipy="true" colordiffuse="main_half">buttons/spin-down.png</textureup>
         <texturedown colordiffuse="main_half">buttons/spin-down.png</texturedown>
@@ -432,8 +498,7 @@
         <textureradioofffocus colordiffuse="main_bg_100">buttons/radio-off.png</textureradioofffocus>
         <textureradioonnofocus colordiffuse="main_fg_100">buttons/radio-on.png</textureradioonnofocus>
         <textureradiooffnofocus colordiffuse="main_fg_12">buttons/radio-off.png</textureradiooffnofocus>
-        <texturefocus colordiffuse="main_fg_100">common/white.png</texturefocus>
-        <alttexturefocus colordiffuse="main_fg_100">common/white.png</alttexturefocus>
+         -->
     </include>
     <variable name="Defs_Settings_ColorHighlight">
         <value condition="Control.HasFocus(3901) | Control.HasFocus(3902) | Control.HasFocus(3903) | Control.HasFocus(300) | Control.HasFocus(302) | Control.HasFocus(20)">00ffffff</value>

@@ -7,49 +7,85 @@
 
         <include>Global_Background</include>
         <include>Topbar</include>
-        <control type="list" id="300">
-            <ondown>4</ondown>
-            <include>Topbar_Menu_Layout</include>
-            <include>Items_Settings</include>
+        <control type="image">
+            <include>Dimensions_Fullscreen</include>
+            <texture border="2">common/black-back.png</texture>
         </control>
-
-        <!-- GroupList -->
         <control type="group">
-            <include>Dialog_Settings_Panel</include>
+            <include content="Dialog_Standard_Group">
+                <param name="width" value="1820" />
+                <param name="height" value="980" />
+                <param name="animation" value="false" />
+            </include>
+
+            <control type="label">
+                <label>$INFO[Container(300).ListItem.Label]</label>
+                <include>Dialog_Standard_Header</include>
+            </control>
+    
+            <include content="Defs_Settings_Changer">
+                <onright>4</onright>
+            </include>
+
+            <include content="Dialog_Separator">
+                <param name="left" value="view_list_height" />
+            </include>
+
             <control type="group">
-                <include>Object_AZ_Version</include>
+                <left>view_list_height</left>
 
-                <control type="group">
-                    <top>view_list_height</top>
-                    <height>800</height>
+                <control type="radiobutton" id="4">
+                    <description>button area</description>
+                    <left>0</left>
+                    <top>dialog_top</top>
+                    <width>dialog_side_grouplist</width>
+                    <itemgap>0</itemgap>
+                    <onright>2</onright>
+                    <include>Defs_Settings_OnLeft</include>
+                    <label>20096</label>
+                    <radioposx>350</radioposx>
+                    <include>Defs_Settings_Button</include>
+                </control>
 
-                    <!-- Left Group -->
-                    <control type="radiobutton" id="4">
-                        <top>0</top>
-                        <include>Defs_Settings_OnLeft</include>
-                        <onright>2</onright>
-                        <width>450</width>
-                        <label>20096</label>
-                        <radioposx>395</radioposx>
-                        <include>Defs_Settings_Button</include>
-                    </control>
+                <include>Dialog_Separator</include>
 
-                    <!-- Right Group -->
-                    <control type="panel" id="2">
-                        <description>Control Area</description>
-                        <left>450</left>
-                        <right>0</right>
-                        <top>0</top>
-                        <height>702</height>
-                        <onleft>4</onleft>
-                        <include>Defs_Settings_OnRight</include>
-                        <orientation>vertical</orientation>
-                        <scrolltime>0</scrolltime>
-                        <itemlayout height="80" width="1480">
+                <control type="panel" id="2">
+                    <description>control area</description>
+                    <left>dialog_side_grouplist</left>
+                    <top>dialog_top</top>
+                    <right>0</right>
+                    <height>780</height>
+                    <onleft>4</onleft>
+                    <include>Defs_Settings_OnRight</include>
+                    <onright>Down</onright>
+                    <onright>AlarmClock(set,SetFocus(5),00:00,silent)</onright>
+                    <itemlayout height="80" width="1430">
+                        <control type="label">
+                            <right>view_pad</right>
+                            <left>50</left>
+                            <textcolor>dialog_fg_70</textcolor>
+                            <info>ListItem.Label</info>
+                        </control>
+                        <control type="label">
+                            <right>view_pad</right>
+                            <left>50</left>
+                            <align>right</align>
+                            <font>font_tiny</font>
+                            <textcolor>dialog_fg_70</textcolor>
+                            <info>ListItem.Label2</info>
+                        </control>
+                    </itemlayout>
+
+                    <focusedlayout height="80" width="1430">
+                        <control type="group">
+                            <control type="image">
+                                <width>100%</width>
+                                <texture border="5" colordiffuse="$VAR[ColorHighlight]">common/white.png</texture>
+                            </control>
                             <control type="label">
-                                <right>view_pad</right>
                                 <left>50</left>
-                                <textcolor>main_fg_100</textcolor>
+                                <right>view_pad</right>
+                                <textcolor>Selected</textcolor>
                                 <info>ListItem.Label</info>
                             </control>
                             <control type="label">
@@ -57,57 +93,14 @@
                                 <left>50</left>
                                 <align>right</align>
                                 <font>font_tiny</font>
-                                <textcolor>main_fg_100</textcolor>
+                                <textcolor>Selected</textcolor>
                                 <info>ListItem.Label2</info>
                             </control>
-                        </itemlayout>
-
-                        <focusedlayout height="80" width="1480">
-                            <control type="group">
-                                <control type="image">
-                                    <width>100%</width>
-                                    <texture border="5" colordiffuse="main_fg_100">common/white.png</texture>
-                                </control>
-                                <control type="label">
-                                    <left>50</left>
-                                    <right>view_pad</right>
-                                    <textcolor>main_bg_100</textcolor>
-                                    <info>ListItem.Label</info>
-                                </control>
-                                <control type="label">
-                                    <right>view_pad</right>
-                                    <left>50</left>
-                                    <align>right</align>
-                                    <font>font_tiny</font>
-                                    <textcolor>main_bg_100</textcolor>
-                                    <info>ListItem.Label2</info>
-                                </control>
-                            </control>
-                        </focusedlayout>
-                    </control>
-
-                    <!-- Lines -->
-                    <include>Defs_Settings_Line</include>
-
-                    <!-- Arrows -->
-                    <include content="Defs_Settings_Arrows">
-                        <param name="id" value="5" />
-                    </include>
+                        </control>
+                    </focusedlayout>
                 </control>
             </control>
         </control>
-
-        <control type="group">
-            <include content="Dialog_Notification_Group">
-                <param name="main_id" value="9901" />
-                <param name="sub_id" value="9902" />
-                <param name="label" value="19033" />
-                <param name="label2" value="31234" />
-            </include>
-        </control>
-        <include>Topbar</include>
-
-
         
     </controls>
 

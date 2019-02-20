@@ -8,80 +8,122 @@
 
         <include>Global_Background</include>
         <include>Topbar</include>
-        <control type="list" id="300">
-            <ondown>3</ondown>
-            <include>Topbar_Menu_Layout</include>
-            <include>Items_Settings</include>
+        <control type="image">
+            <include>Dimensions_Fullscreen</include>
+            <texture border="2">common/black-back.png</texture>
         </control>
-        
-        <!-- GroupList -->
         <control type="group">
-            <include>Dialog_Settings_Panel</include>
+            <include content="Dialog_Standard_Group">
+                <param name="width" value="1820" />
+                <param name="height" value="980" />
+                <param name="animation" value="false" />
+            </include>
+
+            <control type="label">
+                <label>$INFO[Container(300).ListItem.Label]</label>
+                <include>Dialog_Standard_Header</include>
+            </control>
+    
+            <include content="Defs_Settings_Changer">
+                <onright>3</onright>
+            </include>
+
+            <include content="Dialog_Separator">
+                <param name="left" value="view_list_height" />
+            </include>
+
             <control type="group">
-                <include>Object_AZ_Version</include>
-
-                <control type="group">
-                    <top>view_list_height</top>
-                    <!-- Right Group -->
-                    <control type="grouplist" id="5">
-                        <description>Control Area</description>
-                        <left>450</left>
-                        <right>0</right>
-                        <top>0</top>
-                        <height>702</height>
-                        <itemgap>0</itemgap>
-                        <onleft>3</onleft>
-                        <include>Defs_Settings_OnRight</include>
-                        <orientation>vertical</orientation>
-                        <scrolltime>0</scrolltime>
-                    </control>
-
-                    <!-- Left Group -->
-                    <control type="grouplist" id="3">
-                        <description>Button Area</description>
-                        <width>450</width>
-                        <top>0</top>
-                        <height>702</height>
-                        <itemgap>0</itemgap>
-                        <onright>5</onright>
-                        <ondown>20</ondown>
-                        <include>Defs_Settings_OnLeft</include>
-                        <orientation>vertical</orientation>
-                    </control>
-
-                    <!-- Settings Change -->
-                    <control type="button" id="20">
-                        <width>450</width>
-                        <bottom>0</bottom>
-                        <onup>3</onup>
-                        <onright>3</onright>
-                        <onclick>SettingsLevelChange</onclick>
-                        <texturefocus colordiffuse="main_fg_100">common/white.png</texturefocus>
-                        <include>Defs_Settings_Button</include>
-                    </control>
-
-
-                    <!-- Lines -->
-                    <include>Defs_Settings_Line</include>
-
-                    <!-- Arrows -->
-                    <include content="Defs_Settings_Arrows">
-                        <param name="id" value="5" />
-                    </include>
+                <left>view_list_height</left>
+                <control type="grouplist" id="3">
+                    <description>button area</description>
+                    <left>0</left>
+                    <top>dialog_top</top>
+                    <width>dialog_side_grouplist</width>
+                    <height>780</height>
+                    <itemgap>0</itemgap>
+                    <onright>5</onright>
+                    <ondown>20</ondown>
+                    <include>Defs_Settings_OnLeft</include>
                 </control>
 
-               
+                
+                <control type="button" id="20">
+                    <width>dialog_side_grouplist</width>
+                    <bottom>0</bottom>
+                    <textoffsetx>77</textoffsetx>
+                    <onup>3</onup>
+                    <ondown>300</ondown>
+                    <textcolor>dialog_fg_70</textcolor>
+                    <font>font_statusbar</font>
+                    <onclick>SettingsLevelChange</onclick>
+                    <focusedcolor>Selected</focusedcolor>
+                    <texturefocus colordiffuse="$VAR[ColorHighlight]">common/white.png</texturefocus>
+                    <include>Defs_Settings_Button</include>
+                </control>
+                <control type="image">
+                    <left>15</left>
+                    <bottom>0</bottom>
+                    <height>75</height>
+                    <width>52</width>
+                    <aspectratio aligny="center">keep</aspectratio>
+                    <texture colordiffuse="dialog_fg_70">osd/settings.png</texture>
+                    <visible>!Control.HasFocus(20)</visible>
+                </control>
+                <control type="image">
+                    <left>15</left>
+                    <bottom>0</bottom>
+                    <height>75</height>
+                    <width>52</width>
+                    <aspectratio aligny="center">keep</aspectratio>
+                    <texture colordiffuse="Selected">osd/settings.png</texture>
+                    <visible>Control.HasFocus(20)</visible>
+                </control>
+
+                <include>Dialog_Separator</include>
+
+                <control type="grouplist" id="5">
+                    <description>control area</description>
+                    <left>dialog_side_grouplist</left>
+                    <top>dialog_top</top>
+                    <right>0</right>
+                    <height>780</height>
+                    <itemgap>0</itemgap>
+                    <onleft>3</onleft>
+                    <include>Defs_Settings_OnRight</include>
+                    <onright>Down</onright>
+                    <onright condition="!Window.IsVisible(appearancesettings) + !Window.IsVisible(pvrsettings)">AlarmClock(set,SetFocus(5),00:00,silent)</onright>
+                    <onright condition="Window.IsVisible(appearancesettings)">AlarmClock(set,SetFocus(9999),00:00,silent)</onright>
+                    <onright condition="Window.IsVisible(pvrsettings)">AlarmClock(set,SetFocus(50),00:00,silent)</onright>
+                    <pagecontrol>61</pagecontrol>
+                    <usecontrolcoords>true</usecontrolcoords>
+                </control>
+
+                <control type="group">
+                    <!-- <visible>!Control.HasFocus(300)</visible> -->
+                    <left>dialog_side_grouplist</left>
+                    <bottom>0</bottom>
+                    <height>78</height>
+                    <control type="image">
+                        <left>26</left>
+                        <centertop>50%</centertop>
+                        <height>32</height>
+                        <width>32</width>
+                        <aspectratio align="left">keep</aspectratio>
+                        <texture colordiffuse="dialog_fg_70">buttons/info.png</texture>
+                    </control>
+                    <control type="textbox" id="6">
+                        <centertop>50%</centertop>
+                        <left>82</left>
+                        <right>30</right>
+                        <height>60</height>
+                        <textcolor>dialog_fg_70</textcolor>
+                        <font>font_statusbar</font>
+                        <aligny>center</aligny>
+                    </control>
+                </control>
             </control>
         </control>
-
-        <control type="group">
-            <include content="Dialog_Notification_Group">
-                <param name="main_id" value="9901" />
-                <param name="sub_id" value="6" />
-                <param name="label" value="19033" />
-            </include>
-        </control>
-
+     
         <control type="button" id="7">
             <description>Default Button</description>
             <include>Defs_Settings_Button</include>
@@ -104,10 +146,11 @@
         </control>
 
         <control type="label" id="14">
-            <textoffsetx>view_pad</textoffsetx>
+            <include>Dialog_Standard_HintLabel</include>
+            <!-- <textoffsetx>view_pad</textoffsetx>
             <font>font_button</font>
             <textcolor>main_fg_30</textcolor>
-            <include>Defs_Settings_Button</include>
+            <include>Defs_Settings_Button</include> -->
         </control>
 
     </controls>
