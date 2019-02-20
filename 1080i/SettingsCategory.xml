@@ -9,10 +9,14 @@
         <include>Global_Background</include>
         <include>Topbar</include>
         <control type="image">
+            <animation type="WindowOpen" reversible="false" condition="!Window.Previous(SettingsCategory.xml) + !Window.Previous(SkinSettings.xml) + !Window.Previous(SettingsProfile.xml) + !Window.Previous(SettingsSystemInfo.xml)">
+                <effect type="fade" start="0" end="100" time="300" delay="0"/>
+            </animation>
             <include>Dimensions_Fullscreen</include>
             <texture border="2">common/black-back.png</texture>
         </control>
         <control type="group">
+            <include>Animation_Settings</include>
             <include content="Dialog_Standard_Group">
                 <param name="width" value="1820" />
                 <param name="height" value="980" />
@@ -53,7 +57,7 @@
                     <textoffsetx>77</textoffsetx>
                     <onup>3</onup>
                     <ondown>300</ondown>
-                    <textcolor>dialog_fg_70</textcolor>
+                    <textcolor>dialog_fg_30</textcolor>
                     <font>font_statusbar</font>
                     <onclick>SettingsLevelChange</onclick>
                     <focusedcolor>Selected</focusedcolor>
@@ -66,7 +70,7 @@
                     <height>75</height>
                     <width>52</width>
                     <aspectratio aligny="center">keep</aspectratio>
-                    <texture colordiffuse="dialog_fg_70">osd/settings.png</texture>
+                    <texture colordiffuse="dialog_fg_30">osd/settings.png</texture>
                     <visible>!Control.HasFocus(20)</visible>
                 </control>
                 <control type="image">
@@ -109,14 +113,14 @@
                         <height>32</height>
                         <width>32</width>
                         <aspectratio align="left">keep</aspectratio>
-                        <texture colordiffuse="dialog_fg_70">buttons/info.png</texture>
+                        <texture colordiffuse="dialog_fg_30">buttons/info.png</texture>
                     </control>
                     <control type="textbox" id="6">
                         <centertop>50%</centertop>
                         <left>82</left>
                         <right>30</right>
                         <height>60</height>
-                        <textcolor>dialog_fg_70</textcolor>
+                        <textcolor>dialog_fg_30</textcolor>
                         <font>font_statusbar</font>
                         <aligny>center</aligny>
                     </control>

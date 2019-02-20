@@ -113,16 +113,6 @@
                             <textcolor>main_fg_100</textcolor>
                             <label>$VAR[Label_Header_Content]</label>
                             <visible>![Window.IsVisible(script-globalsearch.xml)] | Window.IsVisible(script-script.extendedinfo-VideoList.xml)</visible>
-                            <visible>!Control.HasFocus(300)</visible>
-                        </control>
-                        <control type="label">
-                            <aligny>center</aligny>
-                            <width>auto</width>
-                            <font>font_topbar</font>
-                            <textcolor>main_fg_100</textcolor>
-                            <label max="1140">$INFO[Container(300).ListItem.Label]</label>
-                            <visible>![Window.IsVisible(script-globalsearch.xml)]</visible>
-                            <visible>Control.HasFocus(300)</visible>
                         </control>
                     </control>
                     
@@ -133,7 +123,6 @@
                         <font>font_byline</font>
                         <textcolor>main_fg_70</textcolor>
                         <label>$VAR[Label_Header_Center]</label>
-                        <visible>!Control.HasFocus(300)</visible>
                         <include>Animation_FadeInOut</include>
                     </control>
 
