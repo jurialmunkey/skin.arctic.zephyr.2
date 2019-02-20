@@ -1,5 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
+
+    <include name="Object_PVR_Icon">
+        <param name="bgcolor" default="main_bg" />
+        <param name="fgcolor" default="main_fg" />
+        <definition>
+            <control type="image">
+                <top>4</top>
+                <right>4</right>
+                <width>113</width>
+                <height>113</height>
+                <bordersize>20</bordersize>
+                <texture colordiffuse="$PARAM[fgcolor]_100">$INFO[ListItem.Icon]</texture>
+                <aspectratio aligny="center" align="center">keep</aspectratio>
+            </control>
+            <control type="image">
+                <top>4</top>
+                <right>4</right>
+                <width>113</width>
+                <height>113</height>
+                <bordersize>20</bordersize>
+                <texture colordiffuse="$PARAM[fgcolor]_90">common/circle.png</texture>
+                <aspectratio aligny="center" align="center">keep</aspectratio>
+                <visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,special://xbmc/addons/pvr.demo/)</visible>
+            </control>
+            <control type="label">
+                <top>4</top>
+                <right>4</right>
+                <width>113</width>
+                <height>113</height>
+                <align>center</align>
+                <aligny>center</aligny>
+                <textoffsetx>20</textoffsetx>
+                <font>font_small_bold</font>
+                <textcolor>$PARAM[bgcolor]_90</textcolor>
+                <label>$INFO[ListItem.ChannelNumberLabel]</label>
+                <visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,special://xbmc/addons/pvr.demo/)</visible>
+            </control>
+        </definition>
+    </include>
+
     <include name="Object_AZ_Version">
         <control type="label">
             <left>view_pad</left>
@@ -1174,120 +1214,68 @@
         <value>Highlight2</value>
     </variable>
     <include name="Object_PVR_Info">
-        <param name="artwork" default="Window(Home).Property(SkinHelper.ListItem.Art.Fanart)" />
-        <param name="fallback" default="Window(Home).Property(SkinHelper.ListItem.Art.Fanart)" />
-        <definition>
-            <control type="group">
-                <include>Animation_Right</include>
-                <control type="image" id="9123">
-                    <left>-2160</left>
-                    <width>1</width>
-                    <height>1</height>
-                    <texture>$INFO[$PARAM[artwork]]</texture>
-                </control>
-                <control type="group">
-                    <height>430</height>
-                    <top>view_top</top>
-                    <right>view_pad</right>
-                    <width>765</width>
-                    <control type="group">
-                        <left>-10</left>
-                        <right>-10</right>
-                        <top>-10</top>
-                        <bottom>-10</bottom>
-                        <include>Defs_PosterBack</include>
-                        <visible>!String.IsEmpty($PARAM[fallback]) + [String.IsEmpty(Control.GetLabel(9123)) | String.StartsWith(Control.GetLabel(9123),Default)]</visible>
-                        <control type="image">
-                            <bordersize>10</bordersize>
-                            <fadetime>100</fadetime>
-                            <aspectratio scalediffuse="false">scale</aspectratio>
-                            <texture diffuse="diffuse/mediainfo.png">$INFO[$PARAM[fallback]]</texture>
-                        </control>
-                        <control type="image">
-                            <bordersize>10</bordersize>
-                            <texture colordiffuse="PixelLines" border="20">common/outline.png</texture>
-                        </control>
-                    </control>
-                    <control type="group">
-                        <left>-10</left>
-                        <right>-10</right>
-                        <top>-10</top>
-                        <bottom>-10</bottom>
-                        <include>Defs_PosterBack</include>
-                        <visible>!String.IsEmpty(Control.GetLabel(9123)) + !String.StartsWith(Control.GetLabel(9123),Default)</visible>
-                        <control type="image">
-                            <bordersize>10</bordersize>
-                            <fadetime>100</fadetime>
-                            <aspectratio scalediffuse="false">scale</aspectratio>
-                            <texture diffuse="diffuse/mediainfo.png">$INFO[$PARAM[artwork]]</texture>
-                        </control>
-                        <control type="image">
-                            <bordersize>10</bordersize>
-                            <texture colordiffuse="PixelLines" border="20">common/outline.png</texture>
-                        </control>
-                    </control>
-                </control>
-                <control type="grouplist">
-                    <visible>[[!String.IsEmpty($PARAM[fallback]) + [String.IsEmpty(Control.GetLabel(9123)) | String.StartsWith(Control.GetLabel(9123),Default)]] | [!String.IsEmpty(Control.GetLabel(9123)) + !String.StartsWith(Control.GetLabel(9123),Default)]]</visible>
-                    <height>430</height>
-                    <top>view_top</top>
-                    <left>view_pad</left>
-                    <right>865</right>
-                    <orientation>vertical</orientation>
-                    <usecontrolcoords>true</usecontrolcoords>
-                    <itemgap>0</itemgap>
-                    <include>Object_PVR_Info_Content</include>
-                </control>
-                <control type="grouplist">
-                    <visible>![[!String.IsEmpty($PARAM[fallback]) + [String.IsEmpty(Control.GetLabel(9123)) | String.StartsWith(Control.GetLabel(9123),Default)]] | [!String.IsEmpty(Control.GetLabel(9123)) + !String.StartsWith(Control.GetLabel(9123),Default)]]</visible>
-                    <height>430</height>
-                    <top>view_top</top>
-                    <left>view_pad</left>
-                    <right>view_pad</right>
-                    <orientation>vertical</orientation>
-                    <usecontrolcoords>true</usecontrolcoords>
-                    <itemgap>0</itemgap>
-                    <include>Object_PVR_Info_Content</include>
-                </control>
-            </control>
-        </definition>
+        <control type="grouplist">
+            <visible>!Control.HasFocus(9000)</visible>
+            <height>282</height>
+            <top>-15</top>
+            <right>0</right>
+            <left>0</left>
+            <orientation>vertical</orientation>
+            <usecontrolcoords>true</usecontrolcoords>
+            <itemgap>0</itemgap>
+            <include>Object_PVR_Info_Content</include>
+        </control>
+        <control type="grouplist">
+            <visible>Control.HasFocus(9000)</visible>
+            <height>282</height>
+            <top>-15</top>
+            <right>0</right>
+            <left>0</left>
+            <orientation>vertical</orientation>
+            <usecontrolcoords>true</usecontrolcoords>
+            <itemgap>0</itemgap>
+            <include content="Object_PVR_Info_Content">
+                <param name="listitem" value="ListItem.Next" />
+            </include>
+        </control>
     </include>
 
     <include name="Object_PVR_Info_Content">
-        <control type="group">
-            <height>80</height>
-            <control type="label">
-                <label>$INFO[ListItem.EpgEventTitle]$INFO[ListItem.EpisodeName, - ,]</label>
-                <height>80</height>
-                <aligny>top</aligny>
-                <textcolor>main_fg_100</textcolor>
-                <font>font_title_large</font>
-                <visible>!String.IsEmpty(ListItem.EpgEventTitle)</visible>
+        <param name="listitem" default="ListItem." />
+        <definition>
+            <control type="group">
+                <height>60</height>
+                <control type="label">
+                    <label>$INFO[$PARAM[listitem]EpgEventTitle]$INFO[$PARAM[listitem]EpisodeName, - ,]</label>
+                    <aligny>top</aligny>
+                    <textcolor>main_fg_100</textcolor>
+                    <font>font_title</font>
+                    <visible>!String.IsEmpty($PARAM[listitem]EpgEventTitle)</visible>
+                </control>
+                <control type="label">
+                    <label>$INFO[$PARAM[listitem]Title]</label>
+                    <aligny>top</aligny>
+                    <textcolor>main_fg_100</textcolor>
+                    <font>font_title</font>
+                    <visible>String.IsEmpty($PARAM[listitem]EpgEventTitle)</visible>
+                </control>
             </control>
             <control type="label">
-                <label>$INFO[ListItem.Label]</label>
-                <height>80</height>
+                <label>$INFO[ListItem.ChannelName,[COLOR=main_fg_100],[/COLOR]]$INFO[$PARAM[listitem]Genre,  |  [COLOR=main_fg_100],[/COLOR]]$INFO[$PARAM[listitem]StartTime,  |  [COLOR=main_fg_100],[/COLOR]]$INFO[$PARAM[listitem]EndTime,[COLOR=main_fg_100] - ,[/COLOR]]</label>
+                <height>60</height>
                 <aligny>top</aligny>
-                <textcolor>main_fg_100</textcolor>
-                <font>font_title_large</font>
-                <visible>String.IsEmpty(ListItem.EpgEventTitle)</visible>
+                <textcolor>$VAR[ColorHighlight]</textcolor>
+                <font>font_small</font>
+                <visible>!String.IsEmpty($PARAM[listitem]Title) | !String.IsEmpty($PARAM[listitem]ChannelNumber)</visible>
             </control>
-        </control>
-        <control type="label">
-            <label>$INFO[ListItem.ChannelNumber,[COLOR=main_fg_100],. [/COLOR]]$INFO[ListItem.ChannelName,[COLOR=main_fg_100],[/COLOR]]$INFO[ListItem.StartTime,  |  [COLOR=main_fg_100]$LOCALIZE[19126] ,[/COLOR]]$INFO[ListItem.EndTime,  |  [COLOR=main_fg_100]$LOCALIZE[19127] ,[/COLOR]]</label>
-            <height>75</height>
-            <aligny>top</aligny>
-            <textcolor>$VAR[ColorHighlight]</textcolor>
-            <font>font_small</font>
-            <visible>!String.IsEmpty(ListItem.Title) | !String.IsEmpty(ListItem.ChannelNumber)</visible>
-        </control>
-        <control type="textbox">
-            <label fallback="19055">$VAR[Label_Plot]</label>
-            <height>260</height>
-            <aligny>top</aligny>
-            <textcolor>main_fg_70</textcolor>
-            <font>font_plotbox</font>
-        </control>
+            <control type="textbox">
+                <label fallback="19055">$INFO[$PARAM[listitem]Plot]</label>
+                <height>260</height>
+                <aligny>top</aligny>
+                <textcolor>main_fg_70</textcolor>
+                <font>font_plotbox</font>
+            </control>
+        </definition>
     </include>
 
     <include name="Object_UpDownInfoArrows">

@@ -7,18 +7,43 @@
     <views>50</views>
     <controls>
         <include>Global_Background</include>
-        <include>View_Library</include>
+        <include>Topbar</include>
 
         <control type="label" id="29"><visible>false</visible></control>
 
         <control type="group">
+            <visible>Control.IsVisible(50)</visible>
+            <include>View_Group</include>
             <include>Object_PVR_Info</include>
+            <control type="group">
+                <right>-4</right>
+                <include content="View_50_List_Control">
+                    <param name="top" value="312" />
+                    <param name="height" value="468" />
+                    <param name="left" value="0" />
+                    <param name="right" value="0" />
+                    <param name="id" value="50" />
+                    <param name="visible" value="true" />
+                    <param name="itemlayout" value="View_50_PVR_Itemlayout" />
+                    <param name="itemheight" value="view_pvr_height" />
+                    <param name="selectbox" value="false" />
+                    <param name="controllayout" value="View_PVR_Channels" />
+                    <param name="controltype" value="list" />
+                </include>
+            </control>
         </control>
 
-        <include>Topbar</include>
+        <control type="button" id="9000">
+            <onleft>50</onleft>
+            <onup>Control.Move(50,-1)</onup>
+            <ondown>Control.Move(50,1)</ondown>
+            <onclick>SetFocus(50)</onclick>
+            <onclick>Action(Select)</onclick>
+            <onclick>SetFocus(9000)</onclick>
+            <include>Defs_Hidden_Button</include>
+        </control>
 
-        <include>Defs_Options_StandardButtons</include>
-        <control type="button" id="28">
+        <control type="label" id="30">
             <description>Groups</description>
             <include>Defs_Hidden_Button</include>
         </control>
