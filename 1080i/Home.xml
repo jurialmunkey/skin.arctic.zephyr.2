@@ -110,9 +110,11 @@
         <control type="group">
             <top>900</top>
             <height>1080</height>
-            <animation effect="slide" start="0" end="0,-900" time="350" tween="quadratic" easing="out" condition="[Control.HasFocus(5610) | Control.HasFocus(302)]">Conditional</animation>
-            <animation effect="slide" start="0" end="0,-260" time="250" tween="quadratic" easing="out" condition="Control.HasFocus(5600)">Conditional</animation>
-            <animation effect="slide" start="0" end="0,-640" time="300" tween="quadratic" easing="out" condition="Control.HasFocus(5600) + Window.IsVisible(DialogVideoInfo.xml)">Conditional</animation>
+            <animation effect="slide" start="0" end="0,-900" time="350" tween="quadratic" easing="out" condition="[Control.HasFocus(5610) | Control.HasFocus(302)] + !String.IsEmpty(Container(301).ListItem.Property(widgetPath))">Conditional</animation>
+            <animation effect="slide" start="0" end="0,-285" time="350" tween="quadratic" easing="out" condition="[Control.HasFocus(5610) | Control.HasFocus(302)] + String.IsEmpty(Container(301).ListItem.Property(widgetPath))">Conditional</animation>
+
+            <animation effect="slide" start="0" end="0,-275" time="250" tween="quadratic" easing="out" condition="Control.HasFocus(5600)">Conditional</animation>
+            <animation effect="slide" start="0" end="0,-625" time="300" tween="quadratic" easing="out" condition="Control.HasFocus(5600) + Window.IsVisible(DialogVideoInfo.xml)">Conditional</animation>
             <animation effect="slide" start="0" end="0,250" time="150" condition="![Control.HasFocus(5610) | Control.HasFocus(302)]">WindowClose</animation>
             <animation effect="slide" end="0" start="0,250" time="150" condition="![Control.HasFocus(5610) | Control.HasFocus(302)]">WindowOpen</animation>
             <control type="image">
@@ -191,7 +193,9 @@
                         <onback>301</onback>
                         <onup>301</onup>
                         <ondown>5610</ondown>
-                        <include>View_TopItems</include>
+                        <include content="View_TopItems">
+                            <param name="id" value="302" />
+                        </include>
                         <content><include>skinshortcuts-submenu</include></content>
                     </control>
 
@@ -201,36 +205,10 @@
                         <align>center</align>
                         <font>font_byline</font>
                         <textcolor>main_fg_70</textcolor>
-                        <label>Recently Added Movies</label>
+                        <label>$INFO[Container(301).ListItem.Property(widgetName)]</label>
                     </control>
 
-                    <control type="panel" id="5610">
-                        <bottom>-30</bottom>
-                        <height>412.5</height>
-                        <right>-15</right>
-                        <left>-15</left>
-                        <onfocus>SetProperty(SkinHelper.WidgetContainer,5610,Home)</onfocus>
-                        <onup>302</onup>
-                        <ondown>noop</ondown>
-                        <onback>301</onback>
-                        <preloaditems>2</preloaditems>
-                        <orientation>horizontal</orientation>
-                        <itemlayout width="244.28" height="412.5">
-                            <include content="View_51_Wall_Itemlayout">
-                                <param name="selectbox" value="false" />
-                                <param name="icon" value="$VAR[Image_Poster]" />
-                                <param name="id" value="5610" />
-                            </include>
-                        </itemlayout>
-                        <focusedlayout width="244.28" height="412.5">
-                            <include content="View_51_Wall_Itemlayout">
-                                <param name="selectbox" value="true" />
-                                <param name="icon" value="$VAR[Image_Poster]" />
-                                <param name="id" value="5610" />
-                            </include>
-                        </focusedlayout>
-                        <content target="videos">videodb://recentlyaddedmovies/</content>
-                    </control>
+                    <include>skinshortcuts-template-spotlight</include>
 
                 </control>
             </control>

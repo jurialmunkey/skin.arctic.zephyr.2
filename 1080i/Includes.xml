@@ -8,6 +8,7 @@
     <include file="Includes_View_51_Wall.xml" />
     <include file="Includes_View_52_Showcase.xml" />
     <include file="Includes_View_53_Poster.xml" />
+    <include file="Includes_Info.xml" />
 
     <include file="Includes_Animations.xml" />
     <include file="Includes_Defs.xml" />
@@ -42,6 +43,7 @@
         <value>Highlight</value>
     </variable>
     <variable name="ColorHighlight2">
+        <!-- <value>Selected</value> -->
         <value condition="[Skin.HasSetting(CycleColors) | Skin.HasSetting(MatchColors)] + !String.IsEqual(Window(home).Property(SEVEN_daemon_set),None) + !String.IsEmpty(Window(home).Property(ImageCColorSEVEN)) + !String.IsEqual(Window(home).Property(ImageCColorSEVEN),ffffffff) + !String.IsEqual(Window(home).Property(ImageCColorSEVEN),ff000000)">$INFO[Window(home).Property(ImageCColorSEVEN)]</value>
         <value condition="!String.IsEmpty(Skin.String(gradientcolor.name))">$INFO[Skin.String(gradientcolor.name)]</value>
         <value>GradientHighlight</value>

@@ -12,16 +12,7 @@
             <texture border="2">common/black-back.png</texture>
         </control>
         <control type="group">
-            <include content="Dialog_Standard_Group">
-                <param name="width" value="1820" />
-                <param name="height" value="980" />
-                <param name="animation" value="false" />
-            </include>
-
-            <control type="label">
-                <label>$INFO[Container(300).ListItem.Label]</label>
-                <include>Dialog_Standard_Header</include>
-            </control>
+            <include>Dialog_Settings_Group</include>
     
             <include content="Defs_Settings_Changer">
                 <onright>4</onright>
@@ -56,9 +47,6 @@
                     <right>0</right>
                     <height>780</height>
                     <onleft>4</onleft>
-                    <include>Defs_Settings_OnRight</include>
-                    <onright>Down</onright>
-                    <onright>AlarmClock(set,SetFocus(5),00:00,silent)</onright>
                     <itemlayout height="80" width="1430">
                         <control type="label">
                             <right>view_pad</right>

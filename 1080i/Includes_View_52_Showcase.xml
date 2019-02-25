@@ -25,6 +25,16 @@
                     <textcolor>main_fg_70</textcolor>
                     <label>$INFO[Container($PARAM[id]).ListItem.Genre]</label>
                     <height>60</height>
+                    <visible>!Container($PARAM[id]).ListItem.IsCollection</visible>
+                </control>
+                <control type="label">
+                    <align>center</align>
+                    <aligny>top</aligny>
+                    <font>font_tiny</font>
+                    <textcolor>$VAR[ColorHighlight]</textcolor>
+                    <label>$INFO[Window(Home).Property(SkinHelper.ListItem.Year),[COLOR=main_fg_100],[/COLOR]  |  ]$VAR[Label_Duration,[COLOR=main_fg_100],[/COLOR]  |  ]$VAR[Label_Sets_Count,[COLOR=main_fg_100],[/COLOR]]</label>
+                    <height>60</height>
+                    <visible>Container($PARAM[id]).ListItem.IsCollection</visible>
                 </control>
             </control>
         </definition>
@@ -57,6 +67,54 @@
         </definition>
     </include>
 
+    <include name="View_522_Showcase_Seasons_Info">
+        <control type="group">
+            <right>-30</right>
+            <top>0</top>
+            <width>732.84</width>
+            <visible>$PARAM[visible]</visible>
+            <include content="View_50_Poster">
+                <param name="height" value="425.35" />
+                <param name="width" value="732.84" />
+                <param name="icon" value="$PARAM[icon]" />
+                <param name="diffuse" value="diffuse/640x360.png" />
+            </include>
+            <control type="grouplist">
+                <top>440</top>
+                <left>0</left>
+                <right>30</right>
+                <orientation>vertical</orientation>
+                <usecontrolcoords>true</usecontrolcoords>
+                <control type="label">
+                    <font>font_title_small</font>
+                    <textcolor>main_fg_100</textcolor>
+                    <align>left</align>
+                    <aligny>top</aligny>
+                    <height>60</height>
+                    <label>$PARAM[title]</label>
+                </control>
+                <control type="textbox">
+                    <top>10</top>
+                    <font>font_plotbox</font>
+                    <textcolor>main_fg_70</textcolor>
+                    <align>left</align>
+                    <aligny>top</aligny>
+                    <height>200</height>
+                    <label>$PARAM[plot]</label>
+                </control>
+                <control type="label">
+                    <top>20</top>
+                    <font>font_statusbar</font>
+                    <textcolor>main_fg_70</textcolor>
+                    <align>left</align>
+                    <aligny>top</aligny>
+                    <height>50</height>
+                    <label>$PARAM[infoline]</label>
+                </control>
+            </control>
+        </control>
+    </include>
+
     <include name="View_52_Showcase_Layout_Standard">
         <top>185</top>
         <right>-15</right>
@@ -85,62 +143,140 @@
     </include>
     
     <include name="View_52_Showcase">
-        <include content="View_51_Wall_Control">
-            <param name="id" value="52" />
-            <param name="height" value="412.5" />
-            <param name="controlorientation" value="View_Horizontal" />
-            <param name="labelinclude" value="" />
-            <param name="controltype" value="fixedlist" />
-            <param name="controllayout" value="View_52_Showcase_Layout" />
-            <param name="containervisible" value="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons)" />
+        <control type="group">
+            <include>View_Group</include>
+            <visible>Control.IsVisible(52)</visible>
+            <include content="View_51_Wall_Container">
+                <param name="id" value="52" />
+                <param name="height" value="412.5" />
+                <param name="orientation" value="horizontal" />
+                <param name="labelinclude" value="" />
+                <param name="controltype" value="fixedlist" />
+                <param name="controllayout" value="View_52_Showcase_Layout" />
+                <param name="visible" value="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons)" />
+                <param name="viewtype" value="$LOCALIZE[31161]" />
+                <param name="forced" value="true" />
+                <include>View_Horizontal_Movement</include>
+            </include>
             <include content="View_52_Showcase_Header">
                 <param name="id" value="52" />
             </include>
             <include content="View_52_Showcase_Plot">
                 <param name="id" value="52" />
             </include>
-        </include>
+        </control>
     </include>
 
     <include name="View_520_Showcase_Square">
-        <include content="View_51_Wall_Control">
-            <param name="id" value="520" />
-            <param name="itemwidth" value="342" />
-            <param name="height" value="412.5" />
-            <param name="labelinclude" value="" />
-            <param name="controlorientation" value="View_Horizontal" />
-            <param name="controltype" value="fixedlist" />
-            <param name="controllayout" value="View_520_Showcase_Layout" />
-            <param name="containervisible" value="Container.Content(artists) | Container.Content(albums) | Container.Content(addons)" />
+        <control type="group">
+            <include>View_Group</include>
+            <visible>Control.IsVisible(520)</visible>
+            <include content="View_51_Wall_Container">
+                <param name="id" value="520" />
+                <param name="itemwidth" value="342" />
+                <param name="height" value="412.5" />
+                <param name="labelinclude" value="" />
+                <param name="orientation" value="horizontal" />
+                <param name="controltype" value="fixedlist" />
+                <param name="controllayout" value="View_520_Showcase_Layout" />
+                <param name="visible" value="Container.Content(artists) | Container.Content(albums) | Container.Content(addons)" />
+                <param name="viewtype" value="$LOCALIZE[31161]" />
+                <param name="forced" value="true" />
+                <include>View_Horizontal_Movement</include>
+            </include>
             <include content="View_52_Showcase_Header">
                 <param name="id" value="520" />
             </include>
             <include content="View_52_Showcase_Plot">
                 <param name="id" value="520" />
             </include>
-        </include>
+        </control>
     </include>
 
     <include name="View_521_Showcase_Landscape">
-        <include content="View_51_Wall_Control">
-            <param name="id" value="521" />
-            <param name="height" value="423.75" />
-            <param name="labelinclude" value="" />
-            <param name="controlorientation" value="View_Horizontal" />
-            <param name="controltype" value="fixedlist" />
-            <param name="controllayout" value="View_521_Showcase_Layout" />
-            <param name="itemwidth" value="570" />
-            <param name="itemheight" value="423.75" />
-            <param name="icon" value="$VAR[Image_Fanart]" />
-            <param name="iconheight" value="333.75" />
-            <param name="containervisible" value="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(videos)" />
+        <control type="group">
+            <include>View_Group</include>
+            <visible>Control.IsVisible(521)</visible>
+            <include content="View_51_Wall_Container">
+                <param name="id" value="521" />
+                <param name="height" value="423.75" />
+                <param name="labelinclude" value="" />
+                <param name="orientation" value="horizontal" />
+                <param name="controltype" value="fixedlist" />
+                <param name="controllayout" value="View_521_Showcase_Layout" />
+                <param name="diffuse" value="diffuse/540x304.png" />
+                <param name="itemwidth" value="570" />
+                <param name="itemheight" value="423.75" />
+                <param name="icon" value="$VAR[Image_Fanart]" />
+                <param name="clearlogo" value="String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow)" />
+                <param name="iconheight" value="333.75" />
+                <param name="visible" value="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(videos)" />
+                <param name="viewtype" value="$LOCALIZE[31417]" />
+                <param name="forced" value="true" />
+                <include>View_Horizontal_Movement</include>
+            </include>
             <include content="View_52_Showcase_Header">
                 <param name="id" value="521" />
             </include>
             <include content="View_52_Showcase_Plot">
                 <param name="id" value="521" />
             </include>
-        </include>
+        </control>
+    </include>
+
+    <include name="View_522_Showcase_Seasons">
+        <control type="group">
+            <include>View_Group</include>
+            <visible>Control.IsVisible(522)</visible>
+            <control type="group">
+                <right>732.84</right>
+                <include content="View_51_Wall_Container">
+                    <param name="id" value="522" />
+                    <param name="height" value="412.5" />
+                    <param name="viewtype" value="Seasons" />
+                    <param name="forced" value="true" />
+                    <param name="visible" value="Container.Content(seasons)" />
+                    <param name="orientation" value="horizontal" />
+                    <onup>300</onup>
+                    <ondown>5229</ondown>
+                    <onright>noop</onright>
+                    <onleft>noop</onleft>
+                </include>
+            </control>
+
+            <include content="View_522_Showcase_Seasons_Info">
+                <param name="visible" value="!Control.HasFocus(5229)" />
+                <param name="icon" value="$INFO[Container(522).ListItem.Art(fanart)]" />
+                <param name="title" value="$INFO[Container(522).ListItem.TvShowTitle]" />
+                <param name="plot" value="$INFO[Container(522).ListItem.Plot]" />
+                <param name="infoline" value="$INFO[ListItem.Genre]$INFO[ListItem.Studio,  |  ,]" />
+            </include>
+
+            <include content="View_522_Showcase_Seasons_Info">
+                <param name="visible" value="Control.HasFocus(5229)" />
+                <param name="icon" value="$INFO[Container(5229).ListItem.Art(thumb)]" />
+                <param name="title" value="$INFO[Container(5229).ListItem.Title]" />
+                <param name="plot" value="$INFO[Container(5229).ListItem.Plot]" />
+                <param name="infoline" value="$INFO[Container(5229).ListItem.Season,Season ,]$INFO[Container(5229).ListItem.Episode,  |  Episode ,]$INFO[Container(5229).ListItem.Duration(mins),  |  , $LOCALIZE[31020]]$INFO[Container(5229).ListItem.Premiered,  |  ,]$INFO[Container(5229).ListItem.Studio,  |  ,]" />
+            </include>
+
+            <include content="View_50_List_Control">
+                <param name="top" value="390" />
+                <param name="height" value="390" />
+                <param name="right" value="732.84" />
+                <param name="id" value="5229" />
+                <param name="forced" value="false" />
+                <param name="visible" value="Control.IsVisible(522)" />
+                <param name="controllayout" value="" />
+                <param name="itemlayout" value="View_50_Itemlayout_Episodes" />
+                <onleft>522</onleft>
+                <onright>522</onright>
+                <onup>522</onup>
+                <ondown>noop</ondown>
+                <onback>522</onback>
+                <content target="videos" sortby="episode" sortorder="ascending">$INFO[Container(522).ListItem.FolderPath]</content>
+            </include>
+        </control>
     </include>
 
 </includes>

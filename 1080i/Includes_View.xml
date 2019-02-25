@@ -54,6 +54,15 @@
         <pagecontrol>60</pagecontrol>
     </include>
 
+    <include name="View_Vertical_Movement">
+        <onleft>SetFocus(300)</onleft>
+        <onright>60</onright>
+    </include>
+    <include name="View_Horizontal_Movement">
+        <onup>SetFocus(300)</onup>
+        <ondown>60</ondown>
+    </include>
+
     <include name="View_PVR_Channels">    
         <onleft>SetFocus(300)</onleft>
         <onright>9000</onright>
@@ -81,7 +90,8 @@
         <orientation>vertical</orientation>
     </include>
     <include name="View_Horizontal_Back">
-        <onback condition="!Window.IsVisible(script-script.extendedinfo-DialogInfo.xml) + !Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml)">8000</onback>
+        <onback>SetFocus(5050)</onback>
+        <onback>8000</onback>
         <orientation>horizontal</orientation>
     </include>
 
@@ -454,35 +464,104 @@
     </include>
 
     <include name="View_TopItems_Itemlayout">
-        <control type="group">
-            <top>0</top>
-            <bottom>$PARAM[textbox_height]</bottom>
-            <control type="image">
-                <bordersize>15</bordersize>
-                <aspectratio>scale</aspectratio>
-                <bordertexture border="30" colordiffuse="55ffffff">common/shadow-15.png</bordertexture>
-                <texture colordiffuse="PosterBack">common/geometric.png</texture>
+        <param name="icon" default="$INFO[ListItem.Icon]" />
+        <param name="bordersize" default="0" />
+        <definition>
+            <control type="group">
+                <top>0</top>
+                <bottom>$PARAM[textbox_height]</bottom>
+                <include content="Object_Geometric">
+                    <param name="diffuse" value="$PARAM[diffuse]" />
+                </include>
+                <control type="image">
+                    <centertop>50%</centertop>
+                    <centerleft>50%</centerleft>
+                    <width>96</width>
+                    <height>96</height>
+                    <aspectratio>keep</aspectratio>
+                    <bordersize>$PARAM[bordersize]</bordersize>
+                    <texture background="true" fallback="$PARAM[fallback]">$PARAM[icon]</texture>
+                </control>
+                <nested />
             </control>
-            <control type="image">
-                <centertop>50%</centertop>
-                <centerleft>50%</centerleft>
-                <width>96</width>
-                <height>96</height>
-                <texture background="true">$INFO[ListItem.Icon]</texture>
+            <control type="textbox">
+                <bottom>0</bottom>
+                <left>15</left>
+                <right>15</right>
+                <font>font_tiny</font>
+                <textcolor>main_fg_100</textcolor>
+                <height>$PARAM[textbox_height]</height>
+                <aligny>top</aligny>
+                <align>center</align>
+                <label>$INFO[ListItem.Label]</label>
             </control>
-            <nested />
-        </control>
-        <control type="textbox">
-            <bottom>0</bottom>
-            <left>15</left>
-            <right>15</right>
-            <font>font_tiny</font>
-            <textcolor>main_fg_100</textcolor>
-            <height>$PARAM[textbox_height]</height>
-            <aligny>top</aligny>
-            <align>center</align>
-            <label>$INFO[ListItem.Label]</label>
-        </control>
+        </definition>
+    </include>
+
+    <include name="View_TopItems_Decades_Itemlayout">
+        <param name="label2" default="$INFO[ListItem.Label]" />
+        <param name="country" default="false" />
+        <param name="studio" default="false" />
+        <param name="clearlogo" default="false" />
+        <param name="overlaytext" default="true" />
+        <definition>
+            <control type="group">
+                <top>0</top>
+                <bottom>$PARAM[textbox_height]</bottom>
+                <include content="Object_Geometric">
+                    <param name="diffuse" value="$PARAM[diffuse]" />
+                </include>
+                <control type="image">
+                    <bordersize>70</bordersize>
+                    <aspectratio>keep</aspectratio>
+                    <texture background="true" fallback="DefaultGenres.png">$VAR[Image_GenreIcons]</texture>
+                    <visible>String.IsEqual(ListItem.DBType,genre)</visible>
+                </control>
+                <control type="image">
+                    <bordersize>15</bordersize>
+                    <aspectratio>keep</aspectratio>
+                    <texture background="true" fallback="DefaultCountry.png" colordiffuse="panel_fg_30">$INFO[ListItem.Label,resource://resource.images.moviecountryicons.maps/,.png]</texture>
+                    <visible>String.IsEqual(ListItem.DBType,country)</visible>
+                </control>
+                <control type="image">
+                    <bordersize>30</bordersize>
+                    <aspectratio>keep</aspectratio>
+                    <texture background="true" fallback="DefaultStudios.png" colordiffuse="panel_fg_100">$INFO[ListItem.Label,resource://resource.images.studios.white/,.png]</texture>
+                    <visible>String.IsEqual(ListItem.DBType,studio)</visible>
+                </control>
+                <control type="textbox">
+                    <left>30</left>
+                    <right>30</right>
+                    <top>20</top>
+                    <bottom>20</bottom>
+                    <align>center</align>
+                    <aligny>center</aligny>
+                    <font>font_small_bold</font>
+                    <textcolor>panel_fg_100</textcolor>
+                    <label>$INFO[ListItem.Label]</label>
+                    <visible>String.IsEqual(ListItem.DBType,country) | String.IsEqual(ListItem.DBType,director) | String.IsEqual(ListItem.DBType,year) | String.IsEmpty(ListItem.Icon) | $PARAM[overlaytext]</visible>
+                </control>
+                <control type="image">
+                    <bordersize>45</bordersize>
+                    <aspectratio>keep</aspectratio>
+                    <texture background="true">$INFO[ListItem.Icon]</texture>
+                    <visible>![String.IsEqual(ListItem.DBType,country) | String.IsEqual(ListItem.DBType,director) | String.IsEqual(ListItem.DBType,year)] + !String.IsEmpty(ListItem.Icon) + !$PARAM[overlaytext]</visible>
+                </control>
+
+                <nested />
+            </control>
+            <control type="textbox">
+                <bottom>0</bottom>
+                <left>15</left>
+                <right>15</right>
+                <font>font_tiny</font>
+                <textcolor>main_fg_100</textcolor>
+                <height>$PARAM[textbox_height]</height>
+                <aligny>top</aligny>
+                <align>center</align>
+                <label>$PARAM[label2]</label>
+            </control>
+        </definition>
     </include>
 
     <include name="View_TopItems">
@@ -490,6 +569,8 @@
         <param name="item_height" default="294.28" />
         <param name="height" default="294.28" />
         <param name="textbox_height" default="100" />
+        <param name="itemlayout" default="View_TopItems_Itemlayout" />
+        <param name="diffuse" default="diffuse/640x360.png" /> <!-- FIX THIS -->
         <definition>
             <top>-15</top>
             <left>-15</left>
@@ -498,14 +579,37 @@
             <preloaditems>2</preloaditems>
             <orientation>horizontal</orientation>
             <itemlayout width="$PARAM[item_width]" height="$PARAM[item_height]">
-                <include content="View_TopItems_Itemlayout">
+                <include content="$PARAM[itemlayout]">
                     <param name="textbox_height" value="$PARAM[textbox_height]" />
+                    <param name="icon" value="$PARAM[icon]" />
+                    <param name="bordersize" value="$PARAM[bordersize]" />
+                    <param name="fallback" value="$PARAM[fallback]" />
+                    <param name="country" value="$PARAM[country]" />
+                    <param name="studio" value="$PARAM[studio]" />
+                    <param name="clearlogo" value="$PARAM[clearlogo]" />
+                    <param name="label2" value="$PARAM[label2]" />
+                    <param name="overlaytext" value="$PARAM[overlaytext]" />
+                    <param name="diffuse" value="$PARAM[diffuse]" />
                 </include>
             </itemlayout>
             <focusedlayout width="$PARAM[item_width]" height="$PARAM[item_height]">
-                <include content="View_TopItems_Itemlayout">
+                <include content="$PARAM[itemlayout]">
                     <param name="textbox_height" value="$PARAM[textbox_height]" />
-                    <include>View_Selectbox</include>
+                    <param name="icon" value="$PARAM[icon]" />
+                    <param name="bordersize" value="$PARAM[bordersize]" />
+                    <param name="fallback" value="$PARAM[fallback]" />
+                    <param name="country" value="$PARAM[country]" />
+                    <param name="studio" value="$PARAM[studio]" />
+                    <param name="clearlogo" value="$PARAM[clearlogo]" />
+                    <param name="label2" value="$PARAM[label2]" />
+                    <param name="overlaytext" value="$PARAM[overlaytext]" />
+                    <param name="diffuse" value="$PARAM[diffuse]" />
+                    <control type="group">
+                        <visible>Control.HasFocus($PARAM[id])</visible>
+                        <include content="View_Selectbox">
+                            <param name="overlay" value="false" />
+                        </include>
+                    </control>
                 </include>
             </focusedlayout>
         </definition>

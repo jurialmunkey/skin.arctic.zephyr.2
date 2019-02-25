@@ -19,8 +19,7 @@
                 <left>700</left>
                 <top>820</top>
                 <right>view_pad</right>
-                <label fallback="19055">$INFO[ListItem.PlotOutline]</label>
-                <label fallback="19055">$INFO[ListItem.Tagline]</label>
+                <label fallback="19055">$VAR[Label_Plot]</label>
                 <height>120</height>
                 <aligny>center</aligny>
                 <textcolor>main_fg_70</textcolor>
@@ -35,6 +34,10 @@
                 <include>View_Horizontal</include>
                 <scrolltime tween="quadratic">400</scrolltime>
                 <visible>Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons)</visible>
+                <viewtype label="$LOCALIZE[31262]">$LOCALIZE[31262]</viewtype>
+                <include content="View_Forced">
+                    <param name="string" value="$LOCALIZE[31262]" />
+                </include>
                 <itemlayout width="318">
                     <control type="group">
                         <top>view_top</top>
@@ -48,6 +51,7 @@
                             <param name="left" value="0" />
                             <param name="height" value="810" />
                             <param name="width" value="560" />
+                            <param name="diffuse" value="diffuse/560x810.png" />
                         </include>
                     </control>
                 </itemlayout>
@@ -63,6 +67,7 @@
                             <param name="left" value="0" />
                             <param name="height" value="810" />
                             <param name="width" value="560" />
+                            <param name="diffuse" value="diffuse/560x810.png" />
                         </include>
                     </control>
                 </focusedlayout>

@@ -2,12 +2,12 @@
 <window>
     <onload>SetProperty(SkinInitStarted,1,home)</onload>
     <onload>ClearProperty(SkinSplashStarted,home)</onload>
-    <onload condition="!Skin.HasSetting(SkinHelper.EnablePVRThumbs)">Skin.SetBool(SkinHelper.EnablePVRThumbs)</onload>
-    <onload condition="!Skin.HasSetting(SkinHelper.EnableMusicArt)">Skin.SetBool(SkinHelper.EnableMusicArt)</onload>
+    <onload condition="String.IsEmpty(Window(home).Property(SkinInitStarted)) + !String.IsEmpty(Skin.String(StartupPlaylist))">PlayMedia($ESCINFO[Skin.String(StartupPlaylist)])</onload>
+
     <onload condition="String.IsEmpty(Skin.String(colorbox_effect))">Skin.SetString(colorbox_effect,blur)</onload>
     <onload condition="String.IsEmpty(Skin.String(colorbox_quality))">Skin.SetString(colorbox_quality,8)</onload>
     <onload condition="String.IsEmpty(Skin.String(colorbox_blend))">Skin.SetString(colorbox_blend,100)</onload>
-    <onload condition="String.IsEmpty(Skin.String(colorbox_blursize))">Skin.SetString(colorbox_blursize,5)</onload>
+    <onload condition="String.IsEmpty(Skin.String(colorbox_blursize))">Skin.SetString(colorbox_blursize,25)</onload>
     <onload condition="String.IsEmpty(Skin.String(colorbox_bitsize))">Skin.SetString(colorbox_bitsize,1)</onload>
     <onload condition="String.IsEmpty(Skin.String(colorbox_pixelsize))">Skin.SetString(colorbox_pixelsize,12)</onload>
     <onload>Skin.SetString(colorbox_desat,0.3)</onload>
@@ -15,11 +15,11 @@
     <onload>Skin.SetString(colorbox_white,ffffff)</onload>
     <onload>Skin.SetString(colorbox_main,main:fhls*-;0.45;0.9)</onload>
     <onload>Skin.SetString(colorbox_comp,main:hls*0.75;0;0@fhls*-;0.45;0.9)</onload>
-    <onload condition="System.HasAddon(script.colorbox) + [Skin.HasSetting(EnableBlur) | Skin.HasSetting(MatchColors) | Skin.HasSetting(MatchOverlayColors)]">RunScript(script.colorbox,daemon=True)</onload>
+    <onload condition="System.HasAddon(script.colorbox) + Skin.HasSetting(EnableBlur)">RunScript(script.colorbox,daemon=True)</onload>
     <onload condition="Skin.HasSetting(EnableBlur)">SetProperty(FIVE_daemon_set,$INFO[Skin.String(colorbox_effect)],home)</onload>
-    <onload condition="Skin.HasSetting(MatchColors) | Skin.HasSetting(CycleColors) | Skin.HasSetting(MatchOverlayColors)">SetProperty(SEVEN_daemon_set,True,home)</onload>
-    <onload condition="System.HasAddon(script.colorbox)">AlarmClock(nms1,SetProperty(NINE_manual_set,"var=main,set=$INFO[Skin.String(colorbox_main)]|var=comp,set=$INFO[Skin.String(colorbox_comp)]|var=quality,set=$INFO[Skin.String(colorbox_quality)]|var=blursize,set=$INFO[Skin.String(colorbox_blursize)]|var=bitsize,set=$INFO[Skin.String(colorbox_bitsize)]|var=pixelsize,set=$INFO[Skin.String(colorbox_pixelsize)]|var=black,set=$INFO[Skin.String(colorbox_black)]|var=white,set=$INFO[Skin.String(colorbox_white)]|var=blend,set=$INFO[Skin.String(colorbox_blend)]|var=desat,set=$INFO[Skin.String(colorbox_desat)]",home),00:05,true)</onload> 
-    <onload condition="String.IsEmpty(Window(home).Property(SkinInitStarted)) + !String.IsEmpty(Skin.String(StartupPlaylist))">PlayMedia($ESCINFO[Skin.String(StartupPlaylist)])</onload>
+    <onload condition="System.HasAddon(script.colorbox)">AlarmClock(nms1,SetProperty(NINE_manual_set,"var=main,set=$INFO[Skin.String(colorbox_main)]|var=comp,set=$INFO[Skin.String(colorbox_comp)]|var=quality,set=$INFO[Skin.String(colorbox_quality)]|var=blursize,set=$INFO[Skin.String(colorbox_blursize)]|var=bitsize,set=$INFO[Skin.String(colorbox_bitsize)]|var=pixelsize,set=$INFO[Skin.String(colorbox_pixelsize)]|var=black,set=$INFO[Skin.String(colorbox_black)]|var=white,set=$INFO[Skin.String(colorbox_white)]|var=blend,set=$INFO[Skin.String(colorbox_blend)]|var=desat,set=$INFO[Skin.String(colorbox_desat)]",home),00:05,true)</onload>
+
+
     <onload condition="!Player.HasVideo + !String.IsEmpty(Skin.String(StartupPlaylist))">ReplaceWindow($INFO[System.StartupWindow])</onload>
     <onload condition="String.IsEmpty(Skin.String(StartupPlaylist))">ReplaceWindow($INFO[System.StartupWindow])</onload>
     <controls />

@@ -1,5 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
+    <include name="Items_PowerMenu"><content><include>skinshortcuts-group-powermenu</include></content></include>
+
+    <include name="Items_Info_Gallery">
+        <content>
+            <item>
+                <icon>$INFO[ListItem.Art(fanart)]</icon>
+                <visible>!String.IsEmpty(ListItem.Art(fanart))</visible>
+            </item>
+            <item>
+                <icon>$INFO[ListItem.Art(fanart1)]</icon>
+                <visible>!String.IsEmpty(ListItem.Art(fanart1))</visible>
+            </item>
+            <item>
+                <icon>$INFO[ListItem.Art(fanart2)]</icon>
+                <visible>!String.IsEmpty(ListItem.Art(fanart2))</visible>
+            </item>
+            <item>
+                <icon>$INFO[ListItem.Art(fanart3)]</icon>
+                <visible>!String.IsEmpty(ListItem.Art(fanart3))</visible>
+            </item>
+            <item>
+                <icon>$INFO[ListItem.Art(fanart4)]</icon>
+                <visible>!String.IsEmpty(ListItem.Art(fanart4))</visible>
+            </item>
+            <item>
+                <icon>$INFO[ListItem.Art(fanart5)]</icon>
+                <visible>!String.IsEmpty(ListItem.Art(fanart5))</visible>
+            </item>
+            <item>
+                <visible>!String.IsEmpty(ListItem.Art(discart))</visible>
+                <property name="discart">$INFO[ListItem.Art(discart)]</property>
+                <property name="clearlogo">$INFO[ListItem.Art(clearlogo)]</property>
+                <property name="tagline">$INFO[ListItem.Tagline]</property>
+            </item>
+        </content>
+    </include>
+
     <include name="Items_OSD_Settings">
         <content>
             <item>
@@ -202,14 +239,6 @@
                 <onclick>SendClick(8)</onclick>
                 <visible>Control.IsEnabled(8)</visible>
             </item>
-            <!-- CinemaVision -->
-            <item>
-                 <label>$LOCALIZE[31315]</label>
-                 <icon>special://skin/extras/icons/cinemavision.png</icon>
-                 <onclick>Dialog.Close(MovieInformation)</onclick>
-                 <onclick>RunScript(script.cinemavision,experience)</onclick>
-                 <visible>System.HasAddon(script.cinemavision) + [String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season) | String.IsEqual(ListItem.DBType,episode)]</visible>
-            </item> 
             <!-- Trailer -->
             <item>
                 <label>$INFO[Control.GetLabel(11)]</label>
@@ -221,6 +250,28 @@
                 <visible>Control.IsEnabled(11)</visible>
                 <visible>!String.IsEmpty(ListItem.Trailer)</visible>
             </item>
+            <!-- Play -->
+            <item>
+                <label>Cast</label>
+                <icon>special://skin/extras/icons/person.png</icon>
+            </item>
+            <item>
+                <label>Explore</label>
+                <icon>special://skin/extras/icons/passports.png</icon>
+            </item>
+            <item>
+                <label>Artwork</label>
+                <icon>special://skin/extras/icons/pictures.png</icon>
+            </item>
+            <!-- CinemaVision -->
+            <!-- <item>
+                 <label>$LOCALIZE[31315]</label>
+                 <icon>special://skin/extras/icons/cinemavision.png</icon>
+                 <onclick>Dialog.Close(MovieInformation)</onclick>
+                 <onclick>RunScript(script.cinemavision,experience)</onclick>
+                 <visible>System.HasAddon(script.cinemavision) + [String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season) | String.IsEqual(ListItem.DBType,episode)]</visible>
+            </item>  -->
+            
             <!-- Plot -->
             <item>
                 <label>Plot</label>

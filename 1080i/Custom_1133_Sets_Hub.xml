@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window type="window" id="1133">
+    <defaultcontrol always="true">5600</defaultcontrol>
+    <onload>SetProperty(Header_Center_Text,Collections)</onload>
+    <onload>SetProperty(Header_Left_Text,Movies)</onload>
+    <controls>
+        <include>Global_Background</include>
+        <include>Topbar</include>
+
+        <control type="group">
+            <include>View_Group</include>
+        
+            <control type="fixedlist" id="5600">
+                <focusposition>2</focusposition>
+                <movement>2</movement>
+                <ondown>5610</ondown>
+                <onclick>ActivateWindow(videos,$INFO[Container(5600).ListItem.DBID,videodb://movies/sets/,/],return)</onclick>
+                <include content="View_TopItems">
+                    <param name="id" value="5600" />
+                    <param name="icon" value="$INFO[ListItem.Art(clearlogo)]" />
+                    <param name="fallback" value="" />
+                    <param name="bordersize" value="-64" />
+                    <param name="item_width" value="342" />
+                    <param name="clearlogo" value="true" />
+                    <param name="itemlayout" value="View_TopItems_Decades_Itemlayout" />
+                    <param name="overlaytext" value="true" />
+                    <param name="label2" value="" />
+                </include>
+                <content sortorder="ascending" sortby="label">videodb://movies/sets/</content>
+            </control>
+
+            <control type="grouplist">
+                <bottom>422.5</bottom>
+                <height>140</height>
+                <left>60</left>
+                <right>60</right>
+                <itemgap>0</itemgap>
+                <align>center</align>
+                <orientation>vertical</orientation>
+                <control type="label">
+                    <height>60</height>
+                    <aligny>top</aligny>
+                    <align>center</align>
+                    <font>font_title_small</font>
+                    <textcolor>main_fg_100</textcolor>
+                    <label>$INFO[Container(5600).ListItem.Label]</label>
+                    <visible>Control.HasFocus(5600)</visible>
+                </control>
+                <control type="label">
+                    <height>60</height>
+                    <aligny>top</aligny>
+                    <align>center</align>
+                    <font>font_title_small</font>
+                    <textcolor>main_fg_100</textcolor>
+                    <label>$INFO[Container(5610).ListItem.Label]$INFO[Container(5610).ListItem.Year, (,)]</label>
+                    <visible>!Control.HasFocus(5600)</visible>
+                </control>
+                <control type="textbox">
+                    <height max="80">auto</height>
+                    <align>center</align>
+                    <font>font_plotbox</font>
+                    <textcolor>main_fg_70</textcolor>
+                    <label>$INFO[ListItem.Plot]</label>
+                </control>
+            </control>
+
+            <!-- <control type="label">
+                <bottom>402.5</bottom>
+                <height>40</height>
+                <align>center</align>
+                <font>font_byline</font>
+                <textcolor>main_fg_70</textcolor>
+                <label>$INFO[Window.Property(Header_Left_Text)] from $INFO[Container(5600).ListItem.Label]</label>
+            </control> -->
+
+            <include content="Object_Widget_Spotlight">
+                <param name="onup" value="5600" />
+                <param name="target" value="videos" />
+                <param name="content" value="$INFO[Container(5600).ListItem.DBID,videodb://movies/sets/,]" />
+                <param name="sortby" value="year" />
+                <param name="sortorder" value="ascending" />
+                <param name="controltype" value="fixedlist" />
+                <focusposition>3</focusposition>
+                <movement>3</movement>
+                <animation effect="slide" end="-122.14" condition="Integer.IsEqual(Container(5610).NumItems,6) | Integer.IsEqual(Container(5610).NumItems,4) | Integer.IsEqual(Container(5610).NumItems,2)">Conditional</animation>
+            </include>
+
+        </control>
+    </controls>
+</window>

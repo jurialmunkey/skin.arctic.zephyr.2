@@ -59,6 +59,17 @@
     <include name="Global_FadeTime_600"><fadetime>600</fadetime></include>
 
     <include name="Global_Background">
+        <control type="multiimage" id="7975">
+            <left>-2160</left>
+            <width>1</width>
+            <height>1</height>
+            <timeperimage>7000</timeperimage>
+            <randomize>true</randomize>
+            <fadetime>600</fadetime>
+            <imagepath background="true">$VAR[Global_Background_Image_Var]</imagepath>
+            <visible>System.HasAddon(script.colorbox)</visible>
+            <visible>Skin.HasSetting(EnableBlur)</visible>
+        </control>
         <include>Global_Videowindow</include>
         <include>Global_Visualisation</include>
         <control type="group">
@@ -74,7 +85,10 @@
                 <height>1080</height>
                 <aspectratio>scale</aspectratio>
                 <fadetime>600</fadetime>
-                <imagepath background="true" colordiffuse="FanartFade">$VAR[Global_Background_Image]</imagepath>
+                <animation effect="fade" end="15" condition="!Skin.HasSetting(EnableBlur)">Conditional</animation>
+                <animation effect="fade" end="50" condition="Skin.HasSetting(EnableBlur)">Conditional</animation>
+                <imagepath background="true">$VAR[Global_Background_Image]</imagepath>
+                <!-- <imagepath background="true" colordiffuse="FanartFade">$VAR[Global_Background_Image]</imagepath> -->
             </control>
         </control>
     </include>
@@ -110,7 +124,7 @@
 
     <variable name="Global_Background_Image">
         <value condition="Skin.HasSetting(NoFanart)">$VAR[Global_Background_Image_NoFanart]</value>
-        <value condition="!String.IsEmpty(Window(home).Property(ImageFilterFIVE)) + Skin.HasSetting(EnableBlur) + [!Skin.HasSetting(OnlyBlurInfo) | [Skin.HasSetting(OnlyBlurInfo) + [Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(DialogAddonInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml)]]] + !Control.HasFocus(9602)">$INFO[Window(home).Property(ImageFilterFIVE)]</value>
+        <value condition="Skin.HasSetting(EnableBlur)">$INFO[Window(home).Property(ImageFilterFIVE)]</value>
         <value>$VAR[Global_Background_Image_Var]</value>
     </variable>
 

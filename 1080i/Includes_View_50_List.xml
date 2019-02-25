@@ -7,11 +7,14 @@
             <include content="View_50_Poster">
                 <param name="height" value="810" />
                 <param name="width" value="560" />
+                <param name="diffuse" value="diffuse/560x810.png" />
             </include>
             <include content="View_50_List_Control">
                 <param name="left" value="560" />
-                <param name="right" value="0" />
+                <param name="right" value="-20" />
                 <param name="id" value="50" />
+                <param name="viewtype" value="$LOCALIZE[535]" />
+                <param name="forced" value="true" />
                 <param name="visible" value="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(actors)" />
             </include>
         </control>
@@ -26,62 +29,127 @@
                     <param name="height" value="654" />
                     <param name="width" value="654" />
                     <param name="aspectratio" value="keep" />
+                    <param name="diffuse" value="diffuse/654x654.png" />
                 </include>
                 <include>View_50_Info</include>
                 <include content="View_50_List_Control">
                     <param name="left" value="654" />
-                    <param name="right" value="0" />
+                    <param name="right" value="-20" />
                     <param name="id" value="500" />
+                    <param name="viewtype" value="$LOCALIZE[535]" />
+                    <param name="forced" value="true" />
                     <param name="visible" value="![Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(actors)]" />
                 </include>
             </control>
         </control>
     </include>
 
-    <include name="View_501_List_Landscape">
+    <include name="View_501_List_MediaInfo">
         <control type="group">
             <visible>Control.IsVisible(501)</visible>
             <include>View_Group</include>
-            <include content="View_50_Poster">
-                <param name="height" value="420" />
-                <param name="width" value="723" />
-                <param name="icon" value="$VAR[Image_Fanart]" />
-            </include>
-            <control type="grouplist">
-                <top>420</top>
-                <width>703</width>
-                <bottom>-15</bottom>
-                <orientation>vertical</orientation>
-                <usecontrolcoords>true</usecontrolcoords>
-                <itemgap>0</itemgap>
-                <control type="label">
-                    <label>$INFO[ListItem.Label]</label>
-                    <height>60</height>
-                    <aligny>top</aligny>
-                    <textcolor>main_fg_100</textcolor>
-                    <font>font_title</font>
-                </control>
-                <include>Object_Info_Line</include>
-                <include content="Object_Info_Ratings">
-                    <param name="top" value="-15" />
-                    <param name="imdbvotes" value="false" />
-                    <param name="top250" value="false" />
-                </include>
-                <control type="textbox">
-                    <top>15</top>
-                    <label fallback="19055">$VAR[Label_Plot]</label>
-                    <height>160</height>
-                    <aligny>top</aligny>
-                    <textcolor>main_fg_70</textcolor>
-                    <font>font_plotbox</font>
-                </control>
-            </control>
             <include content="View_50_List_Control">
-                <param name="left" value="733" />
-                <param name="right" value="0" />
+                <param name="left" value="-20" />
+                <param name="right" value="670" />
                 <param name="id" value="501" />
+                <param name="viewtype" value="$LOCALIZE[31298]" />
+                <param name="forced" value="true" />
                 <param name="visible" value="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(episodes)" />
             </include>
+            <control type="group">
+                <right>-30</right>
+                <width>670</width>
+                <include content="View_50_Poster">
+                    <param name="height" value="390" />
+                    <param name="width" value="670" />
+                    <param name="icon" value="$VAR[Image_Fanart]" />
+                    <param name="diffuse" value="diffuse/640x360.png" />
+                </include>
+                <include>View_501_List_Info</include>
+            </control>
+        </control>
+    </include>
+
+    <include name="View_502_List_MediaInfo_Extended">
+        <control type="group">
+            <visible>Control.IsVisible(502)</visible>
+            <include>View_Group</include>
+            <include content="View_50_List_Control">
+                <param name="left" value="-20" />
+                <param name="right" value="944.8" />
+                <param name="id" value="502" />
+                <param name="viewtype" value="$LOCALIZE[31298]" />
+                <param name="forced" value="true" />
+                <param name="duration" value="false" />
+                <param name="itemlayout" value="View_50_Itemlayout_Episodes" />
+                <param name="visible" value="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(episodes)" />
+            </include>
+            <control type="group">
+                <right>-30</right>
+                <width>944.8</width>
+                <control type="group">
+                    <!-- <left>670</left> -->
+                    <width>274.8</width>
+                    <include content="View_50_Poster">
+                        <param name="height" value="390" />
+                        <param name="width" value="274.8" />
+                        <param name="diffuse" value="diffuse/214x315.png" />
+                        <param name="icon" value="$VAR[Image_Poster]" />
+                    </include>
+                </control>
+                <control type="group">
+                    <left>274.8</left>
+                    <width>670</width>
+                    <include content="View_50_Poster">
+                        <param name="height" value="390" />
+                        <param name="width" value="670" />
+                        <param name="icon" value="$VAR[Image_Fanart]" />
+                        <param name="diffuse" value="diffuse/640x360.png" />
+                    </include>
+                </control>
+                <include>View_501_List_Info</include>
+            </control>
+        </control>
+    </include>
+
+    <include name="View_501_List_Info">
+        <control type="grouplist">
+            <top>390</top>
+            <left>0</left>
+            <right>30</right>
+            <orientation>vertical</orientation>
+            <usecontrolcoords>true</usecontrolcoords>
+            <control type="label">
+                <font>font_title_small</font>
+                <textcolor>main_fg_100</textcolor>
+                <align>left</align>
+                <aligny>top</aligny>
+                <height>32</height>
+                <label>$INFO[ListItem.Title]</label>
+            </control>
+            <include content="Object_Info_Ratings">
+                <param name="imdbvotes" value="false" />
+                <param name="top250" value="false" />
+                <param name="oscars" value="false" />
+            </include>
+            <control type="textbox">
+                <top>12</top>
+                <font>font_plotbox</font>
+                <textcolor>main_fg_70</textcolor>
+                <align>left</align>
+                <aligny>top</aligny>
+                <height>200</height>
+                <label>$VAR[Label_Plot]</label>
+            </control>
+            <control type="label">
+                <top>20</top>
+                <font>font_statusbar</font>
+                <textcolor>main_fg_70</textcolor>
+                <align>left</align>
+                <aligny>top</aligny>
+                <height>50</height>
+                <label>$INFO[ListItem.Season,Season ,  |  ]$INFO[ListItem.Episode,Episode ,  |  ]$INFO[ListItem.Premiered,,  |  ]$INFO[ListItem.Studio,,  |  ]$VAR[Label_Duration]</label>
+            </control>
         </control>
     </include>
 
@@ -93,6 +161,9 @@
         <param name="selectbox" default="true" />
         <param name="controllayout" default="View_Vertical" />
         <param name="controltype" default="panel" />
+        <param name="viewtype" default="$LOCALIZE[535]" />
+        <param name="forced" default="false" />
+        <param name="duration" default="true" />
         <definition>
             <control type="$PARAM[controltype]" id="$PARAM[id]">
                 <top>$PARAM[top]</top>
@@ -102,47 +173,47 @@
                 <height>$PARAM[height]</height>
                 <include>$PARAM[controllayout]</include>
                 <pagecontrol>60</pagecontrol>
+                <viewtype label="$PARAM[viewtype]">$PARAM[viewtype]</viewtype>
+                <include content="View_Forced" condition="$PARAM[forced]">
+                    <param name="string" value="$PARAM[viewtype]" />
+                </include>
                 <itemlayout height="$PARAM[itemheight]">
-                    <include>$PARAM[itemlayout]</include>
+                    <include content="$PARAM[itemlayout]">
+                        <param name="duration" value="$PARAM[duration]" />
+                    </include>
                 </itemlayout>
                 <focusedlayout height="$PARAM[itemheight]">
                     <control type="image">
                         <visible>$PARAM[selectbox]</visible>
-                        <texture colordiffuse="main_fg_100" border="10">common/white.png</texture>
+                        <texture colordiffuse="main_fg_100" border="10">common/box.png</texture>
                     </control>
                     <include content="$PARAM[itemlayout]">
                         <param name="fgcolor" value="main_bg" />
                         <param name="bgcolor" value="main_fg" />
                         <param name="panelcolor" value="main_fg_100" />
+                        <param name="duration" value="$PARAM[duration]" />
                     </include>
                 </focusedlayout>
+                <nested />
             </control>
         </definition>
     </include>
 
-    <include name="View_50_Itemlayout">
+    <include name="View_50_Itemlayout_Episodes">
         <param name="fgcolor" default="main_fg" />
         <param name="bgcolor" default="main_bg" />
+        <param name="pad" default="20" />
         <definition>
             <control type="group">
-                <left>30</left>
-                <right>30</right>
-                <visible>Container.Content(movies)</visible>
+                <left>$PARAM[pad]</left>
+                <right>$PARAM[pad]</right>
                 <control type="label">
-                    <textcolor>$PARAM[fgcolor]_100</textcolor>
-                    <label>$INFO[ListItem.Year]</label>
-                </control>
-                <control type="label">
-                    <left>90</left>
+                    <left>0</left>
+                    <right>128</right>
                     <font>font_small_bold</font>
                     <textcolor>$PARAM[fgcolor]_100</textcolor>
+                    <selectedcolor>$PARAM[fgcolor]_100</selectedcolor>
                     <label>$INFO[ListItem.Label]</label>
-                </control>
-                <control type="label">
-                    <right>127</right>
-                    <align>right</align>
-                    <textcolor>$PARAM[fgcolor]_100</textcolor>
-                    <label>$VAR[Label_Duration]</label>
                 </control>
                 <control type="image">
                     <centertop>50%</centertop>
@@ -156,33 +227,126 @@
                 <control type="label">
                     <align>right</align>
                     <textcolor>$PARAM[fgcolor]_100</textcolor>
+                    <selectedcolor>$PARAM[fgcolor]_100</selectedcolor>
+                    <label>$INFO[ListItem.Rating]</label>
+                </control>
+            </control>
+        </definition>
+    </include>
+
+    <include name="View_50_Itemlayout">
+        <param name="fgcolor" default="main_fg" />
+        <param name="bgcolor" default="main_bg" />
+        <param name="pad" default="20" />
+        <definition>
+            <control type="group">
+                <left>$PARAM[pad]</left>
+                <right>$PARAM[pad]</right>
+                <visible>Container.Content(movies)</visible>
+                <control type="label">
+                    <textcolor>$PARAM[fgcolor]_100</textcolor>
+                    <selectedcolor>$PARAM[fgcolor]_100</selectedcolor>
+                    <label>$VAR[Label_List_Left]</label>
+                </control>
+                <control type="label">
+                    <left>90</left>
+                    <font>font_small_bold</font>
+                    <textcolor>$PARAM[fgcolor]_100</textcolor>
+                    <selectedcolor>$PARAM[fgcolor]_100</selectedcolor>
+                    <label>$INFO[ListItem.Label]</label>
+                </control>
+                <control type="label">
+                    <right>127</right>
+                    <align>right</align>
+                    <textcolor>$PARAM[fgcolor]_100</textcolor>
+                    <selectedcolor>$PARAM[fgcolor]_100</selectedcolor>
+                    <label>$VAR[Label_List_Right]</label>
+                </control>
+                <control type="image">
+                    <centertop>50%</centertop>
+                    <right>65</right>
+                    <width>32</width>
+                    <height>32</height>
+                    <texture colordiffuse="$PARAM[fgcolor]_90">$VAR[Image_Overlay_List]</texture>
+                    <visible>!String.IsEmpty(ListItem.Overlay)</visible>
+                    <visible>!ListItem.IsPlaying + !ListItem.IsSelected</visible>
+                </control>
+                <control type="label">
+                    <align>right</align>
+                    <textcolor>$PARAM[fgcolor]_100</textcolor>
+                    <selectedcolor>$PARAM[fgcolor]_100</selectedcolor>
                     <label>$INFO[ListItem.Rating]</label>
                 </control>
             </control>
             <control type="group">
-                <left>30</left>
-                <right>30</right>
+                <left>$PARAM[pad]</left>
+                <right>$PARAM[pad]</right>
+                <visible>Container.Content(tvshows) | Container.Content(episodes)</visible>
+                <control type="label">
+                    <left>0</left>
+                    <font>font_small_bold</font>
+                    <textcolor>$PARAM[fgcolor]_100</textcolor>
+                    <selectedcolor>$PARAM[fgcolor]_100</selectedcolor>
+                    <label>$INFO[ListItem.Label]</label>
+                </control>
+                <control type="label">
+                    <right>127</right>
+                    <align>right</align>
+                    <textcolor>$PARAM[fgcolor]_100</textcolor>
+                    <selectedcolor>$PARAM[fgcolor]_100</selectedcolor>
+                    <label>$VAR[Label_List_Right]</label>
+                </control>
+                <control type="image">
+                    <centertop>50%</centertop>
+                    <right>65</right>
+                    <width>32</width>
+                    <height>32</height>
+                    <texture colordiffuse="$PARAM[fgcolor]_90">$VAR[Image_Overlay_List]</texture>
+                    <visible>!String.IsEmpty(ListItem.Overlay)</visible>
+                    <visible>!ListItem.IsPlaying + !ListItem.IsSelected</visible>
+                </control>
+                <control type="label">
+                    <align>right</align>
+                    <textcolor>$PARAM[fgcolor]_100</textcolor>
+                    <selectedcolor>$PARAM[fgcolor]_100</selectedcolor>
+                    <label>$INFO[ListItem.Rating]</label>
+                </control>
+            </control>
+            <control type="group">
+                <left>$PARAM[pad]</left>
+                <right>$PARAM[pad]</right>
                 <visible>Container.Content(songs)</visible>
                 <control type="label">
+                    <width>30</width>
                     <textcolor>$PARAM[fgcolor]_100</textcolor>
+                    <selectedcolor>$PARAM[fgcolor]_100</selectedcolor>
                     <label>$INFO[ListItem.TrackNumber]</label>
+                    <visible>!ListItem.IsPlaying</visible>
+                </control>
+                <control type="image">
+                    <width>30</width>
+                    <texture colordiffuse="$PARAM[fgcolor]_100">indicator/playlist.png</texture>
+                    <aspectratio>keep</aspectratio>
+                    <visible>ListItem.IsPlaying</visible>
                 </control>
                 <control type="label">
                     <left>60</left>
                     <font>font_small_bold</font>
                     <textcolor>$PARAM[fgcolor]_100</textcolor>
+                    <selectedcolor>$PARAM[fgcolor]_100</selectedcolor>
                     <label>$INFO[ListItem.Title]</label>
                 </control>
                 <control type="label">
                     <align>right</align>
                     <textcolor>$PARAM[fgcolor]_100</textcolor>
+                    <selectedcolor>$PARAM[fgcolor]_100</selectedcolor>
                     <label>$INFO[ListItem.Label2]</label>
                 </control>
             </control>
             <control type="group">
-                <left>30</left>
-                <right>30</right>
-                <visible>![Container.Content(songs) | Container.Content(movies)]</visible>
+                <left>$PARAM[pad]</left>
+                <right>$PARAM[pad]</right>
+                <visible>![Container.Content(songs) | Container.Content(movies) | Container.Content(tvshows) | Container.Content(episodes)]</visible>
                 <control type="label">
                     <font>font_small_bold</font>
                     <textcolor>$PARAM[fgcolor]_100</textcolor>
@@ -200,12 +364,14 @@
     <include name="View_50_EPG_Itemlayout">
         <param name="fgcolor" default="main_fg_70" />
         <param name="panelcolor" default="main_fg_12" />
+        <param name="visible" default="true" />
         <definition>
             <control type="image" id="2">
                 <left>0</left>
                 <width>517</width>
                 <top>4</top>
-                <texture colordiffuse="$PARAM[panelcolor]">common/white.png</texture>
+                <texture colordiffuse="$PARAM[panelcolor]" border="10">common/box.png</texture>
+                <visible>$PARAM[visible]</visible>
             </control>
             <control type="image" id="2">
                 <aspectratio align="right">keep</aspectratio>
@@ -214,6 +380,7 @@
                 <height>24</height>
                 <texture>indicator/timer.png</texture>
                 <visible>ListItem.HasTimer</visible>
+                <visible>$PARAM[visible]</visible>
             </control>
             <control type="image" id="2">
                 <aspectratio align="right">keep</aspectratio>
@@ -222,6 +389,7 @@
                 <height>24</height>
                 <texture>indicator/record.png</texture>
                 <visible>ListItem.IsRecording</visible>
+                <visible>$PARAM[visible]</visible>
             </control>
             <control type="label" id="1">
                 <left>20</left>
@@ -231,6 +399,7 @@
                 <textoffsetx>0</textoffsetx>
                 <font>font_tiny_bold</font>
                 <label>$INFO[ListItem.Label]</label>
+                <visible>$PARAM[visible]</visible>
             </control>
             <control type="label" id="1">
                 <left>20</left>
@@ -241,6 +410,7 @@
                 <font>font_statusbar</font>
                 <label>$INFO[ListItem.Genre]</label>
                 <visible>!Skin.HasSetting(PVRGuideGenreName)</visible>
+                <visible>$PARAM[visible]</visible>
             </control>
             <control type="label" id="1">
                 <left>20</left>
@@ -251,6 +421,7 @@
                 <font>font_statusbar</font>
                 <label>$INFO[ListItem.StartTime]$INFO[ListItem.EndTime, - ,]</label>
                 <visible>Skin.HasSetting(PVRGuideGenreName)</visible>
+                <visible>$PARAM[visible]</visible>
             </control>
         </definition>
     </include>
@@ -263,7 +434,7 @@
                 <top>4</top>
                 <right>4</right>
                 <control type="image">
-                    <texture colordiffuse="$PARAM[panelcolor]">common/white.png</texture>
+                    <texture colordiffuse="$PARAM[panelcolor]" border="10">common/box.png</texture>
                 </control>
                 <control type="image">
                     <texture colordiffuse="$PARAM[fgcolor]_12">common/selected.png</texture>
@@ -319,7 +490,7 @@
                     <top>4</top>
                     <right>4</right>
                     <control type="image">
-                        <texture colordiffuse="$PARAM[panelcolor]">common/white.png</texture>
+                        <texture colordiffuse="$PARAM[panelcolor]" border="10">common/box.png</texture>
                     </control>
                     <control type="image">
                         <texture colordiffuse="$PARAM[fgcolor]_12">common/selected.png</texture>
@@ -441,7 +612,7 @@
                 <control type="group">
                     <height>$PARAM[height]</height>
                     <include content="Object_Geometric">
-                        <param name="shadowdiffuse" value="$PARAM[shadowdiffuse]" />
+                        <param name="diffuse" value="$PARAM[diffuse]" />
                     </include>
                     <include content="Object_DefaultIcon">
                         <param name="icon" value="$PARAM[defaulticon]" />
@@ -450,6 +621,7 @@
                     <include content="Object_Poster">
                         <param name="icon" value="$PARAM[icon]" />
                         <param name="aspectratio" value="$PARAM[aspectratio]" />
+                        <param name="diffuse" value="$PARAM[diffuse]" />
                     </include>
                 </control>
             </control>

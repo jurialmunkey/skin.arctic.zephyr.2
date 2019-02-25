@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
 
+    <variable name="Defs_Target">
+        <value condition="String.IsEqual(ListItem.DBType,album) | String.IsEqual(ListItem.DBType,artist) | String.IsEqual(ListItem.DBType,song)">music</value>
+        <value>videos</value>
+    </variable>
+
+    <variable name="Defs_5610_Target">
+        <value condition="String.IsEqual(Container(5610).ListItemAbsolute(0).DBType,album) | String.IsEqual(Container(5610).ListItemAbsolute(0).DBType,artist) | String.IsEqual(Container(5610).ListItemAbsolute(0).DBType,song)">music</value>
+        <value>videos</value>
+    </variable>
+
     <include name="Defs_ButtonList">
-        <left>view_pad</left>
+        <left>-35</left>
         <width>545</width>
-        <align>center</align>
         <align>left</align>
         <height>60</height>
-        <bottom>30</bottom>
+        <bottom>-15</bottom>
         <orientation>horizontal</orientation>
         <usecontrolcoords>true</usecontrolcoords>
         <itemgap>0</itemgap>
@@ -216,18 +225,6 @@
         <onleft condition="Window.IsActive(pvrsettings)">SetFocus(300,6)</onleft>
         <onleft condition="Window.IsActive(systeminfo)">SetFocus(300,7)</onleft>
         <onleft condition="Window.IsActive(profiles)">SetFocus(300,8)</onleft>
-
-        <onup condition="Window.IsActive(interfacesettings)">SetFocus(300,0)</onup>
-        <onup condition="Window.IsActive(skinsettings)">SetFocus(300,1)</onup>
-        <onup condition="Window.IsActive(mediasettings)">SetFocus(300,2)</onup>
-        <onup condition="Window.IsActive(playersettings)">SetFocus(300,3)</onup>
-        <onup condition="Window.IsActive(systemsettings)">SetFocus(300,4)</onup>
-        <onup condition="Window.IsActive(servicesettings)">SetFocus(300,5)</onup>
-        <onup condition="Window.IsActive(pvrsettings)">SetFocus(300,6)</onup>
-        <onup condition="Window.IsActive(systeminfo)">SetFocus(300,7)</onup>
-        <onup condition="Window.IsActive(profiles)">SetFocus(300,8)</onup>
-
-        <ondown>noop</ondown>
     </include>
 
     <include name="Defs_Settings_OnRight">
@@ -240,18 +237,6 @@
         <onright condition="Window.IsActive(pvrsettings)">SetFocus(300,6)</onright>
         <onright condition="Window.IsActive(systeminfo)">SetFocus(300,7)</onright>
         <onright condition="Window.IsActive(profiles)">SetFocus(300,8)</onright>
-
-        <!-- <onup condition="Window.IsActive(interfacesettings)">SetFocus(300,0)</onup>
-        <onup condition="Window.IsActive(skinsettings)">SetFocus(300,1)</onup>
-        <onup condition="Window.IsActive(mediasettings)">SetFocus(300,2)</onup>
-        <onup condition="Window.IsActive(playersettings)">SetFocus(300,3)</onup>
-        <onup condition="Window.IsActive(systemsettings)">SetFocus(300,4)</onup>
-        <onup condition="Window.IsActive(servicesettings)">SetFocus(300,5)</onup>
-        <onup condition="Window.IsActive(pvrsettings)">SetFocus(300,6)</onup>
-        <onup condition="Window.IsActive(systeminfo)">SetFocus(300,7)</onup>
-        <onup condition="Window.IsActive(profiles)">SetFocus(300,8)</onup>
-
-        <ondown>noop</ondown> -->
     </include>
 
     <include name="Defs_SkinShortcuts_SetStrings_OnClick">
@@ -419,7 +404,6 @@
         <definition>
             <control type="list" id="300">
                 <nested />
-                <onleft>Up</onleft>
                 <top>dialog_top</top>
                 <bottom>dialog_pad</bottom>
                 <width>view_list_height</width>
@@ -559,6 +543,7 @@
     <!-- Busy Spinner -->
     <include name="Defs_BusySpinner">
         <param name="label" default="$LOCALIZE[20186]..." />
+        <param name="textcolor" default="ffededed" />
         <definition>
             <control type="group">
                 <height>170</height>
@@ -585,11 +570,6 @@
                         <texture colordiffuse="$VAR[ColorHighlight]">dialog/loading-spinner.png</texture>
                         <aspectratio>keep</aspectratio>
                     </control>
-                    <control type="image">
-                        <texture colordiffuse="$VAR[ColorHighlight2]">dialog/loading-spinner.png</texture>
-                        <aspectratio>keep</aspectratio>
-                        <animation effect="fade" condition="true" start="0" end="75" pulse="true" time="1000">Conditional</animation>
-                    </control>
                 </control>
                 <control type="label">
                     <description>Busy label</description>
@@ -600,7 +580,7 @@
                     <aligny>center</aligny>
                     <align>center</align>
                     <label>$PARAM[label]</label>
-                    <textcolor>ffededed</textcolor>
+                    <textcolor>$PARAM[textcolor]</textcolor>
                 </control>
             </control>
         </definition>

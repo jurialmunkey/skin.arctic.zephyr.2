@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+    <include name="Info_Gallery_Itemlayout">
+        <control type="group">
+            <left>15</left>
+            <top>15</top>
+            <visible>String.IsEmpty(ListItem.Property(discart))</visible>
+            <include content="View_50_Poster">
+                <param name="height" value="810" />
+                <param name="width" value="1710" />
+                <param name="aspectratio" value="scale" />
+                <param name="diffuse" value="diffuse/654x654.png" />
+                <param name="icon" value="$INFO[ListItem.Icon]" />
+            </include>
+        </control>
+        <control type="group">
+            <left>15</left>
+            <top>15</top>
+            <visible>!String.IsEmpty(ListItem.Property(discart))</visible>
+            <control type="image">
+                <texture background="true">$INFO[ListItem.Property(discart)]</texture>
+                <aspectratio align="left">keep</aspectratio>
+            </control>
+            <control type="textbox">
+                <right>0</right>
+                <width>700</width>
+                <height>350</height>
+                <align>right</align>
+                <aligny>center</aligny>
+                <textcolor>main_fg_70</textcolor>
+                <label>$INFO[ListItem.Property(tagline)]</label>
+                <font>font_info_display</font>
+            </control>
+            <control type="image">
+                <top>390</top>
+                <right>0</right>
+                <width>700</width>
+                <height>390</height>
+                <texture background="true">$INFO[ListItem.Property(clearlogo)]</texture>
+                <aspectratio align="right" aligny="center">keep</aspectratio>
+                <visible>!String.IsEmpty(ListItem.Property(clearlogo))</visible>
+            </control>
+        </control>
+    </include>
+
+    <include name="Info_Gallery">
+        <control type="list" id="$PARAM[id]">
+            <orientation>horizontal</orientation>
+            <height>825</height>
+            <width>1710</width>
+            <itemlayout width="1710" height="825">
+                <include>Info_Gallery_Itemlayout</include>
+            </itemlayout>
+            <focusedlayout width="1710" height="825">
+                <include>Info_Gallery_Itemlayout</include>
+            </focusedlayout>
+            <nested />
+        </control>
+    </include>
+</includes>

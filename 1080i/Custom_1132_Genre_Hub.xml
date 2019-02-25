@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window type="window" id="1132">
+    <defaultcontrol always="true">5600</defaultcontrol>
+    <onload>SetProperty(Header_Center_Text,Genres)</onload>
+    <onload>SetProperty(Header_Left_Text,Movies)</onload>
+    <controls>
+        <include>Global_Background</include>
+        <include>Topbar</include>
+
+        <control type="group">
+            <include>View_Group</include>
+        
+            <control type="panel" id="5600">
+                <ondown>5610</ondown>
+                <onclick>ActivateWindow(videos,$INFO[Container(5600).ListItem.DBID,videodb://movies/genres/,/],return)</onclick>
+                <include content="View_TopItems">
+                    <param name="icon" value="$VAR[Image_GenreIcons]" />
+                    <param name="fallback" value="DefaultGenres.png" />
+                    <param name="bordersize" value="20" />
+                </include>
+                <content sortorder="ascending" sortby="label">videodb://movies/genres/</content>
+            </control>
+
+            <control type="label">
+                <bottom>402.5</bottom>
+                <height>40</height>
+                <align>center</align>
+                <font>font_byline</font>
+                <textcolor>main_fg_70</textcolor>
+                <label>$INFO[Container(5600).ListItem.Label] $INFO[Window.Property(Header_Left_Text)]</label>
+            </control>
+
+            <include content="Object_Widget_Spotlight">
+                <param name="onup" value="5600" />
+                <param name="target" value="videos" />
+                <param name="content" value="$INFO[Container(5600).ListItem.DBID,videodb://movies/genres/,]" />
+                <param name="sortby" value="year" />
+                <param name="sortorder" value="descending" />
+            </include>
+
+        </control>
+    </controls>
+</window>

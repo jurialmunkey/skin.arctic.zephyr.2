@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window type="window" id="1134">
+    <defaultcontrol always="true">5600</defaultcontrol>
+    <onload>SetProperty(Header_Center_Text,Countries)</onload>
+    <onload>SetProperty(Header_Left_Text,Explore)</onload>
+    <controls>
+        <include>Global_Background</include>
+        <include>Topbar</include>
+
+        <control type="group">
+            <include>View_Group</include>
+        
+            <control type="panel" id="5600">
+                <ondown>5610</ondown>                
+                <include content="View_TopItems">
+                    <param name="itemlayout" value="View_TopItems_Decades_Itemlayout" />
+                </include>
+                <content sortorder="ascending" sortby="label" target="$VAR[Defs_5610_Target]">special://skin/extras/playlists/</content>
+            </control>
+
+            <control type="label">
+                <bottom>402.5</bottom>
+                <height>40</height>
+                <align>center</align>
+                <font>font_byline</font>
+                <textcolor>main_fg_70</textcolor>
+                <label>$INFO[Container(5600).ListItem.Label]</label>
+            </control>
+
+            <include content="Object_Widget_Spotlight">
+                <param name="id" value="5610" />
+                <param name="onup" value="5600" />
+                <param name="target" value="$VAR[Defs_Target]" />
+                <param name="landscapecondition" value="String.IsEqual(Container(5610).ListItemAbsolute(0).DBType,episode) | String.IsEqual(Container(5610).ListItemAbsolute(0).DBType,video)" />
+                <param name="squarecondition" value="String.IsEqual(Container(5610).ListItemAbsolute(0).DBType,album) | String.IsEqual(Container(5610).ListItemAbsolute(0).DBType,artist) | String.IsEqual(Container(5610).ListItemAbsolute(0).DBType,song) | String.IsEqual(Container(5610).ListItemAbsolute(0).DBType,addon) | String.IsEqual(Container(5610).ListItemAbsolute(0).DBType,program) | String.IsEqual(Container(5610).ListItemAbsolute(0).DBType,image)" />
+                <param name="iconcondition" value="String.IsEqual(Container(5610).ListItemAbsolute(0).DBType,genre) | String.IsEqual(Container(5610).ListItemAbsolute(0).DBType,director) | String.IsEqual(Container(5610).ListItemAbsolute(0).DBType,studio) | String.IsEqual(Container(5610).ListItemAbsolute(0).DBType,country) | String.IsEqual(Container(5610).ListItemAbsolute(0).DBType,tag) | String.IsEqual(Container(5610).ListItemAbsolute(0).DBType,year)" />
+                <param name="content" value="$INFO[Container(5600).ListItem.FolderPath]" />
+                <animation effect="fade" start="100" end="0" time="0" condition="Container(5610).IsUpdating">Conditional</animation>
+            </include>
+            <control type="group">
+                <visible>Container(5610).IsUpdating</visible>
+                <bottom>-30</bottom>
+                <height>412.5</height>
+                <include content="Defs_BusySpinner">
+                    <param name="textcolor" value="main_fg_90" />
+                    <param name="label" value="Loading..." />
+                </include>
+            </control>
+            <control type="label">
+                <visible>!Container(5610).IsUpdating + Integer.IsEqual(Container(5610).NumItems,0)</visible>
+                <bottom>-30</bottom>
+                <height>412.5</height>
+                <textcolor>main_fg_90</textcolor>
+                <font>font_small_bold</font>
+                <label>No content available...</label>
+                <align>center</align>
+            </control>
+
+        </control>
+    </controls>
+</window>

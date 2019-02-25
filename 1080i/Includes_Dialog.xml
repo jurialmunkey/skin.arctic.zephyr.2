@@ -1,6 +1,121 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
 
+    <include name="Dialog_PowerMenu">
+        <definition>
+            <control type="group">
+                <include>Animation_FadeIn_SlideUp</include>
+                <visible>$PARAM[visible]</visible>
+                <control type="group">
+                    <visible>Integer.IsGreater(Container($PARAM[id]).NumItems,7)</visible>
+                    <height>720</height>
+                    <include>Defs_Powermenu_Group</include>
+                    <include>Defs_Options_Texture</include>
+                </control>
+                <control type="group">
+                    <visible>Integer.IsEqual(Container($PARAM[id]).NumItems,7)</visible>
+                    <height>642</height>
+                    <include>Defs_Powermenu_Group</include>
+                    <include>Defs_Options_Texture</include>
+                </control>
+                <control type="group">
+                    <visible>Integer.IsEqual(Container($PARAM[id]).NumItems,6)</visible>
+                    <height>564</height>
+                    <include>Defs_Powermenu_Group</include>
+                    <include>Defs_Options_Texture</include>
+                </control>
+                <control type="group">
+                    <visible>Integer.IsEqual(Container($PARAM[id]).NumItems,5)</visible>
+                    <height>486</height>
+                    <include>Defs_Powermenu_Group</include>
+                    <include>Defs_Options_Texture</include>
+                </control>
+                <control type="group">
+                    <visible>Integer.IsEqual(Container($PARAM[id]).NumItems,4)</visible>
+                    <height>408</height>
+                    <include>Defs_Powermenu_Group</include>
+                    <include>Defs_Options_Texture</include>
+                </control>
+                <control type="group">
+                    <visible>Integer.IsEqual(Container($PARAM[id]).NumItems,3)</visible>
+                    <height>330</height>
+                    <include>Defs_Powermenu_Group</include>
+                    <include>Defs_Options_Texture</include>
+                </control>
+                <control type="group">
+                    <visible>Integer.IsEqual(Container($PARAM[id]).NumItems,2)</visible>
+                    <height>252</height>
+                    <include>Defs_Powermenu_Group</include>
+                    <include>Defs_Options_Texture</include>
+                </control>
+                <control type="group">
+                    <visible>Integer.IsEqual(Container($PARAM[id]).NumItems,1)</visible>
+                    <height>174</height>
+                    <include>Defs_Powermenu_Group</include>
+                    <include>Defs_Options_Texture</include>
+                </control>
+                <control type="group">
+                    <animation effect="slide" end="0,39" condition="Integer.IsLess(Container($PARAM[id]).NumItems,8)">Conditional</animation>
+                    <animation effect="slide" end="0,39" condition="Integer.IsLess(Container($PARAM[id]).NumItems,7)">Conditional</animation>
+                    <animation effect="slide" end="0,39" condition="Integer.IsLess(Container($PARAM[id]).NumItems,6)">Conditional</animation>
+                    <animation effect="slide" end="0,39" condition="Integer.IsLess(Container($PARAM[id]).NumItems,5)">Conditional</animation>
+                    <animation effect="slide" end="0,39" condition="Integer.IsLess(Container($PARAM[id]).NumItems,4)">Conditional</animation>
+                    <animation effect="slide" end="0,39" condition="Integer.IsLess(Container($PARAM[id]).NumItems,3)">Conditional</animation>
+                    <animation effect="slide" end="0,39" condition="Integer.IsLess(Container($PARAM[id]).NumItems,2)">Conditional</animation>
+                    <include>Defs_Powermenu_Group</include>
+                    <control type="label">
+                        <top>-60</top>
+                        <width>458</width>
+                        <height>view_list_height</height>
+                        <left>8</left>
+                        <textcolor>dialog_fg_70</textcolor>
+                        <font>font_small_bold</font>
+                        <label>$PARAM[header]</label>
+                        <align>left</align>
+                        <textoffsetx>30</textoffsetx>
+                    </control>
+                    <control type="image">
+                        <top>-56</top>
+                        <width>458</width>
+                        <height>64</height>
+                        <left>-8</left>
+                        <aspectratio align="right">keep</aspectratio>
+                        <texture colordiffuse="dialog_fg_70">special://skin/extras/icons/kodi.png</texture>
+                    </control>
+                    <control type="list" id="$PARAM[id]">
+                        <onleft>Back</onleft>
+                        <onright>Back</onright>
+                        <include>Defs_Options_Grouplist</include>
+                        <itemlayout width="450" height="view_list_height">
+                            <control type="label">
+                                <font>font_tiny</font>
+                                <align>left</align>
+                                <left>30</left>
+                                <aligny>center</aligny>
+                                <textcolor>dialog_fg_70</textcolor>
+                                <label>$INFO[ListItem.Label]</label>
+                            </control>
+                        </itemlayout>
+                        <focusedlayout width="450" height="view_list_height">
+                            <control type="image">
+                                <texture colordiffuse="$VAR[ColorHighlight]">common/white.png</texture>
+                            </control>
+                            <control type="label">
+                                <font>font_tiny</font>
+                                <align>left</align>
+                                <left>30</left>
+                                <aligny>center</aligny>
+                                <textcolor>Selected</textcolor>
+                                <label>$INFO[ListItem.Label]</label>
+                            </control>
+                        </focusedlayout>
+                        <include>$PARAM[items]</include>
+                    </control>
+                </control>
+            </control>
+        </definition>
+    </include>
+
     <include name="Dialog_Standard_Button">
         <align>left</align>
         <height>view_list_height</height>
@@ -17,6 +132,8 @@
         <param name="main_id" default="30" />
         <param name="sub_id" default="31" />
         <definition>
+            <include>Animation_FadeIn_Delay</include>
+            <include>Animation_FadeOut</include>
             <bottom>0</bottom>
             <left>view_pad</left>
             <right>view_pad</right>
@@ -80,6 +197,7 @@
                     <label>$INFO[Control.GetLabel(32),,%]</label>
                     <visible>Window.IsVisible(DialogExtendedProgressBar.xml) + Control.IsVisible(32)</visible>
                 </control>
+                
             </control>
         </definition>
     </include>
@@ -260,8 +378,8 @@
     </include>
 
     <include name="Dialog_Standard_Header">
-        <left>20</left>
-        <right>20</right>
+        <left>30</left>
+        <right>30</right>
         <top>15</top>
         <height>70</height>
         <font>font_medium_bold</font>
@@ -271,7 +389,7 @@
 
     <include name="Dialog_Standard_ListButton">
         <align>left</align>
-        <height>66</height>
+        <height>view_list_height</height>
         <texturenofocus colordiffuse="dialog_fg_12" border="8">common/box.png</texturenofocus>
         <texturefocus colordiffuse="$VAR[ColorHighlight]" border="8">common/box.png</texturefocus>
         <alttexturenofocus colordiffuse="dialog_fg_12" border="8">common/box.png</alttexturenofocus>
@@ -293,7 +411,7 @@
         <align>center</align>
         <itemgap>20</itemgap>
         <orientation>horizontal</orientation>
-        <height>66</height>
+        <height>view_list_height</height>
     </include>
 
     <include name="Dialog_Standard_HintLabel">
@@ -339,7 +457,7 @@
                 <left>-46</left>
                 <right>-46</right>
                 <top>-46</top>
-                <height>476</height>
+                <height>488</height>
                 <bordertexture border="32">common/dark-shadow-24.png</bordertexture>
                 <bordersize>24</bordersize>
                 <texture border="16" colordiffuse="dialog_bg_100">common/rounded-dialog.png</texture>
@@ -418,19 +536,18 @@
     <!-- ============== -->
     <!-- Settings Panel -->
     <!-- ============== -->
-    <include name="Dialog_Settings_Panel">
-        <animation type="WindowOpen" reversible="false" condition="!Window.Previous(SettingsCategory.xml) + !Window.Previous(SkinSettings.xml) + !Window.Previous(SettingsProfile.xml) + !Window.Previous(SettingsSystemInfo.xml)">
-            <effect type="fade" start="0" end="100" time="300" tween="sine" easing="out"/>
-            <effect type="slide" start="320" end="0" time="400" tween="cubic" easing="out" />
-        </animation>
-        <animation type="WindowClose" reversible="false" condition="!Window.Next(SettingsCategory.xml) + !Window.Next(SkinSettings.xml) + !Window.Next(SettingsProfile.xml) + !Window.Next(SettingsSystemInfo.xml)">
-            <effect type="fade" start="100" end="0" time="300" tween="sine" easing="out" />
-            <effect type="slide" start="0" end="320" time="300" tween="cubic" easing="out" />
-        </animation>
-        <left>0</left>
-        <right>0</right>
-        <top>view_top</top>
-        <bottom>view_pad</bottom>
+    <include name="Dialog_Settings_Group">
+        <include>Animation_Settings</include>
+        <include content="Dialog_Standard_Group">
+            <param name="width" value="1820" />
+            <param name="height" value="980" />
+            <param name="animation" value="false" />
+        </include>
+
+        <control type="label">
+            <label>$INFO[Container(300).ListItem.Label]</label>
+            <include>Dialog_Standard_Header</include>
+        </control>
     </include>
 
     <include name="Dialog_Standard_List_Itemlayout_Simple">
@@ -715,8 +832,6 @@
                 <bottom>dialog_pad</bottom>
                 <onleft>$PARAM[onleft]</onleft>
                 <onright>$PARAM[onright]</onright>
-                <texturesliderbackground colordiffuse="dialog_fg_12">common/white.png</texturesliderbackground>
-                <texturesliderbar colordiffuse="dialog_fg_12">common/white.png</texturesliderbar>
                 <animation effect="fade" condition="!Control.HasFocus($PARAM[id])" start="100" end="0" time="200">Conditional</animation>
             </control>
         </definition>

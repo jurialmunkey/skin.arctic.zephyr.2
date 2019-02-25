@@ -1,5 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
+
+    <variable name="Label_List_Left">
+        <value condition="Container.Content(tvshows) + String.IsEqual(Container.SortMethod,$LOCALIZE[20360])">$INFO[ListItem.Property(TotalEpisodes),, $LOCALIZE[20360]]</value>
+        <value condition="[Container.Content(tvshows) | Container.Content(episodes)] + String.IsEqual(Container.SortMethod,$LOCALIZE[568])">$INFO[ListItem.LastPlayed]</value>
+        <value condition="Container.Content(episodes)">$INFO[ListItem.Premiered]</value>
+        <value condition="!String.IsEmpty(ListItem.Year)">$INFO[ListItem.Year]</value>
+    </variable>
+
+    <variable name="Label_List_Right">
+        <value condition="String.IsEqual(Container.SortMethod,$LOCALIZE[20368])">$INFO[ListItem.Date]</value>
+        <value condition="String.IsEqual(Container.SortMethod,$LOCALIZE[552])">$INFO[ListItem.Date]</value>
+        <value condition="String.IsEqual(Container.SortMethod,$LOCALIZE[20074])">$INFO[ListItem.MPAA]</value>
+        <value condition="String.IsEqual(Container.SortMethod,$LOCALIZE[570])">$INFO[ListItem.DateAdded]</value>
+        <value condition="String.IsEqual(Container.SortMethod,$LOCALIZE[567])">$INFO[ListItem.PlayCount]</value>
+        <value condition="Container.Content(tvshows) | Container.Content(episodes)">$VAR[Label_List_Left]</value>
+        <value condition="!String.IsEmpty(ListItem.Duration(mins))">$INFO[ListItem.Duration(mins),, $LOCALIZE[31102]]</value>
+        
+    </variable>
+
     <variable name="Label_IconWall">
         <value condition="Container.Content(directors)">$INFO[ListItem.Appearances,, item(s)]</value>
         <value>$INFO[ListItem.Label]</value>
@@ -27,15 +46,14 @@
         <value condition="Window.IsVisible(MyWeather.xml)">$INFO[Weather.Location]</value>
         <value condition="Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml)">$LOCALIZE[19033]</value>
         <value condition="Container.Content() + String.StartsWith(Container.FolderPath,library://video/movies/)">$LOCALIZE[14022]</value>
+        <value condition="[Container.Content(seasons) | Container.Content(episodes)] + !String.IsEmpty(Container.ShowTitle)">$INFO[Container.ShowTitle]</value>
         <value condition="!String.IsEmpty(Container.FolderName)">$INFO[Container.FolderName]</value>
         <value condition="Window.IsVisible(MyPVRGuide.xml)">$INFO[Control.GetLabel(30)]</value>
+        <value condition="!String.IsEmpty(Window.Property(Header_Center_Text))">$INFO[Window.Property(Header_Center_Text)]</value>
         <value>Library</value>
     </variable>
 
     <variable name="Label_Header_Content">
-        <value condition="[Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml)] + [Control.HasFocus(50) | Control.HasFocus(5050) | Control.HasFocus(5000)]">$LOCALIZE[206]</value>
-        <value condition="[Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml)] + [ControlGroup(6100).HasFocus() | Control.HasFocus(6000)]">$LOCALIZE[31414]</value>
-        <value condition="[Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml)] + [Control.HasFocus(7000) | Control.HasFocus(7001) | Control.HasFocus(7002) | Control.HasFocus(7003) | Control.HasFocus(7004) | Control.HasFocus(7005) | Control.HasFocus(7006)]">$LOCALIZE[31203]</value>
         <value condition="Window.IsVisible(SettingsCategory.xml) | Window.IsVisible(SkinSettings.xml) | Window.IsVisible(SettingsProfile.xml) | Window.IsVisible(SettingsSystemInfo.xml)">$LOCALIZE[5]</value>
         <value condition="Window.IsVisible(Home) + [Control.HasFocus(302) | Control.HasFocus(5610)]">$INFO[Container(301).ListItem.Label]</value>
         <value condition="Window.IsVisible(MyWeather.xml)">$LOCALIZE[8]</value>
@@ -46,7 +64,7 @@
         <value condition="String.Contains(Container.FolderPath,plugin://)">$INFO[Container.FolderName]</value>
         <value condition="Container.Content(addons)">$LOCALIZE[24001]</value>
         <value condition="String.Contains(Container.FolderPath,/addons/)">$INFO[Container.FolderName]</value>
-
+        <value condition="!String.IsEmpty(Window.Property(Header_Left_Text))">$INFO[Window.Property(Header_Left_Text)]</value>
         <value condition="Window.IsVisible(MyVideoNav.xml)">$LOCALIZE[3]</value>
         <value condition="Window.IsVisible(MyMusicNav.xml)">$LOCALIZE[2]</value>
         <value condition="Window.IsVisible(MyPics.xml)">$LOCALIZE[1]</value>
@@ -437,15 +455,11 @@
     </variable>
     
     <variable name="Label_Plot">
-        <value condition="Control.HasFocus(9501) + !String.IsEmpty(Container(9501).ListItem.Plot)">$INFO[Container(9501).ListItem.Plot]</value>
-        <value condition="ListItem.IsCollection">$INFO[Window(Home).Property(SkinHelper.ListItem.Plots)]</value>
         <value condition="!String.IsEmpty(ListItem.Property(Artist_Description))">$INFO[ListItem.Property(Artist_Description)]</value>
         <value condition="!String.IsEmpty(ListItem.Property(Album_Description))">$INFO[ListItem.Property(Album_Description)]</value>
         <value condition="!String.IsEmpty(ListItem.AddonDescription)">$INFO[ListItem.AddonDescription]</value>
         <value condition="!String.IsEmpty(ListItem.PlotOutline) + Skin.HasSetting(PlotOutline)">$INFO[ListItem.PlotOutline]</value>
-        <value condition="!String.IsEmpty(ListItem.Plot)">$INFO[ListItem.Plot]</value>
-        <value condition="!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Plot))">$INFO[Window(Home).Property(SkinHelper.ListItem.Plot)]</value>
-        
+        <value condition="!String.IsEmpty(ListItem.Plot)">$INFO[ListItem.Plot]</value>        
     </variable>
 
     <variable name="Label_Tagline">

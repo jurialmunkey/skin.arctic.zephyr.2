@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window type="window" id="1131">
+    <defaultcontrol always="true">5000</defaultcontrol>
+    <onload>SetProperty(Header_Center_Text,Decades)</onload>
+    <onload>SetProperty(Header_Left_Text,Movies)</onload>
+    <controls>
+        <include>Global_Background</include>
+        <include>Topbar</include>
+        
+        <control type="group">
+            <include>View_Group</include>
+        
+            <control type="panel" id="5000">
+                <ondown>5610</ondown>
+                <include content="View_TopItems">
+                    <param name="itemlayout" value="View_TopItems_Decades_Itemlayout" />
+                </include>
+                <content>
+                    <item>
+                        <label>2010s</label>
+                        <label2>$INFO[Container(2020).NumItems,, Movie(s)]</label2>
+                        <visible>Integer.IsGreater(Container(2020).NumItems,0)</visible>
+                        <onclick>ActivateWindow(videos,special://skin/extras/decades/2020s.xsp)</onclick>
+                    </item>
+                    <item>
+                        <label>2010s</label>
+                        <label2>$INFO[Container(2010).NumItems,, Movie(s)]</label2>
+                        <visible>Integer.IsGreater(Container(2010).NumItems,0)</visible>
+                        <onclick>ActivateWindow(videos,special://skin/extras/decades/2010s.xsp)</onclick>
+                    </item>
+                    <item>
+                        <label>2000s</label>
+                        <label2>$INFO[Container(2000).NumItems,, Movie(s)]</label2>
+                        <visible>Integer.IsGreater(Container(2000).NumItems,0)</visible>
+                        <onclick>ActivateWindow(videos,special://skin/extras/decades/2000s.xsp)</onclick>
+                    </item>
+                    <item>
+                        <label>1990s</label>
+                        <label2>$INFO[Container(1990).NumItems,, Movie(s)]</label2>
+                        <visible>Integer.IsGreater(Container(1990).NumItems,0)</visible>
+                        <onclick>ActivateWindow(videos,special://skin/extras/decades/1990s.xsp)</onclick>
+                    </item>
+                    <item>
+                        <label>1980s</label>
+                        <label2>$INFO[Container(1980).NumItems,, Movie(s)]</label2>
+                        <visible>Integer.IsGreater(Container(1980).NumItems,0)</visible>
+                        <onclick>ActivateWindow(videos,special://skin/extras/decades/1980s.xsp)</onclick>
+                    </item>
+                    <item>
+                        <label>1970s</label>
+                        <label2>$INFO[Container(1970).NumItems,, Movie(s)]</label2>
+                        <visible>Integer.IsGreater(Container(1970).NumItems,0)</visible>
+                        <onclick>ActivateWindow(videos,special://skin/extras/decades/1970s.xsp)</onclick>
+                    </item>
+                    <item>
+                        <label>1960s</label>
+                        <label2>$INFO[Container(1960).NumItems,, Movie(s)]</label2>
+                        <visible>Integer.IsGreater(Container(1960).NumItems,0)</visible>
+                        <onclick>ActivateWindow(videos,special://skin/extras/decades/1960s.xsp)</onclick>
+                    </item>
+                    <item>
+                        <label>1950s</label>
+                        <label2>$INFO[Container(1950).NumItems,, Movie(s)]</label2>
+                        <visible>Integer.IsGreater(Container(1950).NumItems,0)</visible>
+                        <onclick>ActivateWindow(videos,special://skin/extras/decades/1950s.xsp)</onclick>
+                    </item>
+                    <item>
+                        <label>1940s</label>
+                        <label2>$INFO[Container(1940).NumItems,, Movie(s)]</label2>
+                        <visible>Integer.IsGreater(Container(1940).NumItems,0)</visible>
+                        <onclick>ActivateWindow(videos,special://skin/extras/decades/1940s.xsp)</onclick>
+                    </item>
+                    <item>
+                        <label>1930s</label>
+                        <label2>$INFO[Container(1930).NumItems,, Movie(s)]</label2>
+                        <visible>Integer.IsGreater(Container(1930).NumItems,0)</visible>
+                        <onclick>ActivateWindow(videos,special://skin/extras/decades/1930s.xsp)</onclick>
+                    </item>
+                    <item>
+                        <label>1920s</label>
+                        <label2>$INFO[Container(1920).NumItems,, Movie(s)]</label2>
+                        <visible>Integer.IsGreater(Container(1920).NumItems,0)</visible>
+                        <onclick>ActivateWindow(videos,special://skin/extras/decades/1920s.xsp)</onclick>
+                    </item>
+                    <item>
+                        <label>1910s</label>
+                        <label2>$INFO[Container(1910).NumItems,, Movie(s)]</label2>
+                        <visible>Integer.IsGreater(Container(1910).NumItems,0)</visible>
+                        <onclick>ActivateWindow(videos,special://skin/extras/decades/1910s.xsp)</onclick>
+                    </item>
+                    <item>
+                        <label>1900s</label>
+                        <label2>$INFO[Container(1900).NumItems,, Movie(s)]</label2>
+                        <visible>Integer.IsGreater(Container(1900).NumItems,0)</visible>
+                        <onclick>ActivateWindow(videos,special://skin/extras/decades/1900s.xsp)</onclick>
+                    </item>
+                </content>
+            </control>
+
+            <control type="label">
+                <bottom>402.5</bottom>
+                <height>40</height>
+                <align>center</align>
+                <font>font_byline</font>
+                <textcolor>main_fg_70</textcolor>
+                <label>$INFO[Window.Property(Header_Left_Text)] from the $INFO[Container(5000).ListItem.Label]</label>
+            </control>
+
+            <control type="group" id="5610">
+                <include content="Object_Widget_Spotlight">
+                    <param name="onup" value="5000" />
+                    <param name="target" value="videos" />
+                    <param name="content" value="special://skin/extras/decades/2020s.xsp" />
+                    <param name="sortby" value="year" />
+                    <param name="sortorder" value="descending" />
+                    <param name="id" value="2020" />
+                    <visible>Integer.IsEqual(Container(2020).NumItems,0) | String.IsEqual(Container(5000).ListItem.Label,2020s)</visible>
+                </include>
+                <include content="Object_Widget_Spotlight">
+                    <param name="onup" value="5000" />
+                    <param name="target" value="videos" />
+                    <param name="content" value="special://skin/extras/decades/2010s.xsp" />
+                    <param name="sortby" value="year" />
+                    <param name="sortorder" value="descending" />
+                    <param name="id" value="2010" />
+                    <visible>Integer.IsEqual(Container(2010).NumItems,0) | String.IsEqual(Container(5000).ListItem.Label,2010s)</visible>
+                </include>
+                <include content="Object_Widget_Spotlight">
+                    <param name="onup" value="5000" />
+                    <param name="target" value="videos" />
+                    <param name="content" value="special://skin/extras/decades/2000s.xsp" />
+                    <param name="sortby" value="year" />
+                    <param name="sortorder" value="descending" />
+                    <param name="id" value="2000" />
+                    <visible>Integer.IsEqual(Container(2000).NumItems,0) | String.IsEqual(Container(5000).ListItem.Label,2000s)</visible>
+                </include>
+                <include content="Object_Widget_Spotlight">
+                    <param name="onup" value="5000" />
+                    <param name="target" value="videos" />
+                    <param name="content" value="special://skin/extras/decades/1990s.xsp" />
+                    <param name="sortby" value="year" />
+                    <param name="sortorder" value="descending" />
+                    <param name="id" value="1990" />
+                    <visible>Integer.IsEqual(Container(1990).NumItems,0) | String.IsEqual(Container(5000).ListItem.Label,1990s)</visible>
+                </include>
+                <include content="Object_Widget_Spotlight">
+                    <param name="onup" value="5000" />
+                    <param name="target" value="videos" />
+                    <param name="content" value="special://skin/extras/decades/1980s.xsp" />
+                    <param name="sortby" value="year" />
+                    <param name="sortorder" value="descending" />
+                    <param name="id" value="1980" />
+                    <visible>Integer.IsEqual(Container(1980).NumItems,0) | String.IsEqual(Container(5000).ListItem.Label,1980s)</visible>
+                </include>
+                <include content="Object_Widget_Spotlight">
+                    <param name="onup" value="5000" />
+                    <param name="target" value="videos" />
+                    <param name="content" value="special://skin/extras/decades/1970s.xsp" />
+                    <param name="sortby" value="year" />
+                    <param name="sortorder" value="descending" />
+                    <param name="id" value="1970" />
+                    <visible>Integer.IsEqual(Container(1970).NumItems,0) | String.IsEqual(Container(5000).ListItem.Label,1970s)</visible>
+                </include>
+                <include content="Object_Widget_Spotlight">
+                    <param name="onup" value="5000" />
+                    <param name="target" value="videos" />
+                    <param name="content" value="special://skin/extras/decades/1960s.xsp" />
+                    <param name="sortby" value="year" />
+                    <param name="sortorder" value="descending" />
+                    <param name="id" value="1960" />
+                    <visible>Integer.IsEqual(Container(1960).NumItems,0) | String.IsEqual(Container(5000).ListItem.Label,1960s)</visible>
+                </include>
+                <include content="Object_Widget_Spotlight">
+                    <param name="onup" value="5000" />
+                    <param name="target" value="videos" />
+                    <param name="content" value="special://skin/extras/decades/1950s.xsp" />
+                    <param name="sortby" value="year" />
+                    <param name="sortorder" value="descending" />
+                    <param name="id" value="1950" />
+                    <visible>Integer.IsEqual(Container(1950).NumItems,0) | String.IsEqual(Container(5000).ListItem.Label,1950s)</visible>
+                </include>
+                <include content="Object_Widget_Spotlight">
+                    <param name="onup" value="5000" />
+                    <param name="target" value="videos" />
+                    <param name="content" value="special://skin/extras/decades/1940s.xsp" />
+                    <param name="sortby" value="year" />
+                    <param name="sortorder" value="descending" />
+                    <param name="id" value="1940" />
+                    <visible>Integer.IsEqual(Container(1940).NumItems,0) | String.IsEqual(Container(5000).ListItem.Label,1940s)</visible>
+                </include>
+                <include content="Object_Widget_Spotlight">
+                    <param name="onup" value="5000" />
+                    <param name="target" value="videos" />
+                    <param name="content" value="special://skin/extras/decades/1930s.xsp" />
+                    <param name="sortby" value="year" />
+                    <param name="sortorder" value="descending" />
+                    <param name="id" value="1930" />
+                    <visible>Integer.IsEqual(Container(1930).NumItems,0) | String.IsEqual(Container(5000).ListItem.Label,1930s)</visible>
+                </include>
+                <include content="Object_Widget_Spotlight">
+                    <param name="onup" value="5000" />
+                    <param name="target" value="videos" />
+                    <param name="content" value="special://skin/extras/decades/1920s.xsp" />
+                    <param name="sortby" value="year" />
+                    <param name="sortorder" value="descending" />
+                    <param name="id" value="1920" />
+                    <visible>Integer.IsEqual(Container(1920).NumItems,0) | String.IsEqual(Container(5000).ListItem.Label,1920s)</visible>
+                </include>
+                <include content="Object_Widget_Spotlight">
+                    <param name="onup" value="5000" />
+                    <param name="target" value="videos" />
+                    <param name="content" value="special://skin/extras/decades/1910s.xsp" />
+                    <param name="sortby" value="year" />
+                    <param name="sortorder" value="descending" />
+                    <param name="id" value="1910" />
+                    <visible>Integer.IsEqual(Container(1910).NumItems,0) | String.IsEqual(Container(5000).ListItem.Label,1910s)</visible>
+                </include>
+                <include content="Object_Widget_Spotlight">
+                    <param name="onup" value="5000" />
+                    <param name="target" value="videos" />
+                    <param name="content" value="special://skin/extras/decades/1900s.xsp" />
+                    <param name="sortby" value="year" />
+                    <param name="sortorder" value="descending" />
+                    <param name="id" value="1900" />
+                    <visible>Integer.IsEqual(Container(1900).NumItems,0) | String.IsEqual(Container(5000).ListItem.Label,1900s)</visible>
+                </include>
+            </control>
+
+
+        </control>
+    </controls>
+</window>
