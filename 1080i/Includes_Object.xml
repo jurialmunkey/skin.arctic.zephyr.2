@@ -1,6 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
 
+    <include name="Object_Icon_Details">
+        <param name="haspath" default="false" />
+        <definition>
+            <control type="group">
+                <left>view_pad</left>
+                <height>view_pad</height>
+                <bottom>0</bottom>
+                <right>500</right>
+                <visible>$PARAM[visible]</visible>
+                <include>Animation_FadeIn_Delay</include>
+                <include>Animation_FadeOut</include>
+                <visible>!Window.IsVisible(DialogNotification.xml)</visible>
+                <visible>!Window.IsVisible(DialogExtendedProgressBar.xml)</visible>
+                <control type="image">
+                    <centertop>50%</centertop>
+                    <width>24</width>
+                    <height>24</height>
+                    <texture colordiffuse="main_fg_90">$PARAM[icon]</texture>
+                </control>
+                <control type="label">
+                    <centertop>50%</centertop>
+                    <left>48</left>
+                    <height>24</height>
+                    <label>$PARAM[label]</label>
+                    <haspath>$PARAM[haspath]</haspath>
+                    <font>font_statusbar</font>
+                    <textcolor>main_fg_70</textcolor>
+                </control>
+            </control>
+        </definition>
+    </include>
+
+    <include name="Object_NowPlaying">
+        <control type="progress" id="933">
+            <texturebg></texturebg>
+            <lefttexture></lefttexture>
+            <midtexture></midtexture>
+            <righttexture></righttexture>
+            <info>Player.Progress</info>
+            <visible>false</visible>
+        </control>
+
+        <control type="group">
+            <visible>Player.HasMedia</visible>
+            <visible>!Window.IsVisible(DialogExtendedProgressBar.xml)</visible>
+            <visible>!Window.IsVisible(DialogNotification.xml)</visible>
+            <visible>!$EXP[Exp_Info_Visible]</visible>
+            <include content="Dialog_Notification_Group">
+                <param name="progress" value="Control.GetLabel(933)" />
+                <param name="main_id" value="9901" />
+                <param name="sub_id" value="9902" />
+                <param name="nowplaying" value="true" />
+                <param name="icon" value="buttons/play.png" />
+                <param name="label" value="$INFO[Player.Title]" />
+                <param name="label2" value="$INFO[MusicPlayer.Artist]" />
+            </include>
+        </control>
+    </include>
+
     <include name="Object_Widget_Spotlight">
         <param name="onup" default="302" />
         <param name="onback" default="301" />
@@ -280,57 +339,39 @@
             <visible>!Window.IsVisible(DialogExtendedProgressBar.xml)</visible>
             <centerbottom>60</centerbottom>
             <left>view_pad</left>
-            <right>view_pad</right>
+            <right>500</right>
             <height>32</height>
             <align>left</align>
+            <itemgap>50</itemgap>
             <orientation>horizontal</orientation>
             <usecontrolcoords>true</usecontrolcoords>
-            <!-- <control type="image">
-                <top>5</top>
-                <height>24</height>
-                <width>24</width>
-                <texture colordiffuse="main_fg_100">flags/video.png</texture>
-            </control>
-            <control type="label">
-                <top>0</top>
-                <left>20</left>
-                <align>left</align>
-                <aligny>center</aligny>
-                <font>font_osd_submenu</font>
-                <textcolor>main_fg_70</textcolor>
-                <width>auto</width>
-                <label>$INFO[ListItem.VideoCodec,,  •  ]$INFO[ListItem.VideoResolution,,  •  ]$INFO[ListItem.VideoAspect]</label>
-                <height>32</height>
-            </control> -->
-            <!-- <control type="image">
-                <left>50</left>
-                <top>5</top>
-                <height>24</height>
-                <width>24</width>
-                <texture colordiffuse="main_fg_100">flags/audio.png</texture>
-            </control>
-            <control type="label">
-                <top>0</top>
-                <left>20</left>
-                <align>left</align>
-                <aligny>center</aligny>
-                <width>auto</width>
-                <font>font_osd_submenu</font>
-                <textcolor>main_fg_70</textcolor>
-                <label>$INFO[ListItem.AudioCodec]$VAR[Label_AudioChannels,  •  ,]</label>
-                <height>32</height>
-            </control> -->
             <control type="image">
-                <!-- <left>50</left> -->
                 <top>5</top>
                 <height>24</height>
                 <width>24</width>
                 <texture colordiffuse="main_fg_100">flags/lang.png</texture>
+            </control>
+            <control type="label">
+                <left>-30</left>
+                <top>0</top>
+                <align>left</align>
+                <aligny>center</aligny>
+                <width>auto</width>
+                <font>font_osd_submenu</font>
+                <textcolor>main_fg_70</textcolor>
+                <label>$INFO[ListItem.Country]</label>
+                <height>32</height>
+            </control>
+            <control type="image">
+                <top>5</top>
+                <height>24</height>
+                <width>24</width>
+                <texture colordiffuse="main_fg_100">flags/language.png</texture>
                 <visible>!String.IsEmpty(ListItem.Property(AudioLanguage.1))</visible>
             </control>
             <control type="label">
+                <left>-30</left>
                 <top>0</top>
-                <left>20</left>
                 <align>left</align>
                 <aligny>center</aligny>
                 <width>auto</width>
@@ -341,16 +382,15 @@
                 <height>32</height>
             </control>
             <control type="image">
-                <left>50</left>
                 <top>5</top>
                 <height>24</height>
                 <width>24</width>
-                <texture colordiffuse="main_fg_100">flags/lang.png</texture>
+                <texture colordiffuse="main_fg_100">flags/subtitles.png</texture>
                 <visible>!String.IsEmpty(ListItem.Property(SubtitleLanguage.1))</visible>
             </control>
             <control type="label">
                 <top>0</top>
-                <left>20</left>
+                <left>-30</left>
                 <align>left</align>
                 <aligny>center</aligny>
                 <width>auto</width>
@@ -360,12 +400,13 @@
                 <height>32</height>
                 <visible>!String.IsEmpty(ListItem.Property(SubtitleLanguage.1))</visible>
             </control>
+            <nested />
         </control>
     </include>
 
     <include name="Object_Info_Details">
         <include content="Object_Info_TextPairs">
-            <param name="pad" value="32" />
+            <param name="pad" value="34" />
             <param name="name" value="Genre" />
             <param name="label" value="ListItem.Genre" />
         </include>
@@ -383,11 +424,6 @@
             <param name="pad" value="16" />
             <param name="name" value="Studio" />
             <param name="label" value="ListItem.Studio" />
-        </include>
-        <include content="Object_Info_TextPairs">
-            <param name="pad" value="16" />
-            <param name="name" value="Country" />
-            <param name="label" value="ListItem.Country" />
         </include>
         <include content="Object_Info_TextPairs">
             <param name="pad" value="16" />
@@ -500,7 +536,7 @@
     </include>
 
     <include name="Object_Info_Plot">
-        <param name="maxheight" default="200" />
+        <param name="maxheight" default="240" />
         <param name="height" default="auto" />
         <param name="label" default="$VAR[Label_Plot]" />
         <definition>
@@ -552,8 +588,10 @@
         <param name="aspectratio" default="scale" />
         <param name="visible" default="!String.StartsWith(ListItem.Icon,Default)" />
         <param name="bordersize" default="15" />
+        <param name="fadetime" default="0" />
         <definition>
             <control type="image">
+                <fadetime>$PARAM[fadetime]</fadetime>
                 <bordersize>$PARAM[bordersize]</bordersize>
                 <aspectratio scalediffuse="false">$PARAM[aspectratio]</aspectratio>
                 <texture background="true" diffuse="$PARAM[diffuse]">$PARAM[icon]</texture>
@@ -2230,21 +2268,106 @@
     <include name="Object_Scrollbar_Vert">
         <control type="scrollbar" id="60">
             <onback>50</onback>
-            <right>0</right>
+            <centerright>60</centerright>
             <width>8</width>
-            <top>0</top>
-            <bottom>0</bottom>
+            <top>view_top</top>
+            <bottom>view_pad</bottom>
             <visible>$PARAM[visible]</visible>
-            <showonepage>false</showonepage>
+            <showonepage>true</showonepage>
             <orientation>vertical</orientation>
             <onleft>50</onleft>
             <texturesliderbackground colordiffuse="main_fg_12" border="4">common/white.png</texturesliderbackground>
             <texturesliderbar colordiffuse="main_fg_30" border="4">scrollbar/scrollv.png</texturesliderbar>
             <texturesliderbarfocus colordiffuse="main_fg_100" border="4">scrollbar/scrollv.png</texturesliderbarfocus>
-            <animation effect="fade" start="100" end="33" time="400" condition="!Control.HasFocus(60) + !Container.Scrolling">Conditional</animation>
-            <visible>!Window.IsVisible(home)</visible>
+            <animation effect="fade" start="100" end="0" time="400" condition="!Control.HasFocus(60) + !Container.Scrolling">Conditional</animation>
+            <visible allowhiddenfocus="true">![String.IsEqual(Container.SortMethod,$LOCALIZE[551]) | String.IsEqual(Container.SortMethod,$LOCALIZE[556]) | String.IsEqual(Container.SortMethod,$LOCALIZE[561])]</visible>
             <include>Animation_FadeIn</include>
             <include>Animation_FadeOut</include>
+        </control>
+
+        <control type="grouplist">
+            <visible>$PARAM[visible]</visible>
+            <top>view_top</top>
+            <bottom>view_pad</bottom>
+            <right>20</right>
+            <width>80</width>
+            <height>780</height>
+            <itemgap>0</itemgap>
+            <orientation>vertical</orientation>
+            <animation effect="fade" start="100" end="0" time="400" condition="!Control.HasFocus(60) + !Container.Scrolling">Conditional</animation>
+            <include>Animation_FadeIn</include>
+            <include>Animation_FadeOut</include>
+            <include content="Object_AlphabetLetter"><param name="label" value="A" /></include>
+            <include content="Object_AlphabetLetter"><param name="label" value="B" /></include>
+            <include content="Object_AlphabetLetter"><param name="label" value="C" /></include>
+            <include content="Object_AlphabetLetter"><param name="label" value="D" /></include>
+            <include content="Object_AlphabetLetter"><param name="label" value="E" /></include>
+            <include content="Object_AlphabetLetter"><param name="label" value="F" /></include>
+            <include content="Object_AlphabetLetter"><param name="label" value="G" /></include>
+            <include content="Object_AlphabetLetter"><param name="label" value="H" /></include>
+            <include content="Object_AlphabetLetter"><param name="label" value="I" /></include>
+            <include content="Object_AlphabetLetter"><param name="label" value="J" /></include>
+            <include content="Object_AlphabetLetter"><param name="label" value="K" /></include>
+            <include content="Object_AlphabetLetter"><param name="label" value="L" /></include>
+            <include content="Object_AlphabetLetter"><param name="label" value="M" /></include>
+            <include content="Object_AlphabetLetter"><param name="label" value="N" /></include>
+            <include content="Object_AlphabetLetter"><param name="label" value="O" /></include>
+            <visible>![String.IsEqual(ListItem.SortLetter,N) | String.IsEqual(ListItem.SortLetter,O) | String.IsEqual(ListItem.SortLetter,P) | String.IsEqual(ListItem.SortLetter,Q) | String.IsEqual(ListItem.SortLetter,R) | String.IsEqual(ListItem.SortLetter,S) | String.IsEqual(ListItem.SortLetter,T) | String.IsEqual(ListItem.SortLetter,U) | String.IsEqual(ListItem.SortLetter,V) | String.IsEqual(ListItem.SortLetter,W) | String.IsEqual(ListItem.SortLetter,X) | String.IsEqual(ListItem.SortLetter,Y) | String.IsEqual(ListItem.SortLetter,Z)]</visible>
+            <visible>[String.IsEqual(Container.SortMethod,$LOCALIZE[551]) | String.IsEqual(Container.SortMethod,$LOCALIZE[556]) | String.IsEqual(Container.SortMethod,$LOCALIZE[561])]</visible>
+        </control>
+
+        <control type="grouplist">
+            <visible>$PARAM[visible]</visible>
+            <top>view_top</top>
+            <bottom>view_pad</bottom>
+            <right>20</right>
+            <width>80</width>
+            <height>780</height>
+            <itemgap>0</itemgap>
+            <orientation>vertical</orientation>
+            <animation effect="fade" start="100" end="0" time="400" condition="!Control.HasFocus(60) + !Container.Scrolling">Conditional</animation>
+            <include>Animation_FadeIn</include>
+            <include>Animation_FadeOut</include>
+            <include content="Object_AlphabetLetter"><param name="label" value="L" /></include>
+            <include content="Object_AlphabetLetter"><param name="label" value="M" /></include>
+            <include content="Object_AlphabetLetter"><param name="label" value="N" /></include>
+            <include content="Object_AlphabetLetter"><param name="label" value="O" /></include>
+            <include content="Object_AlphabetLetter"><param name="label" value="P" /></include>
+            <include content="Object_AlphabetLetter"><param name="label" value="Q" /></include>
+            <include content="Object_AlphabetLetter"><param name="label" value="R" /></include>
+            <include content="Object_AlphabetLetter"><param name="label" value="S" /></include>
+            <include content="Object_AlphabetLetter"><param name="label" value="T" /></include>
+            <include content="Object_AlphabetLetter"><param name="label" value="U" /></include>
+            <include content="Object_AlphabetLetter"><param name="label" value="V" /></include>
+            <include content="Object_AlphabetLetter"><param name="label" value="W" /></include>
+            <include content="Object_AlphabetLetter"><param name="label" value="X" /></include>
+            <include content="Object_AlphabetLetter"><param name="label" value="Y" /></include>
+            <include content="Object_AlphabetLetter"><param name="label" value="Z" /></include>
+            <visible>[String.IsEqual(ListItem.SortLetter,N) | String.IsEqual(ListItem.SortLetter,O) | String.IsEqual(ListItem.SortLetter,P) | String.IsEqual(ListItem.SortLetter,Q) | String.IsEqual(ListItem.SortLetter,R) | String.IsEqual(ListItem.SortLetter,S) | String.IsEqual(ListItem.SortLetter,T) | String.IsEqual(ListItem.SortLetter,U) | String.IsEqual(ListItem.SortLetter,V) | String.IsEqual(ListItem.SortLetter,W) | String.IsEqual(ListItem.SortLetter,X) | String.IsEqual(ListItem.SortLetter,Y) | String.IsEqual(ListItem.SortLetter,Z)]</visible>
+            <visible>[String.IsEqual(Container.SortMethod,$LOCALIZE[551]) | String.IsEqual(Container.SortMethod,$LOCALIZE[556]) | String.IsEqual(Container.SortMethod,$LOCALIZE[561])]</visible>
+        </control>
+    </include>
+
+    <include name="Object_AlphabetLetter">
+        <control type="label">
+            <width>80</width>
+            <height>52</height>
+            <label>$PARAM[label]</label>
+            <align>center</align>
+            <aligny>center</aligny>
+            <textcolor>main_fg_30</textcolor>
+            <font>font_tiny</font>
+            <visible>!String.IsEqual(ListItem.SortLetter,$PARAM[label])</visible>
+        </control>
+        <control type="label">
+            <width>80</width>
+            <height>52</height>
+            <label>[B]$PARAM[label][/B]</label>
+            <align>center</align>
+            <aligny>center</aligny>
+            <textcolor>main_fg_100</textcolor>
+            <font>font_tiny_bold</font>
+            <visible>String.IsEqual(ListItem.SortLetter,$PARAM[label])</visible>
         </control>
     </include>
 
@@ -2318,7 +2441,7 @@
                     <control type="group">
                         <top>12</top>
                         <control type="group">
-                            <top>90</top>
+                            <top>-118</top>
                             <visible>Container(9609).HasPrevious</visible>
                             <include>Animation_FadeIn</include>
                             <include>Animation_FadeOut</include>
@@ -2339,7 +2462,7 @@
                         </control>
 
                         <control type="group">
-                            <bottom>30</bottom>
+                            <bottom>-42</bottom>
                             <visible>Container(9609).HasNext</visible>
                             <include>Animation_FadeIn</include>
                             <include>Animation_FadeOut</include>
@@ -2374,7 +2497,7 @@
                             <left>0</left>
                             <right>0</right>
                             <top>120</top>
-                            <bottom>50</bottom>
+                            <bottom>10</bottom>
                             <align>left</align>
                             <textcolor>main_fg_70</textcolor>
                             <font>font_overlay_plotbox</font>

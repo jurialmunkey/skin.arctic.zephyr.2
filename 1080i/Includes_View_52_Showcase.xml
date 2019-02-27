@@ -239,8 +239,8 @@
                     <param name="orientation" value="horizontal" />
                     <onup>300</onup>
                     <ondown>5229</ondown>
-                    <onright>noop</onright>
-                    <onleft>noop</onleft>
+                    <onright>522</onright>
+                    <onleft>522</onleft>
                 </include>
             </control>
 
@@ -257,7 +257,7 @@
                 <param name="icon" value="$INFO[Container(5229).ListItem.Art(thumb)]" />
                 <param name="title" value="$INFO[Container(5229).ListItem.Title]" />
                 <param name="plot" value="$INFO[Container(5229).ListItem.Plot]" />
-                <param name="infoline" value="$INFO[Container(5229).ListItem.Season,Season ,]$INFO[Container(5229).ListItem.Episode,  |  Episode ,]$INFO[Container(5229).ListItem.Duration(mins),  |  , $LOCALIZE[31020]]$INFO[Container(5229).ListItem.Premiered,  |  ,]$INFO[Container(5229).ListItem.Studio,  |  ,]" />
+                <param name="infoline" value="$INFO[Container(5229).ListItem.Season,Season ,]$INFO[Container(5229).ListItem.Episode,  |  Episode ,]$INFO[Container(5229).ListItem.Premiered,  |  ,]$INFO[Container(5229).ListItem.Studio,  |  ,]$INFO[Container(5229).ListItem.Duration(mins),  |  , $LOCALIZE[31020]]$INFO[Container(5229).ListItem.EndTime,  |  $LOCALIZE[31420] ,]" />
             </include>
 
             <include content="View_50_List_Control">

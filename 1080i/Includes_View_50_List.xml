@@ -50,13 +50,20 @@
             <include>View_Group</include>
             <include content="View_50_List_Control">
                 <param name="left" value="-20" />
-                <param name="right" value="670" />
+                <param name="right" value="732.84" />
                 <param name="id" value="501" />
                 <param name="viewtype" value="$LOCALIZE[31298]" />
                 <param name="forced" value="true" />
                 <param name="visible" value="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(episodes)" />
             </include>
-            <control type="group">
+            <include content="View_522_Showcase_Seasons_Info">
+                <param name="visible" value="true" />
+                <param name="icon" value="$VAR[Image_Fanart]" />
+                <param name="title" value="$INFO[ListItem.Title]" />
+                <param name="plot" value="$INFO[ListItem.Plot]" />
+                <param name="infoline" value="$INFO[ListItem.Season,Season ,  |  ]$INFO[ListItem.Episode,Episode ,  |  ]$INFO[ListItem.Premiered,,  |  ]$INFO[ListItem.Studio,,  |  ]$VAR[Label_Duration,,  |  ]$VAR[Label_EndTime,$LOCALIZE[31420] ,]" />
+            </include>
+            <!-- <control type="group">
                 <right>-30</right>
                 <width>670</width>
                 <include content="View_50_Poster">
@@ -66,7 +73,7 @@
                     <param name="diffuse" value="diffuse/640x360.png" />
                 </include>
                 <include>View_501_List_Info</include>
-            </control>
+            </control> -->
         </control>
     </include>
 
@@ -148,7 +155,7 @@
                 <align>left</align>
                 <aligny>top</aligny>
                 <height>50</height>
-                <label>$INFO[ListItem.Season,Season ,  |  ]$INFO[ListItem.Episode,Episode ,  |  ]$INFO[ListItem.Premiered,,  |  ]$INFO[ListItem.Studio,,  |  ]$VAR[Label_Duration]</label>
+                <label>$INFO[ListItem.Season,Season ,  |  ]$INFO[ListItem.Episode,Episode ,  |  ]$INFO[ListItem.Premiered,,  |  ]$INFO[ListItem.Studio,,  |  ]$VAR[Label_Duration,,  |  ]$VAR[Label_EndTime,$LOCALIZE[31420] ,]</label>
             </control>
         </control>
     </include>
@@ -166,6 +173,7 @@
         <param name="duration" default="true" />
         <definition>
             <control type="$PARAM[controltype]" id="$PARAM[id]">
+                <scrolltime tween="quadratic">400</scrolltime>
                 <top>$PARAM[top]</top>
                 <visible>$PARAM[visible]</visible>
                 <left>$PARAM[left]</left>
@@ -372,6 +380,14 @@
                 <top>4</top>
                 <texture colordiffuse="$PARAM[panelcolor]" border="10">common/box.png</texture>
                 <visible>$PARAM[visible]</visible>
+            </control>
+            <control type="image" id="2">
+                <left>0</left>
+                <width>517</width>
+                <top>4</top>
+                <texture colordiffuse="$PARAM[panelcolor]" border="10">common/box.png</texture>
+                <visible>$PARAM[visible]</visible>
+                <visible>Integer.IsGreater(ListItem.Progress,0) + Integer.IsLess(ListItem.Progress,100)</visible>
             </control>
             <control type="image" id="2">
                 <aspectratio align="right">keep</aspectratio>
@@ -602,6 +618,7 @@
         <param name="include" default="" />
         <param name="visible" default="true" />
         <param name="left" default="-15" />
+        <param name="fadetime" default="0" />
         <definition>
             <control type="group">
                 <top>-15</top>
@@ -622,6 +639,7 @@
                         <param name="icon" value="$PARAM[icon]" />
                         <param name="aspectratio" value="$PARAM[aspectratio]" />
                         <param name="diffuse" value="$PARAM[diffuse]" />
+                        <param name="fadetime" value="$PARAM[fadetime]" />
                     </include>
                 </control>
             </control>

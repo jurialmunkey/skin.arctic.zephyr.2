@@ -131,6 +131,9 @@
     <include name="Dialog_Notification_Group">
         <param name="main_id" default="30" />
         <param name="sub_id" default="31" />
+        <param name="nowplaying" default="false" />
+        <param name="progress" default="Control.GetLabel(32)" />
+        <param name="icon" default="buttons/info.png" />
         <definition>
             <include>Animation_FadeIn_Delay</include>
             <include>Animation_FadeOut</include>
@@ -146,19 +149,22 @@
                 <aspectratio align="center" aligny="center">keep</aspectratio>
                 <texture>dialog/loading-back.png</texture>
                 <colordiffuse>main_fg_70</colordiffuse>
-                <visible>Window.IsVisible(DialogExtendedProgressBar.xml) + Control.IsVisible(32)</visible>
+                <visible>[Window.IsVisible(DialogExtendedProgressBar.xml) + Control.IsVisible(32)] | $PARAM[nowplaying]</visible>
             </control>
             <control type="image">
                 <left>-16</left>
                 <centertop>50%</centertop>
                 <width>80</width>
                 <height>80</height>
-                <texture colordiffuse="$VAR[ColorHighlight]">$INFO[Control.GetLabel(32),progress/circle/p,.png]</texture>
+                <texture colordiffuse="$VAR[ColorHighlight]">$INFO[$PARAM[progress],progress/circle/p,.png]</texture>
                 <aspectratio align="center" aligny="center">keep</aspectratio>
-                <visible>Window.IsVisible(DialogExtendedProgressBar.xml) + Control.IsVisible(32)</visible>
+                <visible>[Window.IsVisible(DialogExtendedProgressBar.xml) + Control.IsVisible(32)] | $PARAM[nowplaying]</visible>
             </control>
+
+            
+
             <control type="grouplist">
-                <animation effect="slide" end="8" condition="Window.IsVisible(DialogExtendedProgressBar.xml) + Control.IsVisible(32)">Conditional</animation>
+                <animation effect="slide" end="8" condition="[Window.IsVisible(DialogExtendedProgressBar.xml) + Control.IsVisible(32)] | $PARAM[nowplaying]">Conditional</animation>
                 <left>0</left>
                 <centertop>50%</centertop>
                 <height>32</height>
@@ -170,7 +176,7 @@
                     <height>32</height>
                     <width>42</width>
                     <aspectratio align="left">keep</aspectratio>
-                    <texture colordiffuse="main_fg_100">buttons/info.png</texture>
+                    <texture colordiffuse="main_fg_100">$PARAM[icon]</texture>
                 </control>
                 <control type="label" id="$PARAM[main_id]">
                     <centertop>50%</centertop>
@@ -199,6 +205,7 @@
                 </control>
                 
             </control>
+
         </definition>
     </include>
 

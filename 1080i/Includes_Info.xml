@@ -9,8 +9,8 @@
                 <param name="height" value="810" />
                 <param name="width" value="1710" />
                 <param name="aspectratio" value="scale" />
-                <param name="diffuse" value="diffuse/654x654.png" />
-                <param name="icon" value="$INFO[ListItem.Icon]" />
+                <param name="diffuse" value="diffuse/1680x780.png" />
+                <param name="icon" value="$PARAM[icon]" />
             </include>
         </control>
         <control type="group">
@@ -44,17 +44,24 @@
     </include>
 
     <include name="Info_Gallery">
-        <control type="list" id="$PARAM[id]">
-            <orientation>horizontal</orientation>
-            <height>825</height>
-            <width>1710</width>
-            <itemlayout width="1710" height="825">
-                <include>Info_Gallery_Itemlayout</include>
-            </itemlayout>
-            <focusedlayout width="1710" height="825">
-                <include>Info_Gallery_Itemlayout</include>
-            </focusedlayout>
-            <nested />
-        </control>
+        <param name="icon" default="$INFO[ListItem.Icon]" />
+        <definition>
+            <control type="list" id="$PARAM[id]">
+                <orientation>horizontal</orientation>
+                <height>825</height>
+                <width>1710</width>
+                <itemlayout width="1710" height="825">
+                    <include content="Info_Gallery_Itemlayout">
+                        <param name="icon" value="$PARAM[icon]" />
+                    </include>
+                </itemlayout>
+                <focusedlayout width="1710" height="825">
+                    <include content="Info_Gallery_Itemlayout">
+                        <param name="icon" value="$PARAM[icon]" />
+                    </include>
+                </focusedlayout>
+                <nested />
+            </control>
+        </definition>
     </include>
 </includes>

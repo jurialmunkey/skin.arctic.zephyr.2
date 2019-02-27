@@ -515,7 +515,7 @@
             </item>
             <!-- Viewmode -->
             <item>
-                <label>$INFO[Container.Viewmode,$LOCALIZE[582]: ,]</label>
+                <label>$INFO[Container.Viewmode]</label>
                 <icon>special://skin/extras/icons/viewmode.png</icon>
                 <include>Items_LockUnlock</include>
                 <onclick>Container.NextViewMode</onclick>
@@ -525,7 +525,7 @@
             </item>
             <!-- Lock viewmode -->
             <item>
-                <label>$VAR[Items_LockUnlock_Label,,: ]$INFO[Container.Content,[CAPITALIZE],[/CAPITALIZE]]</label>
+                <label>$VAR[Items_LockUnlock_Label]</label>
                 <icon>$VAR[Items_LockUnlock_Icon]</icon>
                 <include>Items_LockUnlock</include>
                 <onclick condition="[Container.Content() + String.IsEmpty(Skin.String(Skin.ForcedView.))]">AlarmClock(setviewlock,Skin.SetString(Skin.ForcedView.$INFO[Container.Content],$INFO[Container.Viewmode]),00:01,silent)</onclick>
@@ -566,7 +566,7 @@
             </item>
             <!-- Ascend Descend -->
             <item>
-                <label>$INFO[Control.GetLabel(4),$LOCALIZE[31239]: ,]</label>
+                <label>$INFO[Control.GetLabel(4)]</label>
                 <icon>special://skin/extras/icons/sort.png</icon>
                 <onclick>SendClick(4)</onclick>
                 <visible>Control.IsEnabled(4)</visible>

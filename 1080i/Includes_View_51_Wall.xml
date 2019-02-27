@@ -4,7 +4,7 @@
         <control type="label">
             <left>15</left>
             <right>15</right>
-            <font>font_tiny</font>
+            <font>font_statusbar</font>
             <textcolor>main_fg_100</textcolor>
             <top>$PARAM[iconheight]</top>
             <bottom>30</bottom>
@@ -18,7 +18,7 @@
         <control type="label">
             <left>15</left>
             <right>15</right>
-            <font>font_tiny</font>
+            <font>font_statusbar</font>
             <textcolor>main_fg_100</textcolor>
             <top>343.75</top>
             <height>20</height>
@@ -29,7 +29,7 @@
         <control type="label">
             <left>15</left>
             <right>15</right>
-            <font>font_tiny</font>
+            <font>font_statusbar</font>
             <textcolor>main_fg_100</textcolor>
             <top>343.75</top>
             <height>20</height>
@@ -43,7 +43,7 @@
             <control type="label">
                 <left>15</left>
                 <right>15</right>
-                <font>font_tiny</font>
+                <font>font_statusbar</font>
                 <textcolor>main_fg_70</textcolor>
                 <top>343.75</top>
                 <height>20</height>
@@ -54,7 +54,7 @@
             <control type="label">
                 <left>15</left>
                 <right>15</right>
-                <font>font_tiny</font>
+                <font>font_statusbar</font>
                 <textcolor>main_fg_70</textcolor>
                 <top>343.75</top>
                 <height>20</height>
@@ -69,7 +69,7 @@
         <control type="label">
             <left>15</left>
             <right>15</right>
-            <font>font_tiny</font>
+            <font>font_statusbar</font>
             <textcolor>main_fg_100</textcolor>
             <top>348.75</top>
             <height>20</height>
@@ -80,7 +80,7 @@
         <control type="label">
             <left>15</left>
             <right>15</right>
-            <font>font_tiny</font>
+            <font>font_statusbar</font>
             <textcolor>main_fg_100</textcolor>
             <top>348.75</top>
             <height>20</height>
@@ -157,6 +157,13 @@
                     <visible>$PARAM[clearlogo]</visible>
                 </control>
 
+                <control type="image">
+                    <bordersize>15</bordersize>
+                    <texture colordiffuse="80000000">diffuse/circle.png</texture>
+                    <visible>!$PARAM[selectbox]</visible>
+                    <visible>$PARAM[circle]</visible>
+                </control>
+
                 <include condition="!$PARAM[circle]">View_WatchedOverlay</include>
                 
                 <control type="group">
@@ -221,7 +228,7 @@
             <control type="label">
                 <left>15</left>
                 <right>15</right>
-                <font>font_tiny</font>
+                <font>font_statusbar</font>
                 <textcolor>main_fg_100</textcolor>
                 <top>$PARAM[iconheight]</top>
                 <bottom>30</bottom>
@@ -247,6 +254,7 @@
         <param name="diffuse" default="diffuse/214x315.png" />
         <definition>
             <control type="$PARAM[controltype]" id="$PARAM[id]">
+                <scrolltime tween="quadratic">400</scrolltime>
                 <include>$PARAM[controllayout]</include>
                 <orientation>$PARAM[orientation]</orientation>
                 <height>$PARAM[height]</height>

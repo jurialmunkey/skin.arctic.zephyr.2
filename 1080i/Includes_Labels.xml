@@ -54,6 +54,7 @@
     </variable>
 
     <variable name="Label_Header_Content">
+        <value condition="!String.IsEmpty(Window.Property(Header_Left_Text))">$INFO[Window.Property(Header_Left_Text)]</value>
         <value condition="Window.IsVisible(SettingsCategory.xml) | Window.IsVisible(SkinSettings.xml) | Window.IsVisible(SettingsProfile.xml) | Window.IsVisible(SettingsSystemInfo.xml)">$LOCALIZE[5]</value>
         <value condition="Window.IsVisible(Home) + [Control.HasFocus(302) | Control.HasFocus(5610)]">$INFO[Container(301).ListItem.Label]</value>
         <value condition="Window.IsVisible(MyWeather.xml)">$LOCALIZE[8]</value>
@@ -64,7 +65,6 @@
         <value condition="String.Contains(Container.FolderPath,plugin://)">$INFO[Container.FolderName]</value>
         <value condition="Container.Content(addons)">$LOCALIZE[24001]</value>
         <value condition="String.Contains(Container.FolderPath,/addons/)">$INFO[Container.FolderName]</value>
-        <value condition="!String.IsEmpty(Window.Property(Header_Left_Text))">$INFO[Window.Property(Header_Left_Text)]</value>
         <value condition="Window.IsVisible(MyVideoNav.xml)">$LOCALIZE[3]</value>
         <value condition="Window.IsVisible(MyMusicNav.xml)">$LOCALIZE[2]</value>
         <value condition="Window.IsVisible(MyPics.xml)">$LOCALIZE[1]</value>
@@ -72,8 +72,7 @@
         <value condition="Window.IsVisible(AddonBrowser.xml)">$LOCALIZE[24001]</value>
         <value condition="Window.IsVisible(MyPVRGuide.xml)">[CAPITALIZE]$LOCALIZE[10702][/CAPITALIZE]</value>
         <value condition="Window.IsVisible(MyPVRChannels.xml)">[CAPITALIZE]$LOCALIZE[10700][/CAPITALIZE]</value>
-        <value condition="Window.IsVisible(Home.xml) + !String.IsEmpty(Skin.String(Home.Header))">$INFO[Skin.String(Home.Header)]</value>
-        <value condition="Window.IsVisible(Home.xml) + String.IsEmpty(Skin.String(Home.Header))">$LOCALIZE[10000]</value>
+        <value condition="Window.IsVisible(Home.xml)">$LOCALIZE[10000]</value>
     </variable>
 
     <variable name="Label_AudioChannels">

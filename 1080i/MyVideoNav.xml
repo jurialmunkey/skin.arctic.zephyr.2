@@ -9,6 +9,8 @@
         <include>Global_Background</include>
         <include>Topbar</include>
         <include>Object_Codecs</include>
+
+        <include>Object_NowPlaying</include>
         
         <control type="group">
             <include>View_50_List</include>
@@ -27,10 +29,7 @@
             <include>View_53_Poster</include>
 
             <include content="Object_Scrollbar_Vert">
-                <param name="visible" value="Control.IsVisible(50) | Control.IsVisible(500) | Control.IsVisible(51) | Control.IsVisible(510) | Control.IsVisible(511)" />
-            </include>
-            <include content="Object_Scrollbar_Horz">
-                <param name="visible" value="Control.IsVisible(52) | Control.IsVisible(520) | Control.IsVisible(521)" />
+                <param name="visible" value="Control.IsVisible(50) | Control.IsVisible(500) | Control.IsVisible(51) | Control.IsVisible(510) | Control.IsVisible(511) | Control.IsVisible(501) | Control.IsVisible(502)" />
             </include>
         </control>
 
@@ -46,7 +45,6 @@
         </include> -->
 
         <control type="list" id="300">
-            <visible allowhiddenfocus="true">Control.HasFocus(300)</visible>
             <ondown>500</ondown>
             <include>Topbar_Menu_Layout</include>
             <include>Items_View</include>
