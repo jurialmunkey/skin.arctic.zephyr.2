@@ -8,7 +8,7 @@
                 <left>view_pad</left>
                 <right>view_pad</right>
                 <orientation>vertical</orientation>
-                <itemgap>25</itemgap>
+                <itemgap>10</itemgap>
                 <usecontrolcoords>true</usecontrolcoords>
                 <control type="label">
                     <aligny>top</aligny>
@@ -46,7 +46,7 @@
         <definition>
             <control type="grouplist">
                 <orientation>vertical</orientation>
-                <bottom>-48</bottom>
+                <bottom>-15</bottom>
                 <align>bottom</align>
                 <itemgap>50</itemgap>
                 <usecontrolcoords>true</usecontrolcoords>
@@ -68,55 +68,63 @@
     </include>
 
     <include name="View_522_Showcase_Seasons_Info">
-        <control type="group">
-            <right>-30</right>
-            <top>0</top>
-            <width>732.84</width>
-            <visible>$PARAM[visible]</visible>
-            <include content="View_50_Poster">
-                <param name="height" value="425.35" />
-                <param name="width" value="732.84" />
-                <param name="icon" value="$PARAM[icon]" />
-                <param name="diffuse" value="diffuse/640x360.png" />
-            </include>
-            <control type="grouplist">
-                <top>440</top>
-                <left>0</left>
-                <right>30</right>
-                <orientation>vertical</orientation>
-                <usecontrolcoords>true</usecontrolcoords>
-                <control type="label">
-                    <font>font_title_small</font>
-                    <textcolor>main_fg_100</textcolor>
-                    <align>left</align>
-                    <aligny>top</aligny>
-                    <height>60</height>
-                    <label>$PARAM[title]</label>
+        <param name="seasons" default="true" />
+        <definition>
+            <control type="group">
+                <right>-30</right>
+                <top>0</top>
+                <width>732.84</width>
+                <visible>$PARAM[visible]</visible>
+                <include content="View_50_Poster">
+                    <param name="height" value="425.35" />
+                    <param name="width" value="732.84" />
+                    <param name="icon" value="$PARAM[icon]" />
+                    <param name="diffuse" value="diffuse/640x360.png" />
+                </include>
+                <control type="image">
+                    <top>0</top>
+                    <right>50</right>
+                    <width>200</width>
+                    <height>380</height>
+                    <texture background="true">$VAR[Image_ClearLogo]</texture>
+                    <aspectratio align="right" aligny="bottom">keep</aspectratio>
+                    <visible>!String.IsEmpty(ListItem.Art(clearlogo)) | [Control.HasFocus(522) + !String.IsEmpty(ListItem.Art(tvshow.clearlogo))]</visible>
                 </control>
-                <control type="textbox">
-                    <top>10</top>
-                    <font>font_plotbox</font>
-                    <textcolor>main_fg_70</textcolor>
-                    <align>left</align>
-                    <aligny>top</aligny>
-                    <height>200</height>
-                    <label>$PARAM[plot]</label>
-                </control>
-                <control type="label">
-                    <top>20</top>
-                    <font>font_statusbar</font>
-                    <textcolor>main_fg_70</textcolor>
-                    <align>left</align>
-                    <aligny>top</aligny>
-                    <height>50</height>
-                    <label>$PARAM[infoline]</label>
+                <control type="grouplist">
+                    <top>430</top>
+                    <left>0</left>
+                    <right>30</right>
+                    <orientation>vertical</orientation>
+                    <usecontrolcoords>true</usecontrolcoords>
+                    <itemgap>0</itemgap>
+                    <control type="label">
+                        <font>font_title_small</font>
+                        <textcolor>main_fg_100</textcolor>
+                        <align>left</align>
+                        <aligny>top</aligny>
+                        <height>50</height>
+                        <label>$PARAM[title]</label>
+                    </control>
+                    <include condition="$PARAM[seasons]" content="Object_Info_Line">
+                        <param name="nextaired" value="false" />
+                    </include>
+                    <include condition="!$PARAM[seasons]">Object_Container_Info_Line</include>
+                    <control type="textbox">
+                        <top>20</top>
+                        <font>font_plotbox</font>
+                        <textcolor>main_fg_70</textcolor>
+                        <align>left</align>
+                        <aligny>top</aligny>
+                        <height>240</height>
+                        <label>$PARAM[plot]</label>
+                    </control>
                 </control>
             </control>
-        </control>
+        </definition>
     </include>
 
     <include name="View_52_Showcase_Layout_Standard">
-        <top>185</top>
+        <top>165</top>
         <right>-15</right>
         <left>-15</left>
         <preloaditems>2</preloaditems>
@@ -238,7 +246,7 @@
                     <param name="visible" value="Container.Content(seasons)" />
                     <param name="orientation" value="horizontal" />
                     <onup>300</onup>
-                    <ondown>5229</ondown>
+                    <ondown>SetFocus(5229,0,absolute)</ondown>
                     <onright>522</onright>
                     <onleft>522</onleft>
                 </include>
@@ -249,7 +257,7 @@
                 <param name="icon" value="$INFO[Container(522).ListItem.Art(fanart)]" />
                 <param name="title" value="$INFO[Container(522).ListItem.TvShowTitle]" />
                 <param name="plot" value="$INFO[Container(522).ListItem.Plot]" />
-                <param name="infoline" value="$INFO[ListItem.Genre]$INFO[ListItem.Studio,  |  ,]" />
+                <param name="seasons" value="true" />
             </include>
 
             <include content="View_522_Showcase_Seasons_Info">
@@ -257,7 +265,7 @@
                 <param name="icon" value="$INFO[Container(5229).ListItem.Art(thumb)]" />
                 <param name="title" value="$INFO[Container(5229).ListItem.Title]" />
                 <param name="plot" value="$INFO[Container(5229).ListItem.Plot]" />
-                <param name="infoline" value="$INFO[Container(5229).ListItem.Season,Season ,]$INFO[Container(5229).ListItem.Episode,  |  Episode ,]$INFO[Container(5229).ListItem.Premiered,  |  ,]$INFO[Container(5229).ListItem.Studio,  |  ,]$INFO[Container(5229).ListItem.Duration(mins),  |  , $LOCALIZE[31020]]$INFO[Container(5229).ListItem.EndTime,  |  $LOCALIZE[31420] ,]" />
+                <param name="seasons" value="false" />
             </include>
 
             <include content="View_50_List_Control">
@@ -268,13 +276,40 @@
                 <param name="forced" value="false" />
                 <param name="visible" value="Control.IsVisible(522)" />
                 <param name="controllayout" value="" />
+                <param name="controltype" value="fixedlist" />
                 <param name="itemlayout" value="View_50_Itemlayout_Episodes" />
+                <movement>2</movement>
+                <focusposition>2</focusposition>
+                <onleft>SetFocus(5229,0,absolute)</onleft>
                 <onleft>522</onleft>
+                <onright>SetFocus(5229,0,absolute)</onright>
                 <onright>522</onright>
                 <onup>522</onup>
                 <ondown>noop</ondown>
+                <onback>SetFocus(5229,0,absolute)</onback>
                 <onback>522</onback>
                 <content target="videos" sortby="episode" sortorder="ascending">$INFO[Container(522).ListItem.FolderPath]</content>
+            </include>
+        </control>
+    </include>
+
+    <include name="View_523_Showcase_Lovefilm">
+        <control type="group">
+            <include>View_Group</include>
+            <visible>Control.IsVisible(523)</visible>
+            <include content="Info_Gallery">
+                <param name="id" value="523" />
+                <param name="icon" value="$VAR[Image_Fanart]" />
+                <viewtype label="$LOCALIZE[31231]">$LOCALIZE[31231]</viewtype>
+                <include content="View_Forced">
+                    <param name="string" value="$LOCALIZE[31231]" />
+                </include>
+                <visible>Container.Content(movies) | Container.Content(tvshows)</visible>
+                <onleft>523</onleft>
+                <onright>523</onright>
+                <onup>300</onup>
+                <left>-15</left>
+                <top>-15</top>
             </include>
         </control>
     </include>

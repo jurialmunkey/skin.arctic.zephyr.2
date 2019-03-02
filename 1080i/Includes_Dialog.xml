@@ -142,7 +142,7 @@
             <right>view_pad</right>
             <height>view_pad</height>
             <control type="image" description="Back">
-                <left>-16</left>
+                <left>-24</left>
                 <centertop>50%</centertop>
                 <width>80</width>
                 <height>80</height>
@@ -152,7 +152,7 @@
                 <visible>[Window.IsVisible(DialogExtendedProgressBar.xml) + Control.IsVisible(32)] | $PARAM[nowplaying]</visible>
             </control>
             <control type="image">
-                <left>-16</left>
+                <left>-24</left>
                 <centertop>50%</centertop>
                 <width>80</width>
                 <height>80</height>
@@ -164,7 +164,6 @@
             
 
             <control type="grouplist">
-                <animation effect="slide" end="8" condition="[Window.IsVisible(DialogExtendedProgressBar.xml) + Control.IsVisible(32)] | $PARAM[nowplaying]">Conditional</animation>
                 <left>0</left>
                 <centertop>50%</centertop>
                 <height>32</height>
@@ -179,6 +178,7 @@
                     <texture colordiffuse="main_fg_100">$PARAM[icon]</texture>
                 </control>
                 <control type="label" id="$PARAM[main_id]">
+                    <left>-4</left>
                     <centertop>50%</centertop>
                     <height>26</height>
                     <label>$PARAM[label]</label>
@@ -490,55 +490,6 @@
             </control>
         </definition>
     </include>
-
-    <include name="Dialog_VideoInfo_BusyIndicator">
-        <control type="group">
-            <top>-50</top>
-            <visible>Container($PARAM[id]).IsUpdating</visible>
-            <visible>Control.IsVisible($PARAM[id])</visible>
-            <visible>!Window.IsVisible(DialogBusy.xml)</visible>
-            <include>Animation_FadeIn</include>
-            <control type="image">
-                <description>Busy animation</description>
-                <centerleft>50%</centerleft>
-                <centertop>42%</centertop>
-                <width>100</width>
-                <height>100</height>
-                <texture>dialog/loading-back.png</texture>
-                <aspectratio>keep</aspectratio>
-            </control>
-            <control type="group">
-                <description>Busy animation</description>
-                <centerleft>50%</centerleft>
-                <centertop>42%</centertop>
-                <width>100</width>
-                <height>100</height>
-                <animation effect="rotate" condition="true" start="0" end="360" loop="true" time="1000" center="auto">Conditional</animation>
-                <control type="image">
-                    <texture colordiffuse="$VAR[ColorHighlight]">dialog/loading-spinner.png</texture>
-                    <aspectratio>keep</aspectratio>
-                </control>
-                <control type="image">
-                    <texture colordiffuse="$VAR[ColorHighlight2]">dialog/loading-spinner.png</texture>
-                    <aspectratio>keep</aspectratio>
-                    <animation effect="fade" condition="true" start="0" end="75" pulse="true" time="1000">Conditional</animation>
-                </control>
-            </control>
-            <control type="label">
-                <description>Busy label</description>
-                <centerleft>50%</centerleft>
-                <centertop>58%</centertop>
-                <width>720</width>
-                <height>108</height>
-                <aligny>center</aligny>
-                <align>center</align>
-                <label>$LOCALIZE[20186]...</label>
-                <textcolor>ffededed</textcolor>
-            </control>
-        </control>
-    </include>
-
-    <include name="Dialog_Custom_Content"><content target="$INFO[Window(Home).Property(CustomInfoList.Target)]">$INFO[Window(Home).Property(CustomInfoList.Content)]</content></include>
 
     <!-- ============== -->
     <!-- Settings Panel -->

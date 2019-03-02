@@ -16,6 +16,22 @@
         <value>$INFO[ListItem.AudioCodec,flags/monochrome/audio/,.png]</value>
     </variable>
 
+
+    <variable name="Image_VideoPlayer_RipSource">
+        <value condition="String.Contains(Player.FileNameAndPath,2160p) | String.Contains(Player.FileNameAndPath,UHD) | String.Contains(Player.FileNameAndPath,UltraHD) | String.Contains(Player.FileNameAndPath,Ultra-HD) | String.Contains(Player.FileNameAndPath,4K)">flags/monochrome/other/4K.png</value>
+        <value condition="String.Contains(Player.FileNameAndPath,blu-ray) | String.Contains(Player.FileNameAndPath,bluray) | String.Contains(Player.FileNameAndPath,bdrip) | String.Contains(Player.FileNameAndPath,bd25) | String.Contains(Player.FileNameAndPath,bd50)">flags/monochrome/other/bluray.png</value>
+        <value condition="String.Contains(Player.FileNameAndPath,dvd)">flags/monochrome/other/dvd.png</value>
+        <value condition="String.Contains(Player.FileNameAndPath,hdtv) | String.Contains(Player.FileNameAndPath,pdtv) | String.Contains(Player.FileNameAndPath,dsr) | Pvr.IsPlayingTv">flags/monochrome/other/hdtv.png</value>
+        <value condition="String.Contains(Player.FileNameAndPath,web-dl) | String.Contains(Player.FileNameAndPath,webdl) | String.Contains(Player.FileNameAndPath,WEBRip)">flags/monochrome/other/web-dl.png</value>
+        <value>flags/monochrome/other/web-dl.png</value>
+    </variable>
+
+    <variable name="Image_VideoPlayer_AudioCodec">
+        <value condition="String.Contains(Player.FileNameAndPath,atmos)">flags/monochrome/audio/atmos.png</value>
+        <value condition="String.Contains(Player.FileNameAndPath,dtsx) | String.Contains(Player.FileNameAndPath,dts-x) | String.Contains(Player.FileNameAndPath,dts:x)">flags/monochrome/audio/dtsx.png</value>
+        <value>$INFO[VideoPlayer.AudioCodec,flags/monochrome/audio/,.png]</value>
+    </variable>
+
     <variable name="Image_OSD_Artwork">
         <value condition="!String.IsEmpty(Player.Art(tvshow.poster))">$INFO[Player.Art(tvshow.poster)]</value>
         <value condition="!String.IsEmpty(Player.Art(poster))">$INFO[Player.Art(poster)]</value>
@@ -63,8 +79,8 @@
     </variable>
 
     <variable name="Image_ClearLogo">
-        <value condition="!String.IsEmpty(ListItem.Art(tvshow.clearlogo))">$INFO[ListItem.Art(tvshow.clearlogo)]</value>
         <value condition="!String.IsEmpty(ListItem.Art(clearlogo))">$INFO[ListItem.Art(clearlogo)]</value>
+        <value condition="!String.IsEmpty(ListItem.Art(tvshow.clearlogo))">$INFO[ListItem.Art(tvshow.clearlogo)]</value>
     </variable>
 
     <variable name="Image_DiscArt">
@@ -104,7 +120,8 @@
         <value condition="[String.StartsWith(ListItem.Overlay,OverlayUnwatched.png) + [[Container.Content(movies) + [String.IsEqual(Window(Home).Property(LatestMovie.1.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.2.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.3.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.4.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.5.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.6.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.7.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.8.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.9.Title),ListItem.Label) | String.IsEqual(Window(Home).Property(LatestMovie.10.Title),ListItem.Label)]] | [[Container.Content(tvshows)] + [String.IsEqual(Window(Home).Property(LatestEpisode.1.ShowTitle),ListItem.TvShowTitle) | String.IsEqual(Window(Home).Property(LatestEpisode.2.ShowTitle),ListItem.TvShowTitle) | String.IsEqual(Window(Home).Property(LatestEpisode.3.ShowTitle),ListItem.TvShowTitle) | String.IsEqual(Window(Home).Property(LatestEpisode.4.ShowTitle),ListItem.TvShowTitle) | String.IsEqual(Window(Home).Property(LatestEpisode.5.ShowTitle),ListItem.TvShowTitle) | String.IsEqual(Window(Home).Property(LatestEpisode.6.ShowTitle),ListItem.TvShowTitle) | String.IsEqual(Window(Home).Property(LatestEpisode.7.ShowTitle),ListItem.TvShowTitle) | String.IsEqual(Window(Home).Property(LatestEpisode.8.ShowTitle),ListItem.TvShowTitle) | String.IsEqual(Window(Home).Property(LatestEpisode.9.ShowTitle),ListItem.TvShowTitle) | String.IsEqual(Window(Home).Property(LatestEpisode.10.ShowTitle),ListItem.TvShowTitle)]] | [Container.Content(episodes) + [String.IsEqual(Window(Home).Property(LatestEpisode.1.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.2.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.3.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.4.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.5.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.6.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.7.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.8.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.9.EpisodeTitle),ListItem.Title) | String.IsEqual(Window(Home).Property(LatestEpisode.10.EpisodeTitle),ListItem.Title)]]]]">indicator/new-fo.png</value>
         <value condition="[Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) | Window.IsVisible(script-script.extendedinfo-VideoList.xml)]+ !String.IsEmpty(ListItem.DBID)">indicator/library.png</value>
         <value condition="ListItem.IsCollection">indicator/movieset.png</value>
-        <value condition="String.IsEqual(ListItem.Overlay,OverlayUnwatched.png)">indicator/library.png</value>
+        <!-- <value condition="ListItem.IsFolder">indicator/folder.png</value> -->
+        <value>indicator/library.png</value>
     </variable>
 
     <variable name="Image_Overlay">
@@ -161,8 +178,8 @@
     </variable>
 
     <variable name="Image_Banner">
-        <value condition="!String.IsEmpty(ListItem.Art(tvshow.banner))">$INFO[ListItem.Art(tvshow.banner)]</value>
         <value condition="!String.IsEmpty(ListItem.Art(banner))">$INFO[ListItem.Art(banner)]</value>
+        <value condition="!String.IsEmpty(ListItem.Art(tvshow.banner))">$INFO[ListItem.Art(tvshow.banner)]</value>
         <value condition="!String.IsEmpty(ListItem.Art(fanart))">$INFO[ListItem.Art(fanart)]</value>
         <value>$INFO[ListItem.Icon]</value>
     </variable>

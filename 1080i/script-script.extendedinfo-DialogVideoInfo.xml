@@ -121,68 +121,114 @@
                     <height>825</height>
                     <control type="grouplist" id="4100">
                         <onup>3100</onup>
-                        <ondown>1130</ondown>
+                        <ondown>1350</ondown>
                         <height>825</height>
                         <orientation>vertical</orientation>
-                        <itemgap>0</itemgap>
-                        <include content="View_51_Wall_Container">
+                        <itemgap>-52</itemgap>
+                        <usecontrolcoords>true</usecontrolcoords>
+                        <control type="group" id="7599"><height>0</height></control>
+                        <include content="View_Cast_Toplabel">
+                            <param name="groupid" value="7510" />
                             <param name="id" value="1000" />
-                            <param name="height" value="412.5" />
+                            <param name="label" value="$INFO[Window.Property(title),Cast of ,]" />
+                        </include>
+                        <include content="View_51_Wall_Container">
+                            <param name="controllayout" value="View_Cast" />
+                            <param name="id" value="1000" />
+                            <param name="height" value="360.5" />
                             <param name="orientation" value="horizontal" />
                             <param name="onleft" value="1000" />
                             <param name="onright" value="1000" />
-                            <param name="visible" value="Integer.IsGreater(Container(1000).NumItems,1) | Container(1000).IsUpdating" />
+                            <param name="visible" value="Integer.IsGreater(Container(1000).NumItems,0) | Container(1000).IsUpdating" />
                             <param name="labelinclude" value="View_Cast_Character_Label" />
                         </include>
 
-                        <include content="View_51_Wall_Container">
+                        <include content="View_Cast_Toplabel">
+                            <param name="groupid" value="7515" />
                             <param name="id" value="150" />
-                            <param name="height" value="412.5" />
+                            <param name="label" value="$INFO[Window.Property(title),Similar to ,]" />
+                        </include>
+                        <include content="View_51_Wall_Container">
+                            <param name="controllayout" value="View_Cast" />
+                            <param name="id" value="150" />
+                            <param name="height" value="360.5" />
                             <param name="orientation" value="horizontal" />
                             <param name="onleft" value="150" />
                             <param name="onright" value="150" />
-                            <param name="visible" value="Integer.IsGreater(Container(150).NumItems,1) | Container(150).IsUpdating" />
+                            <param name="visible" value="Integer.IsGreater(Container(150).NumItems,0) | Container(150).IsUpdating" />
+                            <param name="labelinclude" value="" />
+                        </include>
+
+                        <include content="View_Cast_Toplabel">
+                            <param name="groupid" value="7525" />
+                            <param name="id" value="250" />
+                            <param name="label" value="$INFO[Window.Property(set),Films in the ,]" />
                         </include>
                         <include content="View_51_Wall_Container">
+                            <param name="controllayout" value="View_Cast" />
                             <param name="id" value="250" />
-                            <param name="height" value="412.5" />
+                            <param name="height" value="360.5" />
                             <param name="orientation" value="horizontal" />
                             <param name="onleft" value="250" />
                             <param name="onright" value="250" />
-                            <param name="visible" value="Integer.IsGreater(Container(250).NumItems,1) | Container(250).IsUpdating" />
+                            <param name="visible" value="Integer.IsGreater(Container(250).NumItems,0) | Container(250).IsUpdating" />
+                            <param name="labelinclude" value="" />
+                        </include>
+
+                        <include content="View_Cast_Toplabel">
+                            <param name="groupid" value="7535" />
+                            <param name="id" value="350" />
+                            <param name="label" value="$INFO[Window.Property(title),, Youtube Videos]" />
                         </include>
                         <include content="View_51_Wall_Container">
+                            <param name="controllayout" value="View_Cast" />
                             <param name="id" value="350" />
-                            <param name="height" value="412.5" />
+                            <param name="height" value="360.5" />
                             <param name="orientation" value="horizontal" />
                             <param name="onleft" value="350" />
                             <param name="onright" value="350" />
-                            <param name="visible" value="Integer.IsGreater(Container(350).NumItems,1) | Container(350).IsUpdating" />
+                            <param name="visible" value="Integer.IsGreater(Container(350).NumItems,0) | Container(350).IsUpdating" />
                             <param name="itemwidth" value="570" />
                             <param name="itemheight" value="423.75" />
                             <param name="iconheight" value="333.75" />
                             <param name="diffuse" value="diffuse/540x304.png" />
+                            <param name="labelinclude" value="View_Cast_Video_Label" />
+                        </include>
+
+                        <include content="View_Cast_Toplabel">
+                            <param name="groupid" value="7575" />
+                            <param name="id" value="750" />
+                            <param name="label" value="$INFO[Window.Property(title),Crew of ,]" />
                         </include>
                         <include content="View_51_Wall_Container">
+                            <param name="controllayout" value="View_Cast" />
                             <param name="id" value="750" />
-                            <param name="height" value="412.5" />
+                            <param name="height" value="360.5" />
                             <param name="orientation" value="horizontal" />
                             <param name="onleft" value="750" />
                             <param name="onright" value="750" />
-                            <param name="visible" value="Integer.IsGreater(Container(750).NumItems,1) | Container(750).IsUpdating" />
+                            <param name="visible" value="Integer.IsGreater(Container(750).NumItems,0) | Container(750).IsUpdating" />
                             <param name="labelinclude" value="View_Cast_Job_Label" />
                         </include>
-                        <include content="View_51_Wall_Container">
+
+                        <include content="View_Cast_Toplabel">
+                            <param name="groupid" value="75115" />
                             <param name="id" value="1150" />
-                            <param name="height" value="412.5" />
+                            <param name="label" value="$INFO[Window.Property(title),, Trailers]" />
+                        </include>
+                        <include content="View_51_Wall_Container">
+                            <param name="controllayout" value="View_Cast" />
+                            <param name="id" value="1150" />
+                            <param name="height" value="360.5" />
                             <param name="orientation" value="horizontal" />
                             <param name="onleft" value="1150" />
                             <param name="onright" value="1150" />
-                            <param name="visible" value="Integer.IsGreater(Container(1150).NumItems,1) | Container(1150).IsUpdating" />
+                            <param name="visible" value="Integer.IsGreater(Container(1150).NumItems,0) | Container(1150).IsUpdating" />
                             <param name="itemwidth" value="570" />
                             <param name="itemheight" value="423.75" />
                             <param name="iconheight" value="333.75" />
                             <param name="diffuse" value="diffuse/540x304.png" />
+                            <param name="labelinclude" value="View_Cast_Video_Label" />
                         </include>
                     </control>
                 </control>
@@ -192,6 +238,7 @@
                     <param name="icon" value="$INFO[ListItem.Art(original)]" />
                     <onleft>noop</onleft>
                     <onright>noop</onright>
+                    <visible>Integer.IsGreater(Container(1350).NumItems,0) | Container(1350).IsUpdating</visible>
                 </include>
                 <control type="group"></control>
             </control>

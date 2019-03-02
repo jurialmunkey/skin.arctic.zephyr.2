@@ -2,6 +2,8 @@
 <!-- Foundation -->
 <window id="2003">
     <defaultcontrol always="true">8</defaultcontrol>
+    <onload>ClearProperty(FilePath,home)</onload>
+    <onunload>ClearProperty(FilePath,home)</onunload>
     <controls>
 
         <!-- Top Info -->
@@ -26,6 +28,7 @@
                 <height>825</height>
                 <orientation>vertical</orientation>
                 <itemgap>0</itemgap>
+                <scrolltime tween="quadratic">400</scrolltime>
                 <control type="group" id="3000">
                     <height>825</height>
                     <control type="group">
@@ -51,13 +54,14 @@
                                 <itemgap>0</itemgap>
                                 <include>Object_Info_Title</include>
                                 <include>Object_Info_Line</include>
-                                <include>Object_Info_Plot</include>
                                 <include>Object_Info_Ratings</include>
+                                <include>Object_Info_Plot</include>
+                                <include>Object_Info_Languages</include>
                                 <include>Object_Info_Details</include>
                             </control>
                             <control type="grouplist" id="300">
                                 <onup>9601</onup>
-                                <ondown>4000</ondown>
+                                <ondown>SetFocus(5000,0,absolute)</ondown>
                                 <include>Defs_ButtonList</include>
                                 <include content="Object_Info_Button">
                                     <param name="id" value="8" />
@@ -78,6 +82,23 @@
                                     <param name="icon" value="special://skin/extras/icons/person.png" />
                                     <onclick>SetFocus(5000)</onclick>
                                 </include>
+                                <!-- <include content="Object_Info_Button">
+                                    <param name="id" value="8151" />
+                                    <param name="groupid" value="8051" />
+                                    <param name="label" value="Explore" />
+                                    <param name="icon" value="special://skin/extras/icons/passports.png" />
+                                    <onclick condition="Control.IsVisible(5004)">SetFocus(5004)</onclick>
+                                    <onclick condition="Control.IsVisible(5003)">SetFocus(5003)</onclick>
+                                    <onclick condition="Control.IsVisible(5002)">SetFocus(5002)</onclick>
+                                    <onclick condition="Control.IsVisible(5001)">SetFocus(5001)</onclick>
+                                </include>
+                                <include content="Object_Info_Button">
+                                    <param name="id" value="8160" />
+                                    <param name="groupid" value="8060" />
+                                    <param name="label" value="Artwork" />
+                                    <param name="icon" value="special://skin/extras/icons/pictures.png" />
+                                    <onclick>SetFocus(6000)</onclick>
+                                </include> -->
                                 <include content="Object_Info_Button">
                                     <param name="id" value="7" />
                                     <param name="groupid" value="8007" />
@@ -115,6 +136,8 @@
                                     <param name="groupid" value="8006" />
                                     <param name="label" value="Refresh" />
                                     <param name="icon" value="special://skin/extras/icons/update.png" />
+                                    <onfocus>SetProperty(FilePath,1,Home)</onfocus>
+                                    <onunfocus>ClearProperty(FilePath,Home)</onunfocus>
                                 </include>
                                 
                             </control>
@@ -125,93 +148,96 @@
                 <control type="group" id="4000">
                     <height>825</height>
                     <control type="grouplist" id="4100">
+                        <scrolltime tween="quadratic">400</scrolltime>
                         <onup>300</onup>
                         <ondown>6000</ondown>
                         <height>825</height>
                         <orientation>vertical</orientation>
-                        <itemgap>0</itemgap>
-                        <include content="View_51_Wall_Container">
+                        <itemgap>-52</itemgap>
+                        <usecontrolcoords>true</usecontrolcoords>
+                        <control type="group" id="7599"><height>0</height></control>
+                        <include content="View_Cast_Toplabel">
+                            <param name="groupid" value="7500" />
                             <param name="id" value="5000" />
-                            <param name="height" value="412.5" />
+                            <param name="label" value="$INFO[ListItem.Title,Cast of ,]" />
+                        </include>
+                        <include content="View_51_Wall_Container">
+                            <param name="controllayout" value="View_Cast" />
+                            <param name="id" value="5000" />
+                            <param name="height" value="360.5" />
                             <param name="orientation" value="horizontal" />
                             <param name="labelinclude" value="View_Cast_Label" />
                             <param name="onleft" value="5000" />
                             <param name="onright" value="5000" />
-                            <param name="visible" value="Integer.IsGreater(Container(5000).NumItems,1) | Container(5000).IsUpdating" />
+                            <param name="visible" value="Integer.IsGreater(Container(5000).NumItems,0) | Container(5000).IsUpdating" />
                             <content>$VAR[Defs_Cast_Content]</content>
                             <onback>SetFocus(5000)</onback>
-                            <onback>8</onback>
+                            <onback>300</onback>
                         </include>
 
-                        <include content="View_51_Wall_Container">
+                        <include content="View_Cast_Toplabel">
+                            <param name="groupid" value="7501" />
                             <param name="id" value="5001" />
-                            <param name="height" value="412.5" />
-                            <param name="orientation" value="horizontal" />
-                            <param name="visible" value="Integer.IsGreater(Container(5001).NumItems,1) | Container(5001).IsUpdating" />
-                            <onback>SetFocus(5000)</onback>
-                            <onback>8</onback>
-                            <content>
-                                <item>
-                                    <label>$INFO[ListItem.Set]</label>
-                                    <icon>DefaultSets.png</icon>
-                                    <onclick>Close</onclick>
-                                    <onclick>Close</onclick>
-                                    <onclick>ActivateWindow(videos,$INFO[ListItem.SetID,videodb://movies/sets/,/],return)</onclick>
-                                </item>
-                            </content>
-                            <content limit="6" target="videos">$INFO[ListItem.SetID,videodb://movies/sets/,/]</content>
+                            <param name="label" value="$INFO[ListItem.Set,Films in the ,]" />
                         </include>
                         <include content="View_51_Wall_Container">
+                            <param name="controllayout" value="View_Cast" />
+                            <param name="id" value="5001" />
+                            <param name="height" value="360.5" />
+                            <param name="orientation" value="horizontal" />
+                            <param name="labelinclude" value="" />
+                            <param name="visible" value="Integer.IsGreater(Container(5001).NumItems,0) | Container(5001).IsUpdating" />
+                            <onback>SetFocus(5000)</onback>
+                            <onback>300</onback>
+                            <content limit="25" target="videos">$INFO[ListItem.SetID,videodb://movies/sets/,/]</content>
+                        </include>
+                        <!-- <include content="View_Cast_Toplabel">
+                            <param name="groupid" value="7502" />
                             <param name="id" value="5002" />
-                            <param name="height" value="412.5" />
-                            <param name="orientation" value="horizontal" />
-                            <param name="visible" value="Integer.IsGreater(Container(5002).NumItems,1) | Container(5002).IsUpdating" />
-                            <onback>SetFocus(5000)</onback>
-                            <onback>8</onback>
-                            <content>
-                                <item>
-                                    <label>Similar Movies</label>
-                                    <icon>DefaultTags.png</icon>
-                                    <onclick>Close</onclick>
-                                    <onclick>Close</onclick>
-                                    <onclick>ActivateWindow(videos,$INFO[ListItem.IMDBNumber,plugin://script.skin.helper.widgets/?action=similar&amp;mediatype=movies&amp;imdbid=,],return)</onclick>
-                                </item>
-                            </content>
-                            <content limit="6" target="videos">$INFO[ListItem.IMDBNumber,plugin://script.skin.helper.widgets/?action=similar&amp;mediatype=movies&amp;imdbid=,]</content>
+                            <param name="label" value="$INFO[ListItem.Title,Similar to ,]" />
                         </include>
                         <include content="View_51_Wall_Container">
+                            <param name="controllayout" value="View_Cast" />
+                            <param name="id" value="5002" />
+                            <param name="height" value="360.5" />
+                            <param name="orientation" value="horizontal" />
+                            <param name="labelinclude" value="" />
+                            <param name="visible" value="Integer.IsGreater(Container(5002).NumItems,0) | Container(5002).IsUpdating" />
+                            <onback>SetFocus(5000)</onback>
+                            <onback>300</onback>
+                            <content limit="25" target="videos">$INFO[ListItem.IMDBNumber,plugin://script.skin.helper.widgets/?action=similar&amp;mediatype=movies&amp;imdbid=,]</content>
+                        </include> -->
+                        <include content="View_Cast_Toplabel">
+                            <param name="groupid" value="7503" />
                             <param name="id" value="5003" />
-                            <param name="height" value="412.5" />
-                            <param name="orientation" value="horizontal" />
-                            <param name="visible" value="Integer.IsGreater(Container(5003).NumItems,1) | Container(5003).IsUpdating" />
-                            <onback>SetFocus(5000)</onback>
-                            <onback>8</onback>
-                            <content>
-                                <item>
-                                    <label>$INFO[ListItem.Director,By ,]</label>
-                                    <icon>DefaultDirector.png</icon>
-                                    <onclick>SendClick(13)</onclick>
-                                </item>
-                            </content>
-                            <content limit="6" target="videos">$INFO[ListItem.Director,plugin://script.extendedinfo?info=personmovies&amp;&amp;person=,]</content>
+                            <param name="label" value="$INFO[ListItem.Director,By Director ,]" />
                         </include>
                         <include content="View_51_Wall_Container">
-                            <param name="id" value="5004" />
-                            <param name="height" value="412.5" />
+                            <param name="controllayout" value="View_Cast" />
+                            <param name="id" value="5003" />
+                            <param name="height" value="360.5" />
                             <param name="orientation" value="horizontal" />
-                            <param name="visible" value="Integer.IsGreater(Container(5004).NumItems,1) | Container(5004).IsUpdating" />
+                            <param name="labelinclude" value="" />
+                            <param name="visible" value="Integer.IsGreater(Container(5003).NumItems,0) | Container(5003).IsUpdating" />
                             <onback>SetFocus(5000)</onback>
-                            <onback>8</onback>
-                            <content>
-                                <item>
-                                    <label>$INFO[ListItem.Studio]</label>
-                                    <onclick>Close</onclick>
-                                    <onclick>Close</onclick>
-                                    <onclick>ActivateWindow(videos,$INFO[ListItem.Studio,plugin://script.extendedinfo?info=studio&amp;&amp;studio=,],return)</onclick>
-                                    <icon>DefaultStudios.png</icon>
-                                </item>
-                            </content>
-                            <content limit="6" target="videos">$INFO[ListItem.Studio,plugin://script.extendedinfo?info=studio&amp;&amp;studio=,]</content>
+                            <onback>300</onback>
+                            <content limit="25" target="videos">$INFO[ListItem.Director,plugin://script.extendedinfo?info=personmovies&amp;&amp;person=,]</content>
+                        </include>
+                        <include content="View_Cast_Toplabel">
+                            <param name="groupid" value="7504" />
+                            <param name="id" value="5004" />
+                            <param name="label" value="$INFO[ListItem.Studio,Films from ,]" />
+                        </include>
+                        <include content="View_51_Wall_Container">
+                            <param name="controllayout" value="View_Cast" />
+                            <param name="id" value="5004" />
+                            <param name="height" value="360.5" />
+                            <param name="orientation" value="horizontal" />
+                            <param name="labelinclude" value="" />
+                            <param name="visible" value="Integer.IsGreater(Container(5004).NumItems,0) | Container(5004).IsUpdating" />
+                            <onback>SetFocus(5000)</onback>
+                            <onback>300</onback>
+                            <content limit="25" target="videos">$INFO[ListItem.Studio,plugin://script.extendedinfo?info=studio&amp;&amp;studio=,]</content>
                         </include>
                     </control>
                 </control>
@@ -221,8 +247,9 @@
                     <onleft>noop</onleft>
                     <onright>noop</onright>
                     <onback>SetFocus(5000)</onback>
-                    <onback>8</onback>
+                    <onback>300</onback>
                     <include>Items_Info_Gallery</include>
+                    <visible>Integer.IsGreater(Container(6000).NumItems,0) | Container(6000).IsUpdating</visible>
                 </include>
                 <control type="group"></control>
             </control>
@@ -243,9 +270,9 @@
                 <param name="label" value="$INFO[ListItem.FileNameAndPath]" />
             </include>
 
-            <include content="Object_Info_Languages">
+            <!-- <include content="Object_Info_Languages">
                 <visible>!Control.HasFocus(6)</visible>
-            </include>
+            </include> -->
         </control>        
 
        

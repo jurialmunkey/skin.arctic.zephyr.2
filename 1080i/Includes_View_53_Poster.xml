@@ -7,6 +7,31 @@
             <include>Animation_Common</include>
             <control type="grouplist">
                 <left>700</left>
+                <top>670</top>
+                <right>view_pad</right>
+                <orientation>vertical</orientation>
+                <usecontrolcoords>true</usecontrolcoords>
+                <itemgap>0</itemgap>
+                <control type="label">
+                    <label>$INFO[ListItem.Title]</label>
+                    <height>60</height>
+                    <aligny>top</aligny>
+                    <textcolor>main_fg_100</textcolor>
+                    <font>font_title</font>
+                </control>
+                <include>Object_Info_Line</include>
+                <control type="textbox">
+                    <top>20</top>
+                    <label fallback="19055">$VAR[Label_Plot]</label>
+                    <height>160</height>
+                    <aligny>top</aligny>
+                    <textcolor>main_fg_70</textcolor>
+                    <font>font_plotbox</font>
+                </control>
+            </control>
+
+            <!-- <control type="grouplist">
+                <left>700</left>
                 <top>200</top>
                 <right>view_pad</right>
                 <orientation>vertical</orientation>
@@ -24,11 +49,12 @@
                 <aligny>center</aligny>
                 <textcolor>main_fg_70</textcolor>
                 <font>font_plotbox</font>
-            </control>
+            </control> -->
+            
             <control type="wraplist" id="53">
-                <left>-91</left>
+                <left>-250</left>
                 <width>2500</width>
-                <focusposition>1</focusposition>
+                <focusposition>2</focusposition>
                 <movement>0</movement>
                 <preloaditems>0</preloaditems>
                 <include>View_Horizontal</include>
@@ -43,9 +69,9 @@
                         <top>view_top</top>
                         <width>560</width>
                         <height>810</height>
-                        <centerleft>50%</centerleft>
+                        <centerleft>0%</centerleft>
                         <animation effect="Conditional" condition="true">
-                            <effect type="zoom" end="53" time="0" center="auto" />
+                            <effect type="zoom" end="53" time="0" center="auto,275" />
                         </animation>
                         <include content="View_50_Poster">
                             <param name="left" value="0" />
@@ -58,12 +84,12 @@
                 </itemlayout>
                 <focusedlayout width="318">
                     <control type="group">
-                        <animation condition="Container(53).OnNext | Container(53).OnPrevious" effect="zoom" start="53" end="100" delay="0" time="350" tween="sine" easing="out" center="auto">Focus</animation>
-                        <animation condition="Container(53).OnNext | Container(53).OnPrevious" effect="zoom" start="100" end="53" delay="0" time="250" tween="sine" easing="out" center="auto">UnFocus</animation>
+                        <animation condition="Container(53).OnNext | Container(53).OnPrevious" effect="zoom" start="53" end="100" delay="0" time="350" tween="sine" easing="out" center="auto,275">Focus</animation>
+                        <animation condition="Container(53).OnNext | Container(53).OnPrevious" effect="zoom" start="100" end="53" delay="0" time="250" tween="sine" easing="out" center="auto,275">UnFocus</animation>
                         <top>view_top</top>
                         <width>560</width>
                         <height>810</height>
-                        <centerleft>50%</centerleft>
+                        <centerleft>0%</centerleft>
                         <include content="View_50_Poster">
                             <param name="left" value="0" />
                             <param name="height" value="810" />

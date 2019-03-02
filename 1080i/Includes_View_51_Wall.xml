@@ -173,6 +173,8 @@
                 </control>
             </control>
             <include content="$PARAM[labelinclude]">
+                <param name="bordersize" value="$PARAM[bordersize]" />
+                <param name="diffuse" value="$PARAM[diffuse]" />
                 <param name="iconheight" value="$PARAM[iconheight]" />
             </include>
         </definition>
@@ -382,6 +384,28 @@
                 <param name="forced" value="true" />
                 <param name="visible" value="Container.Content(artists) | Container.Content(images) | Container.Content(actors)" />
                 <include>View_Vertical_Movement</include>
+            </include>
+        </control>
+    </include>
+
+    <include name="View_514_Wall_Info">
+        <control type="group">
+            <include>View_Group</include>
+            <visible>Control.IsVisible(514)</visible>
+            <include content="View_51_Wall_Container">
+                <param name="id" value="514" />
+                <param name="height" value="825" />
+                <param name="viewtype" value="$LOCALIZE[31416]" />
+                <param name="forced" value="true" />
+                <param name="visible" value="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons)" />
+                <width>977.12</width>
+                <include>View_Vertical_Movement</include>
+            </include>
+            <include content="View_522_Showcase_Seasons_Info">
+                <param name="visible" value="true" />
+                <param name="icon" value="$VAR[Image_Fanart]" />
+                <param name="title" value="$INFO[ListItem.Title]" />
+                <param name="plot" value="$INFO[ListItem.Plot]" />
             </include>
         </control>
     </include>

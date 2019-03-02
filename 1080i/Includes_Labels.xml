@@ -1,22 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
 
-    <variable name="Label_List_Left">
-        <value condition="Container.Content(tvshows) + String.IsEqual(Container.SortMethod,$LOCALIZE[20360])">$INFO[ListItem.Property(TotalEpisodes),, $LOCALIZE[20360]]</value>
-        <value condition="[Container.Content(tvshows) | Container.Content(episodes)] + String.IsEqual(Container.SortMethod,$LOCALIZE[568])">$INFO[ListItem.LastPlayed]</value>
-        <value condition="Container.Content(episodes)">$INFO[ListItem.Premiered]</value>
-        <value condition="!String.IsEmpty(ListItem.Year)">$INFO[ListItem.Year]</value>
-    </variable>
-
     <variable name="Label_List_Right">
+        <value condition="Container.Content(seasons) + Integer.IsEqual(ListItem.Episode,1)">$INFO[ListItem.Episode,, $LOCALIZE[20452]]</value>
+        <value condition="Container.Content(seasons)">$INFO[ListItem.Episode,, $LOCALIZE[20453]]</value>
+        <value condition="![Container.Content(tvshows) | Container.Content(episodes) | Container.Content(movies)]">$INFO[ListItem.Label2]</value>
         <value condition="String.IsEqual(Container.SortMethod,$LOCALIZE[20368])">$INFO[ListItem.Date]</value>
-        <value condition="String.IsEqual(Container.SortMethod,$LOCALIZE[552])">$INFO[ListItem.Date]</value>
+        <value condition="String.IsEqual(Container.SortMethod,$LOCALIZE[570])">$INFO[ListItem.DateAdded]</value>
         <value condition="String.IsEqual(Container.SortMethod,$LOCALIZE[20074])">$INFO[ListItem.MPAA]</value>
         <value condition="String.IsEqual(Container.SortMethod,$LOCALIZE[570])">$INFO[ListItem.DateAdded]</value>
+        <value condition="String.IsEqual(Container.SortMethod,$LOCALIZE[568])">$INFO[ListItem.LastPlayed]</value>
         <value condition="String.IsEqual(Container.SortMethod,$LOCALIZE[567])">$INFO[ListItem.PlayCount]</value>
-        <value condition="Container.Content(tvshows) | Container.Content(episodes)">$VAR[Label_List_Left]</value>
-        <value condition="!String.IsEmpty(ListItem.Duration(mins))">$INFO[ListItem.Duration(mins),, $LOCALIZE[31102]]</value>
-        
+        <value condition="String.IsEqual(Container.SortMethod,$LOCALIZE[38018])">$INFO[ListItem.UserRating,,.0]</value>
+        <value condition="String.IsEqual(Container.SortMethod,$LOCALIZE[20360])">$INFO[ListItem.Label2]</value>
+        <value condition="Container.Content(tvshows) | Control.IsVisible(501) | Control.IsVisible(502) | Control.IsVisible(503)">$INFO[ListItem.Rating]</value>
+        <value condition="!String.IsEmpty(ListItem.Duration) + Integer.IsGreater(ListItem.Duration(h),0)">$INFO[ListItem.Duration(h),, $LOCALIZE[31036] ]$INFO[ListItem.Duration(mm),, $LOCALIZE[31102]]</value>
+        <value condition="!String.IsEmpty(ListItem.Duration)">$INFO[ListItem.Duration(mins),, $LOCALIZE[31102]]</value>
     </variable>
 
     <variable name="Label_IconWall">
@@ -96,8 +95,8 @@
     </variable>
     
     <variable name="Label_OSD_FinishTime">
-        <value condition="VideoPlayer.Content(livetv)">$INFO[System.Time,$LOCALIZE[555]  ,]$INFO[VideoPlayer.EndTime,[COLOR=main_fg_70]  •  $LOCALIZE[31106] ,[/COLOR]]</value>
-        <value>$INFO[System.Time,$LOCALIZE[555]  ,]$INFO[Player.FinishTime,[COLOR=main_fg_70]  •  $LOCALIZE[31106] ,[/COLOR]]</value>
+        <value condition="VideoPlayer.Content(livetv)">$INFO[System.Time,$LOCALIZE[555]  ,]$INFO[VideoPlayer.EndTime,[COLOR=panel_fg_100]  •  $LOCALIZE[31106] ,[/COLOR]]</value>
+        <value>$INFO[System.Time,$LOCALIZE[555]  ,]$INFO[Player.FinishTime,[COLOR=panel_fg_100]  •  $LOCALIZE[31106] ,[/COLOR]]</value>
     </variable>
 
     <variable name="Label_OSD_Title">
@@ -105,9 +104,9 @@
     </variable>
 
     <variable name="Label_OSD_InfoLine">
-        <value condition="[!String.IsEmpty(VideoPlayer.EpgEventTitle) | !String.IsEmpty(VideoPlayer.EpisodeName)] + VideoPlayer.Content(livetv)">$INFO[VideoPlayer.EpisodeName,  |  [COLOR=main_fg_100],[/COLOR]]$INFO[VideoPlayer.EpgEventTitle,  |  [COLOR=main_fg_100],[/COLOR]]$INFO[VideoPlayer.Year,  |  [COLOR=main_fg_100],[/COLOR]]$INFO[VideoPlayer.MPAA,  |  [COLOR=main_fg_100],[/COLOR]]$INFO[VideoPlayer.Genre,  |  [COLOR=main_fg_100],[/COLOR]]</value>
-        <value condition="!String.IsEmpty(VideoPlayer.Season) + !String.IsEmpty(VideoPlayer.Episode)">$INFO[VideoPlayer.TvShowTitle,  |  [COLOR=main_fg_100],[/COLOR]]$INFO[VideoPlayer.Season,  |  [COLOR=main_fg_100]S,[/COLOR]]$INFO[VideoPlayer.Episode,[COLOR=main_fg_100]E,[/COLOR]]$INFO[VideoPlayer.Premiered,  |  [COLOR=main_fg_100],[/COLOR]]$INFO[VideoPlayer.MPAA,  |  [COLOR=main_fg_100],[/COLOR]]$INFO[VideoPlayer.Genre,  |  [COLOR=main_fg_100],[/COLOR]]</value>
-        <value>$INFO[VideoPlayer.TvShowTitle,  |  [COLOR=main_fg_100],[/COLOR]]$INFO[VideoPlayer.Year,  |  [COLOR=main_fg_100],[/COLOR]]$INFO[VideoPlayer.MPAA,  |  [COLOR=main_fg_100],[/COLOR]]$INFO[VideoPlayer.Genre,  |  [COLOR=main_fg_100],[/COLOR]]</value>
+        <value condition="[!String.IsEmpty(VideoPlayer.EpgEventTitle) | !String.IsEmpty(VideoPlayer.EpisodeName)] + VideoPlayer.Content(livetv)">$INFO[VideoPlayer.EpisodeName,  |  [COLOR=panel_fg_100],[/COLOR]]$INFO[VideoPlayer.EpgEventTitle,  |  [COLOR=panel_fg_100],[/COLOR]]$INFO[VideoPlayer.Year,  |  [COLOR=panel_fg_100],[/COLOR]]$INFO[VideoPlayer.MPAA,  |  [COLOR=panel_fg_100],[/COLOR]]$INFO[VideoPlayer.Genre,  |  [COLOR=panel_fg_100],[/COLOR]]</value>
+        <value condition="!String.IsEmpty(VideoPlayer.Season) + !String.IsEmpty(VideoPlayer.Episode)">$INFO[VideoPlayer.TvShowTitle,  |  [COLOR=panel_fg_100],[/COLOR]]$INFO[VideoPlayer.Season,  |  [COLOR=panel_fg_100]S,[/COLOR]]$INFO[VideoPlayer.Episode,[COLOR=panel_fg_100]E,[/COLOR]]$INFO[VideoPlayer.Premiered,  |  [COLOR=panel_fg_100],[/COLOR]]$INFO[VideoPlayer.MPAA,  |  [COLOR=panel_fg_100],[/COLOR]]$INFO[VideoPlayer.Genre,  |  [COLOR=panel_fg_100],[/COLOR]]</value>
+        <value>$INFO[VideoPlayer.TvShowTitle,  |  [COLOR=panel_fg_100],[/COLOR]]$INFO[VideoPlayer.Year,  |  [COLOR=panel_fg_100],[/COLOR]]$INFO[VideoPlayer.MPAA,  |  [COLOR=panel_fg_100],[/COLOR]]$INFO[VideoPlayer.Genre,  |  [COLOR=panel_fg_100],[/COLOR]]</value>
     </variable>
 
     <variable name="Label_WatchedIndicatorStyle">
@@ -301,22 +300,6 @@
         <value condition="!String.IsEmpty(Container(50).ListItem.Label) + !Container(50).ListItem.IsParentFolder">$INFO[Container(50).ListItem.Label]</value>
     </variable>
 
-    <variable name="Label_InfoLine">
-        <value condition="Window.IsVisible(script-script.extendedinfo-DialogInfo.xml)">$INFO[Window.Property(AlsoKnownAs),[COLOR=main_fg_100],[/COLOR]]</value>
-        <value condition="Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml)">$INFO[Window.Property(year),[COLOR=main_fg_100],[/COLOR]]$INFO[Window.Property(mpaa),  |  [COLOR=main_fg_100],[/COLOR]]$INFO[Window.Property(duration),  |  [COLOR=main_fg_100], $LOCALIZE[31102][/COLOR]]$INFO[Window.Property(rating),  |  [COLOR=main_fg_100],[/COLOR]]</value>
-
-        <value condition="Container.Content(movies)">$INFO[ListItem.Year,[COLOR=main_fg_100],[/COLOR]  |  ]$VAR[Label_MPAA,[COLOR=main_fg_100],[/COLOR]  |  ]$VAR[Label_Duration,[COLOR=main_fg_100],[/COLOR]  |  ]$VAR[Label_EndTime,[COLOR=main_fg_100]$LOCALIZE[31106] ,[/COLOR]  |  ]$VAR[Label_Rating,[COLOR=main_fg_100],[/COLOR]]</value>
-        <value condition="Container.Content(episodes)">$INFO[ListItem.TvShowTitle,[COLOR=main_fg_100],[/COLOR]  |  ]$INFO[ListItem.Premiered,[COLOR=main_fg_100],[/COLOR]  |  ]$VAR[Label_MPAA,[COLOR=main_fg_100],[/COLOR]  |  ]$VAR[Label_Duration,[COLOR=main_fg_100],[/COLOR]  |  ]$VAR[Label_EndTime,[COLOR=main_fg_100]$LOCALIZE[31106] ,[/COLOR]  |  ]$VAR[Label_Rating,[COLOR=main_fg_100],[/COLOR]]</value>
-        <value condition="Container.Content(tvshows)">$INFO[ListItem.Property(TotalSeasons),[COLOR=main_fg_100], $LOCALIZE[33054][/COLOR]  |  ]$VAR[Label_MPAA,[COLOR=main_fg_100],[/COLOR]  |  ]$VAR[Label_Duration,[COLOR=main_fg_100],[/COLOR]  |  ]$VAR[Label_Rating,[COLOR=main_fg_100],[/COLOR]]</value>
-        <value condition="Container.Content(seasons)">$INFO[ListItem.Property(TotalEpisodes),[COLOR=main_fg_100], $LOCALIZE[20360][/COLOR]  |  ]$INFO[ListItem.Property(UnWatchedEpisodes),[COLOR=main_fg_100], $LOCALIZE[31215][/COLOR]]$INFO[ListItem.Year,  |  [COLOR=main_fg_100],[/COLOR]]</value>
-        <value condition="Container.Content(musicvideos)">$INFO[ListItem.Artist,[COLOR=main_fg_100],[/COLOR]  |  ]$INFO[ListItem.Album,[COLOR=main_fg_100],[/COLOR]  |  ]$INFO[Container.Property(Album_Label),[COLOR=main_fg_100],[/COLOR]  |  ]$INFO[ListItem.Year,[COLOR=main_fg_100],[/COLOR]]</value>
-        <value condition="Container.Content(songs) | Container.Content(albums)">$INFO[ListItem.Album,[COLOR=main_fg_100],[/COLOR]  |  ]$INFO[Container.Property(Album_Label),[COLOR=main_fg_100],[/COLOR]  |  ]$INFO[ListItem.Year,[COLOR=main_fg_100],[/COLOR]]</value>
-        <value condition="Container.Content(artists)">$INFO[ListItem.Property(Artist_YearsActive),[COLOR=main_fg_100],[/COLOR]  |  ]$INFO[Window(Home).Property(SkinHelper.ListItem.AlbumCount),[COLOR=main_fg_100], $LOCALIZE[36919][/COLOR]]</value>
-        <value condition="Container.Content(addons) | Window.IsVisible(DialogAddonInfo.xml)">$INFO[ListItem.AddonType,[COLOR=main_fg_100],[/COLOR]  |  ]$INFO[ListItem.AddonVersion,[COLOR=main_fg_100],[/COLOR]]$INFO[ListItem.AddonCreator,  |  [COLOR=main_fg_100],[/COLOR]]</value>
-
-    </variable>
-
-
     <variable name="Label_Sets_Count">
         <value>$INFO[Window(Home).Property(SkinHelper.ListItem.WatchedCount),, $LOCALIZE[20163] ]$INFO[Window(Home).Property(SkinHelper.ListItem.Count),, [LOWERCASE]$LOCALIZE[16102][/LOWERCASE]]</value>
     </variable>
@@ -324,7 +307,7 @@
     <variable name="Label_ShowCase_InfoLine">
         <value condition="Window.IsVisible(script-script.extendedinfo-VideoList.xml)">$INFO[ListItem.MPAA,[COLOR=main_fg_100],[/COLOR]  |  ]$VAR[Label_Premiered,[COLOR=main_fg_100],[/COLOR]]</value>
         <value condition="ListItem.IsCollection">$INFO[Window(Home).Property(SkinHelper.ListItem.Year),[COLOR=main_fg_100],[/COLOR]  |  ]$VAR[Label_Duration,[COLOR=main_fg_100],[/COLOR]  |  ]$VAR[Label_Sets_Count,[COLOR=main_fg_100],[/COLOR]]</value>
-        <value condition="[Container.Content(seasons) | Container.Content(tvshows)] + [!String.IsEmpty(ListItem.MPAA) | !String.IsEmpty(ListItem.Duration) | !String.IsEmpty(ListItem.Premiered)] + !String.IsEmpty(ListItem.Property(TotalEpisodes))">$INFO[ListItem.MPAA,[COLOR=main_fg_100],[/COLOR]  |  ]$VAR[Label_Premiered,[COLOR=main_fg_100],[/COLOR]  |  ]$VAR[Label_Duration,[COLOR=main_fg_100],[/COLOR]  |  ]$INFO[ListItem.Property(WatchedEpisodes),[COLOR=main_fg_100]$LOCALIZE[16102] , $LOCALIZE[20163] [/COLOR]]$INFO[ListItem.Property(TotalEpisodes),[COLOR=main_fg_100],[/COLOR]]</value>
+        <value condition="[Container.Content(seasons) | Container.Content(tvshows)] + [!String.IsEmpty(ListItem.MPAA) | !String.IsEmpty(ListItem.Duration) | !String.IsEmpty(ListItem.Premiered)] + !String.IsEmpty(ListItem.Property(TotalEpisodes))">$INFO[ListItem.MPAA,[COLOR=main_fg_100],[/COLOR]  |  ]$VAR[Label_Premiered,[COLOR=main_fg_100],[/COLOR]  |  ]$INFO[ListItem.Property(WatchedEpisodes),[COLOR=main_fg_100]$LOCALIZE[16102] , $LOCALIZE[20163] [/COLOR]]$INFO[ListItem.Property(TotalEpisodes),[COLOR=main_fg_100],[/COLOR]]</value>
         <value condition="!String.IsEmpty(ListItem.MPAA) | !String.IsEmpty(ListItem.Duration) | !String.IsEmpty(ListItem.Premiered)">$INFO[ListItem.MPAA,[COLOR=main_fg_100],[/COLOR]  |  ]$VAR[Label_Premiered,[COLOR=main_fg_100],[/COLOR]  |  ]$VAR[Label_Duration,[COLOR=main_fg_100],[/COLOR]  |  ]$VAR[Label_EndTime,[COLOR=main_fg_100]$LOCALIZE[31106] ,[/COLOR]]</value>
         <value condition="[String.StartsWith(Container.FolderPath,plugin://plugin.program.advanced.launcher/) | String.StartsWith(Container.FolderPath,plugin://plugin.program.advanced.emulator.launcher/) | String.StartsWith(Container.FolderPath,plugin://plugin.program.advanced.MAME.launcher/)]">$INFO[ListItem.Property(platform),[COLOR=main_fg_100],[/COLOR]]$INFO[ListItem.Studio,  |  [COLOR=main_fg_100],[/COLOR]]$INFO[ListItem.Year,  |  [COLOR=main_fg_100],[/COLOR]]$INFO[ListItem.Property(nplayers),  |  [COLOR=main_fg_100], $LOCALIZE[31308][/COLOR]]$INFO[ListItem.Property(ESRB),  |  [COLOR=main_fg_100],[/COLOR]]</value>
         <value condition="Control.IsVisible(502)">[COLOR=main_fg_100]$LOCALIZE[14224][/COLOR]</value>

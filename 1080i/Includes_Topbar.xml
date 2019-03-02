@@ -4,86 +4,31 @@
     <!-- Common -->
     <!-- ====== -->
     <include name="Topbar_HomeMenu_Item">
-        <control type="button">
+        <control type="label">
             <width>auto</width>
             <align>left</align>
             <height>70</height>
-            <onfocus>SetFocus($PARAM[id],$PARAM[pos])</onfocus>
-            <onclick>$INFO[Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Property(path)]</onclick>
             <font>font_topbar_small</font>
             <textcolor>main_fg_100</textcolor>
-            <textoffsetx>1</textoffsetx>
-            <animation effect="fade" start="100" end="33" condition="!String.IsEqual(Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Label,Container($PARAM[id]).ListItem.Label)">Conditional</animation>
-            <texturenofocus />
-            <texturefocus />
+            <animation effect="fade" start="100" end="33" condition="!String.IsEqual(Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Label,Container($PARAM[id]).ListItemAbsolute.Label)">Conditional</animation>
             <label>$INFO[Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Label]</label>
-            <visible>!String.IsEqual(Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Label,Container($PARAM[id]).ListItem.Label)</visible>
+            <visible>!String.IsEqual(Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Label,Container($PARAM[id]).ListItemAbsolute.Label)</visible>
+            <visible>$PARAM[visible]</visible>
+            <animation effect="fade" start="100" end="0" time="200">WindowClose</animation>
+            <animation effect="fade" start="0" end="100" delay="300" time="300">WindowOpen</animation>
         </control>
-        <control type="button">
+        <control type="label">
             <width>auto</width>
             <align>left</align>
             <height>70</height>
-            <onfocus>SetFocus($PARAM[id],$PARAM[pos])</onfocus>
-            <onclick>$INFO[Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Property(path)]</onclick>
             <font>font_topbar</font>
             <textcolor>main_fg_100</textcolor>
-            <textoffsetx>1</textoffsetx>
-            <animation effect="fade" start="100" end="33" condition="!String.IsEqual(Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Label,Container($PARAM[id]).ListItem.Label)">Conditional</animation>
-            <texturenofocus />
-            <texturefocus />
+            <animation effect="fade" start="100" end="33" condition="!String.IsEqual(Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Label,Container($PARAM[id]).ListItemAbsolute.Label)">Conditional</animation>
             <label>$INFO[Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Label]</label>
-            <visible>String.IsEqual(Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Label,Container($PARAM[id]).ListItem.Label)</visible>
-        </control>
-    </include>
-
-    <include name="Topbar_HomeMenu_Item_Gradient">
-        <control type="togglebutton">
-            <width>auto</width>
-            <align>left</align>
-            <height>70</height>
-            <onfocus>SetFocus($PARAM[id],$PARAM[pos])</onfocus>
-            <onclick>$INFO[Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Property(path)]</onclick>
-            <usealttexture>Control.HasFocus($PARAM[id]) + String.IsEqual(Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Label,Container($PARAM[id]).ListItem.Label)</usealttexture>
-            <font>font_topbar_small</font>
-            <textcolor>00ffffff</textcolor>
-            <textoffsetx>1</textoffsetx>
-            <animation effect="fade" start="100" end="33" condition="!String.IsEqual(Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Label,Container($PARAM[id]).ListItem.Label)">Conditional</animation>
-            <texturenofocus />
-            <texturefocus />
-            <alttexturenofocus />
-            <alttexturefocus />
-            <label>$INFO[Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Label]</label>
-            <visible>!String.IsEqual(Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Label,Container($PARAM[id]).ListItem.Label)</visible>
-        </control>
-        <control type="togglebutton">
-            <width>auto</width>
-            <align>left</align>
-            <height>70</height>
-            <onfocus>SetFocus($PARAM[id],$PARAM[pos])</onfocus>
-            <onclick>$INFO[Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Property(path)]</onclick>
-            <usealttexture>Control.HasFocus($PARAM[id]) + String.IsEqual(Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Label,Container($PARAM[id]).ListItem.Label)</usealttexture>
-            <font>font_topbar</font>
-            <textcolor>00ffffff</textcolor>
-            <textoffsetx>1</textoffsetx>
-            <animation effect="fade" start="100" end="33" condition="!String.IsEqual(Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Label,Container($PARAM[id]).ListItem.Label)">Conditional</animation>
-            <texturenofocus />
-            <texturefocus />
-            <alttexturenofocus />
-            <alttexturefocus />
-            <label>$INFO[Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Label]</label>
-            <visible>String.IsEqual(Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Label,Container($PARAM[id]).ListItem.Label)</visible>
-        </control>
-    </include>
-
-    <include name="Topbar_Home_Dim">
-        <control type="image">
-            <height>240</height>
-            <texture>common/gradient-top.png</texture>
-            <visible>Container(330).HasPrevious</visible>
-            <animation effect="fade" start="0" end="100" time="200" reversible="false">Visible</animation>
-            <animation effect="fade" end="0" start="100" time="1000" reversible="false">Hidden</animation>
-            <animation effect="fade" end="0" start="100" time="350" reversible="false">WindowClose</animation>
-            <animation effect="fade" start="0" end="100" time="200" reversible="false">WindowOpen</animation>
+            <visible>String.IsEqual(Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Label,Container($PARAM[id]).ListItemAbsolute.Label)</visible>
+            <visible>$PARAM[visible]</visible>
+            <animation effect="fade" start="100" end="0" time="200">WindowClose</animation>
+            <animation effect="fade" start="0" end="100" delay="300" time="300">WindowOpen</animation>
         </control>
     </include>
 
@@ -238,6 +183,8 @@
                 <effect type="slide" start="0,0" end="0,-30" time="200" tween="sine" easing="out" />
             </animation>
             <control type="grouplist">
+                <!-- <animation effect="slide" start="0" end="-125" condition="!Container(301).OnNext" reversible="false" time="300" tween="quadratic">Conditional</animation>
+                <animation effect="slide" start="0" end="125" condition="!Container(301).OnPrevious" reversible="false" time="300" tween="quadratic">Conditional</animation> -->
                 <itemgap>30</itemgap>
                 <height>70</height>
                 <left>view_pad</left>
@@ -245,54 +192,67 @@
                 <visible>Window.IsVisible(Home) + !$EXP[Exp_Info_Visible]</visible>
                 <usecontrolcoords>true</usecontrolcoords>
                 <include content="Topbar_HomeMenu_Item">
+                    <param name="visible" value="Integer.IsGreater(Container(301).NumItems,0)" />
                     <param name="id" value="301" />
                     <param name="pos" value="0" />
                 </include>
                 <include content="Topbar_HomeMenu_Item">
+                    <param name="visible" value="Integer.IsGreater(Container(301).NumItems,1)" />
                     <param name="id" value="301" />
                     <param name="pos" value="1" />
                 </include>
                 <include content="Topbar_HomeMenu_Item">
+                    <param name="visible" value="Integer.IsGreater(Container(301).NumItems,2)" />
                     <param name="id" value="301" />
                     <param name="pos" value="2" />
                 </include>
                 <include content="Topbar_HomeMenu_Item">
+                    <param name="visible" value="Integer.IsGreater(Container(301).NumItems,3)" />
                     <param name="id" value="301" />
                     <param name="pos" value="3" />
                 </include>
                 <include content="Topbar_HomeMenu_Item">
+                    <param name="visible" value="Integer.IsGreater(Container(301).NumItems,4)" />
                     <param name="id" value="301" />
                     <param name="pos" value="4" />
                 </include>
                 <include content="Topbar_HomeMenu_Item">
+                    <param name="visible" value="Integer.IsGreater(Container(301).NumItems,5)" />
                     <param name="id" value="301" />
                     <param name="pos" value="5" />
                 </include>
                 <include content="Topbar_HomeMenu_Item">
+                    <param name="visible" value="Integer.IsGreater(Container(301).NumItems,6)" />
                     <param name="id" value="301" />
                     <param name="pos" value="6" />
                 </include>
                 <include content="Topbar_HomeMenu_Item">
+                    <param name="visible" value="Integer.IsGreater(Container(301).NumItems,7)" />
                     <param name="id" value="301" />
                     <param name="pos" value="7" />
                 </include>
                 <include content="Topbar_HomeMenu_Item">
+                    <param name="visible" value="Integer.IsGreater(Container(301).NumItems,8)" />
                     <param name="id" value="301" />
                     <param name="pos" value="8" />
                 </include>
                 <include content="Topbar_HomeMenu_Item">
+                    <param name="visible" value="Integer.IsGreater(Container(301).NumItems,9)" />
                     <param name="id" value="301" />
                     <param name="pos" value="9" />
                 </include>
                 <include content="Topbar_HomeMenu_Item">
+                    <param name="visible" value="Integer.IsGreater(Container(301).NumItems,10)" />
                     <param name="id" value="301" />
                     <param name="pos" value="10" />
                 </include>
                 <include content="Topbar_HomeMenu_Item">
+                    <param name="visible" value="Integer.IsGreater(Container(301).NumItems,11)" />
                     <param name="id" value="301" />
                     <param name="pos" value="11" />
                 </include>
                 <include content="Topbar_HomeMenu_Item">
+                    <param name="visible" value="Integer.IsGreater(Container(301).NumItems,12)" />
                     <param name="id" value="301" />
                     <param name="pos" value="12" />
                 </include>
@@ -399,82 +359,6 @@
                     <param name="pos" value="12" />
                 </include>
             </control>
-            <control type="grouplist">
-                <itemgap>30</itemgap>
-                <height>view_pad</height>
-                <left>view_pad</left>
-                <orientation>horizontal</orientation>
-                <visible>Window.IsVisible(script-globalsearch.xml) + !$EXP[Exp_Info_Visible]</visible>
-                <usecontrolcoords>true</usecontrolcoords>
-                <include content="Topbar_GlobalSearch_Icon">
-                    <param name="visible" value="false" />
-                </include>
-                <include content="Topbar_HomeMenu_Item_Gradient">
-                    <param name="id" value="9000" />
-                    <param name="pos" value="0" />
-                </include>
-                <include content="Topbar_HomeMenu_Item_Gradient">
-                    <param name="id" value="9000" />
-                    <param name="pos" value="1" />
-                </include>
-                <include content="Topbar_HomeMenu_Item_Gradient">
-                    <param name="id" value="9000" />
-                    <param name="pos" value="2" />
-                </include>
-                <include content="Topbar_HomeMenu_Item_Gradient">
-                    <param name="id" value="9000" />
-                    <param name="pos" value="3" />
-                </include>
-                <include content="Topbar_HomeMenu_Item_Gradient">
-                    <param name="id" value="9000" />
-                    <param name="pos" value="4" />
-                </include>
-                <include content="Topbar_HomeMenu_Item_Gradient">
-                    <param name="id" value="9000" />
-                    <param name="pos" value="5" />
-                </include>
-                <include content="Topbar_HomeMenu_Item_Gradient">
-                    <param name="id" value="9000" />
-                    <param name="pos" value="6" />
-                </include>
-                <include content="Topbar_HomeMenu_Item_Gradient">
-                    <param name="id" value="9000" />
-                    <param name="pos" value="7" />
-                </include>
-                <include content="Topbar_HomeMenu_Item_Gradient">
-                    <param name="id" value="9000" />
-                    <param name="pos" value="8" />
-                </include>
-                <include content="Topbar_HomeMenu_Item_Gradient">
-                    <param name="id" value="9000" />
-                    <param name="pos" value="9" />
-                </include>
-                <include content="Topbar_HomeMenu_Item_Gradient">
-                    <param name="id" value="9000" />
-                    <param name="pos" value="10" />
-                </include>
-                <include content="Topbar_HomeMenu_Item_Gradient">
-                    <param name="id" value="9000" />
-                    <param name="pos" value="11" />
-                </include>
-                <include content="Topbar_HomeMenu_Item_Gradient">
-                    <param name="id" value="9000" />
-                    <param name="pos" value="12" />
-                </include>
-            </control>
-        </control>
-    </include>
-
-    <include name="Topbar_Menu">
-        <control type="list" id="300">
-            <include>Topbar_Menu_Layout</include>
-            <include condition="Window.IsVisible(Home) + !Window.IsVisible(script-globalsearch-main.xml)">Items_MainMenu</include>
-            <include condition="[Window.IsVisible(MyGames.xml) | Window.IsVisible(MyPVRChannels.xml) | Window.IsVisible(MyPVRGuide.xml) | Window.IsVisible(MyPVRRecordings.xml) | Window.IsVisible(MyPVRTimers.xml) | Window.IsVisible(MyPVRSearch.xml) | Window.IsVisible(AddonBrowser.xml) | Window.IsVisible(MyPrograms.xml) | Window.IsVisible(MyPics.xml) | Window.IsVisible(MyMusicNav.xml) | Window.IsVisible(MyVideoNav.xml)] + !Window.IsVisible(script-globalsearch-main.xml)">Items_View</include>
-            <include condition="Window.IsVisible(MyPlaylist.xml) + !Window.IsVisible(script-globalsearch-main.xml)">Items_Playlist</include>
-            <include condition="[Window.IsVisible(SettingsSystemInfo.xml) | Window.IsVisible(Settings.xml) | Window.IsVisible(SettingsCategory.xml) | Window.IsVisible(SkinSettings.xml) | Window.IsVisible(SettingsProfile.xml)] + !Window.IsVisible(script-globalsearch-main.xml)">Items_Settings</include>
-            <include condition="[Window.IsVisible(script-NextAired-TVGuide.xml) | Window.IsVisible(script-NextAired-TVGuide2.xml)] + !Window.IsVisible(script-globalsearch-main.xml)">Items_NextAired</include>
-            <include condition="Window.IsVisible(script-globalsearch-main.xml)">Items_GlobalSearch</include>
-            <include condition="Window.IsVisible(weather)">Items_Weather</include>
         </control>
     </include>
 

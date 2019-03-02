@@ -16,207 +16,132 @@
     <onunload>ClearProperty(SkinHelper.WidgetContainer)</onunload>
 
     <controls>
-        <control type="list" id="9988">
-            <description>hidden container for playlist background</description>
-            <posx>-20</posx>
-            <posy>-20</posy>
-            <width>1</width>
-            <height>1</height>
-            <visible>true</visible>
-            <onup>50</onup>
-            <ondown>50</ondown>
-            <onleft>50</onleft>
-            <onright>50</onright>
-            <autoscroll time="10000">true</autoscroll>
-            <itemlayout width="1" height="1">
-            </itemlayout>
-            <focusedlayout height="1" width="1">
-            </focusedlayout>
-            <content>$INFO[Container(301).ListItem.Property(backgroundPlaylist)]</content>
-        </control>
+        <include>Global_Background</include>
+        <include>Topbar</include>
 
-        <control type="list" id="301">
-            <ondown condition="Integer.IsGreater(Container(302).NumItems,0)">302</ondown>
-            <onup>5600</onup>
-            <onfocus>ClearProperty(WidgetFocus,Home)</onfocus>
-            <onfocus>ClearProperty(WidgetLoading,Home)</onfocus>
-            <onfocus>AlarmClock(SetLoad,SetProperty(WidgetLoading,1,Home),00:00,silent)</onfocus>
-            <orientation>horizontal</orientation>
-            <height>10</height>
-            <top>-1000</top>
-            <itemlayout width="10" />
-            <focusedlayout width="10" />
-            <content><include>skinshortcuts-mainmenu</include></content>
-        </control>
-
-
-        <control type="image">
-            <texture colordiffuse="Background">common/bg.jpg</texture>
-        </control>
-        
-        <control type="wraplist" id="5600">
-            <include>Animation_FadeIn</include>
-            <include>Animation_FadeOut</include>
-            <height>1080</height>
-            <width>1920</width>
-            <onfocus>SetProperty(SkinHelper.WidgetContainer,5600,Home)</onfocus>
-            <onup>301</onup>
-            <ondown>301</ondown>
-            <onback>301</onback>
-            <autoscroll time="7000">Control.HasFocus(301) + System.IdleTime(1)</autoscroll>
-            <orientation>horizontal</orientation>
-            <itemlayout width="1920" height="1080">
-                <control type="image">
-                    <aspectratio>scale</aspectratio>
-                    <texture colordiffuse="Background">common/bg.jpg</texture>
-                </control>
-                <control type="image">
-                    <centerleft>50%</centerleft>
-                    <top>0</top>
-                    <width>1920</width>
-                    <height>1080</height>
-                    <aspectratio>scale</aspectratio>
-                    <texture background="true">$INFO[ListItem.Art(fanart)]</texture>
-                </control>
-            </itemlayout>
-            <focusedlayout width="1920" height="1080">
-                <control type="image">
-                    <aspectratio>scale</aspectratio>
-                    <texture colordiffuse="Background">common/bg.jpg</texture>
-                </control>
-                <control type="image">
-                    <centerleft>50%</centerleft>
-                    <top>0</top>
-                    <width>1920</width>
-                    <height>1080</height>
-                    <aspectratio>scale</aspectratio>
-                    <texture background="true">$INFO[ListItem.Art(fanart)]</texture>
-                </control>
-            </focusedlayout>
-            <content limit="50" target="videos" sortby="lastplayed" sortorder="descending">videodb://movies/titles/</content>
-        </control>
-
-        <control type="image">
-            <include>Animation_FadeIn</include>
-            <include>Animation_FadeOut</include>
-            <width>1920</width>
-            <height>1080</height>
-            <aspectratio>scale</aspectratio>
-            <fadetime>600</fadetime>
-            <animation effect="fade" start="100" end="0" time="600" condition="!Control.HasFocus(5610)">Conditional</animation>
-            <texture background="true">$INFO[Container(5610).ListItem.Art(fanart)]</texture>
-        </control>
 
         <control type="group">
-            <top>900</top>
-            <height>1080</height>
-            <animation effect="slide" start="0" end="0,-900" time="350" tween="quadratic" easing="out" condition="[Control.HasFocus(5610) | Control.HasFocus(302)] + !String.IsEmpty(Container(301).ListItem.Property(widgetPath))">Conditional</animation>
-            <animation effect="slide" start="0" end="0,-285" time="350" tween="quadratic" easing="out" condition="[Control.HasFocus(5610) | Control.HasFocus(302)] + String.IsEmpty(Container(301).ListItem.Property(widgetPath))">Conditional</animation>
-
-            <animation effect="slide" start="0" end="0,-275" time="250" tween="quadratic" easing="out" condition="Control.HasFocus(5600)">Conditional</animation>
-            <animation effect="slide" start="0" end="0,-625" time="300" tween="quadratic" easing="out" condition="Control.HasFocus(5600) + Window.IsVisible(DialogVideoInfo.xml)">Conditional</animation>
-            <animation effect="slide" start="0" end="0,250" time="150" condition="![Control.HasFocus(5610) | Control.HasFocus(302)]">WindowClose</animation>
-            <animation effect="slide" end="0" start="0,250" time="150" condition="![Control.HasFocus(5610) | Control.HasFocus(302)]">WindowOpen</animation>
-            <control type="image">
-                <texture colordiffuse="HomePanel">common/bg.jpg</texture>
-            </control>
-            <control type="group">
-                <animation effect="fade" condition="![Control.HasFocus(5610) | Control.HasFocus(302)] + !Window.IsVisible(DialogVideoInfo.xml)" time="350" tween="cubic" easing="inout" start="100" end="0">Conditional</animation>
-                <animation effect="fade" condition="Window.IsVisible(DialogVideoInfo.xml) + [Control.HasFocus(5610) | Control.HasFocus(302)]" time="1" delay="350" start="100" end="0">Condition</animation>
-                <animation effect="fade" condition="Window.IsVisible(DialogVideoInfo.xml) + ![Control.HasFocus(5610) | Control.HasFocus(302)]" time="1" delay="0" start="100" end="0">Condition</animation>
-                <include content="Topbar">
-                    <param name="info_hide" value="false" />
-                </include>
-            </control>
-            <!-- Menubar -->
-            <control type="group">
-                <animation effect="fade" start="100" end="0" time="350" tween="cubic" easing="inout" condition="!Control.HasFocus(301)">Conditional</animation>
-                <include>Defs_InfoDialog_Visible</include>
-                <include>Topbar_Home_TextButtons</include>
-                <control type="group">
-                    <top>30</top>
-                    <height>view_pad</height>
-                    <visible allowhiddenfocus="true">!$EXP[Exp_HideFurniture]</visible>
-                    <include>Animation_FadeInOut</include>
-                    <include>Topbar_Right</include>
+            <include>View_Group</include>
+            <control type="grouplist">
+                <top>-15</top>
+                <right>-15</right>
+                <left>-15</left>
+                <bottom>-15</bottom>
+                <orientation>horizontal</orientation>
+                <usecontrolcoords>true</usecontrolcoords>
+                <itemgap>35</itemgap>
+                <control type="panel" id="301">
+                    <left>15</left>
+                    <animation effect="fade" start="100" end="0" time="200" condition="ControlGroup(3100).HasFocus()">Conditional</animation>
+                    <top>-7</top>
+                    <onright>3100</onright>
+                    <width>194.28</width>
+                    <orientation>vertical</orientation>                
+                    <itemlayout width="194.28" height="view_list_height">
+                        <control type="image">
+                            <top>3</top>
+                            <left>-22</left>
+                            <aspectratio>keep</aspectratio>
+                            <width>view_list_height</width>
+                            <bordersize>6</bordersize>
+                            <texture colordiffuse="main_fg_30">$INFO[ListItem.Icon]</texture>
+                        </control>
+                        <control type="label">
+                            <left>60</left>
+                            <font>font_topbar_small</font>
+                            <align>left</align>
+                            <aligny>center</aligny>
+                            <textcolor>main_fg_30</textcolor>
+                            <label>$INFO[ListItem.Label]</label>
+                        </control>
+                    </itemlayout>
+                    <focusedlayout width="194.28" height="view_list_height">
+                        <control type="image">
+                            <top>3</top>
+                            <left>-22</left>
+                            <aspectratio>keep</aspectratio>
+                            <width>view_list_height</width>
+                            <bordersize>6</bordersize>
+                            <texture colordiffuse="main_fg_100">$INFO[ListItem.Icon]</texture>
+                        </control>
+                        <control type="label">
+                            <left>60</left>
+                            <font>font_topbar</font>
+                            <align>left</align>
+                            <aligny>center</aligny>
+                            <textcolor>main_fg_100</textcolor>
+                            <label>$INFO[ListItem.Label]</label>
+                        </control>
+                    </focusedlayout>
+                    <content><include>skinshortcuts-mainmenu</include></content>
                 </control>
-            </control>
-            <!-- Up Widget -->
-            <control type="group">
-                <animation effect="fade" start="100" end="0" time="350" tween="cubic" easing="inout" condition="!Control.HasFocus(5600)">Conditional</animation>
-                <include>Defs_InfoDialog_Visible</include>
-                <control type="grouplist">
-                    <top>75</top>
-                    <bottom>0</bottom>
-                    <left>400</left>
-                    <right>400</right>
+                <control type="grouplist" id="3100">
+                    <onleft>301</onleft>
+                    <scrolltime tween="quadratic">400</scrolltime>
+                    <height>825</height>
+                    <width>1710</width>
                     <orientation>vertical</orientation>
-                    <itemgap>10</itemgap>
+                    <itemgap>-52</itemgap>
                     <usecontrolcoords>true</usecontrolcoords>
-                    <control type="label">
-                        <align>center</align>
-                        <font>font_byline</font>
-                        <textcolor>main_fg_70</textcolor>
-                        <label>Random Movies</label>
-                        <height>30</height>
-                    </control>
-                    <control type="label">
-                        <top>30</top>
-                        <aligny>top</aligny>
-                        <align>center</align>
-                        <font>font_title</font>
-                        <textcolor>main_fg_100</textcolor>
-                        <label>$INFO[Container(5600).ListItem.Label,[B],[/B]]</label>
-                        <height>85</height>
-                    </control>
-                    <control type="label">
-                        <align>center</align>
-                        <aligny>top</aligny>
-                        <font>font_tiny</font>
-                        <textcolor>main_fg_70</textcolor>
-                        <label>$INFO[Container(5600).ListItem.Genre]</label>
-                        <height>67</height>
-                    </control>
-                    <include content="Object_Icon_Ratings">
-                        <param name="id" value="5600" />
+                    <control type="group" id="7599"><height>0</height></control>
+                    <include content="View_Cast_Toplabel">
+                        <param name="groupid" value="7500" />
+                        <param name="id" value="3101" />
+                        <param name="label" value="Random Movies" />
+                    </include>
+                    <include content="View_51_Wall_Container">
+                        <param name="controllayout" value="View_Cast" />
+                        <param name="id" value="3101" />
+                        <param name="height" value="360.5" />
+                        <param name="orientation" value="horizontal" />
+                        <param name="labelinclude" value="" />
+                        <param name="onleft" value="301" />
+                        <param name="onright" value="3101" />
+                        <param name="visible" value="Integer.IsGreater(Container(3101).NumItems,0) | Container(3101).IsUpdating" />
+                        <content target="videos" limit="25" sortby="random">videodb://movies/titles/</content>
+                        <onback>SetFocus(3101)</onback>
+                        <onback>300</onback>
+                    </include>
+                    <include content="View_Cast_Toplabel">
+                        <param name="groupid" value="7501" />
+                        <param name="id" value="3102" />
+                        <param name="label" value="Recently Added Movies" />
+                    </include>
+                    <include content="View_51_Wall_Container">
+                        <param name="controllayout" value="View_Cast" />
+                        <param name="id" value="3102" />
+                        <param name="height" value="360.5" />
+                        <param name="orientation" value="horizontal" />
+                        <param name="labelinclude" value="" />
+                        <param name="onleft" value="301" />
+                        <param name="onright" value="3102" />
+                        <param name="visible" value="Integer.IsGreater(Container(3102).NumItems,0) | Container(3102).IsUpdating" />
+                        <content target="videos" limit="25" sortby="dateadded" sortorder="descending">videodb://movies/titles/</content>
+                        <onback>SetFocus(3102)</onback>
+                        <onback>300</onback>
+                    </include>
+
+                    <include content="View_Cast_Toplabel">
+                        <param name="groupid" value="7502" />
+                        <param name="id" value="3103" />
+                        <param name="label" value="Recently Played Movies" />
+                    </include>
+                    <include content="View_51_Wall_Container">
+                        <param name="controllayout" value="View_Cast" />
+                        <param name="id" value="3103" />
+                        <param name="height" value="360.5" />
+                        <param name="orientation" value="horizontal" />
+                        <param name="labelinclude" value="" />
+                        <param name="onleft" value="301" />
+                        <param name="onright" value="3103" />
+                        <param name="visible" value="Integer.IsGreater(Container(3103).NumItems,0) | Container(3103).IsUpdating" />
+                        <content target="videos" limit="25" sortby="lastplayed" sortorder="descending">videodb://movies/titles/</content>
+                        <onback>SetFocus(3103)</onback>
+                        <onback>300</onback>
                     </include>
                 </control>
             </control>
-            <!-- Down Widget -->
-            <control type="group">
-                <animation effect="fade" condition="![Control.HasFocus(5610) | Control.HasFocus(302)] + !Window.IsVisible(DialogVideoInfo.xml)" time="350" tween="cubic" easing="inout" start="100" end="0">Conditional</animation>
-                <control type="group">
-                    <include>View_Group</include>
-                    <animation effect="fade" condition="![Control.HasFocus(5610) | Control.HasFocus(302)]" time="350" tween="cubic" easing="inout" start="100" end="0">Conditional</animation>
-                
-                    <control type="panel" id="302">
-                        <onback>301</onback>
-                        <onup>301</onup>
-                        <ondown>5610</ondown>
-                        <include content="View_TopItems">
-                            <param name="id" value="302" />
-                        </include>
-                        <content><include>skinshortcuts-submenu</include></content>
-                    </control>
-
-                    <control type="label">
-                        <bottom>402.5</bottom>
-                        <height>40</height>
-                        <align>center</align>
-                        <font>font_byline</font>
-                        <textcolor>main_fg_70</textcolor>
-                        <label>$INFO[Container(301).ListItem.Property(widgetName)]</label>
-                    </control>
-
-                    <include>skinshortcuts-template-spotlight</include>
-
-                </control>
-            </control>
         </control>
-
-
-
-        
 
         <!-- Splash -->
         <control type="image" description="Background">
