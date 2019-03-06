@@ -1,51 +1,271 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
 
+    <include name="View_PVR_Guide_Icon">
+        <control type="epggrid" id="10" description="EPG">
+            <onup>11</onup>
+            <ondown>11</ondown>
+            <viewtype label="19069">list</viewtype>
+            <progresstexture border="5" colordiffuse="bf777777">pvr/progressline-full.png</progresstexture>
+            <scrolltime tween="quadratic">300</scrolltime>
+            <timeblocks>28</timeblocks>
+            <rulerunit>6</rulerunit>
+            <pagecontrol>8060</pagecontrol>
+            <rulerlayout height="view_list_height" width="521">
+                <control type="label" id="2">
+                    <top>37</top>
+                    <width>521</width>
+                    <align>left</align>
+                    <aligny>top</aligny>
+                    <font>font_statusbar</font>
+                    <label>$INFO[ListItem.Label]</label>
+                    <textcolor>main_fg_30</textcolor>
+                </control>
+            </rulerlayout>
+            <channellayout height="view_pvr_height" width="view_pvr_height">
+                <control type="group">
+                    <left>0</left>
+                    <right>4</right>
+                    <top>4</top>
+                    <control type="image">
+                        <texture colordiffuse="main_fg_12" border="10">common/box.png</texture>
+                    </control>
+                    <control type="image">
+                        <texture colordiffuse="main_fg_12">common/selected.png</texture>
+                        <aspectratio aligny="top">center</aspectratio>
+                        <visible>ListItem.IsPlaying</visible>
+                    </control>
+                </control>
+                <include>Object_PVR_Icon</include>
+            </channellayout>
+            <focusedchannellayout height="view_pvr_height" width="view_pvr_height">
+                <control type="group">
+                    <visible>!Control.HasFocus(10)</visible>
+                    <control type="group">
+                        <left>0</left>
+                        <right>4</right>
+                        <top>4</top>
+                        <control type="image">
+                            <texture colordiffuse="main_fg_12" border="10">common/box.png</texture>
+                        </control>
+                        <control type="image">
+                            <texture colordiffuse="main_fg_12">common/selected.png</texture>
+                            <aspectratio aligny="top">center</aspectratio>
+                            <visible>ListItem.IsPlaying</visible>
+                        </control>
+                    </control>
+                    <include>Object_PVR_Icon</include>
+                </control>
+                <control type="group">
+                    <visible>Control.HasFocus(10)</visible>
+                    <control type="group">
+                        <left>0</left>
+                        <right>4</right>
+                        <top>4</top>
+                        <control type="image">
+                            <texture colordiffuse="main_fg_100" border="10">common/box.png</texture>
+                        </control>
+                        <control type="image">
+                            <texture colordiffuse="main_bg_12">common/selected.png</texture>
+                            <aspectratio aligny="top">center</aspectratio>
+                            <visible>ListItem.IsPlaying</visible>
+                        </control>
+                    </control>
+                    <include content="Object_PVR_Icon">
+                        <param name="fgcolor" value="main_bg" />
+                        <param name="bgcolor" value="main_fg" />
+                    </include>
+                </control>
+            </focusedchannellayout>
+            <itemlayout height="view_pvr_height" width="521">
+                <include>View_50_EPG_Itemlayout</include>
+            </itemlayout>
+            <focusedlayout height="view_pvr_height" width="521">
+                <include content="View_50_EPG_Itemlayout">
+                    <param name="panelcolor" value="main_fg_100" />
+                    <param name="fgcolor" value="main_bg_100" />
+                    <param name="visible" value="Control.HasFocus(10)" />
+                </include>
+                <include content="View_50_EPG_Itemlayout">
+                    <param name="visible" value="!Control.HasFocus(10)" />
+                </include>
+            </focusedlayout>
+        </control>
+    </include>
+
+    <include name="View_PVR_Guide_List">
+        <control type="epggrid" id="10" description="EPG">
+            <onup>11</onup>
+            <ondown>11</ondown>
+            <viewtype label="19069">list</viewtype>
+            <progresstexture border="5" colordiffuse="bf777777">pvr/progressline-full.png</progresstexture>
+            <scrolltime tween="quadratic">300</scrolltime>
+            <timeblocks>28</timeblocks>
+            <rulerunit>6</rulerunit>
+            <pagecontrol>8060</pagecontrol>
+            <rulerlayout height="view_list_height" width="521">
+                <control type="label" id="2">
+                    <top>37</top>
+                    <width>521</width>
+                    <align>left</align>
+                    <aligny>top</aligny>
+                    <font>font_statusbar</font>
+                    <label>$INFO[ListItem.Label]</label>
+                    <textcolor>main_fg_30</textcolor>
+                </control>
+            </rulerlayout>
+            <channellayout height="view_list_height" width="340">
+                <control type="group">
+                    <left>0</left>
+                    <right>4</right>
+                    <top>4</top>
+                    <control type="image">
+                        <texture colordiffuse="main_fg_12" border="10">common/box.png</texture>
+                    </control>
+                    <control type="image">
+                        <texture colordiffuse="main_fg_12">common/selected.png</texture>
+                        <aspectratio aligny="top">center</aspectratio>
+                        <visible>ListItem.IsPlaying</visible>
+                    </control>
+                    <control type="label">
+                        <left>30</left>
+                        <right>90</right>
+                        <font>font_tiny</font>
+                        <textcolor>main_fg_70</textcolor>
+                        <label>$INFO[ListItem.ChannelName]</label>
+                    </control>
+                </control>
+                <include content="Object_PVR_Icon">
+                    <param name="height" value="74" />
+                    <param name="font" value="font_statusbar_bold" />
+                </include>
+            </channellayout>
+            <focusedchannellayout height="view_list_height" width="340">
+                <control type="group">
+                    <visible>!Control.HasFocus(10)</visible>
+                    <control type="group">
+                        <left>0</left>
+                        <right>4</right>
+                        <top>4</top>
+                        <control type="image">
+                            <texture colordiffuse="main_fg_12" border="10">common/box.png</texture>
+                        </control>
+                        <control type="image">
+                            <texture colordiffuse="main_fg_12">common/selected.png</texture>
+                            <aspectratio aligny="top">center</aspectratio>
+                            <visible>ListItem.IsPlaying</visible>
+                        </control>
+                        <control type="label">
+                            <left>30</left>
+                            <right>90</right>
+                            <font>font_tiny</font>
+                            <textcolor>main_fg_70</textcolor>
+                            <label>$INFO[ListItem.ChannelName]</label>
+                        </control>
+                    </control>
+                    <include content="Object_PVR_Icon">
+                        <param name="height" value="74" />
+                        <param name="font" value="font_statusbar_bold" />
+                    </include>
+                </control>
+                <control type="group">
+                    <visible>Control.HasFocus(10)</visible>
+                    <control type="group">
+                        <left>0</left>
+                        <right>4</right>
+                        <top>4</top>
+                        <control type="image">
+                            <texture colordiffuse="main_fg_100" border="10">common/box.png</texture>
+                        </control>
+                        <control type="image">
+                            <texture colordiffuse="main_bg_12">common/selected.png</texture>
+                            <aspectratio aligny="top">center</aspectratio>
+                            <visible>ListItem.IsPlaying</visible>
+                        </control>
+                        <control type="label">
+                            <left>30</left>
+                            <right>90</right>
+                            <font>font_tiny_bold</font>
+                            <textcolor>main_bg_100</textcolor>
+                            <label>$INFO[ListItem.ChannelName]</label>
+                        </control>
+                    </control>
+                    <include content="Object_PVR_Icon">
+                        <param name="fgcolor" value="main_bg" />
+                        <param name="bgcolor" value="main_fg" />
+                        <param name="height" value="74" />
+                        <param name="font" value="font_statusbar_bold" />
+                    </include>
+                </control>
+            </focusedchannellayout>
+            <itemlayout height="view_list_height" width="521">
+                <include content="View_50_EPG_Itemlayout">
+                    <param name="sublabel" value="false" />
+                </include>
+            </itemlayout>
+            <focusedlayout height="view_list_height" width="521">
+                <include content="View_50_EPG_Itemlayout">
+                    <param name="sublabel" value="false" />
+                    <param name="panelcolor" value="main_fg_100" />
+                    <param name="fgcolor" value="main_bg_100" />
+                    <param name="visible" value="Control.HasFocus(10)" />
+                </include>
+                <include content="View_50_EPG_Itemlayout">
+                    <param name="sublabel" value="false" />
+                    <param name="visible" value="!Control.HasFocus(10)" />
+                </include>
+            </focusedlayout>
+        </control>
+    </include>
+
     <include name="View_Cast">
         <top>52</top>
         <preloaditems>2</preloaditems>
     </include>
 
     <include name="View_Cast_Toplabel">
-        <control type="grouplist" id="$PARAM[groupid]">
-            <top>52</top>
-            <height>52</height>
-            <orientation>horizontal</orientation>
-            <usecontrolcoords>true</usecontrolcoords>
-            <itemgap>10</itemgap>
-            <visible>Control.IsVisible($PARAM[id])</visible>
-            <control type="label">
-                <top>20</top>
-                <left>15</left>
-                <width>auto</width>
-                <label>$PARAM[label]</label>
-                <aligny>center</aligny>
-                <textcolor>main_fg_100</textcolor>
-                <font>font_tiny_bold</font>
-                <height>24</height>
+        <param name="altid" default="999999" />
+        <definition>
+            <control type="grouplist" id="$PARAM[groupid]">
+                <top>52</top>
+                <height>52</height>
+                <orientation>horizontal</orientation>
+                <usecontrolcoords>true</usecontrolcoords>
+                <itemgap>10</itemgap>
+                <visible>Control.IsVisible($PARAM[id])</visible>
+                <control type="label">
+                    <top>20</top>
+                    <left>15</left>
+                    <width>auto</width>
+                    <label>$PARAM[label]</label>
+                    <aligny>center</aligny>
+                    <textcolor>main_fg_100</textcolor>
+                    <font>font_tiny_bold</font>
+                    <height>24</height>
+                </control>
+                <control type="label">
+                    <top>20</top>
+                    <width>auto</width>
+                    <label>|</label>
+                    <aligny>center</aligny>
+                    <textcolor>$VAR[ColorHighlight]</textcolor>
+                    <font>font_tiny_bold</font>
+                    <height>24</height>
+                    <visible>Control.HasFocus($PARAM[id]) | Control.HasFocus($PARAM[altid])</visible>
+                    <visible>!String.IsEmpty(Container($PARAM[id]).ListItem.Label)</visible>
+                </control>
+                <control type="label">
+                    <top>20</top>
+                    <width>auto</width>
+                    <label>$INFO[Container($PARAM[id]).ListItem.Label]</label>
+                    <aligny>center</aligny>
+                    <textcolor>main_fg_100</textcolor>
+                    <font>font_tiny</font>
+                    <height>24</height>
+                    <visible>Control.HasFocus($PARAM[id]) | Control.HasFocus($PARAM[altid])</visible>
+                </control>
             </control>
-            <control type="label">
-                <top>20</top>
-                <width>auto</width>
-                <label>|</label>
-                <aligny>center</aligny>
-                <textcolor>$VAR[ColorHighlight]</textcolor>
-                <font>font_tiny_bold</font>
-                <height>24</height>
-                <visible>Control.HasFocus($PARAM[id])</visible>
-                <visible>!String.IsEmpty(Container($PARAM[id]).ListItem.Label)</visible>
-            </control>
-            <control type="label">
-                <top>20</top>
-                <width>auto</width>
-                <label>$INFO[Container($PARAM[id]).ListItem.Label]</label>
-                <aligny>center</aligny>
-                <textcolor>main_fg_100</textcolor>
-                <font>font_tiny</font>
-                <height>24</height>
-                <visible>Control.HasFocus($PARAM[id])</visible>
-            </control>
-        </control>
+        </definition>
     </include>
 
     <include name="View_Cast_Label">

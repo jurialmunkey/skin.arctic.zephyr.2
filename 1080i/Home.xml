@@ -2,6 +2,17 @@
 <!-- Foundation -->
 <window id="0">
     <defaultcontrol always="false">301</defaultcontrol>
+
+    <onload>ClearProperty(InfoTrick.0.Title,Home)</onload>
+    <onload>ClearProperty(InfoTrick.1.Title,Home)</onload>
+    <onload>ClearProperty(InfoTrick.2.Title,Home)</onload>
+    <onload>ClearProperty(InfoTrick.3.Title,Home)</onload>
+    <onload>ClearProperty(InfoTrick.4.Title,Home)</onload>
+    <onload>ClearProperty(InfoTrick.5.Title,Home)</onload>
+    <onload>ClearProperty(InfoTrick.6.Title,Home)</onload>
+    <onload>ClearProperty(InfoTrick.7.Title,Home)</onload>
+    <onload>ClearProperty(InfoTrick.8.Title,Home)</onload>
+    <onload>ClearProperty(InfoTrick.9.Title,Home)</onload>
     
     <onload>RunScript(script.skinshortcuts,type=buildxml&amp;mainmenuID=301&amp;mode=single&amp;group=mainmenu|powermenu)</onload>
     <onload condition="!Skin.HasSetting(SkinHelper.EnablePVRThumbs)">Skin.SetBool(SkinHelper.EnablePVRThumbs)</onload>
@@ -16,132 +27,28 @@
     <onunload>ClearProperty(SkinHelper.WidgetContainer)</onunload>
 
     <controls>
-        <include>Global_Background</include>
-        <include>Topbar</include>
-
-
-        <control type="group">
-            <include>View_Group</include>
-            <control type="grouplist">
-                <top>-15</top>
-                <right>-15</right>
-                <left>-15</left>
-                <bottom>-15</bottom>
-                <orientation>horizontal</orientation>
-                <usecontrolcoords>true</usecontrolcoords>
-                <itemgap>35</itemgap>
-                <control type="panel" id="301">
-                    <left>15</left>
-                    <animation effect="fade" start="100" end="0" time="200" condition="ControlGroup(3100).HasFocus()">Conditional</animation>
-                    <top>-7</top>
-                    <onright>3100</onright>
-                    <width>194.28</width>
-                    <orientation>vertical</orientation>                
-                    <itemlayout width="194.28" height="view_list_height">
-                        <control type="image">
-                            <top>3</top>
-                            <left>-22</left>
-                            <aspectratio>keep</aspectratio>
-                            <width>view_list_height</width>
-                            <bordersize>6</bordersize>
-                            <texture colordiffuse="main_fg_30">$INFO[ListItem.Icon]</texture>
-                        </control>
-                        <control type="label">
-                            <left>60</left>
-                            <font>font_topbar_small</font>
-                            <align>left</align>
-                            <aligny>center</aligny>
-                            <textcolor>main_fg_30</textcolor>
-                            <label>$INFO[ListItem.Label]</label>
-                        </control>
-                    </itemlayout>
-                    <focusedlayout width="194.28" height="view_list_height">
-                        <control type="image">
-                            <top>3</top>
-                            <left>-22</left>
-                            <aspectratio>keep</aspectratio>
-                            <width>view_list_height</width>
-                            <bordersize>6</bordersize>
-                            <texture colordiffuse="main_fg_100">$INFO[ListItem.Icon]</texture>
-                        </control>
-                        <control type="label">
-                            <left>60</left>
-                            <font>font_topbar</font>
-                            <align>left</align>
-                            <aligny>center</aligny>
-                            <textcolor>main_fg_100</textcolor>
-                            <label>$INFO[ListItem.Label]</label>
-                        </control>
-                    </focusedlayout>
-                    <content><include>skinshortcuts-mainmenu</include></content>
-                </control>
-                <control type="grouplist" id="3100">
-                    <onleft>301</onleft>
-                    <scrolltime tween="quadratic">400</scrolltime>
-                    <height>825</height>
-                    <width>1710</width>
-                    <orientation>vertical</orientation>
-                    <itemgap>-52</itemgap>
-                    <usecontrolcoords>true</usecontrolcoords>
-                    <control type="group" id="7599"><height>0</height></control>
-                    <include content="View_Cast_Toplabel">
-                        <param name="groupid" value="7500" />
-                        <param name="id" value="3101" />
-                        <param name="label" value="Random Movies" />
-                    </include>
-                    <include content="View_51_Wall_Container">
-                        <param name="controllayout" value="View_Cast" />
-                        <param name="id" value="3101" />
-                        <param name="height" value="360.5" />
-                        <param name="orientation" value="horizontal" />
-                        <param name="labelinclude" value="" />
-                        <param name="onleft" value="301" />
-                        <param name="onright" value="3101" />
-                        <param name="visible" value="Integer.IsGreater(Container(3101).NumItems,0) | Container(3101).IsUpdating" />
-                        <content target="videos" limit="25" sortby="random">videodb://movies/titles/</content>
-                        <onback>SetFocus(3101)</onback>
-                        <onback>300</onback>
-                    </include>
-                    <include content="View_Cast_Toplabel">
-                        <param name="groupid" value="7501" />
-                        <param name="id" value="3102" />
-                        <param name="label" value="Recently Added Movies" />
-                    </include>
-                    <include content="View_51_Wall_Container">
-                        <param name="controllayout" value="View_Cast" />
-                        <param name="id" value="3102" />
-                        <param name="height" value="360.5" />
-                        <param name="orientation" value="horizontal" />
-                        <param name="labelinclude" value="" />
-                        <param name="onleft" value="301" />
-                        <param name="onright" value="3102" />
-                        <param name="visible" value="Integer.IsGreater(Container(3102).NumItems,0) | Container(3102).IsUpdating" />
-                        <content target="videos" limit="25" sortby="dateadded" sortorder="descending">videodb://movies/titles/</content>
-                        <onback>SetFocus(3102)</onback>
-                        <onback>300</onback>
-                    </include>
-
-                    <include content="View_Cast_Toplabel">
-                        <param name="groupid" value="7502" />
-                        <param name="id" value="3103" />
-                        <param name="label" value="Recently Played Movies" />
-                    </include>
-                    <include content="View_51_Wall_Container">
-                        <param name="controllayout" value="View_Cast" />
-                        <param name="id" value="3103" />
-                        <param name="height" value="360.5" />
-                        <param name="orientation" value="horizontal" />
-                        <param name="labelinclude" value="" />
-                        <param name="onleft" value="301" />
-                        <param name="onright" value="3103" />
-                        <param name="visible" value="Integer.IsGreater(Container(3103).NumItems,0) | Container(3103).IsUpdating" />
-                        <content target="videos" limit="25" sortby="lastplayed" sortorder="descending">videodb://movies/titles/</content>
-                        <onback>SetFocus(3103)</onback>
-                        <onback>300</onback>
-                    </include>
-                </control>
-            </control>
+        <control type="list" id="9988">
+            <description>hidden container for playlist background</description>
+            <posx>-20</posx>
+            <posy>-20</posy>
+            <width>1</width>
+            <height>1</height>
+            <visible>true</visible>
+            <onup>50</onup>
+            <ondown>50</ondown>
+            <onleft>50</onleft>
+            <onright>50</onright>
+            <autoscroll time="10000">true</autoscroll>
+            <itemlayout width="1" height="1">
+            </itemlayout>
+            <focusedlayout height="1" width="1">
+            </focusedlayout>
+            <content>$INFO[Container(301).ListItem.Property(backgroundPlaylist)]</content>
         </control>
+
+
+        <include condition="Skin.HasSetting(VerticalHome)">Home_Vertical</include>
+        <include condition="!Skin.HasSetting(VerticalHome)">Home_Simple</include>
 
         <!-- Splash -->
         <control type="image" description="Background">

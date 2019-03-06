@@ -1,131 +1,145 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Foundation -->
 <window id="2001">
-    <defaultcontrol always="true">8000</defaultcontrol>
+    <defaultcontrol always="true">300</defaultcontrol>
     <controls>
         
-        <control type="list" id="300">
-            <visible allowhiddenfocus="true">Control.HasFocus(300)</visible>
-            <ondown>500</ondown>
-            <include>Topbar_Menu_Layout</include>
-            <include>Items_Info</include>
+        <!-- Top Info -->
+        <control type="group">
+            <animation effect="fade" condition="Window.IsVisible(Home.xml)" time="1" delay="350" start="0" end="100">WindowOpen</animation>
+            <include content="Topbar">
+                <param name="info_hide" value="false" />
+            </include>
         </control>
         
-        <control type="grouplist" id="9000">
-            <orientation>horizontal</orientation>
-            <itemgap>0</itemgap>
-
-            <include content="Object_Info_Artwork">
-                <param name="id" value="5005" />
-                <param name="onleft" value="noop" />
-                <param name="onright" value="8000" />
-                <param name="artwork" value="$INFO[ListItem.Art(fanart)]" />
-                <param name="visible" value="!String.IsEmpty(ListItem.Art(fanart))" />
-            </include>
-            
-            
-            <!-- Movie / TvShow Info -->
-            <control type="group">
-                <width>1920</width>
-                <height>1080</height>
-                <control type="group">
-                    <include>View_Pad</include>
-                    <control type="button" id="8000">
-                        <include>Defs_Hidden_Button</include>
-                        <onleft>5005</onleft>
-                        <onright>SetFocus(50,0,absolute)</onright>
-                    </control>
-
-
+        <!-- Main Group -->
+        <control type="group">
+            <top>view_top</top>
+            <left>view_pad</left>
+            <right>view_pad</right>
+            <visible allowhiddenfocus="true">!$EXP[Exp_HideFurniture]</visible>
+            <include>Animation_FadeInOut</include>
+            <control type="grouplist" id="9000">
+                <top>-15</top>
+                <left>-15</left>
+                <right>-15</right>
+                <height>825</height>
+                <orientation>vertical</orientation>
+                <itemgap>0</itemgap>
+                <scrolltime tween="quadratic">400</scrolltime>
+                <control type="group" id="3000">
+                    <height>825</height>
                     <control type="group">
-                        <include>Animation_Left_Delay</include>
-                        <include content="View_50_Poster">
-                            <param name="height" value="654" />
-                            <param name="width" value="654" />
-                        </include>
-                        <include>View_50_Info</include>
-                    </control>
+                        <top>15</top>
+                        <left>15</left>
+                        <right>15</right>
+                        <height>780</height>
+                        <!-- Poster -->
+                        <control type="group">
+                            <include>Animation_Left_Delay</include>
+                            <include content="View_50_Poster">
+                                <param name="include" value="Defs_Null" />
+                                <param name="visible" value="true" />
+                                <param name="height" value="654" />
+                                <param name="width" value="654" />
+                                <param name="aspectratio" value="keep" />
+                                <param name="diffuse" value="diffuse/654x654.png" />
+                            </include>
+                            <include>View_50_Info</include>
+                        </control>
 
-                    <!-- Info -->
-                    <control type="group">
-                        <top>-15</top>
-                        <left>669</left>
-                        <include>Animation_Right_Delay</include>
-                        <control type="grouplist">
-                            <orientation>vertical</orientation>
-                            <usecontrolcoords>true</usecontrolcoords>
-                            <itemgap>0</itemgap>
-                            <include content="Object_Info_Title">
-                                <param name="label" value="$INFO[ListItem.TrackNumber,,. ]$INFO[ListItem.Title]" />
-                            </include>
-                            <include>Object_Info_Line</include>
-                            <include content="Object_Info_Plot">
-                                <param name="maxheight" value="650" />
-                            </include>
+                        <!-- Info -->
+                        <control type="group">
+                            <top>-15</top>
+                            <left>669</left>
+                            <include>Animation_Right_Delay</include>
+                            <control type="grouplist">
+                                <visible>!String.IsEqual(ListItem.DBType,artist)</visible>
+                                <orientation>vertical</orientation>
+                                <usecontrolcoords>true</usecontrolcoords>
+                                <itemgap>0</itemgap>
+                                <include content="Object_Info_Title">
+                                    <param name="label" value="$INFO[ListItem.TrackNumber,,. ]$INFO[ListItem.Title]" />
+                                </include>
+                                <include>Object_Info_Line</include>
+                                <include content="Object_Info_Plot">
+                                    <param name="maxheight" value="560" />
+                                </include>
+                            </control>
+                            <control type="grouplist">
+                                <visible>String.IsEqual(ListItem.DBType,artist)</visible>
+                                <orientation>vertical</orientation>
+                                <usecontrolcoords>true</usecontrolcoords>
+                                <itemgap>0</itemgap>
+                                <include content="Object_Info_Title">
+                                    <param name="label" value="$INFO[ListItem.Label]" />
+                                </include>
+                                <include content="Object_Info_Plot">
+                                    <param name="maxheight" value="600" />
+                                </include>
+                            </control>
+                            <control type="grouplist" id="300">
+                                <onup>9601</onup>
+                                <include>Defs_ButtonList</include>
+                                <!-- <include content="Object_Info_Button">
+                                    <param name="id" value="7" />
+                                    <param name="groupid" value="8007" />
+                                    <param name="label" value="Rating" />
+                                    <param name="icon" value="special://skin/extras/icons/userrating.png" />
+                                </include> -->
+                                <include content="Object_Info_Button">
+                                    <param name="id" value="8123" />
+                                    <param name="groupid" value="8023" />
+                                    <param name="label" value="31141" />
+                                    <param name="icon" value="special://skin/extras/icons/youtube.png" />
+                                    <onclick>Close</onclick>
+                                    <onclick>ActivateWindow(videos,plugin://plugin.video.youtube/search/?q=$INFO[ListItem.Artist],return)</onclick>
+                                    <onclick>SetFocus(50)</onclick>
+                                </include>
+                                <include content="Object_Info_Button">
+                                    <param name="id" value="10" />
+                                    <param name="groupid" value="8010" />
+                                    <param name="label" value="Thumb" />
+                                    <param name="icon" value="special://skin/extras/icons/paintbrush.png" />
+                                </include>
+                                <include content="Object_Info_Button">
+                                    <param name="id" value="8101" />
+                                    <param name="groupid" value="8001" />
+                                    <param name="label" value="Artwork" />
+                                    <param name="icon" value="special://skin/extras/icons/paintbrush2.png" />
+                                    <onclick condition="String.IsEqual(ListItem.DBType,artist) + System.HasAddon(script.artwork.beef)">XBMC.RunScript(script.artwork.beef, mode=gui, mediatype=artist, dbid=$INFO[ListItem.DBID])</onclick>
+                                    <onclick condition="String.IsEqual(ListItem.DBType,album) + System.HasAddon(script.artwork.beef)">XBMC.RunScript(script.artwork.beef, mode=gui, mediatype=album, dbid=$INFO[ListItem.DBID])</onclick>
+                                    <onclick condition="String.IsEqual(ListItem.DBType,song) + System.HasAddon(script.artwork.beef)">XBMC.RunScript(script.artwork.beef, mode=gui, mediatype=song, dbid=$INFO[ListItem.DBID])</onclick>
+                                    <visible>[String.IsEqual(ListItem.DBType,artist) | String.IsEqual(ListItem.DBType,album) | String.IsEqual(ListItem.DBType,song)] + system.hasaddon(script.artwork.beef)</visible>
+                                </include>
+                                <include content="Object_Info_Button">
+                                    <param name="id" value="8102" />
+                                    <param name="groupid" value="8002" />
+                                    <param name="label" value="All Art" />
+                                    <param name="icon" value="special://skin/extras/icons/paintbucket3.png" />
+                                    <onclick condition="String.IsEqual(ListItem.DBType,artist) + System.HasAddon(script.artwork.beef)">XBMC.RunScript(script.artwork.beef, mode=auto, mediatype=artist, dbid=$INFO[ListItem.DBID])</onclick>
+                                    <onclick condition="String.IsEqual(ListItem.DBType,album) + System.HasAddon(script.artwork.beef)">XBMC.RunScript(script.artwork.beef, mode=auto, mediatype=album, dbid=$INFO[ListItem.DBID])</onclick>
+                                    <onclick condition="String.IsEqual(ListItem.DBType,song) + System.HasAddon(script.artwork.beef)">XBMC.RunScript(script.artwork.beef, mode=auto, mediatype=song, dbid=$INFO[ListItem.DBID])</onclick>
+                                    <visible>[String.IsEqual(ListItem.DBType,artist) | String.IsEqual(ListItem.DBType,album) | String.IsEqual(ListItem.DBType,song)] + system.hasaddon(script.artwork.beef)</visible>
+                                </include>
+                                <include content="Object_Info_Button">
+                                    <param name="id" value="6" />
+                                    <param name="groupid" value="8006" />
+                                    <param name="label" value="Refresh" />
+                                    <param name="icon" value="special://skin/extras/icons/update.png" />
+                                    <onfocus>SetProperty(FilePath,1,Home)</onfocus>
+                                    <onunfocus>ClearProperty(FilePath,Home)</onunfocus>
+                                </include>
+                            </control>
                         </control>
                     </control>
                 </control>
             </control>
         </control>
 
-        <!-- Hidden Buttons -->
-        <control type="button" id ="9003">
-            <description>Youtube</description>
-            <label>31141</label>
-            <onclick>Close</onclick>
-            <onclick>ActivateWindow(videos,plugin://plugin.video.youtube/search/?q=$INFO[ListItem.Artist],return)</onclick>
-            <onclick>SetFocus(50)</onclick>
-            <include>Defs_Hidden_Button</include>
-        </control>
-
-        <control type="button" id ="6">
-            <description>Refresh</description>
-            <label>184</label>
-            <include>Defs_Hidden_Button</include>
-        </control>
-
-        <control type="button" id ="7">
-            <description>Rating</description>
-            <label>$LOCALIZE[563]</label>
-            <include>Defs_Hidden_Button</include>
-        </control>
-
-        <control type="button" id ="10">
-            <description>Get Thumb</description>
-            <label>13405</label>
-            <include>Defs_Hidden_Button</include>
-        </control>
-
-        <control type="button" id ="12">
-            <description>Get Fanart</description>
-            <label>20413</label>
-            <visible>String.IsEqual(ListItem.DBType,artist)</visible>
-            <include>Defs_Hidden_Button</include>
-        </control>
-
-        <control type="button" id="9001">
-            <label>$LOCALIZE[31389]</label>
-            <!-- If ADownloader installed but not ABeef then use AD otherwise prefer AB -->
-            <!-- AD has been depreciated but some still use it -->
-
-            <onclick condition="String.IsEqual(ListItem.DBType,artist) + System.HasAddon(script.artwork.beef)">XBMC.RunScript(script.artwork.beef, mode=gui, mediatype=artist, dbid=$INFO[ListItem.DBID])</onclick>
-            <onclick condition="String.IsEqual(ListItem.DBType,album) + System.HasAddon(script.artwork.beef)">XBMC.RunScript(script.artwork.beef, mode=gui, mediatype=album, dbid=$INFO[ListItem.DBID])</onclick>
-            <onclick condition="String.IsEqual(ListItem.DBType,song) + System.HasAddon(script.artwork.beef)">XBMC.RunScript(script.artwork.beef, mode=gui, mediatype=song, dbid=$INFO[ListItem.DBID])</onclick>
-            <description>Get Artwork</description>
-            <include>Defs_Hidden_Button</include>
-            <visible>[String.IsEqual(ListItem.DBType,album) | String.IsEqual(ListItem.DBType,song) | String.IsEqual(ListItem.DBType,artist)] + system.hasaddon(script.artwork.beef)</visible>
-        </control>
-        <control type="button" id="9011">
-            <label>$LOCALIZE[31388]</label>
-            <!-- If ADownloader installed but not ABeef then use AD otherwise prefer AB -->
-            <!-- AD has been depreciated but some still use it -->
-            <onclick condition="String.IsEqual(ListItem.DBType,artist) + System.HasAddon(script.artwork.beef)">XBMC.RunScript(script.artwork.beef, mode=auto, mediatype=artist, dbid=$INFO[ListItem.DBID])</onclick>
-            <onclick condition="String.IsEqual(ListItem.DBType,album) + System.HasAddon(script.artwork.beef)">XBMC.RunScript(script.artwork.beef, mode=auto, mediatype=album, dbid=$INFO[ListItem.DBID])</onclick>
-            <onclick condition="String.IsEqual(ListItem.DBType,song) + System.HasAddon(script.artwork.beef)">XBMC.RunScript(script.artwork.beef, mode=auto, mediatype=song, dbid=$INFO[ListItem.DBID])</onclick>
-            <description>Get Artwork</description>
-            <include>Defs_Hidden_Button</include>
-            <visible>[String.IsEqual(ListItem.DBType,album) | String.IsEqual(ListItem.DBType,song) | String.IsEqual(ListItem.DBType,artist)] + system.hasaddon(script.artwork.beef)</visible>
-        </control>
+       
+        <include>Object_PlotOverlay</include>
+    
 
     </controls>
 

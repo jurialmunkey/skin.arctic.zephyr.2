@@ -42,45 +42,8 @@
                     <height>view_pad</height>
                     <visible allowhiddenfocus="true">!$EXP[Exp_HideFurniture]</visible>
                     <include>Animation_FadeInOut</include>
-                    <!-- Left Info -->
-                    <control type="grouplist">
-                        <top>0</top>
-                        <include>Animation_FadeInOut</include>
-                        <itemgap>0</itemgap>
-                        <left>view_pad</left>
-                        <align>left</align>
-                        <orientation>horizontal</orientation>
-                        <usecontrolcoords>true</usecontrolcoords>
-                        <control type="label">
-                            <aligny>center</aligny>
-                            <width max="1140">auto</width>
-                            <font>font_topbar</font>
-                            <textcolor>main_fg_100</textcolor>
-                            <label>$VAR[Label_Header_Content]</label>
-                            <visible>!Control.HasFocus(300)</visible>
-                        </control>
-                        <control type="label">
-                            <aligny>center</aligny>
-                            <width max="1140">auto</width>
-                            <font>font_topbar</font>
-                            <textcolor>main_fg_100</textcolor>
-                            <label>$INFO[Container(300).ListItem.Label]</label>
-                            <visible>Control.HasFocus(300)</visible>
-                        </control>
-                    </control>
-                    
-                    <!-- Center Label -->
-                    <control type="label">
-                        <aligny>center</aligny>
-                        <align>center</align>
-                        <font>font_byline</font>
-                        <textcolor>main_fg_70</textcolor>
-                        <label>$VAR[Label_Header_Center]</label>
-                        <include>Animation_FadeInOut</include>
-                        <visible>!Control.HasFocus(300)</visible>
-                    </control>
-
-                    <!-- Right Info -->
+                    <include>Topbar_Left</include>
+                    <include>Topbar_Center</include>
                     <include>Topbar_Right</include>
                 </control>
 
@@ -94,6 +57,35 @@
         </definition>
     </include>
 
+    <include name="Topbar_Left">
+        <control type="grouplist">
+            <top>0</top>
+            <include>Animation_FadeInOut</include>
+            <itemgap>0</itemgap>
+            <left>view_pad</left>
+            <align>left</align>
+            <orientation>horizontal</orientation>
+            <usecontrolcoords>true</usecontrolcoords>
+            <control type="label">
+                <aligny>center</aligny>
+                <width max="1140">auto</width>
+                <font>font_topbar</font>
+                <textcolor>main_fg_100</textcolor>
+                <label>$VAR[Label_Header_Content]</label>
+            </control>
+        </control>
+    </include>
+
+    <include name="Topbar_Center">
+        <control type="label">
+            <aligny>center</aligny>
+            <align>center</align>
+            <font>font_byline</font>
+            <textcolor>main_fg_70</textcolor>
+            <label>$VAR[Label_Header_Center]</label>
+            <include>Animation_FadeInOut</include>
+        </control>
+    </include>
     <include name="Topbar_Right">
         <control type="grouplist">
             <visible>!Window.IsVisible(DialogVolumeBar.xml) | Player.Muted</visible>

@@ -5,6 +5,7 @@
             <left>15</left>
             <right>15</right>
             <font>font_statusbar</font>
+            <selectedcolor>main_fg_100</selectedcolor>
             <textcolor>main_fg_100</textcolor>
             <top>$PARAM[iconheight]</top>
             <bottom>30</bottom>
@@ -19,6 +20,7 @@
             <left>15</left>
             <right>15</right>
             <font>font_statusbar</font>
+            <selectedcolor>main_fg_100</selectedcolor>
             <textcolor>main_fg_100</textcolor>
             <top>343.75</top>
             <height>20</height>
@@ -30,6 +32,7 @@
             <left>15</left>
             <right>15</right>
             <font>font_statusbar</font>
+            <selectedcolor>main_fg_100</selectedcolor>
             <textcolor>main_fg_100</textcolor>
             <top>343.75</top>
             <height>20</height>
@@ -44,6 +47,7 @@
                 <left>15</left>
                 <right>15</right>
                 <font>font_statusbar</font>
+                <selectedcolor>main_fg_70</selectedcolor>
                 <textcolor>main_fg_70</textcolor>
                 <top>343.75</top>
                 <height>20</height>
@@ -55,6 +59,7 @@
                 <left>15</left>
                 <right>15</right>
                 <font>font_statusbar</font>
+                <selectedcolor>main_fg_70</selectedcolor>
                 <textcolor>main_fg_70</textcolor>
                 <top>343.75</top>
                 <height>20</height>
@@ -70,6 +75,7 @@
             <left>15</left>
             <right>15</right>
             <font>font_statusbar</font>
+            <selectedcolor>main_fg_100</selectedcolor>
             <textcolor>main_fg_100</textcolor>
             <top>348.75</top>
             <height>20</height>
@@ -81,6 +87,7 @@
             <left>15</left>
             <right>15</right>
             <font>font_statusbar</font>
+            <selectedcolor>main_fg_100</selectedcolor>
             <textcolor>main_fg_100</textcolor>
             <top>348.75</top>
             <height>20</height>
@@ -119,6 +126,7 @@
     </include>
 
     <include name="View_51_Wall_Itemlayout">
+        <param name="altid" default="999999" />
         <param name="icon" default="$VAR[Image_Poster]" />
         <param name="iconheight" default="345" />
         <param name="labelinclude" default="View_51_Wall_Label" />
@@ -168,7 +176,7 @@
                 
                 <control type="group">
                     <visible>!$PARAM[circle]</visible>
-                    <visible>Control.HasFocus($PARAM[id])</visible>
+                    <visible>Control.HasFocus($PARAM[id]) | Control.HasFocus($PARAM[altid])</visible>
                     <include condition="$PARAM[selectbox]">View_Selectbox</include>
                 </control>
             </control>
@@ -254,6 +262,7 @@
         <param name="forced" default="false" />
         <param name="circle" default="false" />
         <param name="diffuse" default="diffuse/214x315.png" />
+        <param name="altid" default="999999" />
         <definition>
             <control type="$PARAM[controltype]" id="$PARAM[id]">
                 <scrolltime tween="quadratic">400</scrolltime>
@@ -285,6 +294,7 @@
                         <param name="iconheight" value="$PARAM[iconheight]" />
                         <param name="labelinclude" value="$PARAM[labelinclude]" />
                         <param name="id" value="$PARAM[id]" />
+                        <param name="altid" value="$PARAM[altid]" />
                         <param name="aspectratio" value="$PARAM[aspectratio]" />
                         <param name="diffuse" value="$PARAM[diffuse]" />
                         <param name="clearlogo" value="$PARAM[clearlogo]" />

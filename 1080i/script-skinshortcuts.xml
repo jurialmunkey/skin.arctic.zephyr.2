@@ -51,7 +51,7 @@
                         <right>30</right>
                         <info>ListItem.Label</info>
                         <animation effect="fade" start="100" end="50" condition="String.IsEqual(ListItem.Property(skinshortcuts-disabled),True)">Conditional</animation>
-                        <animation effect="slide" end="48" condition="!String.IsEqual(Window.Property(groupname),powermenu) + !String.IsEqual(Window.Property(groupname),mainmenu)">Conditional</animation>
+                        <animation effect="slide" end="48" condition="!String.IsEqual(Window.Property(groupname),powermenu)">Conditional</animation>
                     </control>
                     <control type="image">
                         <bordersize>10</bordersize>
@@ -59,7 +59,7 @@
                         <height>view_list_height</height>
                         <texture colordiffuse="dialog_fg_30">$INFO[ListItem.Icon]</texture>
                         <visible>String.Contains(ListItem.Icon,special://skin/extras/icons)</visible>
-                        <visible>!String.IsEqual(Window.Property(groupname),powermenu) + !String.IsEqual(Window.Property(groupname),mainmenu)</visible>
+                        <visible>!String.IsEqual(Window.Property(groupname),powermenu)</visible>
                     </control>
                     <control type="image">
                         <bordersize>10</bordersize>
@@ -67,7 +67,7 @@
                         <height>view_list_height</height>
                         <texture>$INFO[ListItem.Icon]</texture>
                         <visible>!String.Contains(ListItem.Icon,special://skin/extras/icons)</visible>
-                        <visible>!String.IsEqual(Window.Property(groupname),powermenu) + !String.IsEqual(Window.Property(groupname),mainmenu)</visible>
+                        <visible>!String.IsEqual(Window.Property(groupname),powermenu)</visible>
                     </control>
                 </itemlayout>
                 <focusedlayout width="550" height="view_list_height">
@@ -84,14 +84,14 @@
                         <info>ListItem.Label</info>
                         <textcolor>Selected</textcolor>
                         <animation effect="fade" start="100" end="50" condition="String.IsEqual(ListItem.Property(skinshortcuts-disabled),True)">Conditional</animation>
-                        <animation effect="slide" end="48" condition="!String.IsEqual(Window.Property(groupname),powermenu) + !String.IsEqual(Window.Property(groupname),mainmenu)">Conditional</animation>
+                        <animation effect="slide" end="48" condition="!String.IsEqual(Window.Property(groupname),powermenu)">Conditional</animation>
                     </control>
                     <control type="image">
                         <bordersize>10</bordersize>
                         <width>view_list_height</width>
                         <height>view_list_height</height>
                         <texture colordiffuse="Selected">$INFO[ListItem.Icon]</texture>
-                        <visible>!String.IsEqual(Window.Property(groupname),powermenu) + !String.IsEqual(Window.Property(groupname),mainmenu)</visible>
+                        <visible>!String.IsEqual(Window.Property(groupname),powermenu)</visible>
                     </control>
                 </focusedlayout>
             </control>
@@ -192,7 +192,7 @@
                     
                     <visible>!String.IsEqual(Container(211).ListItem.Property(skinshortcuts-disabled),True)</visible>
                     <include>Dialog_Standard_Button</include>
-                    <visible>!String.IsEqual(Window.Property(groupname),powermenu) + !String.IsEqual(Window.Property(groupname),mainmenu)</visible>
+                    <visible>!String.IsEqual(Window.Property(groupname),powermenu)</visible>
                 </control>
                 <control type="button" id="405" description="Set Submenu">
                     <label>$LOCALIZE[31112] / $LOCALIZE[31002]</label>

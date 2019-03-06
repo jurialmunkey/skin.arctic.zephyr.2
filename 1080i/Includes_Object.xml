@@ -53,7 +53,7 @@
                 <param name="main_id" value="9901" />
                 <param name="sub_id" value="9902" />
                 <param name="nowplaying" value="true" />
-                <param name="icon" value="buttons/play.png" />
+                <param name="icon" value="$VAR[Image_NowPlaying]" />
                 <param name="label" value="$INFO[Player.Title]" />
                 <param name="label2" value="$INFO[MusicPlayer.Artist]" />
             </include>
@@ -66,9 +66,9 @@
         <param name="ondown" default="noop" />
         <param name="id" default="5610" />
         <param name="controltype" default="panel" />
-        <param name="squarecondition" default="Window.IsVisible(Home) + String.IsEqual(Container(301).ListItem.Property(widgetAspect),Square)" />
-        <param name="iconcondition" default="Window.IsVisible(Home) + String.IsEqual(Container(301).ListItem.Property(widgetAspect),Icon)" />
-        <param name="landscapecondition" default="Window.IsVisible(Home) + String.IsEqual(Container(301).ListItem.Property(widgetAspect),Landscape)" />
+        <param name="squarecondition" default="[!String.IsEmpty(Container(302).ListItem.Property(widgetPath)) + String.IsEqual(Container(302).ListItem.Property(widgetAspect),Square)] | [String.IsEmpty(Container(302).ListItem.Property(widgetPath)) + String.IsEqual(Container(301).ListItem.Property(widgetAspect),Square)]" />
+        <param name="iconcondition" default="[!String.IsEmpty(Container(302).ListItem.Property(widgetPath)) + String.IsEqual(Container(302).ListItem.Property(widgetAspect),Icon)] | [String.IsEmpty(Container(302).ListItem.Property(widgetPath)) + String.IsEqual(Container(301).ListItem.Property(widgetAspect),Icon)]" />
+        <param name="landscapecondition" default="[!String.IsEmpty(Container(302).ListItem.Property(widgetPath)) + String.IsEqual(Container(302).ListItem.Property(widgetAspect),Landscape)] | [String.IsEmpty(Container(302).ListItem.Property(widgetPath)) + String.IsEqual(Container(301).ListItem.Property(widgetAspect),Landscape)]" />
         <definition>
             <control type="$PARAM[controltype]" id="$PARAM[id]">
                 <nested />
@@ -166,35 +166,38 @@
     <include name="Object_PVR_Icon">
         <param name="bgcolor" default="main_bg" />
         <param name="fgcolor" default="main_fg" />
+        <param name="width" default="113" />
+        <param name="height" default="113" />
+        <param name="font" default="font_small_bold" />
         <definition>
             <control type="image">
                 <top>4</top>
                 <right>4</right>
-                <width>113</width>
-                <height>113</height>
+                <width>$PARAM[width]</width>
+                <height>$PARAM[height]</height>
                 <bordersize>20</bordersize>
                 <texture colordiffuse="$PARAM[fgcolor]_100">$INFO[ListItem.Icon]</texture>
-                <aspectratio aligny="center" align="center">keep</aspectratio>
+                <aspectratio aligny="center" align="right">keep</aspectratio>
             </control>
             <control type="image">
                 <top>4</top>
                 <right>4</right>
-                <width>113</width>
-                <height>113</height>
+                <width>$PARAM[width]</width>
+                <height>$PARAM[height]</height>
                 <bordersize>20</bordersize>
                 <texture colordiffuse="$PARAM[fgcolor]_90">common/circle.png</texture>
-                <aspectratio aligny="center" align="center">keep</aspectratio>
+                <aspectratio aligny="center" align="right">keep</aspectratio>
                 <visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,special://xbmc/addons/pvr.demo/)</visible>
             </control>
             <control type="label">
                 <top>4</top>
                 <right>4</right>
-                <width>113</width>
-                <height>113</height>
+                <width>$PARAM[height]</width>
+                <height>$PARAM[height]</height>
                 <align>center</align>
                 <aligny>center</aligny>
                 <textoffsetx>20</textoffsetx>
-                <font>font_small_bold</font>
+                <font>$PARAM[font]</font>
                 <textcolor>$PARAM[bgcolor]_90</textcolor>
                 <label>$INFO[ListItem.ChannelNumberLabel]</label>
                 <visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,special://xbmc/addons/pvr.demo/)</visible>
@@ -217,6 +220,7 @@
                 <bottom>0</bottom>
                 <itemgap>20</itemgap>
                 <usecontrolcoords>true</usecontrolcoords>
+                <visible>!String.IsEmpty(ListItem.VideoCodec) + !String.IsEmpty(ListItem.AudioCodec)</visible>
                 <control type="image">
                     <fadetime>100</fadetime>
                     <centertop>50%</centertop>
@@ -234,6 +238,15 @@
                     <height>56</height>
                     <aspectratio align="left">keep</aspectratio>
                     <texture colordiffuse="main_fg_90">$VAR[Image_RipSource]</texture>
+                    <visible>String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,video)</visible>
+                </control>
+                <control type="image">
+                    <fadetime>100</fadetime>
+                    <centertop>50%</centertop>
+                    <width>64</width>
+                    <height>42</height>
+                    <aspectratio>keep</aspectratio>
+                    <texture colordiffuse="main_fg_90">$INFO[ListItem.VideoResolution,flags/monochrome/resolution/,.png]</texture>
                     <visible>String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,video)</visible>
                 </control>
                 <control type="image">
@@ -408,6 +421,16 @@
             <param name="name" value="Tagline" />
             <param name="label" value="ListItem.Tagline" />
         </include>
+        <!-- <include content="Object_Info_TextPairs">
+            <param name="pad" value="14" />
+            <param name="name" value="Country" />
+            <param name="label" value="ListItem.Country" />
+        </include>
+        <include content="Object_Info_TextPairs">
+            <param name="pad" value="14" />
+            <param name="name" value="Studio" />
+            <param name="label" value="ListItem.Studio" />
+        </include> -->
         <include content="Object_Info_TextPairs">
             <param name="pad" value="14" />
             <param name="name" value="Premiered" />
@@ -454,7 +477,7 @@
 
     <include name="Object_Info_Line">
         <param name="label" default="$VAR[Label_ShowCase_InfoLine]" />
-        <param name="hdsd" default="true" />
+        <param name="hdsd" default="Skin.HasSetting(Hide_Codecs)" />
         <param name="nextaired" default="true" />
         <definition>
             <control type="grouplist">
@@ -500,80 +523,6 @@
                     <font>font_small</font>
                     <visible>Container.Content(tvshows)</visible>
                     <visible>$PARAM[nextaired]</visible>
-                </control>
-            </control>
-        </definition>
-    </include>
-
-    <include name="Object_Container_Info_Line">
-        <param name="label" default="$INFO[Container(5229).ListItem.MPAA,[COLOR=main_fg_100],[/COLOR]  |  ]$INFO[Container(5229).ListItem.Premiered,[COLOR=main_fg_100],[/COLOR]  |  ]$INFO[Container(5229).ListItem.Duration(mins),[COLOR=main_fg_100], $LOCALIZE[31020][/COLOR]  |  ]$INFO[Container(5229).ListItem.EndTime,[COLOR=main_fg_100]$LOCALIZE[31106] ,[/COLOR]]" />
-        <param name="id" default="5229" />
-        <param name="hdsd" default="true" />
-        <definition>
-            <control type="grouplist">
-                <height>40</height>
-                <orientation>horizontal</orientation>
-                <usecontrolcoords>true</usecontrolcoords>
-                <itemgap>0</itemgap>
-                <left>0</left>
-                <right>0</right>
-                <control type="image">
-                    <left>0</left>
-                    <top>10</top>
-                    <width>37</width>
-                    <height>24</height>
-                    <texture colordiffuse="main_fg_100">flags/4k.png</texture>
-                    <visible>String.IsEqual(Container($PARAM[id]).ListItem.DBType,movie) | String.IsEqual(Container($PARAM[id]).ListItem.DBType,episode)</visible>
-                    <visible>String.IsEqual(Container($PARAM[id]).ListItem.VideoResolution,4K) | Integer.IsEqual(Container($PARAM[id]).ListItem.VideoResolution,2160)</visible>
-                    <visible>$PARAM[hdsd]</visible>
-                </control>
-                <control type="image">
-                    <left>0</left>
-                    <top>10</top>
-                    <width>37</width>
-                    <height>24</height>
-                    <texture colordiffuse="main_fg_100">flags/hd.png</texture>
-                    <visible>String.IsEqual(Container($PARAM[id]).ListItem.DBType,movie) | String.IsEqual(Container($PARAM[id]).ListItem.DBType,episode)</visible>
-                    <visible>Integer.IsGreater(Container($PARAM[id]).ListItem.VideoResolution,719)</visible>
-                    <visible>$PARAM[hdsd]</visible>
-                </control>
-                <control type="image">
-                    <left>0</left>
-                    <top>10</top>
-                    <width>37</width>
-                    <height>24</height>
-                    <texture colordiffuse="main_fg_100">flags/sd.png</texture>
-                    <visible>String.IsEqual(Container($PARAM[id]).ListItem.DBType,movie) | String.IsEqual(Container($PARAM[id]).ListItem.DBType,episode)</visible>
-                    <visible>!String.IsEmpty(Container($PARAM[id]).ListItem.VideoResolution) + !Integer.IsGreater(Container($PARAM[id]).ListItem.VideoResolution,719) + !String.IsEqual(Container($PARAM[id]).ListItem.VideoResolution,4K)</visible>
-                    <visible>$PARAM[hdsd]</visible>
-                </control>
-                <control type="image">
-                    <left>0</left>
-                    <top>10</top>
-                    <width>37</width>
-                    <height>24</height>
-                    <texture colordiffuse="main_fg_100">flags/web.png</texture>
-                    <visible>String.IsEqual(Container($PARAM[id]).ListItem.DBType,movie) | String.IsEqual(Container($PARAM[id]).ListItem.DBType,episode)</visible>
-                    <visible>String.IsEmpty(Container($PARAM[id]).ListItem.VideoResolution)</visible>
-                    <visible>$PARAM[hdsd]</visible>
-                </control>
-                <control type="label">
-                    <label>  |  </label>
-                    <width>auto</width>
-                    <height>40</height>
-                    <aligny>top</aligny>
-                    <textcolor>$VAR[ColorHighlight]</textcolor>
-                    <font>font_small</font>
-                    <visible>String.IsEqual(Container($PARAM[id]).ListItem.DBType,movie) | String.IsEqual(Container($PARAM[id]).ListItem.DBType,episode)</visible>
-                    <visible>$PARAM[hdsd]</visible>
-                </control>
-                <control type="label">
-                    <width>auto</width>
-                    <label>$PARAM[label]</label>
-                    <height>40</height>
-                    <aligny>top</aligny>
-                    <textcolor>$VAR[ColorHighlight]</textcolor>
-                    <font>font_small</font>
                 </control>
             </control>
         </definition>
@@ -807,6 +756,7 @@
                 <width>60</width>
                 <align>left</align>
                 <visible>$PARAM[visible]</visible>
+                <font />
                 <texturefocus />
                 <texturenofocus />
                 <nested />

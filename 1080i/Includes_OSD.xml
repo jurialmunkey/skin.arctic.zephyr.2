@@ -673,10 +673,11 @@
             <font/>
             <texturefocus colordiffuse="$VAR[ColorHighlight]">osd/info.png</texturefocus>
             <texturenofocus colordiffuse="panel_fg_70">osd/info.png</texturenofocus>
-            <onclick condition="!Player.Paused + !Skin.HasSetting(DontPauseOSD)">SetProperty(OSDExtendedInfo,1,Home)</onclick>
-            <onclick condition="!Player.Paused + !Skin.HasSetting(DontPauseOSD)">Pause</onclick>
-            <onclick condition="VideoPlayer.Content(movies)">RunScript(script.extendedinfo,info=extendedinfo,name=$INFO[VideoPlayer.Title],imdb_id=$INFO[VideoPlayer.IMDBNumber])</onclick>
-            <onclick condition="VideoPlayer.Content(episodes)">RunScript(script.extendedinfo,info=extendedtvinfo,name=$INFO[VideoPlayer.TvShowTitle])</onclick>
+            <onclick>SetProperty(OSDExtendedInfo,1,Home)</onclick>
+            <onclick condition="!Player.Paused ">Pause</onclick>
+            <onclick>SetProperty(InfoTrick.0.Title,$INFO[Player.FileName],Home)</onclick>
+            <onclick>Close</onclick>
+            <onclick>ActivateWindow(1137)</onclick>
             <onfocus condition="!String.IsEmpty(Window(Home).Property(OSDExtendedInfo)) + Player.Paused">Play</onfocus>
             <onfocus condition="!String.IsEmpty(Window(Home).Property(OSDExtendedInfo))">ClearProperty(OSDExtendedInfo,Home)</onfocus>
             <onfocus>ClearProperty(OSD_Menu,Home)</onfocus>

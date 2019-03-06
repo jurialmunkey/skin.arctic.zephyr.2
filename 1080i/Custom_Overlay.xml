@@ -964,12 +964,12 @@
             <posx>15r</posx>
             <posy>48</posy>
             <width>1620</width>
-            <height>200</height>
+            <height>500</height>
             <textcolor>FFFF0000</textcolor>
             
             <font>font13</font>
             <align>right</align>
-            <label>[COLOR=FF00FF00]$INFO[System.CurrentControlID,ID: ][/COLOR][CR]$INFO[Container.Content()][CR]$INFO[ListItem.DBType][CR]$INFO[Container.SortMethod][CR]$INFO[ListItem.DBID]</label>
+            <label>[COLOR=FF00FF00]$INFO[System.CurrentControlID,ID: ][/COLOR][CR]$INFO[Container.Content()][CR]$INFO[ListItem.DBType][CR]$INFO[Container.SortMethod][CR]$INFO[ListItem.DBID][CR]$VAR[Defs_InfoTrick_Title_Debug][CR]0$INFO[Window(Home).Property(InfoTrick.0.Title)]</label>
             <visible>Skin.HasSetting(DebugInfo)</visible>
         </control>
 
@@ -979,7 +979,7 @@
             <right>15</right>
             <height>21</height>
             <textcolor>FFFF0000</textcolor>
-            
+            <scroll>true</scroll>
             <font>font13</font>
             <align>left</align>
             <label>[COLOR=FF00FF00]$INFO[Container.FolderName,, - ][/COLOR]$INFO[Container.FolderPath]</label>

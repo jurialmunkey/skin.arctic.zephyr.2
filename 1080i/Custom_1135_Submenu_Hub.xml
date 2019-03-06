@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window type="window" id="1135">
+    <defaultcontrol always="true">302</defaultcontrol>
+    <onload>SetProperty(Header_Center_Text,Submenu)</onload>
+    <onload>SetProperty(Header_Left_Text,$INFO[Window(Home).Property(leftHeader)])</onload>
+    <controls>
+
+        <control type="list" id="301">
+            <itemlayout />
+            <focusedlayout />
+            <content>
+                <item>
+                    <property name="submenuVisibility">$INFO[Window(Home).Property(submenuVisibility)]</property>
+                    <property name="widgetPath">$INFO[Window(Home).Property(widgetPath)]</property>
+                    <property name="widgetTarget">$INFO[Window(Home).Property(widgetTarget)]</property>
+                    <property name="widgetName">$INFO[Window(Home).Property(widgetName)]</property>
+                </item>
+            </content>
+        </control>
+        
+        <include>Global_Background</include>
+        <include>Topbar</include>
+
+        <control type="group">
+            <include>View_Group</include>
+            <include>Home_Hub_Widget</include>
+        </control>
+    </controls>
+</window>

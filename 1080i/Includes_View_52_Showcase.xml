@@ -108,7 +108,10 @@
                     <include condition="$PARAM[seasons]" content="Object_Info_Line">
                         <param name="nextaired" value="false" />
                     </include>
-                    <include condition="!$PARAM[seasons]">Object_Container_Info_Line</include>
+                    <include condition="!$PARAM[seasons]" content="Object_Info_Line">
+                        <param name="nextaired" value="false" />
+                        <param name="label" value="$INFO[Container(5229).ListItem.MPAA,[COLOR=main_fg_100],[/COLOR]  |  ]$INFO[Container(5229).ListItem.Premiered,[COLOR=main_fg_100],[/COLOR]  |  ]$INFO[Container(5229).ListItem.Duration(mins),[COLOR=main_fg_100], $LOCALIZE[31020][/COLOR]  |  ]$INFO[Container(5229).ListItem.EndTime,[COLOR=main_fg_100]$LOCALIZE[31106] ,[/COLOR]]" />
+                    </include>
                     <control type="textbox">
                         <top>20</top>
                         <font>font_plotbox</font>
@@ -158,7 +161,7 @@
                 <param name="id" value="52" />
                 <param name="height" value="412.5" />
                 <param name="orientation" value="horizontal" />
-                <param name="labelinclude" value="" />
+                <param name="labelinclude" value="Defs_Null" />
                 <param name="controltype" value="fixedlist" />
                 <param name="controllayout" value="View_52_Showcase_Layout" />
                 <param name="visible" value="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons)" />
@@ -183,7 +186,7 @@
                 <param name="id" value="520" />
                 <param name="itemwidth" value="342" />
                 <param name="height" value="412.5" />
-                <param name="labelinclude" value="" />
+                <param name="labelinclude" value="Defs_Null" />
                 <param name="orientation" value="horizontal" />
                 <param name="controltype" value="fixedlist" />
                 <param name="controllayout" value="View_520_Showcase_Layout" />
@@ -208,7 +211,7 @@
             <include content="View_51_Wall_Container">
                 <param name="id" value="521" />
                 <param name="height" value="423.75" />
-                <param name="labelinclude" value="" />
+                <param name="labelinclude" value="Defs_Null" />
                 <param name="orientation" value="horizontal" />
                 <param name="controltype" value="fixedlist" />
                 <param name="controllayout" value="View_521_Showcase_Layout" />
@@ -275,9 +278,8 @@
                 <param name="id" value="5229" />
                 <param name="forced" value="false" />
                 <param name="visible" value="Control.IsVisible(522)" />
-                <param name="controllayout" value="" />
+                <param name="controllayout" value="Defs_Null" />
                 <param name="controltype" value="fixedlist" />
-                <param name="itemlayout" value="View_50_Itemlayout_Episodes" />
                 <movement>2</movement>
                 <focusposition>2</focusposition>
                 <onleft>SetFocus(5229,0,absolute)</onleft>

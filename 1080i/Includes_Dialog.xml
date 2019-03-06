@@ -247,9 +247,10 @@
         <param name="width" default="1080" />
         <param name="height" default="900" />
         <param name="animation" default="true" />
+        <param name="centertop" default="50%" />
         <definition>
             <centerleft>50%</centerleft>
-            <centertop>50%</centertop>
+            <centertop>$PARAM[centertop]</centertop>
             <width>$PARAM[width]</width>
             <height>$PARAM[height]</height>
             <include condition="$PARAM[animation]">Animation_FadeIn_Slide</include>

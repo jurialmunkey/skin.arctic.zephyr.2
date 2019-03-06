@@ -1,6 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
 
+    <variable name="Defs_InfoTrick_Title">
+        <value condition="!String.IsEmpty(Window(Home).Property(InfoTrick.9.Title))">$INFO[Window(Home).Property(InfoTrick.9.Title)]</value>
+        <value condition="!String.IsEmpty(Window(Home).Property(InfoTrick.8.Title))">$INFO[Window(Home).Property(InfoTrick.8.Title)]</value>
+        <value condition="!String.IsEmpty(Window(Home).Property(InfoTrick.7.Title))">$INFO[Window(Home).Property(InfoTrick.7.Title)]</value>
+        <value condition="!String.IsEmpty(Window(Home).Property(InfoTrick.6.Title))">$INFO[Window(Home).Property(InfoTrick.6.Title)]</value>
+        <value condition="!String.IsEmpty(Window(Home).Property(InfoTrick.5.Title))">$INFO[Window(Home).Property(InfoTrick.5.Title)]</value>
+        <value condition="!String.IsEmpty(Window(Home).Property(InfoTrick.4.Title))">$INFO[Window(Home).Property(InfoTrick.4.Title)]</value>
+        <value condition="!String.IsEmpty(Window(Home).Property(InfoTrick.3.Title))">$INFO[Window(Home).Property(InfoTrick.3.Title)]</value>
+        <value condition="!String.IsEmpty(Window(Home).Property(InfoTrick.2.Title))">$INFO[Window(Home).Property(InfoTrick.2.Title)]</value>
+        <value condition="!String.IsEmpty(Window(Home).Property(InfoTrick.1.Title))">$INFO[Window(Home).Property(InfoTrick.1.Title)]</value>
+        <value condition="!String.IsEmpty(Window(Home).Property(InfoTrick.0.Title))">$INFO[Window(Home).Property(InfoTrick.0.Title)]</value>
+    </variable>
+
+    <variable name="Defs_InfoTrick_Title_Debug">
+        <value condition="!String.IsEmpty(Window(Home).Property(InfoTrick.9.Title))">9$INFO[Window(Home).Property(InfoTrick.9.Title)]</value>
+        <value condition="!String.IsEmpty(Window(Home).Property(InfoTrick.8.Title))">8$INFO[Window(Home).Property(InfoTrick.8.Title)]</value>
+        <value condition="!String.IsEmpty(Window(Home).Property(InfoTrick.7.Title))">7$INFO[Window(Home).Property(InfoTrick.7.Title)]</value>
+        <value condition="!String.IsEmpty(Window(Home).Property(InfoTrick.6.Title))">6$INFO[Window(Home).Property(InfoTrick.6.Title)]</value>
+        <value condition="!String.IsEmpty(Window(Home).Property(InfoTrick.5.Title))">5$INFO[Window(Home).Property(InfoTrick.5.Title)]</value>
+        <value condition="!String.IsEmpty(Window(Home).Property(InfoTrick.4.Title))">4$INFO[Window(Home).Property(InfoTrick.4.Title)]</value>
+        <value condition="!String.IsEmpty(Window(Home).Property(InfoTrick.3.Title))">3$INFO[Window(Home).Property(InfoTrick.3.Title)]</value>
+        <value condition="!String.IsEmpty(Window(Home).Property(InfoTrick.2.Title))">2$INFO[Window(Home).Property(InfoTrick.2.Title)]</value>
+        <value condition="!String.IsEmpty(Window(Home).Property(InfoTrick.1.Title))">1$INFO[Window(Home).Property(InfoTrick.1.Title)]</value>
+        <value condition="!String.IsEmpty(Window(Home).Property(InfoTrick.0.Title))">0$INFO[Window(Home).Property(InfoTrick.0.Title)]</value>
+    </variable>
+
+    <include name="Defs_InfoTrick">
+        <!-- IF its the first time lets remember the original title so we can get back -->
+        <onclick condition="!String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + String.IsEmpty(Window(Home).Property(InfoTrick.0.Title))">SetProperty(InfoTrick.0.Title,$INFO[Window(Home).Property(InfoTrick.OriginalTitle)],Home)</onclick>
+
+        <!-- Set The Title for InfoTrick to have history -->
+        <!-- TODO Add more history or recycle properties -->
+        <onclick condition="!String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + String.IsEmpty(Window(Home).Property(InfoTrick.1.Title))">SetProperty(InfoTrick.1.Title,$INFO[Container($PARAM[id]).ListItem.FileName],Home)</onclick>
+        <onclick condition="!String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + !String.IsEmpty(Window(Home).Property(InfoTrick.1.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.2.Title))">SetProperty(InfoTrick.2.Title,$INFO[Container($PARAM[id]).ListItem.FileName],Home)</onclick>
+        <onclick condition="!String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + !String.IsEmpty(Window(Home).Property(InfoTrick.2.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.3.Title))">SetProperty(InfoTrick.3.Title,$INFO[Container($PARAM[id]).ListItem.FileName],Home)</onclick>
+        <onclick condition="!String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + !String.IsEmpty(Window(Home).Property(InfoTrick.3.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.4.Title))">SetProperty(InfoTrick.4.Title,$INFO[Container($PARAM[id]).ListItem.FileName],Home)</onclick>
+        <onclick condition="!String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + !String.IsEmpty(Window(Home).Property(InfoTrick.4.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.5.Title))">SetProperty(InfoTrick.5.Title,$INFO[Container($PARAM[id]).ListItem.FileName],Home)</onclick>
+        <onclick condition="!String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + !String.IsEmpty(Window(Home).Property(InfoTrick.5.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.6.Title))">SetProperty(InfoTrick.6.Title,$INFO[Container($PARAM[id]).ListItem.FileName],Home)</onclick>
+        <onclick condition="!String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + !String.IsEmpty(Window(Home).Property(InfoTrick.6.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.7.Title))">SetProperty(InfoTrick.7.Title,$INFO[Container($PARAM[id]).ListItem.FileName],Home)</onclick>
+        <onclick condition="!String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + !String.IsEmpty(Window(Home).Property(InfoTrick.7.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.8.Title))">SetProperty(InfoTrick.8.Title,$INFO[Container($PARAM[id]).ListItem.FileName],Home)</onclick>
+        <onclick condition="!String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + !String.IsEmpty(Window(Home).Property(InfoTrick.8.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.9.Title))">SetProperty(InfoTrick.9.Title,$INFO[Container($PARAM[id]).ListItem.FileName],Home)</onclick>
+        <onclick condition="!String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + !String.IsEmpty(Window(Home).Property(InfoTrick.9.Title))">SetProperty(InfoTrick.9.Title,$INFO[Container($PARAM[id]).ListItem.FileName],Home)</onclick>
+
+        <!-- Set the active flag so videoinfo unload conditions don't delete the property we just set -->
+        <onclick condition="!String.IsEmpty(Container($PARAM[id]).ListItem.DBID)">SetProperty(InfoTrick.Active,1,Home)</onclick>
+
+        <!-- Set videoinfo position back to top -->
+        <onclick condition="!String.IsEmpty(Container($PARAM[id]).ListItem.DBID)">SetFocus(5000)</onclick>
+        <onclick condition="!String.IsEmpty(Container($PARAM[id]).ListItem.DBID)">SetFocus(300)</onclick>
+
+        <!-- Kill the videoinfo dialog -->
+        <onclick condition="!String.IsEmpty(Container($PARAM[id]).ListItem.DBID)">Dialog.Close(all,force)</onclick>
+
+        <!-- Reload the InfoTrick Window -->
+        <onclick condition="!String.IsEmpty(Container($PARAM[id]).ListItem.DBID)">ActivateWindow(1137)</onclick>
+
+        <!-- If not a DBID item then use extendedinfo instead -->
+        <onclick condition="String.IsEmpty(Container($PARAM[id]).ListItem.DBID)">RunScript(script.extendedinfo,info=extendedinfo,name=$INFO[Container($PARAM[id]).ListItem.Title])</onclick>
+    </include>
+
+    <include name="Defs_Null"><description>Nothing</description></include>
+
     <variable name="Defs_Target">
         <value condition="String.IsEqual(ListItem.DBType,album) | String.IsEqual(ListItem.DBType,artist) | String.IsEqual(ListItem.DBType,song)">music</value>
         <value>videos</value>

@@ -4,12 +4,12 @@
     <onload>ClearProperty(SkinSplashStarted,home)</onload>
     <onload condition="String.IsEmpty(Window(home).Property(SkinInitStarted)) + !String.IsEmpty(Skin.String(StartupPlaylist))">PlayMedia($ESCINFO[Skin.String(StartupPlaylist)])</onload>
 
-    <onload condition="String.IsEmpty(Skin.String(colorbox_effect))">Skin.SetString(colorbox_effect,blur)</onload>
-    <onload condition="String.IsEmpty(Skin.String(colorbox_quality))">Skin.SetString(colorbox_quality,8)</onload>
-    <onload condition="String.IsEmpty(Skin.String(colorbox_blend))">Skin.SetString(colorbox_blend,100)</onload>
-    <onload condition="String.IsEmpty(Skin.String(colorbox_blursize))">Skin.SetString(colorbox_blursize,25)</onload>
-    <onload condition="String.IsEmpty(Skin.String(colorbox_bitsize))">Skin.SetString(colorbox_bitsize,1)</onload>
-    <onload condition="String.IsEmpty(Skin.String(colorbox_pixelsize))">Skin.SetString(colorbox_pixelsize,12)</onload>
+    <onload>Skin.SetString(colorbox_effect,blur)</onload>
+    <onload>Skin.SetString(colorbox_quality,4)</onload>
+    <onload>Skin.SetString(colorbox_blend,100)</onload>
+    <onload>Skin.SetString(colorbox_blursize,30)</onload>
+    <onload>Skin.SetString(colorbox_bitsize,1)</onload>
+    <onload>Skin.SetString(colorbox_pixelsize,12)</onload>
     <onload>Skin.SetString(colorbox_desat,0.3)</onload>
     <onload>Skin.SetString(colorbox_black,000000)</onload>
     <onload>Skin.SetString(colorbox_white,ffffff)</onload>

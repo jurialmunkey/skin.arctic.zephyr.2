@@ -6,8 +6,6 @@
     <onload condition="!String.IsEmpty(Window(Home).Property(OSDViewMode))">SetFocus(3112)</onload>
     <onload condition="!String.IsEmpty(Window(Home).Property(OSDViewMode))">ClearProperty(OSDViewMode,Home)</onload>
     <onunload>ClearProperty(OSDInfo,Home)</onunload>
-    <onunload condition="!String.IsEmpty(Window(Home).Property(OSDExtendedInfo)) + Player.Paused">Play</onunload>
-    <onunload condition="!String.IsEmpty(Window(Home).Property(OSDExtendedInfo))">ClearProperty(OSDExtendedInfo,Home)</onunload>
     <controls>
 
         <control type="group">

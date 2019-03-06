@@ -54,7 +54,6 @@
                 <param name="id" value="501" />
                 <param name="viewtype" value="$LOCALIZE[31298]" />
                 <param name="forced" value="true" />
-                <param name="itemlayout" value="View_50_Itemlayout_Episodes" />
                 <param name="visible" value="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(episodes)" />
             </include>
             <include content="View_522_Showcase_Seasons_Info">
@@ -76,7 +75,6 @@
                 <param name="id" value="502" />
                 <param name="viewtype" value="$LOCALIZE[31298]" />
                 <param name="forced" value="true" />
-                <param name="itemlayout" value="View_50_Itemlayout_Episodes" />
                 <param name="visible" value="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(episodes)" />
             </include>
             <include>View_502_List_Info</include>
@@ -169,6 +167,7 @@
     <include name="View_50_List_Control">
         <param name="itemlayout" default="View_50_Itemlayout" />
         <param name="itemheight" default="view_list_height" />
+        <param name="altid" default="999999" />
         <param name="height" default="780" />
         <param name="top" default="0" />
         <param name="controllayout" default="View_Vertical" />
@@ -194,11 +193,11 @@
                 </itemlayout>
                 <focusedlayout height="$PARAM[itemheight]">
                     <control type="group">
-                        <visible>!Control.HasFocus($PARAM[id])</visible>
+                        <visible>!Control.HasFocus($PARAM[id]) + !Control.HasFocus($PARAM[altid])</visible>
                         <include>$PARAM[itemlayout]</include>
                     </control>
                     <control type="group">
-                        <visible>Control.HasFocus($PARAM[id])</visible>
+                        <visible>Control.HasFocus($PARAM[id]) | Control.HasFocus($PARAM[altid])</visible>
                         <include content="$PARAM[itemlayout]">
                             <param name="fgcolor" value="main_bg" />
                             <param name="bgcolor" value="main_fg" />
@@ -236,51 +235,6 @@
         </definition>
     </include>
 
-    <include name="View_50_Itemlayout_Episodes">
-        <param name="fgcolor" default="main_fg" />
-        <param name="bgcolor" default="main_bg" />
-        <param name="pad" default="20" />
-        <param name="selectbox" default="false" />
-        <definition>
-            <control type="image">
-                <visible>$PARAM[selectbox]</visible>
-                <texture colordiffuse="main_fg_100" border="10">common/box.png</texture>
-            </control>
-            <control type="group">
-                <left>$PARAM[pad]</left>
-                <right>$PARAM[pad]</right>
-                <control type="image">
-                    <centertop>50%</centertop>
-                    <left>0</left>
-                    <width>32</width>
-                    <height>32</height>
-                    <texture colordiffuse="$PARAM[fgcolor]_90">$VAR[Image_Overlay_List]</texture>
-                </control>                
-                <control type="label">
-                    <left>52</left>
-                    <font>font_small_bold</font>
-                    <textcolor>$PARAM[fgcolor]_100</textcolor>
-                    <selectedcolor>$PARAM[fgcolor]_100</selectedcolor>
-                    <label>$INFO[ListItem.Label]</label>
-                </control>
-                <control type="label">
-                    <align>right</align>
-                    <textcolor>$PARAM[fgcolor]_100</textcolor>
-                    <selectedcolor>$PARAM[fgcolor]_100</selectedcolor>
-                    <label>$VAR[Label_List_Right]</label>
-                    <visible>!Control.IsVisible(5229)</visible>
-                </control>
-                <control type="label">
-                    <align>right</align>
-                    <textcolor>$PARAM[fgcolor]_100</textcolor>
-                    <selectedcolor>$PARAM[fgcolor]_100</selectedcolor>
-                    <label>$INFO[ListItem.Rating]</label>
-                    <visible>Control.IsVisible(5229)</visible>
-                </control>
-            </control>
-        </definition>
-    </include>
-
     <include name="View_50_Itemlayout">
         <param name="fgcolor" default="main_fg" />
         <param name="bgcolor" default="main_bg" />
@@ -294,84 +248,41 @@
             <control type="group">
                 <left>$PARAM[pad]</left>
                 <right>$PARAM[pad]</right>
-                <visible>Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(videos) | Container.Content(sets)</visible>
+                <visible>Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(sets)</visible>
 
                 <!-- LEFT SIDE -->
                 <!-- Movies / TvShows / Seasons -->
                 <control type="label">
                     <textcolor>$PARAM[fgcolor]_100</textcolor>
                     <selectedcolor>$PARAM[fgcolor]_100</selectedcolor>
-                    <label>$INFO[ListItem.Year]</label>
-                    <visible>Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons)</visible>
+                    <label>$VAR[Label_List_Left]</label>
+                    <visible>Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)</visible>
                 </control>
                 <control type="image">
+                    <animation effect="slide" end="10" condition="Container.Content(episodes) + Integer.IsGreater(ListItem.Season,9)">Conditional</animation>
                     <centertop>50%</centertop>
                     <left>80</left>
                     <width>32</width>
                     <height>32</height>
                     <texture colordiffuse="$PARAM[fgcolor]_90">$VAR[Image_Overlay_List]</texture>
-                    <visible>Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons)</visible>
+                    <visible>Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)</visible>
                 </control>                
                 <control type="label">
+                    <animation effect="slide" end="10" condition="Container.Content(episodes) + Integer.IsGreater(ListItem.Season,9)">Conditional</animation>
                     <left>132</left>
                     <font>font_small_bold</font>
                     <textcolor>$PARAM[fgcolor]_100</textcolor>
                     <selectedcolor>$PARAM[fgcolor]_100</selectedcolor>
-                    <label>$INFO[ListItem.Label]</label>
-                    <visible>Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons)</visible>
+                    <label>$VAR[Label_List_Title]</label>
+                    <visible>Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)</visible>
                 </control>
 
-                <!-- Episodes / Videos / Sets -->
-                <control type="image">
-                    <centertop>50%</centertop>
-                    <left>0</left>
-                    <width>32</width>
-                    <height>32</height>
-                    <texture colordiffuse="$PARAM[fgcolor]_90">$VAR[Image_Overlay_List]</texture>
-                    <visible>Container.Content(episodes) | Container.Content(videos) | Container.Content(sets)</visible>
-                </control>                
-                <control type="label">
-                    <left>52</left>
-                    <font>font_small_bold</font>
-                    <textcolor>$PARAM[fgcolor]_100</textcolor>
-                    <selectedcolor>$PARAM[fgcolor]_100</selectedcolor>
-                    <label>$INFO[ListItem.Label]</label>
-                    <visible>Container.Content(episodes) | Container.Content(videos) | Container.Content(sets)</visible>
-                </control>
-
-                <!-- RIGHT SIDE -->
-                <!-- Movies / Episodes -->
-                <control type="label">
-                    <right>127</right>
-                    <align>right</align>
-                    <textcolor>$PARAM[fgcolor]_100</textcolor>
-                    <selectedcolor>$PARAM[fgcolor]_100</selectedcolor>
-                    <label>$VAR[Label_List_Right]</label>
-                    <visible>Container.Content(movies) | Container.Content(episodes)</visible>
-                </control>
-                <control type="image">
-                    <centertop>50%</centertop>
-                    <right>65</right>
-                    <width>37</width>
-                    <height>24</height>
-                    <texture colordiffuse="$PARAM[fgcolor]_100">$VAR[Image_HDSD]</texture>
-                    <visible>Container.Content(movies) | Container.Content(episodes)</visible>
-                </control>
-                <control type="label">
-                    <align>right</align>
-                    <textcolor>$PARAM[fgcolor]_100</textcolor>
-                    <selectedcolor>$PARAM[fgcolor]_100</selectedcolor>
-                    <label>$INFO[ListItem.Rating]</label>
-                    <visible>Container.Content(movies) | Container.Content(episodes)</visible>
-                </control>
-                
                 <!-- Videos / Tvshows / Seasons / Sets -->
                 <control type="label">
                     <align>right</align>
                     <textcolor>$PARAM[fgcolor]_100</textcolor>
                     <selectedcolor>$PARAM[fgcolor]_100</selectedcolor>
                     <label>$VAR[Label_List_Right]</label>
-                    <visible>Container.Content(videos) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(sets)</visible>
                 </control>
             </control>
 
@@ -412,7 +323,7 @@
             <control type="group">
                 <left>$PARAM[pad]</left>
                 <right>$PARAM[pad]</right>
-                <visible>![Container.Content(songs) | Container.Content(movies) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(sets) | Container.Content(videos) | Container.Content(seasons)]</visible>
+                <visible>![Container.Content(songs) | Container.Content(movies) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(sets) | Container.Content(seasons)]</visible>
                 <control type="label">
                     <font>font_small_bold</font>
                     <textcolor>$PARAM[fgcolor]_100</textcolor>
@@ -431,6 +342,7 @@
         <param name="fgcolor" default="main_fg_70" />
         <param name="panelcolor" default="main_fg_12" />
         <param name="visible" default="true" />
+        <param name="sublabel" default="true" />
         <definition>
             <control type="image" id="2">
                 <left>0</left>
@@ -438,14 +350,6 @@
                 <top>4</top>
                 <texture colordiffuse="$PARAM[panelcolor]" border="10">common/box.png</texture>
                 <visible>$PARAM[visible]</visible>
-            </control>
-            <control type="image" id="2">
-                <left>0</left>
-                <width>517</width>
-                <top>4</top>
-                <texture colordiffuse="$PARAM[panelcolor]" border="10">common/box.png</texture>
-                <visible>$PARAM[visible]</visible>
-                <visible>Integer.IsGreater(ListItem.Progress,0) + Integer.IsLess(ListItem.Progress,100)</visible>
             </control>
             <control type="image" id="2">
                 <aspectratio align="right">keep</aspectratio>
@@ -468,12 +372,24 @@
             <control type="label" id="1">
                 <left>20</left>
                 <width>481</width>
+                <aligny>center</aligny>
+                <textcolor>$PARAM[fgcolor]</textcolor>
+                <textoffsetx>0</textoffsetx>
+                <font>font_tiny_bold</font>
+                <label>$INFO[ListItem.Label]</label>
+                <visible>$PARAM[visible]</visible>
+                <visible>!$PARAM[sublabel]</visible>
+            </control>
+            <control type="label" id="1">
+                <left>20</left>
+                <width>481</width>
                 <centertop>33%</centertop>
                 <textcolor>$PARAM[fgcolor]</textcolor>
                 <textoffsetx>0</textoffsetx>
                 <font>font_tiny_bold</font>
                 <label>$INFO[ListItem.Label]</label>
                 <visible>$PARAM[visible]</visible>
+                <visible>$PARAM[sublabel]</visible>
             </control>
             <control type="label" id="1">
                 <left>20</left>
@@ -485,6 +401,7 @@
                 <label>$INFO[ListItem.Genre]</label>
                 <visible>!Skin.HasSetting(PVRGuideGenreName)</visible>
                 <visible>$PARAM[visible]</visible>
+                <visible>$PARAM[sublabel]</visible>
             </control>
             <control type="label" id="1">
                 <left>20</left>
@@ -496,6 +413,7 @@
                 <label>$INFO[ListItem.StartTime]$INFO[ListItem.EndTime, - ,]</label>
                 <visible>Skin.HasSetting(PVRGuideGenreName)</visible>
                 <visible>$PARAM[visible]</visible>
+                <visible>$PARAM[sublabel]</visible>
             </control>
         </definition>
     </include>
@@ -673,7 +591,7 @@
     <include name="View_50_Poster">
         <param name="height" default="810" />
         <param name="width" default="560" />
-        <param name="include" default="" />
+        <param name="include" default="Defs_Null" />
         <param name="visible" default="true" />
         <param name="left" default="-15" />
         <param name="fadetime" default="0" />

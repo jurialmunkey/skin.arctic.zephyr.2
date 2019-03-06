@@ -3,7 +3,32 @@
 <window id="2003">
     <defaultcontrol always="true">8</defaultcontrol>
     <onload>ClearProperty(FilePath,home)</onload>
+    <onload>ClearProperty(InfoTrick.Active,Home)</onload>
+    <onload>SetProperty(InfoTrick.OriginalTitle,$INFO[ListItem.FileName],Home)</onload>
     <onunload>ClearProperty(FilePath,home)</onunload>
+
+    <onunload condition="!String.IsEmpty(Window(Home).Property(InfoTrick.9.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.Active))">ClearProperty(InfoTrick.9.Title,Home)</onunload>
+    <onunload condition="String.IsEmpty(Window(Home).Property(InfoTrick.9.Title)) + !String.IsEmpty(Window(Home).Property(InfoTrick.8.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.Active))">ClearProperty(InfoTrick.8.Title,Home)</onunload>
+    <onunload condition="String.IsEmpty(Window(Home).Property(InfoTrick.8.Title)) + !String.IsEmpty(Window(Home).Property(InfoTrick.7.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.Active))">ClearProperty(InfoTrick.7.Title,Home)</onunload>
+    <onunload condition="String.IsEmpty(Window(Home).Property(InfoTrick.7.Title)) + !String.IsEmpty(Window(Home).Property(InfoTrick.6.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.Active))">ClearProperty(InfoTrick.6.Title,Home)</onunload>
+    <onunload condition="String.IsEmpty(Window(Home).Property(InfoTrick.6.Title)) + !String.IsEmpty(Window(Home).Property(InfoTrick.5.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.Active))">ClearProperty(InfoTrick.5.Title,Home)</onunload>
+    <onunload condition="String.IsEmpty(Window(Home).Property(InfoTrick.5.Title)) + !String.IsEmpty(Window(Home).Property(InfoTrick.4.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.Active))">ClearProperty(InfoTrick.4.Title,Home)</onunload>
+    <onunload condition="String.IsEmpty(Window(Home).Property(InfoTrick.4.Title)) + !String.IsEmpty(Window(Home).Property(InfoTrick.3.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.Active))">ClearProperty(InfoTrick.3.Title,Home)</onunload>
+    <onunload condition="String.IsEmpty(Window(Home).Property(InfoTrick.3.Title)) + !String.IsEmpty(Window(Home).Property(InfoTrick.2.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.Active))">ClearProperty(InfoTrick.2.Title,Home)</onunload>
+    <onunload condition="String.IsEmpty(Window(Home).Property(InfoTrick.2.Title)) + !String.IsEmpty(Window(Home).Property(InfoTrick.1.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.Active))">ClearProperty(InfoTrick.1.Title,Home)</onunload>
+    <onunload condition="String.IsEmpty(Window(Home).Property(InfoTrick.1.Title)) + !String.IsEmpty(Window(Home).Property(InfoTrick.0.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.Active))">ClearProperty(InfoTrick.0.Title,Home)</onunload>
+
+    <onunload condition="!String.IsEmpty(Window(Home).Property(InfoTrick.9.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.Active))">ReplaceWindow(1137)</onunload>
+    <onunload condition="String.IsEmpty(Window(Home).Property(InfoTrick.9.Title)) + !String.IsEmpty(Window(Home).Property(InfoTrick.8.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.Active))">ReplaceWindow(1137)</onunload>
+    <onunload condition="String.IsEmpty(Window(Home).Property(InfoTrick.8.Title)) + !String.IsEmpty(Window(Home).Property(InfoTrick.7.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.Active))">ReplaceWindow(1137)</onunload>
+    <onunload condition="String.IsEmpty(Window(Home).Property(InfoTrick.7.Title)) + !String.IsEmpty(Window(Home).Property(InfoTrick.6.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.Active))">ReplaceWindow(1137)</onunload>
+    <onunload condition="String.IsEmpty(Window(Home).Property(InfoTrick.6.Title)) + !String.IsEmpty(Window(Home).Property(InfoTrick.5.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.Active))">ReplaceWindow(1137)</onunload>
+    <onunload condition="String.IsEmpty(Window(Home).Property(InfoTrick.5.Title)) + !String.IsEmpty(Window(Home).Property(InfoTrick.4.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.Active))">ReplaceWindow(1137)</onunload>
+    <onunload condition="String.IsEmpty(Window(Home).Property(InfoTrick.4.Title)) + !String.IsEmpty(Window(Home).Property(InfoTrick.3.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.Active))">ReplaceWindow(1137)</onunload>
+    <onunload condition="String.IsEmpty(Window(Home).Property(InfoTrick.3.Title)) + !String.IsEmpty(Window(Home).Property(InfoTrick.2.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.Active))">ReplaceWindow(1137)</onunload>
+    <onunload condition="String.IsEmpty(Window(Home).Property(InfoTrick.2.Title)) + !String.IsEmpty(Window(Home).Property(InfoTrick.1.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.Active))">ReplaceWindow(1137)</onunload>
+    <onunload condition="String.IsEmpty(Window(Home).Property(InfoTrick.1.Title)) + !String.IsEmpty(Window(Home).Property(InfoTrick.0.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.Active))">Action(Back)</onunload>
+    <onunload condition="String.IsEmpty(Window(Home).Property(InfoTrick.1.Title)) + !String.IsEmpty(Window(Home).Property(InfoTrick.0.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.Active))">Action(OSD)</onunload>
     <controls>
 
         <!-- Top Info -->
@@ -61,7 +86,7 @@
                             </control>
                             <control type="grouplist" id="300">
                                 <onup>9601</onup>
-                                <ondown>SetFocus(5000,0,absolute)</ondown>
+                                <ondown>SetFocus(50,0,absolute)</ondown>
                                 <include>Defs_ButtonList</include>
                                 <include content="Object_Info_Button">
                                     <param name="id" value="8" />
@@ -80,25 +105,8 @@
                                     <param name="groupid" value="8050" />
                                     <param name="label" value="Cast" />
                                     <param name="icon" value="special://skin/extras/icons/person.png" />
-                                    <onclick>SetFocus(5000)</onclick>
+                                    <onclick>SetFocus(50)</onclick>
                                 </include>
-                                <!-- <include content="Object_Info_Button">
-                                    <param name="id" value="8151" />
-                                    <param name="groupid" value="8051" />
-                                    <param name="label" value="Explore" />
-                                    <param name="icon" value="special://skin/extras/icons/passports.png" />
-                                    <onclick condition="Control.IsVisible(5004)">SetFocus(5004)</onclick>
-                                    <onclick condition="Control.IsVisible(5003)">SetFocus(5003)</onclick>
-                                    <onclick condition="Control.IsVisible(5002)">SetFocus(5002)</onclick>
-                                    <onclick condition="Control.IsVisible(5001)">SetFocus(5001)</onclick>
-                                </include>
-                                <include content="Object_Info_Button">
-                                    <param name="id" value="8160" />
-                                    <param name="groupid" value="8060" />
-                                    <param name="label" value="Artwork" />
-                                    <param name="icon" value="special://skin/extras/icons/pictures.png" />
-                                    <onclick>SetFocus(6000)</onclick>
-                                </include> -->
                                 <include content="Object_Info_Button">
                                     <param name="id" value="7" />
                                     <param name="groupid" value="8007" />
@@ -139,7 +147,6 @@
                                     <onfocus>SetProperty(FilePath,1,Home)</onfocus>
                                     <onunfocus>ClearProperty(FilePath,Home)</onunfocus>
                                 </include>
-                                
                             </control>
                         </control>
                     </control>
@@ -158,22 +165,61 @@
                         <control type="group" id="7599"><height>0</height></control>
                         <include content="View_Cast_Toplabel">
                             <param name="groupid" value="7500" />
-                            <param name="id" value="5000" />
+                            <param name="id" value="50" />
+                            <param name="altid" value="5000" />
                             <param name="label" value="$INFO[ListItem.Title,Cast of ,]" />
                         </include>
+                        <control type="group" id="5999">
+                            <height>52</height>
+                            <control type="button" id="5000">
+                                <texturefocus />
+                                <texturenofocus />
+                                <font />
+                                <textcolor />
+                                <onclick>RunScript(script.extendedinfo,info=extendedactorinfo,name=$INFO[Container(50).ListItem.Label])</onclick>
+                                <onback>300</onback>
+                                <onup>300</onup>
+                                <ondown>5001</ondown>
+                                <onleft>SetFocus(50)</onleft>
+                                <onleft>Left</onleft>
+                                <onright>SetFocus(50)</onright>
+                                <onright>Right</onright>
+                            </control>
+                        </control>
                         <include content="View_51_Wall_Container">
                             <param name="controllayout" value="View_Cast" />
-                            <param name="id" value="5000" />
+                            <param name="controltype" value="list" />
+                            <param name="id" value="50" />
+                            <param name="altid" value="5000" />
                             <param name="height" value="360.5" />
                             <param name="orientation" value="horizontal" />
                             <param name="labelinclude" value="View_Cast_Label" />
-                            <param name="onleft" value="5000" />
-                            <param name="onright" value="5000" />
-                            <param name="visible" value="Integer.IsGreater(Container(5000).NumItems,0) | Container(5000).IsUpdating" />
-                            <content>$VAR[Defs_Cast_Content]</content>
+                            <param name="onleft" value="50" />
+                            <param name="onright" value="50" />
+                            <param name="visible" value="Integer.IsGreater(Container(50).NumItems,0) | Container(50).IsUpdating" />
+                            <onfocus>SetFocus(5000)</onfocus>
                             <onback>SetFocus(5000)</onback>
                             <onback>300</onback>
                         </include>
+
+                        <!-- <include content="View_Cast_Toplabel">
+                            <param name="groupid" value="7550" />
+                            <param name="id" value="5050" />
+                            <param name="label" value="$INFO[Container(50).ListItem.Label,Starring ,]" />
+                        </include>
+                        <include content="View_51_Wall_Container">
+                            <param name="controllayout" value="View_Cast" />
+                            <param name="id" value="5050" />
+                            <param name="height" value="360.5" />
+                            <param name="orientation" value="horizontal" />
+                            <param name="labelinclude" value="Defs_Null" />
+                            <param name="visible" value="Integer.IsGreater(Container(5050).NumItems,0) | Container(5050).IsUpdating" />
+                            <onclick>RunScript(script.extendedinfo,info=extendedinfo,dbid=$INFO[Container(5050).ListItem.DBID],name=$INFO[Container(5050).ListItem.Title])</onclick>
+                            <onback>SetFocus(5000)</onback>
+                            <onback>300</onback>
+                            <content limit="25" target="videos">videodb://movies/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22actor%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22$INFO[Container(50).ListItem.Label]%22%5D%7D%5D%7D%2C%22type%22%3A%22movies%22%7D</content>
+                            <visible>Container.Content(movies)</visible>
+                        </include> -->
 
                         <include content="View_Cast_Toplabel">
                             <param name="groupid" value="7501" />
@@ -185,13 +231,16 @@
                             <param name="id" value="5001" />
                             <param name="height" value="360.5" />
                             <param name="orientation" value="horizontal" />
-                            <param name="labelinclude" value="" />
+                            <param name="labelinclude" value="Defs_Null" />
                             <param name="visible" value="Integer.IsGreater(Container(5001).NumItems,0) | Container(5001).IsUpdating" />
+                            <include content="Defs_InfoTrick">
+                                <param name="id" value="5001" />
+                            </include>
                             <onback>SetFocus(5000)</onback>
                             <onback>300</onback>
                             <content limit="25" target="videos">$INFO[ListItem.SetID,videodb://movies/sets/,/]</content>
                         </include>
-                        <!-- <include content="View_Cast_Toplabel">
+                        <include content="View_Cast_Toplabel">
                             <param name="groupid" value="7502" />
                             <param name="id" value="5002" />
                             <param name="label" value="$INFO[ListItem.Title,Similar to ,]" />
@@ -201,12 +250,16 @@
                             <param name="id" value="5002" />
                             <param name="height" value="360.5" />
                             <param name="orientation" value="horizontal" />
-                            <param name="labelinclude" value="" />
+                            <param name="labelinclude" value="Defs_Null" />
                             <param name="visible" value="Integer.IsGreater(Container(5002).NumItems,0) | Container(5002).IsUpdating" />
+                            <include content="Defs_InfoTrick">
+                                <param name="id" value="5002" />
+                            </include>
                             <onback>SetFocus(5000)</onback>
                             <onback>300</onback>
                             <content limit="25" target="videos">$INFO[ListItem.IMDBNumber,plugin://script.skin.helper.widgets/?action=similar&amp;mediatype=movies&amp;imdbid=,]</content>
-                        </include> -->
+                            <visible>Container.Content(movies)</visible>
+                        </include>
                         <include content="View_Cast_Toplabel">
                             <param name="groupid" value="7503" />
                             <param name="id" value="5003" />
@@ -217,11 +270,15 @@
                             <param name="id" value="5003" />
                             <param name="height" value="360.5" />
                             <param name="orientation" value="horizontal" />
-                            <param name="labelinclude" value="" />
+                            <param name="labelinclude" value="Defs_Null" />
                             <param name="visible" value="Integer.IsGreater(Container(5003).NumItems,0) | Container(5003).IsUpdating" />
+                            <include content="Defs_InfoTrick">
+                                <param name="id" value="5003" />
+                            </include>
                             <onback>SetFocus(5000)</onback>
                             <onback>300</onback>
                             <content limit="25" target="videos">$INFO[ListItem.Director,plugin://script.extendedinfo?info=personmovies&amp;&amp;person=,]</content>
+                            <visible>Container.Content(movies)</visible>
                         </include>
                         <include content="View_Cast_Toplabel">
                             <param name="groupid" value="7504" />
@@ -233,12 +290,82 @@
                             <param name="id" value="5004" />
                             <param name="height" value="360.5" />
                             <param name="orientation" value="horizontal" />
-                            <param name="labelinclude" value="" />
+                            <param name="labelinclude" value="Defs_Null" />
                             <param name="visible" value="Integer.IsGreater(Container(5004).NumItems,0) | Container(5004).IsUpdating" />
+                            <include content="Defs_InfoTrick">
+                                <param name="id" value="5004" />
+                            </include>
                             <onback>SetFocus(5000)</onback>
                             <onback>300</onback>
                             <content limit="25" target="videos">$INFO[ListItem.Studio,plugin://script.extendedinfo?info=studio&amp;&amp;studio=,]</content>
+                            <visible>Container.Content(movies)</visible>
                         </include>
+
+                        <include content="View_Cast_Toplabel">
+                            <param name="groupid" value="7505" />
+                            <param name="id" value="5005" />
+                            <param name="label" value="Next Up" />
+                        </include>
+                        <include content="View_51_Wall_Container">
+                            <param name="controllayout" value="View_Cast" />
+                            <param name="id" value="5005" />
+                            <param name="height" value="360.5" />
+                            <param name="itemwidth" value="570" />
+                            <param name="icon" value="$VAR[Image_Fanart]" />
+                            <param name="clearlogo" value="String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow)" />
+                            <param name="iconheight" value="333.75" />
+                            <param name="diffuse" value="diffuse/540x304.png" />
+                            <param name="orientation" value="horizontal" />
+                            <param name="labelinclude" value="View_Cast_Video_Label" />
+                            <param name="icon" value="$INFO[ListItem.Icon]" />
+                            <param name="visible" value="Integer.IsGreater(Container(5005).NumItems,0) | Container(5005).IsUpdating" />
+                            <onback>SetFocus(5000)</onback>
+                            <onback>300</onback>
+                            <content limit="3" sortby="playcount" sortorder="ascending">videodb://inprogresstvshows/$INFO[ListItem.DBID]/-2/?tvshowid=$INFO[ListItem.DBID]</content>
+                            <visible>Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)</visible>
+                        </include>
+
+                        <include content="View_Cast_Toplabel">
+                            <param name="groupid" value="7506" />
+                            <param name="id" value="5006" />
+                            <param name="label" value="Seasons" />
+                        </include>
+                        <include content="View_51_Wall_Container">
+                            <param name="controllayout" value="View_Cast" />
+                            <param name="id" value="5006" />
+                            <param name="height" value="360.5" />
+                            <param name="orientation" value="horizontal" />
+                            <param name="labelinclude" value="Defs_Null" />
+                            <param name="icon" value="$INFO[ListItem.Icon]" />
+                            <param name="visible" value="Integer.IsGreater(Container(5006).NumItems,0) | Container(5006).IsUpdating" />
+                            <onclick>SetFocus(50)</onclick>
+                            <onclick>SetFocus(300)</onclick>
+                            <onclick>Dialog.Close(all,force)</onclick>
+                            <onclick>ActivateWindow(videos,$INFO[Container(5006).ListItem.FolderPath])</onclick>
+                            <onback>SetFocus(5000)</onback>
+                            <onback>300</onback>
+                            <content limit="25" target="videos">$INFO[ListItem.DBID,videodb://tvshows/titles/,/]</content>
+                            <visible>Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)</visible>
+                        </include>
+
+                        <!-- <include content="View_Cast_Toplabel">
+                            <param name="groupid" value="7507" />
+                            <param name="id" value="5007" />
+                            <param name="label" value="$INFO[ListItem.Title,Similar to ,]" />
+                        </include>
+                        <include content="View_51_Wall_Container">
+                            <param name="controllayout" value="View_Cast" />
+                            <param name="id" value="5007" />
+                            <param name="height" value="360.5" />
+                            <param name="orientation" value="horizontal" />
+                            <param name="labelinclude" value="Defs_Null" />
+                            <param name="visible" value="Integer.IsGreater(Container(5007).NumItems,0) | Container(5007).IsUpdating" />
+                            <onclick>RunScript(script.extendedinfo,info=extendedinfo,dbid=$INFO[Container(5007).ListItem.DBID],name=$INFO[Container(5007).ListItem.Title])</onclick>
+                            <onback>SetFocus(5000)</onback>
+                            <onback>300</onback>
+                            <content limit="25" target="videos">$INFO[ListItem.IMDBNumber,plugin://script.skin.helper.widgets/?action=similar&amp;mediatype=tvshows&amp;imdbid=,]</content>
+                            <visible>Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)</visible>
+                        </include> -->
                     </control>
                 </control>
 
@@ -270,68 +397,7 @@
                 <param name="label" value="$INFO[ListItem.FileNameAndPath]" />
             </include>
 
-            <!-- <include content="Object_Info_Languages">
-                <visible>!Control.HasFocus(6)</visible>
-            </include> -->
         </control>        
-
-       
-        <!-- Hint Labels -->
-        <!-- <control type="group">
-            <visible>ControlGroup(9000).HasFocus()</visible>
-            <visible>!Window.IsVisible(DialogNotification.xml)</visible>
-            <visible>!Window.IsVisible(DialogExtendedProgressBar.xml)</visible>
-            <control type="grouplist">
-                <visible>ControlGroup(9000).HasFocus()</visible>
-                <orientation>horizontal</orientation>
-                <align>left</align>
-                <bottom>0</bottom>
-                <left>view_pad</left>
-                <right>view_pad</right>
-                <height>view_pad</height>
-                <usecontrolcoords>true</usecontrolcoords>
-                <itemgap>20</itemgap>
-                <control type="image">
-                    <centertop>50%</centertop>
-                    <width>24</width>
-                    <height>24</height>
-                    <texture colordiffuse="main_fg_90" flipx="false">buttons/spin-left.png</texture>
-                </control>
-                <control type="label">
-                    <aligny>center</aligny>
-                    <align>left</align>
-                    <width>auto</width>
-                    <font>font_info_buttons</font>
-                    <textcolor>main_fg_70</textcolor>
-                    <label>$VAR[Label_Info_LeftHint]</label>
-                </control>
-            </control>
-            <control type="grouplist">
-                <visible>Container(9000).HasNext + ControlGroup(9000).HasFocus() + !Control.HasFocus(7006)</visible>
-                <orientation>horizontal</orientation>
-                <align>right</align>
-                <bottom>0</bottom>
-                <left>view_pad</left>
-                <right>view_pad</right>
-                <height>view_pad</height>
-                <usecontrolcoords>true</usecontrolcoords>
-                <itemgap>20</itemgap>
-                <control type="label">
-                    <aligny>center</aligny>
-                    <align>right</align>
-                    <width>auto</width>
-                    <font>font_info_buttons</font>
-                    <textcolor>main_fg_70</textcolor>
-                    <label>$VAR[Label_Info_RightHint]</label>
-                </control>
-                <control type="image">
-                    <centertop>50%</centertop>
-                    <width>24</width>
-                    <height>24</height>
-                    <texture colordiffuse="main_fg_90" flipx="true">buttons/spin-left.png</texture>
-                </control>
-            </control>
-        </control> -->
 
         <include>Object_PlotOverlay</include>
 

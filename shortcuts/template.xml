@@ -1,16 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <template>
-    <other include="spotlight">
-        <condition tag="property" attribute="name|widgetPath" />
+    <submenuOther include="spotlight" container="302">
+        <property name="widgetAspect" tag="property" attribute="name|widgetAspect" />
         <property name="widgetTarget" tag="property" attribute="name|widgetTarget" />
         <property name="widgetName" tag="property" attribute="name|widgetName" />
         <property name="widgetPath" tag="property" attribute="name|widgetPath" />
-        <property name="widgetPath">None</property>
         <controls>
             <include content="Object_Widget_Spotlight">
                 <param name="target" value="$SKINSHORTCUTS[widgetTarget]" />
                 <param name="content" value="$SKINSHORTCUTS[widgetPath]" />
                 <skinshortcuts>visibility</skinshortcuts>
+            </include>
+        </controls>
+    </submenuOther>
+    <other include="spotlight">
+        <property name="widgetAspect" tag="property" attribute="name|widgetAspect" />
+        <property name="widgetTarget" tag="property" attribute="name|widgetTarget" />
+        <property name="widgetName" tag="property" attribute="name|widgetName" />
+        <property name="widgetPath" tag="property" attribute="name|widgetPath" />
+        <controls>
+            <include content="Object_Widget_Spotlight">
+                <param name="target" value="$SKINSHORTCUTS[widgetTarget]" />
+                <param name="content" value="$SKINSHORTCUTS[widgetPath]" />
+                <skinshortcuts>visibility</skinshortcuts>
+                <visible>String.IsEmpty(Container(302).ListItem.Property(widgetPath))</visible>
             </include>
         </controls>
     </other>

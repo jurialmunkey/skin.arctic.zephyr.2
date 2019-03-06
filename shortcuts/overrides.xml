@@ -7,6 +7,14 @@
     <background label="::PLAYLIST::">playlistBackground</background>
     <widgetRename>True</widgetRename>
 
+    <!-- Additional Onclick -->
+    <groupoverride group="mainmenu" condition="String.IsEqual(Container(301).ListItem.Property(path),ActivateWindow(1135))">SetProperty(submenuVisibility,$INFO[Container(301).ListItem.Property(submenuVisibility)],home)</groupoverride>
+    <groupoverride group="mainmenu" condition="String.IsEqual(Container(301).ListItem.Property(path),ActivateWindow(1135))">SetProperty(leftHeader,$INFO[Container(301).ListItem.Label],home)</groupoverride>
+    <groupoverride group="mainmenu" condition="String.IsEqual(Container(301).ListItem.Property(path),ActivateWindow(1135))">SetProperty(widgetName,$INFO[Container(301).ListItem.Property(widgetName)],home)</groupoverride>
+    <groupoverride group="mainmenu" condition="String.IsEqual(Container(301).ListItem.Property(path),ActivateWindow(1135))">SetProperty(widgetPath,$INFO[Container(301).ListItem.Property(widgetPath)],home)</groupoverride>
+    <groupoverride group="mainmenu" condition="String.IsEqual(Container(301).ListItem.Property(path),ActivateWindow(1135))">SetProperty(widgetTarget,$INFO[Container(301).ListItem.Property(widgetTarget)],home)</groupoverride>
+
+
     <!-- Warning to Remove Settings -->
     <warn heading="31176" message="31177">ActivateWindow(Settings)</warn>
 
