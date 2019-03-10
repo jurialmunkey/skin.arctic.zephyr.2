@@ -7,14 +7,8 @@
     <background label="::PLAYLIST::">playlistBackground</background>
     <widgetRename>True</widgetRename>
 
-    <!-- Default Menu Option -->
-    <override action="globaloverride" group="mainmenu">
-        <condition>!Skin.HasSetting(ForceSubmenuHub) | !Integer.IsGreater(Container(302).NumItems,0)</condition>
-    </override>
-
-    <!-- Force Submenu Hub Option -->
-    <override action="globaloverride" group="mainmenu">
-        <condition>Skin.HasSetting(ForceSubmenuHub) + Integer.IsGreater(Container(302).NumItems,0)</condition>
+    <!-- Additional Onclick for Submenu Hub -->
+    <override action="ActivateWindow(1135)">
         <action>SetProperty(submenuVisibility,$INFO[Container(301).ListItem.Property(submenuVisibility)],home)</action>
         <action>SetProperty(leftHeader,$INFO[Container(301).ListItem.Label],home)</action>
         <action>SetProperty(widgetName,$INFO[Container(301).ListItem.Property(widgetName)],home)</action>
@@ -25,15 +19,13 @@
         <action>ActivateWindow(1135)</action>
     </override>
 
-    <!-- Additional Onclick for Manually Selected Submenu Hub -->
-    <groupoverride group="mainmenu" condition="String.IsEqual(Container(301).ListItem.Property(path),ActivateWindow(1135))">SetProperty(submenuVisibility,$INFO[Container(301).ListItem.Property(submenuVisibility)],home)</groupoverride>
-    <groupoverride group="mainmenu" condition="String.IsEqual(Container(301).ListItem.Property(path),ActivateWindow(1135))">SetProperty(leftHeader,$INFO[Container(301).ListItem.Label],home)</groupoverride>
-    <groupoverride group="mainmenu" condition="String.IsEqual(Container(301).ListItem.Property(path),ActivateWindow(1135))">SetProperty(widgetName,$INFO[Container(301).ListItem.Property(widgetName)],home)</groupoverride>
-    <groupoverride group="mainmenu" condition="String.IsEqual(Container(301).ListItem.Property(path),ActivateWindow(1135))">SetProperty(widgetName.backgroundWidget,$INFO[Container(301).ListItem.Property(widgetName.backgroundWidget)],home)</groupoverride>
-    <groupoverride group="mainmenu" condition="String.IsEqual(Container(301).ListItem.Property(path),ActivateWindow(1135))">SetProperty(widgetPath,$INFO[Container(301).ListItem.Property(widgetPath)],home)</groupoverride>
-    <groupoverride group="mainmenu" condition="String.IsEqual(Container(301).ListItem.Property(path),ActivateWindow(1135))">SetProperty(widgetTarget,$INFO[Container(301).ListItem.Property(widgetTarget)],home)</groupoverride>
-    <groupoverride group="mainmenu" condition="String.IsEqual(Container(301).ListItem.Property(path),ActivateWindow(1135))">SetProperty(widgetAspect,$INFO[Container(301).ListItem.Property(widgetAspect)],home)</groupoverride>
-
+    <!-- Additional Onclick for Custom Hub -->
+    <override action="ActivateWindow(1134)">
+        <action>SetProperty(leftHeader,$INFO[ListItem.Label],home)</action>
+        <action>SetProperty(1134_Node,$INFO[ListItem.Property(1134_Node)],home)</action>
+        <action>ActivateWindow(1134)</action>
+    </override>
+    
     <!-- Warning to Remove Settings -->
     <warn heading="31176" message="31177">ActivateWindow(Settings)</warn>
 
@@ -249,6 +241,15 @@
         <content>video</content>
 
     </video-groupings>
+
+    <!-- Hub Grouping -->
+    <customhub-groupings>
+        <node label="32010">
+            <shortcut label="1037" type="32014" icon="DefaultAddonVideo.png">ActivateWindow(Videos,Addons,return)</shortcut>
+            <content>addon-video</content>
+        </node>
+        <content>video</content>
+    </customhub-groupings>
 
     <!-- Widget Grouping -->
     <widget-groupings>

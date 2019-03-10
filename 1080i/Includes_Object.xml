@@ -44,6 +44,7 @@
         </control>
 
         <control type="group">
+            <visible>!Control.HasFocus(62)</visible>
             <visible>Player.HasMedia</visible>
             <visible>!Window.IsVisible(DialogExtendedProgressBar.xml)</visible>
             <visible>!Window.IsVisible(DialogNotification.xml)</visible>
@@ -241,8 +242,8 @@
             <control type="grouplist">
                 <include condition="$PARAM[infohide]">Defs_InfoDialog_Visible</include>
                 <visible>!$EXP[Exp_HideFurniture]</visible>
-                <visible>!Control.HasFocus(62) + !Container.Scrolling</visible>
-                <include>Animation_FadeInOut</include>
+                <visible>!Control.HasFocus(62)</visible>
+                <!-- <include>Animation_FadeInOut</include> -->
                 <orientation>horizontal</orientation>
                 <align>right</align>
                 <height>view_pad</height>
@@ -1859,7 +1860,7 @@
             <texturesliderbackground colordiffuse="main_fg_12" border="4">common/white.png</texturesliderbackground>
             <texturesliderbar colordiffuse="main_fg_30" border="4">scrollbar/scrollv.png</texturesliderbar>
             <texturesliderbarfocus colordiffuse="main_fg_100" border="4">scrollbar/scrollv.png</texturesliderbarfocus>
-            <animation effect="fade" start="100" end="0" time="400" condition="!Control.HasFocus(62) + !Container.Scrolling">Conditional</animation>
+            <animation effect="fade" start="100" end="0" time="400" condition="!Control.HasFocus(62)">Conditional</animation>
             <visible allowhiddenfocus="true">![String.IsEqual(Container.SortMethod,$LOCALIZE[551]) | String.IsEqual(Container.SortMethod,$LOCALIZE[556]) | String.IsEqual(Container.SortMethod,$LOCALIZE[561])]</visible>
             <include>Animation_FadeIn</include>
             <include>Animation_FadeOut</include>
@@ -1874,7 +1875,7 @@
             <left>view_pad</left>
             <right>view_pad</right>
             <orientation>horizontal</orientation>
-            <animation effect="fade" start="100" end="0" time="400" condition="!Control.HasFocus(62) + !Container.Scrolling">Conditional</animation>
+            <animation effect="fade" start="100" end="0" time="400" condition="!Control.HasFocus(62)">Conditional</animation>
             <include>Animation_FadeIn</include>
             <include>Animation_FadeOut</include>
             <include content="Object_AlphabetLetter"><param name="label" value="A" /></include>

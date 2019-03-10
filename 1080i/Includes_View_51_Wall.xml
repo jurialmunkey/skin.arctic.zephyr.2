@@ -236,6 +236,21 @@
                     <texture background="true" fallback="DefaultStudios.png" colordiffuse="panel_fg_100">$INFO[ListItem.Label,resource://resource.images.studios.white/,.png]</texture>
                     <visible>String.IsEqual(ListItem.DBType,studio)</visible>
                 </control>
+                <control type="image">
+                    <width>128</width>
+                    <height>128</height>
+                    <centertop>50%</centertop>
+                    <centerleft>50%</centerleft>
+                    <aspectratio>keep</aspectratio>
+                    <texture background="true">$INFO[ListItem.Icon]</texture>
+                    <visible>String.IsEmpty(ListItem.DBType) + !String.IsEmpty(ListItem.Icon) + String.StartsWith(ListItem.Icon,Default)</visible>
+                </control>
+                <control type="image">
+                    <bordersize>15</bordersize>
+                    <aspectratio scalediffuse="false">keep</aspectratio>
+                    <texture background="true" diffuse="$PARAM[diffuse]">$INFO[ListItem.Icon]</texture>
+                    <visible>String.IsEmpty(ListItem.DBType) + !String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
+                </control>
                 <control type="textbox">
                     <left>50</left>
                     <right>50</right>
@@ -244,7 +259,7 @@
                     <font>font_medium_bold</font>
                     <textcolor>panel_fg_100</textcolor>
                     <label>$INFO[ListItem.Label]</label>
-                    <visible>String.IsEqual(ListItem.DBType,country) | String.IsEqual(ListItem.DBType,director) | String.IsEqual(ListItem.DBType,year) | String.IsEmpty(ListItem.DBType)</visible>
+                    <visible>String.IsEqual(ListItem.DBType,country) | String.IsEqual(ListItem.DBType,director) | String.IsEqual(ListItem.DBType,year) | [String.IsEmpty(ListItem.DBType) + String.IsEmpty(ListItem.Icon)]</visible>
                 </control>
                 <control type="group">
                     <visible>Control.HasFocus($PARAM[id])</visible>

@@ -180,6 +180,19 @@
                     <include>Dialog_Standard_Button</include>
                 </control>
 
+                <control type="button" id="19312" description="Custom Hub Node">
+                    <label>Hub node</label>
+                    <visible>!String.IsEqual(Container(211).ListItem.Property(skinshortcuts-disabled),True)</visible>
+                    <visible>String.IsEqual(Container(211).ListItem.Property(path),ActivateWindow(1134))</visible>
+                    <label2>$INFO[Container(211).ListItem.Property(1134_Node)]</label2>
+                    <onclick>RunScript(script.skinshortcuts,type=shortcuts&amp;custom=True&amp;showNone=False&amp;grouping=customhub&amp;skinList=1134_Node)</onclick>
+                    <onunfocus condition="!String.IsEmpty(Skin.String(1134_Node))">SetProperty(customProperty,1134_Node)</onunfocus>
+                    <onunfocus condition="!String.IsEmpty(Skin.String(1134_Node))">SetProperty(customValue,$INFO[Skin.String(1134_Node)])</onunfocus>
+                    <onunfocus condition="!String.IsEmpty(Skin.String(1134_Node))">SendClick(404)</onunfocus>
+                    <onunfocus condition="!String.IsEmpty(Skin.String(1134_Node))">Skin.Reset(1134_Node)</onunfocus>
+                    <include>Dialog_Standard_Button</include>
+                </control>
+
                 <control type="button" id="305" description="Label">
                     <label>31268</label>
                     <label2>$INFO[Container(211).ListItem.Label]</label2>

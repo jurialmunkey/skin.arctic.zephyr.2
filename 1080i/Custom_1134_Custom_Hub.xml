@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window type="window" id="1134">
     <defaultcontrol always="true">5600</defaultcontrol>
-    <onload>SetProperty(Header_Center_Text,Countries)</onload>
-    <onload>SetProperty(Header_Left_Text,Explore)</onload>
+    <onload>SetProperty(Header_Center_Text,Explore)</onload>
+    <onload>SetProperty(Header_Left_Text,$INFO[Window(Home).Property(leftHeader)])</onload>
     <controls>
         <include>Global_Background</include>
         <include>Topbar</include>
@@ -15,8 +15,9 @@
                 <include content="View_TopItems">
                     <param name="id" value="5600" />
                     <param name="itemlayout" value="View_TopItems_Decades_Itemlayout" />
+                    <param name="label2" value="" />
                 </include>
-                <content sortorder="ascending" sortby="label" target="$VAR[Defs_5610_Target]">special://skin/extras/playlists/</content>
+                <content sortorder="ascending" sortby="label" target="$VAR[Defs_5610_Target]">$INFO[Window(Home).Property(1134_Node)]</content>
             </control>
 
             <control type="label">
@@ -33,7 +34,7 @@
                 <param name="target" value="$VAR[Defs_Target]" />
                 <param name="landscapecondition" value="String.IsEqual(Container(5610).ListItemAbsolute(0).DBType,episode) | String.IsEqual(Container(5610).ListItemAbsolute(0).DBType,video)" />
                 <param name="squarecondition" value="String.IsEqual(Container(5610).ListItemAbsolute(0).DBType,album) | String.IsEqual(Container(5610).ListItemAbsolute(0).DBType,artist) | String.IsEqual(Container(5610).ListItemAbsolute(0).DBType,song) | String.IsEqual(Container(5610).ListItemAbsolute(0).DBType,addon) | String.IsEqual(Container(5610).ListItemAbsolute(0).DBType,program) | String.IsEqual(Container(5610).ListItemAbsolute(0).DBType,image)" />
-                <param name="iconcondition" value="String.IsEqual(Container(5610).ListItemAbsolute(0).DBType,genre) | String.IsEqual(Container(5610).ListItemAbsolute(0).DBType,director) | String.IsEqual(Container(5610).ListItemAbsolute(0).DBType,studio) | String.IsEqual(Container(5610).ListItemAbsolute(0).DBType,country) | String.IsEqual(Container(5610).ListItemAbsolute(0).DBType,tag) | String.IsEqual(Container(5610).ListItemAbsolute(0).DBType,year)" />
+                <param name="iconcondition" value="String.IsEqual(Container(5610).ListItemAbsolute(0).DBType,genre) | String.IsEqual(Container(5610).ListItemAbsolute(0).DBType,director) | String.IsEqual(Container(5610).ListItemAbsolute(0).DBType,studio) | String.IsEqual(Container(5610).ListItemAbsolute(0).DBType,country) | String.IsEqual(Container(5610).ListItemAbsolute(0).DBType,tag) | String.IsEqual(Container(5610).ListItemAbsolute(0).DBType,year) | String.IsEmpty(Container(5610).ListItemAbsolute(0).DBType)" />
                 <param name="content" value="$INFO[Container(5600).ListItem.FolderPath]" />
                 <onup>5600</onup>
                 <animation effect="fade" start="100" end="0" time="0" condition="Container(5610).IsUpdating">Conditional</animation>
