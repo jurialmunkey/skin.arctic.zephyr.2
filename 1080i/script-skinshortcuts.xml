@@ -8,7 +8,7 @@
             
             <include content="Dialog_Standard_Group">
                 <param name="width" value="1620" />
-                <param name="height" value="804" />
+                <param name="height" value="960" />
             </include>
 
             <!-- Header Label -->
@@ -26,11 +26,10 @@
                 <description>Widgets</description>
                 <left>580</left>
                 <height>90</height>
-                <label>$VAR[Label_Skinshortcuts_EditHeader]</label>
+                <label>$LOCALIZE[31248]</label>
                 <font>font_small_bold</font>
                 <align>left</align>
                 <textcolor>dialog_fg_70</textcolor>
-                <visible>String.IsEqual(Window.Property(groupname),mainmenu)</visible>
             </control>
 
             <!-- Shortcuts List -->
@@ -39,7 +38,7 @@
                 <left>0</left>
                 <top>90</top>
                 <width>550</width>
-                <height>702</height>
+                <height>858</height>
                 <onup>211</onup>
                 <onleft>noop</onleft>
                 <onright>9100</onright>
@@ -157,9 +156,10 @@
                 <left>550</left>
                 <right>0</right>
                 <top>90</top>
-                <height>702</height>
+                <height>858</height>
                 <orientation>vertical</orientation>
                 <itemgap>0</itemgap>
+
                 <control type="togglebutton" id="313" description="Enable/Disable">
                     <label>$LOCALIZE[24022]</label>
                     <altlabel>$LOCALIZE[24021]</altlabel>
@@ -168,37 +168,71 @@
                     <include>Dialog_Standard_Button</include>
                 </control>
                 
-                <control type="button" id="401" description="Alt chooser">
-                    <visible>!String.IsEqual(Container(211).ListItem.Property(skinshortcuts-disabled),True)</visible>
-                    <include>Dialog_Standard_Button</include>
-                </control>
-                <control type="button" id="307" description="Custom">
-                    <label>31267</label>
-                    <label2>$INFO[Container(211).ListItem.Property(Path)]</label2>
-                    
-                    <visible>!String.IsEqual(Container(211).ListItem.Property(skinshortcuts-disabled),True)</visible>
-                    <include>Dialog_Standard_Button</include>
-                </control>
-                <control type="button" id="305" description="Set Label">
-                    <label>31268</label>
-                    <label2>$INFO[Container(211).ListItem.Label]</label2>
-                    
+                <control type="button" id="401" description="Choose Shortcut">
                     <visible>!String.IsEqual(Container(211).ListItem.Property(skinshortcuts-disabled),True)</visible>
                     <include>Dialog_Standard_Button</include>
                 </control>
 
-                <control type="button" id="306" description="Browse for Thumb">
+                <control type="button" id="307" description="Action">
+                    <label>31267</label>
+                    <label2>$INFO[Container(211).ListItem.Property(Path)]</label2>
+                    <visible>!String.IsEqual(Container(211).ListItem.Property(skinshortcuts-disabled),True)</visible>
+                    <include>Dialog_Standard_Button</include>
+                </control>
+
+                <control type="button" id="305" description="Label">
+                    <label>31268</label>
+                    <label2>$INFO[Container(211).ListItem.Label]</label2>
+                    <visible>!String.IsEqual(Container(211).ListItem.Property(skinshortcuts-disabled),True)</visible>
+                    <include>Dialog_Standard_Button</include>
+                </control>
+
+                <control type="button" id="306" description="Icon">
                     <label>31181</label>
-                    
                     <visible>!String.IsEqual(Container(211).ListItem.Property(skinshortcuts-disabled),True)</visible>
                     <include>Dialog_Standard_Button</include>
                     <visible>!String.IsEqual(Window.Property(groupname),powermenu)</visible>
                 </control>
-                <control type="button" id="405" description="Set Submenu">
-                    <label>$LOCALIZE[31112] / $LOCALIZE[31002]</label>
+
+                <control type="button" id="405" description="Submenu">
+                    <label>$LOCALIZE[31112]</label>
                     <visible>String.IsEqual(Window.Property(groupname),mainmenu)</visible>
-                    
                     <visible>!String.IsEqual(Container(211).ListItem.Property(skinshortcuts-disabled),True)</visible>
+                    <include>Dialog_Standard_Button</include>
+                </control>
+
+                <control type="button" id="312" description="Widget Submenu Path">
+                    <label>$VAR[Label_SkinShortcuts_SubmenuWidget]</label>
+                    <visible>!String.IsEqual(Container(211).ListItem.Property(skinshortcuts-disabled),True)</visible>
+                    <label2>$INFO[Container(211).ListItem.Property(widgetName)]</label2>
+                    <visible>String.IsEqual(Container(211).ListItem.Property(path),ActivateWindow(1135)) | [!Skin.HasSetting(SubmenuOnly) + !Skin.HasSetting(VerticalHome)] | !String.IsEqual(Window.Property(groupname),mainmenu)</visible>
+                    <include>Dialog_Standard_Button</include>
+                </control>
+
+                <control type="button" id="9901" description="Widget Submenu Aspect">
+                    <label>$VAR[Label_SkinShortcuts_SubmenuWidget,, - Aspect]</label>
+                    <visible>!String.IsEqual(Container(211).ListItem.Property(skinshortcuts-disabled),True)</visible>
+                    <label2>$INFO[Container(211).ListItem.Property(widgetAspect)]</label2>
+                    <visible>String.IsEqual(Container(211).ListItem.Property(path),ActivateWindow(1135)) | [!Skin.HasSetting(SubmenuOnly) + !Skin.HasSetting(VerticalHome)] | !String.IsEqual(Window.Property(groupname),mainmenu)</visible>
+                    <include>Dialog_Standard_Button</include>
+                </control>
+
+                <control type="button" id="9312" description="Widget Path">
+                    <label>Widget</label>
+                    <visible>!String.IsEqual(Container(211).ListItem.Property(skinshortcuts-disabled),True)</visible>
+                    <label2>$INFO[Container(211).ListItem.Property(widgetName.backgroundWidget)]</label2>
+                    <onclick>SetProperty(widgetID,backgroundWidget)</onclick>
+                    <onclick>SendClick(312)</onclick>
+                    <visible>String.IsEqual(Window.Property(groupname),mainmenu)</visible>
+                    <include>Dialog_Standard_Button</include>
+                </control>
+
+                <control type="button" id="9902" description="Widget Aspect">
+                    <label>Widget - Aspect</label>
+                    <visible>!String.IsEqual(Container(211).ListItem.Property(skinshortcuts-disabled),True)</visible>
+                    <label2>$INFO[Container(211).ListItem.Property(widgetAspect.backgroundWidget)]</label2>
+                    <visible>String.IsEqual(Window.Property(groupname),mainmenu)</visible>
+                    <visible>Skin.HasSetting(VerticalHome)</visible>
                     <include>Dialog_Standard_Button</include>
                 </control>
 
@@ -206,43 +240,22 @@
                     <label>31110</label>
                     <label2>$INFO[Container(211).ListItem.Property(background)]</label2>
                     <visible>String.IsEqual(Window.Property(groupname),mainmenu)</visible>
-                    
                     <visible>!String.IsEqual(Container(211).ListItem.Property(skinshortcuts-disabled),True)</visible>
-                    <include>Dialog_Standard_Button</include>
-                </control>
-
-                <control type="button" id="312" description="Widget">
-                    <label>Widget</label>
-                    <visible>!String.IsEqual(Container(211).ListItem.Property(skinshortcuts-disabled),True)</visible>
-                    <label2>$INFO[Container(211).ListItem.Property(widgetName)]</label2>
-                    <include>Dialog_Standard_Button</include>
-                </control>
-
-                <control type="button" id="9901" description="Widget Aspect">
-                    <label>  -  Aspect</label>
-                    <visible>!String.IsEqual(Container(211).ListItem.Property(skinshortcuts-disabled),True)</visible>
-                    <label2>$INFO[Container(211).ListItem.Property(widgetAspect)]</label2>
                     <include>Dialog_Standard_Button</include>
                 </control>
 
                 <control type="button" id="308" description="Reset">
-                    
                     <visible>!String.IsEqual(Container(211).ListItem.Property(skinshortcuts-disabled),True)</visible>
                     <include>Dialog_Standard_Button</include>
                 </control>
 
-                <control type="button" id="9900" description="Save Changes">
-                    <onclick>Close</onclick>
-                    <label>$LOCALIZE[31019]</label>                    
-                    <include>Dialog_Standard_Button</include>
-                </control>
             </control>
 
             <control type="image">
                 <left>550</left>
                 <width>1</width>
                 <top>90</top>
-                <height>702</height>
+                <height>858</height>
                 <texture colordiffuse="dialog_fg_12">common/white.png</texture>
             </control>
         </control>

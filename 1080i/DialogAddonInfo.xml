@@ -3,236 +3,151 @@
 <window id="146">
     <defaultcontrol always="true">300</defaultcontrol>
     <controls>
-        
-        <control type="list" id="300">
-            <top>30</top>
-            <onup condition="Skin.HasSetting(EnablePressingUp)">9601</onup>
-            <ondown>9601</ondown>
-            <include>Topbar_Menu_Layout</include>
-            <include>Items_AddonsInfo</include>
-        </control>
 
+        <!-- Top Info -->
         <control type="group">
+            <animation effect="fade" condition="Window.IsVisible(Home.xml)" time="1" delay="350" start="0" end="100">WindowOpen</animation>
+            <include content="Topbar">
+                <param name="info_hide" value="false" />
+            </include>
+        </control>
+        
+        <!-- Main Group -->
+        <control type="group">
+            <top>view_top</top>
+            <left>view_pad</left>
+            <right>view_pad</right>
             <visible allowhiddenfocus="true">!$EXP[Exp_HideFurniture]</visible>
             <include>Animation_FadeInOut</include>
-            <control type="group">
-                <include>Animation_Right_Delay</include>
-                <include>Object_UpDownInfoArrows</include>
-                <control type="scrollbar" id="9560">
-                    <top>0</top>
-                    <right>0</right>
-                    <width>8</width>
-                    <bottom>0</bottom>
-                    <showonepage>false</showonepage>
-                    <orientation>vertical</orientation>
-                    <texturesliderbackground colordiffuse="main_fg_12">common/white.png</texturesliderbackground>
-                    <texturesliderbar colordiffuse="main_fg_30">common/white.png</texturesliderbar>
-                    <texturesliderbarfocus colordiffuse="$VAR[ColorHighlight]">common/white.png</texturesliderbarfocus>
-                    <animation effect="fade" start="100" end="33" time="400" condition="!Control.HasFocus(9560) + !Container.Scrolling">Conditional</animation>
-                    <include>Animation_FadeIn</include>
-                    <include>Animation_FadeOut</include>
-                </control>
-
-                <control type="grouplist" id="9000">
-                    <pagecontrol>9560</pagecontrol>
-                    <top>90</top>
-                    <bottom>110</bottom>
-                    <itemgap>0</itemgap>
-                    <usecontrolcoords>true</usecontrolcoords>
-                    <orientation>vertical</orientation>
-                    <visible>!Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) + !Window.IsVisible(script-script.extendedinfo-DialogInfo.xml)</visible>
+            <control type="grouplist" id="9000">
+                <top>-15</top>
+                <left>-15</left>
+                <right>-15</right>
+                <height>825</height>
+                <orientation>vertical</orientation>
+                <itemgap>0</itemgap>
+                <scrolltime tween="quadratic">400</scrolltime>
+                <control type="group" id="3000">
+                    <height>825</height>
                     <control type="group">
-                        <top>30</top>
-                        <height>380</height>
-                        <left>view_pad</left>
-                        <right>view_pad</right>
+                        <top>15</top>
+                        <left>15</left>
+                        <right>15</right>
+                        <height>780</height>
+                        <!-- Poster -->
                         <control type="group">
-                            <width>360</width>
-                            <height>360</height>
-                            <control type="group">
-                                <left>-10</left>
-                                <right>-10</right>
-                                <bottom>-10</bottom>
-                                <top>-10</top>
-                                <include>Defs_PosterBack</include>
-                                <control type="image">
-                                    <bordersize>10</bordersize>
-                                    <aspectratio scalediffuse="false">scale</aspectratio>
-                                    <texture diffuse="diffuse/widgetposter.png" fallback="DefaultAddon.png">$VAR[Image_Poster]</texture>
-                                </control>
-                            </control>
-                        </control>
-                        <control type="group">
-                            <left>390</left>
-                            <height>360</height>
-                            <include content="Object_Info">
-                                <param name="id" value="50" />
-                                <param name="width" value="1654" />
-                                <param name="discart" value="true" />
-                                <param name="hdsd_flag" value="true" />
+                            <include>Animation_Left_Delay</include>
+                            <include content="View_50_Poster">
+                                <param name="include" value="Defs_Null" />
                                 <param name="visible" value="true" />
-                                <param name="plot_height" value="130" />
+                                <param name="height" value="654" />
+                                <param name="width" value="654" />
+                                <param name="aspectratio" value="keep" />
+                                <param name="diffuse" value="diffuse/654x654.png" />
                             </include>
+                            <include>View_50_Info</include>
                         </control>
-                    </control>
 
-                    <control type="group">
-                        <top>-15</top>
-                        <height>480</height>
-                        <left>view_pad</left>
-                        <right>view_pad</right>
-                        <control type="button" id="9503">
-                            <onup>300</onup>
-                            <ondown>SetFocus(300)</ondown>
-                            <texturefocus />
-                            <texturenofocus />
-                        </control>
-                        <!-- Info Label -->
-                        <control type="grouplist">
-                            <top>20</top>
-                            <height>42</height>
-                            <left>0</left>
-                            <align>left</align>
-                            <itemgap>12</itemgap>
-                            <usecontrolcoords>true</usecontrolcoords>
-                            <orientation>horizontal</orientation>
-                            <include>Object_DownArrows</include>
-                            <control type="label">
-                                <font>font_small</font>
-                                <textcolor>main_fg_100</textcolor>
-                                <aligny>center</aligny>
-                                <width>auto</width>
-                                <height>100%</height>
-                                <label>$LOCALIZE[19033]</label>
+                        <!-- Info -->
+                        <control type="group">
+                            <top>-15</top>
+                            <left>669</left>
+                            <include>Animation_Right_Delay</include>
+                            <control type="grouplist">
+                                <orientation>vertical</orientation>
+                                <usecontrolcoords>true</usecontrolcoords>
+                                <itemgap>0</itemgap>
+                                <include content="Object_Info_Title">
+                                    <param name="label" value="$VAR[Label_MainTitle]" />
+                                </include>
+                                <include content="Object_Info_Line">
+                                    <param name="label" value="$VAR[Label_SubTitle]" />
+                                </include>
+                                <include content="Object_Info_Plot">
+                                    <param name="maxheight" value="560" />
+                                    <param name="label" value="$VAR[Label_OverlayPlot]" />
+                                </include>
                             </control>
-                        </control>
-                        <control type="grouplist">
-                            <top>90</top>
-                            <right>390</right>
-                            <orientation>vertical</orientation>
-                            <itemgap>10</itemgap>
-                            <usecontrolcoords>true</usecontrolcoords>
-                            <include content="Object_VideoInfo_InfoSection">
-                                <param name="label" value="$LOCALIZE[573]" />
-                                <param name="label2" value="ListItem.FileNameAndPath" />
-                            </include>
-                            <control type="label">
-                                <height>32</height>
-                                <align>left</align>
-                                <font>font_tiny</font>
-                                <textcolor>main_fg_30</textcolor>
-                                <label>$LOCALIZE[24052]</label>
-                                <width>150</width>
-                                <visible>!String.IsEmpty(ListItem.AddonDisclaimer)</visible>
-                            </control>
-                            <control type="textbox">
-                                <top>-42</top>
-                                <left>150</left>
-                                <height min="32">auto</height>
-                                <align>left</align>
-                                <font>font_tiny</font>
-                                <textcolor>main_fg_70</textcolor>
-                                <label>$INFO[ListItem.AddonDisclaimer]</label>
-                                <visible>!String.IsEmpty(ListItem.AddonDisclaimer)</visible>
-                            </control>
-                            <control type="label">
-                                <height>32</height>
-                                <align>left</align>
-                                <font>font_tiny</font>
-                                <textcolor>main_fg_30</textcolor>
-                                <label>$LOCALIZE[29916]</label>
-                                <width>150</width>
-                                <visible>!String.IsEmpty(ListItem.AddonNews)</visible>
-                            </control>
-                            <control type="textbox">
-                                <top>-42</top>
-                                <left>150</left>
-                                <height min="32">auto</height>
-                                <align>left</align>
-                                <font>font_tiny</font>
-                                <textcolor>main_fg_70</textcolor>
-                                <label>$INFO[ListItem.AddonNews]</label>
-                                <visible>!String.IsEmpty(ListItem.AddonNews)</visible>
-                            </control>
-                        </control>
-                    </control>
-                </control>
+                            <control type="grouplist" id="300">
+                                <onup>9601</onup>
+                                <include>Defs_ButtonList</include>
+                                <!-- use -->
+                                <include content="Object_Info_Button">
+                                    <param name="id" value="12" />
+                                    <param name="groupid" value="8012" />
+                                    <param name="label" value="$INFO[Control.GetLabel(12)]" />
+                                    <param name="icon" value="special://skin/extras/icons/play3.png" />
+                                    <param name="visible" value="Control.IsEnabled(12)" />
+                                </include>
 
-                <!-- Flags -->
-                <control type="group">
-                    <bottom>view_pad</bottom>
-                    <height>40</height>
-                    <left>view_pad</left>
-                    <right>view_pad</right>
-                    <control type="group">
-                        <include content="Object_Flags">
-                            <param name="container" value="" />
-                            <param name="directory" value="color" />
-                            <param name="align" value="left" />
-                        </include>
-                    </control>
-                    <!-- Info -->
-                    <control type="grouplist">
-                        <align>right</align>
-                        <right>0</right>
-                        <height>40</height>
-                        <itemgap>50</itemgap>
-                        <orientation>horizontal</orientation>
-                        <control type="label">
-                            <height>40</height>
-                            <font>font_small</font>
-                            <textcolor>main_fg_100</textcolor>
-                            <aligny>center</aligny>
-                            <width max="1200">auto</width>
-                            <label>$INFO[ListItem.Director,[COLOR=main_fg_30]$LOCALIZE[20339]   [/COLOR],]</label>
-                            <visible>!String.IsEmpty(ListItem.Director)</visible>
+                                <!-- enable /disable -->
+                                <include content="Object_Info_Button">
+                                    <param name="id" value="7" />
+                                    <param name="groupid" value="8007" />
+                                    <param name="label" value="$VAR[Label_AddonInfo_Enable]" />
+                                    <param name="icon" value="$VAR[Image_AddonInfo_Enable]" />
+                                    <param name="visible" value="Control.IsEnabled(7)" />
+                                </include>
+
+                                <!-- install / uninstall -->
+                                <include content="Object_Info_Button">
+                                    <param name="id" value="6" />
+                                    <param name="groupid" value="8006" />
+                                    <param name="label" value="$INFO[Control.GetLabel(6)]" />
+                                    <param name="icon" value="$VAR[Image_AddonInfo_Install]" />
+                                    <param name="visible" value="Control.IsEnabled(6)" />
+                                </include>
+
+                                <!-- Update -->
+                                <include content="Object_Info_Button">
+                                    <param name="id" value="8" />
+                                    <param name="groupid" value="8008" />
+                                    <param name="label" value="$LOCALIZE[24069]" />
+                                    <param name="icon" value="special://skin/extras/icons/update.png" />
+                                    <param name="visible" value="Control.IsEnabled(8)" />
+                                    <onfocus>SetProperty(FilePath,1,Home)</onfocus>
+                                    <onunfocus>ClearProperty(FilePath,Home)</onunfocus>
+                                </include>
+
+                                <!-- Settings -->
+                                <include content="Object_Info_Button">
+                                    <param name="id" value="9" />
+                                    <param name="groupid" value="8009" />
+                                    <param name="label" value="$LOCALIZE[5]" />
+                                    <param name="icon" value="special://skin/extras/icons/settings.png" />
+                                    <param name="visible" value="Control.IsEnabled(9)" />
+                                </include>
+
+                                <!-- Dependencies -->
+                                <include content="Object_Info_Button">
+                                    <param name="id" value="10" />
+                                    <param name="groupid" value="8010" />
+                                    <param name="label" value="Depends" />
+                                    <param name="icon" value="special://skin/extras/icons/dependencies.png" />
+                                    <param name="visible" value="Control.IsEnabled(10)" />
+                                </include>
+
+                                <!-- Auto Up -->
+                                <include content="Object_Info_Button">
+                                    <param name="id" value="13" />
+                                    <param name="groupid" value="8013" />
+                                    <param name="width" value="auto" />
+                                    <param name="label" value="$INFO[Control.GetLabel(13)]" />
+                                    <param name="icon" value="$VAR[Image_AutoUpdate]" />
+                                    <param name="controltype" value="radiobutton" />
+                                    <param name="visible" value="Control.IsEnabled(13)" />
+                                </include>
+                            </control>
                         </control>
                     </control>
                 </control>
             </control>
         </control>
 
-        <control type="group">
-            <visible>!Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) + !Window.IsVisible(script-script.extendedinfo-DialogInfo.xml)</visible>
-            <include>Object_PlotOverlay</include>
-        </control>
-
+       
+        <include>Object_PlotOverlay</include>
         
-        <control type="button" id ="6">
-            <include>Defs_Hidden_Button</include>
-            <visible>Control.IsEnabled(6)</visible>
-        </control>
-        <control type="button" id ="7">
-            <include>Defs_Hidden_Button</include>
-            <visible>Control.IsEnabled(7)</visible>
-        </control>
-        <control type="button" id="8">
-            <description>Play button</description>
-            <label>24069</label>
-            <include>Defs_Hidden_Button</include>
-            <visible>Control.IsEnabled(8)</visible>
-        </control>
-        <control type="button" id ="9">
-            <label>5</label>
-            <include>Defs_Hidden_Button</include>
-            <visible>Control.IsEnabled(9)</visible>
-        </control>
-        <control type="button" id ="10">
-            <label>$LOCALIZE[39024]</label>
-            <include>Defs_Hidden_Button</include>
-            <visible>Control.IsEnabled(10)</visible>
-        </control>
-        <control type="button" id ="12">
-            <include>Defs_Hidden_Button</include>
-            <visible>Control.IsEnabled(12)</visible>
-        </control>
-        <control type="radiobutton" id ="13">
-            <radioposx>200</radioposx>
-            <align>left</align>
-            <width>250</width>
-            <visible>Control.IsEnabled(13)</visible>
-            <include>Defs_Hidden_Button</include>
-        </control>
+        
     </controls>
 
 </window>

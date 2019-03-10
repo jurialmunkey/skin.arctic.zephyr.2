@@ -5,9 +5,19 @@
     <controls>
         <include>Global_Background</include>
         <include>Topbar</include>
-        <include>Global_Overlay</include>
+        <include condition="!Window.Previous(home)">View_Settings</include>
+        <control type="image">
+            <animation type="WindowOpen" reversible="false" condition="!Window.Previous(SettingsCategory.xml) + !Window.Previous(SkinSettings.xml) + !Window.Previous(SettingsProfile.xml) + !Window.Previous(SettingsSystemInfo.xml)">
+                <effect type="fade" start="0" end="100" time="300" delay="0"/>
+            </animation>
+            <include>Dimensions_Fullscreen</include>
+            <texture border="2">common/black-back.png</texture>
+        </control>
         <control type="group">
-            <include>Dialog_Standard_Group</include>
+            <include content="Dialog_Standard_Group">
+                <param name="width" value="1336" />
+                <param name="height" value="930" />
+            </include>
             <animation type="Conditional" reversible="false" condition="!Container(570).IsUpdating">
                 <effect type="fade" start="0" end="100" time="300" delay="150"/>
                 <effect type="slide" start="0,-200" end="0" center="auto" tween="cubic" easing="out" time="450" delay="150"/>
@@ -23,52 +33,19 @@
                 <label>$LOCALIZE[14111]</label>
             </control>
 
-            <control type="panel" id="570">
-                <include>Dialog_Standard_List_Left</include>
-                <onleft>9001</onleft>
-                <onright>9001</onright>
-                <onup>570</onup>
-                <ondown>570</ondown>
-                <itemlayout height="138" width="700">
-                    <control type="image">
-                        <include>Dialog_Standard_List_Left_Icon</include>
-                    </control>
-                    <control type="label">
-                        <animation effect="slide" end="0,18" condition="String.IsEmpty(ListItem.Label2)">Conditional</animation>
-                        <include>Dialog_Standard_List_Left_Label</include>
-                    </control>
-                    <control type="label">
-                        <label>$INFO[ListItem.Label2]</label>
-                        <include>Dialog_Standard_List_Left_Label2</include>
-                    </control>
-                </itemlayout>
-                <focusedlayout height="138" width="700">
-                    <control type="image">
-                        <width>100%</width>
-                        <height>135</height>
-                        <texture border="5" colordiffuse="$VAR[ColorHighlight]">common/white.png</texture>
-                    </control>
-                    <control type="image">
-                        <include>Dialog_Standard_List_Left_Icon</include>
-                    </control>
-                    <control type="label">
-                        <textcolor>Selected</textcolor>
-                        <selectedcolor>Selected</selectedcolor>
-                        <animation effect="slide" end="0,18" condition="String.IsEmpty(ListItem.Label2)">Conditional</animation>
-                        <include>Dialog_Standard_List_Left_Label</include>
-                    </control>
-                    <control type="label">
-                        <textcolor>Selected</textcolor>
-                        <selectedcolor>Selected</selectedcolor>
-                        <label>$INFO[ListItem.Label2]</label>
-                        <include>Dialog_Standard_List_Left_Label2</include>
-                    </control>
-                </focusedlayout>
-            </control>
+            <include content="Dialog_Standard_List">
+                <param name="id" value="570" />
+                <param name="item_height" value="view_biglist_height" />
+                <param name="list_style" value="Dialog_Standard_List_Itemlayout_Complex" />
+                <param name="onup" value="570" />
+                <param name="ondown" value="570" />
+                <param name="onright" value="9001" />
+                <param name="onleft" value="9001" />
+            </include>
 
             <!-- Buttons -->
             <control type="grouplist" id="9001">
-                <include>Dialog_Standard_Right_Grouplist</include>
+                <include>Dialog_Standard_Right_Group</include>
                 <onleft>570</onleft>
                 <onright>570</onright>
                 <control type="button" id="9002">
@@ -90,19 +67,12 @@
                 </control>
                 <control type="radiobutton" id="22">
                     <align>left</align>
+                    <textoffsetx>20</textoffsetx>
                     <include>Dialog_Standard_Right_Buttons</include>
-                    <radioposx>255</radioposx>
+                    <radioposx>290</radioposx>
                 </control>
             </control>
-
-            <!-- Separator -->
-            <control type="image">
-                <left>699</left>
-                <top>120</top>
-                <height>687</height>
-                <width>1</width>
-                <texture colordiffuse="dialog_fg_12">common/white.png</texture>
-            </control>
+            <include>Dialog_Separator_Right</include>
         </control>
     </controls>
 </window>

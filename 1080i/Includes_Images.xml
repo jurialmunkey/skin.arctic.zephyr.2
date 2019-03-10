@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
 
+    <variable name="Image_AddonInfo_Enable">
+        <value condition="String.IsEqual(Control.GetLabel(7),$LOCALIZE[24021])">special://skin/extras/icons/enabled.png</value>
+        <value>special://skin/extras/icons/disabled.png</value>
+    </variable>
+
+    <variable name="Image_AddonInfo_Install">
+        <value condition="String.IsEqual(Control.GetLabel(6),$LOCALIZE[24037])">special://skin/extras/icons/uninstall.png</value>
+        <value>special://skin/extras/icons/download.png</value>
+    </variable>
+
     <variable name="Image_NowPlaying">
+        <value condition="Player.Caching"></value>
         <value condition="Player.Paused">buttons/pause.png</value>
         <value condition="!Player.Paused">buttons/play.png</value>
     </variable>

@@ -12,8 +12,10 @@
                 <orientation>vertical</orientation>
                 <usecontrolcoords>true</usecontrolcoords>
                 <itemgap>0</itemgap>
+                <visible>!Control.HasFocus(62)</visible>
+                <include>Animation_FadeInOut</include>
                 <control type="label">
-                    <label>$INFO[ListItem.Title]</label>
+                    <label>$VAR[Label_List_Title]</label>>
                     <height>60</height>
                     <aligny>top</aligny>
                     <textcolor>main_fg_100</textcolor>
@@ -29,27 +31,6 @@
                     <font>font_plotbox</font>
                 </control>
             </control>
-
-            <!-- <control type="grouplist">
-                <left>700</left>
-                <top>200</top>
-                <right>view_pad</right>
-                <orientation>vertical</orientation>
-                <usecontrolcoords>true</usecontrolcoords>
-                <itemgap>0</itemgap>
-                <include>Object_Info_Title</include>
-                <include>Object_Info_Line</include>
-            </control>
-            <control type="textbox">
-                <left>700</left>
-                <top>820</top>
-                <right>view_pad</right>
-                <label fallback="19055">$VAR[Label_Plot]</label>
-                <height>120</height>
-                <aligny>center</aligny>
-                <textcolor>main_fg_70</textcolor>
-                <font>font_plotbox</font>
-            </control> -->
             
             <control type="wraplist" id="53">
                 <left>-250</left>
@@ -57,7 +38,9 @@
                 <focusposition>2</focusposition>
                 <movement>0</movement>
                 <preloaditems>0</preloaditems>
-                <include>View_Horizontal</include>
+                <include>View_Horizontal_Movement</include>
+                <orientation>horizontal</orientation>
+                <pagecontrol>62</pagecontrol>
                 <scrolltime tween="quadratic">400</scrolltime>
                 <visible>Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons)</visible>
                 <viewtype label="$LOCALIZE[31262]">$LOCALIZE[31262]</viewtype>

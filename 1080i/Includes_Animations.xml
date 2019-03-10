@@ -56,11 +56,11 @@
     </include>
 
     <include name="Animation_Common">
-        <animation type="WindowOpen" reversible="false"  condition="!Window.Previous(Settings.xml) + !Window.Previous(SettingsCategory.xml)">
+        <animation type="WindowOpen" reversible="false"  condition="!Window.Previous(SettingsCategory.xml) + !Window.Previous(SettingsSystemInfo.xml) + !Window.Previous(SkinSettings.xml) + !Window.Previous(SettingsProfile.xml) + !Window.Previous(eventlog)">
             <effect type="fade" start="0" end="100" time="300" tween="sine" easing="in" />
             <effect type="zoom" start="50" end="100" time="300" center="auto" tween="quadratic" easing="out" />
         </animation>
-        <animation type="WindowClose" reversible="false" condition="!Window.Next(Settings.xml) + !Window.Next(SettingsCategory.xml)">
+        <animation type="WindowClose" reversible="false" condition="!Window.Next(SettingsCategory.xml) + !Window.Next(SettingsSystemInfo.xml) + !Window.Next(SkinSettings.xml) + !Window.Next(SettingsProfile.xml) + !Window.Next(eventlog)">
             <effect type="fade" end="0" start="100" time="200" tween="sine" easing="out" />
             <effect type="zoom" end="75" start="100" time="200" center="auto" tween="quadratic" easing="in" />
         </animation>

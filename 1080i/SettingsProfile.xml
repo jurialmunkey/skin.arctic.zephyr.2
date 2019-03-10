@@ -6,11 +6,7 @@
     <controls>
 
         <include>Global_Background</include>
-        <include>Topbar</include>
-        <control type="image">
-            <include>Dimensions_Fullscreen</include>
-            <texture border="2">common/black-back.png</texture>
-        </control>
+        <include>Defs_Settings_Background</include>
         <control type="group">
             <include>Dialog_Settings_Group</include>
     
@@ -19,6 +15,8 @@
             </include>
 
             <include content="Dialog_Separator">
+                <param name="top" value="39" />
+                <param name="bottom" value="39" />
                 <param name="left" value="view_list_height" />
             </include>
 
@@ -28,7 +26,7 @@
                 <control type="radiobutton" id="4">
                     <description>button area</description>
                     <left>0</left>
-                    <top>dialog_top</top>
+                    <top>39</top>
                     <width>dialog_side_grouplist</width>
                     <itemgap>0</itemgap>
                     <onright>2</onright>
@@ -38,14 +36,17 @@
                     <include>Defs_Settings_Button</include>
                 </control>
 
-                <include>Dialog_Separator</include>
+                <include content="Dialog_Separator">
+                    <param name="top" value="39" />
+                    <param name="bottom" value="39" />
+                </include>
 
                 <control type="panel" id="2">
                     <description>control area</description>
                     <left>dialog_side_grouplist</left>
-                    <top>dialog_top</top>
+                    <top>39</top>
                     <right>0</right>
-                    <height>780</height>
+                    <height>702</height>
                     <onleft>4</onleft>
                     <itemlayout height="80" width="1430">
                         <control type="label">

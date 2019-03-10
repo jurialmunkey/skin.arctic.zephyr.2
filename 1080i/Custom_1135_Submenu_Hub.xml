@@ -14,6 +14,8 @@
                     <property name="widgetPath">$INFO[Window(Home).Property(widgetPath)]</property>
                     <property name="widgetTarget">$INFO[Window(Home).Property(widgetTarget)]</property>
                     <property name="widgetName">$INFO[Window(Home).Property(widgetName)]</property>
+                    <property name="widgetName.backgroundWidget">$INFO[Window(Home).Property(widgetName.backgroundWidget)]</property>
+                    <property name="widgetAspect">$INFO[Window(Home).Property(widgetAspect)]</property>
                 </item>
             </content>
         </control>
@@ -23,7 +25,9 @@
 
         <control type="group">
             <include>View_Group</include>
-            <include>Home_Hub_Widget</include>
+            <include content="Home_Hub_Widget">
+                <onup condition="!Skin.HasSetting(SubmenuOnly)">Back</onup>
+            </include>
         </control>
     </controls>
 </window>

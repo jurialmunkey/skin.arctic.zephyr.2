@@ -7,13 +7,32 @@
     <background label="::PLAYLIST::">playlistBackground</background>
     <widgetRename>True</widgetRename>
 
-    <!-- Additional Onclick -->
+    <!-- Default Menu Option -->
+    <override action="globaloverride" group="mainmenu">
+        <condition>!Skin.HasSetting(ForceSubmenuHub) | !Integer.IsGreater(Container(302).NumItems,0)</condition>
+    </override>
+
+    <!-- Force Submenu Hub Option -->
+    <override action="globaloverride" group="mainmenu">
+        <condition>Skin.HasSetting(ForceSubmenuHub) + Integer.IsGreater(Container(302).NumItems,0)</condition>
+        <action>SetProperty(submenuVisibility,$INFO[Container(301).ListItem.Property(submenuVisibility)],home)</action>
+        <action>SetProperty(leftHeader,$INFO[Container(301).ListItem.Label],home)</action>
+        <action>SetProperty(widgetName,$INFO[Container(301).ListItem.Property(widgetName)],home)</action>
+        <action>SetProperty(widgetName.backgroundWidget,$INFO[Container(301).ListItem.Property(widgetName.backgroundWidget)],home)</action>
+        <action>SetProperty(widgetPath,$INFO[Container(301).ListItem.Property(widgetPath)],home)</action>
+        <action>SetProperty(widgetTarget,$INFO[Container(301).ListItem.Property(widgetTarget)],home)</action>
+        <action>SetProperty(widgetAspect,$INFO[Container(301).ListItem.Property(widgetAspect)],home)</action>
+        <action>ActivateWindow(1135)</action>
+    </override>
+
+    <!-- Additional Onclick for Manually Selected Submenu Hub -->
     <groupoverride group="mainmenu" condition="String.IsEqual(Container(301).ListItem.Property(path),ActivateWindow(1135))">SetProperty(submenuVisibility,$INFO[Container(301).ListItem.Property(submenuVisibility)],home)</groupoverride>
     <groupoverride group="mainmenu" condition="String.IsEqual(Container(301).ListItem.Property(path),ActivateWindow(1135))">SetProperty(leftHeader,$INFO[Container(301).ListItem.Label],home)</groupoverride>
     <groupoverride group="mainmenu" condition="String.IsEqual(Container(301).ListItem.Property(path),ActivateWindow(1135))">SetProperty(widgetName,$INFO[Container(301).ListItem.Property(widgetName)],home)</groupoverride>
+    <groupoverride group="mainmenu" condition="String.IsEqual(Container(301).ListItem.Property(path),ActivateWindow(1135))">SetProperty(widgetName.backgroundWidget,$INFO[Container(301).ListItem.Property(widgetName.backgroundWidget)],home)</groupoverride>
     <groupoverride group="mainmenu" condition="String.IsEqual(Container(301).ListItem.Property(path),ActivateWindow(1135))">SetProperty(widgetPath,$INFO[Container(301).ListItem.Property(widgetPath)],home)</groupoverride>
     <groupoverride group="mainmenu" condition="String.IsEqual(Container(301).ListItem.Property(path),ActivateWindow(1135))">SetProperty(widgetTarget,$INFO[Container(301).ListItem.Property(widgetTarget)],home)</groupoverride>
-
+    <groupoverride group="mainmenu" condition="String.IsEqual(Container(301).ListItem.Property(path),ActivateWindow(1135))">SetProperty(widgetAspect,$INFO[Container(301).ListItem.Property(widgetAspect)],home)</groupoverride>
 
     <!-- Warning to Remove Settings -->
     <warn heading="31176" message="31177">ActivateWindow(Settings)</warn>
@@ -38,6 +57,12 @@
     <property property="widgetAspect">Icon</property>
     <property property="widgetAspect">Landscape</property>
     <propertySettings property="widgetAspect" buttonID="9901" title="Widget Aspect" />
+
+    <property property="widgetAspect.backgroundWidget">Poster</property>
+    <property property="widgetAspect.backgroundWidget">Square</property>
+    <property property="widgetAspect.backgroundWidget">Icon</property>
+    <property property="widgetAspect.backgroundWidget">Landscape</property>
+    <propertySettings property="widgetAspect.backgroundWidget" buttonID="9902" title="Widget Aspect" />
 
     <!-- Icon Overrides -->
     <icon labelID="tvhub">special://skin/extras/icons/tv.png</icon>
@@ -122,27 +147,11 @@
     <icon image="DefaultAddonMusic.png">special://skin/extras/icons/songs.png</icon>
     <icon image="DefaultAddonProgram.png">special://skin/extras/icons/addons.png</icon>
 
-    <!-- DEFAULT WIDGETS -->
-    <!-- Movies -->
-    <widgetdefaultnode labelID="20342" label="20386" path="videodb://recentlyaddedmovies/" target="videos">RecentMovies</widgetdefaultnode>
-
-    <!-- TvShows -->
-    <widgetdefaultnode labelID="tvshows" label="20387" path="videodb://recentlyaddedepisodes/" target="videos">RecentEpisodes</widgetdefaultnode>
-
-    <!-- Music -->
-    <widgetdefaultnode labelID="2" label="359" path="musicdb://recentlyaddedalbums/" target="music">RecentAlbums</widgetdefaultnode>
-
-    <!-- PVR -->
-    <widgetdefaultnode labelID="31103" label="19023" path="pvr://channels/tv/*?view=lastplayed" target="pvr">TVChannels</widgetdefaultnode>
-    
-    <!-- Addons -->
-    <widgetdefaultnode labelID="24001" label="1037" path="addons://sources/video" target="videos">VideoAddons</widgetdefaultnode>
-
-
     <!-- GROUPINGS -->
     <!-- Main Grouping -->
     <groupings>
         <node label="32029">
+            <shortcut label="$LOCALIZE[31429]" type="32021" icon="DefaultAddonLibrary.png">ActivateWindow(1135)</shortcut>
             <content>common</content>
             <shortcut label="$LOCALIZE[33060]" type="$LOCALIZE[31018]" icon="special://skin/extras/icons/power.png">ActivateWindow(shutdownmenu)</shortcut>
             <shortcut label="$LOCALIZE[31017]" type="32010">||BROWSE||script.skin.helper.service/?action=smartshortcuts</shortcut>

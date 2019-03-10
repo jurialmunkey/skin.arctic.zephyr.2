@@ -9,7 +9,7 @@
         <include>Global_Overlay</include>
 
         <control type="group">
-            <width>1540</width>
+            <width>1530</width>
             <height>890</height>
             <include>Dialog_Standard_Group</include>
 
@@ -21,26 +21,34 @@
 
             <control type="panel" id="450">
                 <top>90</top>
-                <left>20</left>
-                <right>20</right>
-                <bottom>20</bottom>
+                <left>15</left>
+                <right>15</right>
+                <bottom>15</bottom>
                 <orientation>vertical</orientation>
 
                 <itemlayout height="390" width="300">
                     <control type="group">
-                        <left>10</left>
-                        <right>10</right>
-                        <top>10</top>
                         <control type="group">
-                            <bottom>100</bottom>
+                            <bottom>90</bottom>
+                            <include content="Object_Geometric">
+                                <param name="diffuse" value="diffuse/square.png" />
+                            </include>
+                            
+                            <include content="Object_DefaultIcon">
+                                <param name="fallback" value="DefaultAddon.png" />
+                                <param name="visible" value="String.IsEmpty(ListItem.Icon)" />
+                            </include>
+
+                            <include content="Object_Poster">
+                                <param name="icon" value="$PARAM[icon]" />
+                                <param name="aspectratio" value="$PARAM[aspectratio]" />
+                                <param name="bordersize" value="$PARAM[bordersize]" />
+                                <param name="diffuse" value="$PARAM[diffuse]" />
+                            </include>
                             <control type="image">
-                                <bordersize>10</bordersize>
-                                <texture colordiffuse="dialog_fg_12" border="10">common/box.png</texture>
-                            </control>
-                            <control type="image">
-                                <bordersize>10</bordersize>
+                                <bordersize>15</bordersize>
                                 <aspectratio scalediffuse="false">keep</aspectratio>
-                                <texture fallback="DefaultAddon.png" diffuse="diffuse/square.png">$INFO[ListItem.Icon]</texture>
+                                <texture diffuse="diffuse/square.png">$INFO[ListItem.Icon]</texture>
                             </control>
                         </control>
                         <control type="textbox">
@@ -56,22 +64,31 @@
                 </itemlayout>
                 <focusedlayout height="390" width="300">
                     <control type="group">
-                        <left>10</left>
-                        <right>10</right>
-                        <top>10</top>
-                        <include>Animation_FocusBounce_Small</include>
                         <control type="group">
-                            <bottom>100</bottom>
+                            <bottom>90</bottom>
+                            <include content="Object_Geometric">
+                                <param name="diffuse" value="diffuse/square.png" />
+                            </include>
+                            
+                            <include content="Object_DefaultIcon">
+                                <param name="fallback" value="DefaultAddon.png" />
+                                <param name="visible" value="String.IsEmpty(ListItem.Icon)" />
+                            </include>
+
+                            <include content="Object_Poster">
+                                <param name="icon" value="$PARAM[icon]" />
+                                <param name="aspectratio" value="$PARAM[aspectratio]" />
+                                <param name="bordersize" value="$PARAM[bordersize]" />
+                                <param name="diffuse" value="$PARAM[diffuse]" />
+                            </include>
                             <control type="image">
-                                <bordersize>10</bordersize>
-                                <texture colordiffuse="dialog_fg_12" border="10">common/box.png</texture>
-                            </control>
-                            <control type="image">
-                                <bordersize>10</bordersize>
+                                <bordersize>15</bordersize>
                                 <aspectratio scalediffuse="false">keep</aspectratio>
-                                <texture fallback="DefaultAddon.png" diffuse="diffuse/square.png">$INFO[ListItem.Icon]</texture>
+                                <texture diffuse="diffuse/square.png">$INFO[ListItem.Icon]</texture>
                             </control>
-                            <include>View_Selectbox</include>
+                            <include content="View_Selectbox">
+                                <param name="colordiffuse" value="$VAR[ColorHighlight]" />
+                            </include>
                         </control>
                         <control type="textbox">
                             <left>20</left>

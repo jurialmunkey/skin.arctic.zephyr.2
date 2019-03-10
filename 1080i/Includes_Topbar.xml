@@ -3,37 +3,11 @@
     <!-- ====== -->
     <!-- Common -->
     <!-- ====== -->
-    <include name="Topbar_HomeMenu_Item">
-        <control type="label">
-            <width>auto</width>
-            <align>left</align>
-            <height>70</height>
-            <font>font_topbar_small</font>
-            <textcolor>main_fg_100</textcolor>
-            <animation effect="fade" start="100" end="33" condition="!String.IsEqual(Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Label,Container($PARAM[id]).ListItemAbsolute.Label)">Conditional</animation>
-            <label>$INFO[Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Label]</label>
-            <visible>!String.IsEqual(Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Label,Container($PARAM[id]).ListItemAbsolute.Label)</visible>
-            <visible>$PARAM[visible]</visible>
-            <animation effect="fade" start="100" end="0" time="200">WindowClose</animation>
-            <animation effect="fade" start="0" end="100" delay="300" time="300">WindowOpen</animation>
-        </control>
-        <control type="label">
-            <width>auto</width>
-            <align>left</align>
-            <height>70</height>
-            <font>font_topbar</font>
-            <textcolor>main_fg_100</textcolor>
-            <animation effect="fade" start="100" end="33" condition="!String.IsEqual(Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Label,Container($PARAM[id]).ListItemAbsolute.Label)">Conditional</animation>
-            <label>$INFO[Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Label]</label>
-            <visible>String.IsEqual(Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Label,Container($PARAM[id]).ListItemAbsolute.Label)</visible>
-            <visible>$PARAM[visible]</visible>
-            <animation effect="fade" start="100" end="0" time="200">WindowClose</animation>
-            <animation effect="fade" start="0" end="100" delay="300" time="300">WindowOpen</animation>
-        </control>
-    </include>
+    
 
     <include name="Topbar">
         <param name="info_hide" default="true" />
+        <param name="fgcolor" default="main_fg" />
         <definition>
             <control type="group">
                 <top>30</top>
@@ -42,16 +16,15 @@
                     <height>view_pad</height>
                     <visible allowhiddenfocus="true">!$EXP[Exp_HideFurniture]</visible>
                     <include>Animation_FadeInOut</include>
-                    <include>Topbar_Left</include>
-                    <include>Topbar_Center</include>
-                    <include>Topbar_Right</include>
-                </control>
-
-                <!-- Global Search -->
-                <control type="group">
-                    <visible allowhiddenfocus="true">!$EXP[Exp_HideFurniture]</visible>
-                    <include>Animation_FadeInOut</include>
-                    <include condition="Window.IsVisible(script-globalsearch.xml)">Topbar_GlobalSearch_TextButtons</include>
+                    <include content="Topbar_Left">
+                        <param name="fgcolor" value="$PARAM[fgcolor]" />
+                    </include>
+                    <include content="Topbar_Center">
+                        <param name="fgcolor" value="$PARAM[fgcolor]" />
+                    </include>
+                    <include content="Topbar_Right">
+                        <param name="fgcolor" value="$PARAM[fgcolor]" />
+                    </include>
                 </control>
             </control>
         </definition>
@@ -70,8 +43,17 @@
                 <aligny>center</aligny>
                 <width max="1140">auto</width>
                 <font>font_topbar</font>
-                <textcolor>main_fg_100</textcolor>
+                <textcolor>$PARAM[fgcolor]_100</textcolor>
                 <label>$VAR[Label_Header_Content]</label>
+                <visible>!Control.HasFocus(300) | Window.IsVisible(SettingsCategory.xml) | Window.IsVisible(SettingsProfile.xml) | Window.IsVisible(SkinSettings.xml) | Window.IsVisible(eventlog) | Window.IsVisible(SettingsSystemInfo.xml)</visible>
+            </control>
+            <control type="label">
+                <aligny>center</aligny>
+                <width max="1140">auto</width>
+                <font>font_topbar</font>
+                <textcolor>$PARAM[fgcolor]_100</textcolor>
+                <label>$INFO[Container(300).ListItem.Label]</label>
+                <visible>Control.HasFocus(300) + ![Window.IsVisible(SettingsCategory.xml) | Window.IsVisible(SettingsProfile.xml) | Window.IsVisible(SkinSettings.xml) | Window.IsVisible(eventlog) | Window.IsVisible(SettingsSystemInfo.xml)]</visible>
             </control>
         </control>
     </include>
@@ -81,14 +63,15 @@
             <aligny>center</aligny>
             <align>center</align>
             <font>font_byline</font>
-            <textcolor>main_fg_70</textcolor>
+            <textcolor>$PARAM[fgcolor]_70</textcolor>
             <label>$VAR[Label_Header_Center]</label>
             <include>Animation_FadeInOut</include>
+            <visible>!Control.HasFocus(300) | Window.IsVisible(SettingsCategory.xml) | Window.IsVisible(SettingsProfile.xml) | Window.IsVisible(SkinSettings.xml) | Window.IsVisible(eventlog) | Window.IsVisible(SettingsSystemInfo.xml)</visible>
         </control>
     </include>
     <include name="Topbar_Right">
         <control type="grouplist">
-            <visible>!Window.IsVisible(DialogVolumeBar.xml) | Player.Muted</visible>
+            <animation effect="slide" start="0" end="-80" time="200" tween="sine" condition="Window.IsVisible(DialogVolumeBar.xml) + ![Window.IsVisible(Home) + !Skin.HasSetting(VerticalHome)]">Conditional</animation>
             <right>view_pad</right>
             <align>right</align>
             <orientation>horizontal</orientation>
@@ -101,7 +84,7 @@
                     <centertop>50%</centertop>
                     <height>40</height>
                     <aspectratio>keep</aspectratio>
-                    <texture colordiffuse="main_fg_100">$INFO[Weather.FanartCode,resource://resource.images.weathericons.white/,.png]</texture>
+                    <texture colordiffuse="$PARAM[fgcolor]_100">$INFO[Weather.FanartCode,resource://resource.images.weathericons.white/,.png]</texture>
                 </control>
                 <visible>Weather.IsFetched</visible>
                 <visible>!Control.HasFocus(60)</visible>
@@ -109,7 +92,7 @@
             <control type="label">
                 <width>auto</width>
                 <font>font_small</font>
-                <textcolor>main_fg_100</textcolor>
+                <textcolor>$PARAM[fgcolor]_100</textcolor>
                 <label>$INFO[Weather.Temperature]</label>
                 <visible>Weather.IsFetched</visible>
                 <visible>!Control.HasFocus(60)</visible>
@@ -126,7 +109,7 @@
             <control type="label">
                 <width>auto</width>
                 <font>font_small</font>
-                <textcolor>main_fg_100</textcolor>
+                <textcolor>$PARAM[fgcolor]_100</textcolor>
                 <label>$INFO[System.Time]</label>
                 <visible>!Control.HasFocus(60)</visible>
             </control>
@@ -134,7 +117,7 @@
                 <visible>Control.HasFocus(60)</visible>
                 <width>auto</width>
                 <font>font_small</font>
-                <textcolor>main_fg_100</textcolor>
+                <textcolor>$PARAM[fgcolor]_100</textcolor>
                 <label>$INFO[Container.NumItems,, $LOCALIZE[31101]]</label>
             </control>
             <control type="label">
@@ -148,109 +131,13 @@
                 <visible>Control.HasFocus(60)</visible>
                 <width>auto</width>
                 <font>font_small</font>
-                <textcolor>main_fg_100</textcolor>
+                <textcolor>$PARAM[fgcolor]_100</textcolor>
                 <label>$INFO[Container.CurrentPage,$LOCALIZE[31391] , $LOCALIZE[20163] ]$INFO[Container.NumPages]</label>
-            </control>
-            <control type="image">
-                <centertop>50%</centertop>
-                <aspectratio align="right">keep</aspectratio>
-                <texture colordiffuse="main_fg_100">special://skin/extras/icons/mute.png</texture>
-                <width>74</width>
-                <height>74</height>
-                <fadetime>50</fadetime>
-                <visible>Player.Muted</visible>
             </control>
         </control>
     </include>
 
-    <include name="Topbar_Home_TextButtons">
-        <control type="group">
-            <top>55</top>
-            <animation type="Visible">
-                <effect type="fade" start="0" end="100" time="200" tween="sine" easing="in" delay="200" />
-                <effect type="slide" start="0,-30" end="0,0" time="250" tween="sine" easing="out" delay="200" />
-            </animation>
-            <animation type="Hidden">
-                <effect type="fade" start="100" end="0" time="150" tween="sine" easing="out" />
-                <effect type="slide" start="0,0" end="0,-30" time="200" tween="sine" easing="out" />
-            </animation>
-            <control type="grouplist">
-                <!-- <animation effect="slide" start="0" end="-125" condition="!Container(301).OnNext" reversible="false" time="300" tween="quadratic">Conditional</animation>
-                <animation effect="slide" start="0" end="125" condition="!Container(301).OnPrevious" reversible="false" time="300" tween="quadratic">Conditional</animation> -->
-                <itemgap>30</itemgap>
-                <height>70</height>
-                <left>view_pad</left>
-                <orientation>horizontal</orientation>
-                <visible>Window.IsVisible(Home) + !$EXP[Exp_Info_Visible]</visible>
-                <usecontrolcoords>true</usecontrolcoords>
-                <include content="Topbar_HomeMenu_Item">
-                    <param name="visible" value="Integer.IsGreater(Container(301).NumItems,0)" />
-                    <param name="id" value="301" />
-                    <param name="pos" value="0" />
-                </include>
-                <include content="Topbar_HomeMenu_Item">
-                    <param name="visible" value="Integer.IsGreater(Container(301).NumItems,1)" />
-                    <param name="id" value="301" />
-                    <param name="pos" value="1" />
-                </include>
-                <include content="Topbar_HomeMenu_Item">
-                    <param name="visible" value="Integer.IsGreater(Container(301).NumItems,2)" />
-                    <param name="id" value="301" />
-                    <param name="pos" value="2" />
-                </include>
-                <include content="Topbar_HomeMenu_Item">
-                    <param name="visible" value="Integer.IsGreater(Container(301).NumItems,3)" />
-                    <param name="id" value="301" />
-                    <param name="pos" value="3" />
-                </include>
-                <include content="Topbar_HomeMenu_Item">
-                    <param name="visible" value="Integer.IsGreater(Container(301).NumItems,4)" />
-                    <param name="id" value="301" />
-                    <param name="pos" value="4" />
-                </include>
-                <include content="Topbar_HomeMenu_Item">
-                    <param name="visible" value="Integer.IsGreater(Container(301).NumItems,5)" />
-                    <param name="id" value="301" />
-                    <param name="pos" value="5" />
-                </include>
-                <include content="Topbar_HomeMenu_Item">
-                    <param name="visible" value="Integer.IsGreater(Container(301).NumItems,6)" />
-                    <param name="id" value="301" />
-                    <param name="pos" value="6" />
-                </include>
-                <include content="Topbar_HomeMenu_Item">
-                    <param name="visible" value="Integer.IsGreater(Container(301).NumItems,7)" />
-                    <param name="id" value="301" />
-                    <param name="pos" value="7" />
-                </include>
-                <include content="Topbar_HomeMenu_Item">
-                    <param name="visible" value="Integer.IsGreater(Container(301).NumItems,8)" />
-                    <param name="id" value="301" />
-                    <param name="pos" value="8" />
-                </include>
-                <include content="Topbar_HomeMenu_Item">
-                    <param name="visible" value="Integer.IsGreater(Container(301).NumItems,9)" />
-                    <param name="id" value="301" />
-                    <param name="pos" value="9" />
-                </include>
-                <include content="Topbar_HomeMenu_Item">
-                    <param name="visible" value="Integer.IsGreater(Container(301).NumItems,10)" />
-                    <param name="id" value="301" />
-                    <param name="pos" value="10" />
-                </include>
-                <include content="Topbar_HomeMenu_Item">
-                    <param name="visible" value="Integer.IsGreater(Container(301).NumItems,11)" />
-                    <param name="id" value="301" />
-                    <param name="pos" value="11" />
-                </include>
-                <include content="Topbar_HomeMenu_Item">
-                    <param name="visible" value="Integer.IsGreater(Container(301).NumItems,12)" />
-                    <param name="id" value="301" />
-                    <param name="pos" value="12" />
-                </include>
-            </control>
-        </control>
-    </include>
+    
 
     <include name="Topbar_GlobalSearch_Icon">
         <control type="group">
@@ -267,105 +154,9 @@
                 <visible>$PARAM[visible]</visible>
                 <visible>Control.HasFocus(990)</visible>
             </control>
-            <control type="image">
-                <texture colordiffuse="$VAR[ColorHighlight2]" border="8" diffuse="common/gradient-diffuse-horizontal.png">common/underline2.png</texture>
-                <visible>$PARAM[visible]</visible>
-                <visible>Control.HasFocus(990)</visible>
-            </control>
         </control>
         <control type="group">
             <width>-40</width>
-        </control>
-    </include>
-
-    <include name="Topbar_GlobalSearch_TextButtons">
-        <control type="group">
-            <animation type="Visible">
-                <effect type="fade" start="0" end="100" time="200" tween="sine" easing="in" delay="200" />
-                <effect type="slide" start="0,-30" end="0,0" time="250" tween="sine" easing="out" delay="200" />
-            </animation>
-            <animation type="Hidden">
-                <effect type="fade" start="100" end="0" time="150" tween="sine" easing="out" />
-                <effect type="slide" start="0,0" end="0,-30" time="200" tween="sine" easing="out" />
-            </animation>
-            <control type="grouplist">
-                <itemgap>30</itemgap>
-                <height>view_pad</height>
-                <left>view_pad</left>
-                <orientation>horizontal</orientation>
-                <visible>Window.IsVisible(script-globalsearch.xml) + !$EXP[Exp_Info_Visible]</visible>
-                <usecontrolcoords>true</usecontrolcoords>
-                <include content="Topbar_GlobalSearch_Icon">
-                    <param name="visible" value="true" />
-                </include>
-                <include content="Topbar_HomeMenu_Item">
-                    <param name="id" value="9000" />
-                    <param name="pos" value="0" />
-                </include>
-                <include content="Topbar_HomeMenu_Item">
-                    <param name="id" value="9000" />
-                    <param name="pos" value="1" />
-                </include>
-                <include content="Topbar_HomeMenu_Item">
-                    <param name="id" value="9000" />
-                    <param name="pos" value="2" />
-                </include>
-                <include content="Topbar_HomeMenu_Item">
-                    <param name="id" value="9000" />
-                    <param name="pos" value="3" />
-                </include>
-                <include content="Topbar_HomeMenu_Item">
-                    <param name="id" value="9000" />
-                    <param name="pos" value="4" />
-                </include>
-                <include content="Topbar_HomeMenu_Item">
-                    <param name="id" value="9000" />
-                    <param name="pos" value="5" />
-                </include>
-                <include content="Topbar_HomeMenu_Item">
-                    <param name="id" value="9000" />
-                    <param name="pos" value="6" />
-                </include>
-                <include content="Topbar_HomeMenu_Item">
-                    <param name="id" value="9000" />
-                    <param name="pos" value="7" />
-                </include>
-                <include content="Topbar_HomeMenu_Item">
-                    <param name="id" value="9000" />
-                    <param name="pos" value="8" />
-                </include>
-                <include content="Topbar_HomeMenu_Item">
-                    <param name="id" value="9000" />
-                    <param name="pos" value="9" />
-                </include>
-                <include content="Topbar_HomeMenu_Item">
-                    <param name="id" value="9000" />
-                    <param name="pos" value="10" />
-                </include>
-                <include content="Topbar_HomeMenu_Item">
-                    <param name="id" value="9000" />
-                    <param name="pos" value="11" />
-                </include>
-                <include content="Topbar_HomeMenu_Item">
-                    <param name="id" value="9000" />
-                    <param name="pos" value="12" />
-                </include>
-            </control>
-        </control>
-    </include>
-
-    <include name="Topbar_Menu_SettingsTrick_Button">
-        <control type="button">
-            <visible allowhiddenfocus="true">false</visible>
-            <onfocus condition="!Window.IsActive(InterfaceSettings) + String.IsEqual(Container(300).ListItem.Property(path),ReplaceWindow(InterfaceSettings))">ReplaceWindow(InterfaceSettings)</onfocus>
-            <onfocus condition="!Window.IsActive(SkinSettings) + String.IsEqual(Container(300).ListItem.Property(path),ReplaceWindow(SkinSettings))">ReplaceWindow(SkinSettings)</onfocus>
-            <onfocus condition="!Window.IsActive(MediaSettings) + String.IsEqual(Container(300).ListItem.Property(path),ReplaceWindow(MediaSettings))">ReplaceWindow(MediaSettings)</onfocus>
-            <onfocus condition="!Window.IsActive(PlayerSettings) + String.IsEqual(Container(300).ListItem.Property(path),ReplaceWindow(PlayerSettings))">ReplaceWindow(PlayerSettings)</onfocus>
-            <onfocus condition="!Window.IsActive(SystemSettings) + String.IsEqual(Container(300).ListItem.Property(path),ReplaceWindow(SystemSettings))">ReplaceWindow(SystemSettings)</onfocus>
-            <onfocus condition="!Window.IsActive(servicesettings) + String.IsEqual(Container(300).ListItem.Property(path),ReplaceWindow(servicesettings))">ReplaceWindow(servicesettings)</onfocus>
-            <onfocus condition="!Window.IsActive(pvrsettings) + String.IsEqual(Container(300).ListItem.Property(path),ReplaceWindow(pvrsettings))">ReplaceWindow(pvrsettings)</onfocus>
-            <onfocus condition="!Window.IsActive(systeminfo) + String.IsEqual(Container(300).ListItem.Property(path),ReplaceWindow(systeminfo))">ReplaceWindow(systeminfo)</onfocus>
-            <onfocus condition="!Window.IsActive(Profiles) + String.IsEqual(Container(300).ListItem.Property(path),ReplaceWindow(Profiles))">ReplaceWindow(Profiles)</onfocus>
         </control>
     </include>
 
@@ -392,8 +183,6 @@
             <centerleft>50%</centerleft>
             <orientation>horizontal</orientation>
             <top>60</top>
-            <!-- Special Conditions for Scroll Around from Menu on PVR Guide -->
-            <include condition="Window.IsVisible(MyPVRGuide.xml)">View_PVRGuide_Movement</include>
             <height>120</height>
             <itemlayout width="70" height="60">
                 <control type="image">
@@ -404,8 +193,6 @@
                 </control>
             </itemlayout>
             <focusedlayout width="70" height="60">
-                <include condition="Window.IsVisible(SettingsCategory.xml) | Window.IsVisible(SettingsProfile.xml) | Window.IsVisible(SettingsSystemInfo.xml) | Window.IsVisible(SkinSettings.xml)">Topbar_Menu_SettingsTrick_Button</include>
-       
                 <control type="group">
                     <centerleft>50%</centerleft>
                     <width>60</width>

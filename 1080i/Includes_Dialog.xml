@@ -135,12 +135,11 @@
         <param name="progress" default="Control.GetLabel(32)" />
         <param name="icon" default="buttons/info.png" />
         <definition>
-            <include>Animation_FadeIn_Delay</include>
-            <include>Animation_FadeOut</include>
             <bottom>0</bottom>
             <left>view_pad</left>
             <right>view_pad</right>
             <height>view_pad</height>
+            <visible>!$EXP[Exp_HideFurniture]</visible>
             <control type="image" description="Back">
                 <left>-24</left>
                 <centertop>50%</centertop>
@@ -160,9 +159,6 @@
                 <aspectratio align="center" aligny="center">keep</aspectratio>
                 <visible>[Window.IsVisible(DialogExtendedProgressBar.xml) + Control.IsVisible(32)] | $PARAM[nowplaying]</visible>
             </control>
-
-            
-
             <control type="grouplist">
                 <left>0</left>
                 <centertop>50%</centertop>
@@ -304,7 +300,7 @@
         <textcolor>dialog_fg_70</textcolor>
         <texturefocus colordiffuse="$VAR[ColorHighlight]" border="5">common/box.png</texturefocus>
         <alttexturefocus colordiffuse="$VAR[ColorHighlight]" border="5">common/box.png</alttexturefocus>
-        <alttexturenofocus colordiffuse="dialog_fg_12" border="5">common/box.png</alttexturenofocus>
+        <alttexturenofocus />
     </include>
 
     <include name="Dialog_Standard_Right_Grouplist">
@@ -324,12 +320,14 @@
 
     <include name="Dialog_Separator">
         <param name="left" default="dialog_side_grouplist" />
+        <param name="top" default="dialog_top" />
+        <param name="bottom" default="dialog_pad" />
         <definition>
             <control type="image">
                 <left>$PARAM[left]</left>
                 <width>1</width>
-                <top>dialog_top</top>
-                <bottom>dialog_pad</bottom>
+                <top>$PARAM[top]</top>
+                <bottom>$PARAM[bottom]</bottom>
                 <texture colordiffuse="dialog_fg_12">common/white.png</texture>
             </control>
         </definition>
@@ -498,15 +496,16 @@
     <include name="Dialog_Settings_Group">
         <include>Animation_Settings</include>
         <include content="Dialog_Standard_Group">
-            <param name="width" value="1820" />
-            <param name="height" value="980" />
+            <param name="width" value="1680" />
+            <param name="height" value="780" />
             <param name="animation" value="false" />
+            <param name="centertop" value="570" />
         </include>
 
-        <control type="label">
+        <!-- <control type="label">
             <label>$INFO[Container(300).ListItem.Label]</label>
             <include>Dialog_Standard_Header</include>
-        </control>
+        </control> -->
     </include>
 
     <include name="Dialog_Standard_List_Itemlayout_Simple">

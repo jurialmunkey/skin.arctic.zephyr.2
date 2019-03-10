@@ -6,11 +6,7 @@
     <controls>
 
         <include>Global_Background</include>
-        <include>Topbar</include>
-        <control type="image">
-            <include>Dimensions_Fullscreen</include>
-            <texture border="2">common/black-back.png</texture>
-        </control>
+        <include>Defs_Settings_Background</include>
         <control type="group">
             <include>Dialog_Settings_Group</include>
     
@@ -19,6 +15,8 @@
             </include>
 
             <include content="Dialog_Separator">
+                <param name="top" value="39" />
+                <param name="bottom" value="39" />
                 <param name="left" value="view_list_height" />
             </include>
 
@@ -27,9 +25,9 @@
                 <control type="grouplist" id="50">
                     <description>button area</description>
                     <left>0</left>
-                    <top>dialog_top</top>
+                    <top>39</top>
                     <width>dialog_side_grouplist</width>
-                    <height>780</height>
+                    <height>702</height>
                     <itemgap>0</itemgap>
                     <include>Defs_Settings_OnLeft</include>
                     <control type="button" id="95">
@@ -75,11 +73,14 @@
                     </control>
                 </control>
 
-                <include>Dialog_Separator</include>
+                <include content="Dialog_Separator">
+                    <param name="top" value="39" />
+                    <param name="bottom" value="39" />
+                </include>
 
                 <control type="textbox" id="30">
                     <left>430</left>
-                    <top>dialog_top</top>
+                    <top>39</top>
                     <right>view_pad</right>
                     <bottom>view_pad</bottom>
                     <description>Label 2</description>
@@ -89,12 +90,11 @@
                 <control type="grouplist">
                     <description>control area</description>
                     <left>dialog_side_grouplist</left>
-                    <top>dialog_top</top>
+                    <top>39</top>
                     <right>0</right>
-                    <height>780</height>
+                    <height>702</height>
                     <itemgap>0</itemgap>
                     <onleft>3</onleft>
-                    <include>Defs_Settings_OnRight</include>
                     <pagecontrol>61</pagecontrol>
                     <usecontrolcoords>true</usecontrolcoords>
                     <control type="label">

@@ -35,9 +35,6 @@
                                 <include condition="!Skin.HasSetting(DisableShadows)">Defs_Shadow_24</include>
                                 <texture diffuse="diffuse/widgetposter.png">$INFO[$PARAM[artwork]]</texture>
                             </control>
-                            <control type="image">
-                                <texture colordiffuse="PixelLines" border="20">common/outline.png</texture>
-                            </control>
                         </control>
 
                     </control>
@@ -76,6 +73,7 @@
                                 <visible>!Window.IsVisible(musicosd) + !Window.IsVisible(videoosd)</visible>
                                 <visible>!Skin.HasSetting(DisableStarRating)</visible>
                                 <include content="Object_StarRating">
+                                    <param name="colordiffuse" value="panel_fg" />
                                     <param name="align" value="left" />
                                     <param name="visible" value="true" />
                                     <param name="rating_prop" value="$PARAM[rating]" />
@@ -89,6 +87,7 @@
                                 <visible>!Window.IsVisible(musicosd) + !Window.IsVisible(videoosd)</visible>
                                 <visible>!Skin.HasSetting(DisableStarRating)</visible>
                                 <include content="Object_StarRating_Music">
+                                    <param name="colordiffuse" value="panel_fg" />
                                     <param name="align" value="left" />
                                     <param name="visible" value="true" />
                                     <param name="rating" value="MusicPlayer.Rating" />
@@ -156,20 +155,6 @@
                                     <width>564</width>
                                     <info>Player.Progress</info>
                                     <visible>Player.HasMedia</visible>
-                                </control>
-                                <control type="progress">
-                                    <description>Progressbar</description>
-                                    <top>16</top>
-                                    <height>12</height>
-                                    <width>564</width>
-                                    <info>Player.Progress</info>
-                                    <texturebg colordiffuse="00ffffff" border="4">diffuse/progress-bg.png</texturebg>
-                                    <lefttexture colordiffuse="00ffffff" border="4">diffuse/progress-left.png</lefttexture>
-                                    <midtexture colordiffuse="$VAR[ColorHighlight2]" border="4" diffuse="progress/diffuse.png">diffuse/progress-end.png</midtexture>
-                                    <righttexture colordiffuse="$VAR[ColorHighlight2]" border="4" diffuse="progress/diffuse-end.png">diffuse/progress-right.png</righttexture>
-                                    <include content="Defs_Progress_Colorfade">
-                                        <param name="id" value="401" />
-                                    </include>
                                 </control>
                             </control>
                             <control type="label">
@@ -245,7 +230,7 @@
                             <bordertexture border="30" colordiffuse="Shadow">common/shadow-15.png</bordertexture>
                             <aspectratio scalediffuse="true" align="left" aligny="bottom">keep</aspectratio>
                             <visible>!Pvr.IsPlayingTv</visible>
-                            <texture background="true" diffuse="diffuse/214x315.png">$INFO[Player.Icon]</texture>
+                            <texture background="true" diffuse="diffuse/214x315.png">$VAR[Image_OSD_Artwork]</texture>
                         </control>
                         <control type="image">
                             <left>-15</left>
@@ -284,13 +269,6 @@
                             <left>0</left>
                             <right>0</right>
                             <visible>!String.IsEmpty(VideoPlayer.TvShowTitle) | !String.IsEmpty(VideoPlayer.Year) | !String.IsEmpty(VideoPlayer.MPAA) | !String.IsEmpty(VideoPlayer.Genre)</visible>
-                            <control type="image">
-                                <left>0</left>
-                                <top>10</top>
-                                <width>37</width>
-                                <height>24</height>
-                                <texture colordiffuse="panel_fg_100">$VAR[Image_OSD_HDSD]</texture>
-                            </control>
                             <control type="label">
                                 <label>$VAR[Label_OSD_InfoLine]</label>
                                 <height>40</height>
@@ -354,6 +332,14 @@
                                     <height>56</height>
                                     <aspectratio align="left">keep</aspectratio>
                                     <texture colordiffuse="panel_fg_100">$VAR[Image_VideoPlayer_RipSource]</texture>
+                                </control>
+                                <control type="image">
+                                    <fadetime>100</fadetime>
+                                    <centertop>50%</centertop>
+                                    <width>64</width>
+                                    <height>42</height>
+                                    <aspectratio>keep</aspectratio>
+                                    <texture colordiffuse="panel_fg_100">$INFO[VideoPlayer.VideoResolution,flags/monochrome/resolution/,.png]</texture>
                                 </control>
                                 <control type="image">
                                     <fadetime>100</fadetime>
@@ -675,7 +661,7 @@
             <texturenofocus colordiffuse="panel_fg_70">osd/info.png</texturenofocus>
             <onclick>SetProperty(OSDExtendedInfo,1,Home)</onclick>
             <onclick condition="!Player.Paused ">Pause</onclick>
-            <onclick>SetProperty(InfoTrick.0.Title,$INFO[Player.FileName],Home)</onclick>
+            <onclick>SetProperty(InfoTrick.0.Title,$INFO[Player.Title],Home)</onclick>
             <onclick>Close</onclick>
             <onclick>ActivateWindow(1137)</onclick>
             <onfocus condition="!String.IsEmpty(Window(Home).Property(OSDExtendedInfo)) + Player.Paused">Play</onfocus>
@@ -684,6 +670,7 @@
             <visible>Window.IsVisible(videoosd)</visible>
             <visible>!VideoPlayer.Content(livetv)</visible>
             <visible>VideoPlayer.Content(movies) | VideoPlayer.Content(episodes)</visible>
+            <visible>!String.IsEmpty(VideoPlayer.DBID)</visible>
         </control>
         <control type="togglebutton" id="20">
             <usealttexture>Control.HasFocus(20) | Control.HasFocus(21) | Control.HasFocus(22)</usealttexture>

@@ -54,12 +54,13 @@
                 <param name="id" value="501" />
                 <param name="viewtype" value="$LOCALIZE[31298]" />
                 <param name="forced" value="true" />
+                <param name="flipsides" value="Skin.HasSetting(FlipSide)" />
                 <param name="visible" value="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(episodes)" />
             </include>
             <include content="View_522_Showcase_Seasons_Info">
                 <param name="visible" value="true" />
                 <param name="icon" value="$VAR[Image_Fanart]" />
-                <param name="title" value="$INFO[ListItem.Title]" />
+                <param name="title" value="$VAR[Label_List_Title]" />
                 <param name="plot" value="$INFO[ListItem.Plot]" />
             </include>
         </control>
@@ -73,8 +74,9 @@
                 <param name="left" value="-20" />
                 <param name="right" value="944.8" />
                 <param name="id" value="502" />
-                <param name="viewtype" value="$LOCALIZE[31298]" />
+                <param name="viewtype" value="$LOCALIZE[31423]" />
                 <param name="forced" value="true" />
+                <param name="flipsides" value="Skin.HasSetting(FlipSide)" />
                 <param name="visible" value="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(episodes)" />
             </include>
             <include>View_502_List_Info</include>
@@ -98,9 +100,10 @@
                 <param name="controltype" value="fixedlist" />
                 <param name="itemheight" value="162" />
                 <param name="itemlayout" value="View_50_Itemlayout_Banners" />
+                <param name="flipsides" value="Skin.HasSetting(FlipSide)" />
                 <param name="visible" value="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons)" />
-                <movement>3</movement>
-                <focusposition>1</focusposition>
+                <movement>2</movement>
+                <focusposition>2</focusposition>
             </include>
             <include>View_502_List_Info</include>
         </control>
@@ -108,7 +111,7 @@
 
     <include name="View_502_List_Info">
         <control type="group">
-            <right>-30</right>
+            <include>View_FlipSides</include>
             <width>944.8</width>
             <control type="group">
                 <width>274.8</width>
@@ -142,7 +145,7 @@
                     <align>left</align>
                     <aligny>top</aligny>
                     <height>50</height>
-                    <label>$INFO[ListItem.Title]</label>
+                    <label>$VAR[Label_List_Title]</label>
                 </control>
                 <include>Object_Info_Line</include>
                 <include content="Object_Info_Ratings">
@@ -164,6 +167,11 @@
         </control>
     </include>
 
+    <include name="View_50_List_Sides">
+        <left>$PARAM[left]</left>
+        <right>$PARAM[right]</right>
+    </include>
+
     <include name="View_50_List_Control">
         <param name="itemlayout" default="View_50_Itemlayout" />
         <param name="itemheight" default="view_list_height" />
@@ -174,13 +182,20 @@
         <param name="controltype" default="panel" />
         <param name="viewtype" default="$LOCALIZE[535]" />
         <param name="forced" default="false" />
+        <param name="flipsides" default="false" />
         <definition>
             <control type="$PARAM[controltype]" id="$PARAM[id]">
                 <scrolltime tween="quadratic">400</scrolltime>
                 <top>$PARAM[top]</top>
                 <visible>$PARAM[visible]</visible>
-                <left>$PARAM[left]</left>
-                <right>$PARAM[right]</right>
+                <include content="View_50_List_Sides" condition="$PARAM[flipsides]">
+                    <param name="left" value="$PARAM[right]" />
+                    <param name="right" value="$PARAM[left]" />
+                </include>
+                <include content="View_50_List_Sides" condition="!$PARAM[flipsides]">
+                    <param name="left" value="$PARAM[left]" />
+                    <param name="right" value="$PARAM[right]" />
+                </include>
                 <height>$PARAM[height]</height>
                 <include>$PARAM[controllayout]</include>
                 <pagecontrol>60</pagecontrol>
@@ -309,7 +324,7 @@
                     <font>font_small_bold</font>
                     <textcolor>$PARAM[fgcolor]_100</textcolor>
                     <selectedcolor>$PARAM[fgcolor]_100</selectedcolor>
-                    <label>$INFO[ListItem.Title]</label>
+                    <label>$VAR[Label_List_Title]</label>>
                 </control>
                 <control type="label">
                     <align>right</align>

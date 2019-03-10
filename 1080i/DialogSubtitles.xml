@@ -198,13 +198,13 @@
                     <onup>160</onup>
                     <orientation>vertical</orientation>
                     <scrolltime>0</scrolltime>
-                    <itemlayout height="70" width="300">
+                    <itemlayout height="78" width="300">
                         <control type="label">
                             <label>$INFO[ListItem.Label]</label>
                             <include>Dialog_Standard_Right_Buttons</include>
                         </control>
                     </itemlayout>
-                    <focusedlayout height="70" width="300">
+                    <focusedlayout height="78" width="300">
                         <control type="image">
                             <texture border="5" colordiffuse="$VAR[ColorHighlight]">common/box.png</texture>
                             <visible>Control.HasFocus(150)</visible>
@@ -212,11 +212,13 @@
                         <control type="label">
                             <label>$INFO[ListItem.Label]</label>
                             <textcolor>Selected</textcolor>
+                            <selectedcolor>Selected</selectedcolor>
                             <include>Dialog_Standard_Right_Buttons</include>
                             <visible>Control.HasFocus(150)</visible>
                         </control>
                         <control type="label">
                             <label>$INFO[ListItem.Label]</label>
+                            <selectedcolor>dialog_fg_100</selectedcolor>
                             <include>Dialog_Standard_Right_Buttons</include>
                             <visible>!Control.HasFocus(150)</visible>
                         </control>

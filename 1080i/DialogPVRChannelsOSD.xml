@@ -16,10 +16,6 @@
                 <width>668</width>
                 <height>1082</height>
                 <control type="image">
-                    <include condition="!Skin.HasSetting(DisableShadows)">Defs_Shadow_24</include>
-                    <texture>common/gradient-solid.png</texture>
-                </control>
-                <control type="image">
                     <width>1</width>
                     <right>0</right>
                     <texture colordiffuse="PixelLines">common/white.png</texture>
@@ -132,7 +128,7 @@
                         <align>left</align>
                         <font>font_small</font>
                         <textcolor>main_fg_70</textcolor>
-                        <label>$INFO[ListItem.Title]</label>
+                        <label>$VAR[Label_List_Title]</label>>
                         <selectedcolor>main_fg_70</selectedcolor>
                     </control>
                 </itemlayout>
@@ -202,7 +198,7 @@
                         <align>left</align>
                         <font>font_small</font>
                         <textcolor>Selected</textcolor>
-                        <label>$INFO[ListItem.Title]</label>
+                        <label>$VAR[Label_List_Title]</label>>
                         <selectedcolor>Selected</selectedcolor>
                     </control>
                 </focusedlayout>

@@ -4,7 +4,7 @@
     <defaultcontrol always="true">8</defaultcontrol>
     <onload>ClearProperty(FilePath,home)</onload>
     <onload>ClearProperty(InfoTrick.Active,Home)</onload>
-    <onload>SetProperty(InfoTrick.OriginalTitle,$INFO[ListItem.FileName],Home)</onload>
+    <onload>SetProperty(InfoTrick.OriginalTitle,$INFO[ListItem.Title],Home)</onload>
     <onunload>ClearProperty(FilePath,home)</onunload>
 
     <onunload condition="!String.IsEmpty(Window(Home).Property(InfoTrick.9.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.Active))">ClearProperty(InfoTrick.9.Title,Home)</onunload>
@@ -86,7 +86,7 @@
                             </control>
                             <control type="grouplist" id="300">
                                 <onup>9601</onup>
-                                <ondown>SetFocus(50,0,absolute)</ondown>
+                                <ondown>4100</ondown>
                                 <include>Defs_ButtonList</include>
                                 <include content="Object_Info_Button">
                                     <param name="id" value="8" />
@@ -171,6 +171,7 @@
                         </include>
                         <control type="group" id="5999">
                             <height>52</height>
+                            <visible>Integer.IsGreater(Container(50).NumItems,0) | Container(50).IsUpdating</visible>
                             <control type="button" id="5000">
                                 <texturefocus />
                                 <texturenofocus />
@@ -184,6 +185,7 @@
                                 <onleft>Left</onleft>
                                 <onright>SetFocus(50)</onright>
                                 <onright>Right</onright>
+                                <visible>!Skin.HasSetting(DisableExtendedInfo)</visible>
                             </control>
                         </control>
                         <include content="View_51_Wall_Container">
@@ -194,32 +196,15 @@
                             <param name="height" value="360.5" />
                             <param name="orientation" value="horizontal" />
                             <param name="labelinclude" value="View_Cast_Label" />
+                            <param name="focusbounce" value="Skin.HasSetting(DisableExtendedInfo)" />
                             <param name="onleft" value="50" />
                             <param name="onright" value="50" />
                             <param name="visible" value="Integer.IsGreater(Container(50).NumItems,0) | Container(50).IsUpdating" />
-                            <onfocus>SetFocus(5000)</onfocus>
+                            <onfocus condition="!Skin.HasSetting(DisableExtendedInfo)">SetFocus(5000)</onfocus>
+                            <onback condition="Skin.HasSetting(DisableExtendedInfo)">SetFocus(50)</onback>
                             <onback>SetFocus(5000)</onback>
                             <onback>300</onback>
                         </include>
-
-                        <!-- <include content="View_Cast_Toplabel">
-                            <param name="groupid" value="7550" />
-                            <param name="id" value="5050" />
-                            <param name="label" value="$INFO[Container(50).ListItem.Label,Starring ,]" />
-                        </include>
-                        <include content="View_51_Wall_Container">
-                            <param name="controllayout" value="View_Cast" />
-                            <param name="id" value="5050" />
-                            <param name="height" value="360.5" />
-                            <param name="orientation" value="horizontal" />
-                            <param name="labelinclude" value="Defs_Null" />
-                            <param name="visible" value="Integer.IsGreater(Container(5050).NumItems,0) | Container(5050).IsUpdating" />
-                            <onclick>RunScript(script.extendedinfo,info=extendedinfo,dbid=$INFO[Container(5050).ListItem.DBID],name=$INFO[Container(5050).ListItem.Title])</onclick>
-                            <onback>SetFocus(5000)</onback>
-                            <onback>300</onback>
-                            <content limit="25" target="videos">videodb://movies/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22actor%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22$INFO[Container(50).ListItem.Label]%22%5D%7D%5D%7D%2C%22type%22%3A%22movies%22%7D</content>
-                            <visible>Container.Content(movies)</visible>
-                        </include> -->
 
                         <include content="View_Cast_Toplabel">
                             <param name="groupid" value="7501" />
@@ -232,10 +217,12 @@
                             <param name="height" value="360.5" />
                             <param name="orientation" value="horizontal" />
                             <param name="labelinclude" value="Defs_Null" />
-                            <param name="visible" value="Integer.IsGreater(Container(5001).NumItems,0) | Container(5001).IsUpdating" />
+                            <param name="visible" value="Integer.IsGreater(Container(5001).NumItems,1) | Container(5001).IsUpdating" />
+                            <animation effect="fade" start="100" end="0" condition="!Integer.IsGreater(Container(5001).NumItems,0) | Container(5001).IsUpdating">Conditional</animation>
                             <include content="Defs_InfoTrick">
                                 <param name="id" value="5001" />
                             </include>
+                            <onback condition="Skin.HasSetting(DisableExtendedInfo)">SetFocus(50)</onback>
                             <onback>SetFocus(5000)</onback>
                             <onback>300</onback>
                             <content limit="25" target="videos">$INFO[ListItem.SetID,videodb://movies/sets/,/]</content>
@@ -252,9 +239,11 @@
                             <param name="orientation" value="horizontal" />
                             <param name="labelinclude" value="Defs_Null" />
                             <param name="visible" value="Integer.IsGreater(Container(5002).NumItems,0) | Container(5002).IsUpdating" />
+                            <animation effect="fade" start="100" end="0" condition="!Integer.IsGreater(Container(5002).NumItems,0) | Container(5002).IsUpdating">Conditional</animation>
                             <include content="Defs_InfoTrick">
                                 <param name="id" value="5002" />
                             </include>
+                            <onback condition="Skin.HasSetting(DisableExtendedInfo)">SetFocus(50)</onback>
                             <onback>SetFocus(5000)</onback>
                             <onback>300</onback>
                             <content limit="25" target="videos">$INFO[ListItem.IMDBNumber,plugin://script.skin.helper.widgets/?action=similar&amp;mediatype=movies&amp;imdbid=,]</content>
@@ -271,13 +260,15 @@
                             <param name="height" value="360.5" />
                             <param name="orientation" value="horizontal" />
                             <param name="labelinclude" value="Defs_Null" />
-                            <param name="visible" value="Integer.IsGreater(Container(5003).NumItems,0) | Container(5003).IsUpdating" />
+                            <param name="visible" value="Integer.IsGreater(Container(5003).NumItems,1) | Container(5003).IsUpdating" />
+                            <animation effect="fade" start="100" end="0" condition="!Integer.IsGreater(Container(5003).NumItems,0) | Container(5003).IsUpdating">Conditional</animation>
                             <include content="Defs_InfoTrick">
                                 <param name="id" value="5003" />
                             </include>
+                            <onback condition="Skin.HasSetting(DisableExtendedInfo)">SetFocus(50)</onback>
                             <onback>SetFocus(5000)</onback>
                             <onback>300</onback>
-                            <content limit="25" target="videos">$INFO[ListItem.Director,plugin://script.extendedinfo?info=personmovies&amp;&amp;person=,]</content>
+                            <content limit="25" target="videos">$VAR[Info_DirectorMovies]</content>
                             <visible>Container.Content(movies)</visible>
                         </include>
                         <include content="View_Cast_Toplabel">
@@ -291,13 +282,15 @@
                             <param name="height" value="360.5" />
                             <param name="orientation" value="horizontal" />
                             <param name="labelinclude" value="Defs_Null" />
-                            <param name="visible" value="Integer.IsGreater(Container(5004).NumItems,0) | Container(5004).IsUpdating" />
+                            <param name="visible" value="Integer.IsGreater(Container(5004).NumItems,1) | Container(5004).IsUpdating" />
+                            <animation effect="fade" start="100" end="0" condition="!Integer.IsGreater(Container(5004).NumItems,0) | Container(5004).IsUpdating">Conditional</animation>
                             <include content="Defs_InfoTrick">
                                 <param name="id" value="5004" />
                             </include>
+                            <onback condition="Skin.HasSetting(DisableExtendedInfo)">SetFocus(50)</onback>
                             <onback>SetFocus(5000)</onback>
                             <onback>300</onback>
-                            <content limit="25" target="videos">$INFO[ListItem.Studio,plugin://script.extendedinfo?info=studio&amp;&amp;studio=,]</content>
+                            <content limit="25" target="videos">$VAR[Info_StudioMovies]</content>
                             <visible>Container.Content(movies)</visible>
                         </include>
 
@@ -319,6 +312,12 @@
                             <param name="labelinclude" value="View_Cast_Video_Label" />
                             <param name="icon" value="$INFO[ListItem.Icon]" />
                             <param name="visible" value="Integer.IsGreater(Container(5005).NumItems,0) | Container(5005).IsUpdating" />
+                            <animation effect="fade" start="100" end="0" condition="!Integer.IsGreater(Container(5005).NumItems,0) | Container(5005).IsUpdating">Conditional</animation>
+                            <onclick>SetFocus(50)</onclick>
+                            <onclick>SetFocus(300)</onclick>
+                            <onclick>Dialog.Close(all,force)</onclick>
+                            <onclick>PlayMedia($INFO[Container(5006).ListItem.FileNameAndPath])</onclick>
+                            <onback condition="Skin.HasSetting(DisableExtendedInfo)">SetFocus(50)</onback>
                             <onback>SetFocus(5000)</onback>
                             <onback>300</onback>
                             <content limit="3" sortby="playcount" sortorder="ascending">videodb://inprogresstvshows/$INFO[ListItem.DBID]/-2/?tvshowid=$INFO[ListItem.DBID]</content>
@@ -337,35 +336,98 @@
                             <param name="orientation" value="horizontal" />
                             <param name="labelinclude" value="Defs_Null" />
                             <param name="icon" value="$INFO[ListItem.Icon]" />
-                            <param name="visible" value="Integer.IsGreater(Container(5006).NumItems,0) | Container(5006).IsUpdating" />
+                            <param name="visible" value="Integer.IsGreater(Container(5006).NumItems,1) | Container(5006).IsUpdating" />
+                            <animation effect="fade" start="100" end="0" condition="!Integer.IsGreater(Container(5006).NumItems,0) | Container(5006).IsUpdating">Conditional</animation>
                             <onclick>SetFocus(50)</onclick>
                             <onclick>SetFocus(300)</onclick>
                             <onclick>Dialog.Close(all,force)</onclick>
                             <onclick>ActivateWindow(videos,$INFO[Container(5006).ListItem.FolderPath])</onclick>
+                            <onback condition="Skin.HasSetting(DisableExtendedInfo)">SetFocus(50)</onback>
                             <onback>SetFocus(5000)</onback>
                             <onback>300</onback>
                             <content limit="25" target="videos">$INFO[ListItem.DBID,videodb://tvshows/titles/,/]</content>
-                            <visible>Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)</visible>
+                            <visible>Container.Content(tvshows)</visible>
                         </include>
 
-                        <!-- <include content="View_Cast_Toplabel">
+                        <include content="View_Cast_Toplabel">
+                            <param name="groupid" value="7550" />
+                            <param name="id" value="5050" />
+                            <param name="label" value="Cast Members Also Feature In" />
+                        </include>
+                        <include content="View_51_Wall_Container">
+                            <param name="controllayout" value="View_Cast" />
+                            <param name="id" value="5050" />
+                            <param name="height" value="360.5" />
+                            <param name="orientation" value="horizontal" />
+                            <param name="labelinclude" value="Defs_Null" />
+                            <param name="visible" value="Integer.IsGreater(Container(5050).NumItems,1) | Container(5050).IsUpdating" />
+                            <animation effect="fade" start="100" end="0" condition="!Integer.IsGreater(Container(5050).NumItems,0) | Container(5050).IsUpdating">Conditional</animation>
+                            <include content="Defs_InfoTrick">
+                                <param name="id" value="5050" />
+                            </include>
+                            <onback condition="Skin.HasSetting(DisableExtendedInfo)">SetFocus(50)</onback>
+                            <onback>SetFocus(5000)</onback>
+                            <onback>300</onback>
+                            <content limit="25" target="videos" sortby="random">videodb://movies/titles/?xsp=%7B%22rules%22%3A%7B%22or%22%3A%5B%7B%22field%22%3A%22actor%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22$INFO[Container(50).ListItemAbsolute(0).Label]%22%5D%7D%2C%7B%22field%22%3A%22actor%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22$INFO[Container(50).ListItemAbsolute(1).Label]%22%5D%7D%2C%7B%22field%22%3A%22actor%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22$INFO[Container(50).ListItemAbsolute(2).Label]%22%5D%7D%2C%7B%22field%22%3A%22actor%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22$INFO[Container(50).ListItemAbsolute(3).Label]%22%5D%7D%2C%7B%22field%22%3A%22actor%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22$INFO[Container(50).ListItemAbsolute(4).Label]%22%5D%7D%2C%7B%22field%22%3A%22actor%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22$INFO[Container(50).ListItemAbsolute(5).Label]%22%5D%7D%2C%7B%22field%22%3A%22actor%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22$INFO[Container(50).ListItemAbsolute(6).Label]%22%5D%7D%5D%7D%2C%22type%22%3A%22movies%22%7D</content>
+                            <visible>Container.Content(movies)</visible>
+                        </include>
+
+                        <include content="View_Cast_Toplabel">
                             <param name="groupid" value="7507" />
                             <param name="id" value="5007" />
-                            <param name="label" value="$INFO[ListItem.Title,Similar to ,]" />
+                            <param name="label" value="Special Features &amp; Extras" />
                         </include>
                         <include content="View_51_Wall_Container">
                             <param name="controllayout" value="View_Cast" />
                             <param name="id" value="5007" />
                             <param name="height" value="360.5" />
                             <param name="orientation" value="horizontal" />
-                            <param name="labelinclude" value="Defs_Null" />
+                            <param name="itemwidth" value="570" />
+                            <param name="iconheight" value="333.75" />
+                            <param name="diffuse" value="diffuse/540x304.png" />
+                            <param name="labelinclude" value="View_Cast_Video_Label" />
+                            <param name="icon" value="$INFO[ListItem.Icon]" />
                             <param name="visible" value="Integer.IsGreater(Container(5007).NumItems,0) | Container(5007).IsUpdating" />
-                            <onclick>RunScript(script.extendedinfo,info=extendedinfo,dbid=$INFO[Container(5007).ListItem.DBID],name=$INFO[Container(5007).ListItem.Title])</onclick>
+                            <animation effect="fade" start="100" end="0" condition="!Integer.IsGreater(Container(5007).NumItems,0) | Container(5007).IsUpdating">Conditional</animation>
+                            <onclick>SetFocus(50)</onclick>
+                            <onclick>SetFocus(300)</onclick>
+                            <onclick>Dialog.Close(all,force)</onclick>
+                            <onclick>PlayMedia($INFO[Container(5007).ListItem.FileNameAndPath])</onclick>
+                            <onback condition="Skin.HasSetting(DisableExtendedInfo)">SetFocus(50)</onback>
                             <onback>SetFocus(5000)</onback>
                             <onback>300</onback>
-                            <content limit="25" target="videos">$INFO[ListItem.IMDBNumber,plugin://script.skin.helper.widgets/?action=similar&amp;mediatype=tvshows&amp;imdbid=,]</content>
-                            <visible>Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)</visible>
-                        </include> -->
+                            <content limit="25" target="videos" sortby="file">$VAR[Defs_VideoInfo_Extras]</content>
+                            <visible>Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)</visible>
+                        </include>
+
+                        <include content="View_Cast_Toplabel">
+                            <param name="groupid" value="7508" />
+                            <param name="id" value="5008" />
+                            <param name="label" value="Youtube Videos" />
+                        </include>
+                        <include content="View_51_Wall_Container">
+                            <param name="controllayout" value="View_Cast" />
+                            <param name="id" value="5008" />
+                            <param name="height" value="360.5" />
+                            <param name="orientation" value="horizontal" />
+                            <param name="itemwidth" value="570" />
+                            <param name="iconheight" value="333.75" />
+                            <param name="diffuse" value="diffuse/540x304.png" />
+                            <param name="labelinclude" value="View_Cast_Video_Label" />
+                            <param name="icon" value="$INFO[ListItem.Icon]" />
+                            <param name="visible" value="Integer.IsGreater(Container(5008).NumItems,0) | Container(5008).IsUpdating" />
+                            <animation effect="fade" start="100" end="0" condition="!Integer.IsGreater(Container(5008).NumItems,0) | Container(5008).IsUpdating">Conditional</animation>
+                            <onclick>SetFocus(50)</onclick>
+                            <onclick>SetFocus(300)</onclick>
+                            <onclick>Dialog.Close(all,force)</onclick>
+                            <onclick>PlayMedia($INFO[Container(5008).ListItem.FileNameAndPath])</onclick>
+                            <onback condition="Skin.HasSetting(DisableExtendedInfo)">SetFocus(50)</onback>
+                            <onback>SetFocus(5000)</onback>
+                            <onback>300</onback>
+                            <content limit="25" target="videos" sortby="file">$VAR[Info_Youtube]</content>
+                            <visible>Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)</visible>
+                        </include>
+
                     </control>
                 </control>
 
@@ -373,6 +435,7 @@
                     <param name="id" value="6000" />
                     <onleft>noop</onleft>
                     <onright>noop</onright>
+                    <onback condition="Skin.HasSetting(DisableExtendedInfo)">SetFocus(50)</onback>
                     <onback>SetFocus(5000)</onback>
                     <onback>300</onback>
                     <include>Items_Info_Gallery</include>

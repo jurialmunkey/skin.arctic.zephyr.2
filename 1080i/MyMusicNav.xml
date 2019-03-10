@@ -15,11 +15,14 @@
             <include>Items_View</include>
         </control>
         
-        <include>View_500_List_Square</include>
-        <include>View_510_Wall_Square</include>
-        <include>View_513_Wall_Circle</include>
-        <include>View_520_Showcase_Square</include>
-        
+        <control type="group">
+            <visible allowhiddenfocus="true">!$EXP[Exp_HideFurniture]</visible>
+            <include>Animation_FadeInOut</include>
+            <include>View_500_List_Square</include>
+            <include>View_510_Wall_Square</include>
+            <include>View_513_Wall_Circle</include>
+            <include>View_520_Showcase_Square</include>
+        </control>
         <!-- Hidden Buttons -->
         <include>Defs_Options_StandardButtons</include>
         <control type="button" id="8">

@@ -1,5 +1,113 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <template>
+    <other include="vertical-main">
+        <property name="widgetAspect" tag="property" attribute="name|widgetAspect.backgroundWidget" />
+        <property name="widgetAspect">Poster</property>
+        <property name="widgetTarget" tag="property" attribute="name|widgetTarget.backgroundWidget" />
+        <property name="widgetPath" tag="property" attribute="name|widgetPath.backgroundWidget" />
+        <property name="widgetName" tag="property" attribute="name|widgetName.backgroundWidget" />
+        <property name="mainid" tag="mainmenuid" />
+        <controls>
+            <include content="View_Cast_Toplabel">
+                <param name="groupid" value="$PYTHON[int(mainid)]7500" />
+                <param name="id" value="$PYTHON[int(mainid)]3100" />
+                <param name="label" value="$SKINSHORTCUTS[widgetName]" />
+                <skinshortcuts>visibility</skinshortcuts>
+            </include>
+            <include content="Object_Widget_Spotlight">
+                <param name="id" value="$PYTHON[int(mainid)]3100" />
+                <param name="top" value="52" />
+                <param name="left" value="0" />
+                <param name="right" value="-30" />
+                <param name="height" value="360.5" />
+                <param name="orientation" value="horizontal" />
+                <param name="labelinclude" value="Defs_Null" />
+                <param name="landscapelabelinclude" value="Defs_Null" />
+                <param name="target" value="$SKINSHORTCUTS[widgetTarget]" />
+                <param name="content" value="$SKINSHORTCUTS[widgetPath]" />
+                <param name="squarecondition" value="$PYTHON['true' if widgetAspect in 'Square' else 'false']" />
+                <param name="landscapecondition" value="$PYTHON['true' if widgetAspect in 'Landscape' else 'false']" />
+                <param name="iconcondition" value="$PYTHON['true' if widgetAspect in 'Icon' else 'false']" />
+                <onback>301</onback>
+                <onleft>301</onleft>
+                <onright>noop</onright>
+                <!-- <onright>$PYTHON[int(mainid)]3100</onright> -->
+                <visible>Integer.IsGreater(Container($PYTHON[int(mainid)]3100).NumItems,0) | Container($PYTHON[int(mainid)]3100).IsUpdating</visible>
+                <skinshortcuts>visibility</skinshortcuts>
+            </include>
+        </controls>
+    </other>
+    <submenuOther include="vertical-submenu" container="302">
+        <condition tag="property" attribute="name|widgetPath" />
+        <property name="widgetAspect" tag="property" attribute="name|widgetAspect" />
+        <property name="widgetAspect">Poster</property>
+        <property name="widgetTarget" tag="property" attribute="name|widgetTarget" />
+        <property name="widgetName" tag="property" attribute="name|widgetName" />
+        <property name="widgetPath" tag="property" attribute="name|widgetPath" />
+        <property name="submenuVisibility" tag="property" attribute="name|group" />
+        <property name="submenuVisibility">noMenu</property>
+        <property name="mainid" tag="mainmenuid" />
+        <property name="id" tag="property" attribute="name|id" value="$NUMBER[1]">1</property>
+        <property name="id" tag="property" attribute="name|id" value="$NUMBER[2]">2</property>
+        <property name="id" tag="property" attribute="name|id" value="$NUMBER[3]">3</property>
+        <property name="id" tag="property" attribute="name|id" value="$NUMBER[4]">4</property>
+        <property name="id" tag="property" attribute="name|id" value="$NUMBER[5]">5</property>
+        <property name="id" tag="property" attribute="name|id" value="$NUMBER[6]">6</property>
+        <property name="id" tag="property" attribute="name|id" value="$NUMBER[7]">7</property>
+        <property name="id" tag="property" attribute="name|id" value="$NUMBER[8]">8</property>
+        <property name="id" tag="property" attribute="name|id" value="$NUMBER[9]">9</property>
+        <property name="id" tag="property" attribute="name|id" value="$NUMBER[10]">10</property>
+        <property name="id" tag="property" attribute="name|id" value="$NUMBER[11]">11</property>
+        <property name="id" tag="property" attribute="name|id" value="$NUMBER[12]">12</property>
+        <property name="id" tag="property" attribute="name|id" value="$NUMBER[13]">13</property>
+        <property name="id" tag="property" attribute="name|id" value="$NUMBER[14]">14</property>
+        <property name="id" tag="property" attribute="name|id" value="$NUMBER[15]">15</property>
+        <property name="id" tag="property" attribute="name|id" value="$NUMBER[16]">16</property>
+        <property name="id" tag="property" attribute="name|id" value="$NUMBER[17]">17</property>
+        <property name="id" tag="property" attribute="name|id" value="$NUMBER[18]">18</property>
+        <property name="id" tag="property" attribute="name|id" value="$NUMBER[19]">19</property>
+        <property name="id" tag="property" attribute="name|id" value="$NUMBER[20]">20</property>
+        <property name="id" tag="property" attribute="name|id" value="$NUMBER[21]">21</property>
+        <property name="id" tag="property" attribute="name|id" value="$NUMBER[22]">22</property>
+        <property name="id" tag="property" attribute="name|id" value="$NUMBER[23]">23</property>
+        <property name="id" tag="property" attribute="name|id" value="$NUMBER[24]">24</property>
+        <property name="id" tag="property" attribute="name|id" value="$NUMBER[25]">25</property>
+        <property name="id" tag="property" attribute="name|id" value="$NUMBER[26]">26</property>
+        <property name="id" tag="property" attribute="name|id" value="$NUMBER[27]">27</property>
+        <property name="id" tag="property" attribute="name|id" value="$NUMBER[28]">28</property>
+        <property name="id" tag="property" attribute="name|id" value="$NUMBER[29]">29</property>
+        <property name="id">30</property>
+        <controls>
+            <include content="View_Cast_Toplabel">
+                <param name="groupid" value="$PYTHON[int(mainid)]$PYTHON[int(id) + 7500]" />
+                <param name="id" value="$PYTHON[int(mainid)]$PYTHON[int(id) + 3100]" />
+                <param name="label" value="$SKINSHORTCUTS[widgetName]" />
+                <visible>String.IsEqual(Container(301).ListItem.Property(submenuVisibility),num-$SKINSHORTCUTS[submenuVisibility]) | String.IsEqual(Container(301).ListItem.Property(submenuVisibility),$SKINSHORTCUTS[submenuVisibility])</visible>
+            </include>
+            <include content="Object_Widget_Spotlight">
+                <param name="id" value="$PYTHON[int(mainid)]$PYTHON[int(id) + 3100]" />
+                <param name="top" value="52" />
+                <param name="left" value="0" />
+                <param name="right" value="-30" />
+                <param name="height" value="360.5" />
+                <param name="orientation" value="horizontal" />
+                <param name="labelinclude" value="Defs_Null" />
+                <param name="landscapelabelinclude" value="Defs_Null" />
+                <param name="target" value="$SKINSHORTCUTS[widgetTarget]" />
+                <param name="content" value="$SKINSHORTCUTS[widgetPath]" />
+                <param name="squarecondition" value="$PYTHON['true' if widgetAspect in 'Square' else 'false']" />
+                <param name="landscapecondition" value="$PYTHON['true' if widgetAspect in 'Landscape' else 'false']" />
+                <param name="iconcondition" value="$PYTHON['true' if widgetAspect in 'Icon' else 'false']" />
+                <onback>301</onback>
+                <onleft>301</onleft>
+                <onright>noop</onright>
+                <!-- <onright>$PYTHON[int(mainid)]$PYTHON[int(id) + 3100]</onright> -->
+                <visible>Integer.IsGreater(Container($PYTHON[int(mainid)]$PYTHON[int(id) + 3100]).NumItems,0) | Container($PYTHON[int(mainid)]$PYTHON[int(id) + 3100]).IsUpdating</visible>
+                <visible>String.IsEqual(Container(301).ListItem.Property(submenuVisibility),num-$SKINSHORTCUTS[submenuVisibility]) | String.IsEqual(Container(301).ListItem.Property(submenuVisibility),$SKINSHORTCUTS[submenuVisibility])</visible>
+            </include>
+        </controls>
+    </submenuOther>
+
     <submenuOther include="spotlight" container="302">
         <property name="widgetAspect" tag="property" attribute="name|widgetAspect" />
         <property name="widgetTarget" tag="property" attribute="name|widgetTarget" />
@@ -10,6 +118,9 @@
                 <param name="target" value="$SKINSHORTCUTS[widgetTarget]" />
                 <param name="content" value="$SKINSHORTCUTS[widgetPath]" />
                 <skinshortcuts>visibility</skinshortcuts>
+                <onup>302</onup>
+                <onback condition="Window.IsVisible(Home)">301</onback>
+                <ondown>noop</ondown>
             </include>
         </controls>
     </submenuOther>
@@ -23,8 +134,34 @@
                 <param name="target" value="$SKINSHORTCUTS[widgetTarget]" />
                 <param name="content" value="$SKINSHORTCUTS[widgetPath]" />
                 <skinshortcuts>visibility</skinshortcuts>
+                <onup>302</onup>
+                <onback condition="Window.IsVisible(Home)">301</onback>
+                <ondown>noop</ondown>
                 <visible>String.IsEmpty(Container(302).ListItem.Property(widgetPath))</visible>
             </include>
+        </controls>
+    </other>
+
+    <other include="global">
+        <property name="widgetTarget" tag="property" attribute="name|widgetTarget.backgroundWidget" />
+        <property name="widgetPath" tag="property" attribute="name|widgetPath.backgroundWidget" />
+        <property name="widgetTarget">$VAR[Defs_WidgetTarget]</property>
+        <property name="widgetPath">$VAR[Defs_WidgetPath]</property>
+        <controls>
+            <control type="wraplist" id="5600">
+                <height>100</height>
+                <top>0</top>
+                <onfocus>SetProperty(SkinHelper.WidgetContainer,5600,Home)</onfocus>
+                <onup>301</onup>
+                <ondown>301</ondown>
+                <onback>301</onback>
+                <autoscroll time="10000">[Control.HasFocus(301) | Control.HasFocus(302)] + System.IdleTime(1)</autoscroll>
+                <orientation>horizontal</orientation>
+                <itemlayout />
+                <focusedlayout />
+                <content limit="25" target="$SKINSHORTCUTS[widgetTarget]">$SKINSHORTCUTS[widgetPath]</content>
+                <skinshortcuts>visibility</skinshortcuts>
+            </control>
         </controls>
     </other>
 </template>

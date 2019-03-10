@@ -10,6 +10,8 @@
         <include>Topbar</include>
         
         <control type="group">
+            <visible allowhiddenfocus="true">!$EXP[Exp_HideFurniture]</visible>
+            <include>Animation_FadeInOut</include>
             <include>View_50_List</include>
             <include>View_500_List_Square</include>
             <include>View_501_List_MediaInfo</include>
@@ -29,7 +31,11 @@
             <include>View_53_Poster</include>
 
             <include content="Object_Scrollbar_Vert">
-                <param name="visible" value="Control.IsVisible(50) | Control.IsVisible(500) | Control.IsVisible(51) | Control.IsVisible(510) | Control.IsVisible(511) | Control.IsVisible(501) | Control.IsVisible(502)" />
+                <param name="visible" value="Control.IsVisible(50) | Control.IsVisible(500) | Control.IsVisible(501) | Control.IsVisible(502) | Control.IsVisible(503) | Control.IsVisible(51) | Control.IsVisible(510) | Control.IsVisible(511) | Control.IsVisible(512) | Control.IsVisible(513) | Control.IsVisible(514)" />
+            </include>
+
+            <include content="Object_Scrollbar_Horz">
+                <param name="visible" value="Control.IsVisible(52) | Control.IsVisible(520) | Control.IsVisible(521) | Control.IsVisible(522) | Control.IsVisible(523) | Control.IsVisible(53)" />
             </include>
         </control>
 

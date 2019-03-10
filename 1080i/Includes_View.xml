@@ -1,6 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
 
+    <include name="View_FlipSides_Right">
+        <right>-30</right>
+    </include>
+    <include name="View_FlipSides_Left">
+        <left>0</left>
+    </include>
+    <include name="View_FlipSides">
+        <include condition="!Skin.HasSetting(FlipSide)">View_FlipSides_Right</include>
+        <include condition="Skin.HasSetting(FlipSide)">View_FlipSides_Left</include>
+    </include>
+
+    <include name="View_Wall_FlipSides_Right">
+        <left>-15</left>
+    </include>
+    <include name="View_Wall_FlipSides_Left">
+        <right>-15</right>
+    </include>
+    <include name="View_Wall_FlipSides">
+        <include condition="!Skin.HasSetting(FlipSide)">View_Wall_FlipSides_Right</include>
+        <include condition="Skin.HasSetting(FlipSide)">View_Wall_FlipSides_Left</include>
+    </include>
+
+    <include name="View_Settings_Itemlayout">
+        <param name="icon" default="$INFO[ListItem.Icon]" />
+        <param name="labelinclude" default="View_51_Wall_Label" />
+        <param name="aspectratio" default="scale" />
+        <param name="diffuse" default="diffuse/214x315.png" /> <!-- FIX ME -->
+        <definition>
+            <control type="group">
+                <include content="Object_Geometric">
+                    <param name="diffuse" value="$PARAM[diffuse]" />
+                </include>
+                <control type="image">
+                    <top>20</top>
+                    <centerleft>50%</centerleft>
+                    <width>128</width>
+                    <height>128</height>
+                    <texture>$INFO[ListItem.Icon]</texture>
+                </control>
+                <control type="label">
+                    <left>15</left>
+                    <right>15</right>
+                    <font>font_tiny_bold</font>
+                    <textcolor>panel_fg_100</textcolor>
+                    <height>30</height>
+                    <bottom>40</bottom>
+                    <aligny>center</aligny>
+                    <align>center</align>
+                    <label>$VAR[Label_IconWall]</label>
+                </control>
+                <control type="group">
+                    <visible>Control.HasFocus($PARAM[id])</visible>
+                    <include condition="$PARAM[selectbox]">View_Selectbox</include>
+                </control>
+            </control>
+            
+        </definition>
+    </include>
+
     <include name="View_PVR_Guide_Icon">
         <control type="epggrid" id="10" description="EPG">
             <onup>11</onup>
@@ -226,43 +285,59 @@
     <include name="View_Cast_Toplabel">
         <param name="altid" default="999999" />
         <definition>
-            <control type="grouplist" id="$PARAM[groupid]">
+            <control type="group" id="$PARAM[groupid]">
                 <top>52</top>
                 <height>52</height>
-                <orientation>horizontal</orientation>
-                <usecontrolcoords>true</usecontrolcoords>
-                <itemgap>10</itemgap>
                 <visible>Control.IsVisible($PARAM[id])</visible>
-                <control type="label">
-                    <top>20</top>
-                    <left>15</left>
-                    <width>auto</width>
-                    <label>$PARAM[label]</label>
-                    <aligny>center</aligny>
-                    <textcolor>main_fg_100</textcolor>
-                    <font>font_tiny_bold</font>
-                    <height>24</height>
+                <nested />
+                <control type="group">
+                    <top>52</top>
+                    <height>360.5</height>
+                    <include content="Defs_BusySpinner">
+                        <param name="label" value="$LOCALIZE[31428]..." />
+                        <param name="textcolor" value="main_fg_100" />
+                    </include>
+                    <visible>Container($PARAM[id]).IsUpdating</visible>
                 </control>
-                <control type="label">
-                    <top>20</top>
-                    <width>auto</width>
-                    <label>|</label>
-                    <aligny>center</aligny>
-                    <textcolor>$VAR[ColorHighlight]</textcolor>
-                    <font>font_tiny_bold</font>
-                    <height>24</height>
-                    <visible>Control.HasFocus($PARAM[id]) | Control.HasFocus($PARAM[altid])</visible>
-                    <visible>!String.IsEmpty(Container($PARAM[id]).ListItem.Label)</visible>
-                </control>
-                <control type="label">
-                    <top>20</top>
-                    <width>auto</width>
-                    <label>$INFO[Container($PARAM[id]).ListItem.Label]</label>
-                    <aligny>center</aligny>
-                    <textcolor>main_fg_100</textcolor>
-                    <font>font_tiny</font>
-                    <height>24</height>
-                    <visible>Control.HasFocus($PARAM[id]) | Control.HasFocus($PARAM[altid])</visible>
+                <control type="grouplist">
+                    <height>52</height>
+                    <orientation>horizontal</orientation>
+                    <usecontrolcoords>true</usecontrolcoords>
+                    <itemgap>10</itemgap>
+                    <control type="label">
+                        <top>20</top>
+                        <left>15</left>
+                        <width>auto</width>
+                        <label>$PARAM[label]</label>
+                        <aligny>center</aligny>
+                        <textcolor>main_fg_100</textcolor>
+                        <font>font_tiny_bold</font>
+                        <height>24</height>
+                        <visible>Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating</visible>
+                    </control>
+                    <control type="label">
+                        <top>20</top>
+                        <width>auto</width>
+                        <label>|</label>
+                        <aligny>center</aligny>
+                        <textcolor>$VAR[ColorHighlight]</textcolor>
+                        <font>font_tiny_bold</font>
+                        <height>24</height>
+                        <visible>Control.HasFocus($PARAM[id]) | Control.HasFocus($PARAM[altid])</visible>
+                        <visible>!String.IsEmpty(Container($PARAM[id]).ListItem.Label)</visible>
+                        <visible>Integer.IsGreater(Container($PARAM[id]).NumItems,0) + !Container($PARAM[id]).IsUpdating</visible>
+                    </control>
+                    <control type="label">
+                        <top>20</top>
+                        <width>auto</width>
+                        <label>$INFO[Container($PARAM[id]).ListItem.Label]</label>
+                        <aligny>center</aligny>
+                        <textcolor>main_fg_100</textcolor>
+                        <font>font_tiny</font>
+                        <height>24</height>
+                        <visible>Control.HasFocus($PARAM[id]) | Control.HasFocus($PARAM[altid])</visible>
+                        <visible>Integer.IsGreater(Container($PARAM[id]).NumItems,0) + !Container($PARAM[id]).IsUpdating</visible>
+                    </control>
                 </control>
             </control>
         </definition>
@@ -353,7 +428,7 @@
     </include>
     <include name="View_Horizontal_Movement">
         <onup>SetFocus(300)</onup>
-        <ondown>60</ondown>
+        <ondown>62</ondown>
     </include>
 
     <include name="View_PVR_Channels">    
@@ -496,7 +571,7 @@
         <param name="textbox_height" default="100" />
         <param name="itemlayout" default="View_TopItems_Itemlayout" />
         <param name="id" default="5600" />
-        <param name="diffuse" default="diffuse/640x360.png" /> <!-- FIX THIS -->
+        <param name="diffuse" default="diffuse/214x164.png" /> <!-- FIX THIS -->
         <definition>
             <top>-15</top>
             <left>-15</left>
@@ -538,6 +613,64 @@
                     </control>
                 </include>
             </focusedlayout>
+        </definition>
+    </include>
+
+    <include name="View_Settings">
+        <param name="animation" default="Defs_Null" />
+        <definition>
+            <control type="group">
+                <animation effect="fade" start="100" end="0" time="300" condition="!Window.IsVisible(Settings.xml)">WindowOpen</animation>
+                <include content="View_Group">
+                    <param name="animation" value="$PARAM[animation]" />
+                </include>
+                <include content="View_51_Wall_Container">
+                    <param name="id" value="5000" />
+                    <param name="height" value="275" />
+                    <param name="itemlayout" value="View_Settings_Itemlayout" />
+                    <param name="itemwidth" value="427.5" />
+                    <param name="itemheight" value="225" />
+                    <param name="iconheight" value="225" />
+                    <param name="diffuse" value="diffuse/312x190.png" />
+                    <param name="forced" value="false" />
+                    <param name="visible" value="true" />
+                    <param name="orientation" value="horizontal" />
+                    <ondown condition="Container(5000).Column(0)">SetFocus(5100,0)</ondown>
+                    <ondown condition="Container(5000).Column(1)">SetFocus(5100,1)</ondown>
+                    <ondown condition="Container(5000).Column(2)">SetFocus(5100,2)</ondown>
+                    <ondown condition="Container(5000).Column(3)">SetFocus(5100,3)</ondown>
+                    <include>Items_Settings_System</include>
+                </include>
+                <control type="group">
+                    <top>360</top>
+                    <control type="label">
+                        <top>-80</top>
+                        <height>40</height>
+                        <align>center</align>
+                        <font>font_byline</font>
+                        <textcolor>main_fg_70</textcolor>
+                        <label>Settings</label>
+                    </control>
+                    <include content="View_51_Wall_Container">
+                        <param name="id" value="5100" />
+                        <param name="height" value="550" />
+                        <param name="itemlayout" value="View_Settings_Itemlayout" />
+                        <param name="itemwidth" value="427.5" />
+                        <param name="itemheight" value="225" />
+                        <param name="iconheight" value="225" />
+                        <param name="diffuse" value="diffuse/312x190.png" />
+                        <param name="forced" value="false" />
+                        <param name="visible" value="true" />
+                        <param name="orientation" value="vertical" />
+                        <onup condition="Container(5100).Column(0)">SetFocus(5000,0)</onup>
+                        <onup condition="Container(5100).Column(1)">SetFocus(5000,1)</onup>
+                        <onup condition="Container(5100).Column(2)">SetFocus(5000,2)</onup>
+                        <onup condition="Container(5100).Column(3)">SetFocus(5000,3)</onup>
+                        <ondown>noop</ondown>
+                        <include>Items_Settings_Main</include>
+                    </include>
+                </control>
+            </control>
         </definition>
     </include>
 
@@ -640,19 +773,31 @@
     <include name="View_Selectbox">
         <param name="overlay" default="true" />
         <param name="pad" default="-7" />
+        <param name="colordiffuse" default="$VAR[ColorHighlight2]" />
+        <param name="focusbounce" default="true" />
         <definition>
             <control type="group">
-                <left>$PARAM[pad]</left>
-                <top>$PARAM[pad]</top>
-                <right>$PARAM[pad]</right>
-                <bottom>$PARAM[pad]</bottom>
-                <control type="image">
-                    <bordersize>15</bordersize>
-                    <bordertexture border="30" colordiffuse="55ffffff">common/shadow-15.png</bordertexture>
-                    <texture border="20" colordiffuse="$VAR[ColorHighlight2]">common/selectbox.png</texture>
+                <animation type="Focus" condition="$PARAM[focusbounce]">
+                    <effect type="zoom" start="90" end="100" time="150" tween="sine" easing="inout" center="auto" />
+                    <effect type="fade" start="0" end="100" time="150" tween="sine" easing="in" />
+                </animation>
+                <animation type="Unfocus" condition="$PARAM[focusbounce]">
+                    <effect type="zoom" start="100" end="90" time="150" tween="sine" easing="inout" center="auto" />
+                    <effect type="fade" start="100" end="0" time="150" tween="sine" easing="out" />
+                </animation>
+                <control type="group">
+                    <left>$PARAM[pad]</left>
+                    <top>$PARAM[pad]</top>
+                    <right>$PARAM[pad]</right>
+                    <bottom>$PARAM[pad]</bottom>
+                    <control type="image">
+                        <bordersize>15</bordersize>
+                        <bordertexture border="30" colordiffuse="55ffffff">common/shadow-15.png</bordertexture>
+                        <texture border="20" colordiffuse="$PARAM[colordiffuse]">common/selectbox.png</texture>
+                    </control>
                 </control>
+                <include condition="$PARAM[overlay]">View_WatchedOverlay_Focus</include>
             </control>
-            <include condition="$PARAM[overlay]">View_WatchedOverlay_Focus</include>
         </definition>
     </include>
 

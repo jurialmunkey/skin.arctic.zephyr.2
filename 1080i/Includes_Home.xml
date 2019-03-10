@@ -1,77 +1,162 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
+    <include name="Home_Menu">
+        <control type="group">
+            <top>55</top>
+            <control type="grouplist">
+                <itemgap>30</itemgap>
+                <height>70</height>
+                <left>view_pad</left>
+                <orientation>horizontal</orientation>
+                <visible>Window.IsVisible(Home) + !$EXP[Exp_InfoVisible]</visible>
+                <usecontrolcoords>true</usecontrolcoords>
+                <include content="Home_Menu_Item">
+                    <param name="visible" value="Integer.IsGreater(Container(301).NumItems,0)" />
+                    <param name="id" value="301" />
+                    <param name="pos" value="0" />
+                </include>
+                <include content="Home_Menu_Item">
+                    <param name="visible" value="Integer.IsGreater(Container(301).NumItems,1)" />
+                    <param name="id" value="301" />
+                    <param name="pos" value="1" />
+                </include>
+                <include content="Home_Menu_Item">
+                    <param name="visible" value="Integer.IsGreater(Container(301).NumItems,2)" />
+                    <param name="id" value="301" />
+                    <param name="pos" value="2" />
+                </include>
+                <include content="Home_Menu_Item">
+                    <param name="visible" value="Integer.IsGreater(Container(301).NumItems,3)" />
+                    <param name="id" value="301" />
+                    <param name="pos" value="3" />
+                </include>
+                <include content="Home_Menu_Item">
+                    <param name="visible" value="Integer.IsGreater(Container(301).NumItems,4)" />
+                    <param name="id" value="301" />
+                    <param name="pos" value="4" />
+                </include>
+                <include content="Home_Menu_Item">
+                    <param name="visible" value="Integer.IsGreater(Container(301).NumItems,5)" />
+                    <param name="id" value="301" />
+                    <param name="pos" value="5" />
+                </include>
+                <include content="Home_Menu_Item">
+                    <param name="visible" value="Integer.IsGreater(Container(301).NumItems,6)" />
+                    <param name="id" value="301" />
+                    <param name="pos" value="6" />
+                </include>
+                <include content="Home_Menu_Item">
+                    <param name="visible" value="Integer.IsGreater(Container(301).NumItems,7)" />
+                    <param name="id" value="301" />
+                    <param name="pos" value="7" />
+                </include>
+                <include content="Home_Menu_Item">
+                    <param name="visible" value="Integer.IsGreater(Container(301).NumItems,8)" />
+                    <param name="id" value="301" />
+                    <param name="pos" value="8" />
+                </include>
+                <include content="Home_Menu_Item">
+                    <param name="visible" value="Integer.IsGreater(Container(301).NumItems,9)" />
+                    <param name="id" value="301" />
+                    <param name="pos" value="9" />
+                </include>
+                <include content="Home_Menu_Item">
+                    <param name="visible" value="Integer.IsGreater(Container(301).NumItems,10)" />
+                    <param name="id" value="301" />
+                    <param name="pos" value="10" />
+                </include>
+                <include content="Home_Menu_Item">
+                    <param name="visible" value="Integer.IsGreater(Container(301).NumItems,11)" />
+                    <param name="id" value="301" />
+                    <param name="pos" value="11" />
+                </include>
+                <include content="Home_Menu_Item">
+                    <param name="visible" value="Integer.IsGreater(Container(301).NumItems,12)" />
+                    <param name="id" value="301" />
+                    <param name="pos" value="12" />
+                </include>
+            </control>
+        </control>
+    </include>
+
+    <include name="Home_Menu_Item">
+        <control type="button">
+            <width>auto</width>
+            <align>left</align>
+            <height>70</height>
+            <font>font_topbar_small</font>
+            <textcolor>main_fg_100</textcolor>
+            <onfocus>SetFocus($PARAM[id],$PARAM[pos])</onfocus>
+            <onclick>$INFO[Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Property(path)]</onclick>
+            <texturefocus />
+            <texturenofocus />
+            <textoffsetx>0</textoffsetx>
+            <animation effect="fade" start="100" end="33" condition="!String.IsEqual(Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Label,Container($PARAM[id]).ListItemAbsolute.Label)">Conditional</animation>
+            <label>$INFO[Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Label]</label>
+            <visible>!String.IsEqual(Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Label,Container($PARAM[id]).ListItem.Label)</visible>
+            <visible>$PARAM[visible]</visible>
+        </control>
+        <control type="button">
+            <width>auto</width>
+            <align>left</align>
+            <height>70</height>
+            <font>font_topbar</font>
+            <textcolor>main_fg_100</textcolor>
+            <onfocus>SetFocus($PARAM[id],$PARAM[pos])</onfocus>
+            <onclick>$INFO[Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Property(path)]</onclick>
+            <texturefocus />
+            <texturenofocus />
+            <textoffsetx>0</textoffsetx>
+            <animation effect="fade" start="100" end="33" condition="!String.IsEqual(Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Label,Container($PARAM[id]).ListItemAbsolute.Label)">Conditional</animation>
+            <label>$INFO[Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Label]</label>
+            <visible>String.IsEqual(Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Label,Container($PARAM[id]).ListItem.Label)</visible>
+            <visible>$PARAM[visible]</visible>
+        </control>
+    </include>
+
     <include name="Home_Simple">
-        
+        <!-- Fake Menu -->
         <control type="list" id="301">
-            <ondown condition="Integer.IsGreater(Container(302).NumItems,0)">302</ondown>
+            <ondown condition="Integer.IsGreater(Container(302).NumItems,0) + !Skin.HasSetting(SubmenuOnly)">ActivateWindow(1135)</ondown>
+            <ondown condition="Integer.IsGreater(Container(302).NumItems,0) + Skin.HasSetting(SubmenuOnly)">302</ondown>
             <onup>5600</onup>
             <onfocus>ClearProperty(WidgetFocus,Home)</onfocus>
             <onfocus>ClearProperty(WidgetLoading,Home)</onfocus>
             <onfocus>AlarmClock(SetLoad,SetProperty(WidgetLoading,1,Home),00:00,silent)</onfocus>
             <orientation>horizontal</orientation>
             <height>10</height>
-            <top>-1000</top>
-            <itemlayout width="10" />
-            <focusedlayout width="10" />
+            <bottom>-100</bottom>
+            <itemlayout width="200" />
+            <focusedlayout width="200" />
             <content><include>skinshortcuts-mainmenu</include></content>
         </control>
-
-
-        <control type="image">
-            <texture colordiffuse="Background">common/bg.jpg</texture>
-        </control>
         
-        <control type="wraplist" id="5600">
-            <include>Animation_FadeIn</include>
-            <include>Animation_FadeOut</include>
-            <height>1080</height>
-            <width>1920</width>
-            <onfocus>SetProperty(SkinHelper.WidgetContainer,5600,Home)</onfocus>
-            <onup>301</onup>
-            <ondown>301</ondown>
-            <onback>301</onback>
-            <autoscroll time="7000">Control.HasFocus(301) + System.IdleTime(1)</autoscroll>
-            <orientation>horizontal</orientation>
-            <itemlayout width="1920" height="1080">
-                <control type="image">
-                    <aspectratio>scale</aspectratio>
-                    <texture colordiffuse="Background">common/bg.jpg</texture>
-                </control>
-                <control type="image">
-                    <centerleft>50%</centerleft>
-                    <top>0</top>
-                    <width>1920</width>
-                    <height>1080</height>
-                    <aspectratio>scale</aspectratio>
-                    <texture background="true">$INFO[ListItem.Art(fanart)]</texture>
-                </control>
-            </itemlayout>
-            <focusedlayout width="1920" height="1080">
-                <control type="image">
-                    <aspectratio>scale</aspectratio>
-                    <texture colordiffuse="Background">common/bg.jpg</texture>
-                </control>
-                <control type="image">
-                    <centerleft>50%</centerleft>
-                    <top>0</top>
-                    <width>1920</width>
-                    <height>1080</height>
-                    <aspectratio>scale</aspectratio>
-                    <texture background="true">$INFO[ListItem.Art(fanart)]</texture>
-                </control>
-            </focusedlayout>
-            <content limit="50" target="videos" sortby="lastplayed" sortorder="descending">videodb://movies/titles/</content>
-        </control>
+        <!-- Global Widget -->
+        <include>skinshortcuts-template-global</include>
 
-        <control type="image">
-            <include>Animation_FadeIn</include>
-            <include>Animation_FadeOut</include>
+        <!-- Background -->
+        <control type="multiimage" id="7975">
+            <left>-2160</left>
+            <width>1</width>
+            <height>1</height>
+            <timeperimage>7000</timeperimage>
+            <randomize>true</randomize>
+            <fadetime>600</fadetime>
+            <imagepath background="true">$VAR[Global_Background_Image_Var]</imagepath>
+            <visible>System.HasAddon(script.colorbox)</visible>
+            <visible>Skin.HasSetting(EnableBlur)</visible>
+        </control>
+        <include condition="Skin.HasSetting(global.showvideo)">Global_Videowindow</include>
+        <include condition="Skin.HasSetting(global.showvisualisation)">Global_Visualisation</include>
+        <control type="multiimage">
+            <timeperimage>10000</timeperimage>
+            <randomize>true</randomize>
             <width>1920</width>
             <height>1080</height>
             <aspectratio>scale</aspectratio>
             <fadetime>600</fadetime>
-            <animation effect="fade" start="100" end="0" time="600" condition="!Control.HasFocus(5610)">Conditional</animation>
-            <texture background="true">$INFO[Container(5610).ListItem.Art(fanart)]</texture>
+            <imagepath background="true">$VAR[Global_Background_Image]</imagepath>
+            <visible>$EXP[Exp_GlobalBackground]</visible>
         </control>
 
         <control type="group">
@@ -81,33 +166,48 @@
             <animation effect="slide" start="0" end="0,-285" time="350" tween="quadratic" easing="out" condition="[Control.HasFocus(5610) | Control.HasFocus(302)] + Skin.HasSetting(SubmenuOnly)">Conditional</animation>
 
             <animation effect="slide" start="0" end="0,-275" time="250" tween="quadratic" easing="out" condition="Control.HasFocus(5600)">Conditional</animation>
-            <animation effect="slide" start="0" end="0,-625" time="300" tween="quadratic" easing="out" condition="Control.HasFocus(5600) + $EXP[Exp_Info_Visible]">Conditional</animation>
-            <animation effect="slide" start="0" end="0,-900" time="300" tween="quadratic" condition="![Control.HasFocus(5610) | Control.HasFocus(302)]">WindowClose</animation>
-            <animation effect="slide" end="0" start="0,-900" time="300" tween="quadratic" condition="![Control.HasFocus(5610) | Control.HasFocus(302)]">WindowOpen</animation>
+            <animation effect="slide" start="0" end="0,-625" time="300" tween="quadratic" easing="out" condition="Control.HasFocus(5600) + $EXP[Exp_InfoVisible]">Conditional</animation>
+            <animation effect="slide" start="0" end="0,-900" time="300" tween="quadratic" condition="![Control.HasFocus(5610) | Control.HasFocus(302) | Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(DialogAddonInfo.xml)]">WindowClose</animation>
+            <animation effect="slide" end="0" start="0,-900" time="300" tween="quadratic" condition="![Control.HasFocus(5610) | Control.HasFocus(302) | Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(DialogAddonInfo.xml)]">WindowOpen</animation>
             <animation effect="slide" start="0" end="0,-615" time="300" tween="quadratic" condition="Control.HasFocus(302) + !Control.IsVisible(5610)">WindowClose</animation>
             <animation effect="slide" end="0" start="0,-615" time="300" tween="quadratic" condition="Control.HasFocus(302) + !Control.IsVisible(5610)">WindowOpen</animation>
+            <!-- Back Panel -->
             <control type="image">
                 <texture colordiffuse="HomePanel">common/bg.jpg</texture>
             </control>
+            <!-- Topbar For Submenu or Widget -->
             <control type="group">
-                <visible>[Control.HasFocus(5610) | Control.HasFocus(302)] + !$EXP[Exp_Info_Visible]</visible>
-                <animation effect="fade" time="100" delay="0" start="100" end="0">Hidden</animation>
+                <visible>[Control.HasFocus(5610) | Control.HasFocus(302)] + !$EXP[Exp_InfoVisible]</visible>
+                <animation effect="fade" time="200" start="100" end="0">Hidden</animation>
+                <animation effect="fade" time="200" start="0" end="100">Visible</animation>
+                <include content="Topbar">
+                    <param name="info_hide" value="false" />
+                </include>
+            </control>
+            <!-- Fake Topbar for Transition Animation -->
+            <control type="group">
+                <animation effect="fade" start="0" end="100" time="200">WindowClose</animation>
+                <animation effect="fade" start="100" end="0" time="200">WindowOpen</animation>
                 <include content="Topbar">
                     <param name="info_hide" value="false" />
                 </include>
             </control>
             <!-- Menubar -->
             <control type="group">
-                <animation effect="fade" start="100" end="0" time="100" condition="!Control.HasFocus(301)" reversible="false">Conditional</animation>
-                <animation effect="fade" start="0" end="100" delay="0" time="100" condition="Control.HasFocus(301)" reversible="false">Conditional</animation>
+                <animation effect="fade" start="100" end="0" time="200" condition="Control.HasFocus(302) | Control.HasFocus(5600)" reversible="false">Conditional</animation>
+                <animation effect="fade" start="0" end="100" time="200" condition="![Control.HasFocus(302) | Control.HasFocus(5600)]" reversible="false">Conditional</animation>
+                <animation effect="fade" start="100" end="0" time="200">WindowClose</animation>
+                <animation effect="fade" start="0" end="100" time="200">WindowOpen</animation>
                 <include>Defs_InfoDialog_Visible</include>
-                <include>Topbar_Home_TextButtons</include>
+                <include>Home_Menu</include>
                 <control type="group">
                     <top>30</top>
                     <height>view_pad</height>
                     <visible allowhiddenfocus="true">!$EXP[Exp_HideFurniture]</visible>
                     <include>Animation_FadeInOut</include>
-                    <include>Topbar_Right</include>
+                    <include content="Topbar_Right">
+                        <param name="fgcolor" value="main_fg" />
+                    </include>
                 </control>
             </control>
             <!-- Up Widget -->
@@ -126,7 +226,7 @@
                         <align>center</align>
                         <font>font_byline</font>
                         <textcolor>main_fg_70</textcolor>
-                        <label>Random Movies</label>
+                        <label fallback="spotlight">$INFO[Container(301).ListItem.Property(widgetName.backgroundWidget)]</label>
                         <height>30</height>
                     </control>
                     <control type="label">
@@ -175,6 +275,7 @@
         <definition>
             <control type="panel" id="302">
                 <nested />
+                <scrolltime tween="quadratic">400</scrolltime>
                 <ondown>5610</ondown>
                 <include content="View_TopItems">
                     <param name="id" value="302" />
@@ -191,11 +292,9 @@
                 <label>$VAR[Label_WidgetName]</label>
                 <visible>$PARAM[widget]</visible>
             </control>
-
             <include condition="$PARAM[widget]">skinshortcuts-template-spotlight</include>
         </definition>
     </include>
-
 
     <include name="Home_Vertical">
         <include>Global_Background</include>
@@ -205,7 +304,7 @@
                 <param name="animation" value="Defs_Null" />
             </include>
             <control type="grouplist">
-                <animation effect="slide" start="0" end="-244.28" time="200" condition="ControlGroup(3100).HasFocus()">Conditional</animation>
+                <animation effect="slide" start="0" end="-244.28" time="200" condition="ControlGroup(3000).HasFocus()">Conditional</animation>
                 <top>-15</top>
                 <right>-415</right>
                 <left>-15</left>
@@ -217,9 +316,9 @@
                     <include>Animation_Left</include>
                     <include>Defs_InfoDialog_Visible</include>
                     <left>15</left>
-                    <animation effect="fade" start="100" end="0" time="200" condition="ControlGroup(3100).HasFocus()">Conditional</animation>
+                    <animation effect="fade" start="100" end="0" time="200" condition="ControlGroup(3000).HasFocus()">Conditional</animation>
                     <top>-7</top>
-                    <onright>3100</onright>
+                    <onright>3000</onright>
                     <width>194.28</width>
                     <orientation>vertical</orientation>                
                     <itemlayout width="194.28" height="view_list_height">
@@ -260,11 +359,11 @@
                     </focusedlayout>
                     <content><include>skinshortcuts-mainmenu</include></content>
                 </control>
-                <control type="grouplist" id="3100">
+                <control type="grouplist" id="3000">
                     <include>Animation_Right</include>
                     <include>Defs_InfoDialog_Visible</include>
-                    <onup>301</onup>
-                    <ondown>301</ondown>
+                    <onup>noop</onup>
+                    <ondown>noop</ondown>
                     <onleft>301</onleft>
                     <scrolltime tween="quadratic">400</scrolltime>
                     <height>825</height>
@@ -272,66 +371,9 @@
                     <orientation>vertical</orientation>
                     <itemgap>-52</itemgap>
                     <usecontrolcoords>true</usecontrolcoords>
-                    <control type="group" id="7599"><height>0</height></control>
-                    <include content="View_Cast_Toplabel">
-                        <param name="groupid" value="7500" />
-                        <param name="id" value="3101" />
-                        <param name="label" value="Random Movies" />
-                    </include>
-                    <include content="View_51_Wall_Container">
-                        <param name="controllayout" value="View_Cast" />
-                        <param name="id" value="3101" />
-                        <param name="height" value="360.5" />
-                        <param name="itemwidth" value="570" />
-                        <param name="itemheight" value="423.75" />
-                        <param name="iconheight" value="333.75" />
-                        <param name="icon" value="$VAR[Image_Fanart]" />
-                        <param name="diffuse" value="diffuse/540x304.png" />
-                        <param name="orientation" value="horizontal" />
-                        <param name="clearlogo" value="true" />
-                        <param name="labelinclude" value="Defs_Null" />
-                        <param name="onleft" value="301" />
-                        <param name="onright" value="3101" />
-                        <param name="visible" value="Integer.IsGreater(Container(3101).NumItems,0) | Container(3101).IsUpdating" />
-                        <content target="videos" limit="25" sortby="lastplayed" sortorder="descending">videodb://movies/titles/</content>
-                        <content target="videos" limit="25" sortby="random">videodb://movies/titles/</content>
-                        <onback>301</onback>
-                    </include>
-                    <include content="View_Cast_Toplabel">
-                        <param name="groupid" value="7501" />
-                        <param name="id" value="3102" />
-                        <param name="label" value="Recently Added Movies" />
-                    </include>
-                    <include content="View_51_Wall_Container">
-                        <param name="controllayout" value="View_Cast" />
-                        <param name="id" value="3102" />
-                        <param name="height" value="360.5" />
-                        <param name="orientation" value="horizontal" />
-                        <param name="labelinclude" value="Defs_Null" />
-                        <param name="onleft" value="301" />
-                        <param name="onright" value="3102" />
-                        <param name="visible" value="Integer.IsGreater(Container(3102).NumItems,0) | Container(3102).IsUpdating" />
-                        <content target="videos" limit="25" sortby="dateadded" sortorder="descending">videodb://movies/titles/</content>
-                        <onback>301</onback>
-                    </include>
-
-                    <include content="View_Cast_Toplabel">
-                        <param name="groupid" value="7502" />
-                        <param name="id" value="3103" />
-                        <param name="label" value="Recently Played Movies" />
-                    </include>
-                    <include content="View_51_Wall_Container">
-                        <param name="controllayout" value="View_Cast" />
-                        <param name="id" value="3103" />
-                        <param name="height" value="360.5" />
-                        <param name="orientation" value="horizontal" />
-                        <param name="labelinclude" value="Defs_Null" />
-                        <param name="onleft" value="301" />
-                        <param name="onright" value="3103" />
-                        <param name="visible" value="Integer.IsGreater(Container(3103).NumItems,0) | Container(3103).IsUpdating" />
-                        <content target="videos" limit="25" sortby="lastplayed" sortorder="descending">videodb://movies/titles/</content>
-                        <onback>301</onback>
-                    </include>
+                    <control type="group" id="7999"><height>0</height></control>
+                    <include>skinshortcuts-template-vertical-main</include>
+                    <include>skinshortcuts-template-vertical-submenu</include>
                 </control>
             </control>
         </control>

@@ -30,12 +30,12 @@
 
             <include content="Object_Widget_Spotlight">
                 <param name="id" value="5610" />
-                <param name="onup" value="5600" />
                 <param name="target" value="$VAR[Defs_Target]" />
                 <param name="landscapecondition" value="String.IsEqual(Container(5610).ListItemAbsolute(0).DBType,episode) | String.IsEqual(Container(5610).ListItemAbsolute(0).DBType,video)" />
                 <param name="squarecondition" value="String.IsEqual(Container(5610).ListItemAbsolute(0).DBType,album) | String.IsEqual(Container(5610).ListItemAbsolute(0).DBType,artist) | String.IsEqual(Container(5610).ListItemAbsolute(0).DBType,song) | String.IsEqual(Container(5610).ListItemAbsolute(0).DBType,addon) | String.IsEqual(Container(5610).ListItemAbsolute(0).DBType,program) | String.IsEqual(Container(5610).ListItemAbsolute(0).DBType,image)" />
                 <param name="iconcondition" value="String.IsEqual(Container(5610).ListItemAbsolute(0).DBType,genre) | String.IsEqual(Container(5610).ListItemAbsolute(0).DBType,director) | String.IsEqual(Container(5610).ListItemAbsolute(0).DBType,studio) | String.IsEqual(Container(5610).ListItemAbsolute(0).DBType,country) | String.IsEqual(Container(5610).ListItemAbsolute(0).DBType,tag) | String.IsEqual(Container(5610).ListItemAbsolute(0).DBType,year)" />
                 <param name="content" value="$INFO[Container(5600).ListItem.FolderPath]" />
+                <onup>5600</onup>
                 <animation effect="fade" start="100" end="0" time="0" condition="Container(5610).IsUpdating">Conditional</animation>
             </include>
             <control type="group">

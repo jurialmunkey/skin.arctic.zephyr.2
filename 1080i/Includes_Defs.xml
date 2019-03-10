@@ -1,30 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
-
-    <variable name="Defs_InfoTrick_Title">
-        <value condition="!String.IsEmpty(Window(Home).Property(InfoTrick.9.Title))">$INFO[Window(Home).Property(InfoTrick.9.Title)]</value>
-        <value condition="!String.IsEmpty(Window(Home).Property(InfoTrick.8.Title))">$INFO[Window(Home).Property(InfoTrick.8.Title)]</value>
-        <value condition="!String.IsEmpty(Window(Home).Property(InfoTrick.7.Title))">$INFO[Window(Home).Property(InfoTrick.7.Title)]</value>
-        <value condition="!String.IsEmpty(Window(Home).Property(InfoTrick.6.Title))">$INFO[Window(Home).Property(InfoTrick.6.Title)]</value>
-        <value condition="!String.IsEmpty(Window(Home).Property(InfoTrick.5.Title))">$INFO[Window(Home).Property(InfoTrick.5.Title)]</value>
-        <value condition="!String.IsEmpty(Window(Home).Property(InfoTrick.4.Title))">$INFO[Window(Home).Property(InfoTrick.4.Title)]</value>
-        <value condition="!String.IsEmpty(Window(Home).Property(InfoTrick.3.Title))">$INFO[Window(Home).Property(InfoTrick.3.Title)]</value>
-        <value condition="!String.IsEmpty(Window(Home).Property(InfoTrick.2.Title))">$INFO[Window(Home).Property(InfoTrick.2.Title)]</value>
-        <value condition="!String.IsEmpty(Window(Home).Property(InfoTrick.1.Title))">$INFO[Window(Home).Property(InfoTrick.1.Title)]</value>
-        <value condition="!String.IsEmpty(Window(Home).Property(InfoTrick.0.Title))">$INFO[Window(Home).Property(InfoTrick.0.Title)]</value>
+    <variable name="Defs_Volume_Colordiffuse">
+        <value condition="Window.IsVisible(Home) + !Skin.HasSetting(VerticalHome) + ![Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(DialogAddonInfo.xml)]">panel_fg_100</value>
+        <value>main_fg_100</value>
     </variable>
 
-    <variable name="Defs_InfoTrick_Title_Debug">
-        <value condition="!String.IsEmpty(Window(Home).Property(InfoTrick.9.Title))">9$INFO[Window(Home).Property(InfoTrick.9.Title)]</value>
-        <value condition="!String.IsEmpty(Window(Home).Property(InfoTrick.8.Title))">8$INFO[Window(Home).Property(InfoTrick.8.Title)]</value>
-        <value condition="!String.IsEmpty(Window(Home).Property(InfoTrick.7.Title))">7$INFO[Window(Home).Property(InfoTrick.7.Title)]</value>
-        <value condition="!String.IsEmpty(Window(Home).Property(InfoTrick.6.Title))">6$INFO[Window(Home).Property(InfoTrick.6.Title)]</value>
-        <value condition="!String.IsEmpty(Window(Home).Property(InfoTrick.5.Title))">5$INFO[Window(Home).Property(InfoTrick.5.Title)]</value>
-        <value condition="!String.IsEmpty(Window(Home).Property(InfoTrick.4.Title))">4$INFO[Window(Home).Property(InfoTrick.4.Title)]</value>
-        <value condition="!String.IsEmpty(Window(Home).Property(InfoTrick.3.Title))">3$INFO[Window(Home).Property(InfoTrick.3.Title)]</value>
-        <value condition="!String.IsEmpty(Window(Home).Property(InfoTrick.2.Title))">2$INFO[Window(Home).Property(InfoTrick.2.Title)]</value>
-        <value condition="!String.IsEmpty(Window(Home).Property(InfoTrick.1.Title))">1$INFO[Window(Home).Property(InfoTrick.1.Title)]</value>
-        <value condition="!String.IsEmpty(Window(Home).Property(InfoTrick.0.Title))">0$INFO[Window(Home).Property(InfoTrick.0.Title)]</value>
+    <variable name="Defs_WidgetTarget">
+        <value>videos</value>
+    </variable>
+
+    <variable name="Defs_WidgetPath">
+        <value>special://skin/extras/playlists/RandomMovies.xsp</value>
+    </variable>
+
+    <variable name="Defs_InfoTrick_Title">
+        <value condition="!String.IsEmpty(Window(Home).Property(InfoTrick.9.Title))">$INFO[Window(Home).Property(InfoTrick.9.Title),videodb://movies/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22,%22%5D%7D%5D%7D%2C%22type%22%3A%22movies%22%7D]</value>
+        <value condition="!String.IsEmpty(Window(Home).Property(InfoTrick.8.Title))">$INFO[Window(Home).Property(InfoTrick.8.Title),videodb://movies/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22,%22%5D%7D%5D%7D%2C%22type%22%3A%22movies%22%7D]</value>
+        <value condition="!String.IsEmpty(Window(Home).Property(InfoTrick.7.Title))">$INFO[Window(Home).Property(InfoTrick.7.Title),videodb://movies/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22,%22%5D%7D%5D%7D%2C%22type%22%3A%22movies%22%7D]</value>
+        <value condition="!String.IsEmpty(Window(Home).Property(InfoTrick.6.Title))">$INFO[Window(Home).Property(InfoTrick.6.Title),videodb://movies/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22,%22%5D%7D%5D%7D%2C%22type%22%3A%22movies%22%7D]</value>
+        <value condition="!String.IsEmpty(Window(Home).Property(InfoTrick.5.Title))">$INFO[Window(Home).Property(InfoTrick.5.Title),videodb://movies/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22,%22%5D%7D%5D%7D%2C%22type%22%3A%22movies%22%7D]</value>
+        <value condition="!String.IsEmpty(Window(Home).Property(InfoTrick.4.Title))">$INFO[Window(Home).Property(InfoTrick.4.Title),videodb://movies/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22,%22%5D%7D%5D%7D%2C%22type%22%3A%22movies%22%7D]</value>
+        <value condition="!String.IsEmpty(Window(Home).Property(InfoTrick.3.Title))">$INFO[Window(Home).Property(InfoTrick.3.Title),videodb://movies/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22,%22%5D%7D%5D%7D%2C%22type%22%3A%22movies%22%7D]</value>
+        <value condition="!String.IsEmpty(Window(Home).Property(InfoTrick.2.Title))">$INFO[Window(Home).Property(InfoTrick.2.Title),videodb://movies/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22,%22%5D%7D%5D%7D%2C%22type%22%3A%22movies%22%7D]</value>
+        <value condition="!String.IsEmpty(Window(Home).Property(InfoTrick.1.Title))">$INFO[Window(Home).Property(InfoTrick.1.Title),videodb://movies/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22,%22%5D%7D%5D%7D%2C%22type%22%3A%22movies%22%7D]</value>
+        <value condition="!String.IsEmpty(Window(Home).Property(InfoTrick.0.Title))">$INFO[Window(Home).Property(InfoTrick.0.Title),videodb://movies/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22,%22%5D%7D%5D%7D%2C%22type%22%3A%22movies%22%7D]</value>
     </variable>
 
     <include name="Defs_InfoTrick">
@@ -33,21 +32,22 @@
 
         <!-- Set The Title for InfoTrick to have history -->
         <!-- TODO Add more history or recycle properties -->
-        <onclick condition="!String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + String.IsEmpty(Window(Home).Property(InfoTrick.1.Title))">SetProperty(InfoTrick.1.Title,$INFO[Container($PARAM[id]).ListItem.FileName],Home)</onclick>
-        <onclick condition="!String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + !String.IsEmpty(Window(Home).Property(InfoTrick.1.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.2.Title))">SetProperty(InfoTrick.2.Title,$INFO[Container($PARAM[id]).ListItem.FileName],Home)</onclick>
-        <onclick condition="!String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + !String.IsEmpty(Window(Home).Property(InfoTrick.2.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.3.Title))">SetProperty(InfoTrick.3.Title,$INFO[Container($PARAM[id]).ListItem.FileName],Home)</onclick>
-        <onclick condition="!String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + !String.IsEmpty(Window(Home).Property(InfoTrick.3.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.4.Title))">SetProperty(InfoTrick.4.Title,$INFO[Container($PARAM[id]).ListItem.FileName],Home)</onclick>
-        <onclick condition="!String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + !String.IsEmpty(Window(Home).Property(InfoTrick.4.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.5.Title))">SetProperty(InfoTrick.5.Title,$INFO[Container($PARAM[id]).ListItem.FileName],Home)</onclick>
-        <onclick condition="!String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + !String.IsEmpty(Window(Home).Property(InfoTrick.5.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.6.Title))">SetProperty(InfoTrick.6.Title,$INFO[Container($PARAM[id]).ListItem.FileName],Home)</onclick>
-        <onclick condition="!String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + !String.IsEmpty(Window(Home).Property(InfoTrick.6.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.7.Title))">SetProperty(InfoTrick.7.Title,$INFO[Container($PARAM[id]).ListItem.FileName],Home)</onclick>
-        <onclick condition="!String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + !String.IsEmpty(Window(Home).Property(InfoTrick.7.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.8.Title))">SetProperty(InfoTrick.8.Title,$INFO[Container($PARAM[id]).ListItem.FileName],Home)</onclick>
-        <onclick condition="!String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + !String.IsEmpty(Window(Home).Property(InfoTrick.8.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.9.Title))">SetProperty(InfoTrick.9.Title,$INFO[Container($PARAM[id]).ListItem.FileName],Home)</onclick>
-        <onclick condition="!String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + !String.IsEmpty(Window(Home).Property(InfoTrick.9.Title))">SetProperty(InfoTrick.9.Title,$INFO[Container($PARAM[id]).ListItem.FileName],Home)</onclick>
+        <onclick condition="!String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + String.IsEmpty(Window(Home).Property(InfoTrick.1.Title))">SetProperty(InfoTrick.1.Title,$INFO[Container($PARAM[id]).ListItem.Title],Home)</onclick>
+        <onclick condition="!String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + !String.IsEmpty(Window(Home).Property(InfoTrick.1.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.2.Title))">SetProperty(InfoTrick.2.Title,$INFO[Container($PARAM[id]).ListItem.Title],Home)</onclick>
+        <onclick condition="!String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + !String.IsEmpty(Window(Home).Property(InfoTrick.2.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.3.Title))">SetProperty(InfoTrick.3.Title,$INFO[Container($PARAM[id]).ListItem.Title],Home)</onclick>
+        <onclick condition="!String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + !String.IsEmpty(Window(Home).Property(InfoTrick.3.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.4.Title))">SetProperty(InfoTrick.4.Title,$INFO[Container($PARAM[id]).ListItem.Title],Home)</onclick>
+        <onclick condition="!String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + !String.IsEmpty(Window(Home).Property(InfoTrick.4.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.5.Title))">SetProperty(InfoTrick.5.Title,$INFO[Container($PARAM[id]).ListItem.Title],Home)</onclick>
+        <onclick condition="!String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + !String.IsEmpty(Window(Home).Property(InfoTrick.5.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.6.Title))">SetProperty(InfoTrick.6.Title,$INFO[Container($PARAM[id]).ListItem.Title],Home)</onclick>
+        <onclick condition="!String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + !String.IsEmpty(Window(Home).Property(InfoTrick.6.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.7.Title))">SetProperty(InfoTrick.7.Title,$INFO[Container($PARAM[id]).ListItem.Title],Home)</onclick>
+        <onclick condition="!String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + !String.IsEmpty(Window(Home).Property(InfoTrick.7.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.8.Title))">SetProperty(InfoTrick.8.Title,$INFO[Container($PARAM[id]).ListItem.Title],Home)</onclick>
+        <onclick condition="!String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + !String.IsEmpty(Window(Home).Property(InfoTrick.8.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.9.Title))">SetProperty(InfoTrick.9.Title,$INFO[Container($PARAM[id]).ListItem.Title],Home)</onclick>
+        <onclick condition="!String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + !String.IsEmpty(Window(Home).Property(InfoTrick.9.Title))">SetProperty(InfoTrick.9.Title,$INFO[Container($PARAM[id]).ListItem.Title],Home)</onclick>
 
         <!-- Set the active flag so videoinfo unload conditions don't delete the property we just set -->
         <onclick condition="!String.IsEmpty(Container($PARAM[id]).ListItem.DBID)">SetProperty(InfoTrick.Active,1,Home)</onclick>
 
         <!-- Set videoinfo position back to top -->
+        <onclick condition="!String.IsEmpty(Container($PARAM[id]).ListItem.DBID)">SetFocus(50)</onclick>
         <onclick condition="!String.IsEmpty(Container($PARAM[id]).ListItem.DBID)">SetFocus(5000)</onclick>
         <onclick condition="!String.IsEmpty(Container($PARAM[id]).ListItem.DBID)">SetFocus(300)</onclick>
 
@@ -169,30 +169,7 @@
         <height>228</height>
         <width>1100</width>
         <include>Animation_FadeIn_Slide</include>
-        <visible>VideoPlayer.IsFullscreen | Window.IsVisible(MusicVisualisation.xml)</visible>
-    </include>
-    <include name="Defs_PosterBack">
-        <param name="gradientcolordiffuse" default="cfffffff" />
-        <definition>
-            <control type="image">
-                <left>$PARAM[pad]</left>
-                <right>$PARAM[pad]</right>
-                <bottom>$PARAM[pad]</bottom>
-                <top>$PARAM[pad]</top>
-                <bordersize>10</bordersize>
-                <include condition="!Skin.HasSetting(DisableShadows)">Defs_Shadow_10</include>
-                <texture colordiffuse="PosterBack" border="10">diffuse/box.png</texture>
-            </control>
-            <control type="image">
-                <left>$PARAM[pad]</left>
-                <right>$PARAM[pad]</right>
-                <bottom>$PARAM[pad]</bottom>
-                <top>$PARAM[pad]</top>
-                <bordersize>10</bordersize>
-                <texture border="5" colordiffuse="$PARAM[gradientcolordiffuse]">common/gradientcurve.png</texture>
-                <visible>Skin.HasSetting(PosterBackGradient)</visible>
-            </control>
-        </definition>
+        <!-- <visible>VideoPlayer.IsFullscreen | Window.IsVisible(MusicVisualisation.xml)</visible> -->
     </include>
 
     <variable name="Defs_VideoInfo_StudioMovies">
@@ -228,8 +205,8 @@
         <onload condition="Window.IsActive(profiles)">SetProperty(MenuIconFocus,ReplaceWindow(profiles),Home)</onload>
         <onload condition="Window.IsActive(skinsettings)">SetProperty(MenuIconFocus,ReplaceWindow(skinsettings),Home)</onload>
 
-        <onload condition="Window.IsActive(interfacesettings)">SetFocus(300,0)</onload>
-        <onload condition="Window.IsActive(skinsettings)">SetFocus(300,1)</onload>
+        <onload condition="Window.IsActive(skinsettings)">SetFocus(300,0)</onload>
+        <onload condition="Window.IsActive(interfacesettings)">SetFocus(300,1)</onload>
         <onload condition="Window.IsActive(mediasettings)">SetFocus(300,2)</onload>
         <onload condition="Window.IsActive(playersettings)">SetFocus(300,3)</onload>
         <onload condition="Window.IsActive(systemsettings)">SetFocus(300,4)</onload>
@@ -240,8 +217,8 @@
     </include>
 
     <include name="Defs_Settings_OnLeft">
-        <onleft condition="Window.IsActive(interfacesettings)">SetFocus(300,0)</onleft>
-        <onleft condition="Window.IsActive(skinsettings)">SetFocus(300,1)</onleft>
+        <onleft condition="Window.IsActive(skinsettings)">SetFocus(300,0)</onleft>
+        <onleft condition="Window.IsActive(interfacesettings)">SetFocus(300,1)</onleft>
         <onleft condition="Window.IsActive(mediasettings)">SetFocus(300,2)</onleft>
         <onleft condition="Window.IsActive(playersettings)">SetFocus(300,3)</onleft>
         <onleft condition="Window.IsActive(systemsettings)">SetFocus(300,4)</onleft>
@@ -249,18 +226,6 @@
         <onleft condition="Window.IsActive(pvrsettings)">SetFocus(300,6)</onleft>
         <onleft condition="Window.IsActive(systeminfo)">SetFocus(300,7)</onleft>
         <onleft condition="Window.IsActive(profiles)">SetFocus(300,8)</onleft>
-    </include>
-
-    <include name="Defs_Settings_OnRight">
-        <onright condition="Window.IsActive(interfacesettings)">SetFocus(300,0)</onright>
-        <onright condition="Window.IsActive(skinsettings)">SetFocus(300,1)</onright>
-        <onright condition="Window.IsActive(mediasettings)">SetFocus(300,2)</onright>
-        <onright condition="Window.IsActive(playersettings)">SetFocus(300,3)</onright>
-        <onright condition="Window.IsActive(systemsettings)">SetFocus(300,4)</onright>
-        <onright condition="Window.IsActive(servicesettings)">SetFocus(300,5)</onright>
-        <onright condition="Window.IsActive(pvrsettings)">SetFocus(300,6)</onright>
-        <onright condition="Window.IsActive(systeminfo)">SetFocus(300,7)</onright>
-        <onright condition="Window.IsActive(profiles)">SetFocus(300,8)</onright>
     </include>
 
     <include name="Defs_InfoDialog_Visible">
@@ -360,12 +325,40 @@
         <texturefocus colordiffuse="$VAR[ColorHighlight]">common/white.png</texturefocus>
     </include>
 
+    <include name="Defs_SettingsTrick">
+        <control type="button">
+            <visible allowhiddenfocus="true">false</visible>
+            <onfocus condition="!Window.IsActive(InterfaceSettings) + String.IsEqual(Container(300).ListItem.Property(path),ReplaceWindow(InterfaceSettings))">ReplaceWindow(InterfaceSettings)</onfocus>
+            <onfocus condition="!Window.IsActive(SkinSettings) + String.IsEqual(Container(300).ListItem.Property(path),ReplaceWindow(SkinSettings))">ReplaceWindow(SkinSettings)</onfocus>
+            <onfocus condition="!Window.IsActive(MediaSettings) + String.IsEqual(Container(300).ListItem.Property(path),ReplaceWindow(MediaSettings))">ReplaceWindow(MediaSettings)</onfocus>
+            <onfocus condition="!Window.IsActive(PlayerSettings) + String.IsEqual(Container(300).ListItem.Property(path),ReplaceWindow(PlayerSettings))">ReplaceWindow(PlayerSettings)</onfocus>
+            <onfocus condition="!Window.IsActive(SystemSettings) + String.IsEqual(Container(300).ListItem.Property(path),ReplaceWindow(SystemSettings))">ReplaceWindow(SystemSettings)</onfocus>
+            <onfocus condition="!Window.IsActive(servicesettings) + String.IsEqual(Container(300).ListItem.Property(path),ReplaceWindow(servicesettings))">ReplaceWindow(servicesettings)</onfocus>
+            <onfocus condition="!Window.IsActive(pvrsettings) + String.IsEqual(Container(300).ListItem.Property(path),ReplaceWindow(pvrsettings))">ReplaceWindow(pvrsettings)</onfocus>
+            <onfocus condition="!Window.IsActive(systeminfo) + String.IsEqual(Container(300).ListItem.Property(path),ReplaceWindow(systeminfo))">ReplaceWindow(systeminfo)</onfocus>
+            <onfocus condition="!Window.IsActive(Profiles) + String.IsEqual(Container(300).ListItem.Property(path),ReplaceWindow(Profiles))">ReplaceWindow(Profiles)</onfocus>
+        </control>
+    </include>
+
+    <include name="Defs_Settings_Background">
+        <control type="image">
+            <animation type="WindowOpen" reversible="false" condition="!Window.Previous(SettingsCategory.xml) + !Window.Previous(SkinSettings.xml) + !Window.Previous(SettingsProfile.xml) + !Window.Previous(SettingsSystemInfo.xml)">
+                <effect type="fade" start="0" end="100" time="300" delay="0"/>
+            </animation>
+            <include>Dimensions_Fullscreen</include>
+            <texture border="2">common/black-back.png</texture>
+        </control>
+        <include content="Topbar">
+            <param name="fgcolor" value="panel_fg" />
+        </include>
+        <include condition="!Window.Previous(home)">View_Settings</include>
+    </include>
 
     <include name="Defs_Settings_Changer">
         <definition>
             <control type="list" id="300">
                 <nested />
-                <top>dialog_top</top>
+                <top>39</top>
                 <bottom>dialog_pad</bottom>
                 <width>view_list_height</width>
                 <orientation>vertical</orientation>
@@ -388,7 +381,7 @@
                     </control>
                 </itemlayout>
                 <focusedlayout height="view_list_height" width="view_list_height">
-                    <include>Topbar_Menu_SettingsTrick_Button</include>
+                    <include>Defs_SettingsTrick</include>
                     <control type="image">
                         <texture colordiffuse="$VAR[ColorHighlight]">common/white.png</texture>
                     </control>
@@ -425,31 +418,13 @@
     <include name="Defs_Settings_Button">
         <align>left</align>
         <font>font_small</font>
-        <radioposx>1280</radioposx>
+        <radioposx>1145</radioposx>
         <height>view_list_height</height>
         <textoffsetx>30</textoffsetx>
         <focusedcolor>$VAR[Defs_Settings_ToggleButton_Text]</focusedcolor>
         <texturefocus colordiffuse="$VAR[Defs_Settings_ToggleButton_Color]">common/white.png</texturefocus>
         <alttexturefocus colordiffuse="$VAR[Defs_Settings_ToggleButton_Color]">common/white.png</alttexturefocus>
-        <!-- <textcolor>main_fg_100</textcolor>
-        <disabledcolor>main_fg_12</disabledcolor>
-        <focusedcolor>main_bg_100</focusedcolor>
-        <textoffsetx>view_pad</textoffsetx>
-        <textureup flipy="true" colordiffuse="main_half">buttons/spin-down.png</textureup>
-        <texturedown colordiffuse="main_half">buttons/spin-down.png</texturedown>
-        <textureupfocus flipy="true" colordiffuse="main_bg_100">buttons/spin-down.png</textureupfocus>
-        <texturedownfocus colordiffuse="main_bg_100">buttons/spin-down.png</texturedownfocus>
-        <textureradioonfocus colordiffuse="main_bg_100">buttons/radio-on.png</textureradioonfocus>
-        <textureradioofffocus colordiffuse="main_bg_100">buttons/radio-off.png</textureradioofffocus>
-        <textureradioonnofocus colordiffuse="main_fg_100">buttons/radio-on.png</textureradioonnofocus>
-        <textureradiooffnofocus colordiffuse="main_fg_12">buttons/radio-off.png</textureradiooffnofocus>
-         -->
     </include>
-    <variable name="Defs_Settings_ColorHighlight">
-        <value condition="Control.HasFocus(3901) | Control.HasFocus(3902) | Control.HasFocus(3903) | Control.HasFocus(300) | Control.HasFocus(302) | Control.HasFocus(20)">00ffffff</value>
-        <value>$VAR[ColorHighlight2]</value>
-    </variable>
-
     <!-- Shadows -->
     <include name="Defs_Shadow_24">
         <left>-24</left>
@@ -458,9 +433,6 @@
         <bottom>-24</bottom>
         <bordersize>24</bordersize>
         <bordertexture border="32">common/shadow-24.png</bordertexture>
-    </include>
-    <include name="Defs_Shadow_10">
-        <bordertexture border="20">common/shadow-10.png</bordertexture>
     </include>
 
     <!-- Busy Spinner -->

@@ -74,12 +74,12 @@
             </control> -->
 
             <include content="Object_Widget_Spotlight">
-                <param name="onup" value="5600" />
                 <param name="target" value="videos" />
                 <param name="content" value="$INFO[Container(5600).ListItem.DBID,videodb://movies/sets/,]" />
                 <param name="sortby" value="year" />
                 <param name="sortorder" value="ascending" />
                 <param name="controltype" value="fixedlist" />
+                <onup>5600</onup>
                 <focusposition>3</focusposition>
                 <movement>3</movement>
                 <animation effect="slide" end="-122.14" condition="Integer.IsEqual(Container(5610).NumItems,6) | Integer.IsEqual(Container(5610).NumItems,4) | Integer.IsEqual(Container(5610).NumItems,2)">Conditional</animation>

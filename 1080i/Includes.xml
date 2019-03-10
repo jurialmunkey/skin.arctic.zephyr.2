@@ -33,15 +33,12 @@
     <include file="Constants_Main.xml" />
 
     <variable name="ColorHighlight">
-        <value condition="[Skin.HasSetting(CycleColors) | Skin.HasSetting(MatchColors)] + !String.IsEqual(Window(home).Property(SEVEN_daemon_set),None) + !String.IsEmpty(Window(home).Property(ImageColorSEVEN)) + !String.IsEqual(Window(home).Property(ImageColorSEVEN),ffffffff) + !String.IsEqual(Window(home).Property(ImageColorSEVEN),ff000000)">$INFO[Window(home).Property(ImageColorSEVEN)]</value>
         <value condition="!String.IsEmpty(Skin.String(focuscolor.name))">$INFO[Skin.String(focuscolor.name)]</value>
         <value>Highlight</value>
     </variable>
     <variable name="ColorHighlight2">
-        <!-- <value>Selected</value> -->
-        <value condition="[Skin.HasSetting(CycleColors) | Skin.HasSetting(MatchColors)] + !String.IsEqual(Window(home).Property(SEVEN_daemon_set),None) + !String.IsEmpty(Window(home).Property(ImageCColorSEVEN)) + !String.IsEqual(Window(home).Property(ImageCColorSEVEN),ffffffff) + !String.IsEqual(Window(home).Property(ImageCColorSEVEN),ff000000)">$INFO[Window(home).Property(ImageCColorSEVEN)]</value>
-        <value condition="!String.IsEmpty(Skin.String(gradientcolor.name))">$INFO[Skin.String(gradientcolor.name)]</value>
-        <value>GradientHighlight</value>
+        <value condition="String.IsEqual(Skin.String(PosterHighlight),Highlight)">$VAR[ColorHighlight]</value>
+        <value>Selected</value>
     </variable>
 
     <include name="Dimensions_Fullscreen">
