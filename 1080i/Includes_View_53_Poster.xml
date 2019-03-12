@@ -6,8 +6,8 @@
             <include>Defs_InfoDialog_Visible</include>
             <include>Animation_Common</include>
             <control type="grouplist">
-                <left>700</left>
-                <top>670</top>
+                <left>660</left>
+                <top>690</top>
                 <right>view_pad</right>
                 <orientation>vertical</orientation>
                 <usecontrolcoords>true</usecontrolcoords>
@@ -23,7 +23,7 @@
                 <control type="textbox">
                     <top>20</top>
                     <label fallback="19055">$VAR[Label_Plot]</label>
-                    <height>160</height>
+                    <height>120</height>
                     <aligny>top</aligny>
                     <textcolor>main_fg_70</textcolor>
                     <font>font_plotbox</font>
@@ -31,7 +31,7 @@
             </control>
             
             <control type="wraplist" id="53">
-                <left>-250</left>
+                <left>-328</left>
                 <width>2500</width>
                 <focusposition>2</focusposition>
                 <movement>0</movement>
@@ -45,14 +45,14 @@
                 <include content="View_Forced">
                     <param name="string" value="$LOCALIZE[31262]" />
                 </include>
-                <itemlayout width="318">
+                <itemlayout width="337">
                     <control type="group">
                         <top>view_top</top>
                         <width>560</width>
                         <height>810</height>
                         <centerleft>0%</centerleft>
                         <animation effect="Conditional" condition="true">
-                            <effect type="zoom" end="53" time="0" center="auto,275" />
+                            <effect type="zoom" end="55" time="0" center="auto,275" />
                         </animation>
                         <include content="View_50_Poster">
                             <param name="left" value="0" />
@@ -63,10 +63,10 @@
                         </include>
                     </control>
                 </itemlayout>
-                <focusedlayout width="318">
+                <focusedlayout width="337">
                     <control type="group">
-                        <animation condition="Container(53).OnNext | Container(53).OnPrevious" effect="zoom" start="53" end="100" delay="0" time="350" tween="sine" easing="out" center="auto,275">Focus</animation>
-                        <animation condition="Container(53).OnNext | Container(53).OnPrevious" effect="zoom" start="100" end="53" delay="0" time="250" tween="sine" easing="out" center="auto,275">UnFocus</animation>
+                        <animation condition="Container(53).OnNext | Container(53).OnPrevious" effect="zoom" start="55" end="100" delay="0" time="350" tween="sine" easing="out" center="auto,275">Focus</animation>
+                        <animation condition="Container(53).OnNext | Container(53).OnPrevious" effect="zoom" start="100" end="55" delay="0" time="250" tween="sine" easing="out" center="auto,275">UnFocus</animation>
                         <top>view_top</top>
                         <width>560</width>
                         <height>810</height>
@@ -81,6 +81,12 @@
                     </control>
                 </focusedlayout>
             </control>
+
+            <!-- <control type="image">
+                <texture colordiffuse="bfffffff">common/white.png</texture>
+                <width>40</width>
+                <right>380</right>
+            </control> -->
         </control>
     </include>
 </includes>
