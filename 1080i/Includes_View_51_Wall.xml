@@ -22,8 +22,8 @@
             <font>font_statusbar</font>
             <selectedcolor>main_fg_100</selectedcolor>
             <textcolor>main_fg_100</textcolor>
-            <top>343.75</top>
-            <height>20</height>
+            <top>$PARAM[iconheight]</top>
+            <bottom>25</bottom>
             <aligny>center</aligny>
             <align>left</align>
             <label>$INFO[ListItem.Label]</label>
@@ -34,39 +34,11 @@
             <font>font_statusbar</font>
             <selectedcolor>main_fg_100</selectedcolor>
             <textcolor>main_fg_100</textcolor>
-            <top>343.75</top>
-            <height>20</height>
+            <top>$PARAM[iconheight]</top>
+            <bottom>25</bottom>
             <aligny>center</aligny>
             <align>right</align>
             <label>$INFO[ListItem.Label2]</label>
-        </control>
-        <control type="group">
-            <top>30</top>
-            <visible>String.StartsWith(Container.FolderPath,plugin://plugin.video.youtube)</visible>
-            <control type="label">
-                <left>15</left>
-                <right>15</right>
-                <font>font_statusbar</font>
-                <selectedcolor>main_fg_70</selectedcolor>
-                <textcolor>main_fg_70</textcolor>
-                <top>343.75</top>
-                <height>20</height>
-                <aligny>center</aligny>
-                <align>left</align>
-                <label>$INFO[ListItem.Studio]</label>
-            </control>
-            <control type="label">
-                <left>15</left>
-                <right>15</right>
-                <font>font_statusbar</font>
-                <selectedcolor>main_fg_70</selectedcolor>
-                <textcolor>main_fg_70</textcolor>
-                <top>343.75</top>
-                <height>20</height>
-                <aligny>center</aligny>
-                <align>right</align>
-                <label>$INFO[ListItem.Premiered]</label>
-            </control>
         </control>
     </include>
 
@@ -128,7 +100,7 @@
     <include name="View_51_Wall_Itemlayout">
         <param name="altid" default="999999" />
         <param name="icon" default="$VAR[Image_Poster]" />
-        <param name="iconheight" default="345" />
+        <param name="iconheight" default="349.33" />
         <param name="labelinclude" default="View_51_Wall_Label" />
         <param name="aspectratio" default="scale" />
         <param name="clearlogo" default="false" />
@@ -136,57 +108,60 @@
         <param name="diffuse" default="diffuse/214x315.png" /> <!-- FIX ME -->
         <definition>
             <control type="group">
-                <height>$PARAM[iconheight]</height>
-                <include condition="$PARAM[circle]" content="View_51_Wall_Circle">
-                    <param name="diffuse" value="$PARAM[diffuse]" />
-                    <param name="selectbox" value="$PARAM[selectbox]" />
-                    <param name="id" value="$PARAM[id]" />
-                </include>
+                <right>10</right>
+                <control type="group">
+                    <height>$PARAM[iconheight]</height>
+                    <include condition="$PARAM[circle]" content="View_51_Wall_Circle">
+                        <param name="diffuse" value="$PARAM[diffuse]" />
+                        <param name="selectbox" value="$PARAM[selectbox]" />
+                        <param name="id" value="$PARAM[id]" />
+                    </include>
 
-                <include content="Object_Geometric" condition="!$PARAM[circle]">
-                    <param name="diffuse" value="$PARAM[diffuse]" />
-                </include>
-                
-                <include>Object_DefaultIcon</include>
+                    <include content="Object_Geometric" condition="!$PARAM[circle]">
+                        <param name="diffuse" value="$PARAM[diffuse]" />
+                    </include>
+                    
+                    <include>Object_DefaultIcon</include>
 
-                <include content="Object_Poster">
-                    <param name="icon" value="$PARAM[icon]" />
-                    <param name="aspectratio" value="$PARAM[aspectratio]" />
+                    <include content="Object_Poster">
+                        <param name="icon" value="$PARAM[icon]" />
+                        <param name="aspectratio" value="$PARAM[aspectratio]" />
+                        <param name="bordersize" value="$PARAM[bordersize]" />
+                        <param name="diffuse" value="$PARAM[diffuse]" />
+                    </include>
+
+                    <control type="image">
+                        <right>30</right>
+                        <bottom>30</bottom>
+                        <width>33%</width>
+                        <aspectratio align="right" aligny="bottom">keep</aspectratio>
+                        <texture>$VAR[Image_ClearLogo]</texture>
+                        <visible>$PARAM[clearlogo]</visible>
+                    </control>
+
+                    <control type="image">
+                        <bordersize>15</bordersize>
+                        <texture colordiffuse="80000000">diffuse/circle.png</texture>
+                        <visible>!$PARAM[selectbox]</visible>
+                        <visible>$PARAM[circle]</visible>
+                    </control>
+
+                    <include condition="!$PARAM[circle]">View_WatchedOverlay</include>
+                    
+                    <control type="group">
+                        <visible>!$PARAM[circle]</visible>
+                        <visible>Control.HasFocus($PARAM[id]) | Control.HasFocus($PARAM[altid])</visible>
+                        <include condition="$PARAM[selectbox]" content="View_Selectbox">
+                            <param name="focusbounce" value="$PARAM[focusbounce]" />
+                        </include>
+                    </control>
+                </control>
+                <include content="$PARAM[labelinclude]">
                     <param name="bordersize" value="$PARAM[bordersize]" />
                     <param name="diffuse" value="$PARAM[diffuse]" />
+                    <param name="iconheight" value="$PARAM[iconheight]" />
                 </include>
-
-                <control type="image">
-                    <right>30</right>
-                    <bottom>30</bottom>
-                    <width>33%</width>
-                    <aspectratio align="right" aligny="bottom">keep</aspectratio>
-                    <texture>$VAR[Image_ClearLogo]</texture>
-                    <visible>$PARAM[clearlogo]</visible>
-                </control>
-
-                <control type="image">
-                    <bordersize>15</bordersize>
-                    <texture colordiffuse="80000000">diffuse/circle.png</texture>
-                    <visible>!$PARAM[selectbox]</visible>
-                    <visible>$PARAM[circle]</visible>
-                </control>
-
-                <include condition="!$PARAM[circle]">View_WatchedOverlay</include>
-                
-                <control type="group">
-                    <visible>!$PARAM[circle]</visible>
-                    <visible>Control.HasFocus($PARAM[id]) | Control.HasFocus($PARAM[altid])</visible>
-                    <include condition="$PARAM[selectbox]" content="View_Selectbox">
-                        <param name="focusbounce" value="$PARAM[focusbounce]" />
-                    </include>
-                </control>
             </control>
-            <include content="$PARAM[labelinclude]">
-                <param name="bordersize" value="$PARAM[bordersize]" />
-                <param name="diffuse" value="$PARAM[diffuse]" />
-                <param name="iconheight" value="$PARAM[iconheight]" />
-            </include>
         </definition>
     </include>
 
@@ -274,7 +249,7 @@
 
     <include name="View_51_Wall_Container">
         <param name="itemlayout" default="View_51_Wall_Itemlayout" />
-        <param name="itemwidth" default="244.28" />
+        <param name="itemwidth" default="257.14" />
         <param name="itemheight" default="412.5" />
         <param name="controltype" default="panel" />
         <param name="controllayout" default="View_Standard" />
@@ -369,12 +344,12 @@
             <visible>Control.IsVisible(511)</visible>
             <include content="View_51_Wall_Container">
                 <param name="id" value="511" />
-                <param name="height" value="847.5" />
-                <param name="itemwidth" value="570" />
-                <param name="itemheight" value="423.75" />
+                <param name="height" value="825" />
+                <param name="itemwidth" value="view_landscape_width" />
+                <param name="itemheight" value="412.5" />
                 <param name="icon" value="$VAR[Image_Fanart]" />
                 <param name="clearlogo" value="String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow)" />
-                <param name="iconheight" value="333.75" />
+                <param name="iconheight" value="view_landscape_icon_height" />
                 <param name="diffuse" value="diffuse/540x304.png" />
                 <param name="viewtype" value="$LOCALIZE[31359]" />
                 <param name="forced" value="true" />

@@ -6,7 +6,7 @@
         <definition>
             <control type="group">
                 <left>view_pad</left>
-                <height>view_pad</height>
+                <height>view_bottom</height>
                 <bottom>0</bottom>
                 <right>500</right>
                 <visible>$PARAM[visible]</visible>
@@ -61,7 +61,7 @@
             <control type="group">
                 <bottom>0</bottom>
                 <left>0</left>
-                <height>view_pad</height>
+                <height>view_bottom</height>
                 <control type="label">
                     <left>0</left>
                     <centertop>50%</centertop>
@@ -149,7 +149,7 @@
 
                 <itemlayout width="570" height="423.75" condition="$PARAM[landscapecondition]">
                     <include content="View_51_Wall_Itemlayout">
-                        <param name="iconheight" value="333.75" />
+                        <param name="iconheight" value="view_landscape_icon_height" />
                         <param name="clearlogo" value="true" />
                         <param name="selectbox" value="false" />
                         <param name="icon" value="$VAR[Image_Fanart]" />
@@ -162,7 +162,7 @@
                 <focusedlayout width="570" height="423.75" condition="$PARAM[landscapecondition]">
                     <include content="View_51_Wall_Itemlayout">
                         <param name="selectbox" value="true" />
-                        <param name="iconheight" value="333.75" />
+                        <param name="iconheight" value="view_landscape_icon_height" />
                         <param name="clearlogo" value="true" />
                         <param name="icon" value="$VAR[Image_Fanart]" />
                         <param name="diffuse" value="diffuse/540x304.png" />
@@ -246,7 +246,7 @@
                 <!-- <include>Animation_FadeInOut</include> -->
                 <orientation>horizontal</orientation>
                 <align>right</align>
-                <height>120</height>
+                <height>view_bottom</height>
                 <right>view_pad</right>
                 <left>view_pad</left>
                 <bottom>0</bottom>
@@ -1097,7 +1097,7 @@
             <control type="grouplist">
                 <left>20</left>
                 <right>20</right>
-                <height>view_pad</height>
+                <height>view_bottom</height>
                 <align>center</align>
                 <orientation>horizontal</orientation>
                 <itemgap>10</itemgap>
@@ -1128,7 +1128,7 @@
                 <left>20</left>
                 <right>20</right>
                 <bottom>0</bottom>
-                <height>view_pad</height>
+                <height>view_bottom</height>
                 <align>center</align>
                 <orientation>horizontal</orientation>
                 <itemgap>10</itemgap>

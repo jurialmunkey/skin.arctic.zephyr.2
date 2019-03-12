@@ -30,6 +30,8 @@
         <param name="diffuse" default="diffuse/214x315.png" /> <!-- FIX ME -->
         <definition>
             <control type="group">
+                <right>10</right>
+                <bottom>10</bottom>
                 <include content="Object_Geometric">
                     <param name="diffuse" value="$PARAM[diffuse]" />
                 </include>
@@ -417,7 +419,7 @@
     <include name="View_Standard">
         <top>-15</top>
         <left>-15</left>
-        <right>-15</right>
+        <right>-25</right>
         <preloaditems>2</preloaditems>
         <pagecontrol>60</pagecontrol>
     </include>
@@ -628,9 +630,9 @@
                     <param name="id" value="5000" />
                     <param name="height" value="275" />
                     <param name="itemlayout" value="View_Settings_Itemlayout" />
-                    <param name="itemwidth" value="427.5" />
-                    <param name="itemheight" value="225" />
-                    <param name="iconheight" value="225" />
+                    <param name="itemwidth" value="450" />
+                    <param name="itemheight" value="230" />
+                    <param name="iconheight" value="230" />
                     <param name="diffuse" value="diffuse/312x190.png" />
                     <param name="forced" value="false" />
                     <param name="visible" value="true" />
@@ -655,9 +657,9 @@
                         <param name="id" value="5100" />
                         <param name="height" value="550" />
                         <param name="itemlayout" value="View_Settings_Itemlayout" />
-                        <param name="itemwidth" value="427.5" />
-                        <param name="itemheight" value="225" />
-                        <param name="iconheight" value="225" />
+                        <param name="itemwidth" value="450" />
+                        <param name="itemheight" value="230" />
+                        <param name="iconheight" value="230" />
                         <param name="diffuse" value="diffuse/312x190.png" />
                         <param name="forced" value="false" />
                         <param name="visible" value="true" />
@@ -677,7 +679,7 @@
     <include name="View_Group">
         <param name="infohide" default="true" />
         <param name="animation" default="Animation_Common" />
-        <param name="bottom" default="view_pad" />
+        <param name="bottom" default="view_bottom" />
         <definition>
             <include content="View_Pad">
                 <param name="bottom" value="$PARAM[bottom]" />
