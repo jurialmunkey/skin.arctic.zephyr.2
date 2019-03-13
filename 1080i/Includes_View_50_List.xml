@@ -50,7 +50,7 @@
             <include>View_Group</include>
             <include content="View_50_List_Control">
                 <param name="left" value="-20" />
-                <param name="right" value="732.84" />
+                <param name="right" value="771.44" />
                 <param name="id" value="501" />
                 <param name="viewtype" value="$LOCALIZE[31298]" />
                 <param name="forced" value="true" />
@@ -89,23 +89,191 @@
             <include content="View_Group">
                 <param name="bottom" value="90" />
             </include>
-            <include content="View_50_List_Control">
-                <param name="top" value="-15" />
-                <param name="left" value="-15" />
-                <param name="right" value="929.8" />
-                <param name="id" value="503" />
-                <param name="viewtype" value="$LOCALIZE[31421]" />
-                <param name="forced" value="true" />
-                <param name="height" value="810" />
-                <param name="controltype" value="fixedlist" />
-                <param name="itemheight" value="162" />
-                <param name="itemlayout" value="View_50_Itemlayout_Banners" />
-                <param name="flipsides" value="Skin.HasSetting(FlipSide)" />
-                <param name="visible" value="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons)" />
+            <control type="fixedlist" id="503">
+                <width>1790</width>
+                <top>-15</top>
+                <left>-15</left>
+                <visible>Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)</visible>
+                <height>840</height>
+                <include>View_Vertical</include>
                 <movement>2</movement>
                 <focusposition>2</focusposition>
-            </include>
-            <include>View_502_List_Info</include>
+                <pagecontrol>60</pagecontrol>
+                <scrolltime tween="quadratic">400</scrolltime>
+                <viewtype label="$LOCALIZE[31421]">$LOCALIZE[31421]</viewtype>
+                <include content="View_Forced">
+                    <param name="string" value="$LOCALIZE[31421]" />
+                </include>
+                <itemlayout width="1790" height="119.5" condition="!Container.Content(episodes)">
+                    <control type="group">
+                        <top>15</top>
+                        <bottom>-15</bottom>
+                        <centerleft>50%</centerleft>
+                        <width>1390</width>
+                        <control type="label">
+                            <top>-10</top>
+                            <left>35</left>
+                            <right>35</right>
+                            <font>font_title_mini</font>
+                            <selectedcolor>main_fg_100</selectedcolor>
+                            <textcolor>main_fg_100</textcolor>
+                            <aligny>top</aligny>
+                            <align>center</align>
+                            <label>$VAR[Label_Title]</label>
+                        </control>
+                        <control type="label">
+                            <top>30</top>
+                            <left>35</left>
+                            <right>35</right>
+                            <font>font_statusbar</font>
+                            <selectedcolor>main_fg_70</selectedcolor>
+                            <textcolor>main_fg_70</textcolor>
+                            <aligny>top</aligny>
+                            <align>center</align>
+                            <label>$VAR[Label_Premiered]$VAR[Label_List_Right,  •  ,]</label>
+                        </control>
+                    </control>
+                </itemlayout>
+                <focusedlayout width="1790" height="362" condition="!Container.Content(episodes)">
+                    <control type="group">
+                        <centerleft>50%</centerleft>
+                        <width>1390</width>
+                        <top>0</top>
+                        <bottom>30</bottom>
+                        <control type="image">
+                            <bordersize>15</bordersize>
+                            <bordertexture border="30" colordiffuse="Shadow">common/shadow-15.png</bordertexture>
+                            <texture colordiffuse="main_fg_100" border="20">diffuse/1360x332.png</texture>
+                        </control>
+                        <control type="group">
+                            <height>282</height>
+                            <include content="Object_Poster">
+                                <param name="icon" value="$VAR[Image_Banner]" />
+                                <param name="aspectratio" value="scale" />
+                                <param name="diffuse" value="diffuse/1360x252.png" />
+                            </include>
+                            <control type="image">
+                                <right>30</right>
+                                <bottom>30</bottom>
+                                <height>33%</height>
+                                <aspectratio align="right" aligny="bottom">keep</aspectratio>
+                                <texture>$VAR[Image_ClearLogo]</texture>
+                                <visible>String.IsEmpty(ListItem.Art(tvshow.banner)) + String.IsEmpty(ListItem.Art(banner))</visible>
+                            </control>
+                        </control>
+                        <control type="label">
+                            <left>35</left>
+                            <right>35</right>
+                            <font>font_statusbar_bold</font>
+                            <selectedcolor>main_bg_100</selectedcolor>
+                            <textcolor>main_bg_100</textcolor>
+                            <top>282</top>
+                            <bottom>32</bottom>
+                            <aligny>center</aligny>
+                            <align>left</align>
+                            <label>$VAR[Label_Title]</label>
+                        </control>
+                        <control type="label">
+                            <left>35</left>
+                            <right>35</right>
+                            <font>font_statusbar</font>
+                            <selectedcolor>main_bg_100</selectedcolor>
+                            <textcolor>main_bg_100</textcolor>
+                            <top>282</top>
+                            <bottom>32</bottom>
+                            <aligny>center</aligny>
+                            <align>right</align>
+                            <label>$VAR[Label_Premiered]$VAR[Label_List_Right,  •  ,]</label>
+                        </control>
+                        <include>View_WatchedOverlay</include>
+                    </control>
+                </focusedlayout>
+                <itemlayout width="1790" height="119.5" condition="Container.Content(episodes)">
+                    <control type="group">
+                        <top>15</top>
+                        <bottom>-15</bottom>
+                        <left>705</left>
+                        <width>1390</width>
+                        <control type="label">
+                            <top>-10</top>
+                            <left>30</left>
+                            <right>35</right>
+                            <font>font_title_mini</font>
+                            <selectedcolor>main_fg_100</selectedcolor>
+                            <textcolor>main_fg_100</textcolor>
+                            <aligny>top</aligny>
+                            <align>left</align>
+                            <label>$VAR[Label_Title]</label>
+                        </control>
+                        <control type="label">
+                            <top>30</top>
+                            <left>30</left>
+                            <right>35</right>
+                            <font>font_statusbar</font>
+                            <selectedcolor>main_fg_70</selectedcolor>
+                            <textcolor>main_fg_70</textcolor>
+                            <aligny>top</aligny>
+                            <align>left</align>
+                            <label>$VAR[Label_Premiered]$VAR[Label_List_Right,  •  ,]</label>
+                        </control>
+                    </control>
+                </itemlayout>
+                <focusedlayout width="1790" height="362" condition="Container.Content(episodes)">
+                    <control type="group">
+                        <centerleft>50%</centerleft>
+                        <width>1590</width>
+                        <top>0</top>
+                        <bottom>30</bottom>
+                        <control type="image">
+                            <bordersize>15</bordersize>
+                            <bordertexture border="30" colordiffuse="Shadow">common/shadow-15.png</bordertexture>
+                            <texture colordiffuse="main_fg_100" border="20">diffuse/1360x332.png</texture>
+                        </control>
+                        <control type="group">
+                            <width>620.22</width>
+                            <include content="Object_Poster">
+                                <param name="icon" value="$VAR[Image_Fanart]" />
+                                <param name="aspectratio" value="scale" />
+                                <param name="diffuse" value="diffuse/1360x252.png" />
+                            </include>
+                        </control>
+                        <control type="group">
+                            <left>620.22</left>
+                            <control type="label">
+                                <left>15</left>
+                                <right>40</right>
+                                <top>45</top>
+                                <height>30</height>
+                                <label>$VAR[Label_Title]</label>
+                                <font>font_title_small</font>
+                                <textcolor>main_bg_100</textcolor>
+                            </control>
+                            <control type="textbox">
+                                <left>15</left>
+                                <right>40</right>
+                                <top>95</top>
+                                <height>160</height>
+                                <label>$VAR[Label_Plot]</label>
+                                <font>font_plotbox</font>
+                                <textcolor>main_bg_70</textcolor>
+                            </control>
+                            <control type="label">
+                                <left>15</left>
+                                <right>40</right>
+                                <font>font_statusbar</font>
+                                <selectedcolor>main_bg_70</selectedcolor>
+                                <textcolor>main_bg_70</textcolor>
+                                <height>35</height>
+                                <bottom>30</bottom>
+                                <aligny>center</aligny>
+                                <align>right</align>
+                                <label>$VAR[Label_Premiered]$VAR[Label_List_Right,  •  ,]</label>
+                            </control>
+                        </control>
+                        <include>View_WatchedOverlay</include>
+                    </control>
+                </focusedlayout>
+            </control>
         </control>
     </include>
 

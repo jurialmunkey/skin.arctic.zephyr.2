@@ -281,6 +281,7 @@
 
     <include name="View_Cast">
         <top>52</top>
+        <right>-10</right>
         <preloaditems>2</preloaditems>
     </include>
 
@@ -567,7 +568,7 @@
     </include>
 
     <include name="View_TopItems">
-        <param name="item_width" default="244.28" />
+        <param name="item_width" default="view_poster_width" />
         <param name="item_height" default="294.28" />
         <param name="height" default="294.28" />
         <param name="textbox_height" default="100" />
@@ -577,7 +578,7 @@
         <definition>
             <top>-15</top>
             <left>-15</left>
-            <right>-15</right>
+            <right>-25</right>
             <height>$PARAM[height]</height>
             <preloaditems>2</preloaditems>
             <orientation>horizontal</orientation>
@@ -700,10 +701,6 @@
     </include>
 
     <include name="View_WatchedOverlay">
-        <include>View_WatchedOverlay_Black</include>
-    </include>
-
-    <include name="View_WatchedOverlay_Black">
         <control type="group">
             <visible>!Skin.HasSetting(DisableWatchedOverlay)</visible>
             <control type="image">

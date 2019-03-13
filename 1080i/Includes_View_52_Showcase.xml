@@ -73,11 +73,11 @@
             <control type="group">
                 <include>View_FlipSides</include>
                 <top>0</top>
-                <width>732.84</width>
+                <width>761.44</width>
                 <visible>$PARAM[visible]</visible>
                 <include content="View_50_Poster">
-                    <param name="height" value="425.35" />
-                    <param name="width" value="732.84" />
+                    <param name="height" value="441.435" />
+                    <param name="width" value="761.44" />
                     <param name="icon" value="$PARAM[icon]" />
                     <param name="diffuse" value="diffuse/640x360.png" />
                 </include>
@@ -91,7 +91,7 @@
                     <visible>!String.IsEmpty(ListItem.Art(clearlogo)) | [Control.HasFocus(522) + !String.IsEmpty(ListItem.Art(tvshow.clearlogo))]</visible>
                 </control>
                 <control type="grouplist">
-                    <top>430</top>
+                    <top>451.435</top>
                     <left>0</left>
                     <right>30</right>
                     <orientation>vertical</orientation>
@@ -113,12 +113,12 @@
                         <param name="label" value="$INFO[Container(5229).ListItem.MPAA,[COLOR=main_fg_100],[/COLOR]  |  ]$INFO[Container(5229).ListItem.Premiered,[COLOR=main_fg_100],[/COLOR]  |  ]$INFO[Container(5229).ListItem.Duration(mins),[COLOR=main_fg_100], $LOCALIZE[31020][/COLOR]  |  ]$INFO[Container(5229).ListItem.EndTime,[COLOR=main_fg_100]$LOCALIZE[31106] ,[/COLOR]]" />
                     </include>
                     <control type="textbox">
-                        <top>20</top>
+                        <top>25</top>
                         <font>font_plotbox</font>
                         <textcolor>main_fg_70</textcolor>
                         <align>left</align>
                         <aligny>top</aligny>
-                        <height>240</height>
+                        <height>200</height>
                         <label>$PARAM[plot]</label>
                     </control>
                 </control>
@@ -196,7 +196,7 @@
             <visible>Control.IsVisible(52)</visible>
             <include content="View_51_Wall_Container" condition="!Skin.HasSetting(UseAuraShowcase)">
                 <param name="id" value="52" />
-                <param name="height" value="412.5" />
+                <param name="height" value="view_row_height" />
                 <param name="orientation" value="horizontal" />
                 <param name="labelinclude" value="Defs_Null" />
                 <param name="controltype" value="fixedlist" />
@@ -215,7 +215,7 @@
 
             <include content="View_51_Wall_Container" condition="Skin.HasSetting(UseAuraShowcase)">
                 <param name="id" value="52" />
-                <param name="height" value="412.5" />
+                <param name="height" value="view_row_height" />
                 <param name="orientation" value="horizontal" />
                 <param name="controltype" value="fixedlist" />
                 <param name="controllayout" value="View_52_Showcase_Aura_Layout" />
@@ -237,7 +237,7 @@
             <include content="View_51_Wall_Container" condition="!Skin.HasSetting(UseAuraShowcase)">
                 <param name="id" value="520" />
                 <param name="itemwidth" value="342" />
-                <param name="height" value="412.5" />
+                <param name="height" value="view_row_height" />
                 <param name="diffuse" value="diffuse/312x312.png" />
                 <param name="labelinclude" value="Defs_Null" />
                 <param name="orientation" value="horizontal" />
@@ -261,7 +261,7 @@
             <include content="View_51_Wall_Container" condition="Skin.HasSetting(UseAuraShowcase)">
                 <param name="id" value="520" />
                 <param name="itemwidth" value="342" />
-                <param name="height" value="412.5" />
+                <param name="height" value="view_row_height" />
                 <param name="diffuse" value="diffuse/312x312.png" />
                 <param name="orientation" value="horizontal" />
                 <param name="controltype" value="fixedlist" />
@@ -335,13 +335,13 @@
                 
             <include content="View_51_Wall_Container">
                 <param name="id" value="522" />
-                <param name="height" value="412.5" />
+                <param name="height" value="view_row_height" />
                 <param name="viewtype" value="$LOCALIZE[31427]" />
                 <param name="forced" value="true" />
                 <param name="visible" value="Container.Content(seasons)" />
                 <param name="orientation" value="horizontal" />
                 <param name="controllayout" value="View_514_Wall_Info_Layout" />
-                <width>977.16</width>
+                <width>1028.56</width>
                 <onup>300</onup>
                 <ondown>SetFocus(5229,0,absolute)</ondown>
                 <onright>522</onright>
@@ -367,7 +367,7 @@
             <include content="View_50_List_Control">
                 <param name="top" value="390" />
                 <param name="height" value="390" />
-                <param name="right" value="732.84" />
+                <param name="right" value="771.44" />
                 <param name="id" value="5229" />
                 <param name="forced" value="false" />
                 <param name="visible" value="Control.IsVisible(522)" />

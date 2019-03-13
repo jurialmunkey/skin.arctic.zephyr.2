@@ -83,7 +83,7 @@
         <param name="squarecondition" default="[!String.IsEmpty(Container(302).ListItem.Property(widgetPath)) + String.IsEqual(Container(302).ListItem.Property(widgetAspect),Square)] | [String.IsEmpty(Container(302).ListItem.Property(widgetPath)) + String.IsEqual(Container(301).ListItem.Property(widgetAspect),Square)]" />
         <param name="iconcondition" default="[!String.IsEmpty(Container(302).ListItem.Property(widgetPath)) + String.IsEqual(Container(302).ListItem.Property(widgetAspect),Icon)] | [String.IsEmpty(Container(302).ListItem.Property(widgetPath)) + String.IsEqual(Container(301).ListItem.Property(widgetAspect),Icon)]" />
         <param name="landscapecondition" default="[!String.IsEmpty(Container(302).ListItem.Property(widgetPath)) + String.IsEqual(Container(302).ListItem.Property(widgetAspect),Landscape)] | [String.IsEmpty(Container(302).ListItem.Property(widgetPath)) + String.IsEqual(Container(301).ListItem.Property(widgetAspect),Landscape)]" />
-        <param name="height" default="412.5" />
+        <param name="height" default="view_row_height" />
         <param name="top" default="397.5" />
         <param name="landscapelabelinclude" default="View_51_Wall_Landscape_Home_Label" />
         <param name="left" default="-15" />
@@ -99,7 +99,7 @@
                 <onfocus>SetProperty(SkinHelper.WidgetContainer,$PARAM[id],Home)</onfocus>
                 <preloaditems>2</preloaditems>
                 <orientation>horizontal</orientation>
-                <itemlayout width="342" height="412.5" condition="$PARAM[squarecondition]">
+                <itemlayout width="342" height="view_row_height" condition="$PARAM[squarecondition]">
                     <include content="View_51_Wall_Itemlayout">
                         <param name="aspectratio" value="keep" />
                         <param name="iconheight" value="342" />
@@ -110,7 +110,7 @@
                         <param name="labelinclude" value="$PARAM[labelinclude]" />
                     </include>
                 </itemlayout>
-                <focusedlayout width="342" height="412.5" condition="$PARAM[squarecondition]">
+                <focusedlayout width="342" height="view_row_height" condition="$PARAM[squarecondition]">
                     <include content="View_51_Wall_Itemlayout">
                         <param name="selectbox" value="true" />
                         <param name="aspectratio" value="keep" />
@@ -122,7 +122,7 @@
                     </include>
                 </focusedlayout>
 
-                <itemlayout width="342" height="412.5" condition="$PARAM[iconcondition]">
+                <itemlayout width="342" height="view_row_height" condition="$PARAM[iconcondition]">
                     <include content="View_512_Wall_Itemlayout">
                         <param name="aspectratio" value="keep" />
                         <param name="iconheight" value="342" />
@@ -134,7 +134,7 @@
                         <param name="labelinclude" value="$PARAM[labelinclude]" />
                     </include>
                 </itemlayout>
-                <focusedlayout width="342" height="412.5" condition="$PARAM[iconcondition]">
+                <focusedlayout width="342" height="view_row_height" condition="$PARAM[iconcondition]">
                     <include content="View_512_Wall_Itemlayout">
                         <param name="selectbox" value="true" />
                         <param name="aspectratio" value="keep" />
@@ -172,7 +172,7 @@
                     </include>
                 </focusedlayout>
 
-                <itemlayout width="244.28" height="412.5" condition="![$PARAM[squarecondition] | $PARAM[iconcondition] | $PARAM[landscapecondition]]">
+                <itemlayout width="244.28" height="view_row_height" condition="![$PARAM[squarecondition] | $PARAM[iconcondition] | $PARAM[landscapecondition]]">
                     <include content="View_51_Wall_Itemlayout">
                         <param name="selectbox" value="false" />
                         <param name="icon" value="$VAR[Image_Poster]" />
@@ -180,7 +180,7 @@
                         <param name="labelinclude" value="$PARAM[labelinclude]" />
                     </include>
                 </itemlayout>
-                <focusedlayout width="244.28" height="412.5" condition="![$PARAM[squarecondition] | $PARAM[iconcondition] | $PARAM[landscapecondition]]">
+                <focusedlayout width="244.28" height="view_row_height" condition="![$PARAM[squarecondition] | $PARAM[iconcondition] | $PARAM[landscapecondition]]">
                     <include content="View_51_Wall_Itemlayout">
                         <param name="selectbox" value="true" />
                         <param name="icon" value="$VAR[Image_Poster]" />
@@ -1984,7 +1984,7 @@
                     <left>view_pad</left>
                     <right>view_pad</right>
                     <top>view_top</top>
-                    <bottom>view_pad</bottom>
+                    <bottom>view_bottom</bottom>
                     <visible>$EXP[Exp_PlotOverlay]</visible>
                     <include>Animation_FadeIn</include>
                     <control type="group">

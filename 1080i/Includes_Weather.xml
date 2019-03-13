@@ -4,13 +4,12 @@
     <include name="Weather">
         <control type="grouplist">
             <top>view_top</top>
-            <left>50</left>
-            <right>50</right>
             <height>332</height>
             <orientation>horizontal</orientation>
-            <itemgap>32</itemgap>
+            <itemgap>52</itemgap>
             <include>Animation_FadeIn</include>
             <include>Animation_FadeOut</include>
+            <align>center</align>
             <control type="group">
                 <width>336</width>
                 <control type="image">
@@ -235,15 +234,13 @@
             </control>      
         </control>
         <control type="grouplist">
-            <left>50</left>
-            <right>50</right>
             <orientation>horizontal</orientation>
-            <itemgap>32</itemgap>
-            <bottom>view_pad</bottom>
+            <itemgap>52</itemgap>
+            <bottom>view_bottom</bottom>
             <height>460</height>
             <include>Animation_FadeIn</include>
             <include>Animation_FadeOut</include>
-            <align>left</align>
+            <align>center</align>
             <include content="Weather_DailyForecast">
                 <param name="day" value="Day0" />
                 <param name="label" value="$INFO[Window(Weather).Property(Day0.Title)]" />

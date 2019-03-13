@@ -249,8 +249,8 @@
 
     <include name="View_51_Wall_Container">
         <param name="itemlayout" default="View_51_Wall_Itemlayout" />
-        <param name="itemwidth" default="257.14" />
-        <param name="itemheight" default="412.5" />
+        <param name="itemwidth" default="view_poster_width" />
+        <param name="itemheight" default="view_row_height" />
         <param name="controltype" default="panel" />
         <param name="controllayout" default="View_Standard" />
         <param name="orientation" default="vertical" />
@@ -311,7 +311,7 @@
             <visible>Control.IsVisible(51)</visible>
             <include content="View_51_Wall_Container">
                 <param name="id" value="51" />
-                <param name="height" value="825" />
+                <param name="height" value="view_height" />
                 <param name="viewtype" value="$LOCALIZE[31358]" />
                 <param name="forced" value="true" />
                 <param name="visible" value="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(actors)" />
@@ -325,7 +325,7 @@
             <visible>Control.IsVisible(510)</visible>
             <include content="View_51_Wall_Container">
                 <param name="id" value="510" />
-                <param name="height" value="825" />
+                <param name="height" value="view_height" />
                 <param name="itemwidth" value="342" />
                 <param name="iconheight" value="342" />
                 <param name="aspectratio" value="keep" />
@@ -344,9 +344,9 @@
             <visible>Control.IsVisible(511)</visible>
             <include content="View_51_Wall_Container">
                 <param name="id" value="511" />
-                <param name="height" value="825" />
+                <param name="height" value="view_height" />
                 <param name="itemwidth" value="view_landscape_width" />
-                <param name="itemheight" value="412.5" />
+                <param name="itemheight" value="view_row_height" />
                 <param name="icon" value="$VAR[Image_Fanart]" />
                 <param name="clearlogo" value="String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow)" />
                 <param name="iconheight" value="view_landscape_icon_height" />
@@ -365,7 +365,7 @@
             <visible>Control.IsVisible(512)</visible>
             <include content="View_51_Wall_Container">
                 <param name="id" value="512" />
-                <param name="height" value="825" />
+                <param name="height" value="view_height" />
                 <param name="itemlayout" value="View_512_Wall_Itemlayout" />
                 <param name="itemwidth" value="342" />
                 <param name="itemheight" value="275" />
@@ -385,7 +385,7 @@
             <visible>Control.IsVisible(513)</visible>
             <include content="View_51_Wall_Container">
                 <param name="id" value="513" />
-                <param name="height" value="825" />
+                <param name="height" value="view_height" />
                 <param name="itemwidth" value="342" />
                 <param name="iconheight" value="342" />
                 <param name="aspectratio" value="scale" />
@@ -412,12 +412,12 @@
             <visible>Control.IsVisible(514)</visible>
             <include content="View_51_Wall_Container">
                 <param name="id" value="514" />
-                <param name="height" value="825" />
+                <param name="height" value="view_height" />
                 <param name="viewtype" value="$LOCALIZE[31426]" />
                 <param name="controllayout" value="View_514_Wall_Info_Layout" />
                 <param name="forced" value="true" />
                 <param name="visible" value="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons)" />
-                <width>977.12</width>
+                <width>1028.56</width>
                 <include>View_Vertical_Movement</include>
             </include>
             <include content="View_522_Showcase_Seasons_Info">

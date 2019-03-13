@@ -84,10 +84,12 @@
         <selectedcolor>$VAR[ColorHighlight]</selectedcolor>
         <texturefocus colordiffuse="dialog_bg_12">common/white.png</texturefocus>
         <texturenofocus/>
-        <textureradiofocus colordiffuse="dialog_fg_70">buttons/radio-on.png</textureradiofocus>
-        <textureradionofocus colordiffuse="dialog_fg_30">buttons/radio-off.png</textureradionofocus>
         <textureradioondisabled colordiffuse="dialog_fg_12">buttons/radio-on.png</textureradioondisabled>
         <textureradiooffdisabled colordiffuse="dialog_fg_12">buttons/radio-off.png</textureradiooffdisabled>
+        <textureradioonfocus colordiffuse="Selected">buttons/radio-on.png</textureradioonfocus>
+        <textureradioofffocus colordiffuse="Selected">buttons/radio-off.png</textureradioofffocus>
+        <textureradioonnofocus colordiffuse="dialog_fg_70">buttons/radio-on.png</textureradioonnofocus>
+        <textureradiooffnofocus colordiffuse="dialog_fg_30">buttons/radio-off.png</textureradiooffnofocus>
         <textoffsetx>30</textoffsetx>
         <pulseonselect>false</pulseonselect>
     </default>
@@ -150,25 +152,25 @@
 
     <default type="slider">
         <width>360</width>
-        <height>23</height>
+        <height>12</height>
         <orientation>horizontal</orientation>
         <texturefocus/>
         <texturenofocus/>
         <pulseonselect>false</pulseonselect>
-        <texturesliderbar colordiffuse="dialog_fg_70">other_textures/OSD/slider_bg_2.png</texturesliderbar>
-        <textureslidernib border="2">other_textures/OSD/SliderNibNF.png</textureslidernib>
-        <textureslidernibfocus border="2">other_textures/OSD/SliderNibFO.png</textureslidernibfocus>
+        <texturesliderbar colordiffuse="dialog_fg_12" border="6">slider/slider_bg.png</texturesliderbar>
+        <textureslidernib colordiffuse="dialog_fg_30" border="6">slider/slider_nib.png</textureslidernib>
+        <textureslidernibfocus colordiffuse="Selected" border="6">slider/slider_nib.png</textureslidernibfocus>
     </default>
 
     <default type="sliderex">
         <orientation>horizontal</orientation>
         <selectedcolor>$VAR[ColorHighlight]</selectedcolor>
-        <sliderwidth>230</sliderwidth>
-        <sliderheight>23</sliderheight>
+        <sliderwidth>192</sliderwidth>
+        <sliderheight>12</sliderheight>
         <pulseonselect>false</pulseonselect>
-        <texturesliderbar colordiffuse="dialog_fg_70">other_textures/OSD/slider_bg.png</texturesliderbar>
-        <textureslidernib border="2">other_textures/OSD/SliderNibNF.png</textureslidernib>
-        <textureslidernibfocus border="2">other_textures/OSD/SliderNibFO.png</textureslidernibfocus>
+        <texturesliderbar colordiffuse="dialog_fg_12" border="6">slider/slider_bg.png</texturesliderbar>
+        <textureslidernib colordiffuse="dialog_fg_30" border="6">slider/slider_nib.png</textureslidernib>
+        <textureslidernibfocus colordiffuse="Selected" border="6">slider/slider_nib.png</textureslidernibfocus>
         <font>font_small</font>
         <aligny>center</aligny>
         <textcolor>dialog_fg_70</textcolor>
