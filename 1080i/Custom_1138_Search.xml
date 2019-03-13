@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window type="window" id="1138">
+    <defaultcontrol always="true">5600</defaultcontrol>
+    <onload>SetProperty(Header_Center_Text,Results)</onload>
+    <onload>SetProperty(Header_Left_Text,Search)</onload>
+    <controls>
+        <include>Global_Background</include>
+        <include>Topbar</include>
+        
+        <control type="group">
+            <include>View_Group</include>
+            <control type="grouplist" id="5600">
+                <left>-15</left>
+                <top>-15</top>
+                <right>-25</right>
+                <scrolltime tween="quadratic">400</scrolltime>
+                <onup>300</onup>
+                <ondown>6000</ondown>
+                <height>view_height</height>
+                <orientation>vertical</orientation>
+                <itemgap>-52</itemgap>
+                <usecontrolcoords>true</usecontrolcoords>
+                <control type="group" id="7599"><height>0</height></control>
+
+                <include content="View_Cast_Toplabel">
+                    <param name="groupid" value="7501" />
+                    <param name="id" value="5001" />
+                    <param name="label" value="Test" />
+                </include>
+                <include content="View_51_Wall_Container">
+                    <param name="controllayout" value="View_Cast" />
+                    <param name="id" value="5001" />
+                    <param name="height" value="view_cast_height" />
+                    <param name="orientation" value="horizontal" />
+                    <param name="labelinclude" value="Defs_Null" />
+                    <param name="visible" value="Integer.IsGreater(Container(5001).NumItems,1) | Container(5001).IsUpdating" />
+                    <animation effect="fade" start="100" end="0" condition="!Integer.IsGreater(Container(5001).NumItems,0) | Container(5001).IsUpdating">Conditional</animation>
+                    <content limit="25" target="videos">videodb://movies/titles/</content>
+                </include>
+
+                <include content="View_Cast_Toplabel">
+                    <param name="groupid" value="7502" />
+                    <param name="id" value="5002" />
+                    <param name="label" value="Test" />
+                </include>
+                <include content="View_51_Wall_Container">
+                    <param name="controllayout" value="View_Cast" />
+                    <param name="id" value="5002" />
+                    <param name="height" value="view_cast_height" />
+                    <param name="orientation" value="horizontal" />
+                    <param name="labelinclude" value="Defs_Null" />
+                    <param name="visible" value="Integer.IsGreater(Container(5002).NumItems,1) | Container(5002).IsUpdating" />
+                    <animation effect="fade" start="100" end="0" condition="!Integer.IsGreater(Container(5002).NumItems,0) | Container(5002).IsUpdating">Conditional</animation>
+                    <content limit="25" target="videos">videodb://movies/titles/</content>
+                </include>
+
+            </control>
+        </control>
+    </controls>
+</window>

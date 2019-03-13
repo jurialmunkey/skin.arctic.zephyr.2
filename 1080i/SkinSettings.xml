@@ -442,6 +442,14 @@
                         <onclick>Skin.ToggleSetting(PVRGuide.SlimMode)</onclick>
                     </control>
 
+                    <control type="radiobutton" id="19602" description="Colordiffuse to icons">
+                        <visible>Integer.IsEqual(Window.Property(CurrentFocus),9006)</visible>
+                        <include>Defs_Settings_Button</include>
+                        <label>Apply colordiffuse on icons</label>
+                        <selected>!Skin.HasSetting(PVRGuide.DisableColorDiffuse)</selected>
+                        <onclick>Skin.ToggleSetting(PVRGuide.DisableColorDiffuse)</onclick>
+                    </control>
+
 
                     <!-- ============= -->
                     <!-- Miscellaneous -->

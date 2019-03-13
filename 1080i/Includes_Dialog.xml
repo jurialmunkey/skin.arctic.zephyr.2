@@ -551,13 +551,13 @@
         </control>
         <include content="Dialog_Standard_List_Itemlayout_Simple">
             <param name="left_pad" value="80" />
-            <param name="right_pad" value="$PARAM[item_height]" />
+            <param name="right_pad" value="$PARAM[itemheight]" />
             <param name="color_70" value="$PARAM[color_70]" />
             <param name="color_highlight" value="$PARAM[color_highlight]" />
         </include>
         <control type="image">
             <right>15</right>
-            <width>$PARAM[item_height]</width>
+            <width>$PARAM[itemheight]</width>
             <aspectratio>keep</aspectratio>
             <bordersize>10</bordersize>
             <texture>$INFO[ListItem.Icon]</texture>
@@ -567,13 +567,13 @@
     <include name="Dialog_Standard_List_Itemlayout_GroupManager">
         <include content="Dialog_Standard_List_Itemlayout_Simple">
             <param name="left_pad" value="0" />
-            <param name="right_pad" value="$PARAM[item_height]" />
+            <param name="right_pad" value="$PARAM[itemheight]" />
             <param name="color_70" value="$PARAM[color_70]" />
             <param name="color_highlight" value="$PARAM[color_highlight]" />
         </include>
         <control type="image">
             <right>15</right>
-            <width>$PARAM[item_height]</width>
+            <width>$PARAM[itemheight]</width>
             <aspectratio>keep</aspectratio>
             <bordersize>10</bordersize>
             <texture>$INFO[ListItem.Icon]</texture>
@@ -649,7 +649,7 @@
                 <param name="color_70" value="$PARAM[color_70]" />
                 <param name="color_highlight" value="$PARAM[color_highlight]" />
                 <param name="left_pad" value="$PARAM[left_pad]" />
-                <param name="item_height" value="$PARAM[item_height]" />
+                <param name="itemheight" value="$PARAM[itemheight]" />
             </include>
         </definition>
     </include>
@@ -657,7 +657,7 @@
     <include name="Dialog_Standard_List">
         <param name="id" default="3" />
         <param name="pagecontrol" default="61" />
-        <param name="item_height" default="view_list_height" />
+        <param name="itemheight" default="view_list_height" />
         <param name="list_style" default="Dialog_Standard_List_Itemlayout_Simple" />
         <param name="checkmark" default="true" />
         <param name="itemlayout_condition" default="true" />
@@ -677,15 +677,15 @@
                 <ondown>$PARAM[ondown]</ondown>
                 <pagecontrol>$PARAM[pagecontrol]</pagecontrol>
                 <width>$PARAM[width]</width>
-                <itemlayout height="$PARAM[item_height]" width="$PARAM[width]" condition="$PARAM[itemlayout_condition]">
+                <itemlayout height="$PARAM[itemheight]" width="$PARAM[width]" condition="$PARAM[itemlayout_condition]">
                     <include content="Dialog_Standard_List_Itemlayout">
                         <param name="list_style" value="$PARAM[list_style]" />
                         <param name="left_pad" value="$PARAM[left_pad]" />
                         <param name="checkmark" value="$PARAM[checkmark]" />
-                        <param name="item_height" value="$PARAM[item_height]" />
+                        <param name="itemheight" value="$PARAM[itemheight]" />
                     </include>
                 </itemlayout>
-                <focusedlayout height="$PARAM[item_height]" width="$PARAM[width]" condition="$PARAM[itemlayout_condition]">
+                <focusedlayout height="$PARAM[itemheight]" width="$PARAM[width]" condition="$PARAM[itemlayout_condition]">
                     <control type="image">
                         <texture colordiffuse="$VAR[ColorHighlight]">common/white.png</texture>
                         <animation effect="fade" start="100" end="50" condition="!Control.HasFocus($PARAM[id])">Conditional</animation>
@@ -697,7 +697,7 @@
                         <param name="list_style" value="$PARAM[list_style]" />
                         <param name="left_pad" value="$PARAM[left_pad]" />
                         <param name="checkmark" value="$PARAM[checkmark]" />
-                        <param name="item_height" value="$PARAM[item_height]" />
+                        <param name="itemheight" value="$PARAM[itemheight]" />
                     </include>
                 </focusedlayout>
                 <nested />
@@ -744,7 +744,7 @@
             <include>Dialog_Standard_List</include>
             <include content="Dialog_Standard_List">
                 <param name="id" value="6" />
-                <param name="item_height" value="view_biglist_height" />
+                <param name="itemheight" value="view_biglist_height" />
                 <param name="list_style" value="Dialog_Standard_List_Itemlayout_Complex" />
                 <param name="onup" value="6" />
                 <param name="ondown" value="6" />

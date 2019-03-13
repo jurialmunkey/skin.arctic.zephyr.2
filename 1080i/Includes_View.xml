@@ -295,7 +295,7 @@
                 <nested />
                 <control type="group">
                     <top>52</top>
-                    <height>360.5</height>
+                    <height>view_cast_height</height>
                     <include content="Defs_BusySpinner">
                         <param name="label" value="$LOCALIZE[31428]..." />
                         <param name="textcolor" value="main_fg_100" />
@@ -568,8 +568,8 @@
     </include>
 
     <include name="View_TopItems">
-        <param name="item_width" default="view_poster_width" />
-        <param name="item_height" default="294.28" />
+        <param name="itemwidth" default="view_poster_width" />
+        <param name="itemheight" default="294.28" />
         <param name="height" default="294.28" />
         <param name="textbox_height" default="100" />
         <param name="itemlayout" default="View_TopItems_Itemlayout" />
@@ -582,7 +582,7 @@
             <height>$PARAM[height]</height>
             <preloaditems>2</preloaditems>
             <orientation>horizontal</orientation>
-            <itemlayout width="$PARAM[item_width]" height="$PARAM[item_height]">
+            <itemlayout width="$PARAM[itemwidth]" height="$PARAM[itemheight]">
                 <include content="$PARAM[itemlayout]">
                     <param name="textbox_height" value="$PARAM[textbox_height]" />
                     <param name="icon" value="$PARAM[icon]" />
@@ -596,7 +596,7 @@
                     <param name="diffuse" value="$PARAM[diffuse]" />
                 </include>
             </itemlayout>
-            <focusedlayout width="$PARAM[item_width]" height="$PARAM[item_height]">
+            <focusedlayout width="$PARAM[itemwidth]" height="$PARAM[itemheight]">
                 <include content="$PARAM[itemlayout]">
                     <param name="textbox_height" value="$PARAM[textbox_height]" />
                     <param name="icon" value="$PARAM[icon]" />
