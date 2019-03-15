@@ -132,7 +132,8 @@
             <ondown condition="Integer.IsGreater(Container(302).NumItems,0) + !Skin.HasSetting(SubmenuOnly)">SetProperty(widgetAspect,$INFO[Container(301).ListItem.Property(widgetAspect)],home)</ondown>
             <ondown condition="Integer.IsGreater(Container(302).NumItems,0) + !Skin.HasSetting(SubmenuOnly)">ActivateWindow(1135)</ondown>
             <ondown condition="Integer.IsGreater(Container(302).NumItems,0) + Skin.HasSetting(SubmenuOnly)">302</ondown>
-            <onup>5600</onup>
+            <onup condition="!Player.HasVideo | !Skin.HasSetting(global.showvideo)">5600</onup>
+            <onup condition="Player.HasVideo + Skin.HasSetting(global.showvideo)">noop</onup>
             <onfocus>ClearProperty(WidgetFocus,Home)</onfocus>
             <onfocus>ClearProperty(WidgetLoading,Home)</onfocus>
             <onfocus>AlarmClock(SetLoad,SetProperty(WidgetLoading,1,Home),00:00,silent)</onfocus>
@@ -239,7 +240,7 @@
                         <align>center</align>
                         <font>font_byline</font>
                         <textcolor>main_fg_70</textcolor>
-                        <label fallback="$LOCALIZE[31105]">$INFO[Container(301).ListItem.Property(widgetName.backgroundWidget)]</label>
+                        <label fallback="31105">$INFO[Container(301).ListItem.Property(widgetName.backgroundWidget)]</label>
                         <height>30</height>
                     </control>
                     <control type="label">
