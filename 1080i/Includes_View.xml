@@ -27,7 +27,7 @@
         <param name="icon" default="$INFO[ListItem.Icon]" />
         <param name="labelinclude" default="View_51_Wall_Label" />
         <param name="aspectratio" default="scale" />
-        <param name="diffuse" default="diffuse/214x315.png" /> <!-- FIX ME -->
+        <param name="diffuse" default="diffuse/poster-wall.png" /> <!-- FIX ME -->
         <definition>
             <control type="group">
                 <right>10</right>
@@ -89,7 +89,7 @@
                     <right>4</right>
                     <top>4</top>
                     <control type="image">
-                        <texture colordiffuse="main_fg_12" border="10">common/box.png</texture>
+                        <texture colordiffuse="main_fg_12" border="10">diffuse/box.png</texture>
                     </control>
                     <control type="image">
                         <texture colordiffuse="main_fg_12">common/selected.png</texture>
@@ -107,7 +107,7 @@
                         <right>4</right>
                         <top>4</top>
                         <control type="image">
-                            <texture colordiffuse="main_fg_12" border="10">common/box.png</texture>
+                            <texture colordiffuse="main_fg_12" border="10">diffuse/box.png</texture>
                         </control>
                         <control type="image">
                             <texture colordiffuse="main_fg_12">common/selected.png</texture>
@@ -124,7 +124,7 @@
                         <right>4</right>
                         <top>4</top>
                         <control type="image">
-                            <texture colordiffuse="main_fg_100" border="10">common/box.png</texture>
+                            <texture colordiffuse="main_fg_100" border="10">diffuse/box.png</texture>
                         </control>
                         <control type="image">
                             <texture colordiffuse="main_bg_12">common/selected.png</texture>
@@ -181,7 +181,7 @@
                     <right>4</right>
                     <top>4</top>
                     <control type="image">
-                        <texture colordiffuse="main_fg_12" border="10">common/box.png</texture>
+                        <texture colordiffuse="main_fg_12" border="10">diffuse/box.png</texture>
                     </control>
                     <control type="image">
                         <texture colordiffuse="main_fg_12">common/selected.png</texture>
@@ -209,7 +209,7 @@
                         <right>4</right>
                         <top>4</top>
                         <control type="image">
-                            <texture colordiffuse="main_fg_12" border="10">common/box.png</texture>
+                            <texture colordiffuse="main_fg_12" border="10">diffuse/box.png</texture>
                         </control>
                         <control type="image">
                             <texture colordiffuse="main_fg_12">common/selected.png</texture>
@@ -236,7 +236,7 @@
                         <right>4</right>
                         <top>4</top>
                         <control type="image">
-                            <texture colordiffuse="main_fg_100" border="10">common/box.png</texture>
+                            <texture colordiffuse="main_fg_100" border="10">diffuse/box.png</texture>
                         </control>
                         <control type="image">
                             <texture colordiffuse="main_bg_12">common/selected.png</texture>
@@ -411,10 +411,13 @@
         </include>
     </include>
     <include name="View_Cast_Video_Label">
-        <include content="View_Cast_Label">
-            <param name="label2" value="ListItem.Duration" />
-            <param name="iconheight" value="$PARAM[iconheight]" />
-        </include>
+        <param name="label2" default="ListItem.Duration" />
+        <definition>
+            <include content="View_Cast_Label">
+                <param name="label2" value="$PARAM[label2]" />
+                <param name="iconheight" value="$PARAM[iconheight]" />
+            </include>
+        </definition>
     </include>
 
     <include name="View_Standard">
@@ -472,6 +475,7 @@
         <definition>
             <control type="group">
                 <top>0</top>
+                <right>10</right>
                 <bottom>$PARAM[textbox_height]</bottom>
                 <include content="Object_Geometric">
                     <param name="diffuse" value="$PARAM[diffuse]" />
@@ -490,7 +494,7 @@
             <control type="textbox">
                 <bottom>0</bottom>
                 <left>15</left>
-                <right>15</right>
+                <right>25</right>
                 <font>font_tiny</font>
                 <textcolor>main_fg_100</textcolor>
                 <height>$PARAM[textbox_height]</height>
@@ -510,6 +514,7 @@
         <definition>
             <control type="group">
                 <top>0</top>
+                <right>10</right>
                 <bottom>$PARAM[textbox_height]</bottom>
                 <include content="Object_Geometric">
                     <param name="diffuse" value="$PARAM[diffuse]" />
@@ -556,7 +561,7 @@
             <control type="textbox">
                 <bottom>0</bottom>
                 <left>15</left>
-                <right>15</right>
+                <right>25</right>
                 <font>font_tiny</font>
                 <textcolor>main_fg_100</textcolor>
                 <height>$PARAM[textbox_height]</height>
@@ -574,7 +579,7 @@
         <param name="textbox_height" default="100" />
         <param name="itemlayout" default="View_TopItems_Itemlayout" />
         <param name="id" default="5600" />
-        <param name="diffuse" default="diffuse/214x164.png" /> <!-- FIX THIS -->
+        <param name="diffuse" default="diffuse/topitems.png" /> <!-- FIX THIS -->
         <definition>
             <top>-15</top>
             <left>-15</left>
@@ -634,7 +639,7 @@
                     <param name="itemwidth" value="450" />
                     <param name="itemheight" value="230" />
                     <param name="iconheight" value="230" />
-                    <param name="diffuse" value="diffuse/312x190.png" />
+                    <param name="diffuse" value="diffuse/icon-wall.png" />
                     <param name="forced" value="false" />
                     <param name="visible" value="true" />
                     <param name="orientation" value="horizontal" />
@@ -661,7 +666,7 @@
                         <param name="itemwidth" value="450" />
                         <param name="itemheight" value="230" />
                         <param name="iconheight" value="230" />
-                        <param name="diffuse" value="diffuse/312x190.png" />
+                        <param name="diffuse" value="diffuse/icon-wall.png" />
                         <param name="forced" value="false" />
                         <param name="visible" value="true" />
                         <param name="orientation" value="vertical" />

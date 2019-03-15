@@ -47,7 +47,8 @@
         </control>
 
 
-        <include condition="Skin.HasSetting(VerticalHome)">Home_Vertical</include>
+        <include condition="Skin.HasSetting(VerticalHome) + !Skin.HasSetting(AuraStyleHome)">Home_Vertical_Arctic</include>
+        <include condition="Skin.HasSetting(VerticalHome) + Skin.HasSetting(AuraStyleHome)">Home_Vertical_Aura</include>
         <include condition="!Skin.HasSetting(VerticalHome)">Home_Simple</include>
 
         <!-- Splash -->

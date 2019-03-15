@@ -87,7 +87,7 @@
         <param name="top" default="397.5" />
         <param name="landscapelabelinclude" default="View_51_Wall_Landscape_Home_Label" />
         <param name="left" default="-15" />
-        <param name="right" default="-15" />
+        <param name="right" default="-25" />
         <definition>
             <control type="$PARAM[controltype]" id="$PARAM[id]">
                 <nested />
@@ -104,7 +104,7 @@
                         <param name="aspectratio" value="keep" />
                         <param name="iconheight" value="view_icon_height" />
                         <param name="selectbox" value="false" />
-                        <param name="diffuse" value="diffuse/312x312.png" />
+                        <param name="diffuse" value="diffuse/square-wall.png" />
                         <param name="icon" value="$VAR[Image_Poster]" />
                         <param name="id" value="$PARAM[id]" />
                         <param name="labelinclude" value="$PARAM[labelinclude]" />
@@ -115,7 +115,7 @@
                         <param name="selectbox" value="true" />
                         <param name="aspectratio" value="keep" />
                         <param name="iconheight" value="view_icon_height" />
-                        <param name="diffuse" value="diffuse/312x312.png" />
+                        <param name="diffuse" value="diffuse/square-wall.png" />
                         <param name="icon" value="$VAR[Image_Poster]" />
                         <param name="id" value="$PARAM[id]" />
                         <param name="labelinclude" value="$PARAM[labelinclude]" />
@@ -128,7 +128,7 @@
                         <param name="iconheight" value="view_icon_height" />
                         <param name="bordersize" value="90" />
                         <param name="selectbox" value="false" />
-                        <param name="diffuse" value="diffuse/312x312.png" />
+                        <param name="diffuse" value="diffuse/square-wall.png" />
                         <param name="icon" value="$VAR[Image_Poster]" />
                         <param name="id" value="$PARAM[id]" />
                         <param name="labelinclude" value="$PARAM[labelinclude]" />
@@ -140,39 +140,39 @@
                         <param name="aspectratio" value="keep" />
                         <param name="iconheight" value="view_icon_height" />
                         <param name="bordersize" value="90" />
-                        <param name="diffuse" value="diffuse/312x312.png" />
+                        <param name="diffuse" value="diffuse/square-wall.png" />
                         <param name="icon" value="$VAR[Image_Poster]" />
                         <param name="id" value="$PARAM[id]" />
                         <param name="labelinclude" value="$PARAM[labelinclude]" />
                     </include>
                 </focusedlayout>
 
-                <itemlayout width="570" height="423.75" condition="$PARAM[landscapecondition]">
+                <itemlayout width="view_landscape_width" height="view_row_height" condition="$PARAM[landscapecondition]">
                     <include content="View_51_Wall_Itemlayout">
-                        <param name="iconheight" value="view_landscape_icon_height" />
+                        <param name="iconheight" value="view_icon_height" />
                         <param name="clearlogo" value="true" />
                         <param name="selectbox" value="false" />
                         <param name="icon" value="$VAR[Image_Fanart]" />
-                        <param name="diffuse" value="diffuse/540x304.png" />
+                        <param name="diffuse" value="diffuse/landscape-wall.png" />
                         <param name="labelinclude" value="$PARAM[landscapelabelinclude]" />
                         <param name="clearlogo" value="String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,episode)" />
                         <param name="id" value="$PARAM[id]" />
                     </include>
                 </itemlayout>
-                <focusedlayout width="570" height="423.75" condition="$PARAM[landscapecondition]">
+                <focusedlayout width="view_landscape_width" height="view_row_height" condition="$PARAM[landscapecondition]">
                     <include content="View_51_Wall_Itemlayout">
                         <param name="selectbox" value="true" />
-                        <param name="iconheight" value="view_landscape_icon_height" />
+                        <param name="iconheight" value="view_icon_height" />
                         <param name="clearlogo" value="true" />
                         <param name="icon" value="$VAR[Image_Fanart]" />
-                        <param name="diffuse" value="diffuse/540x304.png" />
+                        <param name="diffuse" value="diffuse/landscape-wall.png" />
                         <param name="labelinclude" value="$PARAM[landscapelabelinclude]" />
                         <param name="clearlogo" value="String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,episode)" />
                         <param name="id" value="$PARAM[id]" />
                     </include>
                 </focusedlayout>
 
-                <itemlayout width="244.28" height="view_row_height" condition="![$PARAM[squarecondition] | $PARAM[iconcondition] | $PARAM[landscapecondition]]">
+                <itemlayout width="view_poster_width" height="view_row_height" condition="![$PARAM[squarecondition] | $PARAM[iconcondition] | $PARAM[landscapecondition]]">
                     <include content="View_51_Wall_Itemlayout">
                         <param name="selectbox" value="false" />
                         <param name="icon" value="$VAR[Image_Poster]" />
@@ -180,7 +180,7 @@
                         <param name="labelinclude" value="$PARAM[labelinclude]" />
                     </include>
                 </itemlayout>
-                <focusedlayout width="244.28" height="view_row_height" condition="![$PARAM[squarecondition] | $PARAM[iconcondition] | $PARAM[landscapecondition]]">
+                <focusedlayout width="view_poster_width" height="view_row_height" condition="![$PARAM[squarecondition] | $PARAM[iconcondition] | $PARAM[landscapecondition]]">
                     <include content="View_51_Wall_Itemlayout">
                         <param name="selectbox" value="true" />
                         <param name="icon" value="$VAR[Image_Poster]" />
@@ -251,10 +251,10 @@
         <param name="infohide" default="true" />
         <definition>
             <control type="grouplist">
+                <visible>!Skin.HasSetting(DisableCodecs)</visible>
                 <include condition="$PARAM[infohide]">Defs_InfoDialog_Visible</include>
                 <visible>!$EXP[Exp_HideFurniture]</visible>
                 <visible>!Control.HasFocus(62)</visible>
-                <!-- <include>Animation_FadeInOut</include> -->
                 <orientation>horizontal</orientation>
                 <align>right</align>
                 <height>view_bottom</height>

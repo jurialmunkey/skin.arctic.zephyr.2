@@ -85,29 +85,35 @@
             <align>left</align>
             <height>70</height>
             <font>font_topbar_small</font>
-            <textcolor>main_fg_100</textcolor>
+            <focusedcolor>main_fg_30</focusedcolor>
+            <selectedcolor>main_fg_30</selectedcolor>
+            <textcolor>main_fg_30</textcolor>
             <onfocus>SetFocus($PARAM[id],$PARAM[pos])</onfocus>
             <onclick>$INFO[Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Property(path)]</onclick>
             <texturefocus />
             <texturenofocus />
             <textoffsetx>0</textoffsetx>
-            <animation effect="fade" start="100" end="33" condition="!String.IsEqual(Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Label,Container($PARAM[id]).ListItemAbsolute.Label)">Conditional</animation>
             <label>$INFO[Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Label]</label>
             <visible>!String.IsEqual(Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Label,Container($PARAM[id]).ListItem.Label)</visible>
             <visible>$PARAM[visible]</visible>
         </control>
-        <control type="button">
+        <control type="togglebutton">
             <width>auto</width>
             <align>left</align>
             <height>70</height>
             <font>font_topbar</font>
+            <focusedcolor>main_fg_100</focusedcolor>
+            <selectedcolor>main_fg_100</selectedcolor>
             <textcolor>main_fg_100</textcolor>
             <onfocus>SetFocus($PARAM[id],$PARAM[pos])</onfocus>
             <onclick>$INFO[Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Property(path)]</onclick>
-            <texturefocus />
             <texturenofocus />
+            <texturefocus colordiffuse="main_fg_100" border="8">common/underline2.png</texturefocus>
+            <alttexturenofocus colordiffuse="main_fg_100" border="8">common/underline2.png</alttexturenofocus>
+            <alttexturefocus colordiffuse="main_fg_100" border="8">common/underline2.png</alttexturefocus>
             <textoffsetx>0</textoffsetx>
-            <animation effect="fade" start="100" end="33" condition="!String.IsEqual(Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Label,Container($PARAM[id]).ListItemAbsolute.Label)">Conditional</animation>
+            <usealttexture>Control.HasFocus(301) + Skin.HasSetting(AuraStyleHome) + Skin.HasSetting(VerticalHome)</usealttexture>
+            <!-- <animation effect="fade" start="100" end="30" condition="!Control.HasFocus(301)">Conditional</animation> -->
             <label>$INFO[Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Label]</label>
             <visible>String.IsEqual(Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Label,Container($PARAM[id]).ListItem.Label)</visible>
             <visible>$PARAM[visible]</visible>
@@ -117,6 +123,13 @@
     <include name="Home_Simple">
         <!-- Fake Menu -->
         <control type="list" id="301">
+            <ondown condition="Integer.IsGreater(Container(302).NumItems,0) + !Skin.HasSetting(SubmenuOnly)">SetProperty(submenuVisibility,$INFO[Container(301).ListItem.Property(submenuVisibility)],home)</ondown>
+            <ondown condition="Integer.IsGreater(Container(302).NumItems,0) + !Skin.HasSetting(SubmenuOnly)">SetProperty(leftHeader,$INFO[Container(301).ListItem.Label],home)</ondown>
+            <ondown condition="Integer.IsGreater(Container(302).NumItems,0) + !Skin.HasSetting(SubmenuOnly)">SetProperty(widgetName,$INFO[Container(301).ListItem.Property(widgetName)],home)</ondown>
+            <ondown condition="Integer.IsGreater(Container(302).NumItems,0) + !Skin.HasSetting(SubmenuOnly)">SetProperty(widgetName.backgroundWidget,$INFO[Container(301).ListItem.Property(widgetName.backgroundWidget)],home)</ondown>
+            <ondown condition="Integer.IsGreater(Container(302).NumItems,0) + !Skin.HasSetting(SubmenuOnly)">SetProperty(widgetPath,$INFO[Container(301).ListItem.Property(widgetPath)],home)</ondown>
+            <ondown condition="Integer.IsGreater(Container(302).NumItems,0) + !Skin.HasSetting(SubmenuOnly)">SetProperty(widgetTarget,$INFO[Container(301).ListItem.Property(widgetTarget)],home)</ondown>
+            <ondown condition="Integer.IsGreater(Container(302).NumItems,0) + !Skin.HasSetting(SubmenuOnly)">SetProperty(widgetAspect,$INFO[Container(301).ListItem.Property(widgetAspect)],home)</ondown>
             <ondown condition="Integer.IsGreater(Container(302).NumItems,0) + !Skin.HasSetting(SubmenuOnly)">ActivateWindow(1135)</ondown>
             <ondown condition="Integer.IsGreater(Container(302).NumItems,0) + Skin.HasSetting(SubmenuOnly)">302</ondown>
             <onup>5600</onup>
@@ -296,7 +309,7 @@
         </definition>
     </include>
 
-    <include name="Home_Vertical">
+    <include name="Home_Vertical_Arctic">
         <include>Global_Background</include>
         <include>Topbar</include>
         <control type="group">
@@ -365,9 +378,69 @@
                     <onup>noop</onup>
                     <ondown>noop</ondown>
                     <onleft>301</onleft>
+                    <onright>noop</onright>
                     <scrolltime tween="quadratic">400</scrolltime>
                     <height>view_height</height>
-                    <width>1710</width>
+                    <width>1800</width>
+                    <orientation>vertical</orientation>
+                    <itemgap>-52</itemgap>
+                    <usecontrolcoords>true</usecontrolcoords>
+                    <control type="group" id="7999"><height>0</height></control>
+                    <include>skinshortcuts-template-vertical-main</include>
+                    <include>skinshortcuts-template-vertical-submenu</include>
+                </control>
+            </control>
+        </control>
+    </include>
+
+    <include name="Home_Vertical_Aura">
+        <include>Global_Background</include>
+        <control type="group">
+            <top>30</top>
+            <include>Defs_InfoDialog_Visible</include>
+            <control type="group">
+                <height>120</height>
+                <visible allowhiddenfocus="true">!$EXP[Exp_HideFurniture]</visible>
+                <include>Animation_FadeInOut</include>
+                <include content="Topbar_Right">
+                    <param name="fgcolor" value="main_fg" />
+                </include>
+            </control>
+        </control>
+        <!-- <control type="list" id="302">
+            <height>10</height>
+            <top>-20</top>
+            <itemlayout width="200" />
+            <focusedlayout width="200" />
+            <content><include>skinshortcuts-submenu</include></content>
+        </control> -->
+        <control type="list" id="301">
+            <ondown>3000</ondown>
+            <onfocus>ClearProperty(WidgetFocus,Home)</onfocus>
+            <onfocus>ClearProperty(WidgetLoading,Home)</onfocus>
+            <onfocus>AlarmClock(SetLoad,SetProperty(WidgetLoading,1,Home),00:00,silent)</onfocus>
+            <orientation>horizontal</orientation>
+            <height>10</height>
+            <bottom>-100</bottom>
+            <itemlayout width="200" />
+            <focusedlayout width="200" />
+            <content><include>skinshortcuts-mainmenu</include></content>
+        </control>
+        <include condition="!Skin.HasSetting(HorizontalHome)">Home_Menu</include>
+        <control type="group">
+            <include>View_Group</include>
+            <control type="group">
+                <top>-15</top>
+                <right>-15</right>
+                <left>-15</left>
+                <bottom>-15</bottom>
+                <control type="grouplist" id="3000">
+                    <include>Defs_InfoDialog_Visible</include>
+                    <onup>301</onup>
+                    <ondown>noop</ondown>
+                    <scrolltime tween="quadratic">400</scrolltime>
+                    <height>view_height</height>
+                    <width>1800</width>
                     <orientation>vertical</orientation>
                     <itemgap>-52</itemgap>
                     <usecontrolcoords>true</usecontrolcoords>

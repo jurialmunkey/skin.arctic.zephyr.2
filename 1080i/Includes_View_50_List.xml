@@ -7,7 +7,7 @@
             <include content="View_50_Poster">
                 <param name="height" value="810" />
                 <param name="width" value="560" />
-                <param name="diffuse" value="diffuse/560x810.png" />
+                <param name="diffuse" value="diffuse/poster-big.png" />
             </include>
             <include content="View_50_List_Control">
                 <param name="left" value="560" />
@@ -15,7 +15,7 @@
                 <param name="id" value="50" />
                 <param name="viewtype" value="$LOCALIZE[535]" />
                 <param name="forced" value="true" />
-                <param name="visible" value="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(actors)" />
+                <param name="visible" value="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(actors) | Container.Content(files)" />
             </include>
         </control>
     </include>
@@ -29,7 +29,7 @@
                     <param name="height" value="654" />
                     <param name="width" value="654" />
                     <param name="aspectratio" value="keep" />
-                    <param name="diffuse" value="diffuse/654x654.png" />
+                    <param name="diffuse" value="diffuse/square-big.png" />
                 </include>
                 <include>View_50_Info</include>
                 <include content="View_50_List_Control">
@@ -38,7 +38,7 @@
                     <param name="id" value="500" />
                     <param name="viewtype" value="$LOCALIZE[535]" />
                     <param name="forced" value="true" />
-                    <param name="visible" value="![Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(actors)]" />
+                    <param name="visible" value="![Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(actors) | Container.Content(files)]" />
                 </include>
             </control>
         </control>
@@ -72,7 +72,7 @@
             <include>View_Group</include>
             <include content="View_50_List_Control">
                 <param name="left" value="-20" />
-                <param name="right" value="964.8" />
+                <param name="right" value="1038.53" />
                 <param name="id" value="502" />
                 <param name="viewtype" value="$LOCALIZE[31423]" />
                 <param name="forced" value="true" />
@@ -143,20 +143,21 @@
                         <control type="image">
                             <bordersize>15</bordersize>
                             <bordertexture border="30" colordiffuse="Shadow">common/shadow-15.png</bordertexture>
-                            <texture colordiffuse="main_fg_100" border="20">diffuse/1360x332.png</texture>
+                            <texture colordiffuse="main_fg_100" border="10">diffuse/box.png</texture>
                         </control>
                         <control type="group">
                             <height>282</height>
                             <include content="Object_Poster">
                                 <param name="icon" value="$VAR[Image_Banner]" />
                                 <param name="aspectratio" value="scale" />
-                                <param name="diffuse" value="diffuse/1360x252.png" />
+                                <param name="diffuse" value="diffuse/banner-top.png" />
                             </include>
                             <control type="image">
                                 <right>30</right>
+                                <top>30</top>
                                 <bottom>30</bottom>
-                                <height>33%</height>
-                                <aspectratio align="right" aligny="bottom">keep</aspectratio>
+                                <width>25%</width>
+                                <aspectratio align="right" aligny="center">keep</aspectratio>
                                 <texture>$VAR[Image_ClearLogo]</texture>
                                 <visible>String.IsEmpty(ListItem.Art(tvshow.banner)) + String.IsEmpty(ListItem.Art(banner))</visible>
                             </control>
@@ -190,31 +191,34 @@
                 </focusedlayout>
                 <itemlayout width="1790" height="119.5" condition="Container.Content(episodes)">
                     <control type="group">
-                        <top>15</top>
-                        <bottom>-15</bottom>
-                        <left>705</left>
-                        <width>1390</width>
-                        <control type="label">
-                            <top>-10</top>
-                            <left>30</left>
-                            <right>35</right>
-                            <font>font_title_mini</font>
-                            <selectedcolor>main_fg_100</selectedcolor>
-                            <textcolor>main_fg_100</textcolor>
-                            <aligny>top</aligny>
-                            <align>left</align>
-                            <label>$VAR[Label_Title]</label>
-                        </control>
-                        <control type="label">
-                            <top>30</top>
-                            <left>30</left>
-                            <right>35</right>
-                            <font>font_statusbar</font>
-                            <selectedcolor>main_fg_70</selectedcolor>
-                            <textcolor>main_fg_70</textcolor>
-                            <aligny>top</aligny>
-                            <align>left</align>
-                            <label>$VAR[Label_Premiered]$VAR[Label_List_Right,  •  ,]</label>
+                        <width>1590</width>
+                        <centerleft>50%</centerleft>
+                        <control type="group">
+                            <top>15</top>
+                            <bottom>-15</bottom>
+                            <left>566.89</left>
+                            <control type="label">
+                                <top>-10</top>
+                                <left>15</left>
+                                <right>40</right>
+                                <font>font_title_mini</font>
+                                <selectedcolor>main_fg_100</selectedcolor>
+                                <textcolor>main_fg_100</textcolor>
+                                <aligny>top</aligny>
+                                <align>left</align>
+                                <label>$VAR[Label_Title]</label>
+                            </control>
+                            <control type="label">
+                                <top>30</top>
+                                <left>15</left>
+                                <right>40</right>
+                                <font>font_statusbar</font>
+                                <selectedcolor>main_fg_70</selectedcolor>
+                                <textcolor>main_fg_70</textcolor>
+                                <aligny>top</aligny>
+                                <align>left</align>
+                                <label>$VAR[Label_Premiered]$VAR[Label_List_Right,  •  ,]</label>
+                            </control>
                         </control>
                     </control>
                 </itemlayout>
@@ -227,18 +231,18 @@
                         <control type="image">
                             <bordersize>15</bordersize>
                             <bordertexture border="30" colordiffuse="Shadow">common/shadow-15.png</bordertexture>
-                            <texture colordiffuse="main_fg_100" border="20">diffuse/1360x332.png</texture>
+                            <texture colordiffuse="main_fg_100" border="10">diffuse/box.png</texture>
                         </control>
                         <control type="group">
-                            <width>620.22</width>
-                            <include content="Object_Poster">
-                                <param name="icon" value="$VAR[Image_Fanart]" />
-                                <param name="aspectratio" value="scale" />
-                                <param name="diffuse" value="diffuse/1360x252.png" />
-                            </include>
+                            <width>566.89</width>
+                            <control type="image">
+                                <bordersize>15</bordersize>
+                                <aspectratio scalediffuse="false" align="left">scale</aspectratio>
+                                <texture background="true" diffuse="diffuse/banner-side.png">$VAR[Image_Fanart]</texture>
+                            </control>
                         </control>
                         <control type="group">
-                            <left>620.22</left>
+                            <left>566.89</left>
                             <control type="label">
                                 <left>15</left>
                                 <right>40</right>
@@ -280,28 +284,27 @@
     <include name="View_502_List_Info">
         <control type="group">
             <include>View_FlipSides</include>
-            <width>954.8</width>
+            <width>1028.53</width>
             <control type="group">
-                <width>274.8</width>
                 <include content="View_50_Poster">
-                    <param name="height" value="390" />
-                    <param name="width" value="274.8" />
-                    <param name="diffuse" value="diffuse/214x315.png" />
+                    <param name="height" value="420" />
+                    <param name="width" value="295.2" />
+                    <param name="diffuse" value="diffuse/poster-mediainfo.png" />
                     <param name="icon" value="$VAR[Image_Poster]" />
                 </include>
             </control>
             <control type="group">
-                <left>284.8</left>
-                <width>670</width>
+                <right>0</right>
+                <width>723.33</width>
                 <include content="View_50_Poster">
-                    <param name="height" value="390" />
-                    <param name="width" value="670" />
+                    <param name="height" value="420" />
+                    <param name="width" value="723.33" />
                     <param name="icon" value="$VAR[Image_Fanart]" />
-                    <param name="diffuse" value="diffuse/640x360.png" />
+                    <param name="diffuse" value="diffuse/landscape-mediainfo.png" />
                 </include>
             </control>
             <control type="grouplist">
-                <top>400</top>
+                <top>430</top>
                 <left>0</left>
                 <right>30</right>
                 <orientation>vertical</orientation>
@@ -312,7 +315,7 @@
                     <textcolor>main_fg_100</textcolor>
                     <align>left</align>
                     <aligny>top</aligny>
-                    <height>50</height>
+                    <height>52</height>
                     <label>$VAR[Label_List_Title]</label>
                 </control>
                 <include>Object_Info_Line</include>
@@ -323,12 +326,12 @@
                     <param name="oscars" value="false" />
                 </include>
                 <control type="textbox">
-                    <top>20</top>
+                    <top>25</top>
                     <font>font_plotbox</font>
                     <textcolor>main_fg_70</textcolor>
                     <align>left</align>
                     <aligny>top</aligny>
-                    <height>200</height>
+                    <height>160</height>
                     <label>$VAR[Label_Plot]</label>
                 </control>
             </control>
@@ -410,7 +413,7 @@
                     <param name="height" value="162" />
                     <param name="aspectratio" value="scale" />
                     <param name="icon" value="$VAR[Image_Banner]" />
-                    <param name="diffuse" value="diffuse/640x360.png" />
+                    <param name="diffuse" value="diffuse/landscape-info.png" />
                 </include>
             </control>
             <include>View_WatchedOverlay</include>
@@ -426,7 +429,7 @@
         <definition>
             <control type="image">
                 <visible>$PARAM[selectbox]</visible>
-                <texture colordiffuse="main_fg_100" border="10">common/box.png</texture>
+                <texture colordiffuse="main_fg_100" border="10">diffuse/box.png</texture>
             </control>
             <control type="group">
                 <left>$PARAM[pad]</left>
@@ -531,7 +534,7 @@
                 <left>0</left>
                 <width>517</width>
                 <top>4</top>
-                <texture colordiffuse="$PARAM[panelcolor]" border="10">common/box.png</texture>
+                <texture colordiffuse="$PARAM[panelcolor]" border="10">diffuse/box.png</texture>
                 <visible>$PARAM[visible]</visible>
             </control>
             <control type="image" id="2">
@@ -609,7 +612,7 @@
                 <top>4</top>
                 <right>4</right>
                 <control type="image">
-                    <texture colordiffuse="$PARAM[panelcolor]" border="10">common/box.png</texture>
+                    <texture colordiffuse="$PARAM[panelcolor]" border="10">diffuse/box.png</texture>
                 </control>
                 <control type="image">
                     <texture colordiffuse="$PARAM[fgcolor]_12">common/selected.png</texture>
@@ -665,7 +668,7 @@
                     <top>4</top>
                     <right>4</right>
                     <control type="image">
-                        <texture colordiffuse="$PARAM[panelcolor]" border="10">common/box.png</texture>
+                        <texture colordiffuse="$PARAM[panelcolor]" border="10">diffuse/box.png</texture>
                     </control>
                     <control type="image">
                         <texture colordiffuse="$PARAM[fgcolor]_12">common/selected.png</texture>

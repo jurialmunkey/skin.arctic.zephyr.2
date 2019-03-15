@@ -142,11 +142,19 @@
                     <control type="radiobutton" id="19102" description="Vertical Home">
                         <visible>Integer.IsEqual(Window.Property(CurrentFocus),9001)</visible>
                         <include>Defs_Settings_Button</include>
-                        <label>Vertical home</label>
+                        <label>Multiple widget home layout</label>
                         <selected>Skin.HasSetting(VerticalHome)</selected>
                         <onclick>Skin.ToggleSetting(VerticalHome)</onclick>
                     </control>
-                    <control type="radiobutton" id="19103" description="Submenu Only">
+                    <control type="radiobutton" id="19103" description="Vertical Home">
+                        <visible>Integer.IsEqual(Window.Property(CurrentFocus),9001)</visible>
+                        <include>Defs_Settings_Button</include>
+                        <label>Aura style home menu</label>
+                        <enable>Skin.HasSetting(VerticalHome)</enable>
+                        <selected>Skin.HasSetting(AuraStyleHome)</selected>
+                        <onclick>Skin.ToggleSetting(AuraStyleHome)</onclick>
+                    </control>
+                    <control type="radiobutton" id="19104" description="Submenu Only">
                         <visible>Integer.IsEqual(Window.Property(CurrentFocus),9001)</visible>
                         <include>Defs_Settings_Button</include>
                         <label>Press down to access to submenu hub</label>
@@ -154,13 +162,6 @@
                         <selected>!Skin.HasSetting(SubmenuOnly)</selected>
                         <onclick>Skin.ToggleSetting(SubmenuOnly)</onclick>
                     </control>
-                    <!-- <control type="radiobutton" id="19104" description="Force Submenu Hub">
-                        <visible>Integer.IsEqual(Window.Property(CurrentFocus),9001)</visible>
-                        <include>Defs_Settings_Button</include>
-                        <label>Open submenu hub when clicking mainmenu items</label>
-                        <selected>Skin.HasSetting(ForceSubmenuHub)</selected>
-                        <onclick>Skin.ToggleSetting(ForceSubmenuHub)</onclick>
-                    </control> -->
 
                     <!-- ========== -->
                     <!-- Background -->
@@ -590,7 +591,7 @@
                         <selected>System.HasAddon(script.artistslideshow)</selected>
                         <include>Defs_Settings_Button</include>
                     </control>
-                    <control type="radiobutton" id="19813">
+                    <!-- <control type="radiobutton" id="19813">
                         <visible>Integer.IsEqual(Window.Property(CurrentFocus),9008)</visible>
                         <label>script.globalsearch</label>
                         <label2>$INFO[System.AddonVersion(script.globalsearch)]        </label2>
@@ -598,7 +599,7 @@
                         <onclick condition="!System.HasAddon(script.globalsearch)">InstallAddon(script.globalsearch)</onclick>
                         <selected>System.HasAddon(script.globalsearch)</selected>
                         <include>Defs_Settings_Button</include>
-                    </control>
+                    </control> -->
                     <control type="radiobutton" id="19814">
                         <visible>Integer.IsEqual(Window.Property(CurrentFocus),9008)</visible>
                         <label>script.tv.show.next.aired</label>
@@ -655,11 +656,11 @@
                     </control>
                     <control type="radiobutton" id="19820">
                         <visible>Integer.IsEqual(Window.Property(CurrentFocus),9008)</visible>
-                        <label>resource.images.weathericons.white</label>
-                        <label2>$INFO[System.AddonVersion(resource.images.weathericons.white)]        </label2>
-                        <onclick>Addon.OpenSettings(resource.images.weathericons.white)</onclick>
-                        <onclick condition="!System.HasAddon(resource.images.weathericons.white)">InstallAddon(resource.images.weathericons.white)</onclick>
-                        <selected>System.HasAddon(resource.images.weathericons.white)</selected>
+                        <label>resource.images.weathericons.outline-hd</label>
+                        <label2>$INFO[System.AddonVersion(resource.images.weathericons.outline-hd)]        </label2>
+                        <onclick>Addon.OpenSettings(resource.images.weathericons.outline-hd)</onclick>
+                        <onclick condition="!System.HasAddon(resource.images.weathericons.outline-hd)">InstallAddon(resource.images.weathericons.outline-hd)</onclick>
+                        <selected>System.HasAddon(resource.images.weathericons.outline-hd)</selected>
                         <include>Defs_Settings_Button</include>
                     </control>
                     <control type="radiobutton" id="19821">

@@ -79,7 +79,7 @@
                     <param name="height" value="441.435" />
                     <param name="width" value="761.44" />
                     <param name="icon" value="$PARAM[icon]" />
-                    <param name="diffuse" value="diffuse/640x360.png" />
+                    <param name="diffuse" value="diffuse/landscape-info.png" />
                 </include>
                 <control type="image">
                     <top>0</top>
@@ -238,7 +238,7 @@
                 <param name="id" value="520" />
                 <param name="itemwidth" value="view_square_width" />
                 <param name="height" value="view_row_height" />
-                <param name="diffuse" value="diffuse/312x312.png" />
+                <param name="diffuse" value="diffuse/square-wall.png" />
                 <param name="labelinclude" value="Defs_Null" />
                 <param name="orientation" value="horizontal" />
                 <param name="controltype" value="fixedlist" />
@@ -262,7 +262,7 @@
                 <param name="id" value="520" />
                 <param name="itemwidth" value="view_square_width" />
                 <param name="height" value="view_row_height" />
-                <param name="diffuse" value="diffuse/312x312.png" />
+                <param name="diffuse" value="diffuse/square-wall.png" />
                 <param name="orientation" value="horizontal" />
                 <param name="controltype" value="fixedlist" />
                 <param name="controllayout" value="View_52_Showcase_Aura_Layout" />
@@ -287,12 +287,12 @@
                 <param name="orientation" value="horizontal" />
                 <param name="controltype" value="fixedlist" />
                 <param name="controllayout" value="View_521_Showcase_Layout" />
-                <param name="diffuse" value="diffuse/540x304.png" />
+                <param name="diffuse" value="diffuse/landscape-wall.png" />
                 <param name="itemwidth" value="view_landscape_width" />
                 <param name="itemheight" value="423.75" />
                 <param name="icon" value="$VAR[Image_Fanart]" />
                 <param name="clearlogo" value="String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow)" />
-                <param name="iconheight" value="view_landscape_icon_height" />
+                <param name="iconheight" value="view_icon_height" />
                 <param name="visible" value="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(videos)" />
                 <param name="viewtype" value="$LOCALIZE[31361]" />
                 <param name="forced" value="true" />
@@ -312,12 +312,12 @@
                 <param name="controltype" value="fixedlist" />
                 <param name="controllayout" value="View_52_Showcase_Aura_Layout" />
                 <param name="labelinclude" value="View_51_Wall_Landscape_Label" />
-                <param name="diffuse" value="diffuse/540x304.png" />
+                <param name="diffuse" value="diffuse/landscape-wall.png" />
                 <param name="itemwidth" value="view_landscape_width" />
                 <param name="itemheight" value="423.75" />
                 <param name="icon" value="$VAR[Image_Fanart]" />
                 <param name="clearlogo" value="String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow)" />
-                <param name="iconheight" value="view_landscape_icon_height" />
+                <param name="iconheight" value="view_icon_height" />
                 <param name="visible" value="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(videos)" />
                 <param name="viewtype" value="$LOCALIZE[31361]" />
                 <param name="forced" value="true" />
@@ -395,6 +395,7 @@
             <visible>Control.IsVisible(523)</visible>
             <include content="Info_Gallery">
                 <param name="id" value="523" />
+                <param name="controltype" value="wraplist" />
                 <param name="icon" value="$VAR[Image_Fanart]" />
                 <viewtype label="$LOCALIZE[31231]">$LOCALIZE[31231]</viewtype>
                 <include content="View_Forced">

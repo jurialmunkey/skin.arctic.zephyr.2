@@ -25,7 +25,7 @@
                 <param name="height" value="810" />
                 <param name="width" value="1790" />
                 <param name="aspectratio" value="scale" />
-                <param name="diffuse" value="diffuse/1680x780.png" />
+                <param name="diffuse" value="diffuse/lovefilm.png" />
                 <param name="icon" value="$PARAM[icon]" />
             </include>
             <control type="image">
@@ -74,8 +74,9 @@
 
     <include name="Info_Gallery">
         <param name="icon" default="$INFO[ListItem.Icon]" />
+        <param name="controltype" default="list" />
         <definition>
-            <control type="list" id="$PARAM[id]">
+            <control type="$PARAM[controltype]" id="$PARAM[id]">
                 <orientation>horizontal</orientation>
                 <height>view_height</height>
                 <width>1790</width>

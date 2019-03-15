@@ -642,10 +642,8 @@
             <item>
                 <label>$LOCALIZE[137]</label>
                 <icon>special://skin/extras/icons/search.png</icon>
-                <onclick condition="!System.HasAddon(script.globalsearch)">SendClick(8)</onclick>
-                <onclick condition="System.HasAddon(script.globalsearch)">SetFocus(50)</onclick>
-                <onclick condition="System.HasAddon(script.globalsearch)">RunScript(script.globalsearch)</onclick>
-                <visible>Control.IsEnabled(8)</visible>
+                <onclick>Skin.SetString(SearchTerm)</onclick>
+                <onclick>ActivateWindow(1138)</onclick>
             </item>
             <!-- Filter -->
             <item>
