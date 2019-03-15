@@ -5,12 +5,12 @@
             <visible>Control.IsVisible(50)</visible>
             <include>View_Group</include>
             <include content="View_50_Poster">
-                <param name="height" value="810" />
-                <param name="width" value="560" />
+                <param name="height" value="view_poster_height" />
+                <param name="width" value="view_poster_width" />
                 <param name="diffuse" value="diffuse/poster-big.png" />
             </include>
             <include content="View_50_List_Control">
-                <param name="left" value="560" />
+                <param name="left" value="view_poster_width" />
                 <param name="right" value="-20" />
                 <param name="id" value="50" />
                 <param name="viewtype" value="$LOCALIZE[535]" />
@@ -347,7 +347,7 @@
         <param name="itemlayout" default="View_50_Itemlayout" />
         <param name="itemheight" default="item_list_height" />
         <param name="altid" default="999999" />
-        <param name="height" default="780" />
+        <param name="height" default="view_list_height" />
         <param name="top" default="0" />
         <param name="controllayout" default="View_Vertical" />
         <param name="controltype" default="panel" />
@@ -751,8 +751,8 @@
     </include>
 
     <include name="View_50_Poster">
-        <param name="height" default="810" />
-        <param name="width" default="560" />
+        <param name="height" default="view_poster_height" />
+        <param name="width" default="view_poster_width" />
         <param name="include" default="Defs_Null" />
         <param name="visible" default="true" />
         <param name="left" default="-15" />
