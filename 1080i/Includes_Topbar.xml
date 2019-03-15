@@ -32,6 +32,7 @@
 
     <include name="Topbar_Left">
         <control type="grouplist">
+            <visible>!Skin.HasSetting(DisableHeader)</visible>
             <top>0</top>
             <include>Animation_FadeInOut</include>
             <itemgap>0</itemgap>
@@ -60,6 +61,7 @@
 
     <include name="Topbar_Center">
         <control type="label">
+            <visible>!Skin.HasSetting(DisableHeader)</visible>
             <aligny>center</aligny>
             <align>center</align>
             <font>font_byline</font>
@@ -71,6 +73,7 @@
     </include>
     <include name="Topbar_Right">
         <control type="grouplist">
+            <visible>!Skin.HasSetting(DisableHeader)</visible>
             <animation effect="slide" start="0" end="-80" time="200" tween="sine" condition="Window.IsVisible(DialogVolumeBar.xml) + ![Window.IsVisible(Home) + !Skin.HasSetting(VerticalHome)]">Conditional</animation>
             <right>view_pad</right>
             <align>right</align>
@@ -136,30 +139,7 @@
             </control>
         </control>
     </include>
-
     
-
-    <include name="Topbar_GlobalSearch_Icon">
-        <control type="group">
-            <left>-10</left>
-            <top>1</top>
-            <height>view_bottom</height>
-            <width>view_pad</width>
-            <control type="image">
-                <texture colordiffuse="main_fg_100">special://skin/extras/icons/search.png</texture>
-                <visible>$PARAM[visible]</visible>
-            </control>
-            <control type="image">
-                <texture colordiffuse="$VAR[ColorHighlight]" border="8">common/underline2.png</texture>
-                <visible>$PARAM[visible]</visible>
-                <visible>Control.HasFocus(990)</visible>
-            </control>
-        </control>
-        <control type="group">
-            <width>-40</width>
-        </control>
-    </include>
-
     <include name="Topbar_Menu_Layout">
         <param name="visible" default="false" />
         <definition>

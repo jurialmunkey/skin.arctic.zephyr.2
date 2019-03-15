@@ -142,14 +142,14 @@
                     <control type="radiobutton" id="19102" description="Vertical Home">
                         <visible>Integer.IsEqual(Window.Property(CurrentFocus),9001)</visible>
                         <include>Defs_Settings_Button</include>
-                        <label>Multiple widget home layout</label>
+                        <label>$LOCALIZE[31006]</label>
                         <selected>Skin.HasSetting(VerticalHome)</selected>
                         <onclick>Skin.ToggleSetting(VerticalHome)</onclick>
                     </control>
                     <control type="radiobutton" id="19103" description="Vertical Home">
                         <visible>Integer.IsEqual(Window.Property(CurrentFocus),9001)</visible>
                         <include>Defs_Settings_Button</include>
-                        <label>Aura style home menu</label>
+                        <label>$LOCALIZE[31007]</label>
                         <enable>Skin.HasSetting(VerticalHome)</enable>
                         <selected>Skin.HasSetting(AuraStyleHome)</selected>
                         <onclick>Skin.ToggleSetting(AuraStyleHome)</onclick>
@@ -157,7 +157,7 @@
                     <control type="radiobutton" id="19104" description="Submenu Only">
                         <visible>Integer.IsEqual(Window.Property(CurrentFocus),9001)</visible>
                         <include>Defs_Settings_Button</include>
-                        <label>Press down to access to submenu hub</label>
+                        <label>$LOCALIZE[31009]</label>
                         <enable>!Skin.HasSetting(VerticalHome)</enable>
                         <selected>!Skin.HasSetting(SubmenuOnly)</selected>
                         <onclick>Skin.ToggleSetting(SubmenuOnly)</onclick>
@@ -242,7 +242,7 @@
                     <control type="button" id="19302" description="Color Highlight">
                         <visible>Integer.IsEqual(Window.Property(CurrentFocus),9003)</visible>
                         <include>Defs_Settings_Button</include>
-                        <label>Select box colour</label>
+                        <label>$LOCALIZE[31013]</label>
                         <label2>$INFO[Skin.String(PosterHighlight)]</label2>
                         <onclick condition="!String.IsEqual(Skin.String(PosterHighlight),Highlight)">Skin.SetString(PosterHighlight,Highlight)</onclick>
                         <onclick condition="String.IsEqual(Skin.String(PosterHighlight),Highlight)">Skin.SetString(PosterHighlight,White)</onclick>
@@ -278,7 +278,7 @@
                     <control type="radiobutton" id="19404" description="Use Extended Info">
                         <visible>Integer.IsEqual(Window.Property(CurrentFocus),9004)</visible>
                         <include>Defs_Settings_Button</include>
-                        <label>Use extended info</label>
+                        <label>$LOCALIZE[31015]</label>
                         <selected>!Skin.HasSetting(DisableExtendedInfo)</selected>
                         <onclick>Skin.ToggleSetting(DisableExtendedInfo)</onclick>
                     </control>
@@ -286,7 +286,7 @@
                     <control type="radiobutton" id="19405" description="Flip sides">
                         <visible>Integer.IsEqual(Window.Property(CurrentFocus),9004)</visible>
                         <include>Defs_Settings_Button</include>
-                        <label>Swap positions of info and list</label>
+                        <label>$LOCALIZE[31016]</label>
                         <selected>Skin.HasSetting(FlipSide)</selected>
                         <onclick>Skin.ToggleSetting(FlipSide)</onclick>
                     </control>
@@ -294,11 +294,34 @@
                     <control type="radiobutton" id="19406" description="Aura style showcase view">
                         <visible>Integer.IsEqual(Window.Property(CurrentFocus),9004)</visible>
                         <include>Defs_Settings_Button</include>
-                        <label>Use Aura style showcase views</label>
+                        <label>$LOCALIZE[31019]</label>
                         <selected>Skin.HasSetting(UseAuraShowcase)</selected>
                         <onclick>Skin.ToggleSetting(UseAuraShowcase)</onclick>
                     </control>
 
+                    <control type="radiobutton" id="19407" description="Codecs">
+                        <visible>Integer.IsEqual(Window.Property(CurrentFocus),9004)</visible>
+                        <include>Defs_Settings_Button</include>
+                        <label>$LOCALIZE[31025]</label>
+                        <selected>!Skin.HasSetting(DisableCodecs)</selected>
+                        <onclick>Skin.ToggleSetting(DisableCodecs)</onclick>
+                    </control>
+
+                    <control type="radiobutton" id="19408" description="Header">
+                        <visible>Integer.IsEqual(Window.Property(CurrentFocus),9004)</visible>
+                        <include>Defs_Settings_Button</include>
+                        <label>$LOCALIZE[31026]</label>
+                        <selected>!Skin.HasSetting(DisableHeader)</selected>
+                        <onclick>Skin.ToggleSetting(DisableHeader)</onclick>
+                    </control>
+
+                    <control type="radiobutton" id="19409" description="Now Playing">
+                        <visible>Integer.IsEqual(Window.Property(CurrentFocus),9004)</visible>
+                        <include>Defs_Settings_Button</include>
+                        <label>$LOCALIZE[31029]</label>
+                        <selected>!Skin.HasSetting(DisableNowPlaying)</selected>
+                        <onclick>Skin.ToggleSetting(DisableNowPlaying)</onclick>
+                    </control>
                     <!-- ================= -->
                     <!-- Video / Music OSD -->
                     <!-- ================= -->

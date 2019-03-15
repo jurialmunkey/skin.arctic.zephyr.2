@@ -397,30 +397,6 @@
         </definition>
     </include>
 
-    <include name="View_50_Itemlayout_Banners">
-        <param name="fgcolor" default="main_fg" />
-        <param name="bgcolor" default="main_bg" />
-        <param name="pad" default="15" />
-        <param name="selectbox" default="false" />
-        <definition>
-            <control type="group">
-                <left>$PARAM[pad]</left>
-                <right>$PARAM[pad]</right>
-                <top>$PARAM[pad]</top>
-                <bottom>$PARAM[pad]</bottom>
-                <include content="View_50_Poster">
-                    <param name="width" value="765.2" />
-                    <param name="height" value="162" />
-                    <param name="aspectratio" value="scale" />
-                    <param name="icon" value="$VAR[Image_Banner]" />
-                    <param name="diffuse" value="diffuse/landscape-info.png" />
-                </include>
-            </control>
-            <include>View_WatchedOverlay</include>
-            <include condition="$PARAM[selectbox]">View_Selectbox</include>
-        </definition>
-    </include>
-
     <include name="View_50_Itemlayout">
         <param name="fgcolor" default="main_fg" />
         <param name="bgcolor" default="main_bg" />

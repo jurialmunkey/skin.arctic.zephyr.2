@@ -164,7 +164,6 @@
                     <label>$LOCALIZE[24022]</label>
                     <altlabel>$LOCALIZE[24021]</altlabel>
                     <usealttexture>!String.IsEqual(Container(211).ListItem.Property(skinshortcuts-disabled),True)</usealttexture>
-                    <radioposx>1200</radioposx>
                     <include>Dialog_Standard_Button</include>
                 </control>
                 
@@ -181,7 +180,7 @@
                 </control>
 
                 <control type="button" id="19312" description="Custom Hub Node">
-                    <label>Hub node</label>
+                    <label>$LOCALIZE[31002]</label>
                     <visible>!String.IsEqual(Container(211).ListItem.Property(skinshortcuts-disabled),True)</visible>
                     <visible>String.IsEqual(Container(211).ListItem.Property(path),ActivateWindow(1134))</visible>
                     <label2>$INFO[Container(211).ListItem.Property(1134_Node)]</label2>
@@ -231,7 +230,7 @@
                 </control>
 
                 <control type="button" id="9312" description="Widget Path">
-                    <label>Widget</label>
+                    <label>$LOCALIZE[31010]</label>
                     <visible>!String.IsEqual(Container(211).ListItem.Property(skinshortcuts-disabled),True)</visible>
                     <label2>$INFO[Container(211).ListItem.Property(widgetName.backgroundWidget)]</label2>
                     <onclick>SetProperty(widgetID,backgroundWidget)</onclick>
@@ -241,7 +240,7 @@
                 </control>
 
                 <control type="button" id="9902" description="Widget Aspect">
-                    <label>Widget - Aspect</label>
+                    <label>$LOCALIZE[31010] - $LOCALIZE[31011]</label>
                     <visible>!String.IsEqual(Container(211).ListItem.Property(skinshortcuts-disabled),True)</visible>
                     <label2>$INFO[Container(211).ListItem.Property(widgetAspect.backgroundWidget)]</label2>
                     <visible>String.IsEqual(Window.Property(groupname),mainmenu)</visible>

@@ -10,32 +10,6 @@
         </animation> -->
     </include>
 
-    <include name="Animation_FadeFromHome">
-        <animation effect="fade" start="0" end="100" time="350" tween="cubic" easing="inout" condition="Window.Previous(home)">WindowOpen</animation>
-        <animation effect="fade" end="0" start="100" time="350" tween="cubic" easing="inout" condition="Window.Next(home)">WindowClose</animation>
-    </include>
-
-    <include name="Animation_FocusBounce">
-        <animation type="Focus" condition="!Skin.HasSetting(BounceAnimations)" reversible="false">
-            <effect type="zoom" end="110" time="75" tween="sine" easing="out" center="auto" />
-            <effect type="zoom" end="90.9090909" time="225" tween="sine" delay="100" easing="out" center="auto" />
-        </animation>
-    </include>
-
-    <include name="Animation_FocusBounce_Small">
-        <animation type="Focus" condition="!Skin.HasSetting(BounceAnimations)" reversible="false">
-            <effect type="zoom" end="105" time="75" tween="sine" easing="out" center="auto" />
-            <effect type="zoom" end="95.2380952" time="225" tween="sine" delay="100" easing="out" center="auto" />
-        </animation>
-    </include>
-
-    <include name="Animation_FocusBounce_Large">
-        <animation type="Focus" condition="!Skin.HasSetting(BounceAnimations)" reversible="false">
-            <effect type="zoom" end="115" time="75" tween="sine" easing="out" center="auto" />
-            <effect type="zoom" end="86.9565217" time="225" tween="sine" delay="100" easing="out" center="auto" />
-        </animation>
-    </include>
-
     <include name="Animation_Down">
         <animation type="Visible" reversible="false">
             <effect type="fade" start="0" end="100" time="300" tween="sine" easing="out"/>

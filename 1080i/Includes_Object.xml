@@ -44,6 +44,7 @@
         </control>
 
         <control type="group">
+            <visible>!Skin.HasSetting(DisableNowPlaying)</visible>
             <visible>!Control.HasFocus(62)</visible>
             <visible>Player.HasMedia</visible>
             <visible>!Window.IsVisible(DialogExtendedProgressBar.xml)</visible>
@@ -1031,10 +1032,6 @@
             </control>
         </definition>
     </include>
-    <variable name="Object_StarRating_ColorVar">
-        <value condition="Skin.HasSetting(MonochromeFlags)">main_fg_100</value>
-        <value>Highlight2</value>
-    </variable>
     <include name="Object_PVR_Info">
         <control type="grouplist">
             <visible>!Control.HasFocus(9000)</visible>
