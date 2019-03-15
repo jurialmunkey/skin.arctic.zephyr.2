@@ -44,7 +44,7 @@
                 <onright>9100</onright>
                 <ondown>211</ondown>
                 <scrolltime>0</scrolltime>
-                <itemlayout width="550" height="view_list_height">
+                <itemlayout width="550" height="item_list_height">
                     <control type="label">
                         <left>30</left>
                         <right>30</right>
@@ -54,22 +54,22 @@
                     </control>
                     <control type="image">
                         <bordersize>10</bordersize>
-                        <width>view_list_height</width>
-                        <height>view_list_height</height>
+                        <width>item_list_height</width>
+                        <height>item_list_height</height>
                         <texture colordiffuse="dialog_fg_30">$INFO[ListItem.Icon]</texture>
                         <visible>String.Contains(ListItem.Icon,special://skin/extras/icons)</visible>
                         <visible>!String.IsEqual(Window.Property(groupname),powermenu)</visible>
                     </control>
                     <control type="image">
                         <bordersize>10</bordersize>
-                        <width>view_list_height</width>
-                        <height>view_list_height</height>
+                        <width>item_list_height</width>
+                        <height>item_list_height</height>
                         <texture>$INFO[ListItem.Icon]</texture>
                         <visible>!String.Contains(ListItem.Icon,special://skin/extras/icons)</visible>
                         <visible>!String.IsEqual(Window.Property(groupname),powermenu)</visible>
                     </control>
                 </itemlayout>
-                <focusedlayout width="550" height="view_list_height">
+                <focusedlayout width="550" height="item_list_height">
                     <control type="image">
                         <left>0</left>
                         <top>0</top>
@@ -87,8 +87,8 @@
                     </control>
                     <control type="image">
                         <bordersize>10</bordersize>
-                        <width>view_list_height</width>
-                        <height>view_list_height</height>
+                        <width>item_list_height</width>
+                        <height>item_list_height</height>
                         <texture colordiffuse="Selected">$INFO[ListItem.Icon]</texture>
                         <visible>!String.IsEqual(Window.Property(groupname),powermenu)</visible>
                     </control>
@@ -106,18 +106,18 @@
                 <onup>Control.Move(211,-1)</onup>
                 <ondown>Control.Move(211,1)</ondown>
                 <orientation>horizontal</orientation>
-                <animation effect="slide" end="0,view_list_height" condition="Integer.IsGreater(Container(211).Position,0)">Conditional</animation>
-                <animation effect="slide" end="0,view_list_height" condition="Integer.IsGreater(Container(211).Position,1)">Conditional</animation>
-                <animation effect="slide" end="0,view_list_height" condition="Integer.IsGreater(Container(211).Position,2)">Conditional</animation>
-                <animation effect="slide" end="0,view_list_height" condition="Integer.IsGreater(Container(211).Position,3)">Conditional</animation>
-                <animation effect="slide" end="0,view_list_height" condition="Integer.IsGreater(Container(211).Position,4)">Conditional</animation>
-                <animation effect="slide" end="0,view_list_height" condition="Integer.IsGreater(Container(211).Position,5)">Conditional</animation>
-                <animation effect="slide" end="0,view_list_height" condition="Integer.IsGreater(Container(211).Position,6)">Conditional</animation>
-                <animation effect="slide" end="0,view_list_height" condition="Integer.IsGreater(Container(211).Position,7)">Conditional</animation>
-                <animation effect="slide" end="0,view_list_height" condition="Integer.IsGreater(Container(211).Position,8)">Conditional</animation>
-                <animation effect="slide" end="0,view_list_height" condition="Integer.IsGreater(Container(211).Position,9)">Conditional</animation>
-                <animation effect="slide" end="0,view_list_height" condition="Integer.IsGreater(Container(211).Position,10)">Conditional</animation>
-                <animation effect="slide" end="0,view_list_height" condition="Integer.IsGreater(Container(211).Position,11)">Conditional</animation>
+                <animation effect="slide" end="0,item_list_height" condition="Integer.IsGreater(Container(211).Position,0)">Conditional</animation>
+                <animation effect="slide" end="0,item_list_height" condition="Integer.IsGreater(Container(211).Position,1)">Conditional</animation>
+                <animation effect="slide" end="0,item_list_height" condition="Integer.IsGreater(Container(211).Position,2)">Conditional</animation>
+                <animation effect="slide" end="0,item_list_height" condition="Integer.IsGreater(Container(211).Position,3)">Conditional</animation>
+                <animation effect="slide" end="0,item_list_height" condition="Integer.IsGreater(Container(211).Position,4)">Conditional</animation>
+                <animation effect="slide" end="0,item_list_height" condition="Integer.IsGreater(Container(211).Position,5)">Conditional</animation>
+                <animation effect="slide" end="0,item_list_height" condition="Integer.IsGreater(Container(211).Position,6)">Conditional</animation>
+                <animation effect="slide" end="0,item_list_height" condition="Integer.IsGreater(Container(211).Position,7)">Conditional</animation>
+                <animation effect="slide" end="0,item_list_height" condition="Integer.IsGreater(Container(211).Position,8)">Conditional</animation>
+                <animation effect="slide" end="0,item_list_height" condition="Integer.IsGreater(Container(211).Position,9)">Conditional</animation>
+                <animation effect="slide" end="0,item_list_height" condition="Integer.IsGreater(Container(211).Position,10)">Conditional</animation>
+                <animation effect="slide" end="0,item_list_height" condition="Integer.IsGreater(Container(211).Position,11)">Conditional</animation>
                 <control type="button" id="302" description="Delete">
                     <width>32</width>
                     <height>32</height>

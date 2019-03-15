@@ -66,7 +66,7 @@
                     <control type="label">
                         <top>-60</top>
                         <width>458</width>
-                        <height>view_list_height</height>
+                        <height>item_list_height</height>
                         <left>8</left>
                         <textcolor>dialog_fg_70</textcolor>
                         <font>font_small_bold</font>
@@ -86,7 +86,7 @@
                         <onleft>Back</onleft>
                         <onright>Back</onright>
                         <include>Defs_Options_Grouplist</include>
-                        <itemlayout width="450" height="view_list_height">
+                        <itemlayout width="450" height="item_list_height">
                             <control type="label">
                                 <font>font_tiny</font>
                                 <align>left</align>
@@ -96,7 +96,7 @@
                                 <label>$INFO[ListItem.Label]</label>
                             </control>
                         </itemlayout>
-                        <focusedlayout width="450" height="view_list_height">
+                        <focusedlayout width="450" height="item_list_height">
                             <control type="image">
                                 <texture colordiffuse="$VAR[ColorHighlight]">common/white.png</texture>
                             </control>
@@ -118,7 +118,7 @@
 
     <include name="Dialog_Standard_Button">
         <align>left</align>
-        <height>view_list_height</height>
+        <height>item_list_height</height>
         <texturenofocus />
         <texturefocus colordiffuse="$VAR[ColorHighlight]">common/white.png</texturefocus>
         <alttexturenofocus />
@@ -267,8 +267,8 @@
     <include name="Dialog_Standard_List_Left_Icon">
         <left>15</left>
         <bordersize>15</bordersize>
-        <height>view_biglist_height</height>
-        <width>view_biglist_height</width>
+        <height>item_biglist_height</height>
+        <width>item_biglist_height</width>
         <aspectratio scalediffuse="false">keep</aspectratio>
         <texture fallback="DefaultAddonNone.png" background="true">$INFO[Listitem.Icon]</texture>
     </include>
@@ -294,7 +294,7 @@
     </include>
 
     <include name="Dialog_Standard_Right_Buttons">
-        <height>view_list_height</height>
+        <height>item_list_height</height>
         <align>center</align>
         <font>font_button</font>
         <textcolor>dialog_fg_70</textcolor>
@@ -395,7 +395,7 @@
 
     <include name="Dialog_Standard_ListButton">
         <align>left</align>
-        <height>view_list_height</height>
+        <height>item_list_height</height>
         <texturenofocus colordiffuse="dialog_fg_12" border="8">diffuse/box.png</texturenofocus>
         <texturefocus colordiffuse="$VAR[ColorHighlight]" border="8">diffuse/box.png</texturefocus>
         <alttexturenofocus colordiffuse="dialog_fg_12" border="8">diffuse/box.png</alttexturenofocus>
@@ -417,7 +417,7 @@
         <align>center</align>
         <itemgap>20</itemgap>
         <orientation>horizontal</orientation>
-        <height>view_list_height</height>
+        <height>item_list_height</height>
     </include>
 
     <include name="Dialog_Standard_HintLabel">
@@ -595,7 +595,7 @@
                     <visible>String.Contains(ListItem.Icon,special://skin/) | String.Contains(ListItem.Icon,Default)</visible>
                 </control>
                 <control type="group">
-                    <left>view_biglist_height</left>
+                    <left>item_biglist_height</left>
                     <control type="label">
                         <centertop>35%</centertop>
                         <left>30</left>
@@ -657,7 +657,7 @@
     <include name="Dialog_Standard_List">
         <param name="id" default="3" />
         <param name="pagecontrol" default="61" />
-        <param name="itemheight" default="view_list_height" />
+        <param name="itemheight" default="item_list_height" />
         <param name="list_style" default="Dialog_Standard_List_Itemlayout_Simple" />
         <param name="checkmark" default="true" />
         <param name="itemlayout_condition" default="true" />
@@ -744,7 +744,7 @@
             <include>Dialog_Standard_List</include>
             <include content="Dialog_Standard_List">
                 <param name="id" value="6" />
-                <param name="itemheight" value="view_biglist_height" />
+                <param name="itemheight" value="item_biglist_height" />
                 <param name="list_style" value="Dialog_Standard_List_Itemlayout_Complex" />
                 <param name="onup" value="6" />
                 <param name="ondown" value="6" />

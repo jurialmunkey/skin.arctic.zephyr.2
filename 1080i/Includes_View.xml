@@ -72,7 +72,7 @@
             <timeblocks>28</timeblocks>
             <rulerunit>6</rulerunit>
             <pagecontrol>8060</pagecontrol>
-            <rulerlayout height="view_list_height" width="521">
+            <rulerlayout height="item_list_height" width="521">
                 <control type="label" id="2">
                     <top>37</top>
                     <width>521</width>
@@ -83,7 +83,7 @@
                     <textcolor>main_fg_30</textcolor>
                 </control>
             </rulerlayout>
-            <channellayout height="view_pvr_height" width="view_pvr_height">
+            <channellayout height="item_pvr_height" width="item_pvr_height">
                 <control type="group">
                     <left>0</left>
                     <right>4</right>
@@ -99,7 +99,7 @@
                 </control>
                 <include>Object_PVR_Icon</include>
             </channellayout>
-            <focusedchannellayout height="view_pvr_height" width="view_pvr_height">
+            <focusedchannellayout height="item_pvr_height" width="item_pvr_height">
                 <control type="group">
                     <visible>!Control.HasFocus(10)</visible>
                     <control type="group">
@@ -138,10 +138,10 @@
                     </include>
                 </control>
             </focusedchannellayout>
-            <itemlayout height="view_pvr_height" width="521">
+            <itemlayout height="item_pvr_height" width="521">
                 <include>View_50_EPG_Itemlayout</include>
             </itemlayout>
-            <focusedlayout height="view_pvr_height" width="521">
+            <focusedlayout height="item_pvr_height" width="521">
                 <include content="View_50_EPG_Itemlayout">
                     <param name="panelcolor" value="main_fg_100" />
                     <param name="fgcolor" value="main_bg_100" />
@@ -164,7 +164,7 @@
             <timeblocks>28</timeblocks>
             <rulerunit>6</rulerunit>
             <pagecontrol>8060</pagecontrol>
-            <rulerlayout height="view_list_height" width="521">
+            <rulerlayout height="item_list_height" width="521">
                 <control type="label" id="2">
                     <top>37</top>
                     <width>521</width>
@@ -175,7 +175,7 @@
                     <textcolor>main_fg_30</textcolor>
                 </control>
             </rulerlayout>
-            <channellayout height="view_list_height" width="340">
+            <channellayout height="item_list_height" width="340">
                 <control type="group">
                     <left>0</left>
                     <right>4</right>
@@ -201,7 +201,7 @@
                     <param name="font" value="font_statusbar_bold" />
                 </include>
             </channellayout>
-            <focusedchannellayout height="view_list_height" width="340">
+            <focusedchannellayout height="item_list_height" width="340">
                 <control type="group">
                     <visible>!Control.HasFocus(10)</visible>
                     <control type="group">
@@ -259,12 +259,12 @@
                     </include>
                 </control>
             </focusedchannellayout>
-            <itemlayout height="view_list_height" width="521">
+            <itemlayout height="item_list_height" width="521">
                 <include content="View_50_EPG_Itemlayout">
                     <param name="sublabel" value="false" />
                 </include>
             </itemlayout>
-            <focusedlayout height="view_list_height" width="521">
+            <focusedlayout height="item_list_height" width="521">
                 <include content="View_50_EPG_Itemlayout">
                     <param name="sublabel" value="false" />
                     <param name="panelcolor" value="main_fg_100" />
@@ -295,7 +295,7 @@
                 <nested />
                 <control type="group">
                     <top>52</top>
-                    <height>view_cast_height</height>
+                    <height>item_cast_height</height>
                     <include content="Defs_BusySpinner">
                         <param name="label" value="$LOCALIZE[31428]..." />
                         <param name="textcolor" value="main_fg_100" />
@@ -573,7 +573,7 @@
     </include>
 
     <include name="View_TopItems">
-        <param name="itemwidth" default="view_poster_width" />
+        <param name="itemwidth" default="item_poster_width" />
         <param name="itemheight" default="294.28" />
         <param name="height" default="294.28" />
         <param name="textbox_height" default="100" />

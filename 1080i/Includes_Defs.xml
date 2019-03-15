@@ -220,7 +220,7 @@
         <textoffsetx>30</textoffsetx>
         <radioposx>400</radioposx>
         <width>450</width>
-        <height>view_list_height</height>
+        <height>item_list_height</height>
         <font>font_tiny</font>
         <textcolor>dialog_fg_70</textcolor>
         <textureradiofocus colordiffuse="dialog_fg_70">buttons/radio-on.png</textureradiofocus>
@@ -265,11 +265,11 @@
                 <nested />
                 <top>39</top>
                 <bottom>dialog_pad</bottom>
-                <width>view_list_height</width>
+                <width>item_list_height</width>
                 <orientation>vertical</orientation>
-                <itemlayout height="view_list_height" width="view_list_height">
+                <itemlayout height="item_list_height" width="item_list_height">
                     <control type="group">
-                        <width>view_list_height</width>
+                        <width>item_list_height</width>
                         <control type="image">
                             <centerleft>50%</centerleft>
                             <centertop>50%</centertop>
@@ -279,19 +279,19 @@
                         </control>
                     </control>
                     <control type="label">
-                        <left>view_list_height</left>
+                        <left>item_list_height</left>
                         <label>$INFO[ListItem.Label]</label>
                         <font>font_small</font>
                         <textcolor>dialog_fg_70</textcolor>
                     </control>
                 </itemlayout>
-                <focusedlayout height="view_list_height" width="view_list_height">
+                <focusedlayout height="item_list_height" width="item_list_height">
                     <include>Defs_SettingsTrick</include>
                     <control type="image">
                         <texture colordiffuse="$VAR[ColorHighlight]">common/white.png</texture>
                     </control>
                     <control type="group">
-                        <width>view_list_height</width>
+                        <width>item_list_height</width>
                         <control type="image">
                             <centerleft>50%</centerleft>
                             <centertop>50%</centertop>
@@ -301,7 +301,7 @@
                         </control>
                     </control>
                     <control type="label">
-                        <left>view_list_height</left>
+                        <left>item_list_height</left>
                         <label>$INFO[ListItem.Label]</label>
                         <font>font_small</font>
                         <textcolor>Selected</textcolor>
@@ -324,7 +324,7 @@
         <align>left</align>
         <font>font_small</font>
         <radioposx>1225</radioposx>
-        <height>view_list_height</height>
+        <height>item_list_height</height>
         <textoffsetx>30</textoffsetx>
         <focusedcolor>$VAR[Defs_Settings_ToggleButton_Text]</focusedcolor>
         <texturefocus colordiffuse="$VAR[Defs_Settings_ToggleButton_Color]">common/white.png</texturefocus>

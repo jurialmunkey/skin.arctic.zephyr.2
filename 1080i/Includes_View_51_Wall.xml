@@ -100,7 +100,7 @@
     <include name="View_51_Wall_Itemlayout">
         <param name="altid" default="999999" />
         <param name="icon" default="$VAR[Image_Poster]" />
-        <param name="iconheight" default="view_icon_height" />
+        <param name="iconheight" default="item_icon_height" />
         <param name="labelinclude" default="View_51_Wall_Label" />
         <param name="aspectratio" default="scale" />
         <param name="clearlogo" default="false" />
@@ -254,8 +254,8 @@
 
     <include name="View_51_Wall_Container">
         <param name="itemlayout" default="View_51_Wall_Itemlayout" />
-        <param name="itemwidth" default="view_poster_width" />
-        <param name="itemheight" default="view_row_height" />
+        <param name="itemwidth" default="item_poster_width" />
+        <param name="itemheight" default="item_row_height" />
         <param name="controltype" default="panel" />
         <param name="controllayout" default="View_Standard" />
         <param name="orientation" default="vertical" />
@@ -333,8 +333,8 @@
             <include content="View_51_Wall_Container">
                 <param name="id" value="510" />
                 <param name="height" value="view_height" />
-                <param name="itemwidth" value="view_square_width" />
-                <param name="iconheight" value="view_icon_height" />
+                <param name="itemwidth" value="item_square_width" />
+                <param name="iconheight" value="item_icon_height" />
                 <param name="aspectratio" value="keep" />
                 <param name="viewtype" value="$LOCALIZE[31360]" />
                 <param name="diffuse" value="diffuse/square-wall.png" />
@@ -352,11 +352,11 @@
             <include content="View_51_Wall_Container">
                 <param name="id" value="511" />
                 <param name="height" value="view_height" />
-                <param name="itemwidth" value="view_landscape_width" />
-                <param name="itemheight" value="view_row_height" />
+                <param name="itemwidth" value="item_landscape_width" />
+                <param name="itemheight" value="item_row_height" />
                 <param name="icon" value="$VAR[Image_Fanart]" />
                 <param name="clearlogo" value="String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow)" />
-                <param name="iconheight" value="view_icon_height" />
+                <param name="iconheight" value="item_icon_height" />
                 <param name="diffuse" value="diffuse/landscape-wall.png" />
                 <param name="viewtype" value="$LOCALIZE[31359]" />
                 <param name="forced" value="true" />
@@ -374,7 +374,7 @@
                 <param name="id" value="512" />
                 <param name="height" value="view_height" />
                 <param name="itemlayout" value="View_512_Wall_Itemlayout" />
-                <param name="itemwidth" value="view_square_width" />
+                <param name="itemwidth" value="item_square_width" />
                 <param name="itemheight" value="275" />
                 <param name="iconheight" value="220" />
                 <param name="diffuse" value="diffuse/icon-wall.png" />
@@ -393,8 +393,8 @@
             <include content="View_51_Wall_Container">
                 <param name="id" value="513" />
                 <param name="height" value="view_height" />
-                <param name="itemwidth" value="view_square_width" />
-                <param name="iconheight" value="view_icon_height" />
+                <param name="itemwidth" value="item_square_width" />
+                <param name="iconheight" value="item_icon_height" />
                 <param name="aspectratio" value="scale" />
                 <param name="diffuse" value="diffuse/circle.png" />
                 <param name="circle" value="true" />

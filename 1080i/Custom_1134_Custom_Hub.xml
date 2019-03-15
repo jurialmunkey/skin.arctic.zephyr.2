@@ -42,7 +42,7 @@
             <control type="group">
                 <visible>Container(5610).IsUpdating</visible>
                 <bottom>-30</bottom>
-                <height>view_row_height</height>
+                <height>item_row_height</height>
                 <include content="Defs_BusySpinner">
                     <param name="textcolor" value="main_fg_90" />
                     <param name="label" value="Loading..." />
@@ -51,7 +51,7 @@
             <control type="label">
                 <visible>!Container(5610).IsUpdating + Integer.IsEqual(Container(5610).NumItems,0)</visible>
                 <bottom>-30</bottom>
-                <height>view_row_height</height>
+                <height>item_row_height</height>
                 <textcolor>main_fg_90</textcolor>
                 <font>font_small_bold</font>
                 <label>$LOCALIZE[31000]</label>

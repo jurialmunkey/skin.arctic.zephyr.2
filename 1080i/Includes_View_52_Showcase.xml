@@ -196,7 +196,7 @@
             <visible>Control.IsVisible(52)</visible>
             <include content="View_51_Wall_Container" condition="!Skin.HasSetting(UseAuraShowcase)">
                 <param name="id" value="52" />
-                <param name="height" value="view_row_height" />
+                <param name="height" value="item_row_height" />
                 <param name="orientation" value="horizontal" />
                 <param name="labelinclude" value="Defs_Null" />
                 <param name="controltype" value="fixedlist" />
@@ -215,7 +215,7 @@
 
             <include content="View_51_Wall_Container" condition="Skin.HasSetting(UseAuraShowcase)">
                 <param name="id" value="52" />
-                <param name="height" value="view_row_height" />
+                <param name="height" value="item_row_height" />
                 <param name="orientation" value="horizontal" />
                 <param name="controltype" value="fixedlist" />
                 <param name="controllayout" value="View_52_Showcase_Aura_Layout" />
@@ -236,8 +236,8 @@
             <visible>Control.IsVisible(520)</visible>
             <include content="View_51_Wall_Container" condition="!Skin.HasSetting(UseAuraShowcase)">
                 <param name="id" value="520" />
-                <param name="itemwidth" value="view_square_width" />
-                <param name="height" value="view_row_height" />
+                <param name="itemwidth" value="item_square_width" />
+                <param name="height" value="item_row_height" />
                 <param name="diffuse" value="diffuse/square-wall.png" />
                 <param name="labelinclude" value="Defs_Null" />
                 <param name="orientation" value="horizontal" />
@@ -260,8 +260,8 @@
 
             <include content="View_51_Wall_Container" condition="Skin.HasSetting(UseAuraShowcase)">
                 <param name="id" value="520" />
-                <param name="itemwidth" value="view_square_width" />
-                <param name="height" value="view_row_height" />
+                <param name="itemwidth" value="item_square_width" />
+                <param name="height" value="item_row_height" />
                 <param name="diffuse" value="diffuse/square-wall.png" />
                 <param name="orientation" value="horizontal" />
                 <param name="controltype" value="fixedlist" />
@@ -288,11 +288,11 @@
                 <param name="controltype" value="fixedlist" />
                 <param name="controllayout" value="View_521_Showcase_Layout" />
                 <param name="diffuse" value="diffuse/landscape-wall.png" />
-                <param name="itemwidth" value="view_landscape_width" />
+                <param name="itemwidth" value="item_landscape_width" />
                 <param name="itemheight" value="423.75" />
                 <param name="icon" value="$VAR[Image_Fanart]" />
                 <param name="clearlogo" value="String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow)" />
-                <param name="iconheight" value="view_icon_height" />
+                <param name="iconheight" value="item_icon_height" />
                 <param name="visible" value="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(videos)" />
                 <param name="viewtype" value="$LOCALIZE[31361]" />
                 <param name="forced" value="true" />
@@ -313,11 +313,11 @@
                 <param name="controllayout" value="View_52_Showcase_Aura_Layout" />
                 <param name="labelinclude" value="View_51_Wall_Landscape_Label" />
                 <param name="diffuse" value="diffuse/landscape-wall.png" />
-                <param name="itemwidth" value="view_landscape_width" />
+                <param name="itemwidth" value="item_landscape_width" />
                 <param name="itemheight" value="423.75" />
                 <param name="icon" value="$VAR[Image_Fanart]" />
                 <param name="clearlogo" value="String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow)" />
-                <param name="iconheight" value="view_icon_height" />
+                <param name="iconheight" value="item_icon_height" />
                 <param name="visible" value="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(videos)" />
                 <param name="viewtype" value="$LOCALIZE[31361]" />
                 <param name="forced" value="true" />
@@ -335,7 +335,7 @@
                 
             <include content="View_51_Wall_Container">
                 <param name="id" value="522" />
-                <param name="height" value="view_row_height" />
+                <param name="height" value="item_row_height" />
                 <param name="viewtype" value="$LOCALIZE[31427]" />
                 <param name="forced" value="true" />
                 <param name="visible" value="Container.Content(seasons)" />
