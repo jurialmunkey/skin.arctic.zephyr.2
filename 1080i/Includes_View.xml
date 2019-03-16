@@ -1,6 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
 
+    <include name="View_Bookmarks_Label">
+        <control type="label">
+            <left>15</left>
+            <right>15</right>
+            <font>font_statusbar</font>
+            <selectedcolor>panel_fg_100</selectedcolor>
+            <textcolor>panel_fg_100</textcolor>
+            <top>$PARAM[iconheight]</top>
+            <bottom>25</bottom>
+            <aligny>center</aligny>
+            <align>left</align>
+            <label>$INFO[ListItem.Label]</label>
+        </control>
+        <control type="label">
+            <left>15</left>
+            <right>15</right>
+            <font>font_statusbar</font>
+            <selectedcolor>panel_fg_100</selectedcolor>
+            <textcolor>panel_fg_100</textcolor>
+            <top>$PARAM[iconheight]</top>
+            <bottom>25</bottom>
+            <aligny>center</aligny>
+            <align>right</align>
+            <label>$INFO[ListItem.Label2]</label>
+        </control>
+    </include>
+
     <include name="View_FlipSides_Right">
         <right>-30</right>
     </include>
@@ -193,6 +220,7 @@
                         <right>90</right>
                         <font>font_tiny</font>
                         <textcolor>main_fg_70</textcolor>
+                        <selectedcolor>main_fg_70</selectedcolor>
                         <label>$INFO[ListItem.ChannelName]</label>
                     </control>
                 </control>
@@ -220,6 +248,7 @@
                             <left>30</left>
                             <right>90</right>
                             <font>font_tiny</font>
+                            <selectedcolor>main_fg_70</selectedcolor>
                             <textcolor>main_fg_70</textcolor>
                             <label>$INFO[ListItem.ChannelName]</label>
                         </control>
@@ -248,6 +277,7 @@
                             <right>90</right>
                             <font>font_tiny_bold</font>
                             <textcolor>main_bg_100</textcolor>
+                            <selectedcolor>main_bg_100</selectedcolor>
                             <label>$INFO[ListItem.ChannelName]</label>
                         </control>
                     </control>
@@ -291,7 +321,7 @@
             <control type="group" id="$PARAM[groupid]">
                 <top>52</top>
                 <height>52</height>
-                <visible>Control.IsVisible($PARAM[id])</visible>
+                <visible>Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating</visible>
                 <nested />
                 <control type="group">
                     <top>52</top>
@@ -696,7 +726,7 @@
     </include>
 
     <include name="View_Pad">
-        <param name="bottom" default="view_pad" />
+        <param name="bottom" default="view_bottom" />
         <definition>
             <top>view_top</top>
             <bottom>$PARAM[bottom]</bottom>

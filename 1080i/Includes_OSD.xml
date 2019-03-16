@@ -176,7 +176,7 @@
     <include name="OSD_VideoPosition">
         <align>center</align>
         <height>48</height>        
-        <centerbottom>75</centerbottom>
+        <centerbottom>95</centerbottom>
     </include>
     <include name="OSD_MusicPosition">
         <left>300</left>
@@ -216,32 +216,52 @@
                     <left>view_pad</left>
                     <right>view_pad</right>
                     <height>480</height>
-                    <bottom>164</bottom>
+                    <bottom>190</bottom>
                     <control type="group">
                         <height>435</height>
-                        <bottom>8</bottom>
+                        <bottom>0</bottom>
                         <width>290</width>
-                        <control type="image">
+                        <control type="group">
                             <left>-15</left>
                             <right>-15</right>
                             <top>-15</top>
                             <bottom>-15</bottom>
-                            <bordersize>15</bordersize>
-                            <bordertexture border="30" colordiffuse="Shadow">common/shadow-15.png</bordertexture>
-                            <aspectratio scalediffuse="true" align="left" aligny="bottom">keep</aspectratio>
-                            <visible>!Pvr.IsPlayingTv</visible>
-                            <texture background="true" diffuse="diffuse/poster-wall.png">$VAR[Image_OSD_Artwork]</texture>
-                        </control>
-                        <control type="image">
-                            <left>-15</left>
-                            <right>-15</right>
-                            <top>-15</top>
-                            <bottom>-15</bottom>
-                            <bordersize>15</bordersize>
-                            <bordertexture />
-                            <aspectratio scalediffuse="true" align="left" aligny="bottom">keep</aspectratio>
-                            <visible>Pvr.IsPlayingTv</visible>
-                            <texture background="true" diffuse="diffuse/poster-wall.png">$INFO[Player.Icon]</texture>
+                            <control type="image">
+                                <bordersize>15</bordersize>
+                                <bordertexture border="30" colordiffuse="Shadow">common/shadow-15.png</bordertexture>
+                                <aspectratio scalediffuse="true" align="left" aligny="bottom">keep</aspectratio>
+                                <visible>!Pvr.IsPlayingTv</visible>
+                                <texture background="true" diffuse="diffuse/poster-wall.png">$VAR[Image_OSD_Artwork]</texture>
+                            </control>
+                            <control type="group">
+                                <visible>Pvr.IsPlayingTv</visible>
+                                <control type="image" id="2334">
+                                    <bordersize>15</bordersize>
+                                    <bordertexture />
+                                    <aspectratio scalediffuse="true" align="left" aligny="bottom">keep</aspectratio>
+                                    <texture background="true" diffuse="diffuse/poster-wall.png">$INFO[Player.Icon]</texture>
+                                    <visible>!String.IsEmpty(Player.Icon)</visible>
+                                </control>
+                                <control type="image">
+                                    <bordersize>15</bordersize>
+                                    <bordertexture />
+                                    <aspectratio scalediffuse="true" align="left" aligny="bottom">keep</aspectratio>
+                                    <texture colordiffuse="panel_fg_100">diffuse/circle.png</texture>
+                                    <visible>String.IsEmpty(Player.Icon) | String.IsEmpty(Control.GetLabel(2334))</visible>
+                                </control>
+                                <control type="label">
+                                    <bottom>0</bottom>
+                                    <centerleft>50%</centerleft>
+                                    <width>320</width>
+                                    <height>320</height>
+                                    <align>center</align>
+                                    <aligny>center</aligny>
+                                    <font>font_overlay_title</font>
+                                    <textcolor>panel_bg</textcolor>
+                                    <label>$INFO[VideoPlayer.ChannelNumberLabel]</label>
+                                    <visible>String.IsEmpty(Player.Icon) | String.IsEmpty(Control.GetLabel(2334))</visible>
+                                </control>
+                            </control>
                         </control>
                     </control>
                     <control type="grouplist">
@@ -396,7 +416,7 @@
 
     <include name="OSD_Progress_Text">
         <control type="group">
-            <centerbottom>75</centerbottom>
+            <centerbottom>95</centerbottom>
             <height>20</height>
             <left>view_pad</left>
             <right>view_pad</right>
@@ -455,7 +475,7 @@
             <height>12</height>
             <left>view_pad</left>
             <right>view_pad</right>
-            <bottom>view_bottom</bottom>
+            <bottom>140</bottom>
             <control type="progress" description="cache">
                 <width>100%</width>
                 <height>12</height>

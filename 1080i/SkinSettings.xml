@@ -139,7 +139,7 @@
                         <label>$LOCALIZE[31109]</label>
                         <onclick>RunScript(script.skinshortcuts,type=manage&amp;group=mainmenu)</onclick>
                     </control>
-                    <control type="radiobutton" id="19102" description="Vertical Home">
+                    <control type="radiobutton" id="19102" description="Multiwidget Home">
                         <visible>Integer.IsEqual(Window.Property(CurrentFocus),9001)</visible>
                         <include>Defs_Settings_Button</include>
                         <label>$LOCALIZE[31006]</label>
@@ -161,6 +161,13 @@
                         <enable>!Skin.HasSetting(VerticalHome)</enable>
                         <selected>!Skin.HasSetting(SubmenuOnly)</selected>
                         <onclick>Skin.ToggleSetting(SubmenuOnly)</onclick>
+                    </control>
+                    <control type="button" id="19105" description="Global Widget">
+                        <visible>Integer.IsEqual(Window.Property(CurrentFocus),9001)</visible>
+                        <include>Defs_Settings_Button</include>
+                        <label>Global widget</label>
+                        <label2>$INFO[Skin.String(widgetPath)]</label2>
+                        <onclick>RunScript(script.skinshortcuts,type=widgets&amp;showNone=True&amp;skinWidgetName=widgetName&amp;skinWidgetTarget=widgetTarget&amp;skinWidgetPath=widgetPath)</onclick>
                     </control>
 
                     <!-- ========== -->

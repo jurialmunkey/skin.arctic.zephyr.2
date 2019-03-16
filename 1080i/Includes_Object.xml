@@ -33,6 +33,41 @@
         </definition>
     </include>
 
+    <include name="Object_Settings_Info">
+        <param name="id" default="6" />
+        <param name="visible" default="!Control.HasFocus(300)" />
+        <param name="label" default="" />
+        <definition>
+            <control type="group">
+                <bottom>0</bottom>
+                <left>view_pad</left>
+                <right>view_pad</right>
+                <height>view_bottom</height>
+                <visible>$PARAM[visible]</visible>
+                <visible>!Window.IsVisible(DialogNotification.xml)</visible>
+                <visible>!Window.IsVisible(DialogExtendedProgressBar.xml)</visible>
+                <control type="image">
+                    <left>26</left>
+                    <centertop>50%</centertop>
+                    <height>32</height>
+                    <width>32</width>
+                    <aspectratio align="left">keep</aspectratio>
+                    <texture colordiffuse="panel_fg_70">buttons/info.png</texture>
+                </control>
+                <control type="textbox" id="$PARAM[id]">
+                    <centertop>50%</centertop>
+                    <left>82</left>
+                    <right>30</right>
+                    <height>60</height>
+                    <textcolor>panel_fg_70</textcolor>
+                    <font>font_statusbar</font>
+                    <aligny>center</aligny>
+                    <label>$PARAM[label]</label>
+                </control>
+            </control>
+        </definition>
+    </include>
+
     <include name="Object_NowPlaying">
         <control type="progress" id="933">
             <texturebg></texturebg>
@@ -45,6 +80,7 @@
 
         <control type="group">
             <visible>!Skin.HasSetting(DisableNowPlaying)</visible>
+            <visible>![Window.IsVisible(SkinSettings.xml) | Window.IsVisible(SettingsCategory.xml) | Window.IsVisible(SettingsProfile.xml) | Window.IsVisible(SettingsSystemInfo.xml)]</visible>
             <visible>!Control.HasFocus(62)</visible>
             <visible>Player.HasMedia</visible>
             <visible>!Window.IsVisible(DialogExtendedProgressBar.xml)</visible>
@@ -242,6 +278,7 @@
                 <textoffsetx>20</textoffsetx>
                 <font>$PARAM[font]</font>
                 <textcolor>$PARAM[bgcolor]_90</textcolor>
+                <selectedcolor>$PARAM[bgcolor]_90</selectedcolor>
                 <label>$INFO[ListItem.ChannelNumberLabel]</label>
                 <visible>String.IsEmpty(ListItem.Icon) | String.StartsWith(ListItem.Icon,special://xbmc/addons/pvr.demo/)</visible>
             </control>
@@ -555,13 +592,15 @@
 
     <include name="Object_Info_Title">
         <param name="label" default="$INFO[ListItem.Label]" />
+        <param name="font" default="font_title_large" />
+        <param name="titleheight" default="80" />
         <definition>
             <control type="label">
                 <label>$PARAM[label]</label>
-                <height>80</height>
+                <height>$PARAM[titleheight]</height>
                 <aligny>top</aligny>
                 <textcolor>main_fg_100</textcolor>
-                <font>font_title_large</font>
+                <font>$PARAM[font]</font>
             </control>
         </definition>
     </include>

@@ -134,6 +134,7 @@
         <param name="nowplaying" default="false" />
         <param name="progress" default="Control.GetLabel(32)" />
         <param name="icon" default="buttons/info.png" />
+        <param name="fgcolor" default="main_fg" />
         <definition>
             <bottom>0</bottom>
             <left>view_pad</left>
@@ -141,17 +142,17 @@
             <height>view_bottom</height>
             <visible>!$EXP[Exp_HideFurniture]</visible>
             <control type="image" description="Back">
-                <left>-24</left>
+                <left>-16</left>
                 <centertop>50%</centertop>
                 <width>80</width>
                 <height>80</height>
                 <aspectratio align="center" aligny="center">keep</aspectratio>
                 <texture>dialog/loading-back.png</texture>
-                <colordiffuse>main_fg_70</colordiffuse>
+                <colordiffuse>$PARAM[fgcolor]_70</colordiffuse>
                 <visible>[Window.IsVisible(DialogExtendedProgressBar.xml) + Control.IsVisible(32)] | $PARAM[nowplaying]</visible>
             </control>
             <control type="image">
-                <left>-24</left>
+                <left>-16</left>
                 <centertop>50%</centertop>
                 <width>80</width>
                 <height>80</height>
@@ -160,7 +161,7 @@
                 <visible>[Window.IsVisible(DialogExtendedProgressBar.xml) + Control.IsVisible(32)] | $PARAM[nowplaying]</visible>
             </control>
             <control type="grouplist">
-                <left>0</left>
+                <left>8</left>
                 <centertop>50%</centertop>
                 <height>32</height>
                 <orientation>horizontal</orientation>
@@ -171,7 +172,7 @@
                     <height>32</height>
                     <width>42</width>
                     <aspectratio align="left">keep</aspectratio>
-                    <texture colordiffuse="main_fg_100">$PARAM[icon]</texture>
+                    <texture colordiffuse="$PARAM[fgcolor]_100">$PARAM[icon]</texture>
                 </control>
                 <control type="label" id="$PARAM[main_id]">
                     <left>-4</left>
@@ -180,7 +181,7 @@
                     <label>$PARAM[label]</label>
                     <width>auto</width>
                     <font>font_statusbar_bold</font>
-                    <textcolor>main_fg_100</textcolor>
+                    <textcolor>$PARAM[fgcolor]_100</textcolor>
                 </control>
                 <control type="label" id="$PARAM[sub_id]">
                     <centertop>50%</centertop>
@@ -188,13 +189,13 @@
                     <label>$PARAM[label2]</label>
                     <width>auto</width>
                     <font>font_statusbar</font>
-                    <textcolor>main_fg_100</textcolor>
+                    <textcolor>$PARAM[fgcolor]_100</textcolor>
                 </control>
                 <control type="label">
                     <centertop>50%</centertop>
                     <height>26</height>
                     <width>auto</width>
-                    <textcolor>main_fg_100</textcolor>
+                    <textcolor>$PARAM[fgcolor]_100</textcolor>
                     <font>font_statusbar</font>
                     <label>$INFO[Control.GetLabel(32),,%]</label>
                     <visible>Window.IsVisible(DialogExtendedProgressBar.xml) + Control.IsVisible(32)</visible>
@@ -386,10 +387,11 @@
     <include name="Dialog_Standard_Header">
         <left>30</left>
         <right>30</right>
-        <top>15</top>
-        <height>70</height>
+        <top>0</top>
+        <height>dialog_top</height>
         <font>font_medium_bold</font>
         <align>left</align>
+        <aligny>center</aligny>
         <textcolor>dialog_fg_70</textcolor>
     </include>
 

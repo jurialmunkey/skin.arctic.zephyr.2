@@ -97,7 +97,7 @@
             <visible>!String.IsEqual(Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Label,Container($PARAM[id]).ListItem.Label)</visible>
             <visible>$PARAM[visible]</visible>
         </control>
-        <control type="togglebutton">
+        <control type="button" id="98$PARAM[id]$PARAM[pos]">
             <width>auto</width>
             <align>left</align>
             <height>70</height>
@@ -108,12 +108,9 @@
             <onfocus>SetFocus($PARAM[id],$PARAM[pos])</onfocus>
             <onclick>$INFO[Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Property(path)]</onclick>
             <texturenofocus />
-            <texturefocus colordiffuse="main_fg_100" border="8">common/underline2.png</texturefocus>
-            <alttexturenofocus colordiffuse="main_fg_100" border="8">common/underline2.png</alttexturenofocus>
-            <alttexturefocus colordiffuse="main_fg_100" border="8">common/underline2.png</alttexturefocus>
+            <texturefocus />
             <textoffsetx>0</textoffsetx>
-            <usealttexture>Control.HasFocus(301) + Skin.HasSetting(AuraStyleHome) + Skin.HasSetting(VerticalHome)</usealttexture>
-            <!-- <animation effect="fade" start="100" end="30" condition="!Control.HasFocus(301)">Conditional</animation> -->
+            <animation effect="fade" start="100" end="30" condition="!Control.HasFocus(301) + Skin.HasSetting(AuraStyleHome) + Skin.HasSetting(VerticalHome) + !Control.HasFocus(98$PARAM[id]$PARAM[pos])">Conditional</animation>
             <label>$INFO[Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Label]</label>
             <visible>String.IsEqual(Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Label,Container($PARAM[id]).ListItem.Label)</visible>
             <visible>$PARAM[visible]</visible>
@@ -135,14 +132,12 @@
             <onup condition="!Player.HasVideo | !Skin.HasSetting(global.showvideo)">5600</onup>
             <onup condition="Player.HasVideo + Skin.HasSetting(global.showvideo)">noop</onup>
             <onfocus>ClearProperty(WidgetFocus,Home)</onfocus>
-            <onfocus>ClearProperty(WidgetLoading,Home)</onfocus>
-            <onfocus>AlarmClock(SetLoad,SetProperty(WidgetLoading,1,Home),00:00,silent)</onfocus>
             <orientation>horizontal</orientation>
             <height>10</height>
             <bottom>-100</bottom>
             <itemlayout width="200" />
             <focusedlayout width="200" />
-            <content><include>skinshortcuts-mainmenu</include></content>
+            <content limit="12"><include>skinshortcuts-mainmenu</include></content>
         </control>
         
         <!-- Global Widget -->
@@ -181,10 +176,19 @@
 
             <animation effect="slide" start="0" end="0,-275" time="250" tween="quadratic" easing="out" condition="Control.HasFocus(5600)">Conditional</animation>
             <animation effect="slide" start="0" end="0,-625" time="300" tween="quadratic" easing="out" condition="Control.HasFocus(5600) + $EXP[Exp_InfoVisible]">Conditional</animation>
-            <animation effect="slide" start="0" end="0,-900" time="300" tween="quadratic" condition="![Control.HasFocus(5610) | Control.HasFocus(302) | Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(DialogAddonInfo.xml)]">WindowClose</animation>
-            <animation effect="slide" end="0" start="0,-900" time="300" tween="quadratic" condition="![Control.HasFocus(5610) | Control.HasFocus(302) | Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(DialogAddonInfo.xml)]">WindowOpen</animation>
-            <animation effect="slide" start="0" end="0,-615" time="300" tween="quadratic" condition="Control.HasFocus(302) + !Control.IsVisible(5610)">WindowClose</animation>
-            <animation effect="slide" end="0" start="0,-615" time="300" tween="quadratic" condition="Control.HasFocus(302) + !Control.IsVisible(5610)">WindowOpen</animation>
+
+
+            <animation effect="slide" start="0" end="0,-900" time="300" tween="quadratic" condition="![Control.HasFocus(5610) | Control.HasFocus(302) | Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(DialogAddonInfo.xml)] + ![Window.Next(VideoFullScreen.xml) | Window.Next(MusicVisualisation.xml)]">WindowClose</animation>
+            <animation effect="slide" start="0" end="0,-615" time="300" tween="quadratic" condition="Control.HasFocus(302) + !Control.IsVisible(5610) + ![Window.Next(VideoFullScreen.xml) | Window.Next(MusicVisualisation.xml)]">WindowClose</animation>
+
+            <animation effect="slide" start="0" end="0,180" time="300" tween="quadratic" condition="![Control.HasFocus(5610) | Control.HasFocus(302) | Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(DialogAddonInfo.xml)] + [Window.Next(VideoFullScreen.xml) | Window.Next(MusicVisualisation.xml)]">WindowClose</animation>
+            <animation effect="slide" start="0" end="0,465" time="300" tween="quadratic" condition="Control.HasFocus(302) + !Control.IsVisible(5610) + [Window.Next(VideoFullScreen.xml) | Window.Next(MusicVisualisation.xml)]">WindowClose</animation>
+
+            <animation effect="slide" end="0" start="0,-900" time="300" tween="quadratic" condition="![Control.HasFocus(5610) | Control.HasFocus(302) | Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(DialogAddonInfo.xml)] + ![Window.Previous(VideoFullScreen.xml) | Window.Previous(MusicVisualisation.xml)]">WindowOpen</animation>
+            <animation effect="slide" end="0" start="0,-615" time="300" tween="quadratic" condition="Control.HasFocus(302) + !Control.IsVisible(5610) + ![Window.Previous(VideoFullScreen.xml) | Window.Previous(MusicVisualisation.xml)]">WindowOpen</animation>
+
+            <animation effect="slide" end="0" start="0,180" time="300" tween="quadratic" condition="![Control.HasFocus(5610) | Control.HasFocus(302) | Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(DialogAddonInfo.xml)] + [Window.Previous(VideoFullScreen.xml) | Window.Previous(MusicVisualisation.xml)]">WindowOpen</animation>
+            <animation effect="slide" end="0" start="0,465" time="300" tween="quadratic" condition="Control.HasFocus(302) + !Control.IsVisible(5610) + [Window.Previous(VideoFullScreen.xml) | Window.Previous(MusicVisualisation.xml)]">WindowOpen</animation>
             <!-- Back Panel -->
             <control type="image">
                 <texture colordiffuse="HomePanel">common/bg.jpg</texture>
@@ -318,77 +322,165 @@
                 <param name="animation" value="Defs_Null" />
             </include>
             <control type="grouplist">
-                <animation effect="slide" start="0" end="-244.28" time="200" condition="ControlGroup(3000).HasFocus()">Conditional</animation>
+                <animation effect="slide" start="0" end="-257.14" time="200" condition="ControlGroup(3000).HasFocus()">Conditional</animation>
                 <top>-15</top>
-                <right>-415</right>
-                <left>-15</left>
+                <width>2500</width>
+                <left>-30</left>
                 <bottom>-15</bottom>
                 <orientation>horizontal</orientation>
                 <usecontrolcoords>true</usecontrolcoords>
-                <itemgap>35</itemgap>
-                <control type="panel" id="301">
-                    <include>Animation_Left</include>
-                    <include>Defs_InfoDialog_Visible</include>
+                <itemgap>0</itemgap>
+                <control type="group" id="300">
+                    <width>257.14</width>
                     <left>15</left>
-                    <animation effect="fade" start="100" end="0" time="200" condition="ControlGroup(3000).HasFocus()">Conditional</animation>
                     <top>-7</top>
-                    <onright>3000</onright>
-                    <width>194.28</width>
-                    <orientation>vertical</orientation>                
-                    <itemlayout width="194.28" height="item_list_height">
-                        <!-- <control type="image">
-                            <top>3</top>
-                            <right>-22</right>
-                            <aspectratio>keep</aspectratio>
-                            <width>item_list_height</width>
-                            <bordersize>6</bordersize>
-                            <texture colordiffuse="main_fg_30">$INFO[ListItem.Icon]</texture>
-                        </control> -->
-                        <control type="label">
-                            <!-- <right>60</right> -->
-                            <font>font_topbar_small</font>
-                            <align>right</align>
-                            <aligny>center</aligny>
-                            <textcolor>main_fg_30</textcolor>
-                            <label>$INFO[ListItem.Label]</label>
-                        </control>
-                    </itemlayout>
-                    <focusedlayout width="194.28" height="item_list_height">
-                       <!--  <control type="image">
-                            <top>3</top>
-                            <right>-22</right>
-                            <aspectratio>keep</aspectratio>
-                            <width>item_list_height</width>
-                            <bordersize>6</bordersize>
-                            <texture colordiffuse="main_fg_100">$INFO[ListItem.Icon]</texture>
-                        </control> -->
-                        <control type="label">
-                            <!-- <right>60</right> -->
+                    <bottom>7</bottom>
+                    <control type="group">
+                        <width>257.14</width>
+                        <control type="button" id="3002">
+                            <onup>SetFocus(302,999,absolute)</onup>
+                            <ondown>SetFocus(302,0,absolute)</ondown>
+                            <right>40</right>
+                            <onleft>301</onleft>
+                            <onright>301</onright>
+                            <onback>301</onback>
                             <font>font_topbar</font>
                             <align>right</align>
                             <aligny>center</aligny>
-                            <textcolor>main_fg_100</textcolor>
-                            <label>$INFO[ListItem.Label]</label>
+                            <textcolor>main_fg_30</textcolor>
+                            <focusedcolor>main_fg_100</focusedcolor>
+                            <textoffsetx>0</textoffsetx>
+                            <texturefocus />
+                            <texturenofocus />
+                            <label>$INFO[Container(301).ListItem.Label]</label>
+                            <onclick>$INFO[Container(301).ListItem.Property(path)]</onclick>
+                            <height>item_list_height</height>
+                            <include>Animation_Left</include>
+                            <visible allowhiddenfocus="true">Control.HasFocus(302) | Control.HasFocus(3002)</visible>
                         </control>
-                    </focusedlayout>
-                    <content><include>skinshortcuts-mainmenu</include></content>
+                        <control type="panel" id="302">
+                            <include>Animation_Left</include>
+                            <visible allowhiddenfocus="true">Control.HasFocus(302) | Control.HasFocus(3002)</visible>
+                            <onup>3002</onup>
+                            <ondown>3002</ondown>
+                            <onleft>301</onleft>
+                            <onright>301</onright>
+                            <onback>301</onback>
+                            <include>Defs_InfoDialog_Visible</include>
+                            <left>0</left>
+                            <animation effect="fade" start="100" end="0" time="200" condition="ControlGroup(3000).HasFocus()">Conditional</animation>
+                            <top>item_list_height</top>
+                            <width>257.14</width>
+                            <onright>3000</onright>
+                            <orientation>vertical</orientation>                
+                            <itemlayout width="257.14" height="item_list_height">
+                                <control type="label">
+                                    <right>40</right>
+                                    <font>font_submenu_small</font>
+                                    <align>right</align>
+                                    <aligny>center</aligny>
+                                    <textcolor>main_fg_30</textcolor>
+                                    <label>$INFO[ListItem.Label]</label>
+                                </control>
+                            </itemlayout>
+                            <focusedlayout width="257.14" height="item_list_height">
+                                <control type="label">
+                                    <right>40</right>
+                                    <font>font_submenu</font>
+                                    <align>right</align>
+                                    <aligny>center</aligny>
+                                    <textcolor>main_fg_100</textcolor>
+                                    <label>$INFO[ListItem.Label]</label>
+                                </control>
+                            </focusedlayout>
+                            <content><include>skinshortcuts-submenu</include></content>
+                        </control>
+                    </control>
+                    <control type="panel" id="301">
+                        <visible allowhiddenfocus="true">![Control.HasFocus(302) | Control.HasFocus(3002)]</visible>
+                        <include>Animation_Left</include>
+                        <include>Defs_InfoDialog_Visible</include>
+                        <onleft>SetFocus(302,0)</onleft>
+                        <animation effect="fade" start="100" end="0" time="200" condition="ControlGroup(3000).HasFocus()">Conditional</animation>
+                        <top>0</top>
+                        <onright>3000</onright>
+                        <width>257.14</width>
+                        <orientation>vertical</orientation>                
+                        <itemlayout width="257.14" height="item_list_height">
+                            <!-- <control type="image">
+                                <top>3</top>
+                                <right>-22</right>
+                                <aspectratio>keep</aspectratio>
+                                <width>item_list_height</width>
+                                <bordersize>6</bordersize>
+                                <texture colordiffuse="main_fg_30">$INFO[ListItem.Icon]</texture>
+                            </control> -->
+                            <control type="label">
+                                <right>40</right>
+                                <font>font_topbar_small</font>
+                                <align>right</align>
+                                <aligny>center</aligny>
+                                <textcolor>main_fg_30</textcolor>
+                                <label>$INFO[ListItem.Label]</label>
+                            </control>
+                        </itemlayout>
+                        <focusedlayout width="257.14" height="item_list_height">
+                           <!--  <control type="image">
+                                <top>3</top>
+                                <right>-22</right>
+                                <aspectratio>keep</aspectratio>
+                                <width>item_list_height</width>
+                                <bordersize>6</bordersize>
+                                <texture colordiffuse="main_fg_100">$INFO[ListItem.Icon]</texture>
+                            </control> -->
+                            <control type="label">
+                                <right>40</right>
+                                <font>font_topbar</font>
+                                <align>right</align>
+                                <aligny>center</aligny>
+                                <textcolor>main_fg_100</textcolor>
+                                <label>$INFO[ListItem.Label]</label>
+                            </control>
+                        </focusedlayout>
+                        <content><include>skinshortcuts-mainmenu</include></content>
+                    </control>
                 </control>
-                <control type="grouplist" id="3000">
-                    <include>Animation_Right</include>
-                    <include>Defs_InfoDialog_Visible</include>
-                    <onup>noop</onup>
-                    <ondown>noop</ondown>
-                    <onleft>301</onleft>
-                    <onright>noop</onright>
-                    <scrolltime tween="quadratic">400</scrolltime>
+                
+                <control type="group" id="99300">
                     <height>view_height</height>
                     <width>1800</width>
-                    <orientation>vertical</orientation>
-                    <itemgap>-52</itemgap>
-                    <usecontrolcoords>true</usecontrolcoords>
-                    <control type="group" id="7999"><height>0</height></control>
-                    <include>skinshortcuts-template-vertical-main</include>
-                    <include>skinshortcuts-template-vertical-submenu</include>
+                    <include>Animation_Right</include>
+                    <include>Defs_InfoDialog_Visible</include>
+                    <control type="grouplist" id="3000">
+                        <top>-5</top>
+                        <onup condition="!Skin.HasSetting(AuraStyleHome)">noop</onup>
+                        <onup condition="Skin.HasSetting(AuraStyleHome)">301</onup>
+                        <ondown>noop</ondown>
+                        <onleft condition="!Skin.HasSetting(AuraStyleHome)">301</onleft>
+                        <onright condition="!Skin.HasSetting(AuraStyleHome)">noop</onright>
+                        <scrolltime tween="quadratic">400</scrolltime>
+                        <height>view_height</height>
+                        <width>1800</width>
+                        <orientation>vertical</orientation>
+                        <itemgap>-52</itemgap>
+                        <usecontrolcoords>true</usecontrolcoords>
+                        <control type="group" id="7999"><height>0</height></control>
+                        <include>skinshortcuts-template-vertical-main</include>
+                        <include>skinshortcuts-template-vertical-submenu</include>
+                    </control>
+                    <control type="group">
+                        <visible>Integer.IsEqual(Container(3000).NumItems,1) + ControlGroup(3000).HasFocus()</visible>
+                        <include>Animation_FadeIn</include>
+                        <top>432.5</top>
+                        <left>15</left>
+                        <right>15</right>
+                        <bottom>0</bottom>
+                        <include content="View_52_Showcase_Aura_Info">
+                            <param name="font" value="font_title" />
+                            <param name="plotheight" value="160" />
+                            <param name="titleheight" value="60" />
+                        </include>
+                    </control>
                 </control>
             </control>
         </control>
@@ -408,18 +500,24 @@
                 </include>
             </control>
         </control>
-        <!-- <control type="list" id="302">
+        <control type="list" id="302">
             <height>10</height>
             <top>-20</top>
             <itemlayout width="200" />
             <focusedlayout width="200" />
             <content><include>skinshortcuts-submenu</include></content>
-        </control> -->
+        </control>
         <control type="list" id="301">
+            <onup condition="Integer.IsGreater(Container(302).NumItems,0)">SetProperty(submenuVisibility,$INFO[Container(301).ListItem.Property(submenuVisibility)],home)</onup>
+            <onup condition="Integer.IsGreater(Container(302).NumItems,0)">SetProperty(leftHeader,$INFO[Container(301).ListItem.Label],home)</onup>
+            <onup condition="Integer.IsGreater(Container(302).NumItems,0)">SetProperty(widgetName,$INFO[Container(301).ListItem.Property(widgetName)],home)</onup>
+            <onup condition="Integer.IsGreater(Container(302).NumItems,0)">SetProperty(widgetName.backgroundWidget,$INFO[Container(301).ListItem.Property(widgetName.backgroundWidget)],home)</onup>
+            <onup condition="Integer.IsGreater(Container(302).NumItems,0)">SetProperty(widgetPath,$INFO[Container(301).ListItem.Property(widgetPath)],home)</onup>
+            <onup condition="Integer.IsGreater(Container(302).NumItems,0)">SetProperty(widgetTarget,$INFO[Container(301).ListItem.Property(widgetTarget)],home)</onup>
+            <onup condition="Integer.IsGreater(Container(302).NumItems,0)">SetProperty(widgetAspect,$INFO[Container(301).ListItem.Property(widgetAspect)],home)</onup>
+            <onup condition="Integer.IsGreater(Container(302).NumItems,0)">ActivateWindow(1135)</onup>
             <ondown>3000</ondown>
             <onfocus>ClearProperty(WidgetFocus,Home)</onfocus>
-            <onfocus>ClearProperty(WidgetLoading,Home)</onfocus>
-            <onfocus>AlarmClock(SetLoad,SetProperty(WidgetLoading,1,Home),00:00,silent)</onfocus>
             <orientation>horizontal</orientation>
             <height>10</height>
             <bottom>-100</bottom>
@@ -436,9 +534,12 @@
                 <left>-15</left>
                 <bottom>-15</bottom>
                 <control type="grouplist" id="3000">
-                    <include>Defs_InfoDialog_Visible</include>
-                    <onup>301</onup>
+                    <top>-5</top>
+                    <onup condition="!Skin.HasSetting(AuraStyleHome)">noop</onup>
+                    <onup condition="Skin.HasSetting(AuraStyleHome)">301</onup>
                     <ondown>noop</ondown>
+                    <onleft condition="!Skin.HasSetting(AuraStyleHome)">301</onleft>
+                    <onright condition="!Skin.HasSetting(AuraStyleHome)">noop</onright>
                     <scrolltime tween="quadratic">400</scrolltime>
                     <height>view_height</height>
                     <width>1800</width>
@@ -448,6 +549,20 @@
                     <control type="group" id="7999"><height>0</height></control>
                     <include>skinshortcuts-template-vertical-main</include>
                     <include>skinshortcuts-template-vertical-submenu</include>
+                </control>
+                <control type="group">
+                    <visible>Integer.IsEqual(Container(3000).NumItems,1)</visible>
+                    <visible>ControlGroup(3000).HasFocus()</visible>
+                    <include>Animation_FadeIn</include>
+                    <top>432.5</top>
+                    <left>15</left>
+                    <right>15</right>
+                    <bottom>0</bottom>
+                    <include content="View_52_Showcase_Aura_Info">
+                        <param name="font" value="font_title" />
+                        <param name="plotheight" value="160" />
+                        <param name="titleheight" value="60" />
+                    </include>
                 </control>
             </control>
         </control>

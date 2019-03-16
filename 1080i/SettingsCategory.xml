@@ -90,32 +90,7 @@
             </include>
         </control>
 
-        <control type="group">
-            <bottom>0</bottom>
-            <left>view_pad</left>
-            <right>view_pad</right>
-            <height>view_bottom</height>
-            <visible>!Control.HasFocus(300)</visible>
-            <visible>!Window.IsVisible(DialogNotification.xml)</visible>
-            <visible>!Window.IsVisible(DialogExtendedProgressBar.xml)</visible>
-            <control type="image">
-                <left>26</left>
-                <centertop>50%</centertop>
-                <height>32</height>
-                <width>32</width>
-                <aspectratio align="left">keep</aspectratio>
-                <texture colordiffuse="panel_fg_70">buttons/info.png</texture>
-            </control>
-            <control type="textbox" id="6">
-                <centertop>50%</centertop>
-                <left>82</left>
-                <right>30</right>
-                <height>60</height>
-                <textcolor>panel_fg_70</textcolor>
-                <font>font_statusbar</font>
-                <aligny>center</aligny>
-            </control>
-        </control>
+        <include>Object_Settings_Info</include>
      
         <control type="button" id="7">
             <description>Default Button</description>

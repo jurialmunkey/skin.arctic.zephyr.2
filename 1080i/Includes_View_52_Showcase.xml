@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
     <include name="View_52_Showcase_Header">
+        <param name="itemgap" default="10" />
         <definition>
             <control type="grouplist">
                 <top>-15</top>
                 <left>view_pad</left>
                 <right>view_pad</right>
                 <orientation>vertical</orientation>
-                <itemgap>10</itemgap>
+                <itemgap>$PARAM[itemgap]</itemgap>
                 <usecontrolcoords>true</usecontrolcoords>
                 <control type="label">
                     <aligny>top</aligny>
@@ -24,6 +25,7 @@
                     <textcolor>main_fg_70</textcolor>
                     <label>$VAR[Label_SubTitle]</label>
                     <height>60</height>
+                    <visible>!ListItem.IsCollection</visible>
                 </control>
                 <control type="label">
                     <align>center</align>
@@ -164,17 +166,23 @@
     </include>
 
     <include name="View_52_Showcase_Aura_Info">
-        <control type="grouplist">
-            <orientation>vertical</orientation>
-            <usecontrolcoords>true</usecontrolcoords>
-            <itemgap>0</itemgap>
-            <include>Object_Info_Title</include>
-            <include>Object_Info_Line</include>
-            <include>Object_Info_Ratings</include>
-            <include content="Object_Info_Plot">
-                <param name="maxheight" value="120" />
-            </include>
-        </control>
+        <param name="plotheight" default="120" />
+        <definition>
+            <control type="grouplist">
+                <orientation>vertical</orientation>
+                <usecontrolcoords>true</usecontrolcoords>
+                <itemgap>0</itemgap>
+                <include content="Object_Info_Title">
+                    <param name="font" value="$PARAM[font]" />
+                    <param name="titleheight" value="$PARAM[titleheight]" />
+                </include>
+                <include>Object_Info_Line</include>
+                <include>Object_Info_Ratings</include>
+                <include content="Object_Info_Plot">
+                    <param name="maxheight" value="$PARAM[plotheight]" />
+                </include>
+            </control>
+        </definition>
     </include>
 
     <include name="View_520_Showcase_Aura_Info">

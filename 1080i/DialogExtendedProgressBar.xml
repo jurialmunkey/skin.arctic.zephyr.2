@@ -11,7 +11,10 @@
             <visible>!Window.IsVisible(visualisation)</visible>
             <visible>!Window.IsVisible(Startup.xml)</visible>
             <visible>!Window.IsVisible(Home.xml) | [Control.HasFocus(302) | Control.HasFocus(5610)]</visible>
-            <include>Dialog_Notification_Group</include>
+            <include condition="![Window.IsVisible(SkinSettings.xml) | Window.IsVisible(SettingsCategory.xml) | Window.IsVisible(SettingsProfile.xml) | Window.IsVisible(SettingsSystemInfo.xml)]">Dialog_Notification_Group</include>
+            <include content="Dialog_Notification_Group" condition="[Window.IsVisible(SkinSettings.xml) | Window.IsVisible(SettingsCategory.xml) | Window.IsVisible(SettingsProfile.xml) | Window.IsVisible(SettingsSystemInfo.xml)]">
+                <param name="fgcolor" value="panel_fg" />
+            </include>
         </control>
 
         <control type="progress" id="32">

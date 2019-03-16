@@ -217,7 +217,7 @@
                     <label>$VAR[Label_SkinShortcuts_SubmenuWidget]</label>
                     <visible>!String.IsEqual(Container(211).ListItem.Property(skinshortcuts-disabled),True)</visible>
                     <label2>$INFO[Container(211).ListItem.Property(widgetName)]</label2>
-                    <visible>String.IsEqual(Container(211).ListItem.Property(path),ActivateWindow(1135)) | [!Skin.HasSetting(SubmenuOnly) + !Skin.HasSetting(VerticalHome)] | !String.IsEqual(Window.Property(groupname),mainmenu)</visible>
+                    <visible>String.IsEqual(Container(211).ListItem.Property(path),ActivateWindow(1135)) | !Skin.HasSetting(SubmenuOnly) | Skin.HasSetting(VerticalHome)</visible>
                     <include>Dialog_Standard_Button</include>
                 </control>
 
@@ -225,28 +225,29 @@
                     <label>$VAR[Label_SkinShortcuts_SubmenuWidget,, - Aspect]</label>
                     <visible>!String.IsEqual(Container(211).ListItem.Property(skinshortcuts-disabled),True)</visible>
                     <label2>$INFO[Container(211).ListItem.Property(widgetAspect)]</label2>
-                    <visible>String.IsEqual(Container(211).ListItem.Property(path),ActivateWindow(1135)) | [!Skin.HasSetting(SubmenuOnly) + !Skin.HasSetting(VerticalHome)] | !String.IsEqual(Window.Property(groupname),mainmenu)</visible>
+                    <visible>String.IsEqual(Container(211).ListItem.Property(path),ActivateWindow(1135)) | !Skin.HasSetting(SubmenuOnly) | Skin.HasSetting(VerticalHome)</visible>
                     <include>Dialog_Standard_Button</include>
                 </control>
 
                 <control type="button" id="9312" description="Widget Path">
-                    <label>$LOCALIZE[31010]</label>
+                    <label>$LOCALIZE[31039]</label>
                     <visible>!String.IsEqual(Container(211).ListItem.Property(skinshortcuts-disabled),True)</visible>
                     <label2>$INFO[Container(211).ListItem.Property(widgetName.backgroundWidget)]</label2>
                     <onclick>SetProperty(widgetID,backgroundWidget)</onclick>
                     <onclick>SendClick(312)</onclick>
                     <visible>String.IsEqual(Window.Property(groupname),mainmenu)</visible>
+                    <visible>!Skin.HasSetting(VerticalHome)</visible>
                     <include>Dialog_Standard_Button</include>
                 </control>
 
-                <control type="button" id="9902" description="Widget Aspect">
+                <!-- <control type="button" id="9902" description="Widget Aspect">
                     <label>$LOCALIZE[31010] - $LOCALIZE[31011]</label>
                     <visible>!String.IsEqual(Container(211).ListItem.Property(skinshortcuts-disabled),True)</visible>
                     <label2>$INFO[Container(211).ListItem.Property(widgetAspect.backgroundWidget)]</label2>
                     <visible>String.IsEqual(Window.Property(groupname),mainmenu)</visible>
                     <visible>Skin.HasSetting(VerticalHome)</visible>
                     <include>Dialog_Standard_Button</include>
-                </control>
+                </control> -->
 
                 <control type="button" id="310" description="Background">
                     <label>31110</label>

@@ -5,14 +5,6 @@
         <value>main_fg_100</value>
     </variable>
 
-    <variable name="Defs_WidgetTarget">
-        <value>videos</value>
-    </variable>
-
-    <variable name="Defs_WidgetPath">
-        <value>special://skin/extras/playlists/RandomMovies.xsp</value>
-    </variable>
-
     <variable name="Defs_InfoTrick_Title">
         <value condition="!String.IsEmpty(Window(Home).Property(InfoTrick.9.Title))">$INFO[Window(Home).Property(InfoTrick.9.Title),videodb://movies/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22,%22%5D%7D%5D%7D%2C%22type%22%3A%22movies%22%7D]</value>
         <value condition="!String.IsEmpty(Window(Home).Property(InfoTrick.8.Title))">$INFO[Window(Home).Property(InfoTrick.8.Title),videodb://movies/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22,%22%5D%7D%5D%7D%2C%22type%22%3A%22movies%22%7D]</value>
@@ -257,6 +249,11 @@
             <param name="fgcolor" value="panel_fg" />
         </include>
         <include condition="!Window.Previous(home)">View_Settings</include>
+        <include content="Object_Settings_Info">
+            <param name="visible" value="Control.HasFocus(300) | !Window.IsVisible(SettingsCategory.xml)" />
+            <param name="id" value="5800" />
+            <param name="label" value="$VAR[Label_Settings_Information]" />
+        </include>
     </include>
 
     <include name="Defs_Settings_Changer">
