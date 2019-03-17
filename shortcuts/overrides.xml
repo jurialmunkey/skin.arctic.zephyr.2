@@ -49,6 +49,12 @@
         <action>ActivateWindow(1138)</action>
     </override>
 
+    <override action="Widget">
+        <action>noop</action>
+    </override>
+
+    <shortcut label="Widget" type="Widget" grouping="common" condition="Window.IsVisible(SkinSettings.xml)">Widget</shortcut>
+
     <!-- Properties -->
     <property property="widgetAspect">Poster</property>
     <property property="widgetAspect">Square</property>
