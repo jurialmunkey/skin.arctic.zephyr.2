@@ -477,6 +477,47 @@
                 <height>32</height>
                 <visible>!String.IsEmpty(ListItem.Property(SubtitleLanguage.1))</visible>
             </control>
+
+            <control type="image">
+                <top>5</top>
+                <height>24</height>
+                <width>24</width>
+                <texture colordiffuse="main_fg_90">flags/video.png</texture>
+                <visible>!Skin.HasSetting(EnableCodecs)</visible>
+                <visible>!String.IsEmpty(ListItem.VideoCodec)</visible>
+            </control>
+            <control type="label">
+                <top>0</top>
+                <left>-20</left>
+                <align>left</align>
+                <aligny>center</aligny>
+                <width>auto</width>
+                <font>font_mini</font>
+                <textcolor>main_fg_70</textcolor>
+                <label>$INFO[ListItem.VideoCodec]$INFO[ListItem.VideoResolution,  •  ,]$INFO[ListItem.VideoAspect,  •  ,]</label>
+                <height>32</height>
+                <visible>!Skin.HasSetting(EnableCodecs)</visible>
+            </control>
+            <control type="image">
+                <top>5</top>
+                <height>24</height>
+                <width>24</width>
+                <texture colordiffuse="main_fg_90">flags/audio.png</texture>
+                <visible>!Skin.HasSetting(EnableCodecs)</visible>
+                <visible>!String.IsEmpty(ListItem.AudioCodec)</visible>
+            </control>
+            <control type="label">
+                <top>0</top>
+                <left>-20</left>
+                <align>left</align>
+                <aligny>center</aligny>
+                <width>auto</width>
+                <font>font_mini</font>
+                <textcolor>main_fg_70</textcolor>
+                <label>$INFO[ListItem.AudioCodec]$VAR[Label_AudioChannels,  •  ,]</label>
+                <height>32</height>
+                <visible>!Skin.HasSetting(EnableCodecs)</visible>
+            </control>
             <nested />
         </control>
     </include>

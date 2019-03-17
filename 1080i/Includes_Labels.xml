@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
+    <variable name="Label_AudioChannels">
+        <value condition="String.IsEqual(ListItem.AudioChannels,8)">7.1</value>
+        <value condition="String.IsEqual(ListItem.AudioChannels,7)">6.1</value>
+        <value condition="String.IsEqual(ListItem.AudioChannels,6)">5.1</value>
+        <value condition="String.IsEqual(ListItem.AudioChannels,5)">4.1</value>
+        <value condition="String.IsEqual(ListItem.AudioChannels,4)">3.1</value>
+        <value condition="String.IsEqual(ListItem.AudioChannels,3)">2.1</value>
+        <value condition="String.IsEqual(ListItem.AudioChannels,2)">2.0</value>
+        <value condition="String.IsEqual(ListItem.AudioChannels,1)">1.0</value>
+    </variable>
+
     <variable name="Label_SkinShortcuts_SubmenuWidget">
         <value condition="Skin.HasSetting(VerticalHome)">$LOCALIZE[31010]</value>
         <value>$LOCALIZE[31038]</value>
