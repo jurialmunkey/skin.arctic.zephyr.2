@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
+
     <variable name="Defs_Volume_Colordiffuse">
         <value condition="Window.IsVisible(Home) + !Skin.HasSetting(VerticalHome) + ![Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(DialogAddonInfo.xml)]">panel_fg_100</value>
         <value>main_fg_100</value>
@@ -39,7 +40,7 @@
         <onclick condition="!String.IsEmpty(Container($PARAM[id]).ListItem.DBID)">SetProperty(InfoTrick.Active,1,Home)</onclick>
 
         <!-- Set videoinfo position back to top -->
-        <onclick condition="!String.IsEmpty(Container($PARAM[id]).ListItem.DBID)">SetFocus(50)</onclick>
+        <onclick condition="!String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + Skin.HasSetting(DisableExtendedInfo)">SetFocus(50)</onclick>
         <onclick condition="!String.IsEmpty(Container($PARAM[id]).ListItem.DBID)">SetFocus(5000)</onclick>
         <onclick condition="!String.IsEmpty(Container($PARAM[id]).ListItem.DBID)">SetFocus(300)</onclick>
 

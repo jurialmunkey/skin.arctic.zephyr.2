@@ -43,6 +43,11 @@
         <action>ActivateWindow(1133)</action>
     </override>
 
+    <override action="Skin.SetString(SearchTerm)">
+        <action>Skin.SetString(SearchTerm)</action>
+        <action>ActivateWindow(1138)</action>
+    </override>
+
     <!-- Properties -->
     <property property="widgetAspect">Poster</property>
     <property property="widgetAspect">Square</property>
@@ -57,8 +62,6 @@
     <propertySettings property="widgetAspect.backgroundWidget" buttonID="9902" title="Widget Aspect" />
 
     <!-- Icon Overrides -->
-    <icon labelID="tvhub">special://skin/extras/icons/tv.png</icon>
-    <icon labelID="moviehub">special://skin/extras/icons/film.png</icon>
     <icon labelID="livetv">special://skin/extras/icons/livetv.png</icon>
     <icon labelID="radio">special://skin/extras/icons/radio.png</icon>
     <icon labelID="weather">special://skin/extras/icons/sun.png</icon>
@@ -66,7 +69,7 @@
     <icon labelID="settings">special://skin/extras/icons/settings.png</icon>
     <icon labelID="13200">special://skin/extras/icons/actor.png</icon>
     <icon labelID="10007">special://skin/extras/icons/sysinfo.png</icon>
-    <icon labelID="1036">special://skin/extras/icons/favourites.png</icon>
+    <icon labelID="1036">special://skin/extras/icons/favourites2.png</icon>
     <icon labelID="626">special://skin/extras/icons/recentlyadded.png</icon>
     <icon labelID="10504">special://skin/extras/icons/top100.png</icon>
     <icon labelID="10505">special://skin/extras/icons/top100.png</icon>
@@ -98,7 +101,8 @@
     <icon labelID="32047">special://skin/extras/icons/update.png</icon>
     <icon labelID="32055">special://skin/extras/icons/wand.png</icon>
     <icon labelID="32056">special://skin/extras/icons/wand.png</icon>
-    <icon image="DefaultShortcut.png">special://skin/extras/icons/addtile.png</icon>
+    <icon image="DefaultShortcut.png">special://skin/extras/icons/shortcut.png</icon>
+    <icon image="Events.png">special://skin/extras/icons/clipboard.png</icon>
     <icon image="DefaultVideo.png">special://skin/extras/icons/video.png</icon>
     <icon image="DefaultMovies.png">special://skin/extras/icons/film.png</icon>
     <icon image="DefaultTVShows.png">special://skin/extras/icons/tv.png</icon>
@@ -139,15 +143,21 @@
     <icon image="DefaultAddonMusic.png">special://skin/extras/icons/songs.png</icon>
     <icon image="DefaultAddonProgram.png">special://skin/extras/icons/addons.png</icon>
 
+    <availableshortcutlabel action="ActivateWindow(Videos)">$LOCALIZE[3]</availableshortcutlabel>
+    <availableshortcutlabel action="ActivateWindow(Music)">$LOCALIZE[2]</availableshortcutlabel>
+
+    
+
     <!-- GROUPINGS -->
     <!-- Main Grouping -->
     <groupings>
         <node label="32029">
-            <shortcut label="$LOCALIZE[31429]" type="32021" icon="DefaultAddonLibrary.png">ActivateWindow(1135)</shortcut>
-            <shortcut label="$LOCALIZE[31035]" type="32021" icon="DefaultAddonLibrary.png">SetFocus(302)</shortcut>
             <content>common</content>
+            <shortcut label="$LOCALIZE[137]" type="$LOCALIZE[31018]" icon="special://skin/extras/icons/search.png">Skin.SetString(SearchTerm)</shortcut>
             <shortcut label="$LOCALIZE[33060]" type="$LOCALIZE[31018]" icon="special://skin/extras/icons/power.png">ActivateWindow(shutdownmenu)</shortcut>
-            <shortcut label="$LOCALIZE[31017]" type="32010">||BROWSE||script.skin.helper.service/?action=smartshortcuts</shortcut>
+            <shortcut label="$LOCALIZE[31429]" type="32021" icon="special://skin/extras/icons/planetickets.png">ActivateWindow(1135)</shortcut>
+            <shortcut label="$LOCALIZE[31035]" type="32021" icon="special://skin/extras/icons/passports.png">SetFocus(302)</shortcut>
+            <shortcut label="$LOCALIZE[31017]" type="32010" icon="special://skin/extras/icons/shipping.png">||BROWSE||script.skin.helper.service/?action=smartshortcuts</shortcut>
         </node>
         <node label="32030">
             <content>video</content>

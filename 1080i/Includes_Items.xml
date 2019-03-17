@@ -44,7 +44,6 @@
                 <label>$LOCALIZE[298]</label>
                 <onclick>Close</onclick>
                 <onclick>ActivateWindow(125)</onclick>
-
             </item>
             <item>
                 <icon />
@@ -348,111 +347,6 @@
         </content>
     </include>
 
-    <include name="Items_ExtendedInfo">
-        <content>
-            <!-- <item>
-                <label>Play</label>
-                <icon>special://skin/extras/icons/play3.png</icon>
-                <onclick>PlayMedia(videodb://movies/titles/$INFO[Window.Property(DBID)])</onclick>
-                <onclick>Fullscreen</onclick>
-            </item> -->
-            <!-- Trakt -->
-            <item>
-                <label>$INFO[Control.GetLabel(9009)]</label>
-                <icon>special://skin/extras/icons/addtile.png</icon>
-                <onclick>SendClick(9009)</onclick>
-                <visible>Control.IsEnabled(9009)</visible>
-            </item>
-            <!-- Manage -->
-            <item>
-                <label>$INFO[Control.GetLabel(445)]</label>
-                <icon>special://skin/extras/icons/configure.png</icon>
-                <onclick>SendClick(445)</onclick>
-                <visible>Control.IsEnabled(445)</visible>
-            </item>
-        </content>
-    </include>
-
-    <include name="Items_AddonsInfo">
-        <content>
-            <!-- use -->
-            <item>
-                <label>$INFO[Control.GetLabel(12)]</label>
-                <icon>special://skin/extras/icons/play3.png</icon>
-                <onclick>SendClick(12)</onclick>
-                <visible>Control.IsEnabled(12)</visible>
-            </item>
-            <!-- enable -->
-            <item>
-                <label>$LOCALIZE[449]</label>
-                <icon>special://skin/extras/icons/enabled.png</icon>
-                <onclick>SendClick(7)</onclick>
-                <visible>Control.IsEnabled(7)</visible>
-                <visible>String.IsEqual(Control.GetLabel(7),$LOCALIZE[24021])</visible>
-                <visible>!Skin.HasSetting(global.kioskmode)</visible>
-            </item>
-            <item>
-                <label>$LOCALIZE[24023]</label>
-                <icon>special://skin/extras/icons/disabled.png</icon>
-                <onclick>SendClick(7)</onclick>
-                <visible>Control.IsEnabled(7)</visible>
-                <visible>!String.IsEqual(Control.GetLabel(7),$LOCALIZE[24021])</visible>
-                <visible>!Skin.HasSetting(global.kioskmode)</visible>
-            </item>
-            <!-- uninstall / install -->
-            <item>
-                <label>$INFO[Control.GetLabel(6)]</label>
-                <icon>special://skin/extras/icons/download.png</icon>
-                <onclick>SendClick(6)</onclick>
-                <visible>Control.IsEnabled(6)</visible>
-                <visible>!Skin.HasSetting(global.kioskmode)</visible>
-                <visible>!String.IsEqual(Control.GetLabel(6),$LOCALIZE[24037])</visible>
-            </item>
-            <item>
-                <label>$INFO[Control.GetLabel(6)]</label>
-                <icon>special://skin/extras/icons/uninstall.png</icon>
-                <onclick>SendClick(6)</onclick>
-                <visible>Control.IsEnabled(6)</visible>
-                <visible>!Skin.HasSetting(global.kioskmode)</visible>
-                <visible>String.IsEqual(Control.GetLabel(6),$LOCALIZE[24037])</visible>
-            </item>
-            <!--Update -->
-            <item>
-                <label>$INFO[Control.GetLabel(8)]</label>
-                <icon>special://skin/extras/icons/update.png</icon>
-                <onclick>SendClick(8)</onclick>
-                <visible>Control.IsEnabled(8)</visible>
-                <visible>!Skin.HasSetting(global.kioskmode)</visible>
-            </item>
-            <!-- settings -->
-            <item>
-                <label>$INFO[Control.GetLabel(9)]</label>
-                <icon>special://skin/extras/icons/settings.png</icon>
-                <onclick>SendClick(9)</onclick>
-                <visible>Control.IsEnabled(9)</visible>
-                <visible>!Skin.HasSetting(global.kioskmode)</visible>
-            </item>
-            <!-- Dependencies -->
-            <item>
-                <label>$INFO[Control.GetLabel(10)]</label>
-                <icon>special://skin/extras/icons/dependencies.png</icon>
-                <onclick>SendClick(10)</onclick>
-                <visible>Control.IsEnabled(10)</visible>
-                <visible>!Skin.HasSetting(global.kioskmode)</visible>
-            </item>
-            <!-- Auto Update -->
-            <item>
-                <label>$INFO[Control.GetLabel(13)]</label>
-                <icon>$VAR[Image_AutoUpdate]</icon>
-                <onclick>SetFocus(13)</onclick>
-                <onclick>Select</onclick>
-                <onclick>SetFocus(300)</onclick>
-                <visible>Control.IsEnabled(13)</visible>
-                <visible>!Skin.HasSetting(global.kioskmode)</visible>
-            </item>
-        </content>
-    </include>
-
     <include name="Items_View">
         <content>
             <!-- Group -->
@@ -629,27 +523,6 @@
                 <onclick>ActivateWindow(addonbrowser,addons://more/video/,return)</onclick>
                 <visible>Container.Content(addons) + !String.Contains(Container.FolderPath,addons://)</visible>
                 <visible>!Skin.HasSetting(global.kioskmode)</visible>
-            </item>
-        </content>
-    </include>
-
-    <include name="Items_NextAired">
-        <content>
-            <item>
-                <icon>special://skin/extras/icons/settings.png</icon>
-                <label>$LOCALIZE[10140]</label>
-                <onclick>Addon.OpenSettings(script.tv.show.next.aired)</onclick>
-                <visible>!Skin.HasSetting(global.kioskmode)</visible>
-            </item>
-        </content>
-    </include>
-
-    <include name="Items_GlobalSearch">
-        <content>
-            <item>
-                <icon>special://skin/extras/icons/search.png</icon>
-                <label>$LOCALIZE[137]</label>
-                <onclick>SendClick(198)</onclick>
             </item>
         </content>
     </include>

@@ -5,6 +5,8 @@
     <onload>ClearProperty(FilePath,home)</onload>
     <onload>ClearProperty(InfoTrick.Active,Home)</onload>
     <onload>SetProperty(InfoTrick.OriginalTitle,$INFO[ListItem.Title],Home)</onload>
+    <onload>ClearProperty(Header_Left_Text)</onload>
+    <onload>ClearProperty(Header_Center_Text)</onload>
     <onunload>ClearProperty(FilePath,home)</onunload>
 
     <onunload condition="!String.IsEmpty(Window(Home).Property(InfoTrick.9.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.Active))">ClearProperty(InfoTrick.9.Title,Home)</onunload>
@@ -168,7 +170,7 @@
                             <param name="groupid" value="7500" />
                             <param name="id" value="50" />
                             <param name="altid" value="5000" />
-                            <param name="label" value="$INFO[ListItem.Title,Cast of ,]" />
+                            <param name="label" value="$INFO[ListItem.Title,$LOCALIZE[31058] ,]" />
                             <visible>Control.IsVisible(50) | Control.IsVisible(5000)</visible>
                         </include>
                         <control type="group" id="5999">
@@ -211,7 +213,7 @@
                         <include content="View_Cast_Toplabel">
                             <param name="groupid" value="7501" />
                             <param name="id" value="5001" />
-                            <param name="label" value="$INFO[ListItem.Set,Films in the ,]" />
+                            <param name="label" value="$INFO[ListItem.Set,$LOCALIZE[31057] ,]" />
                             <visible>Control.IsVisible(5001)</visible>
                         </include>
                         <include content="View_51_Wall_Container">
@@ -233,7 +235,7 @@
                         <include content="View_Cast_Toplabel">
                             <param name="groupid" value="7502" />
                             <param name="id" value="5002" />
-                            <param name="label" value="$INFO[ListItem.Title,Similar to ,]" />
+                            <param name="label" value="$INFO[ListItem.Title,$LOCALIZE[31051] ,]" />
                             <visible>Control.IsVisible(5002)</visible>
                         </include>
                         <include content="View_51_Wall_Container">
@@ -256,7 +258,7 @@
                         <include content="View_Cast_Toplabel">
                             <param name="groupid" value="7503" />
                             <param name="id" value="5003" />
-                            <param name="label" value="$INFO[ListItem.Director,By Director ,]" />
+                            <param name="label" value="$INFO[ListItem.Director,$LOCALIZE[31052] ,]" />
                             <visible>Control.IsVisible(5003)</visible>
                         </include>
                         <include content="View_51_Wall_Container">
@@ -279,7 +281,7 @@
                         <include content="View_Cast_Toplabel">
                             <param name="groupid" value="7504" />
                             <param name="id" value="5004" />
-                            <param name="label" value="$INFO[ListItem.Studio,Films from ,]" />
+                            <param name="label" value="$INFO[ListItem.Studio,$LOCALIZE[31053] ,]" />
                             <visible>Control.IsVisible(5004)</visible>
                         </include>
                         <include content="View_51_Wall_Container">
@@ -303,7 +305,7 @@
                         <include content="View_Cast_Toplabel">
                             <param name="groupid" value="7505" />
                             <param name="id" value="5005" />
-                            <param name="label" value="Next Up" />
+                            <param name="label" value="$LOCALIZE[31054]" />
                             <visible>Control.IsVisible(5005)</visible>
                         </include>
                         <include content="View_51_Wall_Container">
@@ -334,7 +336,7 @@
                         <include content="View_Cast_Toplabel">
                             <param name="groupid" value="7506" />
                             <param name="id" value="5006" />
-                            <param name="label" value="Seasons" />
+                            <param name="label" value="$LOCALIZE[33054]" />
                             <visible>Control.IsVisible(5006)</visible>
                         </include>
                         <include content="View_51_Wall_Container">
@@ -360,7 +362,7 @@
                         <include content="View_Cast_Toplabel">
                             <param name="groupid" value="7550" />
                             <param name="id" value="5050" />
-                            <param name="label" value="Cast Members Also Feature In" />
+                            <param name="label" value="$LOCALIZE[31055]" />
                             <visible>Control.IsVisible(5050)</visible>
                         </include>
                         <include content="View_51_Wall_Container">
@@ -384,7 +386,7 @@
                         <include content="View_Cast_Toplabel">
                             <param name="groupid" value="7507" />
                             <param name="id" value="5007" />
-                            <param name="label" value="Special Features &amp; Extras" />
+                            <param name="label" value="$LOCALIZE[31056]" />
                             <visible>Control.IsVisible(5007)</visible>
                         </include>
                         <include content="View_51_Wall_Container">
@@ -413,7 +415,7 @@
                         <include content="View_Cast_Toplabel">
                             <param name="groupid" value="7508" />
                             <param name="id" value="5008" />
-                            <param name="label" value="Youtube Videos" />
+                            <param name="label" value="Youtube" />
                             <visible>Control.IsVisible(5008)</visible>
                         </include>
                         <include content="View_51_Wall_Container">

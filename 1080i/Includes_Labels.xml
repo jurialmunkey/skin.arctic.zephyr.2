@@ -8,7 +8,7 @@
     <variable name="Label_WidgetName">
         <value condition="!String.IsEmpty(Container(302).ListItem.Property(widgetPath))">$INFO[Container(302).ListItem.Property(widgetName)]</value>
         <value condition="!String.IsEmpty(Container(301).ListItem.Property(widgetPath))">$INFO[Container(301).ListItem.Property(widgetName)]</value>
-        <value>Spotlight</value>
+        <value>$LOCALIZE[31105]</value>
     </variable>
 
     <variable name="Label_List_Left">
@@ -37,7 +37,7 @@
         <value condition="Window.IsVisible(MyPlaylist.xml) + Player.HasMedia">$LOCALIZE[31114]</value>
         <value condition="Window.IsVisible(MyPlaylist.xml) + !Player.HasMedia">$LOCALIZE[31430]</value>
         <value condition="Window.IsVisible(MyPVRGuide.xml)">$INFO[Control.GetLabel(30)]</value>
-        <value condition="Window.IsVisible(Settings.xml)">Management</value>
+        <value condition="Window.IsVisible(Settings.xml)">$LOCALIZE[31069]</value>
         <value condition="Window.IsVisible(SettingsCategory.xml) | Window.IsVisible(SkinSettings.xml) | Window.IsVisible(SettingsProfile.xml) | Window.IsVisible(SettingsSystemInfo.xml) | Window.IsVisible(eventlog)">$VAR[Label_Settings_Header]</value>
         <value condition="Window.IsVisible(Home) + Skin.HasSetting(VerticalHome) + [Control.HasFocus(302) | ControlGroup(3000).HasFocus()]">$INFO[Container(301).ListItem.Label]</value>
         <value condition="Window.IsVisible(Home) + Skin.HasSetting(VerticalHome)">$INFO[Container(301).ListItem.Label]</value>
@@ -195,24 +195,24 @@
     </variable>
 
     <variable name="Label_Settings_Information">
-        <value condition="Window.IsActive(skinsettings) + !Control.HasFocus(300) + Integer.IsEqual(Window.Property(CurrentFocus),9001)">This category contains settings to customise home screen shortcuts$COMMA widgets and layout.</value>
-        <value condition="Window.IsActive(skinsettings) + !Control.HasFocus(300) + Integer.IsEqual(Window.Property(CurrentFocus),9002)">This category contains settings to customise what images are displayed in the background.</value>
-        <value condition="Window.IsActive(skinsettings) + !Control.HasFocus(300) + Integer.IsEqual(Window.Property(CurrentFocus),9003)">This category contains settings to customise the highlight and selection-box colors used in the skin.</value>
-        <value condition="Window.IsActive(skinsettings) + !Control.HasFocus(300) + Integer.IsEqual(Window.Property(CurrentFocus),9004)">This category contains settings to customise what is displayed in information dialogs and library views.</value>
-        <value condition="Window.IsActive(skinsettings) + !Control.HasFocus(300) + Integer.IsEqual(Window.Property(CurrentFocus),9005)">This category contains settings to customise what is displayed when playing music or video fullscreen.</value>
-        <value condition="Window.IsActive(skinsettings) + !Control.HasFocus(300) + Integer.IsEqual(Window.Property(CurrentFocus),9006)">This category contains settings to customise what is displayed in the PVR.</value>
-        <value condition="Window.IsActive(skinsettings) + !Control.HasFocus(300) + Integer.IsEqual(Window.Property(CurrentFocus),9007)">This category contains settings that do not fit other categories.</value>
-        <value condition="Window.IsActive(skinsettings) + !Control.HasFocus(300) + Integer.IsEqual(Window.Property(CurrentFocus),9008)">This category allows you to view$COMMA install and customise add-ons supported by Arctic Zephyr 2.</value>
-        <value condition="Window.IsActive(skinsettings) + !Control.HasFocus(300) + Integer.IsEqual(Window.Property(CurrentFocus),9009)">This category contains options for backing-up$COMMA restoring and reseting Arctic Zephyr 2 skin settings.</value>
-        <value condition="Window.IsActive(skinsettings)">This section contains skin settings for Arctic Zephyr 2.</value>
-        <value condition="Window.IsActive(systeminfo)">This section contains information about your system.</value>
-        <value condition="Window.IsActive(systemsettings)">This section contains system settings.</value>
-        <value condition="Window.IsActive(pvrsettings)">This section contains Live TV and PVR settings.</value>
-        <value condition="Window.IsActive(profiles)">This section contains login-screen and profile settings.</value>
-        <value condition="Window.IsActive(servicesettings)">This section contains service settings.</value>
-        <value condition="Window.IsActive(interfacesettings)">This section contains interface and regional settings.</value>
-        <value condition="Window.IsActive(mediasettings)">This section contains media and library settings.</value>
-        <value condition="Window.IsActive(playersettings)">This section contains playback settings.</value>
+        <value condition="Window.IsActive(skinsettings) + !Control.HasFocus(300) + Integer.IsEqual(Window.Property(CurrentFocus),9001)">$LOCALIZE[31070]</value>
+        <value condition="Window.IsActive(skinsettings) + !Control.HasFocus(300) + Integer.IsEqual(Window.Property(CurrentFocus),9002)">$LOCALIZE[31071]</value>
+        <value condition="Window.IsActive(skinsettings) + !Control.HasFocus(300) + Integer.IsEqual(Window.Property(CurrentFocus),9003)">$LOCALIZE[31073]</value>
+        <value condition="Window.IsActive(skinsettings) + !Control.HasFocus(300) + Integer.IsEqual(Window.Property(CurrentFocus),9004)">$LOCALIZE[31074]</value>
+        <value condition="Window.IsActive(skinsettings) + !Control.HasFocus(300) + Integer.IsEqual(Window.Property(CurrentFocus),9005)">$LOCALIZE[31075]</value>
+        <value condition="Window.IsActive(skinsettings) + !Control.HasFocus(300) + Integer.IsEqual(Window.Property(CurrentFocus),9006)">$LOCALIZE[31076]</value>
+        <value condition="Window.IsActive(skinsettings) + !Control.HasFocus(300) + Integer.IsEqual(Window.Property(CurrentFocus),9007)">$LOCALIZE[31077]</value>
+        <value condition="Window.IsActive(skinsettings) + !Control.HasFocus(300) + Integer.IsEqual(Window.Property(CurrentFocus),9008)">$LOCALIZE[31078]</value>
+        <value condition="Window.IsActive(skinsettings) + !Control.HasFocus(300) + Integer.IsEqual(Window.Property(CurrentFocus),9009)">$LOCALIZE[31080]</value>
+        <value condition="Window.IsActive(skinsettings)">$LOCALIZE[31081]</value>
+        <value condition="Window.IsActive(systeminfo)">$LOCALIZE[31082]</value>
+        <value condition="Window.IsActive(systemsettings)">$LOCALIZE[31083]</value>
+        <value condition="Window.IsActive(pvrsettings)">$LOCALIZE[31084]</value>
+        <value condition="Window.IsActive(profiles)">$LOCALIZE[31085]</value>
+        <value condition="Window.IsActive(servicesettings)">$LOCALIZE[31086]</value>
+        <value condition="Window.IsActive(interfacesettings)">$LOCALIZE[31089]</value>
+        <value condition="Window.IsActive(mediasettings)">$LOCALIZE[31090]</value>
+        <value condition="Window.IsActive(playersettings)">$LOCALIZE[31091]</value>
     </variable>
 
     <variable name="Label_MainTitle">

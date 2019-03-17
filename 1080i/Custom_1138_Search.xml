@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window type="window" id="1138">
     <defaultcontrol always="true">5600</defaultcontrol>
-    <onload>SetProperty(Header_Center_Text,Results for &quot;$INFO[Skin.String(SearchTerm)]&quot;)</onload>
-    <onload>SetProperty(Header_Left_Text,Search)</onload>
+    <onload>SetProperty(Header_Center_Text,$LOCALIZE[31045] &quot;$INFO[Skin.String(SearchTerm)]&quot;)</onload>
+    <onload>SetProperty(Header_Left_Text,$LOCALIZE[137])</onload>
     <controls>
         <include>Global_Background</include>
         <include>Topbar</include>
@@ -26,7 +26,8 @@
                 <include content="View_Cast_Toplabel">
                     <param name="groupid" value="7501" />
                     <param name="id" value="5001" />
-                    <param name="label" value="$INFO[Container(5001).NumItems,Movies (,)]" />
+                    <param name="label" value="$INFO[Container(5001).NumItems,$LOCALIZE[342] (,)]" />
+                    <visible>Control.IsVisible(5001)</visible>
                 </include>
                 <include content="View_51_Wall_Container">
                     <param name="controllayout" value="View_Cast" />
@@ -42,7 +43,8 @@
                 <include content="View_Cast_Toplabel">
                     <param name="groupid" value="7502" />
                     <param name="id" value="5002" />
-                    <param name="label" value="$INFO[Container(5002).NumItems,TV Shows (,)]" />
+                    <param name="label" value="$INFO[Container(5002).NumItems,$LOCALIZE[20343] (,)]" />
+                    <visible>Control.IsVisible(5002)</visible>
                 </include>
                 <include content="View_51_Wall_Container">
                     <param name="controllayout" value="View_Cast" />
@@ -58,7 +60,8 @@
                 <include content="View_Cast_Toplabel">
                     <param name="groupid" value="7503" />
                     <param name="id" value="5003" />
-                    <param name="label" value="$INFO[Container(5003).NumItems,Episodes (,)]" />
+                    <param name="label" value="$INFO[Container(5003).NumItems,$LOCALIZE[20360] (,)]" />
+                    <visible>Control.IsVisible(5003)</visible>
                 </include>
                 <include content="View_51_Wall_Container">
                     <param name="controllayout" value="View_Cast" />
@@ -79,7 +82,8 @@
                 <include content="View_Cast_Toplabel">
                     <param name="groupid" value="7507" />
                     <param name="id" value="5007" />
-                    <param name="label" value="$INFO[Skin.String(SearchTerm),From Genre &quot;[CAPITALIZE],[/CAPITALIZE]&quot;]$INFO[Container(5007).NumItems, (,)]" />
+                    <param name="label" value="$INFO[Skin.String(SearchTerm),$LOCALIZE[515] &quot;[CAPITALIZE],[/CAPITALIZE]&quot;]$INFO[Container(5007).NumItems, (,)]" />
+                    <visible>Control.IsVisible(5007)</visible>
                 </include>
                 <include content="View_51_Wall_Container">
                     <param name="controllayout" value="View_Cast" />
@@ -96,7 +100,8 @@
                 <include content="View_Cast_Toplabel">
                     <param name="groupid" value="7510" />
                     <param name="id" value="5010" />
-                    <param name="label" value="$INFO[Skin.String(SearchTerm),Released in &quot;,&quot;]$INFO[Container(5010).NumItems, (,)]" />
+                    <param name="label" value="$INFO[Skin.String(SearchTerm),$LOCALIZE[31041] &quot;,&quot;]$INFO[Container(5010).NumItems, (,)]" />
+                    <visible>Control.IsVisible(5010)</visible>
                 </include>
                 <include content="View_51_Wall_Container">
                     <param name="controllayout" value="View_Cast" />
@@ -113,7 +118,8 @@
                 <include content="View_Cast_Toplabel">
                     <param name="groupid" value="7511" />
                     <param name="id" value="5011" />
-                    <param name="label" value="$INFO[Skin.String(SearchTerm),From Studio &quot;[CAPITALIZE],[/CAPITALIZE]&quot;]$INFO[Container(5011).NumItems, (,)]" />
+                    <param name="label" value="$INFO[Skin.String(SearchTerm),$LOCALIZE[572] &quot;[CAPITALIZE],[/CAPITALIZE]&quot;]$INFO[Container(5011).NumItems, (,)]" />
+                    <visible>Control.IsVisible(5011)</visible>
                 </include>
                 <include content="View_51_Wall_Container">
                     <param name="controllayout" value="View_Cast" />
@@ -130,7 +136,8 @@
                 <include content="View_Cast_Toplabel">
                     <param name="groupid" value="7512" />
                     <param name="id" value="5012" />
-                    <param name="label" value="$INFO[Skin.String(SearchTerm),Made in Country &quot;[CAPITALIZE],[/CAPITALIZE]&quot;]$INFO[Container(5012).NumItems, (,)]" />
+                    <param name="label" value="$INFO[Skin.String(SearchTerm),$LOCALIZE[574] &quot;[CAPITALIZE],[/CAPITALIZE]&quot;]$INFO[Container(5012).NumItems, (,)]" />
+                    <visible>Control.IsVisible(5012)</visible>
                 </include>
                 <include content="View_51_Wall_Container">
                     <param name="controllayout" value="View_Cast" />
@@ -146,7 +153,8 @@
                 <include content="View_Cast_Toplabel">
                     <param name="groupid" value="7508" />
                     <param name="id" value="5008" />
-                    <param name="label" value="$INFO[Skin.String(SearchTerm),By Actors Named &quot;[CAPITALIZE],[/CAPITALIZE]&quot;]$INFO[Container(5008).NumItems, (,)]" />
+                    <param name="label" value="$INFO[Skin.String(SearchTerm),$LOCALIZE[31042] &quot;[CAPITALIZE],[/CAPITALIZE]&quot;]$INFO[Container(5008).NumItems, (,)]" />
+                    <visible>Control.IsVisible(5008)</visible>
                 </include>
                 <include content="View_51_Wall_Container">
                     <param name="controllayout" value="View_Cast" />
@@ -163,7 +171,8 @@
                 <include content="View_Cast_Toplabel">
                     <param name="groupid" value="7513" />
                     <param name="id" value="5013" />
-                    <param name="label" value="$INFO[Skin.String(SearchTerm),By Directors Named &quot;[CAPITALIZE],[/CAPITALIZE]&quot;]$INFO[Container(5013).NumItems, (,)]" />
+                    <param name="label" value="$INFO[Skin.String(SearchTerm),$LOCALIZE[31043] &quot;[CAPITALIZE],[/CAPITALIZE]&quot;]$INFO[Container(5013).NumItems, (,)]" />
+                    <visible>Control.IsVisible(5013)</visible>
                 </include>
                 <include content="View_51_Wall_Container">
                     <param name="controllayout" value="View_Cast" />
@@ -180,7 +189,8 @@
                 <include content="View_Cast_Toplabel">
                     <param name="groupid" value="7504" />
                     <param name="id" value="5004" />
-                    <param name="label" value="$INFO[Container(5004).NumItems,Albums (,)]" />
+                    <param name="label" value="$INFO[Container(5004).NumItems,$LOCALIZE[132] (,)]" />
+                    <visible>Control.IsVisible(5004)</visible>
                 </include>
                 <include content="View_51_Wall_Container">
                     <param name="controllayout" value="View_Cast" />
@@ -197,7 +207,8 @@
                 <include content="View_Cast_Toplabel">
                     <param name="groupid" value="7505" />
                     <param name="id" value="5005" />
-                    <param name="label" value="$INFO[Container(5005).NumItems,Artists (,)]" />
+                    <param name="label" value="$INFO[Container(5005).NumItems,$LOCALIZE[133] (,)]" />
+                    <visible>Control.IsVisible(5005)</visible>
                 </include>
                 <include content="View_51_Wall_Container">
                     <param name="controllayout" value="View_Cast" />
@@ -214,7 +225,8 @@
                 <include content="View_Cast_Toplabel">
                     <param name="groupid" value="7506" />
                     <param name="id" value="5006" />
-                    <param name="label" value="$INFO[Container(5005).ListItem.Label,Albums by ,]$INFO[Container(5006).NumItems, (,)]" />
+                    <param name="label" value="$INFO[Container(5005).ListItem.Label,$LOCALIZE[31044] ,]$INFO[Container(5006).NumItems, (,)]" />
+                    <visible>Control.IsVisible(5006)</visible>
                 </include>
                 <include content="View_51_Wall_Container">
                     <param name="controllayout" value="View_Cast" />
@@ -232,6 +244,7 @@
                     <param name="groupid" value="7509" />
                     <param name="id" value="5009" />
                     <param name="label" value="$INFO[Container(5009).NumItems,Youtube (,)]" />
+                    <visible>Control.IsVisible(5009)</visible>
                 </include>
                 <include content="View_51_Wall_Container">
                     <param name="controllayout" value="View_Cast" />

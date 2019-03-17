@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window type="window" id="1134">
     <defaultcontrol always="true">5600</defaultcontrol>
-    <onload>SetProperty(Header_Center_Text,Explore)</onload>
+    <onload>SetProperty(Header_Center_Text,$LOCALIZE[31414])</onload>
     <onload>SetProperty(Header_Left_Text,$INFO[Window(Home).Property(leftHeader)])</onload>
     <controls>
         <include>Global_Background</include>
@@ -45,7 +45,7 @@
                 <height>item_row_height</height>
                 <include content="Defs_BusySpinner">
                     <param name="textcolor" value="main_fg_90" />
-                    <param name="label" value="Loading..." />
+                    <param name="label" value="$LOCALIZE[31428]..." />
                 </include>
             </control>
             <control type="label">

@@ -310,8 +310,8 @@
                         <visible>Integer.IsEqual(Window.Property(CurrentFocus),9004)</visible>
                         <include>Defs_Settings_Button</include>
                         <label>$LOCALIZE[31025]</label>
-                        <selected>!Skin.HasSetting(DisableCodecs)</selected>
-                        <onclick>Skin.ToggleSetting(DisableCodecs)</onclick>
+                        <selected>Skin.HasSetting(EnableCodecs)</selected>
+                        <onclick>Skin.ToggleSetting(EnableCodecs)</onclick>
                     </control>
 
                     <control type="radiobutton" id="19408" description="Header">
@@ -485,13 +485,13 @@
                     <!-- ============= -->
                     <!-- Miscellaneous -->
                     <!-- ============= -->
-                    <control type="radiobutton" id="19701" description="Kiosk Mode">
+                    <!-- <control type="radiobutton" id="19701" description="Kiosk Mode">
                         <visible>Integer.IsEqual(Window.Property(CurrentFocus),9007)</visible>
                         <include>Defs_Settings_Button</include>
                         <label>31199</label>
                         <selected>Skin.HasSetting(global.kioskmode)</selected>
                         <onclick>Skin.ToggleSetting(global.kioskmode)</onclick>
-                    </control>
+                    </control> -->
 
                     <control type="button" id="19702" description="Customise Shutdown Menu">
                         <visible>Integer.IsEqual(Window.Property(CurrentFocus),9007)</visible>

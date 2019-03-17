@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window type="window" id="1131">
     <defaultcontrol always="true">5600</defaultcontrol>
-    <onload>SetProperty(Header_Center_Text,Decades)</onload>
-    <onload>SetProperty(Header_Left_Text,Movies)</onload>
+    <onload>SetProperty(Header_Center_Text,$LOCALIZE[31046])</onload>
+    <onload>SetProperty(Header_Left_Text,$LOCALIZE[342])</onload>
     <controls>
         <include>Global_Background</include>
         <include>Topbar</include>
@@ -19,79 +19,79 @@
                 <content>
                     <item>
                         <label>2010s</label>
-                        <label2>$INFO[Container(2020).NumItems,, Movie(s)]</label2>
+                        <label2>$INFO[Container(2020).NumItems,, $LOCALIZE[31047]]</label2>
                         <visible>Integer.IsGreater(Container(2020).NumItems,0)</visible>
                         <onclick>ActivateWindow(videos,special://skin/extras/decades/2020s.xsp,return)</onclick>
                     </item>
                     <item>
                         <label>2010s</label>
-                        <label2>$INFO[Container(2010).NumItems,, Movie(s)]</label2>
+                        <label2>$INFO[Container(2010).NumItems,, $LOCALIZE[31047]]</label2>
                         <visible>Integer.IsGreater(Container(2010).NumItems,0)</visible>
                         <onclick>ActivateWindow(videos,special://skin/extras/decades/2010s.xsp,return)</onclick>
                     </item>
                     <item>
                         <label>2000s</label>
-                        <label2>$INFO[Container(2000).NumItems,, Movie(s)]</label2>
+                        <label2>$INFO[Container(2000).NumItems,, $LOCALIZE[31047]]</label2>
                         <visible>Integer.IsGreater(Container(2000).NumItems,0)</visible>
                         <onclick>ActivateWindow(videos,special://skin/extras/decades/2000s.xsp,return)</onclick>
                     </item>
                     <item>
                         <label>1990s</label>
-                        <label2>$INFO[Container(1990).NumItems,, Movie(s)]</label2>
+                        <label2>$INFO[Container(1990).NumItems,, $LOCALIZE[31047]]</label2>
                         <visible>Integer.IsGreater(Container(1990).NumItems,0)</visible>
                         <onclick>ActivateWindow(videos,special://skin/extras/decades/1990s.xsp,return)</onclick>
                     </item>
                     <item>
                         <label>1980s</label>
-                        <label2>$INFO[Container(1980).NumItems,, Movie(s)]</label2>
+                        <label2>$INFO[Container(1980).NumItems,, $LOCALIZE[31047]]</label2>
                         <visible>Integer.IsGreater(Container(1980).NumItems,0)</visible>
                         <onclick>ActivateWindow(videos,special://skin/extras/decades/1980s.xsp,return)</onclick>
                     </item>
                     <item>
                         <label>1970s</label>
-                        <label2>$INFO[Container(1970).NumItems,, Movie(s)]</label2>
+                        <label2>$INFO[Container(1970).NumItems,, $LOCALIZE[31047]]</label2>
                         <visible>Integer.IsGreater(Container(1970).NumItems,0)</visible>
                         <onclick>ActivateWindow(videos,special://skin/extras/decades/1970s.xsp,return)</onclick>
                     </item>
                     <item>
                         <label>1960s</label>
-                        <label2>$INFO[Container(1960).NumItems,, Movie(s)]</label2>
+                        <label2>$INFO[Container(1960).NumItems,, $LOCALIZE[31047]]</label2>
                         <visible>Integer.IsGreater(Container(1960).NumItems,0)</visible>
                         <onclick>ActivateWindow(videos,special://skin/extras/decades/1960s.xsp,return)</onclick>
                     </item>
                     <item>
                         <label>1950s</label>
-                        <label2>$INFO[Container(1950).NumItems,, Movie(s)]</label2>
+                        <label2>$INFO[Container(1950).NumItems,, $LOCALIZE[31047]]</label2>
                         <visible>Integer.IsGreater(Container(1950).NumItems,0)</visible>
                         <onclick>ActivateWindow(videos,special://skin/extras/decades/1950s.xsp,return)</onclick>
                     </item>
                     <item>
                         <label>1940s</label>
-                        <label2>$INFO[Container(1940).NumItems,, Movie(s)]</label2>
+                        <label2>$INFO[Container(1940).NumItems,, $LOCALIZE[31047]]</label2>
                         <visible>Integer.IsGreater(Container(1940).NumItems,0)</visible>
                         <onclick>ActivateWindow(videos,special://skin/extras/decades/1940s.xsp,return)</onclick>
                     </item>
                     <item>
                         <label>1930s</label>
-                        <label2>$INFO[Container(1930).NumItems,, Movie(s)]</label2>
+                        <label2>$INFO[Container(1930).NumItems,, $LOCALIZE[31047]]</label2>
                         <visible>Integer.IsGreater(Container(1930).NumItems,0)</visible>
                         <onclick>ActivateWindow(videos,special://skin/extras/decades/1930s.xsp,return)</onclick>
                     </item>
                     <item>
                         <label>1920s</label>
-                        <label2>$INFO[Container(1920).NumItems,, Movie(s)]</label2>
+                        <label2>$INFO[Container(1920).NumItems,, $LOCALIZE[31047]]</label2>
                         <visible>Integer.IsGreater(Container(1920).NumItems,0)</visible>
                         <onclick>ActivateWindow(videos,special://skin/extras/decades/1920s.xsp,return)</onclick>
                     </item>
                     <item>
                         <label>1910s</label>
-                        <label2>$INFO[Container(1910).NumItems,, Movie(s)]</label2>
+                        <label2>$INFO[Container(1910).NumItems,, $LOCALIZE[31047]]</label2>
                         <visible>Integer.IsGreater(Container(1910).NumItems,0)</visible>
                         <onclick>ActivateWindow(videos,special://skin/extras/decades/1910s.xsp,return)</onclick>
                     </item>
                     <item>
                         <label>1900s</label>
-                        <label2>$INFO[Container(1900).NumItems,, Movie(s)]</label2>
+                        <label2>$INFO[Container(1900).NumItems,, $LOCALIZE[31047]]</label2>
                         <visible>Integer.IsGreater(Container(1900).NumItems,0)</visible>
                         <onclick>ActivateWindow(videos,special://skin/extras/decades/1900s.xsp,return)</onclick>
                     </item>
@@ -104,7 +104,7 @@
                 <align>center</align>
                 <font>font_byline</font>
                 <textcolor>main_fg_70</textcolor>
-                <label>$INFO[Window.Property(Header_Left_Text)] from the $INFO[Container(5600).ListItem.Label]</label>
+                <label>$INFO[Window.Property(Header_Left_Text)] $LOCALIZE[31048] $INFO[Container(5600).ListItem.Label]</label>
             </control>
 
             <control type="group" id="5610">

@@ -100,7 +100,7 @@
                 <left>0</left>
                 <height>view_bottom</height>
                 <control type="label">
-                    <left>0</left>
+                    <left>8</left>
                     <centertop>50%</centertop>
                     <height>26</height>
                     <width>32</width>
@@ -289,7 +289,7 @@
         <param name="infohide" default="true" />
         <definition>
             <control type="grouplist">
-                <visible>!Skin.HasSetting(DisableCodecs)</visible>
+                <visible>Skin.HasSetting(EnableCodecs)</visible>
                 <include condition="$PARAM[infohide]">Defs_InfoDialog_Visible</include>
                 <visible>!$EXP[Exp_HideFurniture]</visible>
                 <visible>!Control.HasFocus(62)</visible>

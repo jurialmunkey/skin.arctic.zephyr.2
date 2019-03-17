@@ -63,13 +63,36 @@
                                 <include content="Object_Info_Line">
                                     <param name="label" value="$VAR[Label_SubTitle]" />
                                 </include>
+                                <control type="group">
+                                    <height>230</height>
+                                    <visible>Integer.IsGreater(Container(50).NumItems,0)</visible>
+                                </control>
                                 <include content="Object_Info_Plot">
                                     <param name="maxheight" value="560" />
                                     <param name="label" value="$VAR[Label_OverlayPlot]" />
                                 </include>
                             </control>
-                            <control type="grouplist" id="300">
+                            <include content="View_51_Wall_Container">
+                                <param name="controllayout" value="View_Cast" />
+                                <param name="id" value="50" />
+                                <param name="height" value="item_cast_height" />
+                                <param name="orientation" value="horizontal" />
+                                <param name="itemwidth" value="377" />
+                                <param name="iconheight" value="220" />
+                                <param name="diffuse" value="diffuse/landscape-wall.png" />
+                                <param name="labelinclude" value="Defs_Null" />
+                                <param name="icon" value="$INFO[ListItem.Icon]" />
+                                <param name="visible" value="Integer.IsGreater(Container(50).NumItems,0) | Container(50).IsUpdating" />
+                                <ondown>300</ondown>
                                 <onup>9601</onup>
+                                <onright>noop</onright>
+                                <onleft>noop</onleft>
+                                <top>140</top>
+                                <left>-15</left>
+                                <right>-25</right>
+                            </include>
+                            <control type="grouplist" id="300">
+                                <onup>50</onup>
                                 <include>Defs_ButtonList</include>
                                 <!-- use -->
                                 <include content="Object_Info_Button">
