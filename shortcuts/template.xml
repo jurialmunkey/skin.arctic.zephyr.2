@@ -62,6 +62,7 @@
                 <param name="squarecondition" value="$PYTHON['true' if widgetAspect in 'Square' else 'false']" />
                 <param name="landscapecondition" value="$PYTHON['true' if widgetAspect in 'Landscape' else 'false']" />
                 <param name="iconcondition" value="$PYTHON['true' if widgetAspect in 'Icon' else 'false']" />
+                <autoscroll time="12000">!ControlGroup(3000).HasFocus() + System.IdleTime(1)</autoscroll>
                 <onback>301</onback>
                 <visible>Integer.IsGreater(Container($PYTHON[int(mainmenuid)]3100).NumItems,0) | Container($PYTHON[int(mainmenuid)]3100).IsUpdating</visible>
                 <skinshortcuts>visibility</skinshortcuts>
@@ -94,6 +95,7 @@
                 <param name="squarecondition" value="$PYTHON['true' if widgetAspect in 'Square' else 'false']" />
                 <param name="landscapecondition" value="$PYTHON['true' if widgetAspect in 'Landscape' else 'false']" />
                 <param name="iconcondition" value="$PYTHON['true' if widgetAspect in 'Icon' else 'false']" />
+                <autoscroll time="12000">!ControlGroup(3000).HasFocus() + System.IdleTime(1)</autoscroll>
                 <onback>301</onback>
                 <visible>Integer.IsGreater(Container(993100).NumItems,0) | Container(993100).IsUpdating</visible>
                 <skinshortcuts>visibility</skinshortcuts>
