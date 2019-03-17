@@ -413,12 +413,10 @@
                 <visible>Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(sets)</visible>
 
                 <!-- LEFT SIDE -->
-                <!-- Movies / TvShows / Seasons -->
                 <control type="label">
                     <textcolor>$PARAM[fgcolor]_100</textcolor>
                     <selectedcolor>$PARAM[fgcolor]_100</selectedcolor>
                     <label>$VAR[Label_List_Left]</label>
-                    <visible>Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)</visible>
                 </control>
                 <control type="image">
                     <animation effect="slide" end="10" condition="Container.Content(episodes) + Integer.IsGreater(ListItem.Season,9)">Conditional</animation>
@@ -427,7 +425,6 @@
                     <width>32</width>
                     <height>32</height>
                     <texture colordiffuse="$PARAM[fgcolor]_90">$VAR[Image_Overlay_List]</texture>
-                    <visible>Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)</visible>
                 </control>                
                 <control type="label">
                     <animation effect="slide" end="10" condition="Container.Content(episodes) + Integer.IsGreater(ListItem.Season,9)">Conditional</animation>
@@ -436,7 +433,6 @@
                     <textcolor>$PARAM[fgcolor]_100</textcolor>
                     <selectedcolor>$PARAM[fgcolor]_100</selectedcolor>
                     <label>$VAR[Label_List_Title]</label>
-                    <visible>Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)</visible>
                 </control>
 
                 <!-- Videos / Tvshows / Seasons / Sets -->
