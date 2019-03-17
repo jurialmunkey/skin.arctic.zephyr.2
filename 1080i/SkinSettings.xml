@@ -157,8 +157,7 @@
                     <control type="radiobutton" id="19104" description="Submenu Only">
                         <visible>Integer.IsEqual(Window.Property(CurrentFocus),9001)</visible>
                         <include>Defs_Settings_Button</include>
-                        <label>$LOCALIZE[31009]</label>
-                        <enable>!Skin.HasSetting(VerticalHome)</enable>
+                        <label>$VAR[Label_Settings_SubmenuHubDirecion]</label>
                         <selected>!Skin.HasSetting(SubmenuOnly)</selected>
                         <onclick>Skin.ToggleSetting(SubmenuOnly)</onclick>
                     </control>

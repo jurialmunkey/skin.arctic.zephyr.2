@@ -399,7 +399,15 @@
                         <visible allowhiddenfocus="true">![Control.HasFocus(302) | Control.HasFocus(3002)]</visible>
                         <include>Animation_Left</include>
                         <include>Defs_InfoDialog_Visible</include>
-                        <onleft>SetFocus(302,0)</onleft>
+                        <onleft condition="!Skin.HasSetting(SubmenuOnly) + Integer.IsGreater(Container(302).NumItems,0)">SetProperty(submenuVisibility,$INFO[Container(301).ListItem.Property(submenuVisibility)],home)</onleft>
+                        <onleft condition="!Skin.HasSetting(SubmenuOnly) + Integer.IsGreater(Container(302).NumItems,0)">SetProperty(leftHeader,$INFO[Container(301).ListItem.Label],home)</onleft>
+                        <onleft condition="!Skin.HasSetting(SubmenuOnly) + Integer.IsGreater(Container(302).NumItems,0)">SetProperty(widgetName,$INFO[Container(301).ListItem.Property(widgetName)],home)</onleft>
+                        <onleft condition="!Skin.HasSetting(SubmenuOnly) + Integer.IsGreater(Container(302).NumItems,0)">SetProperty(widgetName.backgroundWidget,$INFO[Container(301).ListItem.Property(widgetName.backgroundWidget)],home)</onleft>
+                        <onleft condition="!Skin.HasSetting(SubmenuOnly) + Integer.IsGreater(Container(302).NumItems,0)">SetProperty(widgetPath,$INFO[Container(301).ListItem.Property(widgetPath)],home)</onleft>
+                        <onleft condition="!Skin.HasSetting(SubmenuOnly) + Integer.IsGreater(Container(302).NumItems,0)">SetProperty(widgetTarget,$INFO[Container(301).ListItem.Property(widgetTarget)],home)</onleft>
+                        <onleft condition="!Skin.HasSetting(SubmenuOnly) + Integer.IsGreater(Container(302).NumItems,0)">SetProperty(widgetAspect,$INFO[Container(301).ListItem.Property(widgetAspect)],home)</onleft>
+                        <onleft condition="!Skin.HasSetting(SubmenuOnly) + Integer.IsGreater(Container(302).NumItems,0)">ActivateWindow(1135)</onleft>
+                        <onleft condition="Skin.HasSetting(SubmenuOnly)">SetFocus(302,0)</onleft>
                         <animation effect="fade" start="100" end="0" time="200" condition="ControlGroup(3000).HasFocus()">Conditional</animation>
                         <top>0</top>
                         <onright>3000</onright>
@@ -507,14 +515,14 @@
             <content><include>skinshortcuts-submenu</include></content>
         </control>
         <control type="list" id="301">
-            <onup condition="Integer.IsGreater(Container(302).NumItems,0)">SetProperty(submenuVisibility,$INFO[Container(301).ListItem.Property(submenuVisibility)],home)</onup>
-            <onup condition="Integer.IsGreater(Container(302).NumItems,0)">SetProperty(leftHeader,$INFO[Container(301).ListItem.Label],home)</onup>
-            <onup condition="Integer.IsGreater(Container(302).NumItems,0)">SetProperty(widgetName,$INFO[Container(301).ListItem.Property(widgetName)],home)</onup>
-            <onup condition="Integer.IsGreater(Container(302).NumItems,0)">SetProperty(widgetName.backgroundWidget,$INFO[Container(301).ListItem.Property(widgetName.backgroundWidget)],home)</onup>
-            <onup condition="Integer.IsGreater(Container(302).NumItems,0)">SetProperty(widgetPath,$INFO[Container(301).ListItem.Property(widgetPath)],home)</onup>
-            <onup condition="Integer.IsGreater(Container(302).NumItems,0)">SetProperty(widgetTarget,$INFO[Container(301).ListItem.Property(widgetTarget)],home)</onup>
-            <onup condition="Integer.IsGreater(Container(302).NumItems,0)">SetProperty(widgetAspect,$INFO[Container(301).ListItem.Property(widgetAspect)],home)</onup>
-            <onup condition="Integer.IsGreater(Container(302).NumItems,0)">ActivateWindow(1135)</onup>
+            <onup condition="!Skin.HasSetting(SubmenuOnly) + Integer.IsGreater(Container(302).NumItems,0)">SetProperty(submenuVisibility,$INFO[Container(301).ListItem.Property(submenuVisibility)],home)</onup>
+            <onup condition="!Skin.HasSetting(SubmenuOnly) + Integer.IsGreater(Container(302).NumItems,0)">SetProperty(leftHeader,$INFO[Container(301).ListItem.Label],home)</onup>
+            <onup condition="!Skin.HasSetting(SubmenuOnly) + Integer.IsGreater(Container(302).NumItems,0)">SetProperty(widgetName,$INFO[Container(301).ListItem.Property(widgetName)],home)</onup>
+            <onup condition="!Skin.HasSetting(SubmenuOnly) + Integer.IsGreater(Container(302).NumItems,0)">SetProperty(widgetName.backgroundWidget,$INFO[Container(301).ListItem.Property(widgetName.backgroundWidget)],home)</onup>
+            <onup condition="!Skin.HasSetting(SubmenuOnly) + Integer.IsGreater(Container(302).NumItems,0)">SetProperty(widgetPath,$INFO[Container(301).ListItem.Property(widgetPath)],home)</onup>
+            <onup condition="!Skin.HasSetting(SubmenuOnly) + Integer.IsGreater(Container(302).NumItems,0)">SetProperty(widgetTarget,$INFO[Container(301).ListItem.Property(widgetTarget)],home)</onup>
+            <onup condition="!Skin.HasSetting(SubmenuOnly) + Integer.IsGreater(Container(302).NumItems,0)">SetProperty(widgetAspect,$INFO[Container(301).ListItem.Property(widgetAspect)],home)</onup>
+            <onup condition="!Skin.HasSetting(SubmenuOnly) + Integer.IsGreater(Container(302).NumItems,0)">ActivateWindow(1135)</onup>
             <ondown>3000</ondown>
             <onfocus>ClearProperty(WidgetFocus,Home)</onfocus>
             <orientation>horizontal</orientation>
