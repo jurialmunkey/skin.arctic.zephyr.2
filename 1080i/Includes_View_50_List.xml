@@ -15,7 +15,7 @@
                 <param name="id" value="50" />
                 <param name="viewtype" value="$LOCALIZE[535]" />
                 <param name="forced" value="true" />
-                <param name="visible" value="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(actors) | Container.Content(files) | Window.IsVisible(videoplaylist)" />
+                <param name="visible" value="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(actors) | [Container.Content(files) + Window.IsVisible(MyVideoNav.xml)] | Window.IsVisible(videoplaylist)" />
             </include>
         </control>
     </include>
@@ -38,7 +38,7 @@
                     <param name="id" value="500" />
                     <param name="viewtype" value="$LOCALIZE[535]" />
                     <param name="forced" value="true" />
-                    <param name="visible" value="![Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(actors) | Container.Content(files) | Window.IsVisible(videoplaylist)]" />
+                    <param name="visible" value="![Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(actors) | [Container.Content(files) + Window.IsVisible(MyVideoNav.xml)] | Window.IsVisible(videoplaylist)]" />
                 </include>
             </control>
         </control>
