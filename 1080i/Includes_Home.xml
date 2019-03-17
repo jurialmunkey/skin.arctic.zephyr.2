@@ -3,10 +3,11 @@
     <include name="Home_Menu">
         <control type="group">
             <top>55</top>
+            <left>view_pad</left>
             <control type="grouplist">
+                <left>10</left>
                 <itemgap>30</itemgap>
                 <height>70</height>
-                <left>view_pad</left>
                 <orientation>horizontal</orientation>
                 <visible>Window.IsVisible(Home) + !$EXP[Exp_InfoVisible]</visible>
                 <usecontrolcoords>true</usecontrolcoords>
@@ -76,6 +77,79 @@
                     <param name="pos" value="12" />
                 </include>
             </control>
+            <control type="grouplist">
+                <left>0</left>
+                <itemgap>30</itemgap>
+                <height>70</height>
+                <orientation>horizontal</orientation>
+                <visible>Window.IsVisible(Home) + !$EXP[Exp_InfoVisible]</visible>
+                <usecontrolcoords>true</usecontrolcoords>
+                <include content="Home_Menu_Item_Bold">
+                    <param name="visible" value="Integer.IsGreater(Container(301).NumItems,0)" />
+                    <param name="id" value="301" />
+                    <param name="pos" value="0" />
+                </include>
+                <include content="Home_Menu_Item_Bold">
+                    <param name="visible" value="Integer.IsGreater(Container(301).NumItems,1)" />
+                    <param name="id" value="301" />
+                    <param name="pos" value="1" />
+                </include>
+                <include content="Home_Menu_Item_Bold">
+                    <param name="visible" value="Integer.IsGreater(Container(301).NumItems,2)" />
+                    <param name="id" value="301" />
+                    <param name="pos" value="2" />
+                </include>
+                <include content="Home_Menu_Item_Bold">
+                    <param name="visible" value="Integer.IsGreater(Container(301).NumItems,3)" />
+                    <param name="id" value="301" />
+                    <param name="pos" value="3" />
+                </include>
+                <include content="Home_Menu_Item_Bold">
+                    <param name="visible" value="Integer.IsGreater(Container(301).NumItems,4)" />
+                    <param name="id" value="301" />
+                    <param name="pos" value="4" />
+                </include>
+                <include content="Home_Menu_Item_Bold">
+                    <param name="visible" value="Integer.IsGreater(Container(301).NumItems,5)" />
+                    <param name="id" value="301" />
+                    <param name="pos" value="5" />
+                </include>
+                <include content="Home_Menu_Item_Bold">
+                    <param name="visible" value="Integer.IsGreater(Container(301).NumItems,6)" />
+                    <param name="id" value="301" />
+                    <param name="pos" value="6" />
+                </include>
+                <include content="Home_Menu_Item_Bold">
+                    <param name="visible" value="Integer.IsGreater(Container(301).NumItems,7)" />
+                    <param name="id" value="301" />
+                    <param name="pos" value="7" />
+                </include>
+                <include content="Home_Menu_Item_Bold">
+                    <param name="visible" value="Integer.IsGreater(Container(301).NumItems,8)" />
+                    <param name="id" value="301" />
+                    <param name="pos" value="8" />
+                </include>
+                <include content="Home_Menu_Item_Bold">
+                    <param name="visible" value="Integer.IsGreater(Container(301).NumItems,9)" />
+                    <param name="id" value="301" />
+                    <param name="pos" value="9" />
+                </include>
+                <include content="Home_Menu_Item_Bold">
+                    <param name="visible" value="Integer.IsGreater(Container(301).NumItems,10)" />
+                    <param name="id" value="301" />
+                    <param name="pos" value="10" />
+                </include>
+                <include content="Home_Menu_Item_Bold">
+                    <param name="visible" value="Integer.IsGreater(Container(301).NumItems,11)" />
+                    <param name="id" value="301" />
+                    <param name="pos" value="11" />
+                </include>
+                <include content="Home_Menu_Item_Bold">
+                    <param name="visible" value="Integer.IsGreater(Container(301).NumItems,12)" />
+                    <param name="id" value="301" />
+                    <param name="pos" value="12" />
+                </include>
+            </control>
         </control>
     </include>
 
@@ -88,6 +162,26 @@
             <focusedcolor>main_fg_30</focusedcolor>
             <selectedcolor>main_fg_30</selectedcolor>
             <textcolor>main_fg_30</textcolor>
+            <onfocus>SetFocus($PARAM[id],$PARAM[pos])</onfocus>
+            <onclick>$INFO[Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Property(path)]</onclick>
+            <texturefocus />
+            <texturenofocus />
+            <textoffsetx>0</textoffsetx>
+            <label>$INFO[Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Label]</label>
+            <animation effect="fade" start="100" end="0" condition="String.IsEqual(Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Label,Container($PARAM[id]).ListItem.Label)">Conditional</animation>
+            <visible>$PARAM[visible]</visible>
+        </control>
+    </include>
+
+    <include name="Home_Menu_Item_Bold">
+        <control type="button">
+            <width>auto</width>
+            <align>left</align>
+            <height>70</height>
+            <font>font_topbar_small</font>
+            <focusedcolor>00ffffff</focusedcolor>
+            <selectedcolor>00ffffff</selectedcolor>
+            <textcolor>00ffffff</textcolor>
             <onfocus>SetFocus($PARAM[id],$PARAM[pos])</onfocus>
             <onclick>$INFO[Container($PARAM[id]).ListItemAbsolute($PARAM[pos]).Property(path)]</onclick>
             <texturefocus />
