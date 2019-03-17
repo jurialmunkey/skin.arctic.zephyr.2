@@ -233,11 +233,15 @@
         <property name="widgetTarget" tag="property" attribute="name|widgetTarget" />
         <property name="widgetName" tag="property" attribute="name|widgetName" />
         <property name="widgetPath" tag="property" attribute="name|widgetPath" />
+        <property name="submenuVisibility" tag="property" attribute="name|group" />
+        <property name="submenuVisibility">noMenu</property>
+        <property name="id" tag="property" attribute="name|id" />
         <controls>
             <include content="Object_Widget_Spotlight">
                 <param name="target" value="$SKINSHORTCUTS[widgetTarget]" />
                 <param name="content" value="$SKINSHORTCUTS[widgetPath]" />
-                <skinshortcuts>visibility</skinshortcuts>
+                <visible>String.IsEqual(Container(301).ListItem.Property(submenuVisibility),num-$SKINSHORTCUTS[submenuVisibility]) | String.IsEqual(Container(301).ListItem.Property(submenuVisibility),$SKINSHORTCUTS[submenuVisibility])</visible>
+                <visible>String.IsEqual(Container(302).ListItem.Property(id),$SKINSHORTCUTS[id])</visible>
                 <onup>302</onup>
                 <onback condition="Window.IsVisible(Home)">301</onback>
                 <ondown>noop</ondown>
