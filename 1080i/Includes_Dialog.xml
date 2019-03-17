@@ -624,6 +624,77 @@
         </definition>
     </include>
 
+    <include name="Dialog_Standard_List_Itemlayout_ChannelGuide">
+        <definition>
+            <control type="group">
+                <control type="image">
+                    <top>2</top>
+                    <bottom>2</bottom>
+                    <texture colordiffuse="dialog_fg_12">common/selected.png</texture>
+                    <aspectratio aligny="top">center</aspectratio>
+                    <visible>ListItem.IsPlaying</visible>
+                </control>
+                <control type="progress">
+                    <top>2</top>
+                    <bottom>2</bottom>
+                    <texturebg>pvr/progressline-back.png</texturebg>
+                    <lefttexture border="5" colordiffuse="bf777777">pvr/progressline-left.png</lefttexture>
+                    <midtexture border="5" colordiffuse="bf777777">pvr/progressline-mid.png</midtexture>
+                    <righttexture border="5" colordiffuse="bf777777">pvr/progressline-right.png</righttexture>
+                    <info>ListItem.Progress</info>
+                    <visible>Window.IsVisible(pvrosdchannels)</visible>
+                </control>
+                <control type="label">
+                    <centertop>25%</centertop>
+                    <left>30</left>
+                    <right>30</right>
+                    <font>font_small_bold</font>
+                    <textcolor>$PARAM[color_70]</textcolor>
+                    <aligny>center</aligny>
+                    <align>right</align>
+                    <label>$INFO[ListItem.StartTime]</label>
+                    <selectedcolor>$PARAM[color_highlight]</selectedcolor>
+                </control>
+                <control type="label">
+                    <centertop>25%</centertop>
+                    <left>30</left>
+                    <right>30</right>
+                    <font>font_small_bold</font>
+                    <textcolor>$PARAM[color_70]</textcolor>
+                    <aligny>center</aligny>
+                    <align>left</align>
+                    <label>$VAR[Label_List_Title]</label>
+                    <selectedcolor>$PARAM[color_highlight]</selectedcolor>
+                    <visible>!Window.IsVisible(pvrosdchannels)</visible>
+                </control>
+                <control type="label">
+                    <centertop>25%</centertop>
+                    <left>30</left>
+                    <right>30</right>
+                    <font>font_small_bold</font>
+                    <textcolor>$PARAM[color_70]</textcolor>
+                    <aligny>center</aligny>
+                    <align>left</align>
+                    <label>$INFO[ListItem.ChannelNumberLabel,,. ]$INFO[ListItem.ChannelName,, - ]$VAR[Label_List_Title]</label>
+                    <selectedcolor>$PARAM[color_highlight]</selectedcolor>
+                    <visible>Window.IsVisible(pvrosdchannels)</visible>
+                </control>
+                <control type="textbox">
+                    <top>65</top>
+                    <bottom>20</bottom>
+                    <left>30</left>
+                    <right>30</right>
+                    <font>font_tiny</font>
+                    <textcolor>$PARAM[color_70]</textcolor>
+                    <aligny>center</aligny>
+                    <autoscroll>false</autoscroll>
+                    <label>$INFO[ListItem.Plot]</label>
+                    <selectedcolor>$PARAM[color_highlight]</selectedcolor>
+                </control>
+            </control>
+        </definition>
+    </include>
+
     <include name="Dialog_Standard_List_Itemlayout">
         <param name="color_30" default="dialog_fg_30" />
         <param name="color_70" default="dialog_fg_70" />
@@ -669,6 +740,7 @@
         <param name="list_type" default="panel" />
         <param name="onup" default="3" />
         <param name="ondown" default="3" />
+        <param name="selectpad" default="0" />
         <definition>
             <control type="$PARAM[list_type]" id="$PARAM[id]">
                 <top>dialog_top</top>
@@ -689,6 +761,8 @@
                 </itemlayout>
                 <focusedlayout height="$PARAM[itemheight]" width="$PARAM[width]" condition="$PARAM[itemlayout_condition]">
                     <control type="image">
+                        <top>$PARAM[selectpad]</top>
+                        <bottom>$PARAM[selectpad]</bottom>
                         <texture colordiffuse="$VAR[ColorHighlight]">common/white.png</texture>
                         <animation effect="fade" start="100" end="50" condition="!Control.HasFocus($PARAM[id])">Conditional</animation>
                     </control>

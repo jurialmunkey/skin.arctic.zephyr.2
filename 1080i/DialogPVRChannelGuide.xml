@@ -1,153 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Foundation -->
 <window>
     <defaultcontrol always="true">11</defaultcontrol>
-
     <controls>
+        <include>Global_Overlay</include>
 
         <control type="group">
-            <animation effect="slide" start="-668" end="0" time="150" tween="quadratic">Visible</animation>
-            <animation effect="slide" start="-668" end="0" time="150" tween="quadratic">WindowOpen</animation>
-            <animation effect="slide" end="-668" start="0" time="150" tween="quadratic">Hidden</animation>
-            <animation effect="slide" end="-668" start="0" time="150" tween="quadratic">WindowClose</animation>
+            <include content="Dialog_Standard_Group">
+                <param name="width" value="1336" />
+                <param name="height" value="930" />
+            </include>
+            <control type="label">
+                <label>$INFO[Container(11).ListItem.StartDate]</label>
+                <include>Dialog_Standard_Header</include>
+            </control>
+
+            <include content="Dialog_Standard_List">
+                <param name="id" value="11" />
+                <param name="itemheight" value="item_biglist_height" />
+                <param name="list_style" value="Dialog_Standard_List_Itemlayout_ChannelGuide" />
+                <param name="onup" value="11" />
+                <param name="ondown" value="11" />
+                <param name="checkmark" value="false" />
+            </include>
+
             <control type="group">
-                <left>-1</left>
-                <top>-1</top>
-                <width>668</width>
-                <height>1082</height>
-                <control type="image">
-                    <texture colordiffuse="HomePanel">common/bg.jpg</texture>
+                <include>Dialog_Standard_Right_Group</include>
+                <control type="group">
+                    <left>30</left>
+                    <right>30</right>
+                    <top>30</top>
+                    <bottom>30</bottom>
+                    <control type="group">
+                        <bottom>0</bottom>
+                        <height>dialog_right_iconwidth</height>
+                        <control type="image">
+                            <visible>!Skin.HasSetting(PVRGuide.DisableColorDiffuse)</visible>
+                            <texture colordiffuse="dialog_fg_70">$INFO[Container(11).ListItem.Icon]</texture>
+                            <aspectratio align="center" aligny="bottom">keep</aspectratio>
+                        </control>
+                        <control type="image">
+                            <visible>Skin.HasSetting(PVRGuide.DisableColorDiffuse)</visible>
+                            <texture>$INFO[Container(11).ListItem.Icon]</texture>
+                            <aspectratio align="center" aligny="bottom">keep</aspectratio>
+                        </control>
+                    </control>
+                </control>
+                <control type="grouplist" id="8000">
+                    <onleft>61</onleft>
+                    <orientation>vertical</orientation>
+                    <itemgap>0</itemgap>
+                    <control type="button" id="8001">
+                        <label>222</label>
+                        <onclick>Close</onclick>
+                        <include>Dialog_Standard_Right_Buttons</include>
+                    </control>
                 </control>
             </control>
-            <control type="image">
-                <posx>498</posx>
-                <posy>28</posy>
-                <width>128</width>
-                <height>64</height>
-                <aspectratio align="right">keep</aspectratio>
-                <texture>$INFO[Player.Art(thumb)]</texture>
-            </control>
-            <control type="label">
-                <left>33</left>
-                <top>10</top>
-                <width>400</width>
-                <align>left</align>
-                <textcolor>main_fg_100</textcolor>
-                <font>font_medium_bold</font>
-                <height>66</height>
-                <label>$INFO[VideoPlayer.ChannelName]</label>
-            </control>
-            <control type="label">
-                <left>33</left>
-                <top>43</top>
-                <width>400</width>
-                <align>left</align>
-                <textcolor>main_fg_70</textcolor>
-                <font>font_tiny_bold</font>
-                <height>66</height>
-                <label>$INFO[Container(11).ListItem.StartDate]</label>
-            </control>
 
-            <control type="fixedlist" id="11">
-                <left>0</left>
-                <top>120</top>
-                <height>980</height>
-                <width>667</width>
-                <focusposition>1</focusposition>
-                <movement>6</movement>
-                <orientation>vertical</orientation>
-                <itemlayout height="120" width="667">
-                    <control type="image">
-                        <width>667</width>
-                        <height>109</height>
-                        <texture>common/selected.png</texture>
-                        <aspectratio aligny="top">center</aspectratio>
-                        <animation effect="fade" start="100" end="10" condition="true">Conditional</animation>
-                        <visible>String.IsEqual(ListItem.Title,VideoPlayer.Title) + String.IsEqual(ListItem.ChannelNumberLabel,VideoPlayer.ChannelNumberLabel) + String.IsEqual(ListItem.EndTime,VideoPlayer.EndTime)</visible>
-                    </control>
-                    <control type="image">
-                        <centertop>54</centertop>
-                        <centerright>64</centerright>
-                        <width>128</width>
-                        <height>128</height>
-                        <texture>special://skin/extras/icons/timer.png</texture>
-                        <colordiffuse>main_fg_70</colordiffuse>
-                        <visible>ListItem.HasTimer | ListItem.IsRecording</visible>
-                        <aspectratio aligny="center" align="center">keep</aspectratio>
-                    </control>
-                    <control type="label">
-                        <left>30</left>
-                        <top>5</top>
-                        <width>400</width>
-                        <height>66</height>
-                        <align>left</align>
-                        <textcolor>main_fg_70</textcolor>
-                        <font>font_small_bold</font>
-                        <label>$VAR[Label_List_Title]</label>>
-                        <selectedcolor>main_fg_70</selectedcolor>
-                    </control>
-                    <control type="label">
-                        <left>30</left>
-                        <top>40</top>
-                        <height>66</height>
-                        <width>400</width>
-                        <align>left</align>
-                        <font>font_small</font>
-                        <textcolor>main_fg_70</textcolor>
-                        <label>$INFO[ListItem.StartTime]</label>
-                        <selectedcolor>main_fg_70</selectedcolor>
-                    </control>
-                </itemlayout>
-                <focusedlayout height="120" width="667">
-                    <control type="image">
-                        <width>667</width>
-                        <height>109</height>
-                        <texture colordiffuse="$VAR[ColorHighlight]">common/white.png</texture>
-                    </control>
-                    <control type="image">
-                        <width>667</width>
-                        <height>109</height>
-                        <texture>common/selected.png</texture>
-                        <aspectratio aligny="top">center</aspectratio>
-                        <animation effect="fade" start="100" end="30" condition="true">Conditional</animation>
-                        <visible>String.IsEqual(ListItem.Title,VideoPlayer.Title) + String.IsEqual(ListItem.ChannelNumberLabel,VideoPlayer.ChannelNumberLabel) + String.IsEqual(ListItem.EndTime,VideoPlayer.EndTime)</visible>
-                    </control>
-                    <control type="image">
-                        <centertop>54</centertop>
-                        <centerright>64</centerright>
-                        <width>128</width>
-                        <height>128</height>
-                        <texture>special://skin/extras/icons/timer.png</texture>
-                        <colordiffuse>Selected</colordiffuse>
-                        <visible>ListItem.HasTimer | ListItem.IsRecording</visible>
-                        <aspectratio aligny="center" align="center">keep</aspectratio>
-                    </control>
-                    <control type="label">
-                        <left>30</left>
-                        <top>5</top>
-                        <height>66</height>
-                        <width>400</width>
-                        <align>left</align>
-                        <textcolor>Selected</textcolor>
-                        <font>font_small_bold</font>
-                        <label>$VAR[Label_List_Title]</label>>
-                        <selectedcolor>Selected</selectedcolor>
-                    </control>
-                    <control type="label">
-                        <left>30</left>
-                        <top>40</top>
-                        <height>66</height>
-                        <width>400</width>
-                        <align>left</align>
-                        <font>font_small</font>
-                        <textcolor>Selected</textcolor>
-                        <label>$INFO[ListItem.StartTime]</label>
-                        <selectedcolor>Selected</selectedcolor>
-                    </control>
-                </focusedlayout>
-
-            </control>
+            <include content="Dialog_Scrollbar">
+                <param name="onleft" value="11" />
+            </include>
         </control>
     </controls>
-
 </window>
