@@ -212,4 +212,65 @@
 
     <expression name="Exp_GlobalBackground">[!Player.HasMedia | [Player.HasVideo + [!Skin.HasSetting(global.showvideo) | !String.IsEmpty(Window(Home).Property(TrailerPlaying))]] | [!Skin.HasSetting(global.showvisualisation) + Player.HasAudio] | [Player.HasAudio + !String.IsEmpty(Window(Home).Property(PlayingBackgroundMedia))]]</expression>
 
+
+    <include name="Defaults_FauneFonts">
+        <!-- Plot Font -->
+        <font>
+            <name>font_plotbox</name>
+            <filename>Faune-Text_Regular.ttf</filename>
+            <size>30</size>
+            <aspect>0.9</aspect>
+        </font>
+        <font>
+            <name>font_weather_small</name>
+            <filename>Faune-Text_Regular.ttf</filename>
+            <size>26</size>
+            <aspect>0.9</aspect>
+        </font>
+        <font>
+            <name>font_overlay_plotbox</name>
+            <filename>Faune-Text_Regular.ttf</filename>
+            <aspect>0.9</aspect>
+            <size>48</size>
+            <linespacing>1.4</linespacing>
+        </font>
+
+        <font>
+            <name>font_info_display</name>
+            <filename>Faune-Display_Black.ttf</filename>
+            <size>64</size>
+        </font>
+    </include>
+
+    <include name="Defaults_RobotoFonts">
+        <!-- Plot Font -->
+        <font>
+            <name>font_plotbox</name>
+            <filename>Roboto-Regular.ttf</filename>
+            <linespacing>1.15</linespacing>
+            <size>30</size>
+            <aspect>0.9</aspect>
+        </font>
+        <font>
+            <name>font_weather_small</name>
+            <filename>Roboto-Regular.ttf</filename>
+            <linespacing>1.15</linespacing>
+            <size>26</size>
+            <aspect>0.9</aspect>
+        </font>
+        <font>
+            <name>font_overlay_plotbox</name>
+            <filename>Roboto-Regular.ttf</filename>
+            <linespacing>1.6</linespacing>
+            <aspect>0.9</aspect>
+            <size>48</size>
+        </font>
+        <font>
+            <name>font_info_display</name>
+            <style>bold</style>
+            <filename>RobotoCondensed-Bold.ttf</filename>
+            <size>64</size>
+        </font>
+    </include>
+
 </includes>
