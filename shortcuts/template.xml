@@ -68,7 +68,6 @@
             </include>
         </controls>
     </other>
-
     <other include="vertical-main">
         <property name="widgetAspect">Poster</property>
         <property name="widgetName">$LOCALIZE[31105]</property>
@@ -173,7 +172,61 @@
         </controls>
     </submenuOther>
 
-    <submenuOther include="spotlight" container="302">
+    <other include="vertical-info">
+        <condition tag="property" attribute="name|widgetPath" />
+        <property name="mainmenuid" tag="property" attribute="name|id" value="$NUMBER[1]">1</property>
+        <property name="mainmenuid" tag="property" attribute="name|id" value="$NUMBER[2]">2</property>
+        <property name="mainmenuid" tag="property" attribute="name|id" value="$NUMBER[3]">3</property>
+        <property name="mainmenuid" tag="property" attribute="name|id" value="$NUMBER[4]">4</property>
+        <property name="mainmenuid" tag="property" attribute="name|id" value="$NUMBER[5]">5</property>
+        <property name="mainmenuid" tag="property" attribute="name|id" value="$NUMBER[6]">6</property>
+        <property name="mainmenuid" tag="property" attribute="name|id" value="$NUMBER[7]">7</property>
+        <property name="mainmenuid" tag="property" attribute="name|id" value="$NUMBER[8]">8</property>
+        <property name="mainmenuid" tag="property" attribute="name|id" value="$NUMBER[9]">9</property>
+        <property name="mainmenuid" tag="property" attribute="name|id" value="$NUMBER[10]">10</property>
+        <property name="mainmenuid" tag="property" attribute="name|id" value="$NUMBER[11]">11</property>
+        <property name="mainmenuid" tag="property" attribute="name|id" value="$NUMBER[12]">12</property>
+        <property name="mainmenuid" tag="property" attribute="name|id" value="$NUMBER[13]">13</property>
+        <property name="mainmenuid" tag="property" attribute="name|id" value="$NUMBER[14]">14</property>
+        <property name="mainmenuid" tag="property" attribute="name|id" value="$NUMBER[15]">15</property>
+        <property name="mainmenuid" tag="property" attribute="name|id" value="$NUMBER[16]">16</property>
+        <property name="mainmenuid" tag="property" attribute="name|id" value="$NUMBER[17]">17</property>
+        <property name="mainmenuid" tag="property" attribute="name|id" value="$NUMBER[18]">18</property>
+        <property name="mainmenuid" tag="property" attribute="name|id" value="$NUMBER[19]">19</property>
+        <property name="mainmenuid" tag="property" attribute="name|id" value="$NUMBER[20]">20</property>
+        <property name="mainmenuid" tag="property" attribute="name|id" value="$NUMBER[21]">21</property>
+        <property name="mainmenuid" tag="property" attribute="name|id" value="$NUMBER[22]">22</property>
+        <property name="mainmenuid" tag="property" attribute="name|id" value="$NUMBER[23]">23</property>
+        <property name="mainmenuid" tag="property" attribute="name|id" value="$NUMBER[24]">24</property>
+        <property name="mainmenuid" tag="property" attribute="name|id" value="$NUMBER[25]">25</property>
+        <property name="mainmenuid" tag="property" attribute="name|id" value="$NUMBER[26]">26</property>
+        <property name="mainmenuid" tag="property" attribute="name|id" value="$NUMBER[27]">27</property>
+        <property name="mainmenuid" tag="property" attribute="name|id" value="$NUMBER[28]">28</property>
+        <property name="mainmenuid" tag="property" attribute="name|id" value="$NUMBER[29]">29</property>
+        <property name="mainmenuid">30</property>
+        <controls>
+            <include content="Home_Vertical_Info">
+                <param name="font" value="font_title" />
+                <param name="plotheight" value="160" />
+                <param name="titleheight" value="60" />
+                <param name="id" value="$PYTHON[int(mainmenuid)]3100" />
+                <skinshortcuts>visibility</skinshortcuts>
+            </include>
+        </controls>
+    </other>
+    <other include="vertical-info">
+        <controls>
+            <include content="Home_Vertical_Info">
+                <param name="font" value="font_title" />
+                <param name="plotheight" value="160" />
+                <param name="titleheight" value="60" />
+                <param name="id" value="993100" />
+                <skinshortcuts>visibility</skinshortcuts>
+            </include>
+        </controls>
+    </other>
+
+    <submenuOther include="spotlight-submenu" container="302">
         <property name="widgetAspect" tag="property" attribute="name|widgetAspect" />
         <property name="widgetTarget" tag="property" attribute="name|widgetTarget" />
         <property name="widgetName" tag="property" attribute="name|widgetName" />
@@ -189,7 +242,7 @@
             </include>
         </controls>
     </submenuOther>
-    <other include="spotlight">
+    <other include="spotlight-mainmenu">
         <property name="widgetAspect" tag="property" attribute="name|widgetAspect" />
         <property name="widgetTarget" tag="property" attribute="name|widgetTarget" />
         <property name="widgetName" tag="property" attribute="name|widgetName" />
