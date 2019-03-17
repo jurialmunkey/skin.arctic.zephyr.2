@@ -3,6 +3,7 @@
     <defaultcontrol always="true">5600</defaultcontrol>
     <onload>SetProperty(Header_Center_Text,$LOCALIZE[31045] &quot;$INFO[Skin.String(SearchTerm)]&quot;)</onload>
     <onload>SetProperty(Header_Left_Text,$LOCALIZE[137])</onload>
+    <onload condition="String.IsEmpty(Skin.String(SearchTerm))">Back</onload>
     <controls>
         <include>Global_Background</include>
         <include>Topbar</include>
