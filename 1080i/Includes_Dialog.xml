@@ -128,6 +128,8 @@
     <!-- ==================== -->
     <!-- Notification Dialogs -->
     <!-- ==================== -->
+    <include name="Dialog_Notification_BottomAlign"><bottom>0</bottom></include>
+    <include name="Dialog_Notification_TopAlign"><top>0</top></include>
     <include name="Dialog_Notification_Group">
         <param name="main_id" default="30" />
         <param name="sub_id" default="31" />
@@ -135,11 +137,14 @@
         <param name="progress" default="Control.GetLabel(32)" />
         <param name="icon" default="buttons/info.png" />
         <param name="fgcolor" default="main_fg" />
+        <param name="topalign" default="false" />
+        <param name="height" default="view_bottom" />
         <definition>
-            <bottom>0</bottom>
+            <include condition="$PARAM[topalign]">Dialog_Notification_TopAlign</include>
+            <include condition="!$PARAM[topalign]">Dialog_Notification_BottomAlign</include>
             <left>view_pad</left>
             <right>view_pad</right>
-            <height>view_bottom</height>
+            <height>$PARAM[height]</height>
             <visible>!$EXP[Exp_HideFurniture]</visible>
             <control type="image" description="Back">
                 <left>-16</left>

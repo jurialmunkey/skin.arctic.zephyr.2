@@ -3,19 +3,30 @@
 <window id="107">
     <controls>
         <control type="group">
-            <visible>!Window.IsVisible(fullscreenvideo)</visible>
-            <visible>!Window.IsVisible(visualisation)</visible>
             <visible>!Window.IsVisible(Startup.xml)</visible>
-            <visible>!Window.IsVisible(Home.xml) | [Control.HasFocus(302) | Control.HasFocus(5610)]</visible>
-            <include content="Dialog_Notification_Group" condition="![Window.IsVisible(SkinSettings.xml) | Window.IsVisible(SettingsCategory.xml) | Window.IsVisible(SettingsProfile.xml) | Window.IsVisible(SettingsSystemInfo.xml)]">
-                <param name="main_id" value="401" />
-                <param name="sub_id" value="402" />
-            </include>
-            <include content="Dialog_Notification_Group" condition="[Window.IsVisible(SkinSettings.xml) | Window.IsVisible(SettingsCategory.xml) | Window.IsVisible(SettingsProfile.xml) | Window.IsVisible(SettingsSystemInfo.xml)]">
-                <param name="main_id" value="401" />
-                <param name="sub_id" value="402" />
-                <param name="fgcolor" value="panel_fg" />
-            </include>
+            <control type="group">
+                <visible>!Window.IsVisible(Home.xml) | Skin.HasSetting(VerticalHome) | Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(DialogAddonInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml)</visible>
+                <include content="Dialog_Notification_Group" condition="![Window.IsVisible(SkinSettings.xml) | Window.IsVisible(SettingsCategory.xml) | Window.IsVisible(SettingsProfile.xml) | Window.IsVisible(SettingsSystemInfo.xml)] + !Window.IsVisible(fullscreenvideo) + !Window.IsVisible(visualisation)">
+                    <param name="main_id" value="401" />
+                    <param name="sub_id" value="402" />
+                </include>
+                <include content="Dialog_Notification_Group" condition="[Window.IsVisible(SkinSettings.xml) | Window.IsVisible(SettingsCategory.xml) | Window.IsVisible(SettingsProfile.xml) | Window.IsVisible(SettingsSystemInfo.xml)] + !Window.IsVisible(fullscreenvideo) + !Window.IsVisible(visualisation)">
+                    <param name="main_id" value="401" />
+                    <param name="sub_id" value="402" />
+                    <param name="fgcolor" value="panel_fg" />
+                </include>
+            </control>
+
+            <control type="group">
+                <visible>!Window.IsVisible(Home.xml) | [!Skin.HasSetting(VerticalHome) + ![Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(DialogAddonInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml)]]</visible>
+                <include content="Dialog_Notification_Group" condition="Window.IsVisible(fullscreenvideo) | Window.IsVisible(visualisation) | Window.IsVisible(Home)">
+                    <param name="main_id" value="401" />
+                    <param name="sub_id" value="402" />
+                    <param name="fgcolor" value="panel_fg" />
+                    <param name="topalign" value="true" />
+                    <param name="height" value="view_top" />
+                </include>
+            </control>
         </control>
     </controls>
 </window>
