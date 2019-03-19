@@ -6,6 +6,7 @@
             <include>Defs_InfoDialog_Visible</include>
             <include>Animation_Common</include>
             <control type="grouplist">
+                <visible>!ListItem.IsParentFolder</visible>
                 <left>660</left>
                 <top>690</top>
                 <right>view_pad</right>
@@ -30,7 +31,7 @@
                 </control>
             </control>
             
-            <control type="wraplist" id="53">
+            <control type="fixedlist" id="53">
                 <left>-328</left>
                 <width>2500</width>
                 <focusposition>2</focusposition>

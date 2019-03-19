@@ -147,6 +147,7 @@
                         </control>
                         <control type="group">
                             <height>282</height>
+                            <visible>!ListItem.IsParentFolder</visible>
                             <include content="Object_Poster">
                                 <param name="icon" value="$VAR[Image_Banner]" />
                                 <param name="aspectratio" value="scale" />
@@ -161,6 +162,12 @@
                                 <texture>$VAR[Image_ClearLogo]</texture>
                                 <visible>String.IsEmpty(ListItem.Art(tvshow.banner)) + String.IsEmpty(ListItem.Art(banner))</visible>
                             </control>
+                        </control>
+                        <control type="image">
+                            <bordersize>45</bordersize>
+                            <aspectratio scalediffuse="false" align="center">keep</aspectratio>
+                            <texture background="true" colordiffuse="main_bg_100">$INFO[ListItem.Icon]</texture>
+                            <visible>ListItem.IsParentFolder</visible>
                         </control>
                         <control type="label">
                             <left>35</left>
@@ -241,6 +248,12 @@
                                 <texture background="true" diffuse="diffuse/banner-side.png">$VAR[Image_Fanart]</texture>
                                 <visible>!ListItem.IsParentFolder</visible>
                             </control>
+                        </control>
+                        <control type="image">
+                            <bordersize>45</bordersize>
+                            <aspectratio scalediffuse="false" align="center">keep</aspectratio>
+                            <texture background="true" colordiffuse="main_bg_100">$INFO[ListItem.Icon]</texture>
+                            <visible>ListItem.IsParentFolder</visible>
                         </control>
                         <control type="group">
                             <left>566.89</left>
