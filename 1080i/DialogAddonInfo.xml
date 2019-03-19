@@ -68,8 +68,14 @@
                                     <visible>Integer.IsGreater(Container(50).NumItems,0)</visible>
                                 </control>
                                 <include content="Object_Info_Plot">
+                                    <param name="maxheight" value="320" />
+                                    <param name="label" value="$VAR[Label_OverlayPlot]" />
+                                    <visible>Integer.IsGreater(Container(50).NumItems,0)</visible>
+                                </include>
+                                <include content="Object_Info_Plot">
                                     <param name="maxheight" value="560" />
                                     <param name="label" value="$VAR[Label_OverlayPlot]" />
+                                    <visible>Integer.IsEqual(Container(50).NumItems,0)</visible>
                                 </include>
                             </control>
                             <include content="View_51_Wall_Container">
