@@ -112,6 +112,7 @@
                 <param name="squarecondition" value="$PYTHON['true' if widgetAspect in 'Square' else 'false']" />
                 <param name="landscapecondition" value="$PYTHON['true' if widgetAspect in 'Landscape' else 'false']" />
                 <param name="iconcondition" value="$PYTHON['true' if widgetAspect in 'Icon' else 'false']" />
+                <onback>SetFocus($PYTHON[int(mainmenuid)]3101)</onback>
                 <onback>301</onback>
                 <visible>Integer.IsGreater(Container($PYTHON[int(mainmenuid)]$PYTHON[int(id) + 3100]).NumItems,0) | Container($PYTHON[int(mainmenuid)]$PYTHON[int(id) + 3100]).IsUpdating</visible>
                 <visible>String.IsEqual(Container(301).ListItem.Property(id),$SKINSHORTCUTS[mainmenuid])</visible>
