@@ -14,6 +14,7 @@
                 <visible>Integer.IsEqual(Container(9989).NumItems,0)</visible>
             </include>
             <include content="Object_Widget_Spotlight">
+                <param name="controltype" value="list" />
                 <param name="id" value="993100" />
                 <param name="top" value="52" />
                 <param name="left" value="0" />
@@ -29,6 +30,7 @@
                 <param name="iconcondition" value="$PYTHON['true' if widgetAspect in 'Icon' else 'false']" />
                 <autoscroll time="12000">!ControlGroup(3000).HasFocus() + System.IdleTime(1)</autoscroll>
                 <onback>301</onback>
+                <movement>6</movement>
                 <visible>Integer.IsGreater(Container(993100).NumItems,0) | Container(993100).IsUpdating</visible>
                 <skinshortcuts>visibility</skinshortcuts>
                 <visible>Integer.IsEqual(Container(9989).NumItems,0)</visible>
@@ -48,6 +50,10 @@
         <property name="widgetSortby" tag="property" attribute="name|widgetSortby" />
         <property name="widgetSortorder" tag="property" attribute="name|widgetSortorder" />
         <property name="widgetLimit" tag="property" attribute="name|widgetLimit" />
+        <property name="widgetMovement" tag="property" attribute="name|widgetAspect" value="Square">4</property>
+        <property name="widgetMovement" tag="property" attribute="name|widgetAspect" value="Icon">4</property>
+        <property name="widgetMovement" tag="property" attribute="name|widgetAspect" value="Landscape">2</property>
+        <property name="widgetMovement">6</property>
 
         <property name="mainmenuid" tag="property" attribute="name|mainmenuid" />
 
@@ -89,6 +95,7 @@
                 <visible>String.IsEqual(Container(301).ListItem.Property(id),$SKINSHORTCUTS[mainmenuid])</visible>
             </include>
             <include content="Object_Widget_Spotlight">
+                <param name="controltype" value="list" />
                 <param name="id" value="$PYTHON[int(mainmenuid)]$PYTHON[int(id) + 3100]" />
                 <param name="top" value="52" />
                 <param name="left" value="0" />
@@ -108,6 +115,7 @@
                 <onback>301</onback>
                 <visible>Integer.IsGreater(Container($PYTHON[int(mainmenuid)]$PYTHON[int(id) + 3100]).NumItems,0) | Container($PYTHON[int(mainmenuid)]$PYTHON[int(id) + 3100]).IsUpdating</visible>
                 <visible>String.IsEqual(Container(301).ListItem.Property(id),$SKINSHORTCUTS[mainmenuid])</visible>
+                <movement>$SKINSHORTCUTS[widgetMovement]</movement>
             </include>
         </controls>
     </submenuOther>
