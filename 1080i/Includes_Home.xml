@@ -860,8 +860,8 @@
                         <itemgap>-52</itemgap>
                         <usecontrolcoords>true</usecontrolcoords>
                         <control type="group" id="7999"><height>0</height></control>
-                        <include>skinshortcuts-template-vertical-main</include>
                         <include>skinshortcuts-template-vertical-submenu</include>
+                        <include>skinshortcuts-template-vertical-main</include>
                     </control>
                     <control type="group">
                         <visible>Integer.IsEqual(Container(3000).NumItems,1)</visible>
@@ -880,7 +880,19 @@
                         <control type="group">
                             <width>1500</width>
                             <visible>!ControlGroup(3000).HasFocus()</visible>
+                            <visible>!Control.IsVisible(993100)</visible>
                             <include>skinshortcuts-template-vertical-info</include>
+                        </control>
+                        <control type="group">
+                            <width>1500</width>
+                            <visible>!ControlGroup(3000).HasFocus()</visible>
+                            <visible>Control.IsVisible(993100)</visible>
+                            <include content="Home_Vertical_Info">
+                                <param name="font" value="font_title" />
+                                <param name="plotheight" value="160" />
+                                <param name="titleheight" value="60" />
+                                <param name="id" value="993100" />
+                            </include>
                         </control>
                     </control>
                 </control>
@@ -949,8 +961,8 @@
                     <itemgap>-52</itemgap>
                     <usecontrolcoords>true</usecontrolcoords>
                     <control type="group" id="7999"><height>0</height></control>
-                    <include>skinshortcuts-template-vertical-main</include>
                     <include>skinshortcuts-template-vertical-submenu</include>
+                    <include>skinshortcuts-template-vertical-main</include>
                 </control>
                 <control type="group">
                     <visible>Integer.IsEqual(Container(3000).NumItems,1)</visible>
@@ -968,7 +980,18 @@
                     </control>
                     <control type="group">
                         <visible>!ControlGroup(3000).HasFocus()</visible>
+                        <visible>!Control.IsVisible(993100)</visible>
                         <include>skinshortcuts-template-vertical-info</include>
+                    </control>
+                    <control type="group">
+                        <visible>!ControlGroup(3000).HasFocus()</visible>
+                        <visible>Control.IsVisible(993100)</visible>
+                        <include content="Home_Vertical_Info">
+                            <param name="font" value="font_title" />
+                            <param name="plotheight" value="160" />
+                            <param name="titleheight" value="60" />
+                            <param name="id" value="993100" />
+                        </include>
                     </control>
                 </control>
             </control>

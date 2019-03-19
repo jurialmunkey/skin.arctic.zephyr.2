@@ -56,17 +56,20 @@
     <shortcut label="Widget" type="Widget" grouping="common" condition="Window.IsVisible(SkinSettings.xml)">Widget</shortcut>
 
     <!-- Properties -->
+    <!-- Widget Aspect -->
     <property property="widgetAspect">Poster</property>
     <property property="widgetAspect">Square</property>
     <property property="widgetAspect">Icon</property>
     <property property="widgetAspect">Landscape</property>
     <propertySettings property="widgetAspect" buttonID="9901" title="Widget Aspect" />
 
-    <property property="widgetAspect.backgroundWidget">Poster</property>
-    <property property="widgetAspect.backgroundWidget">Square</property>
-    <property property="widgetAspect.backgroundWidget">Icon</property>
-    <property property="widgetAspect.backgroundWidget">Landscape</property>
-    <propertySettings property="widgetAspect.backgroundWidget" buttonID="9902" title="Widget Aspect" />
+    <!-- Widget Target -->
+    <property property="widgetTarget">videos</property>
+    <property property="widgetTarget">music</property>
+    <property property="widgetTarget">pictures</property>
+    <property property="widgetTarget">programs</property>
+    <propertySettings property="widgetTarget" buttonID="9902" title="Widget Target" />
+
 
     <!-- Icon Overrides -->
     <icon labelID="livetv">special://skin/extras/icons/livetv.png</icon>

@@ -17,13 +17,31 @@
     <onunload condition="!Control.HasFocus(301) + [Window.Next(VideoFullScreen.xml) | Window.Next(MusicVisualisation.xml)]">SetFocus(301)</onunload>
     <onload condition="Window.Previous(VideoFullScreen.xml) | Window.Previous(MusicVisualisation.xml)">SetFocus(301)</onload>
     
-    <onload>RunScript(script.skinshortcuts,type=buildxml&amp;mainmenuID=301&amp;mode=single&amp;group=mainmenu|powermenu)</onload>
+    <onload>RunScript(script.skinshortcuts,type=buildxml&amp;mainmenuID=301&amp;levels=1&amp;group=mainmenu|powermenu)</onload>
     
     <onload condition="String.IsEmpty(Window(Home).Property(SkinSplashStarted))">AlarmClock(SkinSplashStarted,SetProperty(SkinSplashStarted,1,home),00:01,silent,false)</onload>
 
     <onunload>ClearProperty(SkinHelper.WidgetContainer)</onunload>
 
     <controls>
+        <control type="list" id="9989">
+            <description>hidden container for widget count</description>
+            <posx>-20</posx>
+            <posy>-20</posy>
+            <width>1</width>
+            <height>1</height>
+            <visible>true</visible>
+            <onup>50</onup>
+            <ondown>50</ondown>
+            <onleft>50</onleft>
+            <onright>50</onright>
+            <autoscroll time="10000">true</autoscroll>
+            <itemlayout width="1" height="1">
+            </itemlayout>
+            <focusedlayout height="1" width="1">
+            </focusedlayout>
+            <content><include>skinshortcuts-submenu-1</include></content>
+        </control>
         <control type="list" id="9988">
             <description>hidden container for playlist background</description>
             <posx>-20</posx>
