@@ -239,6 +239,7 @@
                                 <bordersize>15</bordersize>
                                 <aspectratio scalediffuse="false" align="left">scale</aspectratio>
                                 <texture background="true" diffuse="diffuse/banner-side.png">$VAR[Image_Fanart]</texture>
+                                <visible>!ListItem.IsParentFolder</visible>
                             </control>
                         </control>
                         <control type="group">
@@ -260,6 +261,7 @@
                                 <label>$VAR[Label_Plot]</label>
                                 <font>font_plotbox</font>
                                 <textcolor>main_bg_70</textcolor>
+                                <visible>!ListItem.IsParentFolder</visible>
                             </control>
                             <control type="label">
                                 <left>15</left>
