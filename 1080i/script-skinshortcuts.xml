@@ -226,6 +226,12 @@
                     <onunfocus condition="!String.IsEmpty(Skin.String(1134_Node))">SetProperty(customValue,$INFO[Skin.String(1134_Node)])</onunfocus>
                     <onunfocus condition="!String.IsEmpty(Skin.String(1134_Node))">SendClick(404)</onunfocus>
                     <onunfocus condition="!String.IsEmpty(Skin.String(1134_Node))">Skin.Reset(1134_Node)</onunfocus>
+
+                    <onback condition="!String.IsEmpty(Skin.String(1134_Node))">SetProperty(customProperty,1134_Node)</onback>
+                    <onback condition="!String.IsEmpty(Skin.String(1134_Node))">SetProperty(customValue,$INFO[Skin.String(1134_Node)])</onback>
+                    <onback condition="!String.IsEmpty(Skin.String(1134_Node))">SendClick(404)</onback>
+                    <onback condition="!String.IsEmpty(Skin.String(1134_Node))">Skin.Reset(1134_Node)</onback>
+
                     <include>Dialog_Standard_Button</include>
                     <visible>!String.EndsWith(Window.Property(groupname),.1)</visible>
                 </control>

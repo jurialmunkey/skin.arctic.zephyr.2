@@ -32,17 +32,6 @@
     <!-- For Power Menu -->
     <groupoverride group="powermenu" condition="Window.IsActive(DialogButtonMenu.xml)">Close</groupoverride>
 
-    <!-- Override Actions to Send to Hub -->
-    <override action="ActivateWindow(Videos,videodb://movies/years/,return)">
-        <action>ActivateWindow(1131)</action>
-    </override>
-    <override action="ActivateWindow(Videos,videodb://movies/genres/,return)">
-        <action>ActivateWindow(1132)</action>
-    </override>
-    <override action="ActivateWindow(Videos,videodb://movies/sets/,return)">
-        <action>ActivateWindow(1133)</action>
-    </override>
-
     <override action="Skin.SetString(SearchTerm)">
         <action>Skin.Reset(SearchTerm)</action>
         <action>Skin.SetString(SearchTerm)</action>

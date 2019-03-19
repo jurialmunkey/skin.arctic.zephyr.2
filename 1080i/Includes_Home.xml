@@ -4,6 +4,8 @@
         <control type="group">
             <top>55</top>
             <left>view_pad</left>
+            <include>Animation_Home_MenuFlip</include>
+            <visible>!Control.HasFocus(302) | !Skin.HasSetting(AuraStyleHome) | !Skin.HasSetting(VerticalHome)</visible>
             <control type="group">
                 <left>15</left>
                 <animation effect="slide" start="0" end="-120" condition="!Container(301).OnScrollNext" reversible="false" time="200" tween="quadratic">Conditional</animation>
@@ -76,6 +78,84 @@
         </control>
     </include>
 
+    <include name="Home_Submenu">
+        <control type="group">
+            <top>55</top>
+            <left>view_pad</left>
+            <include>Animation_Home_MenuFlip</include>
+            <visible>Control.HasFocus(302)</visible>
+            <control type="group">
+                <left>15</left>
+                <animation effect="slide" start="0" end="-120" condition="!Container(302).OnScrollNext" reversible="false" time="200" tween="quadratic">Conditional</animation>
+                <animation effect="slide" start="0" end="120" condition="!Container(302).OnScrollPrevious" reversible="false" time="200" tween="quadratic">Conditional</animation>
+
+                <!-- Focus Item -->
+                <control type="grouplist">
+                    <left>-15</left>
+                    <itemgap>40</itemgap>
+                    <height>70</height>
+                    <orientation>horizontal</orientation>
+                    <visible>Window.IsVisible(Home) + !$EXP[Exp_InfoVisible]</visible>
+                    <usecontrolcoords>true</usecontrolcoords>
+                    <control type="image">
+                        <visible>Container(302).HasPrevious</visible>
+                        <centertop>55%</centertop>
+                        <width>24</width>
+                        <height>24</height>
+                        <texture flipx="false" colordiffuse="main_fg_30">buttons/spin-left.png</texture>
+                    </control>
+                    <include content="Home_Submenu_Item">
+                        <param name="visible" value="Integer.IsGreater(Container(302).NumItems,0)" />
+                        <param name="id" value="302" />
+                        <param name="pos" value="0" />
+                    </include>
+                    <include content="Home_Submenu_Item">
+                        <param name="visible" value="Integer.IsGreater(Container(302).NumItems,1)" />
+                        <param name="id" value="302" />
+                        <param name="pos" value="1" />
+                    </include>
+                    <include content="Home_Submenu_Item">
+                        <param name="visible" value="Integer.IsGreater(Container(302).NumItems,2)" />
+                        <param name="id" value="302" />
+                        <param name="pos" value="2" />
+                    </include>
+                    <include content="Home_Submenu_Item">
+                        <param name="visible" value="Integer.IsGreater(Container(302).NumItems,3)" />
+                        <param name="id" value="302" />
+                        <param name="pos" value="3" />
+                    </include>
+                    <include content="Home_Submenu_Item">
+                        <param name="visible" value="Integer.IsGreater(Container(302).NumItems,4)" />
+                        <param name="id" value="302" />
+                        <param name="pos" value="4" />
+                    </include>
+                    <include content="Home_Submenu_Item">
+                        <param name="visible" value="Integer.IsGreater(Container(302).NumItems,5)" />
+                        <param name="id" value="302" />
+                        <param name="pos" value="5" />
+                    </include>
+                    <include content="Home_Submenu_Item">
+                        <param name="visible" value="Integer.IsGreater(Container(302).NumItems,6)" />
+                        <param name="id" value="302" />
+                        <param name="pos" value="6" />
+                    </include>
+                    <include content="Home_Submenu_Item">
+                        <param name="visible" value="Integer.IsGreater(Container(302).NumItems,7)" />
+                        <param name="id" value="302" />
+                        <param name="pos" value="7" />
+                    </include>
+                    <control type="image">
+                        <visible>Container(302).HasNext</visible>
+                        <centertop>55%</centertop>
+                        <width>24</width>
+                        <height>24</height>
+                        <texture flipx="true" colordiffuse="main_fg_30">buttons/spin-left.png</texture>
+                    </control>
+                </control>
+            </control>
+        </control>
+    </include>
+
     <include name="Home_Menu_Item">
         <control type="button">
             <width>auto</width>
@@ -108,6 +188,44 @@
             <texturefocus />
             <textoffsetx>0</textoffsetx>
             <animation effect="fade" start="100" end="30" condition="!Control.HasFocus(301) + Skin.HasSetting(AuraStyleHome) + Skin.HasSetting(VerticalHome) + !Control.HasFocus(98$PARAM[id]$PARAM[pos])">Conditional</animation>
+            <label>$INFO[Container($PARAM[id]).ListItemPosition($PARAM[pos]).Label]</label>
+            <visible>String.IsEqual(Container($PARAM[id]).ListItemPosition($PARAM[pos]).Label,Container($PARAM[id]).ListItem.Label)</visible>
+            <visible>$PARAM[visible]</visible>
+        </control>
+    </include>
+
+    <include name="Home_Submenu_Item">
+        <control type="button">
+            <width>auto</width>
+            <align>left</align>
+            <height>70</height>
+            <font>font_submenu_small</font>
+            <focusedcolor>main_fg_30</focusedcolor>
+            <selectedcolor>main_fg_30</selectedcolor>
+            <textcolor>main_fg_30</textcolor>
+            <onfocus>SetFocus($PARAM[id],$PARAM[pos])</onfocus>
+            <onclick>$INFO[Container($PARAM[id]).ListItemPosition($PARAM[pos]).Property(path)]</onclick>
+            <texturefocus />
+            <texturenofocus />
+            <textoffsetx>0</textoffsetx>
+            <label>$INFO[Container($PARAM[id]).ListItemPosition($PARAM[pos]).Label]</label>
+            <visible>!String.IsEqual(Container($PARAM[id]).ListItemPosition($PARAM[pos]).Label,Container($PARAM[id]).ListItem.Label)</visible>
+            <visible>$PARAM[visible]</visible>
+        </control>
+        <control type="button">
+            <width>auto</width>
+            <align>left</align>
+            <height>70</height>
+            <font>font_submenu</font>
+            <focusedcolor>main_fg_100</focusedcolor>
+            <selectedcolor>main_fg_100</selectedcolor>
+            <textcolor>main_fg_100</textcolor>
+            <onfocus>SetFocus($PARAM[id],$PARAM[pos])</onfocus>
+            <onclick>$INFO[Container($PARAM[id]).ListItemPosition($PARAM[pos]).Property(path)]</onclick>
+            <texturenofocus />
+            <texturefocus />
+            <textoffsetx>0</textoffsetx>
+            <animation effect="fade" start="100" end="30" condition="!Control.HasFocus($PARAM[id]) + Skin.HasSetting(AuraStyleHome) + Skin.HasSetting(VerticalHome) + !Control.HasFocus(98$PARAM[id]$PARAM[pos])">Conditional</animation>
             <label>$INFO[Container($PARAM[id]).ListItemPosition($PARAM[pos]).Label]</label>
             <visible>String.IsEqual(Container($PARAM[id]).ListItemPosition($PARAM[pos]).Label,Container($PARAM[id]).ListItem.Label)</visible>
             <visible>$PARAM[visible]</visible>
@@ -314,7 +432,7 @@
         </definition>
     </include>
 
-    <include name="Home_Vertical_Arctic">
+    <include name="Home_Multi_Vertical">
         <include>Global_Background</include>
         <include>Topbar</include>
         <control type="group">
@@ -408,7 +526,7 @@
                         <onleft condition="!Skin.HasSetting(SubmenuOnly) + Integer.IsGreater(Container(302).NumItems,0)">SetProperty(widgetTarget,$INFO[Container(301).ListItem.Property(widgetTarget)],home)</onleft>
                         <onleft condition="!Skin.HasSetting(SubmenuOnly) + Integer.IsGreater(Container(302).NumItems,0)">SetProperty(widgetAspect,$INFO[Container(301).ListItem.Property(widgetAspect)],home)</onleft>
                         <onleft condition="!Skin.HasSetting(SubmenuOnly) + Integer.IsGreater(Container(302).NumItems,0)">ActivateWindow(1135)</onleft>
-                        <onleft condition="Skin.HasSetting(SubmenuOnly)">SetFocus(302,0)</onleft>
+                        <onleft condition="Skin.HasSetting(SubmenuOnly) + Integer.IsGreater(Container(302).NumItems,0)">SetFocus(302,0)</onleft>
                         <animation effect="fade" start="100" end="0" time="200" condition="ControlGroup(3000).HasFocus()">Conditional</animation>
                         <top>0</top>
                         <onright>3000</onright>
@@ -513,7 +631,7 @@
         </control>
     </include>
 
-    <include name="Home_Vertical_Aura">
+    <include name="Home_Multi_Horizontal">
         <include>Global_Background</include>
         <control type="group">
             <top>30</top>
@@ -528,10 +646,14 @@
             </control>
         </control>
         <control type="list" id="302">
+            <ondown>301</ondown>
+            <onup>301</onup>
             <height>10</height>
             <top>-20</top>
-            <itemlayout width="200" />
-            <focusedlayout width="200" />
+            <orientation>horizontal</orientation>
+            <width>800</width>
+            <itemlayout width="100" />
+            <focusedlayout width="100" />
             <content><include>skinshortcuts-submenu</include></content>
         </control>
         <control type="list" id="301">
@@ -543,6 +665,9 @@
             <onup condition="!Skin.HasSetting(SubmenuOnly) + Integer.IsGreater(Container(302).NumItems,0)">SetProperty(widgetTarget,$INFO[Container(301).ListItem.Property(widgetTarget)],home)</onup>
             <onup condition="!Skin.HasSetting(SubmenuOnly) + Integer.IsGreater(Container(302).NumItems,0)">SetProperty(widgetAspect,$INFO[Container(301).ListItem.Property(widgetAspect)],home)</onup>
             <onup condition="!Skin.HasSetting(SubmenuOnly) + Integer.IsGreater(Container(302).NumItems,0)">ActivateWindow(1135)</onup>
+
+            <onup condition="Skin.HasSetting(SubmenuOnly) + Integer.IsGreater(Container(302).NumItems,0)">302</onup>
+
             <ondown>3000</ondown>
             <onfocus>ClearProperty(WidgetFocus,Home)</onfocus>
             <orientation>horizontal</orientation>
@@ -552,7 +677,8 @@
             <focusedlayout width="200" />
             <content><include>skinshortcuts-mainmenu</include></content>
         </control>
-        <include condition="!Skin.HasSetting(HorizontalHome)">Home_Menu</include>
+        <include>Home_Menu</include>
+        <include>Home_Submenu</include>
         <control type="group">
             <include>View_Group</include>
             <control type="group">
@@ -562,11 +688,8 @@
                 <bottom>-15</bottom>
                 <control type="grouplist" id="3000">
                     <top>-5</top>
-                    <onup condition="!Skin.HasSetting(AuraStyleHome)">noop</onup>
-                    <onup condition="Skin.HasSetting(AuraStyleHome)">301</onup>
+                    <onup>301</onup>
                     <ondown>noop</ondown>
-                    <onleft condition="!Skin.HasSetting(AuraStyleHome)">301</onleft>
-                    <onright condition="!Skin.HasSetting(AuraStyleHome)">noop</onright>
                     <scrolltime tween="quadratic">400</scrolltime>
                     <height>view_height</height>
                     <width>1800</width>
