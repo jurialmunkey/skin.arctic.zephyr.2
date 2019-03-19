@@ -448,7 +448,7 @@
             <control type="group">
                 <left>$PARAM[pad]</left>
                 <right>$PARAM[pad]</right>
-                <visible>Container.Content(songs)</visible>
+                <visible>Container.Content(songs) + !Skin.HasSetting(UseTrackNamingTemplate)</visible>
                 <control type="label">
                     <width>30</width>
                     <textcolor>$PARAM[fgcolor]_100</textcolor>
@@ -481,7 +481,7 @@
             <control type="group">
                 <left>$PARAM[pad]</left>
                 <right>$PARAM[pad]</right>
-                <visible>![Container.Content(songs) | Container.Content(movies) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(sets) | Container.Content(seasons)]</visible>
+                <visible>![Container.Content(songs) | Container.Content(movies) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(sets) | Container.Content(seasons)] | [Container.Content(songs) + Skin.HasSetting(UseTrackNamingTemplate)]</visible>
                 <control type="label">
                     <font>font_small_bold</font>
                     <textcolor>$PARAM[fgcolor]_100</textcolor>
