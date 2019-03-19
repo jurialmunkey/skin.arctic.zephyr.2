@@ -45,6 +45,9 @@
         <property name="widgetName" tag="label" />
         <property name="widgetName">$LOCALIZE[31105]</property>
         <property name="widgetPath" tag="property" attribute="name|list" />
+        <property name="widgetSortby" tag="property" attribute="name|widgetSortby" />
+        <property name="widgetSortdirection" tag="property" attribute="name|widgetSortdirection" />
+        <property name="widgetLimit" tag="property" attribute="name|widgetLimit" />
 
         <property name="mainmenuid" tag="property" attribute="name|mainmenuid" />
 
@@ -96,6 +99,9 @@
                 <param name="landscapelabelinclude" value="Defs_Null" />
                 <param name="target" value="$SKINSHORTCUTS[widgetTarget]" />
                 <param name="content" value="$SKINSHORTCUTS[widgetPath]" />
+                <param name="limit" value="$SKINSHORTCUTS[widgetLimit]" />
+                <param name="sortby" value="$SKINSHORTCUTS[widgetSortby]" />
+                <param name="sortorder" value="$SKINSHORTCUTS[widgetSortorder]" />
                 <param name="squarecondition" value="$PYTHON['true' if widgetAspect in 'Square' else 'false']" />
                 <param name="landscapecondition" value="$PYTHON['true' if widgetAspect in 'Landscape' else 'false']" />
                 <param name="iconcondition" value="$PYTHON['true' if widgetAspect in 'Icon' else 'false']" />

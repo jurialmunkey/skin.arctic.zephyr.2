@@ -287,6 +287,30 @@
                     <include>Dialog_Standard_Button</include>
                 </control>
 
+                <control type="button" id="9903" description="Sort by">
+                    <label>$LOCALIZE[581]</label>
+                    <visible>!String.IsEqual(Container(211).ListItem.Property(skinshortcuts-disabled),True)</visible>
+                    <label2>$INFO[Container(211).ListItem.Property(widgetSortby)]</label2>
+                    <visible>Skin.HasSetting(VerticalHome) + String.EndsWith(Window.Property(groupname),.1)</visible>
+                    <include>Dialog_Standard_Button</include>
+                </control>
+
+                <control type="button" id="9904" description="Sort direction">
+                    <label>$LOCALIZE[580]</label>
+                    <visible>!String.IsEqual(Container(211).ListItem.Property(skinshortcuts-disabled),True)</visible>
+                    <label2>$INFO[Container(211).ListItem.Property(widgetSortorder)]</label2>
+                    <visible>Skin.HasSetting(VerticalHome) + String.EndsWith(Window.Property(groupname),.1)</visible>
+                    <include>Dialog_Standard_Button</include>
+                </control>
+
+                <control type="button" id="9905" description="Item limit">
+                    <label>$LOCALIZE[31107]</label>
+                    <visible>!String.IsEqual(Container(211).ListItem.Property(skinshortcuts-disabled),True)</visible>
+                    <label2>$INFO[Container(211).ListItem.Property(widgetLimit)]</label2>
+                    <visible>Skin.HasSetting(VerticalHome) + String.EndsWith(Window.Property(groupname),.1)</visible>
+                    <include>Dialog_Standard_Button</include>
+                </control>
+
                 <control type="button" id="9312" description="Widget Path">
                     <label>$LOCALIZE[31039]</label>
                     <visible>!String.IsEqual(Container(211).ListItem.Property(skinshortcuts-disabled),True)</visible>

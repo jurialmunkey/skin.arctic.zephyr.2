@@ -61,15 +61,57 @@
     <property property="widgetAspect">Square</property>
     <property property="widgetAspect">Icon</property>
     <property property="widgetAspect">Landscape</property>
-    <propertySettings property="widgetAspect" buttonID="9901" title="Widget Aspect" />
+    <propertySettings property="widgetAspect" buttonID="9901" title="Widget Aspect Ratio" />
 
     <!-- Widget Target -->
     <property property="widgetTarget">videos</property>
     <property property="widgetTarget">music</property>
     <property property="widgetTarget">pictures</property>
     <property property="widgetTarget">programs</property>
-    <propertySettings property="widgetTarget" buttonID="9902" title="Widget Target" />
+    <propertySettings property="widgetTarget" buttonID="9902" title="Widget Content Type" />
 
+    <!-- Widget Sort -->
+    <property property="widgetSortby">name</property>
+    <property property="widgetSortby">random</property>
+    <property property="widgetSortby">dateadded</property>
+    <property property="widgetSortby">lastplayed</property>
+    <property property="widgetSortby">playcount</property>
+    <property property="widgetSortby">year</property>
+    <property property="widgetSortby">rating</property>
+    <property property="widgetSortby">userrating</property>
+    <property property="widgetSortby">votes</property>
+    <property property="widgetSortby">genre</property>
+    <property property="widgetSortby">country</property>
+    <property property="widgetSortby">studio</property>
+    <property property="widgetSortby">playlistorder</property>
+    <property property="widgetSortby">episodenumber</property>
+    <property property="widgetSortby">season</property>
+    <property property="widgetSortby">numberofepisodes</property>
+    <property property="widgetSortby">numberofwatchedepisodes</property>
+    <property property="widgetSortby">tvshowstatus</property>
+    <property property="widgetSortby">tvshowtitle</property>
+    <property property="widgetSortby">file</property>
+    <property property="widgetSortby">title</property>
+    <property property="widgetSortby">tracknumber</property>
+    <property property="widgetSortby">time</property>
+    <property property="widgetSortby">artist</property>
+    <property property="widgetSortby">album</property>
+    <property property="widgetSortby">lastupdated</property>
+    <property property="widgetSortby">lastused</property>
+    
+    <propertySettings property="widgetSortby" buttonID="9903" title="Widget Sort Method" />
+
+    <!-- Widget Direction -->
+    <property property="widgetSortorder">ascending</property>
+    <property property="widgetSortorder">descending</property>
+    <propertySettings property="widgetSortorder" buttonID="9904" title="Widget Sort Direction" />
+
+    <!-- Widget Limit -->
+    <property property="widgetLimit">$NUMBER[10]</property>
+    <property property="widgetLimit">$NUMBER[25]</property>
+    <property property="widgetLimit">$NUMBER[50]</property>
+    <property property="widgetLimit">$NUMBER[100]</property>
+    <propertySettings property="widgetLimit" buttonID="9905" title="Widget Item Limit" />
 
     <!-- Icon Overrides -->
     <icon labelID="livetv">special://skin/extras/icons/livetv.png</icon>

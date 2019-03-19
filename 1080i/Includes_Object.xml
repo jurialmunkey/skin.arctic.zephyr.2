@@ -125,6 +125,7 @@
         <param name="landscapelabelinclude" default="View_51_Wall_Landscape_Home_Label" />
         <param name="left" default="-15" />
         <param name="right" default="-25" />
+        <param name="limit" default="25" />
         <definition>
             <control type="$PARAM[controltype]" id="$PARAM[id]">
                 <nested />
@@ -226,7 +227,7 @@
                     </include>
                 </focusedlayout>
 
-                <content target="$PARAM[target]" sortby="$PARAM[sortby]" sortorder="$PARAM[sortorder]" limit="25">$PARAM[content]</content>
+                <content target="$PARAM[target]" sortby="$PARAM[sortby]" sortorder="$PARAM[sortorder]" limit="$PARAM[limit]">$PARAM[content]</content>
             </control>
         </definition>
     </include>
