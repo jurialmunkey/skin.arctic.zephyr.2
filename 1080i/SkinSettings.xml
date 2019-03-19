@@ -517,6 +517,14 @@
                         <onclick>ReloadSkin()</onclick>
                     </control>
 
+                    <control type="radiobutton" id="19705" description="Minimal Busy Loader">
+                        <visible>Integer.IsEqual(Window.Property(CurrentFocus),9007)</visible>
+                        <include>Defs_Settings_Button</include>
+                        <label>$LOCALIZE[31108]</label>
+                        <selected>Skin.HasSetting(MinimalBusyLoader)</selected>
+                        <onclick>Skin.ToggleSetting(MinimalBusyLoader)</onclick>
+                    </control>
+
 
                     <!-- ============ -->
                     <!-- Dependencies -->
