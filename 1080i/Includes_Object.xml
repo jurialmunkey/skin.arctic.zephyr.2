@@ -79,6 +79,7 @@
         </control>
 
         <control type="group">
+            <visible>!Window.IsVisible(DialogBusy.xml) | !Skin.HasSetting(MinimalBusyLoader)</visible>
             <visible>!Skin.HasSetting(DisableNowPlaying)</visible>
             <visible>![Window.IsVisible(SkinSettings.xml) | Window.IsVisible(SettingsCategory.xml) | Window.IsVisible(SettingsProfile.xml) | Window.IsVisible(SettingsSystemInfo.xml)]</visible>
             <visible>!Control.HasFocus(62)</visible>
