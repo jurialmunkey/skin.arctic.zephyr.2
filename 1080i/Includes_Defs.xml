@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
 
+    <variable name="Defs_Widget_Target">
+        <value condition="String.IsEqual(Skin.String(widgetTarget),video)">videos</value>
+        <value>$INFO[Skin.String(widgetTarget)]</value>
+    </variable>
+
     <variable name="Defs_Volume_Colordiffuse">
         <value condition="Window.IsVisible(Home) + !Skin.HasSetting(VerticalHome) + ![Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(DialogAddonInfo.xml)]">panel_fg_100</value>
         <value>main_fg_100</value>
