@@ -1158,7 +1158,21 @@
                     <aligny>top</aligny>
                     <textcolor>main_fg_100</textcolor>
                     <font>font_title</font>
-                    <visible>String.IsEmpty($PARAM[listitem]EpgEventTitle)</visible>
+                    <visible>String.IsEmpty($PARAM[listitem]EpgEventTitle) + !String.IsEmpty($PARAM[listitem]Title)</visible>
+                </control>
+                <control type="label">
+                    <label>$INFO[$PARAM[listitem]Label]</label>
+                    <aligny>top</aligny>
+                    <textcolor>main_fg_100</textcolor>
+                    <font>font_title</font>
+                    <visible>String.IsEmpty($PARAM[listitem]EpgEventTitle) + String.IsEmpty($PARAM[listitem]Title) + !String.IsEmpty($PARAM[listitem]Label)</visible>
+                </control>
+                <control type="label">
+                    <label>$INFO[ListItem.ChannelName]</label>
+                    <aligny>top</aligny>
+                    <textcolor>main_fg_100</textcolor>
+                    <font>font_title</font>
+                    <visible>String.IsEmpty($PARAM[listitem]EpgEventTitle) + String.IsEmpty($PARAM[listitem]Title) + String.IsEmpty($PARAM[listitem]Label)</visible>
                 </control>
             </control>
             <control type="label">

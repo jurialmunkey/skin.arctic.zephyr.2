@@ -622,6 +622,7 @@
                 <visible>$PARAM[mainitem]</visible>
             </control>
             <control type="label">
+                <animation effect="slide" end="0,18" condition="String.IsEmpty($PARAM[listitem]StartTime) + String.IsEmpty($PARAM[listitem]Genre)">Conditional</animation>
                 <left>30</left>
                 <right>30</right>
                 <top>20</top>
@@ -631,6 +632,33 @@
                 <selectedcolor>$PARAM[fgcolor]_100</selectedcolor>
                 <font>font_small_bold</font>
                 <label>$INFO[$PARAM[listitem]Title]</label>
+                <visible>!String.IsEmpty($PARAM[listitem]Title)</visible>
+            </control>
+            <control type="label">
+                <animation effect="slide" end="0,18" condition="String.IsEmpty($PARAM[listitem]StartTime) + String.IsEmpty($PARAM[listitem]Genre)">Conditional</animation>
+                <left>30</left>
+                <right>30</right>
+                <top>20</top>
+                <height>40</height>
+                <aligny>top</aligny>
+                <textcolor>$PARAM[fgcolor]_100</textcolor>
+                <selectedcolor>$PARAM[fgcolor]_100</selectedcolor>
+                <font>font_small_bold</font>
+                <label>$INFO[$PARAM[listitem]Label]</label>
+                <visible>String.IsEmpty($PARAM[listitem]Title) + !String.IsEmpty($PARAM[listitem]Label)</visible>
+            </control>
+            <control type="label">
+                <animation effect="slide" end="0,18" condition="String.IsEmpty($PARAM[listitem]StartTime) + String.IsEmpty($PARAM[listitem]Genre)">Conditional</animation>
+                <left>30</left>
+                <right>30</right>
+                <top>20</top>
+                <height>40</height>
+                <aligny>top</aligny>
+                <textcolor>$PARAM[fgcolor]_100</textcolor>
+                <selectedcolor>$PARAM[fgcolor]_100</selectedcolor>
+                <font>font_small_bold</font>
+                <label>$INFO[ListItem.ChannelName]</label>
+                <visible>String.IsEmpty($PARAM[listitem]Title) + String.IsEmpty($PARAM[listitem]Label)</visible>
             </control>
             <control type="label">
                 <left>30</left>
