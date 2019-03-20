@@ -137,7 +137,7 @@
         <value condition="[Window.IsVisible(script-NextAired-TVGuide.xml) | Window.IsVisible(script-NextAired-TVGuide2.xml)] + [Control.HasFocus(215) | Control.HasFocus(8215)] + !String.IsEmpty(Container(215).ListItem.Property(Fanart))">$INFO[Container(215).ListItem.Property(Fanart)]</value>
 
         <!-- Weather -->
-        <value condition="[Window.IsVisible(weather) | [Window.IsVisible(Home) + String.IsEqual(Container(301).ListItem.Property(widget),Weather)]] + System.HasAddon(resource.images.weatherfanart.multi)">$INFO[Window(Weather).Property(Current.FanartCode),resource://resource.images.weatherfanart.multi/,/]</value>     
+        <value condition="[Window.IsVisible(weather) | [Window.IsVisible(Home) + !Skin.HasSetting(VerticalHome) + String.IsEqual(Container(301).ListItem.Property(widget),Weather)] | [Window.IsVisible(Home) + Skin.HasSetting(VerticalHome) + String.IsEqual(Container(9989).ListItem.Property(list),Weather)]] + System.HasAddon(resource.images.weatherfanart.multi)">$INFO[Window(Weather).Property(Current.FanartCode),resource://resource.images.weatherfanart.multi/,/]</value>     
 
         <!-- Animated Fanart -->
         <value condition="Skin.HasSetting(SkinHelper.EnableAnimatedPosters) + !String.IsEmpty(ListItem.Art(animatedfanart))">$INFO[ListItem.Art(animatedfanart)]</value>
