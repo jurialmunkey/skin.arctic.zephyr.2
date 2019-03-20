@@ -61,7 +61,7 @@
 
     <include name="Topbar_Center">
         <control type="label">
-            <visible>!Skin.HasSetting(DisableHeader)</visible>
+            <visible>!Skin.HasSetting(DisableCenter)</visible>
             <aligny>center</aligny>
             <align>center</align>
             <font>font_byline</font>
@@ -73,7 +73,7 @@
     </include>
     <include name="Topbar_Right">
         <control type="grouplist">
-            <visible>!Skin.HasSetting(DisableHeader)</visible>
+            <visible>!Skin.HasSetting(DisableClock)</visible>
             <animation effect="slide" start="0" end="-80" time="200" tween="sine" condition="Window.IsVisible(DialogVolumeBar.xml) + ![Window.IsVisible(Home) + !Skin.HasSetting(VerticalHome)]">Conditional</animation>
             <right>view_pad</right>
             <align>right</align>

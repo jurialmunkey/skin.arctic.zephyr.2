@@ -65,6 +65,16 @@
                         <altlabel>[COLOR=Selected]$LOCALIZE[14022][/COLOR]</altlabel>
                     </control>
 
+                    <control type="togglebutton" id="9007" description="Furniture">
+                        <onfocus>SetProperty(CurrentFocus,$NUMBER[9007])</onfocus>
+                        <usealttexture>!Control.HasFocus(300) + Integer.IsEqual(Window.Property(CurrentFocus),9007)</usealttexture>
+                        <alttexturenofocus colordiffuse="$VAR[Defs_Settings_ToggleButton_Color]">common/white.png</alttexturenofocus>
+                        <width>550</width>
+                        <include>Defs_Settings_Button</include>
+                        <label>$LOCALIZE[31024]</label>
+                        <altlabel>[COLOR=Selected]$LOCALIZE[31024][/COLOR]</altlabel>
+                    </control>
+
                     <control type="togglebutton" id="9005" description="OSD">
                         <onfocus>SetProperty(CurrentFocus,$NUMBER[9005])</onfocus>
                         <usealttexture>!Control.HasFocus(300) + Integer.IsEqual(Window.Property(CurrentFocus),9005)</usealttexture>
@@ -84,18 +94,6 @@
                         <label>$LOCALIZE[31422]</label>
                         <altlabel>[COLOR=Selected]$LOCALIZE[31422][/COLOR]</altlabel>
                     </control>
-
-                    <control type="togglebutton" id="9007" description="Miscellaneous">
-                        <onfocus>SetProperty(CurrentFocus,$NUMBER[9007])</onfocus>
-                        <usealttexture>!Control.HasFocus(300) + Integer.IsEqual(Window.Property(CurrentFocus),9007)</usealttexture>
-                        <alttexturenofocus colordiffuse="$VAR[Defs_Settings_ToggleButton_Color]">common/white.png</alttexturenofocus>
-                        <width>550</width>
-                        <include>Defs_Settings_Button</include>
-                        <label>$LOCALIZE[31024]</label>
-                        <altlabel>[COLOR=Selected]$LOCALIZE[31024][/COLOR]</altlabel>
-                    </control>
-
-                    
 
                     <control type="togglebutton" id="9008" description="Dependencies">
                         <onfocus>SetProperty(CurrentFocus,$NUMBER[9008])</onfocus>
@@ -167,6 +165,21 @@
                         <label>$LOCALIZE[31113]</label>
                         <label2>$INFO[Skin.String(widgetPath)]</label2>
                         <onclick>RunScript(script.skinshortcuts,type=widgets&amp;showNone=True&amp;skinWidgetName=widgetName&amp;skinWidgetTarget=widgetTarget&amp;skinWidgetPath=widgetPath)</onclick>
+                    </control>
+                    <control type="button" id="19106" description="Customise Shutdown Menu">
+                        <visible>Integer.IsEqual(Window.Property(CurrentFocus),9001)</visible>
+                        <include>Defs_Settings_Button</include>
+                        <label>$LOCALIZE[31027]</label>
+                        <onclick>RunScript(script.skinshortcuts,type=manage&amp;group=powermenu)</onclick>
+                    </control>
+                    
+                    <control type="button" id="19107" description="Startup Video">
+                        <visible>Integer.IsEqual(Window.Property(CurrentFocus),9001)</visible>
+                        <include>Defs_Settings_Button</include>
+                        <label>31168</label>
+                        <label2>$INFO[Skin.String(StartupPlaylist)]</label2>
+                        <onclick condition="String.IsEmpty(Skin.String(StartupPlaylist))">Skin.SetFile(StartupPlaylist,.mp4|.avi|.mkv|.xvid|.wmv|.mov|.xsp|.mp3|.wma|.flac|.m3u)</onclick>
+                        <onclick condition="!String.IsEmpty(Skin.String(StartupPlaylist))">Skin.Reset(StartupPlaylist)</onclick>
                     </control>
 
                     <!-- ========== -->
@@ -305,29 +318,15 @@
                         <onclick>Skin.ToggleSetting(UseAuraShowcase)</onclick>
                     </control>
 
-                    <control type="radiobutton" id="19407" description="Codecs">
+                    <control type="radiobutton" id="19407" description="Roboto Fonts">
                         <visible>Integer.IsEqual(Window.Property(CurrentFocus),9004)</visible>
                         <include>Defs_Settings_Button</include>
-                        <label>$LOCALIZE[31025]</label>
-                        <selected>!Skin.HasSetting(DisableCodecs)</selected>
-                        <onclick>Skin.ToggleSetting(DisableCodecs)</onclick>
+                        <label>$LOCALIZE[31092]</label>
+                        <selected>Skin.HasSetting(RobotoFonts)</selected>
+                        <onclick>Skin.ToggleSetting(RobotoFonts)</onclick>
+                        <onclick>ReloadSkin()</onclick>
                     </control>
 
-                    <control type="radiobutton" id="19408" description="Header">
-                        <visible>Integer.IsEqual(Window.Property(CurrentFocus),9004)</visible>
-                        <include>Defs_Settings_Button</include>
-                        <label>$LOCALIZE[31026]</label>
-                        <selected>!Skin.HasSetting(DisableHeader)</selected>
-                        <onclick>Skin.ToggleSetting(DisableHeader)</onclick>
-                    </control>
-
-                    <control type="radiobutton" id="19409" description="Now Playing">
-                        <visible>Integer.IsEqual(Window.Property(CurrentFocus),9004)</visible>
-                        <include>Defs_Settings_Button</include>
-                        <label>$LOCALIZE[31029]</label>
-                        <selected>!Skin.HasSetting(DisableNowPlaying)</selected>
-                        <onclick>Skin.ToggleSetting(DisableNowPlaying)</onclick>
-                    </control>
                     <!-- ================= -->
                     <!-- Video / Music OSD -->
                     <!-- ================= -->
@@ -482,42 +481,52 @@
 
 
                     <!-- ============= -->
-                    <!-- Miscellaneous -->
+                    <!-- Furniture -->
                     <!-- ============= -->
-                    <!-- <control type="radiobutton" id="19701" description="Kiosk Mode">
-                        <visible>Integer.IsEqual(Window.Property(CurrentFocus),9007)</visible>
-                        <include>Defs_Settings_Button</include>
-                        <label>31199</label>
-                        <selected>Skin.HasSetting(global.kioskmode)</selected>
-                        <onclick>Skin.ToggleSetting(global.kioskmode)</onclick>
-                    </control> -->
 
-                    <control type="button" id="19702" description="Customise Shutdown Menu">
-                        <visible>Integer.IsEqual(Window.Property(CurrentFocus),9007)</visible>
-                        <include>Defs_Settings_Button</include>
-                        <label>$LOCALIZE[31027]</label>
-                        <onclick>RunScript(script.skinshortcuts,type=manage&amp;group=powermenu)</onclick>
-                    </control>
                     
-                    <control type="button" id="19703" description="Startup Video">
+
+                    <control type="radiobutton" id="19701" description="Header">
                         <visible>Integer.IsEqual(Window.Property(CurrentFocus),9007)</visible>
                         <include>Defs_Settings_Button</include>
-                        <label>31168</label>
-                        <label2>$INFO[Skin.String(StartupPlaylist)]</label2>
-                        <onclick condition="String.IsEmpty(Skin.String(StartupPlaylist))">Skin.SetFile(StartupPlaylist,.mp4|.avi|.mkv|.xvid|.wmv|.mov|.xsp|.mp3|.wma|.flac|.m3u)</onclick>
-                        <onclick condition="!String.IsEmpty(Skin.String(StartupPlaylist))">Skin.Reset(StartupPlaylist)</onclick>
+                        <label>$LOCALIZE[31026]</label>
+                        <selected>!Skin.HasSetting(DisableHeader)</selected>
+                        <onclick>Skin.ToggleSetting(DisableHeader)</onclick>
                     </control>
 
-                    <control type="radiobutton" id="19704" description="Roboto Fonts">
+                    <control type="radiobutton" id="19702" description="Center">
                         <visible>Integer.IsEqual(Window.Property(CurrentFocus),9007)</visible>
                         <include>Defs_Settings_Button</include>
-                        <label>$LOCALIZE[31092]</label>
-                        <selected>Skin.HasSetting(RobotoFonts)</selected>
-                        <onclick>Skin.ToggleSetting(RobotoFonts)</onclick>
-                        <onclick>ReloadSkin()</onclick>
+                        <label>Display center text</label>
+                        <selected>!Skin.HasSetting(DisableCenter)</selected>
+                        <onclick>Skin.ToggleSetting(DisableCenter)</onclick>
                     </control>
 
-                    <control type="radiobutton" id="19705" description="Minimal Busy Loader">
+                    <control type="radiobutton" id="19703" description="Clock">
+                        <visible>Integer.IsEqual(Window.Property(CurrentFocus),9007)</visible>
+                        <include>Defs_Settings_Button</include>
+                        <label>Display clock</label>
+                        <selected>!Skin.HasSetting(DisableClock)</selected>
+                        <onclick>Skin.ToggleSetting(DisableClock)</onclick>
+                    </control>
+
+                    <control type="radiobutton" id="19704" description="Codecs">
+                        <visible>Integer.IsEqual(Window.Property(CurrentFocus),9007)</visible>
+                        <include>Defs_Settings_Button</include>
+                        <label>$LOCALIZE[31025]</label>
+                        <selected>!Skin.HasSetting(DisableCodecs)</selected>
+                        <onclick>Skin.ToggleSetting(DisableCodecs)</onclick>
+                    </control>
+
+                    <control type="radiobutton" id="19705" description="Now Playing">
+                        <visible>Integer.IsEqual(Window.Property(CurrentFocus),9007)</visible>
+                        <include>Defs_Settings_Button</include>
+                        <label>$LOCALIZE[31029]</label>
+                        <selected>!Skin.HasSetting(DisableNowPlaying)</selected>
+                        <onclick>Skin.ToggleSetting(DisableNowPlaying)</onclick>
+                    </control>
+
+                    <control type="radiobutton" id="19706" description="Minimal Busy Loader">
                         <visible>Integer.IsEqual(Window.Property(CurrentFocus),9007)</visible>
                         <include>Defs_Settings_Button</include>
                         <label>$LOCALIZE[31108]</label>

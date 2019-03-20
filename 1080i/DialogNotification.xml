@@ -5,28 +5,39 @@
         <control type="group">
             <visible>!Window.IsVisible(Startup.xml)</visible>
             <control type="group">
+                <visible>!Window.IsVisible(fullscreenvideo) + !Window.IsVisible(visualisation)</visible>
                 <visible>!Window.IsVisible(Home.xml) | Skin.HasSetting(VerticalHome) | Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(DialogAddonInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml)</visible>
-                <include content="Dialog_Notification_Group" condition="![Window.IsVisible(SkinSettings.xml) | Window.IsVisible(SettingsCategory.xml) | Window.IsVisible(SettingsProfile.xml) | Window.IsVisible(SettingsSystemInfo.xml)] + !Window.IsVisible(fullscreenvideo) + !Window.IsVisible(visualisation)">
-                    <param name="main_id" value="401" />
-                    <param name="sub_id" value="402" />
+                <include content="Dialog_Notification_Group" condition="![Window.IsVisible(SkinSettings.xml) | Window.IsVisible(SettingsCategory.xml) | Window.IsVisible(SettingsProfile.xml) | Window.IsVisible(SettingsSystemInfo.xml)]">
+                    <param name="main_id" value="9401" />
+                    <param name="sub_id" value="9402" />
+                    <param name="label" value="$INFO[Control.GetLabel(401)]" />
+                    <param name="label2" value="$INFO[Control.GetLabel(402)]" />
                 </include>
-                <include content="Dialog_Notification_Group" condition="[Window.IsVisible(SkinSettings.xml) | Window.IsVisible(SettingsCategory.xml) | Window.IsVisible(SettingsProfile.xml) | Window.IsVisible(SettingsSystemInfo.xml)] + !Window.IsVisible(fullscreenvideo) + !Window.IsVisible(visualisation)">
-                    <param name="main_id" value="401" />
-                    <param name="sub_id" value="402" />
+                <include content="Dialog_Notification_Group" condition="[Window.IsVisible(SkinSettings.xml) | Window.IsVisible(SettingsCategory.xml) | Window.IsVisible(SettingsProfile.xml) | Window.IsVisible(SettingsSystemInfo.xml)]">
+                    <param name="main_id" value="9401" />
+                    <param name="sub_id" value="9402" />
+                    <param name="label" value="$INFO[Control.GetLabel(401)]" />
+                    <param name="label2" value="$INFO[Control.GetLabel(402)]" />
                     <param name="fgcolor" value="panel_fg" />
                 </include>
             </control>
 
             <control type="group">
                 <visible>!Window.IsVisible(Home.xml) | [!Skin.HasSetting(VerticalHome) + ![Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(DialogAddonInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml)]]</visible>
-                <include content="Dialog_Notification_Group" condition="Window.IsVisible(fullscreenvideo) | Window.IsVisible(visualisation) | Window.IsVisible(Home)">
-                    <param name="main_id" value="401" />
-                    <param name="sub_id" value="402" />
+                <visible>Window.IsVisible(fullscreenvideo) | Window.IsVisible(visualisation) | Window.IsVisible(Home)</visible>
+                <include content="Dialog_Notification_Group">
+                    <param name="main_id" value="9401" />
+                    <param name="sub_id" value="9402" />
+                    <param name="label" value="$INFO[Control.GetLabel(401)]" />
+                    <param name="label2" value="$INFO[Control.GetLabel(402)]" />
                     <param name="fgcolor" value="panel_fg" />
                     <param name="topalign" value="true" />
                     <param name="height" value="view_top" />
                 </include>
             </control>
         </control>
+
+        <control type="label" id="401" />
+        <control type="label" id="402" />
     </controls>
 </window>
