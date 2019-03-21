@@ -660,13 +660,11 @@
             <ondown condition="Integer.IsGreater(Container(302).NumItems,0) + Skin.HasSetting(SubmenuOnly)">302</ondown>
             <onup condition="!Player.HasVideo | !Skin.HasSetting(global.showvideo)">5600</onup>
             <onup condition="Player.HasVideo + Skin.HasSetting(global.showvideo)">noop</onup>
-            <onfocus>ClearProperty(WidgetFocus,Home)</onfocus>
+            <onfocus>SetProperty(SkinHelper.WidgetContainer,5600,Home)</onfocus>
             <orientation>horizontal</orientation>
             <height>10</height>
             <bottom>-100</bottom>
             <width>800</width>
-            <!-- <onleft>noop</onleft>
-            <onright>noop</onright> -->
             <itemlayout width="100" />
             <focusedlayout width="100" />
             <content><include>skinshortcuts-mainmenu</include></content>
@@ -703,7 +701,8 @@
         <control type="group">
             <top>900</top>
             <height>1080</height>
-            <animation effect="slide" start="0" end="0,-285" time="350" tween="quadratic" easing="out" condition="[Control.HasFocus(5610) | Control.HasFocus(302)]">Conditional</animation>
+            <animation effect="slide" start="0" end="0,-615" time="350" tween="quadratic" easing="out" condition="Control.HasFocus(5610) | String.IsEqual(Window(Home).Property(SkinHelper.WidgetContainer),5610)">Conditional</animation>
+            <animation effect="slide" start="0" end="0,-285" time="350" tween="quadratic" easing="out" condition="Control.HasFocus(5610) | Control.HasFocus(302)">Conditional</animation>
 
             <animation effect="slide" start="0" end="0,-275" time="250" tween="quadratic" easing="out" condition="Control.HasFocus(5600)">Conditional</animation>
             <animation effect="slide" start="0" end="0,-625" time="300" tween="quadratic" easing="out" condition="Control.HasFocus(5600) + $EXP[Exp_InfoVisible]">Conditional</animation>
@@ -743,8 +742,8 @@
             </control>
             <!-- Menubar -->
             <control type="group">
-                <animation effect="fade" start="100" end="0" time="200" condition="Control.HasFocus(302) | Control.HasFocus(5600)" reversible="false">Conditional</animation>
-                <animation effect="fade" start="0" end="100" time="200" condition="![Control.HasFocus(302) | Control.HasFocus(5600)]" reversible="false">Conditional</animation>
+                <animation effect="fade" start="100" end="0" time="200" condition="Control.HasFocus(302) | Control.HasFocus(5600) | Control.HasFocus(5610)" reversible="false">Conditional</animation>
+                <animation effect="fade" start="0" end="100" time="200" condition="![Control.HasFocus(302) | Control.HasFocus(5600) | Control.HasFocus(5610)]" reversible="false">Conditional</animation>
                 <animation effect="fade" start="100" end="0" time="200">WindowClose</animation>
                 <animation effect="fade" start="0" end="100" time="200">WindowOpen</animation>
                 <include>Defs_InfoDialog_Visible</include>
@@ -809,9 +808,11 @@
                     <animation effect="fade" condition="![Control.HasFocus(5610) | Control.HasFocus(302)]" time="350" tween="cubic" easing="inout" start="100" end="0">Conditional</animation>
                 
                     <include content="Home_Hub_Widget">
-                        <param name="widget" value="false" />
+                        <param name="widget" value="true" />
                         <onback>301</onback>
                         <onup>301</onup>
+                        <ondown condition="!String.IsEqual(Window(Home).Property(SkinHelper.WidgetContainer),5610) + Integer.IsGreater(Container(5610).NumItems,0)">SetProperty(SkinHelper.WidgetContainer,5610,Home)</ondown>
+                        <ondown condition="String.IsEqual(Window(Home).Property(SkinHelper.WidgetContainer),5610) + Integer.IsGreater(Container(5610).NumItems,0)">5610</ondown>
                     </include>
 
                 </control>
@@ -825,7 +826,6 @@
             <control type="panel" id="302">
                 <nested />
                 <scrolltime tween="quadratic">400</scrolltime>
-                <ondown>5610</ondown>
                 <include content="View_TopItems">
                     <param name="id" value="302" />
                 </include>
