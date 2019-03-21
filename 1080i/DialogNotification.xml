@@ -4,6 +4,7 @@
     <controls>
         <control type="group">
             <visible>!Window.IsVisible(Startup.xml)</visible>
+            <visible>!Window.IsVisible(DialogBusy.xml)</visible>
             <control type="group">
                 <visible>!Window.IsVisible(fullscreenvideo) + !Window.IsVisible(visualisation)</visible>
                 <visible>!Window.IsVisible(Home.xml) | Skin.HasSetting(VerticalHome) | Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(DialogAddonInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml)</visible>
