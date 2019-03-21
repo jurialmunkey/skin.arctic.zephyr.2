@@ -698,6 +698,17 @@
             <visible>$EXP[Exp_GlobalBackground]</visible>
         </control>
 
+        <control type="image">
+            <right>view_pad</right>
+            <top>view_pad</top>
+            <width>300</width>
+            <aspectratio align="right" aligny="top">keep</aspectratio>
+            <texture background="true">$INFO[Container(5600).ListItem.Art(clearlogo)]</texture>
+            <visible>$EXP[Exp_GlobalBackground]</visible>
+            <visible>!Control.HasFocus(5610)</visible>
+            <fadetime>600</fadetime>
+        </control>
+
         <control type="group">
             <top>900</top>
             <height>1080</height>
@@ -709,16 +720,16 @@
 
 
             <animation effect="slide" start="0" end="0,-900" time="300" tween="quadratic" condition="![Control.HasFocus(5610) | Control.HasFocus(302) | Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(DialogAddonInfo.xml)] + ![Window.Next(VideoFullScreen.xml) | Window.Next(MusicVisualisation.xml)]">WindowClose</animation>
-            <animation effect="slide" start="0" end="0,-615" time="300" tween="quadratic" condition="Control.HasFocus(302) + !Control.IsVisible(5610) + ![Window.Next(VideoFullScreen.xml) | Window.Next(MusicVisualisation.xml)]">WindowClose</animation>
+            <animation effect="slide" start="0" end="0,-615" time="300" tween="quadratic" condition="Control.HasFocus(302) + !String.IsEqual(Window(Home).Property(SkinHelper.WidgetContainer),5610) + ![Window.Next(VideoFullScreen.xml) | Window.Next(MusicVisualisation.xml)]">WindowClose</animation>
 
             <animation effect="slide" start="0" end="0,180" time="300" tween="quadratic" condition="![Control.HasFocus(5610) | Control.HasFocus(302) | Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(DialogAddonInfo.xml)] + [Window.Next(VideoFullScreen.xml) | Window.Next(MusicVisualisation.xml)]">WindowClose</animation>
-            <animation effect="slide" start="0" end="0,465" time="300" tween="quadratic" condition="Control.HasFocus(302) + !Control.IsVisible(5610) + [Window.Next(VideoFullScreen.xml) | Window.Next(MusicVisualisation.xml)]">WindowClose</animation>
+            <animation effect="slide" start="0" end="0,465" time="300" tween="quadratic" condition="Control.HasFocus(302) + !String.IsEqual(Window(Home).Property(SkinHelper.WidgetContainer),5610) + [Window.Next(VideoFullScreen.xml) | Window.Next(MusicVisualisation.xml)]">WindowClose</animation>
 
             <animation effect="slide" end="0" start="0,-900" time="300" tween="quadratic" condition="![Control.HasFocus(5610) | Control.HasFocus(302) | Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(DialogAddonInfo.xml)] + ![Window.Previous(VideoFullScreen.xml) | Window.Previous(MusicVisualisation.xml)]">WindowOpen</animation>
-            <animation effect="slide" end="0" start="0,-615" time="300" tween="quadratic" condition="Control.HasFocus(302) + !Control.IsVisible(5610) + ![Window.Previous(VideoFullScreen.xml) | Window.Previous(MusicVisualisation.xml)]">WindowOpen</animation>
+            <animation effect="slide" end="0" start="0,-615" time="300" tween="quadratic" condition="Control.HasFocus(302) + !String.IsEqual(Window(Home).Property(SkinHelper.WidgetContainer),5610) + ![Window.Previous(VideoFullScreen.xml) | Window.Previous(MusicVisualisation.xml)]">WindowOpen</animation>
 
             <animation effect="slide" end="0" start="0,180" time="300" tween="quadratic" condition="![Control.HasFocus(5610) | Control.HasFocus(302) | Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(DialogAddonInfo.xml)] + [Window.Previous(VideoFullScreen.xml) | Window.Previous(MusicVisualisation.xml)]">WindowOpen</animation>
-            <animation effect="slide" end="0" start="0,465" time="300" tween="quadratic" condition="Control.HasFocus(302) + !Control.IsVisible(5610) + [Window.Previous(VideoFullScreen.xml) | Window.Previous(MusicVisualisation.xml)]">WindowOpen</animation>
+            <animation effect="slide" end="0" start="0,465" time="300" tween="quadratic" condition="Control.HasFocus(302) + !String.IsEqual(Window(Home).Property(SkinHelper.WidgetContainer),5610) + [Window.Previous(VideoFullScreen.xml) | Window.Previous(MusicVisualisation.xml)]">WindowOpen</animation>
             <!-- Back Panel -->
             <control type="image">
                 <texture colordiffuse="HomePanel">common/bg.jpg</texture>

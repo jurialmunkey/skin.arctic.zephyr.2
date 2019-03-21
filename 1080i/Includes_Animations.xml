@@ -16,9 +16,6 @@
             <effect type="fade" start="0" end="100" time="300" delay="150"/>
             <effect type="slide" start="0,-48" end="0" center="auto" tween="back" easing="out" time="450" delay="150"/>
         </animation>
-        <!-- <animation type="WindowClose" reversible="false" condition="!Window.Next(SettingsCategory.xml) + !Window.Next(SkinSettings.xml) + !Window.Next(SettingsProfile.xml) + !Window.Next(SettingsSystemInfo.xml)">
-            <effect type="fade" start="100" end="0" time="300" tween="sine" easing="out" />
-        </animation> -->
     </include>
 
     <include name="Animation_Down">
@@ -30,14 +27,6 @@
             <effect type="fade" start="100" end="0" time="300" tween="sine" easing="out" />
             <effect type="slide" start="0" end="0,320" time="300" tween="cubic" easing="out" />
         </animation>
-        <!-- <animation type="WindowOpen" reversible="false">
-            <effect type="fade" start="0" end="100" time="300" tween="sine" easing="out"/>
-            <effect type="slide" start="0,320" end="0" time="400" tween="cubic" easing="out" />
-        </animation>
-        <animation type="WindowClose" reversible="false">
-            <effect type="fade" start="100" end="0" time="300" tween="sine" easing="out" />
-            <effect type="slide" start="0" end="0,320" time="300" tween="cubic" easing="out" />
-        </animation> -->
     </include>
 
     <include name="Animation_Common">
@@ -62,19 +51,19 @@
     </include>
 
     <include name="Animation_Common_Home">
-        <animation type="WindowOpen" reversible="false" condition="[Control.HasFocus(302) | Control.HasFocus(5610)] + Control.IsVisible(302) + Control.IsVisible(5610)">
+        <animation type="WindowOpen" reversible="false" condition="[Control.HasFocus(302) | Control.HasFocus(5610)] + Control.IsVisible(302) + String.IsEqual(Window(Home).Property(SkinHelper.WidgetContainer),5610)">
             <effect type="fade" start="0" end="100" time="300" tween="sine" easing="in" />
             <effect type="zoom" start="50" end="100" time="300" center="auto" tween="quadratic" easing="out" />
         </animation>
-        <animation type="WindowClose" reversible="false" condition="[Control.HasFocus(302) | Control.HasFocus(5610)] + Control.IsVisible(302) + Control.IsVisible(5610)">
+        <animation type="WindowClose" reversible="false" condition="[Control.HasFocus(302) | Control.HasFocus(5610)] + Control.IsVisible(302) + String.IsEqual(Window(Home).Property(SkinHelper.WidgetContainer),5610)">
             <effect type="fade" end="0" start="100" time="200" tween="sine" easing="out" />
             <effect type="zoom" end="75" start="100" time="200" center="auto" tween="quadratic" easing="in" />
         </animation>
 
-        <animation type="WindowOpen" reversible="false" condition="![[Control.HasFocus(302) | Control.HasFocus(5610)] + Control.IsVisible(302) + Control.IsVisible(5610)]">
+        <animation type="WindowOpen" reversible="false" condition="![[Control.HasFocus(302) | Control.HasFocus(5610)] + Control.IsVisible(302) + String.IsEqual(Window(Home).Property(SkinHelper.WidgetContainer),5610)]">
             <effect type="fade" start="0" end="100" time="300" />
         </animation>
-        <animation type="WindowClose" reversible="false" condition="![[Control.HasFocus(302) | Control.HasFocus(5610)] + Control.IsVisible(302) + Control.IsVisible(5610)]">
+        <animation type="WindowClose" reversible="false" condition="![[Control.HasFocus(302) | Control.HasFocus(5610)] + Control.IsVisible(302) + String.IsEqual(Window(Home).Property(SkinHelper.WidgetContainer),5610)]">
             <effect type="fade" end="0" start="100" time="300"  />
         </animation>
         
