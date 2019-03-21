@@ -262,6 +262,7 @@
         <param name="visible" default="true" />
         <param name="aspectratio" default="scale" />
         <param name="viewtype" default="$LOCALIZE[31415]" />
+        <param name="viewtypename" default="icon" />
         <param name="forced" default="false" />
         <param name="circle" default="false" />
         <param name="diffuse" default="diffuse/poster-wall.png" />
@@ -274,7 +275,7 @@
                 <orientation>$PARAM[orientation]</orientation>
                 <height>$PARAM[height]</height>
                 <visible>$PARAM[visible]</visible>
-                <viewtype label="$PARAM[viewtype]">$PARAM[viewtype]</viewtype>
+                <viewtype label="$PARAM[viewtype]">$PARAM[viewtypename]</viewtype>
                 <include content="View_Forced" condition="$PARAM[forced]">
                     <param name="string" value="$PARAM[viewtype]" />
                 </include>
@@ -320,6 +321,7 @@
                 <param name="id" value="51" />
                 <param name="height" value="view_height" />
                 <param name="viewtype" value="$LOCALIZE[31358]" />
+                <param name="viewtypename" value="icon" />
                 <param name="forced" value="true" />
                 <param name="visible" value="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(actors)" />
                 <include>View_Vertical_Movement</include>
@@ -337,6 +339,7 @@
                 <param name="iconheight" value="item_icon_height" />
                 <param name="aspectratio" value="keep" />
                 <param name="viewtype" value="$LOCALIZE[31360]" />
+                <param name="viewtypename" value="icon" />
                 <param name="diffuse" value="diffuse/square-wall.png" />
                 <param name="forced" value="true" />
                 <param name="visible" value="Container.Content(artists) | Container.Content(albums) | Container.Content(games) | Container.Content(programs) | Container.Content(addons) | Container.Content(images) | Container.Content()" />
@@ -359,6 +362,7 @@
                 <param name="iconheight" value="item_icon_height" />
                 <param name="diffuse" value="diffuse/landscape-wall.png" />
                 <param name="viewtype" value="$LOCALIZE[31359]" />
+                <param name="viewtypename" value="wide" />
                 <param name="forced" value="true" />
                 <param name="labelinclude" value="View_51_Wall_Landscape_Label" />
                 <param name="visible" value="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(videos) | Container.Content(images)" />
@@ -379,6 +383,7 @@
                 <param name="iconheight" value="220" />
                 <param name="diffuse" value="diffuse/icon-wall.png" />
                 <param name="viewtype" value="$LOCALIZE[31424]" />
+                <param name="viewtypename" value="icon" />
                 <param name="forced" value="true" />
                 <param name="visible" value="Container.Content(genres) | Container.Content(countries) | Container.Content(directors) | Container.Content(studios) | Container.Content(years)" />
                 <include>View_Vertical_Movement</include>
@@ -399,6 +404,7 @@
                 <param name="diffuse" value="diffuse/circle.png" />
                 <param name="circle" value="true" />
                 <param name="viewtype" value="$LOCALIZE[31425]" />
+                <param name="viewtypename" value="icon" />
                 <param name="forced" value="true" />
                 <param name="visible" value="Container.Content(artists) | Container.Content(images) | Container.Content(actors)" />
                 <include>View_Vertical_Movement</include>
@@ -421,6 +427,7 @@
                 <param name="id" value="514" />
                 <param name="height" value="view_height" />
                 <param name="viewtype" value="$LOCALIZE[31426]" />
+                <param name="viewtypename" value="icon" />
                 <param name="controllayout" value="View_514_Wall_Info_Layout" />
                 <param name="forced" value="true" />
                 <param name="visible" value="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons)" />
@@ -450,6 +457,7 @@
                 <param name="iconheight" value="265" />
                 <param name="diffuse" value="diffuse/landscape-small-wall.png" />
                 <param name="viewtype" value="$LOCALIZE[31431]" />
+                <param name="viewtypename" value="wide" />
                 <param name="forced" value="true" />
                 <param name="labelinclude" value="Defs_Null" />
                 <param name="visible" value="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(videos) | Container.Content(images)" />

@@ -14,6 +14,7 @@
                 <param name="right" value="-20" />
                 <param name="id" value="50" />
                 <param name="viewtype" value="$LOCALIZE[535]" />
+                <param name="viewtypename" value="list" />
                 <param name="forced" value="true" />
                 <param name="visible" value="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(actors) | [Container.Content(files) + Window.IsVisible(MyVideoNav.xml)] | Window.IsVisible(videoplaylist)" />
             </include>
@@ -37,6 +38,7 @@
                     <param name="right" value="-20" />
                     <param name="id" value="500" />
                     <param name="viewtype" value="$LOCALIZE[535]" />
+                    <param name="viewtypename" value="list" />
                     <param name="forced" value="true" />
                     <param name="visible" value="![Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(actors) | [Container.Content(files) + Window.IsVisible(MyVideoNav.xml)] | Window.IsVisible(videoplaylist)]" />
                 </include>
@@ -53,6 +55,7 @@
                 <param name="right" value="771.44" />
                 <param name="id" value="501" />
                 <param name="viewtype" value="$LOCALIZE[31298]" />
+                <param name="viewtypename" value="info" />
                 <param name="forced" value="true" />
                 <param name="flipsides" value="Skin.HasSetting(FlipSide)" />
                 <param name="visible" value="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(episodes)" />
@@ -75,6 +78,7 @@
                 <param name="right" value="1038.53" />
                 <param name="id" value="502" />
                 <param name="viewtype" value="$LOCALIZE[31423]" />
+                <param name="viewtypename" value="biginfo" />
                 <param name="forced" value="true" />
                 <param name="flipsides" value="Skin.HasSetting(FlipSide)" />
                 <param name="visible" value="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(episodes)" />
@@ -100,7 +104,7 @@
                 <focusposition>2</focusposition>
                 <pagecontrol>60</pagecontrol>
                 <scrolltime tween="quadratic">400</scrolltime>
-                <viewtype label="$LOCALIZE[31421]">$LOCALIZE[31421]</viewtype>
+                <viewtype label="$LOCALIZE[31421]">bigwide</viewtype>
                 <include content="View_Forced">
                     <param name="string" value="$LOCALIZE[31421]" />
                 </include>
@@ -367,6 +371,7 @@
         <param name="controllayout" default="View_Vertical" />
         <param name="controltype" default="panel" />
         <param name="viewtype" default="$LOCALIZE[535]" />
+        <param name="viewtypename" default="list" />
         <param name="forced" default="false" />
         <param name="flipsides" default="false" />
         <definition>
@@ -385,7 +390,7 @@
                 <height>$PARAM[height]</height>
                 <include>$PARAM[controllayout]</include>
                 <pagecontrol>60</pagecontrol>
-                <viewtype label="$PARAM[viewtype]">$PARAM[viewtype]</viewtype>
+                <viewtype label="$PARAM[viewtype]">$PARAM[viewtypename]</viewtype>
                 <include content="View_Forced" condition="$PARAM[forced]">
                     <param name="string" value="$PARAM[viewtype]" />
                 </include>
