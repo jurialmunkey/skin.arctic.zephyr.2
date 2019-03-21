@@ -503,6 +503,7 @@
                 <right>$PARAM[pad]</right>
                 <visible>![Container.Content(songs) | Container.Content(movies) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(sets) | Container.Content(seasons)] | [Container.Content(songs) + Skin.HasSetting(UseTrackNamingTemplate)]</visible>
                 <control type="image">
+                    <visible>!String.IsEmpty(ListItem.Overlay)</visible>
                     <centertop>50%</centertop>
                     <left>0</left>
                     <width>32</width>
@@ -510,6 +511,7 @@
                     <texture colordiffuse="$PARAM[fgcolor]_90">$VAR[Image_Overlay_List]</texture>
                 </control>
                 <control type="label">
+                    <animation effect="slide" end="-52" condition="String.IsEmpty(ListItem.Overlay)">Conditional</animation>
                     <left>52</left>
                     <font>font_small_bold</font>
                     <textcolor>$PARAM[fgcolor]_100</textcolor>
