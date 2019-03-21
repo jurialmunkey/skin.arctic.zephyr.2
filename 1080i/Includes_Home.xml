@@ -820,6 +820,7 @@
                 
                     <include content="Home_Hub_Widget">
                         <param name="widget" value="true" />
+                        <param name="widgetvisibility" value="String.IsEqual(Window(Home).Property(SkinHelper.WidgetContainer),5610)" />
                         <onback>301</onback>
                         <onup>301</onup>
                         <ondown condition="!String.IsEqual(Window(Home).Property(SkinHelper.WidgetContainer),5610) + Integer.IsGreater(Container(5610).NumItems,0)">SetProperty(SkinHelper.WidgetContainer,5610,Home)</ondown>
@@ -833,6 +834,7 @@
 
     <include name="Home_Hub_Widget">
         <param name="widget" default="true" />
+        <param name="widgetvisibility" default="true" />
         <definition>
             <control type="panel" id="302">
                 <nested />
@@ -843,17 +845,20 @@
                 <content><include>skinshortcuts-submenu</include></content>
             </control>
 
-            <control type="label">
-                <bottom>402.5</bottom>
-                <height>40</height>
-                <align>center</align>
-                <font>font_byline</font>
-                <textcolor>main_fg_70</textcolor>
-                <label>$VAR[Label_WidgetName]</label>
-                <visible>$PARAM[widget]</visible>
+            <control type="group">
+                <animation effect="fade" start="100" end="0" delay="200" time="200" condition="!$PARAM[widgetvisibility]">Conditional</animation>
+                <control type="label">
+                    <bottom>402.5</bottom>
+                    <height>40</height>
+                    <align>center</align>
+                    <font>font_byline</font>
+                    <textcolor>main_fg_70</textcolor>
+                    <label>$VAR[Label_WidgetName]</label>
+                    <visible>$PARAM[widget]</visible>
+                </control>
+                <include condition="$PARAM[widget]">skinshortcuts-template-spotlight-mainmenu</include>
+                <include condition="$PARAM[widget]">skinshortcuts-template-spotlight-submenu</include>
             </control>
-            <include condition="$PARAM[widget]">skinshortcuts-template-spotlight-mainmenu</include>
-            <include condition="$PARAM[widget]">skinshortcuts-template-spotlight-submenu</include>
         </definition>
     </include>
 
