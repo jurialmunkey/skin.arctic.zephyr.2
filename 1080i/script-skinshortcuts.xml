@@ -273,7 +273,7 @@
                     <label>$LOCALIZE[31038]</label>
                     <visible>!String.IsEqual(Container(211).ListItem.Property(skinshortcuts-disabled),True)</visible>
                     <label2>$INFO[Container(211).ListItem.Property(widgetName)]</label2>
-                    <visible>String.IsEqual(Container(211).ListItem.Property(path),ActivateWindow(1135)) | !Skin.HasSetting(SubmenuOnly)</visible>
+                    <visible>String.IsEqual(Container(211).ListItem.Property(path),ActivateWindow(1135)) | !Skin.HasSetting(SubmenuOnly) | !Skin.HasSetting(VerticalHome)</visible>
                     <include>Dialog_Standard_Button</include>
                     <visible>!String.EndsWith(Window.Property(groupname),.1)</visible>
                 </control>
@@ -282,7 +282,7 @@
                     <label>$VAR[Label_SkinShortcuts_SubmenuWidget]</label>
                     <visible>!String.IsEqual(Container(211).ListItem.Property(skinshortcuts-disabled),True)</visible>
                     <label2>$INFO[Container(211).ListItem.Property(widgetAspect)]</label2>
-                    <visible>String.IsEqual(Container(211).ListItem.Property(path),ActivateWindow(1135)) | !Skin.HasSetting(SubmenuOnly) | [Skin.HasSetting(VerticalHome) + String.EndsWith(Window.Property(groupname),.1)]</visible>
+                    <visible>String.IsEqual(Container(211).ListItem.Property(path),ActivateWindow(1135)) | !Skin.HasSetting(SubmenuOnly) | [Skin.HasSetting(VerticalHome) + String.EndsWith(Window.Property(groupname),.1)] | !Skin.HasSetting(VerticalHome)</visible>
                     <include>Dialog_Standard_Button</include>
                 </control>
 
