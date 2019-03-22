@@ -321,6 +321,15 @@
                     <param name="icon" value="$VAR[Image_Fanart]" />
                     <param name="diffuse" value="diffuse/landscape-mediainfo.png" />
                 </include>
+                <control type="image">
+                    <top>0</top>
+                    <right>50</right>
+                    <width>200</width>
+                    <height>360</height>
+                    <texture background="true">$VAR[Image_ClearLogo]</texture>
+                    <aspectratio align="right" aligny="bottom">keep</aspectratio>
+                    <visible>!String.IsEmpty(ListItem.Art(clearlogo)) | !String.IsEmpty(ListItem.Art(tvshow.clearlogo))</visible>
+                </control>
             </control>
             <control type="grouplist">
                 <top>430</top>
@@ -439,16 +448,18 @@
                     <label>$VAR[Label_List_Left]</label>
                 </control>
                 <control type="image">
-                    <animation effect="slide" end="10" condition="Container.Content(episodes) + Integer.IsGreater(ListItem.Season,9)">Conditional</animation>
+                    <animation effect="slide" end="-10" condition="!Container.Content(episodes) | String.IsEmpty(ListItem.Season) | String.IsEmpty(ListItem.Episode)">Conditional</animation>
+                    <animation effect="slide" end="-80" condition="[Container.Content(episodes) + [String.IsEmpty(ListItem.Season) | String.IsEmpty(ListItem.Episode)]] | [!Container.Content(episodes) + String.IsEmpty(ListItem.Year)]">Conditional</animation>
                     <centertop>50%</centertop>
-                    <left>80</left>
+                    <left>90</left>
                     <width>32</width>
                     <height>32</height>
                     <texture colordiffuse="$PARAM[fgcolor]_90">$VAR[Image_Overlay_List]</texture>
                 </control>                
                 <control type="label">
-                    <animation effect="slide" end="10" condition="Container.Content(episodes) + Integer.IsGreater(ListItem.Season,9)">Conditional</animation>
-                    <left>132</left>
+                    <animation effect="slide" end="-10" condition="!Container.Content(episodes) | String.IsEmpty(ListItem.Season) | String.IsEmpty(ListItem.Episode)">Conditional</animation>
+                    <animation effect="slide" end="-80" condition="[Container.Content(episodes) + [String.IsEmpty(ListItem.Season) | String.IsEmpty(ListItem.Episode)]] | [!Container.Content(episodes) + String.IsEmpty(ListItem.Year)]">Conditional</animation>
+                    <left>142</left>
                     <font>font_small_bold</font>
                     <textcolor>$PARAM[fgcolor]_100</textcolor>
                     <selectedcolor>$PARAM[fgcolor]_100</selectedcolor>

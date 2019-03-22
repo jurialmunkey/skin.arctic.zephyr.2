@@ -358,7 +358,7 @@
                 <param name="itemwidth" value="item_landscape_width" />
                 <param name="itemheight" value="item_row_height" />
                 <param name="icon" value="$VAR[Image_Fanart]" />
-                <param name="clearlogo" value="String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow)" />
+                <param name="clearlogo" value="!String.IsEmpty(ListItem.Art(clearlogo)) | !String.IsEmpty(ListItem.Art(tvshow.clearlogo))" />
                 <param name="iconheight" value="item_icon_height" />
                 <param name="diffuse" value="diffuse/landscape-wall.png" />
                 <param name="viewtype" value="$LOCALIZE[31359]" />
@@ -453,7 +453,7 @@
                 <param name="itemwidth" value="450" />
                 <param name="itemheight" value="275" />
                 <param name="icon" value="$VAR[Image_Fanart]" />
-                <param name="clearlogo" value="String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow)" />
+                <param name="clearlogo" value="!String.IsEmpty(ListItem.Art(clearlogo)) | !String.IsEmpty(ListItem.Art(tvshow.clearlogo))" />
                 <param name="iconheight" value="265" />
                 <param name="diffuse" value="diffuse/landscape-small-wall.png" />
                 <param name="viewtype" value="$LOCALIZE[31431]" />
