@@ -720,6 +720,15 @@
                     </control>
                     <control type="radiobutton" id="19821">
                         <visible>Integer.IsEqual(Window.Property(CurrentFocus),9008)</visible>
+                        <label>resource.images.weathericons.white</label>
+                        <label2>$INFO[System.AddonVersion(resource.images.weathericons.white)]        </label2>
+                        <onclick>Addon.OpenSettings(resource.images.weathericons.white)</onclick>
+                        <onclick condition="!System.HasAddon(resource.images.weathericons.white)">InstallAddon(resource.images.weathericons.white)</onclick>
+                        <selected>System.HasAddon(resource.images.weathericons.white)</selected>
+                        <include>Defs_Settings_Button</include>
+                    </control>
+                    <control type="radiobutton" id="19822">
+                        <visible>Integer.IsEqual(Window.Property(CurrentFocus),9008)</visible>
                         <label>script.artwork.beef</label>
                         <label2>$INFO[System.AddonVersion(script.artwork.beef)]        </label2>
                         <onclick>Addon.OpenSettings(script.artwork.beef)</onclick>
@@ -727,7 +736,7 @@
                         <selected>System.HasAddon(script.artwork.beef)</selected>
                         <include>Defs_Settings_Button</include>
                     </control>
-                    <control type="radiobutton" id="19822">
+                    <control type="radiobutton" id="19823">
                         <visible>Integer.IsEqual(Window.Property(CurrentFocus),9008)</visible>
                         <label>script.artwork.helper</label>
                         <label2>$INFO[System.AddonVersion(script.artwork.helper)]        </label2>
