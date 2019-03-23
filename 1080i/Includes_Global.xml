@@ -161,6 +161,9 @@
         <value condition="Skin.HasSetting(SkinHelper.EnableExtraFanart) + !String.IsEmpty(Container.ListItem.Art(fanart)) + Window.IsVisible(Home) + System.HasAddon(script.artwork.helper) + [String.IsEqual(Container.ListItem.DBTYPE,album) | String.IsEqual(Container.ListItem.DBTYPE,song)]">plugin://script.artwork.helper/multiimage/listitem/?refresh=$INFO[Container.ListItem.DBID]&amp;&amp;containerid=&amp;&amp;arttype=artist.fanart</value>
         <value condition="Skin.HasSetting(SkinHelper.EnableExtraFanart) + !String.IsEmpty(Container.ListItem.Art(fanart)) + Window.IsVisible(Home) + System.HasAddon(script.artwork.helper) + [String.IsEqual(Container.ListItem.DBTYPE,artist)]">plugin://script.artwork.helper/multiimage/listitem/?refresh=$INFO[Container.ListItem.DBID]&amp;&amp;containerid=&amp;&amp;arttype=fanart</value>
 
+        <!-- Skin Helper Extra Fanart -->
+        <value condition="!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Art.ExtraFanArt)) + Skin.HasSetting(SkinHelper.EnableExtraFanart) + [!Window.IsVisible(Home) | [Window.IsVisible(Home) + !String.IsEmpty(SkinHelper.WidgetContainer)]]">$INFO[Window(Home).Property(SkinHelper.ListItem.Art.ExtraFanArt)]</value>
+
         <!-- Fanart -->
         <value condition="!String.IsEmpty(ListItem.Art(fanart))">$INFO[ListItem.Art(fanart)]</value>
         <value condition="!String.IsEmpty(ListItem.Property(Fanart_Image))">$INFO[ListItem.Property(Fanart_Image)]</value>
