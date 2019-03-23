@@ -865,7 +865,9 @@
 
     <include name="Home_Multi_Vertical">
         <include>Global_Background</include>
-        <include>Topbar</include>
+        <include content="Topbar">
+            <param name="visible" value="ControlGroup(3000).HasFocus()" />
+        </include>
         <control type="group">
             <animation effect="slide" start="0" end="-257.14" time="200" condition="ControlGroup(3000).HasFocus()">Conditional</animation>
             <control type="group">

@@ -6,6 +6,7 @@
     
 
     <include name="Topbar">
+        <param name="visible" default="true" />
         <param name="info_hide" default="true" />
         <param name="fgcolor" default="main_fg" />
         <definition>
@@ -20,6 +21,7 @@
                         <param name="fgcolor" value="$PARAM[fgcolor]" />
                     </include>
                     <include content="Topbar_Center">
+                        <param name="visible" value="$PARAM[visible]" />
                         <param name="fgcolor" value="$PARAM[fgcolor]" />
                     </include>
                     <include content="Topbar_Right">
@@ -61,6 +63,7 @@
 
     <include name="Topbar_Center">
         <control type="label">
+            <visible>$PARAM[visible]</visible>
             <visible>!Skin.HasSetting(DisableCenter)</visible>
             <aligny>center</aligny>
             <align>center</align>
