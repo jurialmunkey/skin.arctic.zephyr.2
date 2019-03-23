@@ -80,6 +80,7 @@
                             </control>
                             <control type="grouplist" id="300">
                                 <onup>9601</onup>
+                                <ondown>4100</ondown>
                                 <include>Defs_ButtonList</include>
                                 <!-- <include content="Object_Info_Button">
                                     <param name="id" value="7" />
@@ -136,6 +137,83 @@
                         </control>
                     </control>
                 </control>
+
+                <control type="group" id="4000">
+                    <height>view_height</height>
+                    <control type="grouplist" id="4100">
+                        <top>-5</top>
+                        <scrolltime tween="quadratic">400</scrolltime>
+                        <onup>300</onup>
+                        <ondown>6000</ondown>
+                        <height>view_height</height>
+                        <orientation>vertical</orientation>
+                        <itemgap>-52</itemgap>
+                        <usecontrolcoords>true</usecontrolcoords>
+                        <control type="group" id="7599"><height>0</height></control>
+                        <include content="View_Cast_Toplabel">
+                            <param name="groupid" value="7501" />
+                            <param name="id" value="5001" />
+                            <param name="label" value="$INFO[ListItem.Artist,$LOCALIZE[31044] ,]" />
+                            <visible>Control.IsVisible(5001)</visible>
+                        </include>
+                        <include content="View_51_Wall_Container">
+                            <param name="controllayout" value="View_Cast" />
+                            <param name="id" value="5001" />
+                            <param name="height" value="item_cast_height" />
+                            <param name="orientation" value="horizontal" />
+                            <param name="itemwidth" value="item_square_width" />
+                            <param name="labelinclude" value="Defs_Null" />
+                            <param name="visible" value="Integer.IsGreater(Container(5001).NumItems,1) | Container(5001).IsUpdating" />
+                            <animation effect="fade" start="100" end="0" condition="!Integer.IsGreater(Container(5001).NumItems,0) | Container(5001).IsUpdating">Conditional</animation>
+                            <onclick>Dialog.Close(all,force)</onclick>
+                            <onclick>ActivateWindow(music,musicdb://albums/$INFO[Container(5001).ListItem.DBID]/,return)</onclick>
+                            <onback condition="Skin.HasSetting(DisableExtendedInfo)">SetFocus(50)</onback>
+                            <onback>SetFocus(5000)</onback>
+                            <onback>300</onback>
+                            <content target="music">musicdb://albums/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22artist%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22$INFO[ListItem.Artist]%22%5D%7D%5D%7D%2C%22type%22%3A%22albums%22%7D</content>
+                        </include>
+
+                        <include content="View_Cast_Toplabel">
+                            <param name="groupid" value="7508" />
+                            <param name="id" value="5008" />
+                            <param name="label" value="$LOCALIZE[31141]" />
+                            <visible>Control.IsVisible(5008)</visible>
+                        </include>
+                        <include content="View_51_Wall_Container">
+                            <param name="controllayout" value="View_Cast" />
+                            <param name="id" value="5008" />
+                            <param name="height" value="item_cast_height" />
+                            <param name="orientation" value="horizontal" />
+                            <param name="itemwidth" value="item_landscape_width" />
+                            <param name="iconheight" value="item_icon_height" />
+                            <param name="diffuse" value="diffuse/landscape-wall.png" />
+                            <param name="labelinclude" value="View_Cast_Video_Label" />
+                            <param name="icon" value="$INFO[ListItem.Icon]" />
+                            <param name="visible" value="Integer.IsGreater(Container(5008).NumItems,0) | Container(5008).IsUpdating" />
+                            <animation effect="fade" start="100" end="0" condition="!Integer.IsGreater(Container(5008).NumItems,0) | Container(5008).IsUpdating">Conditional</animation>
+                            <onclick>SetFocus(50)</onclick>
+                            <onclick>SetFocus(300)</onclick>
+                            <onclick>Dialog.Close(all,force)</onclick>
+                            <onclick>PlayMedia($INFO[Container(5008).ListItem.FileNameAndPath])</onclick>
+                            <onback condition="Skin.HasSetting(DisableExtendedInfo)">SetFocus(50)</onback>
+                            <onback>SetFocus(5000)</onback>
+                            <onback>300</onback>
+                            <content limit="25" target="videos" sortby="file">$VAR[Info_Youtube]</content>
+                        </include>
+                    </control>
+                </control>
+
+                <include content="Info_Gallery">
+                    <param name="id" value="6000" />
+                    <onleft>noop</onleft>
+                    <onright>noop</onright>
+                    <onback condition="Skin.HasSetting(DisableExtendedInfo)">SetFocus(50)</onback>
+                    <onback>SetFocus(5000)</onback>
+                    <onback>300</onback>
+                    <include>Items_Info_Gallery</include>
+                    <visible>Integer.IsGreater(Container(6000).NumItems,0) | Container(6000).IsUpdating</visible>
+                </include>
+                <control type="group"></control>
             </control>
         </control>
 

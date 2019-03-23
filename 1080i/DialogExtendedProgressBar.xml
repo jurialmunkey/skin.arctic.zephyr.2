@@ -11,7 +11,7 @@
             <visible>!Window.IsVisible(fullscreenvideo)</visible>
             <visible>!Window.IsVisible(visualisation)</visible>
             <visible>!Window.IsVisible(Startup.xml)</visible>
-            <visible>!Window.IsVisible(Home.xml) | [Control.HasFocus(302) | Control.HasFocus(5610)]</visible>
+            <visible>!Window.IsVisible(Home.xml) | Skin.HasSetting(VerticalHome) | Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(DialogAddonInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) | String.IsEqual(Window(Home).Property(SkinHelper.WidgetContainer),5610)</visible>
             <include condition="![Window.IsVisible(SkinSettings.xml) | Window.IsVisible(SettingsCategory.xml) | Window.IsVisible(SettingsProfile.xml) | Window.IsVisible(SettingsSystemInfo.xml)]">Dialog_Notification_Group</include>
             <include content="Dialog_Notification_Group" condition="[Window.IsVisible(SkinSettings.xml) | Window.IsVisible(SettingsCategory.xml) | Window.IsVisible(SettingsProfile.xml) | Window.IsVisible(SettingsSystemInfo.xml)]">
                 <param name="fgcolor" value="panel_fg" />

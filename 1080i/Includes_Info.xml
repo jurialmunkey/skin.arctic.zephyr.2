@@ -2,6 +2,7 @@
 <includes>
     <variable name="Info_Youtube">
         <value condition="!String.IsEmpty(ListItem.TvShowTitle)">$INFO[ListItem.TvShowTitle,plugin://plugin.video.youtube/search/?q=,]</value>
+        <value condition="!String.IsEmpty(ListItem.Artist)">$INFO[ListItem.Artist,plugin://plugin.video.youtube/search/?q=,]</value>
         <value condition="!String.IsEmpty(ListItem.Title)">$INFO[ListItem.Title,plugin://plugin.video.youtube/search/?q=,]</value>
         <value>$INFO[ListItem.Label,plugin://plugin.video.youtube/search/?q=,]</value>
     </variable>
