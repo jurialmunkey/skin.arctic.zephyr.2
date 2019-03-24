@@ -26,37 +26,37 @@
 
     <include name="Defs_InfoTrick">
         <!-- IF its the first time lets remember the original title so we can get back -->
-        <onclick condition="!String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + String.IsEmpty(Window(Home).Property(InfoTrick.0.Title))">SetProperty(InfoTrick.0.Title,$INFO[Window(Home).Property(InfoTrick.OriginalTitle)],Home)</onclick>
+        <onclick condition="String.IsEmpty(Container($PARAM[id]).ListItem.TvShowTitle) + !String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + String.IsEmpty(Window(Home).Property(InfoTrick.0.Title))">SetProperty(InfoTrick.0.Title,$INFO[Window(Home).Property(InfoTrick.OriginalTitle)],Home)</onclick>
 
         <!-- Set The Title for InfoTrick to have history -->
         <!-- TODO Add more history or recycle properties -->
-        <onclick condition="!String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + String.IsEmpty(Window(Home).Property(InfoTrick.1.Title))">SetProperty(InfoTrick.1.Title,$INFO[Container($PARAM[id]).ListItem.Title],Home)</onclick>
-        <onclick condition="!String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + !String.IsEmpty(Window(Home).Property(InfoTrick.1.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.2.Title))">SetProperty(InfoTrick.2.Title,$INFO[Container($PARAM[id]).ListItem.Title],Home)</onclick>
-        <onclick condition="!String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + !String.IsEmpty(Window(Home).Property(InfoTrick.2.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.3.Title))">SetProperty(InfoTrick.3.Title,$INFO[Container($PARAM[id]).ListItem.Title],Home)</onclick>
-        <onclick condition="!String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + !String.IsEmpty(Window(Home).Property(InfoTrick.3.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.4.Title))">SetProperty(InfoTrick.4.Title,$INFO[Container($PARAM[id]).ListItem.Title],Home)</onclick>
-        <onclick condition="!String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + !String.IsEmpty(Window(Home).Property(InfoTrick.4.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.5.Title))">SetProperty(InfoTrick.5.Title,$INFO[Container($PARAM[id]).ListItem.Title],Home)</onclick>
-        <onclick condition="!String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + !String.IsEmpty(Window(Home).Property(InfoTrick.5.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.6.Title))">SetProperty(InfoTrick.6.Title,$INFO[Container($PARAM[id]).ListItem.Title],Home)</onclick>
-        <onclick condition="!String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + !String.IsEmpty(Window(Home).Property(InfoTrick.6.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.7.Title))">SetProperty(InfoTrick.7.Title,$INFO[Container($PARAM[id]).ListItem.Title],Home)</onclick>
-        <onclick condition="!String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + !String.IsEmpty(Window(Home).Property(InfoTrick.7.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.8.Title))">SetProperty(InfoTrick.8.Title,$INFO[Container($PARAM[id]).ListItem.Title],Home)</onclick>
-        <onclick condition="!String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + !String.IsEmpty(Window(Home).Property(InfoTrick.8.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.9.Title))">SetProperty(InfoTrick.9.Title,$INFO[Container($PARAM[id]).ListItem.Title],Home)</onclick>
-        <onclick condition="!String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + !String.IsEmpty(Window(Home).Property(InfoTrick.9.Title))">SetProperty(InfoTrick.9.Title,$INFO[Container($PARAM[id]).ListItem.Title],Home)</onclick>
+        <onclick condition="String.IsEmpty(Container($PARAM[id]).ListItem.TvShowTitle) + !String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + String.IsEmpty(Window(Home).Property(InfoTrick.1.Title))">SetProperty(InfoTrick.1.Title,$INFO[Container($PARAM[id]).ListItem.Title],Home)</onclick>
+        <onclick condition="String.IsEmpty(Container($PARAM[id]).ListItem.TvShowTitle) + !String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + !String.IsEmpty(Window(Home).Property(InfoTrick.1.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.2.Title))">SetProperty(InfoTrick.2.Title,$INFO[Container($PARAM[id]).ListItem.Title],Home)</onclick>
+        <onclick condition="String.IsEmpty(Container($PARAM[id]).ListItem.TvShowTitle) + !String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + !String.IsEmpty(Window(Home).Property(InfoTrick.2.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.3.Title))">SetProperty(InfoTrick.3.Title,$INFO[Container($PARAM[id]).ListItem.Title],Home)</onclick>
+        <onclick condition="String.IsEmpty(Container($PARAM[id]).ListItem.TvShowTitle) + !String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + !String.IsEmpty(Window(Home).Property(InfoTrick.3.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.4.Title))">SetProperty(InfoTrick.4.Title,$INFO[Container($PARAM[id]).ListItem.Title],Home)</onclick>
+        <onclick condition="String.IsEmpty(Container($PARAM[id]).ListItem.TvShowTitle) + !String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + !String.IsEmpty(Window(Home).Property(InfoTrick.4.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.5.Title))">SetProperty(InfoTrick.5.Title,$INFO[Container($PARAM[id]).ListItem.Title],Home)</onclick>
+        <onclick condition="String.IsEmpty(Container($PARAM[id]).ListItem.TvShowTitle) + !String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + !String.IsEmpty(Window(Home).Property(InfoTrick.5.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.6.Title))">SetProperty(InfoTrick.6.Title,$INFO[Container($PARAM[id]).ListItem.Title],Home)</onclick>
+        <onclick condition="String.IsEmpty(Container($PARAM[id]).ListItem.TvShowTitle) + !String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + !String.IsEmpty(Window(Home).Property(InfoTrick.6.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.7.Title))">SetProperty(InfoTrick.7.Title,$INFO[Container($PARAM[id]).ListItem.Title],Home)</onclick>
+        <onclick condition="String.IsEmpty(Container($PARAM[id]).ListItem.TvShowTitle) + !String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + !String.IsEmpty(Window(Home).Property(InfoTrick.7.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.8.Title))">SetProperty(InfoTrick.8.Title,$INFO[Container($PARAM[id]).ListItem.Title],Home)</onclick>
+        <onclick condition="String.IsEmpty(Container($PARAM[id]).ListItem.TvShowTitle) + !String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + !String.IsEmpty(Window(Home).Property(InfoTrick.8.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.9.Title))">SetProperty(InfoTrick.9.Title,$INFO[Container($PARAM[id]).ListItem.Title],Home)</onclick>
+        <onclick condition="String.IsEmpty(Container($PARAM[id]).ListItem.TvShowTitle) + !String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + !String.IsEmpty(Window(Home).Property(InfoTrick.9.Title))">SetProperty(InfoTrick.9.Title,$INFO[Container($PARAM[id]).ListItem.Title],Home)</onclick>
 
         <!-- Set the active flag so videoinfo unload conditions don't delete the property we just set -->
-        <onclick condition="!String.IsEmpty(Container($PARAM[id]).ListItem.DBID)">SetProperty(InfoTrick.Active,1,Home)</onclick>
+        <onclick condition="String.IsEmpty(Container($PARAM[id]).ListItem.TvShowTitle) + !String.IsEmpty(Container($PARAM[id]).ListItem.DBID)">SetProperty(InfoTrick.Active,1,Home)</onclick>
 
         <!-- Set videoinfo position back to top -->
-        <onclick condition="!String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + Skin.HasSetting(DisableExtendedInfo)">SetFocus(50)</onclick>
-        <onclick condition="!String.IsEmpty(Container($PARAM[id]).ListItem.DBID)">SetFocus(5000)</onclick>
-        <onclick condition="!String.IsEmpty(Container($PARAM[id]).ListItem.DBID)">SetFocus(300)</onclick>
+        <onclick condition="String.IsEmpty(Container($PARAM[id]).ListItem.TvShowTitle) + !String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + Skin.HasSetting(DisableExtendedInfo)">SetFocus(50)</onclick>
+        <onclick condition="String.IsEmpty(Container($PARAM[id]).ListItem.TvShowTitle) + !String.IsEmpty(Container($PARAM[id]).ListItem.DBID)">SetFocus(5000)</onclick>
+        <onclick condition="String.IsEmpty(Container($PARAM[id]).ListItem.TvShowTitle) + !String.IsEmpty(Container($PARAM[id]).ListItem.DBID)">SetFocus(300)</onclick>
 
         <!-- Kill the videoinfo dialog -->
-        <onclick condition="!String.IsEmpty(Container($PARAM[id]).ListItem.DBID)">Dialog.Close(all,force)</onclick>
+        <onclick condition="String.IsEmpty(Container($PARAM[id]).ListItem.TvShowTitle) + !String.IsEmpty(Container($PARAM[id]).ListItem.DBID)">Dialog.Close(all,force)</onclick>
 
         <!-- Reload the InfoTrick Window -->
-        <onclick condition="!String.IsEmpty(Container($PARAM[id]).ListItem.DBID)">ActivateWindow(1137)</onclick>
+        <onclick condition="String.IsEmpty(Container($PARAM[id]).ListItem.TvShowTitle) + !String.IsEmpty(Container($PARAM[id]).ListItem.DBID)">ActivateWindow(1137)</onclick>
 
-        <!-- If not a DBID item then use extendedinfo instead -->
-        <onclick condition="String.IsEmpty(Container($PARAM[id]).ListItem.DBID)">RunScript(script.extendedinfo,info=extendedinfo,name=$INFO[Container($PARAM[id]).ListItem.Title])</onclick>
+        <!-- If not a DBID movie then use extendedinfo instead -->
+        <onclick condition="!String.IsEmpty(Container($PARAM[id]).ListItem.TvShowTitle) | String.IsEmpty(Container($PARAM[id]).ListItem.DBID)">RunScript(script.extendedinfo,info=extendedinfo,name=$INFO[Container($PARAM[id]).ListItem.Title])</onclick>
     </include>
 
     <include name="Defs_Null"><description>Nothing</description></include>
