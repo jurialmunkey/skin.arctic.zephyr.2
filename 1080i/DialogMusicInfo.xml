@@ -166,8 +166,8 @@
                             <param name="labelinclude" value="Defs_Null" />
                             <param name="visible" value="Integer.IsGreater(Container(5001).NumItems,0) | Container(5001).IsUpdating" />
                             <animation effect="fade" start="100" end="0" condition="!Integer.IsGreater(Container(5001).NumItems,0) | Container(5001).IsUpdating">Conditional</animation>
-                            <onclick>Dialog.Close(all,force)</onclick>
-                            <onclick>ActivateWindow(music,musicdb://albums/$INFO[Container(5001).ListItem.DBID]/,return)</onclick>
+                            <!-- <onclick>Dialog.Close(all,force)</onclick>
+                            <onclick>ActivateWindow(music,musicdb://albums/$INFO[Container(5001).ListItem.DBID]/,return)</onclick> -->
                             <onback condition="Skin.HasSetting(DisableExtendedInfo)">SetFocus(50)</onback>
                             <onback>SetFocus(5000)</onback>
                             <onback>300</onback>
