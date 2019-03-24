@@ -95,4 +95,77 @@
             </control>
         </definition>
     </include>
+
+    <include name="Info_Button_Grouplist">
+        <control type="grouplist" id="300">
+            <onup>9601</onup>
+            <ondown>4100</ondown>
+            <include>Defs_ButtonList</include>
+            <include content="Object_Info_Button">
+                <param name="id" value="8" />
+                <param name="groupid" value="8008" />
+                <param name="label" value="Play" />
+                <param name="icon" value="special://skin/extras/icons/play3.png" />
+                <param name="visible" value="Control.IsEnabled(8)" />
+            </include>
+            <include content="Object_Info_Button">
+                <param name="id" value="11" />
+                <param name="groupid" value="8011" />
+                <param name="label" value="Trailer" />
+                <param name="icon" value="special://skin/extras/icons/video.png" />
+                <param name="visible" value="Control.IsEnabled(11)" />
+            </include>
+            <include content="Object_Info_Button">
+                <param name="id" value="8150" />
+                <param name="groupid" value="8050" />
+                <param name="label" value="Cast" />
+                <param name="icon" value="special://skin/extras/icons/person.png" />
+                <param name="visible" value="Control.IsEnabled(8150)" />
+                <onclick>SetFocus(50)</onclick>
+            </include>
+            <include content="Object_Info_Button">
+                <param name="id" value="7" />
+                <param name="groupid" value="8007" />
+                <param name="label" value="Rating" />
+                <param name="icon" value="special://skin/extras/icons/userrating.png" />
+                <param name="visible" value="Control.IsEnabled(7)" />
+            </include>
+            <include content="Object_Info_Button">
+                <param name="id" value="10" />
+                <param name="groupid" value="8010" />
+                <param name="label" value="Thumb" />
+                <param name="icon" value="special://skin/extras/icons/paintbrush.png" />
+                <param name="visible" value="Control.IsEnabled(10)" />
+            </include>
+            <include content="Object_Info_Button">
+                <param name="id" value="8101" />
+                <param name="groupid" value="8001" />
+                <param name="label" value="Artwork" />
+                <param name="icon" value="special://skin/extras/icons/paintbrush2.png" />
+                <param name="visible" value="[String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,musicvideo) | String.IsEqual(ListItem.DBType,episode)] + system.hasaddon(script.artwork.beef)" />
+                <onclick condition="String.IsEqual(ListItem.DBType,episode)">XBMC.RunScript(script.artwork.beef, mode=gui, mediatype=episode, dbid=$INFO[ListItem.DBID])</onclick>
+                <onclick condition="String.IsEqual(ListItem.DBType,tvshow)">XBMC.RunScript(script.artwork.beef, mode=gui, mediatype=tvshow, dbid=$INFO[ListItem.DBID])</onclick>
+                <onclick condition="String.IsEqual(ListItem.DBType,movie)">XBMC.RunScript(script.artwork.beef, mode=gui, mediatype=movie, dbid=$INFO[ListItem.DBID])</onclick>
+            </include>
+            <include content="Object_Info_Button">
+                <param name="id" value="8102" />
+                <param name="groupid" value="8002" />
+                <param name="label" value="All Art" />
+                <param name="visible" value="[String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,musicvideo) | String.IsEqual(ListItem.DBType,episode)] + system.hasaddon(script.artwork.beef)" />
+                <param name="icon" value="special://skin/extras/icons/paintbucket3.png" />
+                <onclick condition="String.IsEqual(ListItem.DBType,episode)">XBMC.RunScript(script.artwork.beef, mode=auto, mediatype=tvshow, dbid=$INFO[ListItem.DBID])</onclick>
+                <onclick condition="String.IsEqual(ListItem.DBType,tvshow)">XBMC.RunScript(script.artwork.beef, mode=auto, mediatype=tvshow, dbid=$INFO[ListItem.DBID])</onclick>
+                <onclick condition="String.IsEqual(ListItem.DBType,movie)">XBMC.RunScript(script.artwork.beef, mode=auto, mediatype=movie, dbid=$INFO[ListItem.DBID])</onclick>
+            </include>
+            <include content="Object_Info_Button">
+                <param name="id" value="6" />
+                <param name="groupid" value="8006" />
+                <param name="label" value="Refresh" />
+                <param name="icon" value="special://skin/extras/icons/update.png" />
+                <param name="visible" value="Control.IsEnabled(6)" />
+                <onfocus>SetProperty(FilePath,1,Home)</onfocus>
+                <onunfocus>ClearProperty(FilePath,Home)</onunfocus>
+            </include>
+        </control>
+    </include>
 </includes>
