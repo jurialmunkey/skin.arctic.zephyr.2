@@ -448,8 +448,8 @@
                     <label>$VAR[Label_List_Left]</label>
                 </control>
                 <control type="image">
-                    <animation effect="slide" end="-10" condition="!Container.Content(episodes) | String.IsEmpty(ListItem.Season) | String.IsEmpty(ListItem.Episode)">Conditional</animation>
-                    <animation effect="slide" end="-80" condition="[Container.Content(episodes) + [String.IsEmpty(ListItem.Season) | String.IsEmpty(ListItem.Episode)]] | [!Container.Content(episodes) + String.IsEmpty(ListItem.Year)]">Conditional</animation>
+                    <animation effect="slide" end="-10" condition="!Container.Content(episodes) | String.IsEmpty(ListItem.Episode)">Conditional</animation>
+                    <animation effect="slide" end="-80" condition="[Container.Content(episodes) + [String.IsEmpty(ListItem.Episode)]] | [!Container.Content(episodes) + String.IsEmpty(ListItem.Year)]">Conditional</animation>
                     <centertop>50%</centertop>
                     <left>90</left>
                     <width>32</width>
@@ -457,8 +457,8 @@
                     <texture colordiffuse="$PARAM[fgcolor]_90">$VAR[Image_Overlay_List]</texture>
                 </control>                
                 <control type="label">
-                    <animation effect="slide" end="-10" condition="!Container.Content(episodes) | String.IsEmpty(ListItem.Season) | String.IsEmpty(ListItem.Episode)">Conditional</animation>
-                    <animation effect="slide" end="-80" condition="[Container.Content(episodes) + [String.IsEmpty(ListItem.Season) | String.IsEmpty(ListItem.Episode)]] | [!Container.Content(episodes) + String.IsEmpty(ListItem.Year)]">Conditional</animation>
+                    <animation effect="slide" end="-10" condition="!Container.Content(episodes) | String.IsEmpty(ListItem.Episode)">Conditional</animation>
+                    <animation effect="slide" end="-80" condition="[Container.Content(episodes) + [String.IsEmpty(ListItem.Episode)]] | [!Container.Content(episodes) + String.IsEmpty(ListItem.Year)]">Conditional</animation>
                     <left>142</left>
                     <font>font_small_bold</font>
                     <textcolor>$PARAM[fgcolor]_100</textcolor>

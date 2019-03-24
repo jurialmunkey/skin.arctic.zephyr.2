@@ -29,6 +29,7 @@
     </variable>
 
     <variable name="Label_List_Left">
+        <value condition="[Container.Content(episodes) | String.IsEqual(ListItem.DBType,episode)] + String.Contains(ListItem.Episode,S)">$INFO[ListItem.Season]$INFO[ListItem.Episode]</value>
         <value condition="[Container.Content(episodes) | String.IsEqual(ListItem.DBType,episode)] + Integer.IsLess(ListItem.Episode,10) + Integer.IsLess(ListItem.Season,10)">$INFO[ListItem.Season,0,]$INFO[ListItem.Episode,x0,]</value>
         <value condition="[Container.Content(episodes) | String.IsEqual(ListItem.DBType,episode)] + Integer.IsLess(ListItem.Episode,10) + !Integer.IsLess(ListItem.Season,10)">$INFO[ListItem.Season]$INFO[ListItem.Episode,x0,]</value>
         <value condition="[Container.Content(episodes) | String.IsEqual(ListItem.DBType,episode)] + !Integer.IsLess(ListItem.Episode,10) + Integer.IsLess(ListItem.Season,10)">$INFO[ListItem.Season,0,]$INFO[ListItem.Episode,x,]</value>
