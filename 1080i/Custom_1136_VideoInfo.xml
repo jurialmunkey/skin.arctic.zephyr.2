@@ -6,12 +6,9 @@
     <controls>
         <include>Global_Background</include>
         <include>Topbar</include>
-        <control type="button" id="9000">
-            <onfocus>SetFocus(9999)</onfocus>
-        </control>
         <control type="list" id="9999">
             <onfocus condition="!Integer.IsEqual(Container(9999).NumItems,0) + !Container(9999).IsUpdating">Action(Info)</onfocus>
-            <onfocus condition="Integer.IsEqual(Container(9999).NumItems,0) | Container(9999).IsUpdating">AlarmClock(doinfo,SetFocus(9000),00:01,silent)</onfocus>
+            <onfocus condition="Integer.IsEqual(Container(9999).NumItems,0) | Container(9999).IsUpdating">AlarmClock(doinfo,SetFocus(9999),00:01,silent)</onfocus>
             <itemlayout />
             <focusedlayout />
             <content limit="1" target="videos">$VAR[Defs_InfoTrick_Title]</content>
@@ -19,8 +16,7 @@
 
         <control type="group">
             <visible>!Window.IsVisible(DialogVideoInfo.xml)</visible>
-            <include>Global_Overlay</include>
-            <include>Defs_BusySpinner</include>
+            <include>Dialog_Busy</include>
         </control>
     </controls>
 </window>

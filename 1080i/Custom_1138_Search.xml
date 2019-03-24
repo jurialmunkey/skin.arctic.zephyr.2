@@ -261,6 +261,7 @@
                     <param name="visible" value="Integer.IsGreater(Container(5009).NumItems,0) | Container(5009).IsUpdating" />
                     <animation effect="fade" start="100" end="0" condition="!Integer.IsGreater(Container(5009).NumItems,0) | Container(5009).IsUpdating">Conditional</animation>
                     <content target="videos" sortby="file" limit="25">plugin://plugin.video.youtube/search/?q=$INFO[Skin.String(SearchTerm)]</content>
+                    <visible>System.HasAddon(plugin.video.youtube)</visible>
                 </include>
 
             </control>

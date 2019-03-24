@@ -1,6 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
 
+    <include name="Dialog_Busy">
+        <control type="group">
+            <visible>!Skin.HasSetting(MinimalBusyLoader) | Window.IsVisible(Startup.xml) | Window.IsVisible(fullscreenvideo) | Window.IsVisible(visualisation)</visible>
+            <visible>!Window.IsVisible(DialogConfirm.xml)</visible>
+            <include>Animation_FadeIn</include>
+            <include>Animation_FadeOut</include>
+            <include>Global_Overlay</include>
+            <include>Global_Overlay</include>
+            <include>Defs_BusySpinner</include>
+        </control>
+        
+        <control type="group">
+            <visible>Skin.HasSetting(MinimalBusyLoader)</visible>
+            <visible>!Window.IsVisible(DialogConfirm.xml)</visible>
+            <visible>!Window.IsVisible(DialogNotification.xml)</visible>
+            <visible>!Window.IsVisible(fullscreenvideo)</visible>
+            <visible>!Window.IsVisible(visualisation)</visible>
+            <visible>!Window.IsVisible(Startup.xml)</visible>
+            <visible>!Window.IsVisible(Home.xml) | [Control.HasFocus(302) | Control.HasFocus(5610)]</visible>
+
+            <control type="group">
+                <description>Busy animation</description>
+                <left>view_pad</left>
+                <control type="image">
+                    <animation effect="rotate" condition="true" start="0" end="360" loop="true" time="1000" center="auto">Conditional</animation>
+                    <left>-96</left>
+                    <centertop>50%</centertop>
+                    <width>80</width>
+                    <height>80</height>
+                    <texture colordiffuse="$VAR[ColorHighlight]">dialog/loading-spinner.png</texture>
+                    <aspectratio>keep</aspectratio>
+                </control>
+            </control>
+
+            <include condition="![Window.IsVisible(SkinSettings.xml) | Window.IsVisible(SettingsCategory.xml) | Window.IsVisible(SettingsProfile.xml) | Window.IsVisible(SettingsSystemInfo.xml)]" content="Dialog_Notification_Group">
+                <param name="label" value="$LOCALIZE[20186]..." />
+            </include>
+            <include content="Dialog_Notification_Group" condition="[Window.IsVisible(SkinSettings.xml) | Window.IsVisible(SettingsCategory.xml) | Window.IsVisible(SettingsProfile.xml) | Window.IsVisible(SettingsSystemInfo.xml)]">
+                <param name="fgcolor" value="panel_fg" />
+                <param name="label" value="$LOCALIZE[20186]..." />
+            </include>
+        </control>
+    </include>
+
     <include name="Dialog_PowerMenu">
         <definition>
             <control type="group">
