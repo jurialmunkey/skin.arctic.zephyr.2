@@ -192,11 +192,10 @@
                             <param name="icon" value="$INFO[ListItem.Icon]" />
                             <param name="visible" value="Integer.IsGreater(Container(5008).NumItems,0) | Container(5008).IsUpdating" />
                             <animation effect="fade" start="100" end="0" condition="!Integer.IsGreater(Container(5008).NumItems,0) | Container(5008).IsUpdating">Conditional</animation>
-                            <!-- <onclick>SetFocus(50)</onclick> -->
-                            <!-- <onclick>SetFocus(300)</onclick> -->
-                            <!-- <onclick>Dialog.Close(all,force)</onclick> -->
-                            <onclick>PlayMedia($INFO[Container(5008).ListItem.FileNameAndPath],1)</onclick>
-                            <onclick>Fullscreen</onclick>
+                            <onclick>SetFocus(50)</onclick>
+                            <onclick>SetFocus(300)</onclick>
+                            <onclick>Dialog.Close(all,force)</onclick>
+                            <onclick>PlayMedia($INFO[Container(5008).ListItem.FileNameAndPath])</onclick>
                             <onback condition="Skin.HasSetting(DisableExtendedInfo)">SetFocus(50)</onback>
                             <onback>SetFocus(5000)</onback>
                             <onback>300</onback>
