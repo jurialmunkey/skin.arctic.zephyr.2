@@ -80,7 +80,7 @@
                             </control>
                             <control type="grouplist" id="300">
                                 <onup>9601</onup>
-                                <ondown>4100</ondown>
+                                <ondown>5001</ondown>
                                 <include>Defs_ButtonList</include>
                                 <!-- <include content="Object_Info_Button">
                                     <param name="id" value="7" />
@@ -164,7 +164,7 @@
                             <param name="orientation" value="horizontal" />
                             <param name="itemwidth" value="item_square_width" />
                             <param name="labelinclude" value="Defs_Null" />
-                            <param name="visible" value="Integer.IsGreater(Container(5001).NumItems,1) | Container(5001).IsUpdating" />
+                            <param name="visible" value="Integer.IsGreater(Container(5001).NumItems,0) | Container(5001).IsUpdating" />
                             <animation effect="fade" start="100" end="0" condition="!Integer.IsGreater(Container(5001).NumItems,0) | Container(5001).IsUpdating">Conditional</animation>
                             <onclick>Dialog.Close(all,force)</onclick>
                             <onclick>ActivateWindow(music,musicdb://albums/$INFO[Container(5001).ListItem.DBID]/,return)</onclick>
@@ -175,6 +175,79 @@
                         </include>
 
                         <include content="View_Cast_Toplabel">
+                            <param name="groupid" value="7502" />
+                            <param name="id" value="5002" />
+                            <param name="label" value="$INFO[Container(5001).ListItem.Title,Tracks from ,]" />
+                            <visible>Control.IsVisible(5002)</visible>
+                        </include>
+                        <control type="panel" id="5002">
+                            <visible>Integer.IsGreater(Container(5002).NumItems,0) | Container(5002).IsUpdating</visible>
+                            <visible>Integer.IsGreater(Container(5001).NumItems,0)</visible>
+                            <top>74</top>
+                            <left>15</left>
+                            <height>338.5</height>
+                            <orientation>horizontal</orientation>
+                            <itemlayout height="item_list_height" width="586.67">
+                                <control type="group">
+                                    <left>20</left>
+                                    <right>20</right>
+                                    <control type="label">
+                                        <width>30</width>
+                                        <font>font_small</font>
+                                        <textcolor>main_fg_100</textcolor>
+                                        <selectedcolor>main_fg_100</selectedcolor>
+                                        <label>$INFO[ListItem.TrackNumber]</label>
+                                    </control>
+                                    <control type="label">
+                                        <left>50</left>
+                                        <font>font_small_bold</font>
+                                        <textcolor>main_fg_100</textcolor>
+                                        <selectedcolor>main_fg_100</selectedcolor>
+                                        <label>$INFO[ListItem.Label]</label>
+                                    </control>
+                                    <control type="label">
+                                        <align>right</align>
+                                        <font>font_small</font>
+                                        <textcolor>main_fg_100</textcolor>
+                                        <selectedcolor>main_fg_100</selectedcolor>
+                                        <label>$INFO[ListItem.Duration]</label>
+                                    </control>
+                                </control>
+                            </itemlayout>
+                            <focusedlayout height="item_list_height" width="586.67">
+                                <control type="image">
+                                    <texture colordiffuse="main_fg_100" border="10">diffuse/box.png</texture>
+                                </control>
+                                <control type="group">
+                                    <left>20</left>
+                                    <right>20</right>
+                                    <control type="label">
+                                        <width>30</width>
+                                        <font>font_small</font>
+                                        <textcolor>main_bg_100</textcolor>
+                                        <selectedcolor>main_bg_100</selectedcolor>
+                                        <label>$INFO[ListItem.TrackNumber]</label>
+                                    </control>
+                                    <control type="label">
+                                        <left>50</left>
+                                        <font>font_small_bold</font>
+                                        <textcolor>main_bg_100</textcolor>
+                                        <selectedcolor>main_bg_100</selectedcolor>
+                                        <label>$INFO[ListItem.Label]</label>
+                                    </control>
+                                    <control type="label">
+                                        <align>right</align>
+                                        <font>font_small</font>
+                                        <textcolor>main_bg_100</textcolor>
+                                        <selectedcolor>main_bg_100</selectedcolor>
+                                        <label>$INFO[ListItem.Duration]</label>
+                                    </control>
+                                </control>
+                            </focusedlayout>
+                            <content target="music">musicdb://albums/$INFO[Container(5001).ListItem.DBID]/</content>
+                        </control>
+
+                        <!-- <include content="View_Cast_Toplabel">
                             <param name="groupid" value="7508" />
                             <param name="id" value="5008" />
                             <param name="label" value="$LOCALIZE[31141]" />
@@ -201,7 +274,7 @@
                             <onback>300</onback>
                             <content limit="25" target="videos" sortby="file">$VAR[Info_Youtube]</content>
                             <visible>System.HasAddon(plugin.video.youtube)</visible>
-                        </include>
+                        </include> -->
                     </control>
                 </control>
 
