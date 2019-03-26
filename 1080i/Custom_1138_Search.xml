@@ -242,6 +242,24 @@
                 </include>
 
                 <include content="View_Cast_Toplabel">
+                    <param name="groupid" value="7514" />
+                    <param name="id" value="5014" />
+                    <param name="label" value="$INFO[Container(5014).NumItems,$LOCALIZE[24001] (,)]" />
+                    <visible>Control.IsVisible(5014)</visible>
+                </include>
+                <include content="View_51_Wall_Container">
+                    <param name="controllayout" value="View_Cast" />
+                    <param name="id" value="5014" />
+                    <param name="height" value="item_cast_height" />
+                    <param name="orientation" value="horizontal" />
+                    <param name="itemwidth" value="item_square_width" />
+                    <param name="labelinclude" value="Defs_Null" />
+                    <param name="visible" value="Integer.IsGreater(Container(5014).NumItems,0) | Container(5014).IsUpdating" />
+                    <animation effect="fade" start="100" end="0" condition="!Integer.IsGreater(Container(5014).NumItems,0) | Container(5014).IsUpdating">Conditional</animation>
+                    <content target="addons">addons://search/$INFO[Skin.String(SearchTerm)]</content>
+                </include>
+
+                <include content="View_Cast_Toplabel">
                     <param name="groupid" value="7509" />
                     <param name="id" value="5009" />
                     <param name="label" value="$INFO[Container(5009).NumItems,$LOCALIZE[31141] (,)]" />
