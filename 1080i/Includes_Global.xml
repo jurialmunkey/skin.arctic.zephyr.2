@@ -180,6 +180,7 @@
         <value condition="!String.IsEmpty(Container.ListItem.Property(Fanart)) + Window.IsVisible(Home)">$INFO[Container.ListItem.Property(Fanart)]</value>
 
         <!-- Home Fanart Menu -->
+        <value condition="Window.IsVisible(home) + !String.IsEmpty(Skin.String(HomeBackgroundImage)) + String.IsEmpty(Container(301).ListItem.Property(Background)) + String.IsEmpty(Container(301).ListItem.Property(backgroundPlaylist))">$INFO[Skin.String(HomeBackgroundImage)]</value>
         <value condition="Window.IsVisible(home) + !String.IsEmpty(Container(5600).ListItem.Art(fanart)) + String.IsEmpty(Container(301).ListItem.Property(Background)) + String.IsEmpty(Container(301).ListItem.Property(backgroundPlaylist))">$INFO[Container(5600).ListItem.Art(fanart)]</value>
 
         <!-- Home Fanart First Widget Item -->
