@@ -426,6 +426,13 @@
             <item>
                 <label>$LOCALIZE[587]: $VAR[Label_Filtered]</label>
                 <icon>$VAR[Image_Filtered]</icon>
+                <onclick>SendClick(19)</onclick>
+                <visible>!Container.CanFilterAdvanced</visible>
+                <visible>Container.CanFilter</visible>
+            </item>
+            <item>
+                <label>$LOCALIZE[587]: $VAR[Label_Filtered]</label>
+                <icon>$VAR[Image_Filtered]</icon>
                 <onclick>Filter</onclick>
                 <visible>Container.CanFilterAdvanced</visible>
             </item>

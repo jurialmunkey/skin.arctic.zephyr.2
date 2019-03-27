@@ -439,7 +439,7 @@
             <control type="group">
                 <left>$PARAM[pad]</left>
                 <right>$PARAM[pad]</right>
-                <visible>Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(sets)</visible>
+                <visible>String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season) | String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,set)</visible>
 
                 <!-- LEFT SIDE -->
                 <control type="label">
@@ -448,8 +448,8 @@
                     <label>$VAR[Label_List_Left]</label>
                 </control>
                 <control type="image">
-                    <animation effect="slide" end="-10" condition="!Container.Content(episodes) | String.IsEmpty(ListItem.Episode)">Conditional</animation>
-                    <animation effect="slide" end="-80" condition="[Container.Content(episodes) + [String.IsEmpty(ListItem.Episode)]] | [!Container.Content(episodes) + String.IsEmpty(ListItem.Year)]">Conditional</animation>
+                    <animation effect="slide" end="-10" condition="!String.IsEqual(ListItem.DBType,episode) | String.IsEmpty(ListItem.Episode)">Conditional</animation>
+                    <animation effect="slide" end="-80" condition="[String.IsEqual(ListItem.DBType,episode) + [String.IsEmpty(ListItem.Episode)]] | [!String.IsEqual(ListItem.DBType,episode) + String.IsEmpty(ListItem.Year)]">Conditional</animation>
                     <centertop>50%</centertop>
                     <left>90</left>
                     <width>32</width>
@@ -457,8 +457,8 @@
                     <texture colordiffuse="$PARAM[fgcolor]_90">$VAR[Image_Overlay_List]</texture>
                 </control>                
                 <control type="label">
-                    <animation effect="slide" end="-10" condition="!Container.Content(episodes) | String.IsEmpty(ListItem.Episode)">Conditional</animation>
-                    <animation effect="slide" end="-80" condition="[Container.Content(episodes) + [String.IsEmpty(ListItem.Episode)]] | [!Container.Content(episodes) + String.IsEmpty(ListItem.Year)]">Conditional</animation>
+                    <animation effect="slide" end="-10" condition="!String.IsEqual(ListItem.DBType,episode) | String.IsEmpty(ListItem.Episode)">Conditional</animation>
+                    <animation effect="slide" end="-80" condition="[String.IsEqual(ListItem.DBType,episode) + [String.IsEmpty(ListItem.Episode)]] | [!String.IsEqual(ListItem.DBType,episode) + String.IsEmpty(ListItem.Year)]">Conditional</animation>
                     <left>142</left>
                     <font>font_small_bold</font>
                     <textcolor>$PARAM[fgcolor]_100</textcolor>
@@ -479,7 +479,7 @@
             <control type="group">
                 <left>$PARAM[pad]</left>
                 <right>$PARAM[pad]</right>
-                <visible>Container.Content(songs) + !Skin.HasSetting(UseTrackNamingTemplate)</visible>
+                <visible>String.IsEqual(ListItem.DBType,song) + !Skin.HasSetting(UseTrackNamingTemplate)</visible>
                 <control type="label">
                     <width>30</width>
                     <textcolor>$PARAM[fgcolor]_100</textcolor>
@@ -512,7 +512,7 @@
             <control type="group">
                 <left>$PARAM[pad]</left>
                 <right>$PARAM[pad]</right>
-                <visible>![Container.Content(songs) | Container.Content(movies) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(sets) | Container.Content(seasons)] | [Container.Content(songs) + Skin.HasSetting(UseTrackNamingTemplate)]</visible>
+                <visible>![String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season) | String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,set) | [String.IsEqual(ListItem.DBType,song) + !Skin.HasSetting(UseTrackNamingTemplate)]]</visible>
                 <control type="image">
                     <visible>!String.IsEmpty(ListItem.Overlay)</visible>
                     <centertop>50%</centertop>
@@ -846,6 +846,7 @@
                         <param name="aspectratio" value="$PARAM[aspectratio]" />
                         <param name="diffuse" value="$PARAM[diffuse]" />
                         <param name="fadetime" value="$PARAM[fadetime]" />
+                        <param name="visible" value="$PARAM[iconvisible]" />
                     </include>
                 </control>
             </control>

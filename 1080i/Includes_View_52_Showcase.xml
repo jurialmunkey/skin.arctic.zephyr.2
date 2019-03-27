@@ -82,6 +82,7 @@
                     <param name="width" value="761.44" />
                     <param name="icon" value="$PARAM[icon]" />
                     <param name="diffuse" value="diffuse/landscape-info.png" />
+                    <param name="iconvisible" value="$PARAM[iconvisible]" />
                 </include>
                 <control type="image">
                     <top>0</top>
@@ -365,6 +366,7 @@
 
             <include content="View_522_Showcase_Seasons_Info">
                 <param name="visible" value="!Control.HasFocus(5229)" />
+                <param name="iconvisible" value="!String.IsEmpty(Container(522).ListItem.Art(fanart))" />
                 <param name="icon" value="$INFO[Container(522).ListItem.Art(fanart)]" />
                 <param name="title" value="$INFO[Container(522).ListItem.TvShowTitle]" />
                 <param name="plot" value="$INFO[Container(522).ListItem.Plot]" />
@@ -373,6 +375,7 @@
 
             <include content="View_522_Showcase_Seasons_Info">
                 <param name="visible" value="Control.HasFocus(5229)" />
+                <param name="iconvisible" value="true" />
                 <param name="icon" value="$INFO[Container(5229).ListItem.Art(thumb)]" />
                 <param name="title" value="$INFO[Container(5229).ListItem.Title]" />
                 <param name="plot" value="$INFO[Container(5229).ListItem.Plot]" />
@@ -385,7 +388,7 @@
                 <param name="right" value="771.44" />
                 <param name="id" value="5229" />
                 <param name="forced" value="false" />
-                <param name="visible" value="Control.IsVisible(522)" />
+                <param name="visible" value="Control.IsVisible(522) + !Container(522).ListItem.IsParentFolder" />
                 <param name="controllayout" value="Defs_Null" />
                 <param name="controltype" value="fixedlist" />
                 <param name="flipsides" value="Skin.HasSetting(FlipSide)" />
