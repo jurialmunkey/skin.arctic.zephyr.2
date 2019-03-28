@@ -1280,36 +1280,6 @@
         </control>
     </include>
 
-    <include name="Object_Flags">
-        <param name="container" default="" />
-        <param name="source" default="ListItem." />
-        <param name="directory" default="color" />
-        <param name="align" default="right" />
-        <param name="colordiffuse" default="panel_fg_100" />
-        <param name="ratings" default="false" />
-        <param name="fps" default="false" />
-        <definition>
-            <include content="Object_Flags_Content" condition="Skin.HasSetting(MonochromeFlags)">
-                <param name="container" value="$PARAM[container]" />
-                <param name="source" value="$PARAM[source]" />
-                <param name="directory" value="monochrome" />
-                <param name="align" value="$PARAM[align]" />
-                <param name="colordiffuse" value="main_fg_100" />
-                <param name="ratings" value="$PARAM[ratings]" />
-                <param name="fps" value="$PARAM[fps]" />
-            </include>
-            <include content="Object_Flags_Content" condition="!Skin.HasSetting(MonochromeFlags)">
-                <param name="container" value="$PARAM[container]" />
-                <param name="source" value="$PARAM[source]" />
-                <param name="directory" value="color" />
-                <param name="align" value="$PARAM[align]" />
-                <param name="colordiffuse" value="panel_fg_100" />
-                <param name="ratings" value="$PARAM[ratings]" />
-                <param name="fps" value="$PARAM[fps]" />
-            </include>
-        </definition>
-    </include>
-
     <include name="Object_Ratings_Content">
         <param name="directory" default="monochrome" />
         <param name="align" default="left" />

@@ -120,20 +120,6 @@
                                     <label>$INFO[MusicPlayer.BitRate,, [COLOR=panel_fg_30]kbps [/COLOR]]$INFO[MusicPlayer.BitsPerSample,[COLOR=panel_fg_30]  |  [/COLOR], [COLOR=panel_fg_30]bps [/COLOR]]$INFO[MusicPlayer.SampleRate,[COLOR=panel_fg_30]  |  [/COLOR], [COLOR=panel_fg_30]khz[/COLOR]]</label>
                                 </control>
                             </control>
-                            <control type="group">
-                                <top>6</top>
-                                <left>8</left>
-                                <height>70</height>
-                                <width>700</width>
-                                <visible>Window.IsVisible(VideoFullScreen.xml)</visible>
-                                <visible>!Window.IsVisible(musicosd) + !Window.IsVisible(videoosd)</visible>
-                                <include content="Object_Flags">
-                                    <param name="align" value="left" />
-                                    <param name="source" value="VideoPlayer." />
-                                    <param name="fps" value="true" />
-                                    <param name="directory" value="color" />
-                                </include>
-                            </control>
                         </control>
                         <control type="grouplist">
                             <height>40</height>
@@ -368,6 +354,25 @@
                                     <height>48</height>
                                     <aspectratio>keep</aspectratio>
                                     <texture colordiffuse="panel_fg_100">$INFO[VideoPlayer.VideoCodec,flags/monochrome/source/,.png]</texture>
+                                </control>
+                                <control type="group">
+                                    <width>71</width>
+                                    <height>48</height>
+                                    <centertop>50%</centertop>
+                                    <visible>!String.IsEmpty(Player.Process(VideoFPS)) + Integer.IsGreater(Player.Process(VideoFPS),0)</visible>
+                                    <control type="image">
+                                        <texture colordiffuse="panel_fg_100">flags/monochrome/other/fps.png</texture>
+                                        <aspectratio align="center">keep</aspectratio>
+                                    </control>
+                                    <control type="label">
+                                        <height>24</height>
+                                        <bottom>2</bottom>
+                                        <textcolor>panel_fg_100</textcolor>
+                                        <font>font_fps</font>
+                                        <label>$INFO[Player.Process(VideoFPS)]</label>
+                                        <align>center</align>
+                                        <aligny>center</aligny>
+                                    </control>
                                 </control>
                                 <control type="image">
                                     <fadetime>100</fadetime>
