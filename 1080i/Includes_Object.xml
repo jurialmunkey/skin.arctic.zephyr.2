@@ -1829,9 +1829,28 @@
             <texturesliderbar colordiffuse="main_fg_30" border="4">scrollbar/scrollv.png</texturesliderbar>
             <texturesliderbarfocus colordiffuse="main_fg_100" border="4">scrollbar/scrollv.png</texturesliderbarfocus>
             <animation effect="fade" start="100" end="0" time="400" condition="!Control.HasFocus(60) + !Container.Scrolling">Conditional</animation>
-            <visible allowhiddenfocus="true">![String.IsEqual(Container.SortMethod,$LOCALIZE[551]) | String.IsEqual(Container.SortMethod,$LOCALIZE[556]) | String.IsEqual(Container.SortMethod,$LOCALIZE[561])]</visible>
+            <visible>![String.IsEqual(Container.SortMethod,$LOCALIZE[551]) | String.IsEqual(Container.SortMethod,$LOCALIZE[556]) | String.IsEqual(Container.SortMethod,$LOCALIZE[561])]</visible>
             <include>Animation_FadeIn</include>
             <include>Animation_FadeOut</include>
+        </control>
+
+        <control type="button" id="60">
+            <visible>$PARAM[visible]</visible>
+            <visible>[String.IsEqual(Container.SortMethod,$LOCALIZE[551]) | String.IsEqual(Container.SortMethod,$LOCALIZE[556]) | String.IsEqual(Container.SortMethod,$LOCALIZE[561])]</visible>
+            <font />
+            <texturefocus />
+            <texturenofocus />
+            <centerright>40</centerright>
+            <width>40</width>
+            <top>view_top</top>
+            <bottom>view_bottom</bottom>
+            <onleft>50</onleft>
+            <ondown>SetFocus(50)</ondown>
+            <ondown>Action(nextletter)</ondown>
+            <ondown>SetFocus(60)</ondown>
+            <onup>SetFocus(50)</onup>
+            <onup>Action(prevletter)</onup>
+            <onup>SetFocus(60)</onup>
         </control>
 
         <control type="grouplist">
@@ -1846,6 +1865,7 @@
             <animation effect="fade" start="100" end="0" time="400" condition="!Control.HasFocus(60) + !Container.Scrolling">Conditional</animation>
             <include>Animation_FadeIn</include>
             <include>Animation_FadeOut</include>
+            <include>Object_AlphabetNumber</include>
             <include content="Object_AlphabetLetter"><param name="label" value="A" /></include>
             <include content="Object_AlphabetLetter"><param name="label" value="B" /></include>
             <include content="Object_AlphabetLetter"><param name="label" value="C" /></include>
@@ -1860,8 +1880,7 @@
             <include content="Object_AlphabetLetter"><param name="label" value="L" /></include>
             <include content="Object_AlphabetLetter"><param name="label" value="M" /></include>
             <include content="Object_AlphabetLetter"><param name="label" value="N" /></include>
-            <include content="Object_AlphabetLetter"><param name="label" value="O" /></include>
-            <visible>![String.IsEqual(ListItem.SortLetter,N) | String.IsEqual(ListItem.SortLetter,O) | String.IsEqual(ListItem.SortLetter,P) | String.IsEqual(ListItem.SortLetter,Q) | String.IsEqual(ListItem.SortLetter,R) | String.IsEqual(ListItem.SortLetter,S) | String.IsEqual(ListItem.SortLetter,T) | String.IsEqual(ListItem.SortLetter,U) | String.IsEqual(ListItem.SortLetter,V) | String.IsEqual(ListItem.SortLetter,W) | String.IsEqual(ListItem.SortLetter,X) | String.IsEqual(ListItem.SortLetter,Y) | String.IsEqual(ListItem.SortLetter,Z)]</visible>
+            <animation effect="fade" start="100" end="0" condition="[String.IsEqual(ListItem.SortLetter,N) | String.IsEqual(ListItem.SortLetter,O) | String.IsEqual(ListItem.SortLetter,P) | String.IsEqual(ListItem.SortLetter,Q) | String.IsEqual(ListItem.SortLetter,R) | String.IsEqual(ListItem.SortLetter,S) | String.IsEqual(ListItem.SortLetter,T) | String.IsEqual(ListItem.SortLetter,U) | String.IsEqual(ListItem.SortLetter,V) | String.IsEqual(ListItem.SortLetter,W) | String.IsEqual(ListItem.SortLetter,X) | String.IsEqual(ListItem.SortLetter,Y) | String.IsEqual(ListItem.SortLetter,Z)]">Conditional</animation>
             <visible>[String.IsEqual(Container.SortMethod,$LOCALIZE[551]) | String.IsEqual(Container.SortMethod,$LOCALIZE[556]) | String.IsEqual(Container.SortMethod,$LOCALIZE[561])]</visible>
         </control>
 
@@ -1892,7 +1911,7 @@
             <include content="Object_AlphabetLetter"><param name="label" value="X" /></include>
             <include content="Object_AlphabetLetter"><param name="label" value="Y" /></include>
             <include content="Object_AlphabetLetter"><param name="label" value="Z" /></include>
-            <visible>[String.IsEqual(ListItem.SortLetter,N) | String.IsEqual(ListItem.SortLetter,O) | String.IsEqual(ListItem.SortLetter,P) | String.IsEqual(ListItem.SortLetter,Q) | String.IsEqual(ListItem.SortLetter,R) | String.IsEqual(ListItem.SortLetter,S) | String.IsEqual(ListItem.SortLetter,T) | String.IsEqual(ListItem.SortLetter,U) | String.IsEqual(ListItem.SortLetter,V) | String.IsEqual(ListItem.SortLetter,W) | String.IsEqual(ListItem.SortLetter,X) | String.IsEqual(ListItem.SortLetter,Y) | String.IsEqual(ListItem.SortLetter,Z)]</visible>
+            <animation effect="fade" start="100" end="0" condition="![String.IsEqual(ListItem.SortLetter,N) | String.IsEqual(ListItem.SortLetter,O) | String.IsEqual(ListItem.SortLetter,P) | String.IsEqual(ListItem.SortLetter,Q) | String.IsEqual(ListItem.SortLetter,R) | String.IsEqual(ListItem.SortLetter,S) | String.IsEqual(ListItem.SortLetter,T) | String.IsEqual(ListItem.SortLetter,U) | String.IsEqual(ListItem.SortLetter,V) | String.IsEqual(ListItem.SortLetter,W) | String.IsEqual(ListItem.SortLetter,X) | String.IsEqual(ListItem.SortLetter,Y) | String.IsEqual(ListItem.SortLetter,Z)]">Conditional</animation>
             <visible>[String.IsEqual(Container.SortMethod,$LOCALIZE[551]) | String.IsEqual(Container.SortMethod,$LOCALIZE[556]) | String.IsEqual(Container.SortMethod,$LOCALIZE[561])]</visible>
         </control>
     </include>
@@ -1920,6 +1939,29 @@
         </control>
     </include>
 
+    <include name="Object_AlphabetNumber">
+        <control type="label">
+            <width>64</width>
+            <height>52</height>
+            <label>#</label>
+            <align>center</align>
+            <aligny>center</aligny>
+            <textcolor>main_fg_30</textcolor>
+            <font>font_tiny</font>
+            <visible>![String.IsEqual(ListItem.SortLetter,$NUMBER[0]) | String.IsEqual(ListItem.SortLetter,$NUMBER[1]) | String.IsEqual(ListItem.SortLetter,$NUMBER[2]) | String.IsEqual(ListItem.SortLetter,$NUMBER[3]) | String.IsEqual(ListItem.SortLetter,$NUMBER[4]) | String.IsEqual(ListItem.SortLetter,$NUMBER[5]) | String.IsEqual(ListItem.SortLetter,$NUMBER[6]) | String.IsEqual(ListItem.SortLetter,$NUMBER[7]) | String.IsEqual(ListItem.SortLetter,$NUMBER[8]) | String.IsEqual(ListItem.SortLetter,$NUMBER[9])]</visible>
+        </control>
+        <control type="label">
+            <width>64</width>
+            <height>52</height>
+            <label>[B]#[/B]</label>
+            <align>center</align>
+            <aligny>center</aligny>
+            <textcolor>main_fg_100</textcolor>
+            <font>font_tiny_bold</font>
+            <visible>[String.IsEqual(ListItem.SortLetter,$NUMBER[0]) | String.IsEqual(ListItem.SortLetter,$NUMBER[1]) | String.IsEqual(ListItem.SortLetter,$NUMBER[2]) | String.IsEqual(ListItem.SortLetter,$NUMBER[3]) | String.IsEqual(ListItem.SortLetter,$NUMBER[4]) | String.IsEqual(ListItem.SortLetter,$NUMBER[5]) | String.IsEqual(ListItem.SortLetter,$NUMBER[6]) | String.IsEqual(ListItem.SortLetter,$NUMBER[7]) | String.IsEqual(ListItem.SortLetter,$NUMBER[8]) | String.IsEqual(ListItem.SortLetter,$NUMBER[9])]</visible>
+        </control>
+    </include>
+
     <include name="Object_Scrollbar_Horz">
         <control type="scrollbar" id="62">
             <onback>50</onback>
@@ -1936,9 +1978,29 @@
             <texturesliderbar colordiffuse="main_fg_30" border="4">scrollbar/scrollv.png</texturesliderbar>
             <texturesliderbarfocus colordiffuse="main_fg_100" border="4">scrollbar/scrollv.png</texturesliderbarfocus>
             <animation effect="fade" start="100" end="0" time="400" condition="!Control.HasFocus(62)">Conditional</animation>
-            <visible allowhiddenfocus="true">![String.IsEqual(Container.SortMethod,$LOCALIZE[551]) | String.IsEqual(Container.SortMethod,$LOCALIZE[556]) | String.IsEqual(Container.SortMethod,$LOCALIZE[561])]</visible>
+            <visible>![String.IsEqual(Container.SortMethod,$LOCALIZE[551]) | String.IsEqual(Container.SortMethod,$LOCALIZE[556]) | String.IsEqual(Container.SortMethod,$LOCALIZE[561])]</visible>
             <include>Animation_FadeIn</include>
             <include>Animation_FadeOut</include>
+        </control>
+
+        <control type="button" id="62">
+            <visible>$PARAM[visible]</visible>
+            <visible>[String.IsEqual(Container.SortMethod,$LOCALIZE[551]) | String.IsEqual(Container.SortMethod,$LOCALIZE[556]) | String.IsEqual(Container.SortMethod,$LOCALIZE[561])]</visible>
+            <font />
+            <texturefocus />
+            <texturenofocus />
+            <height>40</height>
+            <left>view_pad</left>
+            <right>view_pad</right>
+            <width>1680</width>
+            <centerbottom>60</centerbottom>
+            <onup>50</onup>
+            <onright>SetFocus(50)</onright>
+            <onright>Action(nextletter)</onright>
+            <onright>SetFocus(62)</onright>
+            <onleft>SetFocus(50)</onleft>
+            <onleft>Action(prevletter)</onleft>
+            <onleft>SetFocus(62)</onleft>
         </control>
 
         <control type="grouplist">
@@ -1953,6 +2015,7 @@
             <animation effect="fade" start="100" end="0" time="400" condition="!Control.HasFocus(62)">Conditional</animation>
             <include>Animation_FadeIn</include>
             <include>Animation_FadeOut</include>
+            <include>Object_AlphabetNumber</include>
             <include content="Object_AlphabetLetter"><param name="label" value="A" /></include>
             <include content="Object_AlphabetLetter"><param name="label" value="B" /></include>
             <include content="Object_AlphabetLetter"><param name="label" value="C" /></include>
