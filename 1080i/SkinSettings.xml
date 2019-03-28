@@ -211,6 +211,7 @@
                         <visible>Integer.IsEqual(Window.Property(CurrentFocus),9002)</visible>
                         <include>Defs_Settings_Button</include>
                         <label>$LOCALIZE[31275]</label>
+                        <enable>!Skin.HasSetting(NoFanart)</enable>
                         <selected>Skin.HasSetting(EnableBlur)</selected>
                         <onclick condition="!System.HasAddon(script.colorbox)">InstallAddon(script.colorbox)</onclick>
                         <onclick condition="System.HasAddon(script.colorbox) + !Skin.HasSetting(EnableBlur)">SetProperty(FIVE_daemon_set,blur,home)</onclick>
@@ -225,7 +226,7 @@
                         <label>$LOCALIZE[31154]</label>
                         <selected>Skin.HasSetting(OnlyBlurInfo)</selected>
                         <onclick>Skin.ToggleSetting(OnlyBlurInfo)</onclick>
-                        <enable>Skin.HasSetting(EnableBlur) + System.HasAddon(script.colorbox)</enable>
+                        <enable>!Skin.HasSetting(NoFanart) + Skin.HasSetting(EnableBlur) + System.HasAddon(script.colorbox)</enable>
                     </control>
 
                     <control type="button" id="19204" description="Set Fallback Image">
