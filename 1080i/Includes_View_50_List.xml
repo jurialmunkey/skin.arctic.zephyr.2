@@ -440,7 +440,7 @@
                 <left>$PARAM[pad]</left>
                 <right>$PARAM[pad]</right>
                 <visible>String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season) | String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,set)</visible>
-                <visible>!Skin.HasSetting(UseStandardLabels)</visible>
+                <visible>!Skin.HasSetting(UseStandardLabels) | String.IsEmpty(Container.PluginName)</visible>
                 <!-- LEFT SIDE -->
                 <control type="label">
                     <textcolor>$PARAM[fgcolor]_100</textcolor>
@@ -479,7 +479,7 @@
             <control type="group">
                 <left>$PARAM[pad]</left>
                 <right>$PARAM[pad]</right>
-                <visible>!Skin.HasSetting(UseStandardLabels)</visible>
+                <visible>!Skin.HasSetting(UseStandardLabels) | String.IsEmpty(Container.PluginName)</visible>
                 <visible>String.IsEqual(ListItem.DBType,song) + !Skin.HasSetting(UseTrackNamingTemplate)</visible>
                 <control type="label">
                     <width>30</width>
@@ -513,7 +513,7 @@
             <control type="group">
                 <left>$PARAM[pad]</left>
                 <right>$PARAM[pad]</right>
-                <visible>![String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season) | String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,set) | [String.IsEqual(ListItem.DBType,song) + !Skin.HasSetting(UseTrackNamingTemplate)]] | Skin.HasSetting(UseStandardLabels)</visible>
+                <visible>![String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season) | String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,set) | [String.IsEqual(ListItem.DBType,song) + !Skin.HasSetting(UseTrackNamingTemplate)]] | [Skin.HasSetting(UseStandardLabels) + !String.IsEmpty(Container.PluginName)]</visible>
                 <control type="image">
                     <visible>!String.IsEmpty(ListItem.Overlay)</visible>
                     <centertop>50%</centertop>
