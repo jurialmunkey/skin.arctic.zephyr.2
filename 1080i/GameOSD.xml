@@ -74,14 +74,13 @@
                 <visible>!Window.IsActive(GameVideoFilter) + !Window.IsActive(GameStretchMode) + !Window.IsActive(GameControllers) + !Window.IsActive(GameVideoRotation)</visible>
                 <include>Animation_FadeIn_SlideUp</include>
                 <control type="group">
-                    <visible>Integer.IsGreater(Container(1103).NumItems,7)</visible>
-                    <height>732</height>
+                    <height>812</height>
                     <include>Defs_Powermenu_Group</include>
                     <include>Defs_Options_Texture</include>
                 </control>
                 <control type="group">
-                    <animation effect="slide" end="0,35" condition="true">Conditional</animation>
-                    <height>662</height>
+                    <animation effect="slide" end="0,39" condition="true">Conditional</animation>
+                    <height>742</height>
                     <include>Defs_Powermenu_Group</include>
                     <control type="label" id="3">
                         <top>-64</top>
@@ -107,7 +106,7 @@
                         <onright>Back</onright>
                         <defaultcontrol always="true">2101</defaultcontrol>
                         <include>Defs_Options_Grouplist</include>
-                        <itemlayout width="450" height="70">
+                        <itemlayout width="450" height="item_list_height">
                             <control type="label">
                                 <font>font_tiny</font>
                                 <align>left</align>
@@ -117,7 +116,7 @@
                                 <label>$INFO[ListItem.Label]</label>
                             </control>
                         </itemlayout>
-                        <focusedlayout width="450" height="70">
+                        <focusedlayout width="450" height="item_list_height">
                             <control type="image">
                                 <texture colordiffuse="$VAR[ColorHighlight]">common/white.png</texture>
                             </control>
