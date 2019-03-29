@@ -28,7 +28,7 @@
         <value condition="String.Contains(ListItem.FileNameAndPath,dvd)">flags/monochrome/other/dvd.png</value>
         <value condition="String.Contains(ListItem.FileNameAndPath,hdtv) | String.Contains(ListItem.FileNameAndPath,pdtv) | String.Contains(ListItem.FileNameAndPath,dsr)">flags/monochrome/other/hdtv.png</value>
         <value condition="String.Contains(ListItem.FileNameAndPath,web-dl) | String.Contains(ListItem.FileNameAndPath,webdl) | String.Contains(ListItem.FileNameAndPath,WEBRip)">flags/monochrome/other/web-dl.png</value>
-        <value>flags/monochrome/other/web-dl.png</value>
+        <value>$INFO[Skin.String(FallbackSourceFlag)]</value>
     </variable>
 
     <variable name="Image_AudioCodec">
