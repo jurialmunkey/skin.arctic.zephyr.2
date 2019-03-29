@@ -1,426 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
-    <include name="Home_Menu_Template_Old">
-        <param name="id" default="301" />
-        <param name="font" default="font_topbar" />
-        <definition>
-            <control type="grouplist">
-                <left>-15</left>
-                <itemgap>menu_itemgap</itemgap>
-                <height>70</height>
-                <orientation>horizontal</orientation>
-                <visible>Window.IsVisible(Home) + !$EXP[Exp_InfoVisible]</visible>
-                <usecontrolcoords>true</usecontrolcoords>
-                <control type="group">
-                    <visible>Container($PARAM[id]).HasPrevious</visible>
-                    <centertop>55%</centertop>
-                    <width>24</width>
-                    <height>24</height>
-                </control>
-                <include content="Home_Menu_Item_Small">
-                    <param name="font" value="$PARAM[font]" />
-                    <param name="visible" value="Integer.IsGreater(Container($PARAM[id]).NumItems,0)" />
-                    <param name="id" value="$PARAM[id]" />
-                    <param name="pos" value="0" />
-                </include>
-            </control>
-
-            <!-- 2 Item -->
-            <control type="grouplist">
-                <left>-15</left>
-                <itemgap>menu_itemgap</itemgap>
-                <height>70</height>
-                <orientation>horizontal</orientation>
-                <visible>Window.IsVisible(Home) + !$EXP[Exp_InfoVisible]</visible>
-                <usecontrolcoords>true</usecontrolcoords>
-                <control type="group">
-                    <visible>Container($PARAM[id]).HasPrevious</visible>
-                    <centertop>55%</centertop>
-                    <width>24</width>
-                    <height>24</height>
-                </control>
-                <include content="Home_Menu_Item_Hidden">
-                    <param name="font" value="$PARAM[font]" />
-                    <param name="visible" value="Integer.IsGreater(Container($PARAM[id]).NumItems,0)" />
-                    <param name="id" value="$PARAM[id]" />
-                    <param name="pos" value="0" />
-                </include>
-                <include content="Home_Menu_Item_Small">
-                    <param name="font" value="$PARAM[font]" />
-                    <param name="visible" value="Integer.IsGreater(Container($PARAM[id]).NumItems,1)" />
-                    <param name="id" value="$PARAM[id]" />
-                    <param name="pos" value="1" />
-                </include>
-            </control>
-
-            <!-- 3 Item -->
-            <control type="grouplist">
-                <left>-15</left>
-                <itemgap>menu_itemgap</itemgap>
-                <height>70</height>
-                <orientation>horizontal</orientation>
-                <visible>Window.IsVisible(Home) + !$EXP[Exp_InfoVisible]</visible>
-                <usecontrolcoords>true</usecontrolcoords>
-                <control type="group">
-                    <visible>Container($PARAM[id]).HasPrevious</visible>
-                    <centertop>55%</centertop>
-                    <width>24</width>
-                    <height>24</height>
-                </control>
-                <include content="Home_Menu_Item_Hidden">
-                    <param name="font" value="$PARAM[font]" />
-                    <param name="visible" value="Integer.IsGreater(Container($PARAM[id]).NumItems,0)" />
-                    <param name="id" value="$PARAM[id]" />
-                    <param name="pos" value="0" />
-                </include>
-                <include content="Home_Menu_Item_Hidden">
-                    <param name="font" value="$PARAM[font]" />
-                    <param name="visible" value="Integer.IsGreater(Container($PARAM[id]).NumItems,1)" />
-                    <param name="id" value="$PARAM[id]" />
-                    <param name="pos" value="1" />
-                </include>
-                <include content="Home_Menu_Item_Small">
-                    <param name="font" value="$PARAM[font]" />
-                    <param name="visible" value="Integer.IsGreater(Container($PARAM[id]).NumItems,2)" />
-                    <param name="id" value="$PARAM[id]" />
-                    <param name="pos" value="2" />
-                </include>
-            </control>
-
-            <!-- 4 Item -->
-            <control type="grouplist">
-                <left>-15</left>
-                <itemgap>menu_itemgap</itemgap>
-                <height>70</height>
-                <orientation>horizontal</orientation>
-                <visible>Window.IsVisible(Home) + !$EXP[Exp_InfoVisible]</visible>
-                <usecontrolcoords>true</usecontrolcoords>
-                <control type="group">
-                    <visible>Container($PARAM[id]).HasPrevious</visible>
-                    <centertop>55%</centertop>
-                    <width>24</width>
-                    <height>24</height>
-                </control>
-                <include content="Home_Menu_Item_Hidden">
-                    <param name="font" value="$PARAM[font]" />
-                    <param name="visible" value="Integer.IsGreater(Container($PARAM[id]).NumItems,0)" />
-                    <param name="id" value="$PARAM[id]" />
-                    <param name="pos" value="0" />
-                </include>
-                <include content="Home_Menu_Item_Hidden">
-                    <param name="font" value="$PARAM[font]" />
-                    <param name="visible" value="Integer.IsGreater(Container($PARAM[id]).NumItems,1)" />
-                    <param name="id" value="$PARAM[id]" />
-                    <param name="pos" value="1" />
-                </include>
-                <include content="Home_Menu_Item_Hidden">
-                    <param name="font" value="$PARAM[font]" />
-                    <param name="visible" value="Integer.IsGreater(Container($PARAM[id]).NumItems,2)" />
-                    <param name="id" value="$PARAM[id]" />
-                    <param name="pos" value="2" />
-                </include>
-                <include content="Home_Menu_Item_Small">
-                    <param name="font" value="$PARAM[font]" />
-                    <param name="visible" value="Integer.IsGreater(Container($PARAM[id]).NumItems,3)" />
-                    <param name="id" value="$PARAM[id]" />
-                    <param name="pos" value="3" />
-                </include>
-            </control>
-
-            <!-- 5 Item -->
-            <control type="grouplist">
-                <left>-15</left>
-                <itemgap>menu_itemgap</itemgap>
-                <height>70</height>
-                <orientation>horizontal</orientation>
-                <visible>Window.IsVisible(Home) + !$EXP[Exp_InfoVisible]</visible>
-                <usecontrolcoords>true</usecontrolcoords>
-                <control type="group">
-                    <visible>Container($PARAM[id]).HasPrevious</visible>
-                    <centertop>55%</centertop>
-                    <width>24</width>
-                    <height>24</height>
-                </control>
-                <include content="Home_Menu_Item_Hidden">
-                    <param name="font" value="$PARAM[font]" />
-                    <param name="visible" value="Integer.IsGreater(Container($PARAM[id]).NumItems,0)" />
-                    <param name="id" value="$PARAM[id]" />
-                    <param name="pos" value="0" />
-                </include>
-                <include content="Home_Menu_Item_Hidden">
-                    <param name="font" value="$PARAM[font]" />
-                    <param name="visible" value="Integer.IsGreater(Container($PARAM[id]).NumItems,1)" />
-                    <param name="id" value="$PARAM[id]" />
-                    <param name="pos" value="1" />
-                </include>
-                <include content="Home_Menu_Item_Hidden">
-                    <param name="font" value="$PARAM[font]" />
-                    <param name="visible" value="Integer.IsGreater(Container($PARAM[id]).NumItems,2)" />
-                    <param name="id" value="$PARAM[id]" />
-                    <param name="pos" value="2" />
-                </include>
-                <include content="Home_Menu_Item_Hidden">
-                    <param name="font" value="$PARAM[font]" />
-                    <param name="visible" value="Integer.IsGreater(Container($PARAM[id]).NumItems,3)" />
-                    <param name="id" value="$PARAM[id]" />
-                    <param name="pos" value="3" />
-                </include>
-                <include content="Home_Menu_Item_Small">
-                    <param name="font" value="$PARAM[font]" />
-                    <param name="visible" value="Integer.IsGreater(Container($PARAM[id]).NumItems,4)" />
-                    <param name="id" value="$PARAM[id]" />
-                    <param name="pos" value="4" />
-                </include>
-            </control>
-
-            <!-- 6 Item -->
-            <control type="grouplist">
-                <left>-15</left>
-                <itemgap>menu_itemgap</itemgap>
-                <height>70</height>
-                <orientation>horizontal</orientation>
-                <visible>Window.IsVisible(Home) + !$EXP[Exp_InfoVisible]</visible>
-                <usecontrolcoords>true</usecontrolcoords>
-                <control type="group">
-                    <visible>Container($PARAM[id]).HasPrevious</visible>
-                    <centertop>55%</centertop>
-                    <width>24</width>
-                    <height>24</height>
-                </control>
-                <include content="Home_Menu_Item_Hidden">
-                    <param name="font" value="$PARAM[font]" />
-                    <param name="visible" value="Integer.IsGreater(Container($PARAM[id]).NumItems,0)" />
-                    <param name="id" value="$PARAM[id]" />
-                    <param name="pos" value="0" />
-                </include>
-                <include content="Home_Menu_Item_Hidden">
-                    <param name="font" value="$PARAM[font]" />
-                    <param name="visible" value="Integer.IsGreater(Container($PARAM[id]).NumItems,1)" />
-                    <param name="id" value="$PARAM[id]" />
-                    <param name="pos" value="1" />
-                </include>
-                <include content="Home_Menu_Item_Hidden">
-                    <param name="font" value="$PARAM[font]" />
-                    <param name="visible" value="Integer.IsGreater(Container($PARAM[id]).NumItems,2)" />
-                    <param name="id" value="$PARAM[id]" />
-                    <param name="pos" value="2" />
-                </include>
-                <include content="Home_Menu_Item_Hidden">
-                    <param name="font" value="$PARAM[font]" />
-                    <param name="visible" value="Integer.IsGreater(Container($PARAM[id]).NumItems,3)" />
-                    <param name="id" value="$PARAM[id]" />
-                    <param name="pos" value="3" />
-                </include>
-                <include content="Home_Menu_Item_Hidden">
-                    <param name="font" value="$PARAM[font]" />
-                    <param name="visible" value="Integer.IsGreater(Container($PARAM[id]).NumItems,4)" />
-                    <param name="id" value="$PARAM[id]" />
-                    <param name="pos" value="4" />
-                </include>
-                <include content="Home_Menu_Item_Small">
-                    <param name="font" value="$PARAM[font]" />
-                    <param name="visible" value="Integer.IsGreater(Container($PARAM[id]).NumItems,5)" />
-                    <param name="id" value="$PARAM[id]" />
-                    <param name="pos" value="5" />
-                </include>
-            </control>
-
-            <!-- 7 Item -->
-            <control type="grouplist">
-                <left>-15</left>
-                <itemgap>menu_itemgap</itemgap>
-                <height>70</height>
-                <orientation>horizontal</orientation>
-                <visible>Window.IsVisible(Home) + !$EXP[Exp_InfoVisible]</visible>
-                <usecontrolcoords>true</usecontrolcoords>
-                <control type="group">
-                    <visible>Container($PARAM[id]).HasPrevious</visible>
-                    <centertop>55%</centertop>
-                    <width>24</width>
-                    <height>24</height>
-                </control>
-                <include content="Home_Menu_Item_Hidden">
-                    <param name="font" value="$PARAM[font]" />
-                    <param name="visible" value="Integer.IsGreater(Container($PARAM[id]).NumItems,0)" />
-                    <param name="id" value="$PARAM[id]" />
-                    <param name="pos" value="0" />
-                </include>
-                <include content="Home_Menu_Item_Hidden">
-                    <param name="font" value="$PARAM[font]" />
-                    <param name="visible" value="Integer.IsGreater(Container($PARAM[id]).NumItems,1)" />
-                    <param name="id" value="$PARAM[id]" />
-                    <param name="pos" value="1" />
-                </include>
-                <include content="Home_Menu_Item_Hidden">
-                    <param name="font" value="$PARAM[font]" />
-                    <param name="visible" value="Integer.IsGreater(Container($PARAM[id]).NumItems,2)" />
-                    <param name="id" value="$PARAM[id]" />
-                    <param name="pos" value="2" />
-                </include>
-                <include content="Home_Menu_Item_Hidden">
-                    <param name="font" value="$PARAM[font]" />
-                    <param name="visible" value="Integer.IsGreater(Container($PARAM[id]).NumItems,3)" />
-                    <param name="id" value="$PARAM[id]" />
-                    <param name="pos" value="3" />
-                </include>
-                <include content="Home_Menu_Item_Hidden">
-                    <param name="font" value="$PARAM[font]" />
-                    <param name="visible" value="Integer.IsGreater(Container($PARAM[id]).NumItems,4)" />
-                    <param name="id" value="$PARAM[id]" />
-                    <param name="pos" value="4" />
-                </include>
-                <include content="Home_Menu_Item_Hidden">
-                    <param name="font" value="$PARAM[font]" />
-                    <param name="visible" value="Integer.IsGreater(Container($PARAM[id]).NumItems,5)" />
-                    <param name="id" value="$PARAM[id]" />
-                    <param name="pos" value="5" />
-                </include>
-                <include content="Home_Menu_Item_Small">
-                    <param name="font" value="$PARAM[font]" />
-                    <param name="visible" value="Integer.IsGreater(Container($PARAM[id]).NumItems,6)" />
-                    <param name="id" value="$PARAM[id]" />
-                    <param name="pos" value="6" />
-                </include>
-            </control>
-
-            <!-- 8 Item -->
-            <control type="grouplist">
-                <left>-15</left>
-                <itemgap>menu_itemgap</itemgap>
-                <height>70</height>
-                <orientation>horizontal</orientation>
-                <visible>Window.IsVisible(Home) + !$EXP[Exp_InfoVisible]</visible>
-                <usecontrolcoords>true</usecontrolcoords>
-                <control type="group">
-                    <visible>Container($PARAM[id]).HasPrevious</visible>
-                    <centertop>55%</centertop>
-                    <width>24</width>
-                    <height>24</height>
-                </control>
-                <include content="Home_Menu_Item_Hidden">
-                    <param name="font" value="$PARAM[font]" />
-                    <param name="visible" value="Integer.IsGreater(Container($PARAM[id]).NumItems,0)" />
-                    <param name="id" value="$PARAM[id]" />
-                    <param name="pos" value="0" />
-                </include>
-                <include content="Home_Menu_Item_Hidden">
-                    <param name="font" value="$PARAM[font]" />
-                    <param name="visible" value="Integer.IsGreater(Container($PARAM[id]).NumItems,1)" />
-                    <param name="id" value="$PARAM[id]" />
-                    <param name="pos" value="1" />
-                </include>
-                <include content="Home_Menu_Item_Hidden">
-                    <param name="font" value="$PARAM[font]" />
-                    <param name="visible" value="Integer.IsGreater(Container($PARAM[id]).NumItems,2)" />
-                    <param name="id" value="$PARAM[id]" />
-                    <param name="pos" value="2" />
-                </include>
-                <include content="Home_Menu_Item_Hidden">
-                    <param name="font" value="$PARAM[font]" />
-                    <param name="visible" value="Integer.IsGreater(Container($PARAM[id]).NumItems,3)" />
-                    <param name="id" value="$PARAM[id]" />
-                    <param name="pos" value="3" />
-                </include>
-                <include content="Home_Menu_Item_Hidden">
-                    <param name="font" value="$PARAM[font]" />
-                    <param name="visible" value="Integer.IsGreater(Container($PARAM[id]).NumItems,4)" />
-                    <param name="id" value="$PARAM[id]" />
-                    <param name="pos" value="4" />
-                </include>
-                <include content="Home_Menu_Item_Hidden">
-                    <param name="font" value="$PARAM[font]" />
-                    <param name="visible" value="Integer.IsGreater(Container($PARAM[id]).NumItems,5)" />
-                    <param name="id" value="$PARAM[id]" />
-                    <param name="pos" value="5" />
-                </include>
-                <include content="Home_Menu_Item_Hidden">
-                    <param name="font" value="$PARAM[font]" />
-                    <param name="visible" value="Integer.IsGreater(Container($PARAM[id]).NumItems,6)" />
-                    <param name="id" value="$PARAM[id]" />
-                    <param name="pos" value="6" />
-                </include>
-                <include content="Home_Menu_Item_Small">
-                    <param name="font" value="$PARAM[font]" />
-                    <param name="visible" value="Integer.IsGreater(Container($PARAM[id]).NumItems,7)" />
-                    <param name="id" value="$PARAM[id]" />
-                    <param name="pos" value="7" />
-                </include>
-            </control>
-
-            <!-- Focus Item -->
-            <control type="grouplist">
-                <left>-15</left>
-                <itemgap>menu_itemgap</itemgap>
-                <height>70</height>
-                <orientation>horizontal</orientation>
-                <visible>Window.IsVisible(Home) + !$EXP[Exp_InfoVisible]</visible>
-                <usecontrolcoords>true</usecontrolcoords>
-                <control type="image">
-                    <visible>Container($PARAM[id]).HasPrevious</visible>
-                    <centertop>55%</centertop>
-                    <width>24</width>
-                    <height>24</height>
-                    <texture flipx="false" colordiffuse="main_fg_30">buttons/spin-left.png</texture>
-                </control>
-                <include content="Home_Menu_Item">
-                    <param name="font" value="$PARAM[font]" />
-                    <param name="visible" value="Integer.IsGreater(Container($PARAM[id]).NumItems,0)" />
-                    <param name="id" value="$PARAM[id]" />
-                    <param name="pos" value="0" />
-                </include>
-                <include content="Home_Menu_Item">
-                    <param name="font" value="$PARAM[font]" />
-                    <param name="visible" value="Integer.IsGreater(Container($PARAM[id]).NumItems,1)" />
-                    <param name="id" value="$PARAM[id]" />
-                    <param name="pos" value="1" />
-                </include>
-                <include content="Home_Menu_Item">
-                    <param name="font" value="$PARAM[font]" />
-                    <param name="visible" value="Integer.IsGreater(Container($PARAM[id]).NumItems,2)" />
-                    <param name="id" value="$PARAM[id]" />
-                    <param name="pos" value="2" />
-                </include>
-                <include content="Home_Menu_Item">
-                    <param name="font" value="$PARAM[font]" />
-                    <param name="visible" value="Integer.IsGreater(Container($PARAM[id]).NumItems,3)" />
-                    <param name="id" value="$PARAM[id]" />
-                    <param name="pos" value="3" />
-                </include>
-                <include content="Home_Menu_Item">
-                    <param name="font" value="$PARAM[font]" />
-                    <param name="visible" value="Integer.IsGreater(Container($PARAM[id]).NumItems,4)" />
-                    <param name="id" value="$PARAM[id]" />
-                    <param name="pos" value="4" />
-                </include>
-                <include content="Home_Menu_Item">
-                    <param name="font" value="$PARAM[font]" />
-                    <param name="visible" value="Integer.IsGreater(Container($PARAM[id]).NumItems,5)" />
-                    <param name="id" value="$PARAM[id]" />
-                    <param name="pos" value="5" />
-                </include>
-                <include content="Home_Menu_Item">
-                    <param name="font" value="$PARAM[font]" />
-                    <param name="visible" value="Integer.IsGreater(Container($PARAM[id]).NumItems,6)" />
-                    <param name="id" value="$PARAM[id]" />
-                    <param name="pos" value="6" />
-                </include>
-                <include content="Home_Menu_Item">
-                    <param name="font" value="$PARAM[font]" />
-                    <param name="visible" value="Integer.IsGreater(Container($PARAM[id]).NumItems,7)" />
-                    <param name="id" value="$PARAM[id]" />
-                    <param name="pos" value="7" />
-                </include>
-                <control type="image">
-                    <visible>Container($PARAM[id]).HasNext</visible>
-                    <centertop>55%</centertop>
-                    <width>24</width>
-                    <height>24</height>
-                    <texture flipx="true" colordiffuse="main_fg_30">buttons/spin-left.png</texture>
-                </control>
-            </control>
-        </definition>
-    </include>
-
     <include name="Home_Menu_Template">
         <param name="id" default="301" />
         <param name="font" default="font_topbar" />
@@ -439,49 +18,49 @@
                     <height>24</height>
                     <texture flipx="false" colordiffuse="main_fg_30">buttons/spin-left.png</texture>
                 </control>
-                <include content="Home_Menu_Item_New">
+                <include content="Home_Menu_Item">
                     <param name="font" value="$PARAM[font]" />
                     <param name="visible" value="Integer.IsGreater(Container($PARAM[id]).NumItems,0)" />
                     <param name="id" value="$PARAM[id]" />
                     <param name="pos" value="0" />
                 </include>
-                <include content="Home_Menu_Item_New">
+                <include content="Home_Menu_Item">
                     <param name="font" value="$PARAM[font]" />
                     <param name="visible" value="Integer.IsGreater(Container($PARAM[id]).NumItems,1)" />
                     <param name="id" value="$PARAM[id]" />
                     <param name="pos" value="1" />
                 </include>
-                <include content="Home_Menu_Item_New">
+                <include content="Home_Menu_Item">
                     <param name="font" value="$PARAM[font]" />
                     <param name="visible" value="Integer.IsGreater(Container($PARAM[id]).NumItems,2)" />
                     <param name="id" value="$PARAM[id]" />
                     <param name="pos" value="2" />
                 </include>
-                <include content="Home_Menu_Item_New">
+                <include content="Home_Menu_Item">
                     <param name="font" value="$PARAM[font]" />
                     <param name="visible" value="Integer.IsGreater(Container($PARAM[id]).NumItems,3)" />
                     <param name="id" value="$PARAM[id]" />
                     <param name="pos" value="3" />
                 </include>
-                <include content="Home_Menu_Item_New">
+                <include content="Home_Menu_Item">
                     <param name="font" value="$PARAM[font]" />
                     <param name="visible" value="Integer.IsGreater(Container($PARAM[id]).NumItems,4)" />
                     <param name="id" value="$PARAM[id]" />
                     <param name="pos" value="4" />
                 </include>
-                <include content="Home_Menu_Item_New">
+                <include content="Home_Menu_Item">
                     <param name="font" value="$PARAM[font]" />
                     <param name="visible" value="Integer.IsGreater(Container($PARAM[id]).NumItems,5)" />
                     <param name="id" value="$PARAM[id]" />
                     <param name="pos" value="5" />
                 </include>
-                <include content="Home_Menu_Item_New">
+                <include content="Home_Menu_Item">
                     <param name="font" value="$PARAM[font]" />
                     <param name="visible" value="Integer.IsGreater(Container($PARAM[id]).NumItems,6)" />
                     <param name="id" value="$PARAM[id]" />
                     <param name="pos" value="6" />
                 </include>
-                <include content="Home_Menu_Item_New">
+                <include content="Home_Menu_Item">
                     <param name="font" value="$PARAM[font]" />
                     <param name="visible" value="Integer.IsGreater(Container($PARAM[id]).NumItems,7)" />
                     <param name="id" value="$PARAM[id]" />
@@ -536,44 +115,6 @@
             <width>auto</width>
             <align>left</align>
             <height>70</height>
-            <font>$PARAM[font]</font>
-            <focusedcolor>00ffffff</focusedcolor>
-            <selectedcolor>00ffffff</selectedcolor>
-            <textcolor>00ffffff</textcolor>
-            <onfocus>SetFocus($PARAM[id],$PARAM[pos])</onfocus>
-            <onclick>$INFO[Container($PARAM[id]).ListItemPosition($PARAM[pos]).Property(path)]</onclick>
-            <texturefocus />
-            <texturenofocus />
-            <textoffsetx>0</textoffsetx>
-            <label>$INFO[Container($PARAM[id]).ListItemPosition($PARAM[pos]).Label]</label>
-            <visible>!String.IsEqual(Container($PARAM[id]).ListItemPosition($PARAM[pos]).Label,Container($PARAM[id]).ListItem.Label)</visible>
-            <visible>$PARAM[visible]</visible>
-        </control>
-        <control type="button">
-            <width>auto</width>
-            <align>left</align>
-            <height>70</height>
-            <font>$PARAM[font]</font>
-            <focusedcolor>main_fg_100</focusedcolor>
-            <selectedcolor>main_fg_100</selectedcolor>
-            <textcolor>main_fg_100</textcolor>
-            <onfocus>SetFocus($PARAM[id],$PARAM[pos])</onfocus>
-            <onclick>$INFO[Container($PARAM[id]).ListItemPosition($PARAM[pos]).Property(path)]</onclick>
-            <texturenofocus />
-            <texturefocus />
-            <textoffsetx>0</textoffsetx>
-            <animation effect="fade" start="100" end="30" condition="!Control.HasFocus($PARAM[id]) + Skin.HasSetting(AuraStyleHome) + Skin.HasSetting(VerticalHome) + !Control.HasFocus(98$PARAM[id]$PARAM[pos])">Conditional</animation>
-            <label>$INFO[Container($PARAM[id]).ListItemPosition($PARAM[pos]).Label]</label>
-            <visible>String.IsEqual(Container($PARAM[id]).ListItemPosition($PARAM[pos]).Label,Container($PARAM[id]).ListItem.Label)</visible>
-            <visible>$PARAM[visible]</visible>
-        </control>
-    </include>
-
-    <include name="Home_Menu_Item_New">
-        <control type="button">
-            <width>auto</width>
-            <align>left</align>
-            <height>70</height>
             <font>$PARAM[font]_small</font>
             <focusedcolor>main_fg_30</focusedcolor>
             <selectedcolor>main_fg_30</selectedcolor>
@@ -603,45 +144,6 @@
             <animation effect="fade" start="100" end="30" condition="!Control.HasFocus($PARAM[id]) + Skin.HasSetting(AuraStyleHome) + Skin.HasSetting(VerticalHome) + !Control.HasFocus(98$PARAM[id]$PARAM[pos])">Conditional</animation>
             <label>$INFO[Container($PARAM[id]).ListItemPosition($PARAM[pos]).Label]</label>
             <visible>String.IsEqual(Container($PARAM[id]).ListItemPosition($PARAM[pos]).Label,Container($PARAM[id]).ListItem.Label)</visible>
-            <visible>$PARAM[visible]</visible>
-        </control>
-    </include>
-
-    <include name="Home_Menu_Item_Hidden">
-        <control type="button">
-            <width>auto</width>
-            <align>left</align>
-            <height>70</height>
-            <font>$PARAM[font]</font>
-            <focusedcolor>00ffffff</focusedcolor>
-            <selectedcolor>00ffffff</selectedcolor>
-            <textcolor>00ffffff</textcolor>
-            <onfocus>SetFocus($PARAM[id],$PARAM[pos])</onfocus>
-            <onclick>$INFO[Container($PARAM[id]).ListItemPosition($PARAM[pos]).Property(path)]</onclick>
-            <texturefocus />
-            <texturenofocus />
-            <textoffsetx>0</textoffsetx>
-            <label>$INFO[Container($PARAM[id]).ListItemPosition($PARAM[pos]).Label]</label>
-            <visible>$PARAM[visible]</visible>
-        </control>
-    </include>
-
-    <include name="Home_Menu_Item_Small">
-        <control type="button">
-            <width>auto</width>
-            <align>left</align>
-            <height>70</height>
-            <font>$PARAM[font]_small</font>
-            <focusedcolor>main_fg_30</focusedcolor>
-            <selectedcolor>main_fg_30</selectedcolor>
-            <textcolor>main_fg_30</textcolor>
-            <onfocus>SetFocus($PARAM[id],$PARAM[pos])</onfocus>
-            <onclick>$INFO[Container($PARAM[id]).ListItemPosition($PARAM[pos]).Property(path)]</onclick>
-            <texturefocus />
-            <texturenofocus />
-            <textoffsetx>15</textoffsetx>
-            <label>$INFO[Container($PARAM[id]).ListItemPosition($PARAM[pos]).Label]</label>
-            <visible>!String.IsEqual(Container($PARAM[id]).ListItemPosition($PARAM[pos]).Label,Container($PARAM[id]).ListItem.Label)</visible>
             <visible>$PARAM[visible]</visible>
         </control>
     </include>
@@ -663,6 +165,7 @@
             <onfocus>SetProperty(SkinHelper.WidgetContainer,5600,Home)</onfocus>
             <onfocus>ClearProperty(WidgetFocus)</onfocus>
             <orientation>horizontal</orientation>
+            <scrolltime>0</scrolltime>
             <height>10</height>
             <bottom>-100</bottom>
             <width>800</width>
