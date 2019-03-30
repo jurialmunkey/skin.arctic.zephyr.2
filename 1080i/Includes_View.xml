@@ -813,12 +813,8 @@
         <definition>
             <control type="group">
                 <animation type="Focus" condition="$PARAM[focusbounce]">
-                    <effect type="zoom" start="90" end="100" delay="0" time="150" tween="sine" easing="inout" center="auto" />
-                    <effect type="fade" start="0" end="100" delay="0" time="150" tween="sine" easing="in" />
-                </animation>
-                <animation type="Unfocus" condition="$PARAM[focusbounce]">
-                    <effect type="zoom" start="100" end="90" time="150" tween="sine" easing="inout" center="auto" />
-                    <effect type="fade" start="100" end="0" time="150" tween="sine" easing="out" />
+                    <effect type="zoom" start="96.5" end="100" time="150" tween="sine" easing="inout" center="auto"/>
+                    <effect type="fade" start="20" end="100" time="150" tween="back" easing="out"/>
                 </animation>
                 <control type="group">
                     <left>$PARAM[pad]</left>
