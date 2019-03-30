@@ -478,15 +478,7 @@
                             <onright>3000</onright>
                             <width>257.14</width>
                             <orientation>vertical</orientation>                
-                            <itemlayout width="257.14" height="item_list_height">
-                                <!-- <control type="image">
-                                    <top>3</top>
-                                    <right>-22</right>
-                                    <aspectratio>keep</aspectratio>
-                                    <width>item_list_height</width>
-                                    <bordersize>6</bordersize>
-                                    <texture colordiffuse="main_fg_30">$INFO[ListItem.Icon]</texture>
-                                </control> -->
+                            <itemlayout width="257.14" height="item_list_height" condition="!Skin.HasSetting(HomeIcons)">
                                 <control type="label">
                                     <right>40</right>
                                     <font>font_topbar_small</font>
@@ -496,17 +488,46 @@
                                     <label>$INFO[ListItem.Label]</label>
                                 </control>
                             </itemlayout>
-                            <focusedlayout width="257.14" height="item_list_height">
-                               <!--  <control type="image">
-                                    <top>3</top>
-                                    <right>-22</right>
-                                    <aspectratio>keep</aspectratio>
-                                    <width>item_list_height</width>
-                                    <bordersize>6</bordersize>
-                                    <texture colordiffuse="main_fg_100">$INFO[ListItem.Icon]</texture>
-                                </control> -->
+                            <focusedlayout width="257.14" height="item_list_height" condition="!Skin.HasSetting(HomeIcons)">
                                 <control type="label">
                                     <right>40</right>
+                                    <font>font_topbar</font>
+                                    <align>right</align>
+                                    <aligny>center</aligny>
+                                    <textcolor>main_fg_100</textcolor>
+                                    <label>$INFO[ListItem.Label]</label>
+                                </control>
+                            </focusedlayout>
+
+                            <itemlayout width="257.14" height="item_list_height" condition="Skin.HasSetting(HomeIcons)">
+                                <control type="image">
+                                    <centertop>50%</centertop>
+                                    <height>64</height>
+                                    <right>0</right>
+                                    <aspectratio>keep</aspectratio>
+                                    <width>item_list_height</width>
+                                    <texture colordiffuse="main_fg_30">$INFO[ListItem.Icon]</texture>
+                                </control>
+                                <control type="label">
+                                    <right>80</right>
+                                    <font>font_topbar_small</font>
+                                    <align>right</align>
+                                    <aligny>center</aligny>
+                                    <textcolor>main_fg_30</textcolor>
+                                    <label>$INFO[ListItem.Label]</label>
+                                </control>
+                            </itemlayout>
+                            <focusedlayout width="257.14" height="item_list_height" condition="Skin.HasSetting(HomeIcons)">
+                                <control type="image">
+                                    <centertop>50%</centertop>
+                                    <height>64</height>
+                                    <right>0</right>
+                                    <aspectratio>keep</aspectratio>
+                                    <width>item_list_height</width>
+                                    <texture colordiffuse="main_fg_100">$INFO[ListItem.Icon]</texture>
+                                </control>
+                                <control type="label">
+                                    <right>80</right>
                                     <font>font_topbar</font>
                                     <align>right</align>
                                     <aligny>center</aligny>
@@ -576,20 +597,7 @@
         </control>
     </include>
 
-    <include name="Home_Multi_Horizontal">
-        <include>Global_Background</include>
-        <control type="group">
-            <top>30</top>
-            <include>Defs_InfoDialog_Visible</include>
-            <control type="group">
-                <height>120</height>
-                <visible allowhiddenfocus="true">!$EXP[Exp_HideFurniture]</visible>
-                <include>Animation_FadeInOut</include>
-                <include content="Topbar_Right">
-                    <param name="fgcolor" value="main_fg" />
-                </include>
-            </control>
-        </control>
+    <include name="Home_Multi_Horizontal_Text">
         <control type="list" id="302">
             <ondown>301</ondown>
             <onup>301</onup>
@@ -626,6 +634,103 @@
         </control>
         <include>Home_Menu</include>
         <include>Home_Submenu</include>
+    </include>
+
+    <include name="Home_Multi_Horizontal_Icons">
+        <control type="group">
+            <include>Defs_InfoDialog_Visible</include>
+            <control type="group">
+                <top>30</top>
+                <control type="group">
+                    <height>120</height>
+                    <visible allowhiddenfocus="true">!$EXP[Exp_HideFurniture]</visible>
+                    <include>Animation_FadeInOut</include>
+                    <control type="grouplist">
+                        <visible>!Skin.HasSetting(DisableHeader)</visible>
+                        <top>0</top>
+                        <include>Animation_FadeInOut</include>
+                        <itemgap>0</itemgap>
+                        <left>view_pad</left>
+                        <align>left</align>
+                        <orientation>horizontal</orientation>
+                        <usecontrolcoords>true</usecontrolcoords>
+                        <control type="label">
+                            <aligny>center</aligny>
+                            <width max="1140">auto</width>
+                            <font>font_topbar</font>
+                            <textcolor>main_fg_100</textcolor>
+                            <label>$INFO[Container(301).ListItem.Label]</label>
+                            <!-- <visible>!Control.HasFocus(302)</visible> -->
+                        </control>
+                        <control type="label">
+                            <aligny>center</aligny>
+                            <width max="1140">auto</width>
+                            <font>font_topbar</font>
+                            <textcolor>main_fg_100</textcolor>
+                            <label>$INFO[Container(302).ListItem.Label, - ,]</label>
+                            <visible>Control.HasFocus(302)</visible>
+                        </control>
+                    </control>
+                    <!-- <control type="label">
+                        <visible>!Skin.HasSetting(DisableCenter)</visible>
+                        <aligny>center</aligny>
+                        <align>center</align>
+                        <font>font_byline</font>
+                        <textcolor>main_fg_70</textcolor>
+                        <label>Home</label>
+                        <include>Animation_FadeInOut</include>
+                        <visible>!Control.HasFocus(301)</visible>
+                    </control> -->
+                </control>
+            </control>
+            <control type="list" id="302">
+                <ondown>301</ondown>
+                <onup>301</onup>
+                <onback>301</onback>
+                <include content="Topbar_Menu_Layout">
+                    <param name="id" value="302" />
+                </include>
+                <content><include>skinshortcuts-submenu</include></content>
+            </control>
+            <control type="list" id="301">
+                <onup condition="!Skin.HasSetting(SubmenuOnly) + Integer.IsGreater(Container(302).NumItems,0)">SetProperty(submenuVisibility,$INFO[Container(301).ListItem.Property(submenuVisibility)],home)</onup>
+                <onup condition="!Skin.HasSetting(SubmenuOnly) + Integer.IsGreater(Container(302).NumItems,0)">SetProperty(leftHeader,$INFO[Container(301).ListItem.Label],home)</onup>
+                <onup condition="!Skin.HasSetting(SubmenuOnly) + Integer.IsGreater(Container(302).NumItems,0)">SetProperty(widgetName,$INFO[Container(301).ListItem.Property(widgetName)],home)</onup>
+                <onup condition="!Skin.HasSetting(SubmenuOnly) + Integer.IsGreater(Container(302).NumItems,0)">SetProperty(widgetName.backgroundWidget,$INFO[Container(301).ListItem.Property(widgetName.backgroundWidget)],home)</onup>
+                <onup condition="!Skin.HasSetting(SubmenuOnly) + Integer.IsGreater(Container(302).NumItems,0)">SetProperty(widgetPath,$INFO[Container(301).ListItem.Property(widgetPath)],home)</onup>
+                <onup condition="!Skin.HasSetting(SubmenuOnly) + Integer.IsGreater(Container(302).NumItems,0)">SetProperty(widgetTarget,$INFO[Container(301).ListItem.Property(widgetTarget)],home)</onup>
+                <onup condition="!Skin.HasSetting(SubmenuOnly) + Integer.IsGreater(Container(302).NumItems,0)">SetProperty(widgetAspect,$INFO[Container(301).ListItem.Property(widgetAspect)],home)</onup>
+                <onup condition="!Skin.HasSetting(SubmenuOnly) + Integer.IsGreater(Container(302).NumItems,0)">ActivateWindow(1135)</onup>
+
+                <onup condition="Skin.HasSetting(SubmenuOnly) + Integer.IsGreater(Container(302).NumItems,0)">302</onup>
+
+                <ondown>3000</ondown>
+                <onfocus>ClearProperty(WidgetFocus,Home)</onfocus>
+                <include content="Topbar_Menu_Layout">
+                    <param name="id" value="301" />
+                    <param name="visible" value="!Control.HasFocus(302)" />
+                </include>
+                <content><include>skinshortcuts-mainmenu</include></content>
+            </control>
+        </control>
+    </include>
+
+    <include name="Home_Multi_Horizontal">
+        <include>Global_Background</include>
+        <include condition="Skin.HasSetting(HomeIcons)">Home_Multi_Horizontal_Icons</include>
+        <control type="group">
+            <top>30</top>
+            <include>Defs_InfoDialog_Visible</include>
+            <control type="group">
+                <height>120</height>
+                <visible allowhiddenfocus="true">!$EXP[Exp_HideFurniture]</visible>
+                <include>Animation_FadeInOut</include>
+                <include content="Topbar_Right">
+                    <param name="fgcolor" value="main_fg" />
+                </include>
+            </control>
+        </control>
+        <include condition="!Skin.HasSetting(HomeIcons)">Home_Multi_Horizontal_Text</include>
         <control type="group">
             <visible>String.IsEqual(Container(9989).ListItemAbsolute(0).Property(list),Weather)</visible>
             <include>Weather</include>

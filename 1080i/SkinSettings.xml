@@ -159,6 +159,16 @@
                         <selected>!Skin.HasSetting(SubmenuOnly)</selected>
                         <onclick>Skin.ToggleSetting(SubmenuOnly)</onclick>
                     </control>
+
+                    <control type="radiobutton" id="19109" description="Icons">
+                        <visible>Integer.IsEqual(Window.Property(CurrentFocus),9001)</visible>
+                        <include>Defs_Settings_Button</include>
+                        <label>$LOCALIZE[31115]</label>
+                        <enable>Skin.HasSetting(VerticalHome)</enable>
+                        <selected>Skin.HasSetting(HomeIcons)</selected>
+                        <onclick>Skin.ToggleSetting(HomeIcons)</onclick>
+                    </control>
+
                     <control type="button" id="19105" description="Global Widget">
                         <visible>Integer.IsEqual(Window.Property(CurrentFocus),9001)</visible>
                         <include>Defs_Settings_Button</include>

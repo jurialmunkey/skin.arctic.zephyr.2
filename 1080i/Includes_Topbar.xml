@@ -145,21 +145,22 @@
     
     <include name="Topbar_Menu_Layout">
         <param name="visible" default="false" />
+        <param name="id" default="300" />
         <definition>
             <animation effect="fade" start="0" end="100" time="350" tween="cubic" easing="inout" reversible="false">Visible</animation>
             <animation effect="fade" start="100" end="0" time="350" tween="cubic" easing="inout" reversible="false">Hidden</animation>
-            <animation effect="slide" end="35" condition="Integer.IsLess(Container(300).NumItems,11)">Conditional</animation>
-            <animation effect="slide" end="35" condition="Integer.IsLess(Container(300).NumItems,10)">Conditional</animation>
-            <animation effect="slide" end="35" condition="Integer.IsLess(Container(300).NumItems,9)">Conditional</animation>
-            <animation effect="slide" end="35" condition="Integer.IsLess(Container(300).NumItems,8)">Conditional</animation>
-            <animation effect="slide" end="35" condition="Integer.IsLess(Container(300).NumItems,7)">Conditional</animation>
-            <animation effect="slide" end="35" condition="Integer.IsLess(Container(300).NumItems,6)">Conditional</animation>
-            <animation effect="slide" end="35" condition="Integer.IsLess(Container(300).NumItems,5)">Conditional</animation>
-            <animation effect="slide" end="35" condition="Integer.IsLess(Container(300).NumItems,4)">Conditional</animation>
-            <animation effect="slide" end="35" condition="Integer.IsLess(Container(300).NumItems,3)">Conditional</animation>
-            <animation effect="slide" end="35" condition="Integer.IsLess(Container(300).NumItems,2)">Conditional</animation>
-            <animation effect="slide" end="35" condition="Integer.IsLess(Container(300).NumItems,1)">Conditional</animation>
-            <visible allowhiddenfocus="true">Control.HasFocus(300) | $PARAM[visible]</visible>
+            <animation effect="slide" end="35" condition="Integer.IsLess(Container($PARAM[id]).NumItems,11)">Conditional</animation>
+            <animation effect="slide" end="35" condition="Integer.IsLess(Container($PARAM[id]).NumItems,10)">Conditional</animation>
+            <animation effect="slide" end="35" condition="Integer.IsLess(Container($PARAM[id]).NumItems,9)">Conditional</animation>
+            <animation effect="slide" end="35" condition="Integer.IsLess(Container($PARAM[id]).NumItems,8)">Conditional</animation>
+            <animation effect="slide" end="35" condition="Integer.IsLess(Container($PARAM[id]).NumItems,7)">Conditional</animation>
+            <animation effect="slide" end="35" condition="Integer.IsLess(Container($PARAM[id]).NumItems,6)">Conditional</animation>
+            <animation effect="slide" end="35" condition="Integer.IsLess(Container($PARAM[id]).NumItems,5)">Conditional</animation>
+            <animation effect="slide" end="35" condition="Integer.IsLess(Container($PARAM[id]).NumItems,4)">Conditional</animation>
+            <animation effect="slide" end="35" condition="Integer.IsLess(Container($PARAM[id]).NumItems,3)">Conditional</animation>
+            <animation effect="slide" end="35" condition="Integer.IsLess(Container($PARAM[id]).NumItems,2)">Conditional</animation>
+            <animation effect="slide" end="35" condition="Integer.IsLess(Container($PARAM[id]).NumItems,1)">Conditional</animation>
+            <visible allowhiddenfocus="true">Control.HasFocus($PARAM[id]) | $PARAM[visible]</visible>
             <width>770</width>
             <focusposition>5</focusposition>
             <movement>5</movement>
@@ -180,6 +181,7 @@
                     <centerleft>50%</centerleft>
                     <width>60</width>
                     <control type="image">
+                        <visible>Control.HasFocus($PARAM[id])</visible>
                         <texture colordiffuse="main_fg_100">common/white.png</texture>
                         <bottom>0</bottom>
                         <height>6</height>
