@@ -32,7 +32,7 @@
         <value>$INFO[ListItem.Year]</value>
     </variable>
     <variable name="Label_List_Title">
-        <value condition="!String.IsEqual(Container.ShowTitle,ListItem.TvShowTitle) + !String.IsEmpty(ListItem.Title)">$INFO[ListItem.TvShowTitle,, - ]$INFO[ListItem.Title]</value>
+        <value condition="!String.IsEqual(Container.ShowTitle,ListItem.TvShowTitle) + !String.IsEmpty(ListItem.Title) + !String.IsEmpty(Container.ShowTitle)">$INFO[ListItem.TvShowTitle,, - ]$INFO[ListItem.Title]</value>
         <value condition="!String.IsEmpty(ListItem.Title)">$INFO[ListItem.Title]</value>
         <value>$INFO[ListItem.Label]</value>
     </variable>
