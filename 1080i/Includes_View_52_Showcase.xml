@@ -62,8 +62,16 @@
                     <textcolor>main_fg_70</textcolor>
                     <font>font_plotbox</font>
                 </control>
-                <include content="Object_Icon_Ratings" condition="$PARAM[ratings]">
+                <!-- Check if we're using SkinHelper or ListHelper -->
+                <include content="Object_Icon_Ratings" condition="$PARAM[ratings] + !System.HasAddon(service.listitem.helper)">
                     <param name="id" value="$PARAM[id]" />
+                </include>
+                <include content="Object_Icon_Ratings" condition="$PARAM[ratings] + System.HasAddon(service.listitem.helper)">
+                    <param name="id" value="$PARAM[id]" />
+                    <param name="metacritic_prop" value="Window(Home).Property(ListItemHelper.rating.metacritic.percent)" />
+                    <param name="imdb_prop" value="Window(home).Property(ListItemHelper.rating.imdb)" />
+                    <param name="rt_prop" value="Window(Home).Property(ListItemHelper.rating.rottentomatoes.percent)" />
+                    <param name="oscar_prop" value="Window(Home).Property(ListItemHelper.awards)" />
                 </include>
             </control>
         </definition>

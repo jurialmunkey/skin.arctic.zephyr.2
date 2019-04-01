@@ -715,95 +715,175 @@
     </include>
 
     <include name="Object_Icon_Ratings">
-        <control type="grouplist">
-            <orientation>horizontal</orientation>
-            <height>80</height>
-            <align>center</align>
-            <itemgap>10</itemgap>
-            <control type="group">
-                <width>64</width>
-                <visible>!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.MetaCritic.Rating))</visible>
-                <visible>!Skin.HasSetting(Ratings.Metacritic)</visible>
-                <control type="image">
-                    <top>0</top>
-                    <centerleft>50%</centerleft>
-                    <width>32</width>
-                    <height>32</height>
-                    <texture colordiffuse="main_fg_100">flags/monochrome/ratings/metacritic.png</texture>
+        <param name="metacritic_prop" default="Window(Home).Property(SkinHelper.ListItem.MetaCritic.Rating)" />
+        <param name="imdb_prop" default="Window(home).Property(SkinHelper.ListItem.Rating.IMDB)" />
+        <param name="rt_prop" default="Window(Home).Property(SkinHelper.ListItem.RottenTomatoes.Rating)" />
+        <param name="oscar_prop" default="Window(Home).Property(SkinHelper.ListItem.Awards)" />
+
+        <param name="rt_audience_prop" default="Window(Home).Property(ListItemHelper.rating.rottentomatoes.audience)" />
+        <definition>
+            <control type="grouplist">
+                <orientation>horizontal</orientation>
+                <height>80</height>
+                <align>center</align>
+                <itemgap>10</itemgap>
+                <control type="group">
+                    <width>64</width>
+                    <visible>String.Contains($PARAM[oscar_prop],Oscar) + String.Contains($PARAM[oscar_prop],Won)</visible>
+                    <visible>!Skin.HasSetting(Ratings.Oscars)</visible>
+                    <control type="image">
+                        <top>0</top>
+                        <centerleft>50%</centerleft>
+                        <width>32</width>
+                        <height>32</height>
+                        <texture colordiffuse="main_fg_100">flags/monochrome/ratings/oscar.png</texture>
+                    </control>
+                    <control type="label">
+                        <textcolor>main_fg_70</textcolor>
+                        <top>40</top>
+                        <width>auto</width>
+                        <height>28</height>
+                        <align>center</align>
+                        <font>font_tiny_bold</font>
+                        <label>$VAR[Label_Oscars]</label>
+                    </control>
                 </control>
-                <control type="label">
-                    <textcolor>main_fg_70</textcolor>
-                    <top>40</top>
-                    <width>auto</width>
-                    <height>28</height>
-                    <align>center</align>
-                    <font>font_tiny_bold</font>
-                    <label>$INFO[Window(Home).Property(SkinHelper.ListItem.MetaCritic.Rating)]</label>
+                <control type="group">
+                    <width>64</width>
+                    <visible>!String.IsEmpty($PARAM[metacritic_prop])</visible>
+                    <visible>!Skin.HasSetting(Ratings.Metacritic)</visible>
+                    <control type="image">
+                        <top>0</top>
+                        <centerleft>50%</centerleft>
+                        <width>32</width>
+                        <height>32</height>
+                        <texture colordiffuse="main_fg_100">flags/monochrome/ratings/metacritic.png</texture>
+                    </control>
+                    <control type="label">
+                        <textcolor>main_fg_70</textcolor>
+                        <top>40</top>
+                        <width>auto</width>
+                        <height>28</height>
+                        <align>center</align>
+                        <font>font_tiny_bold</font>
+                        <label>$INFO[$PARAM[metacritic_prop]]</label>
+                    </control>
+                </control>
+                <control type="group">
+                    <width>84</width>
+                    <visible>!String.IsEmpty(ListItem.Top250)</visible>
+                    <visible>!Skin.HasSetting(Ratings.Top250)</visible>
+                    <control type="image">
+                        <top>0</top>
+                        <centerleft>50%</centerleft>
+                        <width>52</width>
+                        <height>32</height>
+                        <texture colordiffuse="main_fg_100">flags/monochrome/ratings/imdbtop250.png</texture>
+                    </control>
+                    <control type="label">
+                        <textcolor>main_fg_70</textcolor>
+                        <top>40</top>
+                        <width>auto</width>
+                        <height>28</height>
+                        <align>center</align>
+                        <font>font_tiny_bold</font>
+                        <label>$INFO[ListItem.Top250,#,]</label>
+                    </control>
+                </control>
+                <control type="group">
+                    <width>84</width>
+                    <visible>!String.IsEmpty(Container($PARAM[id]).ListItem.Rating) | !String.IsEmpty($PARAM[imdb_prop])</visible>
+                    <visible>!Skin.HasSetting(Ratings.IMDB)</visible>
+                    <control type="image">
+                        <top>0</top>
+                        <centerleft>50%</centerleft>
+                        <width>52</width>
+                        <height>32</height>
+                        <texture colordiffuse="main_fg_100">flags/monochrome/ratings/imdb.png</texture>
+                    </control>
+                    <control type="label">
+                        <textcolor>main_fg_70</textcolor>
+                        <top>40</top>
+                        <width>auto</width>
+                        <height>28</height>
+                        <align>center</align>
+                        <font>font_tiny_bold</font>
+                        <label>$INFO[$PARAM[imdb_prop]]</label>
+                        <visible>!String.IsEmpty($PARAM[imdb_prop])</visible>
+                    </control>
+                    <control type="label">
+                        <textcolor>main_fg_70</textcolor>
+                        <top>40</top>
+                        <width>auto</width>
+                        <height>28</height>
+                        <align>center</align>
+                        <font>font_tiny_bold</font>
+                        <label>$INFO[Container($PARAM[id]).ListItem.Rating]</label>
+                        <visible>String.IsEmpty($PARAM[imdb_prop])</visible>
+                    </control>
+                </control>
+                <control type="group">
+                    <width>64</width>
+                    <visible>!Skin.HasSetting(Ratings.RottenTomatoes)</visible>
+                    <visible>!String.IsEmpty($PARAM[rt_prop])</visible>
+                    <control type="image">
+                        <top>0</top>
+                        <centerleft>50%</centerleft>
+                        <width>32</width>
+                        <height>32</height>
+                        <texture colordiffuse="main_fg_100">flags/monochrome/ratings/rtrotten.png</texture>
+                        <visible>!Integer.IsGreater($PARAM[rt_prop],59)</visible>
+                    </control>
+                    <control type="image">
+                        <top>0</top>
+                        <centerleft>50%</centerleft>
+                        <width>32</width>
+                        <height>32</height>
+                        <texture colordiffuse="main_fg_100">flags/monochrome/ratings/rtfresh.png</texture>
+                        <visible>Integer.IsGreater($PARAM[rt_prop],59)</visible>
+                    </control>
+                    <control type="label">
+                        <textcolor>main_fg_70</textcolor>
+                        <top>40</top>
+                        <width>auto</width>
+                        <height>28</height>
+                        <align>center</align>
+                        <font>font_tiny_bold</font>
+                        <label>$INFO[$PARAM[rt_prop]]</label>
+                    </control>
+                </control>
+                <control type="group">
+                    <width>64</width>
+                    <visible>!String.IsEmpty($PARAM[rt_audience_prop])</visible>
+                    <visible>!Skin.HasSetting(Ratings.RottenTomatoesAudience)</visible>
+                    <control type="image">
+                        <top>0</top>
+                        <centerleft>50%</centerleft>
+                        <width>32</width>
+                        <height>32</height>
+                        <texture colordiffuse="main_fg_100">flags/monochrome/ratings/popcorn_spilt.png</texture>
+                        <visible>!Integer.IsGreater($PARAM[rt_audience_prop],59)</visible>
+                    </control>
+                    <control type="image">
+                        <top>0</top>
+                        <centerleft>50%</centerleft>
+                        <width>32</width>
+                        <height>32</height>
+                        <texture colordiffuse="main_fg_100">flags/monochrome/ratings/popcorn.png</texture>
+                        <visible>Integer.IsGreater($PARAM[rt_audience_prop],59)</visible>
+                    </control>
+                    <control type="label">
+                        <textcolor>main_fg_70</textcolor>
+                        <top>40</top>
+                        <width>auto</width>
+                        <height>28</height>
+                        <align>center</align>
+                        <font>font_tiny_bold</font>
+                        <label>$INFO[$PARAM[rt_audience_prop]]</label>
+                    </control>
                 </control>
             </control>
-            <control type="group">
-                <width>64</width>
-                <visible>!String.IsEmpty(Container($PARAM[id]).ListItem.Rating) | !String.IsEmpty(Window(home).Property(SkinHelper.ListItem.Rating.IMDB))</visible>
-                <visible>!Skin.HasSetting(Ratings.IMDB)</visible>
-                <control type="image">
-                    <top>0</top>
-                    <centerleft>50%</centerleft>
-                    <width>52</width>
-                    <height>32</height>
-                    <texture colordiffuse="main_fg_100">flags/monochrome/ratings/imdb.png</texture>
-                </control>
-                <control type="label">
-                    <textcolor>main_fg_70</textcolor>
-                    <top>40</top>
-                    <width>auto</width>
-                    <height>28</height>
-                    <align>center</align>
-                    <font>font_tiny_bold</font>
-                    <label>$INFO[Window(home).Property(SkinHelper.ListItem.Rating.IMDB)]</label>
-                    <visible>!String.IsEmpty(Window(home).Property(SkinHelper.ListItem.Rating.IMDB))</visible>
-                </control>
-                <control type="label">
-                    <textcolor>main_fg_70</textcolor>
-                    <top>40</top>
-                    <width>auto</width>
-                    <height>28</height>
-                    <align>center</align>
-                    <font>font_tiny_bold</font>
-                    <label>$INFO[Container($PARAM[id]).ListItem.Rating]</label>
-                    <visible>String.IsEmpty(Window(home).Property(SkinHelper.ListItem.Rating.IMDB))</visible>
-                </control>
-            </control>
-            <control type="group">
-                <width>64</width>
-                <visible>!Skin.HasSetting(Ratings.RottenTomatoes)</visible>
-                <visible>!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.RottenTomatoes.Rating))</visible>
-                <control type="image">
-                    <top>0</top>
-                    <centerleft>50%</centerleft>
-                    <width>32</width>
-                    <height>32</height>
-                    <texture colordiffuse="main_fg_100">flags/monochrome/ratings/rtrotten.png</texture>
-                    <visible>!Integer.IsGreater(Window(home).Property(SkinHelper.ListItem.RottenTomatoes.Rating),59)</visible>
-                </control>
-                <control type="image">
-                    <top>0</top>
-                    <centerleft>50%</centerleft>
-                    <width>32</width>
-                    <height>32</height>
-                    <texture colordiffuse="main_fg_100">flags/monochrome/ratings/rtfresh.png</texture>
-                    <visible>Integer.IsGreater(Window(home).Property(SkinHelper.ListItem.RottenTomatoes.Rating),59)</visible>
-                </control>
-                <control type="label">
-                    <textcolor>main_fg_70</textcolor>
-                    <top>40</top>
-                    <width>auto</width>
-                    <height>28</height>
-                    <align>center</align>
-                    <font>font_tiny_bold</font>
-                    <label>$INFO[Window(Home).Property(SkinHelper.ListItem.RottenTomatoes.Rating)]</label>
-                </control>
-            </control>
-        </control>
+        </definition>
     </include>
 
     <include name="Object_Info_TextPairs">
