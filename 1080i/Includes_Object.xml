@@ -575,11 +575,13 @@
                 <control type="group">
                     <left>-14</left>
                     <visible>String.IsEmpty(ListItem.UserRating)</visible>
+                    <visible>!Skin.HasSetting(DisableStarRating)</visible>
                     <include>Object_StarRating</include>
                 </control>
                 <control type="group">
                     <left>-14</left>
                     <visible>!String.IsEmpty(ListItem.UserRating)</visible>
+                    <visible>!Skin.HasSetting(DisableStarRating)</visible>
                     <include content="Object_StarRating">
                         <param name="rating_prop" value="ListItem.UserRating" />
                     </include>
@@ -587,7 +589,19 @@
                 <control type="group">
                     <top>41</top>
                     <left>260</left>
-                    <include content="Object_Ratings_Content">
+                    <include content="Object_Ratings_Content" condition="!Skin.HasSetting(DisableStarRating)">
+                        <param name="colordiffuse" value="main_fg_100" />
+                        <param name="align" value="left" />
+                        <param name="tmdb" value="false" />
+                        <param name="imdbvotes" value="$PARAM[imdbvotes]" />
+                        <param name="top250" value="$PARAM[top250]" />
+                        <param name="oscars" value="$PARAM[oscars]" />
+                    </include>
+                </control>
+                <control type="group">
+                    <top>41</top>
+                    <left>0</left>
+                    <include content="Object_Ratings_Content" condition="Skin.HasSetting(DisableStarRating)">
                         <param name="colordiffuse" value="main_fg_100" />
                         <param name="align" value="left" />
                         <param name="tmdb" value="false" />
