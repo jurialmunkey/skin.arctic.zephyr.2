@@ -62,6 +62,9 @@
                     <textcolor>main_fg_70</textcolor>
                     <font>font_plotbox</font>
                 </control>
+                <!-- <include content="Object_Icon_Ratings" condition="$PARAM[ratings]">
+                    <param name="id" value="$PARAM[id]" />
+                </include> -->
                 <!-- Check if we're using SkinHelper or ListHelper -->
                 <include content="Object_Icon_Ratings" condition="$PARAM[ratings] + !System.HasAddon(service.listitem.helper)">
                     <param name="id" value="$PARAM[id]" />

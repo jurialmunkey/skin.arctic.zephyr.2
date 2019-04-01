@@ -734,7 +734,7 @@
         <param name="imdb_prop" default="Window(home).Property(SkinHelper.ListItem.Rating.IMDB)" />
         <param name="rt_prop" default="Window(Home).Property(SkinHelper.ListItem.RottenTomatoes.Rating)" />
         <param name="oscar_prop" default="Window(Home).Property(SkinHelper.ListItem.Awards)" />
-        <param name="rt_audience_prop" default="None" />
+        <param name="rt_audience_prop" default="Window(Home).Property(ListItemHelper.rating.rottentomatoes.audience)" />
         <param name="tvdb_prop" default="Window(Home).Property(SkinHelper.ListItem.Rating.TVDB)" />
         <definition>
             <control type="grouplist">
@@ -744,6 +744,7 @@
                 <itemgap>10</itemgap>
                 <control type="group">
                     <width>64</width>
+                    <visible>String.IsEqual(Container($PARAM[id]).ListItem.DBType,movie)</visible>
                     <visible>String.Contains($PARAM[oscar_prop],Oscar) + String.Contains($PARAM[oscar_prop],Won)</visible>
                     <visible>!Skin.HasSetting(Ratings.Oscars)</visible>
                     <control type="image">
@@ -765,6 +766,7 @@
                 </control>
                 <control type="group">
                     <width>64</width>
+                    <visible>String.IsEqual(Container($PARAM[id]).ListItem.DBType,movie)</visible>
                     <visible>!String.IsEmpty($PARAM[metacritic_prop])</visible>
                     <visible>!Skin.HasSetting(Ratings.Metacritic)</visible>
                     <control type="image">
@@ -807,7 +809,7 @@
                 </control>
                 <control type="group">
                     <width>84</width>
-                    <visible>!String.IsEmpty(Container($PARAM[id]).ListItem.Rating) | !String.IsEmpty($PARAM[imdb_prop])</visible>
+                    <visible>[!String.IsEmpty($PARAM[imdb_prop]) + String.IsEqual(Container($PARAM[id]).ListItem.DBType,movie)] | !String.IsEmpty(Container($PARAM[id]).ListItem.Rating)</visible>
                     <visible>!Skin.HasSetting(Ratings.IMDB)</visible>
                     <control type="image">
                         <top>0</top>
@@ -824,7 +826,7 @@
                         <align>center</align>
                         <font>font_tiny_bold</font>
                         <label>$INFO[$PARAM[imdb_prop]]</label>
-                        <visible>!String.IsEmpty($PARAM[imdb_prop])</visible>
+                        <visible>!String.IsEmpty($PARAM[imdb_prop]) + String.IsEqual(Container($PARAM[id]).ListItem.DBType,movie)</visible>
                     </control>
                     <control type="label">
                         <textcolor>main_fg_70</textcolor>
@@ -834,11 +836,12 @@
                         <align>center</align>
                         <font>font_tiny_bold</font>
                         <label>$INFO[Container($PARAM[id]).ListItem.Rating]</label>
-                        <visible>String.IsEmpty($PARAM[imdb_prop])</visible>
+                        <visible>String.IsEmpty($PARAM[imdb_prop]) | !String.IsEqual(Container($PARAM[id]).ListItem.DBType,movie)</visible>
                     </control>
                 </control>
                 <control type="group">
                     <width>64</width>
+                    <visible>String.IsEqual(Container($PARAM[id]).ListItem.DBType,tvshow) | String.IsEqual(Container($PARAM[id]).ListItem.DBType,season) | String.IsEqual(Container($PARAM[id]).ListItem.DBType,episode)</visible>
                     <visible>!String.IsEmpty($PARAM[tvdb_prop])</visible>
                     <visible>!Skin.HasSetting(Ratings.TVDB)</visible>
                     <control type="image">
@@ -890,6 +893,7 @@
                 </control>
                 <control type="group">
                     <width>64</width>
+                    <visible>String.IsEqual(Container($PARAM[id]).ListItem.DBType,movie)</visible>
                     <visible>!Skin.HasSetting(Ratings.RottenTomatoes)</visible>
                     <visible>!String.IsEmpty($PARAM[rt_prop])</visible>
                     <control type="image">
@@ -920,6 +924,7 @@
                 </control>
                 <control type="group">
                     <width>64</width>
+                    <visible>String.IsEqual(Container($PARAM[id]).ListItem.DBType,movie)</visible>
                     <visible>!String.IsEmpty($PARAM[rt_audience_prop])</visible>
                     <visible>!Skin.HasSetting(Ratings.RottenTomatoesAudience)</visible>
                     <control type="image">
