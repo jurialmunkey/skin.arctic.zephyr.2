@@ -721,6 +721,7 @@
         <param name="rt_prop" default="Window(Home).Property(SkinHelper.ListItem.RottenTomatoes.Rating)" />
         <param name="oscar_prop" default="Window(Home).Property(SkinHelper.ListItem.Awards)" />
         <param name="rt_audience_prop" default="None" />
+        <param name="tvdb_prop" default="Window(Home).Property(SkinHelper.ListItem.Rating.TVDB)" />
         <definition>
             <control type="grouplist">
                 <orientation>horizontal</orientation>
@@ -771,7 +772,7 @@
                 </control>
                 <control type="group">
                     <width>84</width>
-                    <visible>!String.IsEmpty(ListItem.Top250)</visible>
+                    <visible>!String.IsEmpty(Container($PARAM[id]).ListItem.Top250)</visible>
                     <visible>!Skin.HasSetting(Ratings.Top250)</visible>
                     <control type="image">
                         <top>0</top>
@@ -787,7 +788,7 @@
                         <height>28</height>
                         <align>center</align>
                         <font>font_tiny_bold</font>
-                        <label>$INFO[ListItem.Top250,#,]</label>
+                        <label>$INFO[Container($PARAM[id]).ListItem.Top250,#,]</label>
                     </control>
                 </control>
                 <control type="group">
@@ -820,6 +821,57 @@
                         <font>font_tiny_bold</font>
                         <label>$INFO[Container($PARAM[id]).ListItem.Rating]</label>
                         <visible>String.IsEmpty($PARAM[imdb_prop])</visible>
+                    </control>
+                </control>
+                <control type="group">
+                    <width>64</width>
+                    <visible>!String.IsEmpty($PARAM[tvdb_prop])</visible>
+                    <visible>!Skin.HasSetting(Ratings.TVDB)</visible>
+                    <control type="image">
+                        <top>0</top>
+                        <centerleft>50%</centerleft>
+                        <width>32</width>
+                        <height>32</height>
+                        <texture colordiffuse="main_fg_100">flags/monochrome/ratings/tvdb.png</texture>
+                    </control>
+                    <control type="label">
+                        <textcolor>main_fg_70</textcolor>
+                        <top>40</top>
+                        <width>auto</width>
+                        <height>28</height>
+                        <align>center</align>
+                        <font>font_tiny_bold</font>
+                        <label>$INFO[$PARAM[tvdb_prop]]</label>
+                    </control>
+                </control>
+                <control type="group">
+                    <width>64</width>
+                    <visible>!String.IsEmpty(Container($PARAM[id]).ListItem.UserRating)</visible>
+                    <visible>!Skin.HasSetting(Ratings.User)</visible>
+                    <control type="image">
+                        <top>0</top>
+                        <centerleft>50%</centerleft>
+                        <width>32</width>
+                        <height>32</height>
+                        <texture colordiffuse="main_fg_100">flags/monochrome/ratings/user_rating.png</texture>
+                        <visible>Integer.IsGreater(Container($PARAM[id]).ListItem.UserRating,5)</visible>
+                    </control>
+                    <control type="image">
+                        <top>0</top>
+                        <centerleft>50%</centerleft>
+                        <width>32</width>
+                        <height>32</height>
+                        <texture colordiffuse="main_fg_100" flipy="true">flags/monochrome/ratings/user_rating.png</texture>
+                        <visible>!Integer.IsGreater(Container($PARAM[id]).ListItem.UserRating,5)</visible>
+                    </control>
+                    <control type="label">
+                        <textcolor>main_fg_70</textcolor>
+                        <top>40</top>
+                        <width>auto</width>
+                        <height>28</height>
+                        <align>center</align>
+                        <font>font_tiny_bold</font>
+                        <label>$INFO[Container($PARAM[id]).ListItem.UserRating,,.0]</label>
                     </control>
                 </control>
                 <control type="group">
