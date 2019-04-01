@@ -163,6 +163,7 @@
             <onup condition="!Player.HasVideo | !Skin.HasSetting(global.showvideo)">5600</onup>
             <onup condition="Player.HasVideo + Skin.HasSetting(global.showvideo)">noop</onup>
             <onfocus>SetProperty(SkinHelper.WidgetContainer,5600,Home)</onfocus>
+            <onfocus>SetProperty(ListItemHelper.WidgetContainerId,5600,Home)</onfocus>
             <onfocus>ClearProperty(WidgetFocus)</onfocus>
             <orientation>horizontal</orientation>
             <scrolltime>0</scrolltime>
