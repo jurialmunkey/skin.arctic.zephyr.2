@@ -3,7 +3,7 @@
 <window id="0">
     <defaultcontrol always="false">301</defaultcontrol>
 
-    <onload>SetProperty(ListItemHelper.WidgetContainerWindowName,home)</onload>
+    <onload>SetProperty(ListItemHelper.WidgetContainerWindowName,home,home)</onload>
 
     <onload>ClearProperty(InfoTrick.0.Title,Home)</onload>
     <onload>ClearProperty(InfoTrick.1.Title,Home)</onload>
@@ -24,6 +24,7 @@
     <onload condition="String.IsEmpty(Window(Home).Property(SkinSplashStarted))">AlarmClock(SkinSplashStarted,SetProperty(SkinSplashStarted,1,home),00:01,silent,false)</onload>
 
     <onunload>ClearProperty(SkinHelper.WidgetContainer,Home)</onunload>
+    <onunload>ClearProperty(ListItemHelper.WidgetContainerId,Home)</onunload>
 
     <controls>
         <control type="list" id="9989">
