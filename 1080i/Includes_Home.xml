@@ -823,6 +823,7 @@
                 <control type="group">
                     <top>-5</top>
                     <height>75</height>
+                    <visible>!Skin.HasSetting(DisableStarRating)</visible>
                     <control type="group">
                         <left>-14</left>
                         <visible>String.IsEmpty(Container($PARAM[id]).ListItem.UserRating)</visible>
