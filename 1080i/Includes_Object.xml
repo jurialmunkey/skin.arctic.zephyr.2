@@ -736,6 +736,7 @@
         <param name="oscar_prop" default="Window(Home).Property(SkinHelper.ListItem.Awards)" />
         <param name="rt_audience_prop" default="Window(Home).Property(ListItemHelper.rating.rottentomatoes.audience)" />
         <param name="tvdb_prop" default="Window(Home).Property(SkinHelper.ListItem.Rating.TVDB)" />
+        <param name="top250_prop" default="Window(Home).Property(SkinHelper.ListItem.IMDB.Top250)" />
         <definition>
             <control type="grouplist">
                 <orientation>horizontal</orientation>
@@ -788,7 +789,7 @@
                 </control>
                 <control type="group">
                     <width>84</width>
-                    <visible>!String.IsEmpty(Container($PARAM[id]).ListItem.Top250)</visible>
+                    <visible>!String.IsEmpty(Container($PARAM[id]).ListItem.Top250) | !String.IsEmpty($PARAM[top250_prop])</visible>
                     <visible>!Skin.HasSetting(Ratings.Top250)</visible>
                     <control type="image">
                         <top>0</top>
@@ -805,6 +806,17 @@
                         <align>center</align>
                         <font>font_tiny_bold</font>
                         <label>$INFO[Container($PARAM[id]).ListItem.Top250,#,]</label>
+                        <visible>String.IsEmpty($PARAM[top250_prop])</visible>
+                    </control>
+                    <control type="label">
+                        <textcolor>main_fg_70</textcolor>
+                        <top>40</top>
+                        <width>auto</width>
+                        <height>28</height>
+                        <align>center</align>
+                        <font>font_tiny_bold</font>
+                        <label>$INFO[$PARAM[top250_prop],#,]</label>
+                        <visible>!String.IsEmpty($PARAM[top250_prop])</visible>
                     </control>
                 </control>
                 <control type="group">
