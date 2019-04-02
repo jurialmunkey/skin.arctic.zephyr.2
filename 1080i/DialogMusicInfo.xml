@@ -166,12 +166,12 @@
                             <param name="labelinclude" value="Defs_Null" />
                             <param name="visible" value="Integer.IsGreater(Container(5001).NumItems,0) | Container(5001).IsUpdating" />
                             <animation effect="fade" start="100" end="0" condition="!Integer.IsGreater(Container(5001).NumItems,0) | Container(5001).IsUpdating">Conditional</animation>
-                            <!-- <onclick>Dialog.Close(all,force)</onclick>
-                            <onclick>ActivateWindow(music,musicdb://albums/$INFO[Container(5001).ListItem.DBID]/,return)</onclick> -->
+                            <onclick>Dialog.Close(all,force)</onclick>
+                            <onclick>ActivateWindow(music,musicdb://albums/$INFO[Container(5001).ListItem.DBID]/,return)</onclick>
                             <onback condition="Skin.HasSetting(DisableExtendedInfo)">SetFocus(50)</onback>
                             <onback>SetFocus(5000)</onback>
                             <onback>300</onback>
-                            <content target="music">musicdb://albums/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22artist%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22$INFO[ListItem.Artist]%22%5D%7D%5D%7D%2C%22type%22%3A%22albums%22%7D</content>
+                            <content target="music">musicdb://albums/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22albumartist%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22$INFO[ListItem.Artist]%22%5D%7D%5D%7D%2C%22type%22%3A%22albums%22%7D</content>
                         </include>
 
                         <include content="View_Cast_Toplabel">
@@ -290,6 +290,8 @@
                 </include>
                 <control type="group"></control>
             </control>
+
+            <include>Object_Info_Arrows</include>
         </control>
 
        
