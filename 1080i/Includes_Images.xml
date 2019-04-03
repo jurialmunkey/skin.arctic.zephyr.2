@@ -43,10 +43,12 @@
     <variable name="Image_VideoPlayer_RipSource">
         <value condition="String.Contains(Player.FileNameAndPath,2160p) | String.Contains(Player.FileNameAndPath,UHD) | String.Contains(Player.FileNameAndPath,UltraHD) | String.Contains(Player.FileNameAndPath,Ultra-HD) | String.Contains(Player.FileNameAndPath,4K)">flags/monochrome/other/4K.png</value>
         <value condition="String.Contains(Player.FileNameAndPath,blu-ray) | String.Contains(Player.FileNameAndPath,bluray) | String.Contains(Player.FileNameAndPath,bdrip) | String.Contains(Player.FileNameAndPath,bd25) | String.Contains(Player.FileNameAndPath,bd50)">flags/monochrome/other/bluray.png</value>
+        <value condition="String.Contains(Player.FileNameAndPath,hddvd) | String.Contains(Player.FileNameAndPath,hd-dvd)">flags/monochrome/other/hddvd.png</value>
         <value condition="String.Contains(Player.FileNameAndPath,dvd)">flags/monochrome/other/dvd.png</value>
-        <value condition="String.Contains(Player.FileNameAndPath,hdtv) | String.Contains(Player.FileNameAndPath,pdtv) | String.Contains(Player.FileNameAndPath,dsr) | Pvr.IsPlayingTv">flags/monochrome/other/hdtv.png</value>
+        <value condition="String.Contains(Player.FileNameAndPath,hdtv) | String.Contains(Player.FileNameAndPath,pdtv) | String.Contains(Player.FileNameAndPath,dsr)">flags/monochrome/other/hdtv.png</value>
+        <value condition="String.Contains(Player.FileNameAndPath,sdtv)">flags/monochrome/other/sdtv.png</value>
         <value condition="String.Contains(Player.FileNameAndPath,web-dl) | String.Contains(Player.FileNameAndPath,webdl) | String.Contains(Player.FileNameAndPath,WEBRip)">flags/monochrome/other/web-dl.png</value>
-        <value>flags/monochrome/other/web-dl.png</value>
+        <value>$INFO[Skin.String(FallbackSourceFlag)]</value>
     </variable>
 
     <variable name="Image_VideoPlayer_AudioCodec">

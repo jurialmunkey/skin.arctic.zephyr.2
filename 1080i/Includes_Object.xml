@@ -2210,25 +2210,31 @@
     </include>
 
     <include name="Object_Info_Arrows">
-        <control type="group">
-            <top>-155</top>
-            <include>Animation_FadeIn_Delay</include>
-            <include>Animation_FadeOut</include>
-            <visible>Container(9000).HasPrevious</visible>
-            <include content="Object_DoubleArrow_Up">
-                <param name="colordiffuse" value="main_fg_30" />
-            </include>
-        </control>
-        <control type="group">
-            <bottom>45</bottom>
-            <include>Animation_FadeIn_Delay</include>
-            <include>Animation_FadeOut</include>
-            <visible>!Control.HasFocus(6)</visible>
-            <visible>Container(9000).HasNext</visible>
-            <include content="Object_DoubleArrow_Down">
-                <param name="colordiffuse" value="main_fg_30" />
-            </include>
-        </control>
+        <param name="id" default="9000" />
+        <definition>
+            <control type="group">
+                <top>-35</top>
+                <include>Animation_FadeIn_Delay</include>
+                <include>Animation_FadeOut</include>
+                <visible>!Control.HasFocus(6)</visible>
+                <visible>!Control.HasFocus(6000)</visible>
+                <visible>Container($PARAM[id]).HasPrevious</visible>
+                <include content="Object_DoubleArrow_Up">
+                    <param name="colordiffuse" value="main_fg_30" />
+                </include>
+            </control>
+            <control type="group">
+                <bottom>45</bottom>
+                <include>Animation_FadeIn_Delay</include>
+                <include>Animation_FadeOut</include>
+                <visible>!Control.HasFocus(6)</visible>
+                <visible>!Control.HasFocus(6000)</visible>
+                <visible>Container($PARAM[id]).HasNext</visible>
+                <include content="Object_DoubleArrow_Down">
+                    <param name="colordiffuse" value="main_fg_30" />
+                </include>
+            </control>
+        </definition>
     </include>
 
     <include name="Object_DoubleArrow_Up">

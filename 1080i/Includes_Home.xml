@@ -379,6 +379,16 @@
             <param name="visible" value="ControlGroup(3000).HasFocus()" />
         </include>
         <control type="group">
+            <top>view_top</top>
+            <include>Animation_FadeIn_Delay</include>
+            <visible>ControlGroup(3000).HasFocus()</visible>
+            <visible>!$EXP[Exp_HideFurniture]</visible>
+            <include>Defs_InfoDialog_Visible</include>
+            <include content="Object_Info_Arrows">
+                <param name="id" value="3000" />
+            </include>
+        </control>
+        <control type="group">
             <animation effect="slide" start="0" end="-257.14" time="200" condition="ControlGroup(3000).HasFocus()">Conditional</animation>
             <control type="group">
                 <include>Animation_Right</include>
@@ -552,8 +562,8 @@
                         <include>Defs_InfoDialog_Visible</include>
                         <control type="grouplist" id="3000">
                             <top>-5</top>
-                            <onup>noop</onup>
-                            <ondown>noop</ondown>
+                            <onup>301</onup>
+                            <ondown>301</ondown>
                             <onleft>301</onleft>
                             <scrolltime tween="quadratic">400</scrolltime>
                             <height>view_height</height>
@@ -732,6 +742,14 @@
         <control type="group">
             <visible>String.IsEqual(Container(9989).ListItemAbsolute(0).Property(list),Weather)</visible>
             <include>Weather</include>
+        </control>
+        <control type="group">
+            <top>view_top</top>
+            <visible>!$EXP[Exp_HideFurniture]</visible>
+            <include>Defs_InfoDialog_Visible</include>
+            <include content="Object_Info_Arrows">
+                <param name="id" value="3000" />
+            </include>
         </control>
         <control type="group">
             <include>View_Group</include>
