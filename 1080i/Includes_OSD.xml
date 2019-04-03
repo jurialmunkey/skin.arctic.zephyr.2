@@ -21,27 +21,114 @@
                     <include>Animation_FadeIn</include>
                     <include>Animation_FadeOut</include>
                     <control type="group">
-                        <bottom>58</bottom>
-                        <left>64</left>
-                        <width>206</width>
-                        <height>206</height>
-                        <control type="group">
-                            <left>-6</left>
-                            <right>-6</right>
-                            <top>-6</top>
-                            <bottom>-6</bottom>
-                            <control type="image">
-                                <aspectratio scalediffuse="false">scale</aspectratio>
-                                <include condition="!Skin.HasSetting(DisableShadows)">Defs_Shadow_24</include>
-                                <texture diffuse="diffuse/square-musicosd.png">$INFO[$PARAM[artwork]]</texture>
+                        <bottom>view_pad</bottom>
+                        <left>view_pad</left>
+                        <width>218</width>
+                        <height>218</height>
+                        <control type="image">
+                            <aspectratio scalediffuse="false">scale</aspectratio>
+                            <include condition="!Skin.HasSetting(DisableShadows)">Defs_Shadow_24</include>
+                            <texture diffuse="diffuse/square-musicosd.png">$INFO[$PARAM[artwork]]</texture>
+                        </control>
+                    </control>
+                    <control type="group">
+                        <right>view_pad</right>
+                        <bottom>view_pad</bottom>
+                        <control type="image">
+                            <right>-15</right>
+                            <bottom>-15</bottom>
+                            <width>248</width>
+                            <height>248</height>
+                            <bordersize>15</bordersize>
+                            <bordertexture colordiffuse="Shadow">diffuse/circle-shadow.png</bordertexture>
+                            <texture diffuse="diffuse/circle.png" colordiffuse="PosterBack">common/geometric.png</texture>
+                        </control>
+                        <control type="image">
+                            <right>-15</right>
+                            <bottom>-15</bottom>
+                            <width>248</width>
+                            <height>248</height>
+                            <bordersize>45</bordersize>
+                            <texture>DefaultArtist.png</texture>
+                            <visible>String.IsEmpty(Player.Art(albumartist.thumb))</visible>
+                        </control>
+                        <control type="image">
+                            <right>-15</right>
+                            <bottom>-15</bottom>
+                            <width>248</width>
+                            <height>248</height>
+                            <bordersize>15</bordersize>
+                            <texture diffuse="diffuse/circle.png">$INFO[Player.Art(albumartist.thumb)]</texture>
+                            <visible>!String.IsEmpty(Player.Art(albumartist.thumb))</visible>
+                        </control>
+                    </control>
+
+                    <control type="image">
+                        <right>340</right>
+                        <bottom>172</bottom>
+                        <width>500</width>
+                        <height>126</height>
+                        <aspectratio align="right" aligny="bottom">keep</aspectratio>
+                        <texture>$INFO[Player.Art(albumartist.clearlogo)]</texture>
+                    </control>
+
+                    <control type="progress" id="401">
+                        <left>340</left>
+                        <right>340</right>
+                        <bottom>140</bottom>
+                        <height>12</height>
+                        <info>Player.Progress</info>
+                        <visible>Player.HasMedia</visible>
+                    </control>
+
+                    <control type="group">
+                        <centerbottom>95</centerbottom>
+                        <height>20</height>
+                        <left>340</left>
+                        <right>340</right>
+                        <control type="label">
+                            <textcolor>panel_fg_100</textcolor>
+                            <include>OSD_Menubar_Items</include>
+                            <label>$INFO[Player.Time]</label>
+                        </control>
+                        <control type="label">
+                            <align>right</align>
+                            <textcolor>panel_fg_100</textcolor>
+                            <include>OSD_Menubar_Items</include>
+                            <label>$INFO[Player.Duration]</label>
+                        </control>
+                        <control type="grouplist">
+                            <top>-10</top>
+                            <bottom>-10</bottom>
+                            <align>center</align>
+                            <orientation>horizontal</orientation>
+                            <usecontrolcoords>true</usecontrolcoords>
+                            <itemgap>20</itemgap>
+                            <include>Animation_FadeIn</include>
+                            <include>Animation_FadeOut</include>
+                            <visible>!Window.IsVisible(musicosd) + !Window.IsVisible(videoosd)</visible>
+                            <control type="label">
+                                <width>auto</width>
+                                <textcolor>panel_fg_70</textcolor>
+                                <include>OSD_Menubar_Items</include>
+                                <label>$INFO[MusicPlayer.BitRate,, [COLOR=panel_fg_30]kbps [/COLOR]]$INFO[MusicPlayer.BitsPerSample,[COLOR=panel_fg_30]  |  [/COLOR], [COLOR=panel_fg_30]bps [/COLOR]]$INFO[MusicPlayer.SampleRate,[COLOR=panel_fg_30]  |  [/COLOR], [COLOR=panel_fg_30]khz[/COLOR]]</label>
+                            </control>
+                            <control type="image" id="9968">
+                                <width>84</width>
+                                <top>-4</top>
+                                <height>50</height>
+                                <centertop>50%</centertop>
+                                <texture colordiffuse="panel_fg_70">$INFO[MusicPlayer.Codec,flags/monochrome/audio/,.png]</texture>
+                                <aspectratio align="left">keep</aspectratio>
+                                <visible allowhiddenfocus="true">!String.IsEmpty(Control.GetLabel(9968))</visible>
                             </control>
                         </control>
-
                     </control>
+
                     <control type="grouplist">
-                        <bottom>48</bottom>
-                        <left>308</left>
-                        <right>64</right>
+                        <bottom>view_pad</bottom>
+                        <left>340</left>
+                        <right>340</right>
                         <height>234</height>
                         <orientation>vertical</orientation>
                         <usecontrolcoords>true</usecontrolcoords>
@@ -53,103 +140,17 @@
                             <textcolor>panel_fg_100</textcolor>
                             <font>font_title_large</font>
                         </control>
-                        <control type="label">
-                            <label>$INFO[$PARAM[player].Artist,[COLOR=panel_fg_100],[/COLOR]]$INFO[$PARAM[player].Album,  |  [COLOR=panel_fg_100],[/COLOR]]$INFO[$PARAM[player].Year,  |  [COLOR=panel_fg_100],[/COLOR]]</label>
-                            <height>40</height>
-                            <aligny>top</aligny>
-                            <textcolor>$VAR[ColorHighlight]</textcolor>
-                            <font>font_small</font>
-                        </control>
-                        <control type="grouplist">
-                            <top>-10</top>
-                            <height>70</height>
-                            <orientation>horizontal</orientation>
-                            <usecontrolcoords>true</usecontrolcoords>
-                            <control type="group">
-                                <top>-17</top>
-                                <left>-16</left>
-                                <width>260</width>
-                                <visible>!Window.IsVisible(MusicVisualisation.xml) | !Integer.IsEqual($PARAM[rating],0)</visible>
-                                <visible>!Window.IsVisible(musicosd) + !Window.IsVisible(videoosd)</visible>
-                                <visible>!Skin.HasSetting(DisableStarRating)</visible>
-                                <include content="Object_StarRating">
-                                    <param name="colordiffuse" value="panel_fg" />
-                                    <param name="align" value="left" />
-                                    <param name="visible" value="true" />
-                                    <param name="rating_prop" value="$PARAM[rating]" />
-                                </include>
-                            </control>
-                            <control type="group">
-                                <top>-17</top>
-                                <left>-16</left>
-                                <width>260</width>
-                                <visible>Window.IsVisible(MusicVisualisation.xml) + Integer.IsEqual($PARAM[rating],0)</visible>
-                                <visible>!Window.IsVisible(musicosd) + !Window.IsVisible(videoosd)</visible>
-                                <visible>!Skin.HasSetting(DisableStarRating)</visible>
-                                <include content="Object_StarRating_Music">
-                                    <param name="colordiffuse" value="panel_fg" />
-                                    <param name="align" value="left" />
-                                    <param name="visible" value="true" />
-                                    <param name="rating" value="MusicPlayer.Rating" />
-                                </include>
-                            </control>
-                            <control type="grouplist">
-                                <top>24</top>
-                                <itemgap>0</itemgap>
-                                <orientation>horizontal</orientation>
-                                <height>40</height>
-                                <usecontrolcoords>true</usecontrolcoords>
-                                <width>100%</width>
-                                <visible>Window.IsVisible(MusicVisualisation.xml)</visible>
-                                <visible>!Window.IsVisible(musicosd) + !Window.IsVisible(videoosd)</visible>
-                                <control type="image" id="9968">
-                                    <width>84</width>
-                                    <top>-6</top>
-                                    <height>50</height>
-                                    <centertop>50%</centertop>
-                                    <texture>$INFO[MusicPlayer.Codec,flags/color/audio/,.png]</texture>
-                                    <aspectratio align="left">keep</aspectratio>
-                                    <visible allowhiddenfocus="true">!String.IsEmpty(Control.GetLabel(9968))</visible>
-                                </control>
-                                <control type="label">
-                                    <left>16</left>
-                                    <aligny>top</aligny>
-                                    <width>auto</width>
-                                    <textcolor>panel_fg_70</textcolor>
-                                    <font>font_tiny</font>
-                                    <label>$INFO[MusicPlayer.BitRate,, [COLOR=panel_fg_30]kbps [/COLOR]]$INFO[MusicPlayer.BitsPerSample,[COLOR=panel_fg_30]  |  [/COLOR], [COLOR=panel_fg_30]bps [/COLOR]]$INFO[MusicPlayer.SampleRate,[COLOR=panel_fg_30]  |  [/COLOR], [COLOR=panel_fg_30]khz[/COLOR]]</label>
-                                </control>
-                            </control>
-                        </control>
                         <control type="grouplist">
                             <height>40</height>
-                            <usecontrolcoords>true</usecontrolcoords>
+                            <itemgap>20</itemgap>
                             <orientation>horizontal</orientation>
+                            <usecontrolcoords>true</usecontrolcoords>
                             <control type="label">
-                                <label>$INFO[Player.Time,,   ]</label>
+                                <label>$INFO[$PARAM[player].Artist,[COLOR=panel_fg_100],[/COLOR]]$INFO[$PARAM[player].Album,  |  [COLOR=panel_fg_100],[/COLOR]]$INFO[$PARAM[player].Year,  |  [COLOR=panel_fg_100],[/COLOR]]</label>
                                 <height>40</height>
-                                <width>auto</width>
                                 <aligny>top</aligny>
-                                <textcolor>panel_fg_100</textcolor>
-                                <font>font_small</font>
-                            </control>
-                            <control type="group">
-                                <width>564</width>
-                                <control type="progress" id="401">
-                                    <top>16</top>
-                                    <height>12</height>
-                                    <width>564</width>
-                                    <info>Player.Progress</info>
-                                    <visible>Player.HasMedia</visible>
-                                </control>
-                            </control>
-                            <control type="label">
-                                <label>$INFO[Player.Duration,   ,]</label>
-                                <height>40</height>
                                 <width>auto</width>
-                                <aligny>top</aligny>
-                                <align>right</align>
-                                <textcolor>panel_fg_100</textcolor>
+                                <textcolor>$VAR[ColorHighlight]</textcolor>
                                 <font>font_small</font>
                             </control>
                         </control>
@@ -165,10 +166,9 @@
         <centerbottom>95</centerbottom>
     </include>
     <include name="OSD_MusicPosition">
-        <left>300</left>
-        <bottom>96</bottom>
-        <align>left</align>
-        <height>48</height>
+        <align>center</align>
+        <height>48</height>        
+        <centerbottom>95</centerbottom>
     </include>
 
     <include name="OSD_Video_Seekbar">
