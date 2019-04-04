@@ -149,37 +149,37 @@
         <definition>
             <animation effect="fade" start="0" end="100" time="350" tween="cubic" easing="inout" reversible="false">Visible</animation>
             <animation effect="fade" start="100" end="0" time="350" tween="cubic" easing="inout" reversible="false">Hidden</animation>
-            <animation effect="slide" end="35" condition="Integer.IsLess(Container($PARAM[id]).NumItems,11)">Conditional</animation>
-            <animation effect="slide" end="35" condition="Integer.IsLess(Container($PARAM[id]).NumItems,10)">Conditional</animation>
-            <animation effect="slide" end="35" condition="Integer.IsLess(Container($PARAM[id]).NumItems,9)">Conditional</animation>
-            <animation effect="slide" end="35" condition="Integer.IsLess(Container($PARAM[id]).NumItems,8)">Conditional</animation>
-            <animation effect="slide" end="35" condition="Integer.IsLess(Container($PARAM[id]).NumItems,7)">Conditional</animation>
-            <animation effect="slide" end="35" condition="Integer.IsLess(Container($PARAM[id]).NumItems,6)">Conditional</animation>
-            <animation effect="slide" end="35" condition="Integer.IsLess(Container($PARAM[id]).NumItems,5)">Conditional</animation>
-            <animation effect="slide" end="35" condition="Integer.IsLess(Container($PARAM[id]).NumItems,4)">Conditional</animation>
-            <animation effect="slide" end="35" condition="Integer.IsLess(Container($PARAM[id]).NumItems,3)">Conditional</animation>
-            <animation effect="slide" end="35" condition="Integer.IsLess(Container($PARAM[id]).NumItems,2)">Conditional</animation>
-            <animation effect="slide" end="35" condition="Integer.IsLess(Container($PARAM[id]).NumItems,1)">Conditional</animation>
+            <animation effect="slide" end="40" condition="Integer.IsLess(Container($PARAM[id]).NumItems,11)">Conditional</animation>
+            <animation effect="slide" end="40" condition="Integer.IsLess(Container($PARAM[id]).NumItems,10)">Conditional</animation>
+            <animation effect="slide" end="40" condition="Integer.IsLess(Container($PARAM[id]).NumItems,9)">Conditional</animation>
+            <animation effect="slide" end="40" condition="Integer.IsLess(Container($PARAM[id]).NumItems,8)">Conditional</animation>
+            <animation effect="slide" end="40" condition="Integer.IsLess(Container($PARAM[id]).NumItems,7)">Conditional</animation>
+            <animation effect="slide" end="40" condition="Integer.IsLess(Container($PARAM[id]).NumItems,6)">Conditional</animation>
+            <animation effect="slide" end="40" condition="Integer.IsLess(Container($PARAM[id]).NumItems,5)">Conditional</animation>
+            <animation effect="slide" end="40" condition="Integer.IsLess(Container($PARAM[id]).NumItems,4)">Conditional</animation>
+            <animation effect="slide" end="40" condition="Integer.IsLess(Container($PARAM[id]).NumItems,3)">Conditional</animation>
+            <animation effect="slide" end="40" condition="Integer.IsLess(Container($PARAM[id]).NumItems,2)">Conditional</animation>
+            <animation effect="slide" end="40" condition="Integer.IsLess(Container($PARAM[id]).NumItems,1)">Conditional</animation>
             <visible allowhiddenfocus="true">Control.HasFocus($PARAM[id]) | $PARAM[visible]</visible>
-            <width>770</width>
+            <width>880</width>
             <focusposition>5</focusposition>
             <movement>5</movement>
             <centerleft>50%</centerleft>
             <orientation>horizontal</orientation>
-            <top>60</top>
+            <top>55</top>
             <height>120</height>
-            <itemlayout width="70" height="60">
+            <itemlayout width="80" height="70">
                 <control type="image">
                     <centerleft>50%</centerleft>
-                    <width>60</width>
+                    <width>70</width>
                     <aspectratio>keep</aspectratio>
                     <texture colordiffuse="main_fg_30">$INFO[ListItem.Icon]</texture>
                 </control>
             </itemlayout>
-            <focusedlayout width="70" height="60">
+            <focusedlayout width="80" height="70">
                 <control type="group">
                     <centerleft>50%</centerleft>
-                    <width>60</width>
+                    <width>70</width>
                     <control type="image">
                         <visible>Control.HasFocus($PARAM[id])</visible>
                         <texture colordiffuse="main_fg_100">common/white.png</texture>
