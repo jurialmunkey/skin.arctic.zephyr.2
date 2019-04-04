@@ -3,6 +3,9 @@
 
     <include name="OSD_LeftSide"><left>view_pad</left></include>
     <include name="OSD_RightSide"><right>view_pad</right></include>
+    <include name="OSD_Right340"><right>340</right></include>
+    <include name="OSD_Right580"><right>580</right></include>
+    <include name="OSD_Right0"><right>0</right></include>
 
     <include name="OSD_Music_Info_Image_Circle">
         <param name="artwork" default="Player.Art(albumartist.thumb)" />
@@ -87,15 +90,18 @@
                     </include>
 
                     <!-- Artist Image -->
-                    <include condition="!Skin.HasSetting(MusicOSDSquareArtist)">OSD_Music_Info_Image_Circle</include>
-                    <include  condition="Skin.HasSetting(MusicOSDSquareArtist)" content="OSD_Music_Info_Image_Square">
+                    <include condition="!Skin.HasSetting(MusicOSDSquareArtist) + !Skin.HasSetting(DisableMusicOSDArtistImage) + !Skin.HasSetting(DisableMusicOSDClearLogo)">OSD_Music_Info_Image_Circle</include>
+                    <include  condition="Skin.HasSetting(MusicOSDSquareArtist) + !Skin.HasSetting(DisableMusicOSDArtistImage) + !Skin.HasSetting(DisableMusicOSDClearLogo)" content="OSD_Music_Info_Image_Square">
                         <param name="artwork" value="Player.Art(albumartist.thumb)" />
                         <param name="side" value="OSD_RightSide" />
                     </include>
 
                     <control type="group">
-                        <right>340</right>
+                        <include condition="Skin.HasSetting(DisableMusicOSDClearLogo)">OSD_Right580</include>
+                        <include condition="!Skin.HasSetting(DisableMusicOSDArtistImage) + !Skin.HasSetting(DisableMusicOSDClearLogo)">OSD_Right340</include>
+                        <include condition="Skin.HasSetting(DisableMusicOSDArtistImage) + !Skin.HasSetting(DisableMusicOSDClearLogo)">OSD_RightSide</include>
                         <control type="image">
+                            <visible>!Skin.HasSetting(DisableMusicOSDClearLogo)</visible>
                             <right>0</right>
                             <bottom>172</bottom>
                             <width>340</width>
@@ -160,7 +166,8 @@
                         <control type="grouplist">
                             <bottom>view_pad</bottom>
                             <left>340</left>
-                            <right>340</right>
+                            <include condition="!Skin.HasSetting(DisableMusicOSDClearLogo)">OSD_Right340</include>
+                            <include condition="Skin.HasSetting(DisableMusicOSDClearLogo)">OSD_Right0</include>
                             <height>234</height>
                             <orientation>vertical</orientation>
                             <usecontrolcoords>true</usecontrolcoords>
@@ -199,6 +206,10 @@
         <centerbottom>95</centerbottom>
     </include>
     <include name="OSD_MusicPosition">
+        <left>340</left>
+        <include condition="Skin.HasSetting(DisableMusicOSDClearLogo)">OSD_Right580</include>
+        <include condition="!Skin.HasSetting(DisableMusicOSDArtistImage) + !Skin.HasSetting(DisableMusicOSDClearLogo)">OSD_Right340</include>
+        <include condition="Skin.HasSetting(DisableMusicOSDArtistImage) + !Skin.HasSetting(DisableMusicOSDClearLogo)">OSD_RightSide</include>
         <align>center</align>
         <height>48</height>        
         <centerbottom>95</centerbottom>
