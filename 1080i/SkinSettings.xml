@@ -522,7 +522,13 @@
                         <onclick condition="!String.IsEmpty(SkinHelper.AutoCloseMusicOSD)">Skin.Reset(SkinHelper.AutoCloseMusicOSD)</onclick>
                         <onclick condition="String.IsEmpty(SkinHelper.AutoCloseMusicOSD)">Skin.SetNumeric(SkinHelper.AutoCloseMusicOSD)</onclick>
                     </control>
-
+                    <control type="radiobutton" id="19518" description="Square Artist">
+                        <visible>Integer.IsEqual(Window.Property(CurrentFocus),9005)</visible>
+                        <include>Defs_Settings_Button</include>
+                        <label>$LOCALIZE[31129]</label>
+                        <selected>Skin.HasSetting(MusicOSDSquareArtist)</selected>
+                        <onclick>Skin.ToggleSetting(MusicOSDSquareArtist)</onclick>
+                    </control>
                     <!-- ============= -->
                     <!-- Live TV / PVR -->
                     <!-- ============= -->
