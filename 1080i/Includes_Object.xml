@@ -190,12 +190,11 @@
                 <itemlayout width="item_landscape_width" height="item_row_height" condition="$PARAM[landscapecondition]">
                     <include content="View_51_Wall_Itemlayout">
                         <param name="iconheight" value="item_icon_height" />
-                        <param name="clearlogo" value="true" />
                         <param name="selectbox" value="false" />
                         <param name="icon" value="$VAR[Image_Fanart]" />
                         <param name="diffuse" value="diffuse/landscape-wall.png" />
                         <param name="labelinclude" value="$PARAM[landscapelabelinclude]" />
-                        <param name="clearlogo" value="String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,episode)" />
+                        <param name="clearlogo" value="[!String.IsEmpty(ListItem.Art(clearlogo)) | !String.IsEmpty(ListItem.Art(tvshow.clearlogo))] + [[String.IsEmpty(ListItem.Art(landscape)) + String.IsEmpty(ListItem.Art(tvshow.landscape))] | [!String.IsEmpty(ListItem.Art(thumb)) + [String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,video)] + String.IsEmpty(ListItem.Property(airday))]]" />
                         <param name="id" value="$PARAM[id]" />
                     </include>
                 </itemlayout>
@@ -203,11 +202,10 @@
                     <include content="View_51_Wall_Itemlayout">
                         <param name="selectbox" value="true" />
                         <param name="iconheight" value="item_icon_height" />
-                        <param name="clearlogo" value="true" />
                         <param name="icon" value="$VAR[Image_Fanart]" />
                         <param name="diffuse" value="diffuse/landscape-wall.png" />
                         <param name="labelinclude" value="$PARAM[landscapelabelinclude]" />
-                        <param name="clearlogo" value="String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,episode)" />
+                        <param name="clearlogo" value="[!String.IsEmpty(ListItem.Art(clearlogo)) | !String.IsEmpty(ListItem.Art(tvshow.clearlogo))] + [[String.IsEmpty(ListItem.Art(landscape)) + String.IsEmpty(ListItem.Art(tvshow.landscape))] | [!String.IsEmpty(ListItem.Art(thumb)) + [String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,video)] + String.IsEmpty(ListItem.Property(airday))]]" />
                         <param name="id" value="$PARAM[id]" />
                     </include>
                 </focusedlayout>

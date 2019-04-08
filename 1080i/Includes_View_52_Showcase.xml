@@ -103,7 +103,7 @@
                     <height>380</height>
                     <texture background="true">$VAR[Image_ClearLogo]</texture>
                     <aspectratio align="right" aligny="bottom">keep</aspectratio>
-                    <visible>!String.IsEmpty(ListItem.Art(clearlogo)) | !String.IsEmpty(ListItem.Art(tvshow.clearlogo))</visible>
+                    <visible>[!String.IsEmpty(ListItem.Art(clearlogo)) | !String.IsEmpty(ListItem.Art(tvshow.clearlogo))] + [[String.IsEmpty(ListItem.Art(landscape)) + String.IsEmpty(ListItem.Art(tvshow.landscape))] | [!String.IsEmpty(ListItem.Art(thumb)) + [String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,video)] + String.IsEmpty(ListItem.Property(airday))]]</visible>
                 </control>
                 <control type="grouplist">
                     <top>451.435</top>
@@ -316,7 +316,7 @@
                 <param name="itemwidth" value="item_landscape_width" />
                 <param name="itemheight" value="423.75" />
                 <param name="icon" value="$VAR[Image_Fanart]" />
-                <param name="clearlogo" value="!String.IsEmpty(ListItem.Art(clearlogo)) | !String.IsEmpty(ListItem.Art(tvshow.clearlogo))" />
+                <param name="clearlogo" value="[!String.IsEmpty(ListItem.Art(clearlogo)) | !String.IsEmpty(ListItem.Art(tvshow.clearlogo))] + [[String.IsEmpty(ListItem.Art(landscape)) + String.IsEmpty(ListItem.Art(tvshow.landscape))] | [!String.IsEmpty(ListItem.Art(thumb)) + [String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,video)] + String.IsEmpty(ListItem.Property(airday))]]" />
                 <param name="iconheight" value="item_icon_height" />
                 <param name="visible" value="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(videos)" />
                 <param name="viewtype" value="$LOCALIZE[31361]" />
@@ -342,7 +342,7 @@
                 <param name="itemwidth" value="item_landscape_width" />
                 <param name="itemheight" value="423.75" />
                 <param name="icon" value="$VAR[Image_Fanart]" />
-                <param name="clearlogo" value="!String.IsEmpty(ListItem.Art(clearlogo)) | !String.IsEmpty(ListItem.Art(tvshow.clearlogo))" />
+                <param name="clearlogo" value="[!String.IsEmpty(ListItem.Art(clearlogo)) | !String.IsEmpty(ListItem.Art(tvshow.clearlogo))] + [[String.IsEmpty(ListItem.Art(landscape)) + String.IsEmpty(ListItem.Art(tvshow.landscape))] | [!String.IsEmpty(ListItem.Art(thumb)) + [String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,video)] + String.IsEmpty(ListItem.Property(airday))]]" />
                 <param name="iconheight" value="item_icon_height" />
                 <param name="visible" value="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(videos)" />
                 <param name="viewtype" value="$LOCALIZE[31361]" />
@@ -379,9 +379,9 @@
             <include content="View_522_Showcase_Seasons_Info">
                 <param name="visible" value="!Control.HasFocus(5229)" />
                 <param name="iconvisible" value="!String.IsEmpty(Container(522).ListItem.Art(fanart))" />
-                <param name="icon" value="$INFO[Container(522).ListItem.Art(fanart)]" />
+                <param name="icon" value="$VAR[Image_Fanart]" />
                 <param name="title" value="$INFO[Container(522).ListItem.TvShowTitle]" />
-                <param name="plot" value="$INFO[Container(522).ListItem.Plot]" />
+                <param name="plot" value="$VAR[Label_Plot]" />
                 <param name="seasons" value="true" />
             </include>
 
