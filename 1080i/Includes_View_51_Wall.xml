@@ -357,7 +357,7 @@
                 <param name="height" value="view_height" />
                 <param name="itemwidth" value="item_landscape_width" />
                 <param name="itemheight" value="item_row_height" />
-                <param name="icon" value="$VAR[Image_Fanart]" />
+                <param name="icon" value="$VAR[Image_Landscape]" />
                 <param name="clearlogo" value="[!String.IsEmpty(ListItem.Art(clearlogo)) | !String.IsEmpty(ListItem.Art(tvshow.clearlogo))] + [[String.IsEmpty(ListItem.Art(landscape)) + String.IsEmpty(ListItem.Art(tvshow.landscape))] | [!String.IsEmpty(ListItem.Art(thumb)) + [String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,video)] + String.IsEmpty(ListItem.Property(airday))]]" />
                 <param name="iconheight" value="item_icon_height" />
                 <param name="diffuse" value="diffuse/landscape-wall.png" />
@@ -436,7 +436,7 @@
             </include>
             <include content="View_522_Showcase_Seasons_Info">
                 <param name="visible" value="true" />
-                <param name="icon" value="$VAR[Image_Fanart]" />
+                <param name="icon" value="$VAR[Image_Landscape]" />
                 <param name="title" value="$VAR[Label_List_Title]" />
                 <param name="plot" value="$INFO[ListItem.Plot]" />
             </include>
@@ -452,7 +452,7 @@
                 <param name="height" value="view_height" />
                 <param name="itemwidth" value="450" />
                 <param name="itemheight" value="275" />
-                <param name="icon" value="$VAR[Image_Fanart]" />
+                <param name="icon" value="$VAR[Image_Landscape]" />
                 <param name="aspectratio" value="scale" />
                 <param name="clearlogo" value="[!String.IsEmpty(ListItem.Art(clearlogo)) | !String.IsEmpty(ListItem.Art(tvshow.clearlogo))] + [[String.IsEmpty(ListItem.Art(landscape)) + String.IsEmpty(ListItem.Art(tvshow.landscape))] | [!String.IsEmpty(ListItem.Art(thumb)) + [String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,video)] + String.IsEmpty(ListItem.Property(airday))]]" />
                 <param name="iconheight" value="260.625" />

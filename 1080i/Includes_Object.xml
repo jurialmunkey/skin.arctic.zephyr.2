@@ -191,7 +191,7 @@
                     <include content="View_51_Wall_Itemlayout">
                         <param name="iconheight" value="item_icon_height" />
                         <param name="selectbox" value="false" />
-                        <param name="icon" value="$VAR[Image_Fanart]" />
+                        <param name="icon" value="$VAR[Image_Landscape]" />
                         <param name="diffuse" value="diffuse/landscape-wall.png" />
                         <param name="labelinclude" value="$PARAM[landscapelabelinclude]" />
                         <param name="clearlogo" value="[!String.IsEmpty(ListItem.Art(clearlogo)) | !String.IsEmpty(ListItem.Art(tvshow.clearlogo))] + [[String.IsEmpty(ListItem.Art(landscape)) + String.IsEmpty(ListItem.Art(tvshow.landscape))] | [!String.IsEmpty(ListItem.Art(thumb)) + [String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,video)] + String.IsEmpty(ListItem.Property(airday))]]" />
@@ -202,7 +202,7 @@
                     <include content="View_51_Wall_Itemlayout">
                         <param name="selectbox" value="true" />
                         <param name="iconheight" value="item_icon_height" />
-                        <param name="icon" value="$VAR[Image_Fanart]" />
+                        <param name="icon" value="$VAR[Image_Landscape]" />
                         <param name="diffuse" value="diffuse/landscape-wall.png" />
                         <param name="labelinclude" value="$PARAM[landscapelabelinclude]" />
                         <param name="clearlogo" value="[!String.IsEmpty(ListItem.Art(clearlogo)) | !String.IsEmpty(ListItem.Art(tvshow.clearlogo))] + [[String.IsEmpty(ListItem.Art(landscape)) + String.IsEmpty(ListItem.Art(tvshow.landscape))] | [!String.IsEmpty(ListItem.Art(thumb)) + [String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,video)] + String.IsEmpty(ListItem.Property(airday))]]" />
@@ -650,12 +650,13 @@
         <param name="label" default="$INFO[ListItem.Label]" />
         <param name="font" default="font_title_large" />
         <param name="titleheight" default="80" />
+        <param name="textcolor" default="main_fg_100" />
         <definition>
             <control type="label">
                 <label>$PARAM[label]</label>
                 <height>$PARAM[titleheight]</height>
                 <aligny>top</aligny>
-                <textcolor>main_fg_100</textcolor>
+                <textcolor>$PARAM[textcolor]</textcolor>
                 <font>$PARAM[font]</font>
             </control>
         </definition>
