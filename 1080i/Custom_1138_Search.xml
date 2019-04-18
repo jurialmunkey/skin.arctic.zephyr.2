@@ -247,8 +247,7 @@
                     <param name="label" value="$INFO[Container(5015).NumItems,$LOCALIZE[20389] (,)]" />
                     <visible>Control.IsVisible(5015)</visible>
                 </include>
-				
-                <include content="View_51_Wall_Container">
+		<include content="View_51_Wall_Container">
                     <param name="controllayout" value="View_Cast" />
                     <param name="id" value="5015" />
                     <param name="height" value="360.5" />
@@ -256,21 +255,21 @@
                     <param name="itemwidth" value="item_landscape_width" />
                     <param name="iconheight" value="item_icon_height" />
                     <param name="diffuse" value="diffuse/landscape-wall.png" />
-                    <param name="icon" value="$INFO[ListItem.Art(Fanart)]" />
+                    <param name="icon" value="$INFO[ListItem.Icon]" />
                     <param name="label2" value="ListItem.Label" />
                     <param name="visible" value="Integer.IsGreater(Container(5015).NumItems,0) | Container(5015).IsUpdating" />
                     <animation effect="fade" start="100" end="0" condition="!Integer.IsGreater(Container(5015).NumItems,0) | Container(5015).IsUpdating">Conditional</animation>
                     <content target="videos">videodb://musicvideos/titles/?xsp=%7b%22order%22%3a%7b%22direction%22%3a%22ascending%22%2c%22ignorefolders%22%3a0%2c%22method%22%3a%22sorttitle%22%7d%2c%22rules%22%3a%7b%22and%22%3a%5b%7b%22field%22%3a%22title%22%2c%22operator%22%3a%22contains%22%2c%22value%22%3a%5b%22$INFO[Skin.String(SearchTerm)]%22%5d%7d%5d%7d%2c%22type%22%3a%22musicvideos%22%7d</content>
                 </include>
-				<!-- MUSICVIDEOS by SearchString in Artist -->
+
+		<!-- MUSICVIDEOS by SearchString in Artist -->
                 <include content="View_Cast_Toplabel">
                     <param name="groupid" value="7516" />
                     <param name="id" value="5016" />
-                    <param name="label" value="$INFO[Container(5016).NumItems,$LOCALIZE[20389] by (,)]" />
+                    <param name="label" value="$INFO[Skin.String(SearchTerm),$LOCALIZE[20389] $LOCALIZE[31432] [CAPITALIZE] &quot; , &quot;[/CAPITALIZE]]$INFO[Container(5013).NumItems, (,)]" />
                     <visible>Control.IsVisible(5016)</visible>
                 </include>
-				
-                <include content="View_51_Wall_Container">
+		<include content="View_51_Wall_Container">
                     <param name="controllayout" value="View_Cast" />
                     <param name="id" value="5016" />
                     <param name="height" value="360.5" />
@@ -278,7 +277,7 @@
                     <param name="itemwidth" value="item_landscape_width" />
                     <param name="iconheight" value="item_icon_height" />
                     <param name="diffuse" value="diffuse/landscape-wall.png" />
-                    <param name="icon" value="$INFO[ListItem.Art(Fanart)]" />
+                    <param name="icon" value="$INFO[ListItem.Icon]" />
                     <param name="label2" value="ListItem.Label" />
                     <param name="visible" value="Integer.IsGreater(Container(5016).NumItems,0) | Container(5016).IsUpdating" />
                     <animation effect="fade" start="100" end="0" condition="!Integer.IsGreater(Container(5016).NumItems,0) | Container(5016).IsUpdating">Conditional</animation>
