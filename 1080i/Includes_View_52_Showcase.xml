@@ -371,7 +371,7 @@
                 <param name="controllayout" value="View_514_Wall_Info_Layout" />
                 <width>1028.56</width>
                 <onup>300</onup>
-                <ondown>SetFocus(5229,0,absolute)</ondown>
+                <ondown condition="!Container(5229).IsUpdating">SetFocus(5229,0,absolute)</ondown>
                 <onright>522</onright>
                 <onleft>522</onleft>
             </include>
@@ -404,6 +404,7 @@
                 <param name="controllayout" value="Defs_Null" />
                 <param name="controltype" value="fixedlist" />
                 <param name="flipsides" value="Skin.HasSetting(FlipSide)" />
+                <animation effect="fade" start="100" end="0" condition="Container(5229).IsUpdating">Conditional</animation>
                 <movement>2</movement>
                 <focusposition>2</focusposition>
                 <onleft>SetFocus(5229,0,absolute)</onleft>
