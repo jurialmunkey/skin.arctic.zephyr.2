@@ -67,7 +67,7 @@
             <include>Defs_TimePerImage</include>
             <randomize>true</randomize>
             <fadetime>600</fadetime>
-            <imagepath background="true">$VAR[Global_Background_Image_Var]</imagepath>
+            <imagepath background="true">$VAR[Global_Background_Blur]</imagepath>
             <visible>System.HasAddon(script.colorbox)</visible>
             <visible>Skin.HasSetting(EnableBlur)</visible>
         </control>
@@ -99,6 +99,14 @@
         <value condition="[Window.IsVisible(home) | Window.IsVisible(1135)] + !String.IsEmpty(Container(301).ListItem.Property(Background))">$INFO[Container(301).ListItem.Property(Background)]</value>
         <value condition="!String.IsEmpty(Skin.String(fanart.fallback))">$INFO[Skin.String(fanart.fallback)]</value>
         <value>common/null.png</value>
+    </variable>
+
+    <variable name="Global_Background_Blur">
+        <value condition="!Skin.HasSetting(PosterBlur)">$VAR[Global_Background_Image_Var]</value>
+        <value condition="!String.IsEmpty(Container.ListItem.Art(poster))">$INFO[Container.ListItem.Art(poster)]</value>
+        <value condition="!String.IsEmpty(Container.ListItem.Art(tvshow.poster))">$INFO[Container.ListItem.Art(tvshow.poster)]</value>
+        <value condition="!String.IsEmpty(Container.ListItem.Art(thumb)) + !String.StartsWith(Container.ListItem.Art(thumb),special://skin/extras/icons/) + !String.StartsWith(Container.ListItem.Art(thumb),Default)">$INFO[Container.ListItem.Art(thumb)]</value>
+        <value>$VAR[Global_Background_Image_Var]</value>
     </variable>
 
     <variable name="Global_Background_Image">

@@ -238,6 +238,15 @@
                         <enable>!Skin.HasSetting(NoFanart) + Skin.HasSetting(EnableBlur) + System.HasAddon(script.colorbox)</enable>
                     </control>
 
+                    <control type="radiobutton" id="19208" description="Use poster for blur">
+                        <visible>Integer.IsEqual(Window.Property(CurrentFocus),9002)</visible>
+                        <include>Defs_Settings_Button</include>
+                        <label>$LOCALIZE[31133]</label>
+                        <selected>Skin.HasSetting(PosterBlur)</selected>
+                        <onclick>Skin.ToggleSetting(PosterBlur)</onclick>
+                        <enable>Skin.HasSetting(EnableBlur) + System.HasAddon(script.colorbox)</enable>
+                    </control>
+
                     <control type="button" id="19204" description="Set Fallback Image">
                         <visible>Integer.IsEqual(Window.Property(CurrentFocus),9002)</visible>
                         <include>Defs_Settings_Button</include>
