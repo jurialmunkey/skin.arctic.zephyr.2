@@ -300,6 +300,98 @@
         </control>
     </include>
 
+    <include name="View_504_List_TriPanel">
+        <control type="group">
+            <visible>Control.IsVisible(504)</visible>
+            <include>View_Group</include>
+            <include content="View_50_Poster">
+                <param name="height" value="view_poster_height" />
+                <param name="width" value="view_poster_width" />
+                <param name="diffuse" value="diffuse/poster-big.png" />
+            </include>
+            <control type="group">
+                <left>view_poster_width</left>
+                <right>0</right>
+                <control type="group">
+                    <left>10</left>
+                    <include content="View_50_List_Control">
+                        <param name="left" value="0" />
+                        <param name="right" value="648" />
+                        <param name="id" value="504" />
+                        <param name="viewtype" value="TriPanel" />
+                        <param name="viewtypename" value="biginfo" />
+                        <param name="forced" value="true" />
+                        <param name="itemlayout" value="View_504_Itemlayout" />
+                        <param name="flipsides" value="Skin.HasSetting(FlipSide)" />
+                        <param name="visible" value="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(episodes)" />
+                    </include>
+                    <include content="View_504_Info">
+                        <param name="visible" value="true" />
+                        <param name="icon" value="$VAR[Image_Landscape]" />
+                        <param name="title" value="$VAR[Label_List_Title]" />
+                        <param name="plot" value="$INFO[ListItem.Plot]" />
+                    </include>
+                </control>
+            </control>
+        </control>
+    </include>
+
+    <include name="View_504_Info">
+        <definition>
+            <control type="group">
+                <include>View_FlipSides</include>
+                <top>0</top>
+                <width>638</width>
+                <visible>$PARAM[visible]</visible>
+                <include content="View_50_Poster">
+                    <param name="height" value="372" />
+                    <param name="width" value="638" />
+                    <param name="icon" value="$PARAM[icon]" />
+                    <param name="diffuse" value="diffuse/landscape-info.png" />
+                    <param name="iconvisible" value="$PARAM[iconvisible]" />
+                </include>
+                <control type="image">
+                    <top>0</top>
+                    <right>40</right>
+                    <width>150</width>
+                    <height>322</height>
+                    <texture background="true">$VAR[Image_ClearLogo]</texture>
+                    <aspectratio align="right" aligny="bottom">keep</aspectratio>
+                    <visible>[!String.IsEmpty(ListItem.Art(clearlogo)) | !String.IsEmpty(ListItem.Art(tvshow.clearlogo))] + [[String.IsEmpty(ListItem.Art(landscape)) + String.IsEmpty(ListItem.Art(tvshow.landscape))] | [!String.IsEmpty(ListItem.Art(thumb)) + [String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,video)] + String.IsEmpty(ListItem.Property(airday))]]</visible>
+                </control>
+                <control type="grouplist">
+                    <top>377</top>
+                    <left>0</left>
+                    <right>30</right>
+                    <orientation>vertical</orientation>
+                    <usecontrolcoords>true</usecontrolcoords>
+                    <itemgap>0</itemgap>
+                    <control type="label">
+                        <font>font_title_small</font>
+                        <textcolor>main_fg_100</textcolor>
+                        <align>left</align>
+                        <aligny>top</aligny>
+                        <height>50</height>
+                        <label>$PARAM[title]</label>
+                    </control>
+                    <include content="Object_Info_Line">
+                        <param name="nextaired" value="false" />
+                        <param name="label" value="$INFO[ListItem.MPAA,[COLOR=main_fg_100],[/COLOR]  |  ]$VAR[Label_Premiered,[COLOR=main_fg_100],[/COLOR]  |  ]$VAR[Label_Duration,[COLOR=main_fg_100],[/COLOR]]" />
+                    </include>
+                    <control type="textbox">
+                        <top>25</top>
+                        <font>font_plotbox</font>
+                        <textcolor>main_fg_70</textcolor>
+                        <align>left</align>
+                        <aligny>top</aligny>
+                        <height>320</height>
+                        <label>$PARAM[plot]</label>
+                    </control>
+                </control>
+            </control>
+        </definition>
+    </include>
+
     <include name="View_502_List_Info">
         <control type="group">
             <include>View_FlipSides</include>
@@ -512,6 +604,47 @@
                 <left>$PARAM[pad]</left>
                 <right>$PARAM[pad]</right>
                 <visible>![String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,set) | [String.IsEqual(ListItem.DBType,song) + !Skin.HasSetting(UseTrackNamingTemplate)]] | [Skin.HasSetting(UseStandardLabels) + !String.IsEmpty(Container.PluginName)]</visible>
+                <control type="image">
+                    <visible>!String.IsEmpty(ListItem.Overlay)</visible>
+                    <centertop>50%</centertop>
+                    <left>0</left>
+                    <width>32</width>
+                    <height>32</height>
+                    <texture colordiffuse="$PARAM[fgcolor]_90">$VAR[Image_Overlay_List]</texture>
+                </control>
+                <control type="label">
+                    <animation effect="slide" end="-52" condition="String.IsEmpty(ListItem.Overlay)">Conditional</animation>
+                    <left>52</left>
+                    <font>font_small_bold</font>
+                    <textcolor>$PARAM[fgcolor]_100</textcolor>
+                    <selectedcolor>$PARAM[fgcolor]_100</selectedcolor>
+                    <label>$INFO[ListItem.Label]</label>
+                </control>
+                <control type="label">
+                    <align>right</align>
+                    <textcolor>$PARAM[fgcolor]_100</textcolor>
+                    <selectedcolor>$PARAM[fgcolor]_100</selectedcolor>
+                    <label>$INFO[ListItem.Label2]</label>
+                </control>
+            </control>
+        </definition>
+    </include>
+
+    <include name="View_504_Itemlayout">
+        <param name="fgcolor" default="main_fg" />
+        <param name="bgcolor" default="main_bg" />
+        <param name="pad" default="20" />
+        <param name="selectbox" default="false" />
+        <definition>
+            <control type="image">
+                <visible>$PARAM[selectbox]</visible>
+                <texture colordiffuse="main_fg_100" border="10">diffuse/box.png</texture>
+            </control>
+
+            <!-- Basic List -->
+            <control type="group">
+                <left>$PARAM[pad]</left>
+                <right>$PARAM[pad]</right>
                 <control type="image">
                     <visible>!String.IsEmpty(ListItem.Overlay)</visible>
                     <centertop>50%</centertop>
