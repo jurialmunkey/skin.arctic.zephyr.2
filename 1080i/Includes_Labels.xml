@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
 
+    <variable name="Label_SkinSettings_HomeLayout">
+        <value condition="Skin.HasSetting(VerticalHome) + !Skin.HasSetting(AuraStyleHome)">Vertical menu | Multiple widgets</value>
+        <value condition="Skin.HasSetting(VerticalHome) + Skin.HasSetting(AuraStyleHome)">Horizontal menu | Multiple widgets</value>
+        <value>Basic</value>
+    </variable>
+
     <variable name="Label_AudioChannels">
         <value condition="String.IsEqual(ListItem.AudioChannels,8)">7.1</value>
         <value condition="String.IsEqual(ListItem.AudioChannels,7)">6.1</value>
