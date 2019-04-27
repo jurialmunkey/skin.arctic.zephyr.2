@@ -18,7 +18,7 @@
             <param name="diffuse" value="$PARAM[diffuse]" />
             <param name="visible" value="Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating" />
             <animation effect="fade" start="100" end="0" condition="!Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating">Conditional</animation>
-            <content target="videos" sortby="file" limit="$PARAM[limit]">$PARAM[path]$INFO[Skin.String(SearchTerm)]</content>
+            <content target="$PARAM[target]" sortby="file" limit="$PARAM[limit]">$PARAM[path]$INFO[Skin.String(SearchTerm)]</content>
         </include>
     </include>
 

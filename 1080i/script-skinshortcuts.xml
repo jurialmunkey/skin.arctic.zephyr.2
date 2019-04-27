@@ -292,7 +292,7 @@
                     <label>$LOCALIZE[31100]</label>
                     <visible>!String.IsEqual(Container(211).ListItem.Property(skinshortcuts-disabled),True)</visible>
                     <label2>$INFO[Container(211).ListItem.Property(widgetTarget)]</label2>
-                    <visible>Skin.HasSetting(VerticalHome) + String.EndsWith(Window.Property(groupname),.1)</visible>
+                    <visible>Skin.HasSetting(VerticalHome) + [String.EndsWith(Window.Property(groupname),.1) | String.IsEqual(Window.Property(groupname),searchmenu)]</visible>
                     <include>Dialog_Standard_Button</include>
                 </control>
 
