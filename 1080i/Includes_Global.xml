@@ -112,6 +112,7 @@
     <variable name="Global_Background_Image_Var">
         <value condition="Skin.HasSetting(NoFanart) | ListItem.IsParentFolder">$VAR[Global_Background_Image_NoFanart]</value>
 
+        <value condition="Skin.HasSetting(EnableBlur) + Skin.HasSetting(PosterBlur) + !String.IsEmpty(Container.ListItem.Art(season.poster))">$INFO[Container.ListItem.Art(season.poster)]</value>
         <value condition="Skin.HasSetting(EnableBlur) + Skin.HasSetting(PosterBlur) + !String.IsEmpty(Container.ListItem.Art(poster))">$INFO[Container.ListItem.Art(poster)]</value>
         <value condition="Skin.HasSetting(EnableBlur) + Skin.HasSetting(PosterBlur) + !String.IsEmpty(Container.ListItem.Art(tvshow.poster))">$INFO[Container.ListItem.Art(tvshow.poster)]</value>
         <value condition="Skin.HasSetting(EnableBlur) + Skin.HasSetting(PosterBlur) + !String.IsEmpty(Container.ListItem.Art(thumb)) + !String.StartsWith(Container.ListItem.Art(thumb),special://skin/extras/icons/) + !String.StartsWith(Container.ListItem.Art(thumb),Default)">$INFO[Container.ListItem.Art(thumb)]</value>
