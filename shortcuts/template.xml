@@ -140,6 +140,9 @@
                 <visible>Integer.IsGreater(Container($PYTHON[int(mainmenuid)]$PYTHON[int(id) + 3100]).NumItems,0) | Container($PYTHON[int(mainmenuid)]$PYTHON[int(id) + 3100]).IsUpdating</visible>
                 <visible>String.IsEqual(Container(301).ListItem.Property(id),$SKINSHORTCUTS[mainmenuid])</visible>
                 <movement>$SKINSHORTCUTS[widgetMovement]</movement>
+                <include content="Defs_AutoScroll">
+                    <param name="condition" value="!ControlGroup(3000).HasFocus() + System.IdleTime(1) + Integer.IsEqual(Container(3000).NumItems,1)" />
+                </include>
             </include>
         </controls>
     </submenuOther>

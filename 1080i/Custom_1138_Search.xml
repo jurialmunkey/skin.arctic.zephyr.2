@@ -24,6 +24,40 @@
                 <usecontrolcoords>true</usecontrolcoords>
                 <control type="group" id="7599"><height>0</height></control>
 
+                <include content="View_Cast_Toplabel" condition="!String.IsEmpty(Skin.String(CustomSearch.1.Path))">
+                    <param name="groupid" value="7541" />
+                    <param name="id" value="5041" />
+                    <param name="label" value="$INFO[Skin.String(CustomSearch.1.Name)]$INFO[Container(5041).NumItems, (,)]" />
+                    <visible>Control.IsVisible(5041)</visible>
+                </include>
+                <include content="View_51_Wall_Container" condition="!String.IsEmpty(Skin.String(CustomSearch.1.Path))">
+                    <param name="controllayout" value="View_Cast" />
+                    <param name="id" value="5041" />
+                    <param name="height" value="item_cast_height" />
+                    <param name="orientation" value="horizontal" />
+                    <param name="labelinclude" value="Defs_Null" />
+                    <param name="visible" value="Integer.IsGreater(Container(5041).NumItems,0) | Container(5041).IsUpdating" />
+                    <animation effect="fade" start="100" end="0" condition="!Integer.IsGreater(Container(5041).NumItems,0) | Container(5041).IsUpdating">Conditional</animation>
+                    <content target="videos">$INFO[Skin.String(CustomSearch.1.Path)]$INFO[Skin.String(SearchTerm)]</content>
+                </include>
+
+                <include content="View_Cast_Toplabel" condition="!String.IsEmpty(Skin.String(CustomSearch.2.Path))">
+                    <param name="groupid" value="7542" />
+                    <param name="id" value="5042" />
+                    <param name="label" value="$INFO[Skin.String(CustomSearch.2.Name)]$INFO[Container(5042).NumItems, (,)]" />
+                    <visible>Control.IsVisible(5042)</visible>
+                </include>
+                <include content="View_51_Wall_Container" condition="!String.IsEmpty(Skin.String(CustomSearch.2.Path))">
+                    <param name="controllayout" value="View_Cast" />
+                    <param name="id" value="5042" />
+                    <param name="height" value="item_cast_height" />
+                    <param name="orientation" value="horizontal" />
+                    <param name="labelinclude" value="Defs_Null" />
+                    <param name="visible" value="Integer.IsGreater(Container(5042).NumItems,0) | Container(5042).IsUpdating" />
+                    <animation effect="fade" start="100" end="0" condition="!Integer.IsGreater(Container(5042).NumItems,0) | Container(5042).IsUpdating">Conditional</animation>
+                    <content target="videos">$INFO[Skin.String(CustomSearch.2.Path)]$INFO[Skin.String(SearchTerm)]</content>
+                </include>
+
                 <include content="View_Cast_Toplabel">
                     <param name="groupid" value="7501" />
                     <param name="id" value="5001" />
