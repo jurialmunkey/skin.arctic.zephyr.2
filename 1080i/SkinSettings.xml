@@ -682,6 +682,14 @@
                         <onclick>Skin.ToggleSetting(DisableClock)</onclick>
                     </control>
 
+                    <control type="radiobutton" id="19709" description="Clearlogo">
+                        <visible>Integer.IsEqual(Window.Property(CurrentFocus),9007)</visible>
+                        <include>Defs_Settings_Button</include>
+                        <label>$LOCALIZE[31170]</label>
+                        <selected>Skin.HasSetting(EnableClearlogo)</selected>
+                        <onclick>Skin.ToggleSetting(EnableClearlogo)</onclick>
+                    </control>
+
                     <control type="label" id="19782" description="LABEL">
                         <visible>Integer.IsEqual(Window.Property(CurrentFocus),9007)</visible>
                         <include>Dialog_Standard_HintLabel</include>
@@ -704,20 +712,20 @@
                         <onclick>Skin.ToggleSetting(DisableNowPlaying)</onclick>
                     </control>
 
-                    <control type="radiobutton" id="19706" description="Languages">
-                        <visible>Integer.IsEqual(Window.Property(CurrentFocus),9007)</visible>
-                        <include>Defs_Settings_Button</include>
-                        <label>$LOCALIZE[31151]</label>
-                        <selected>Skin.HasSetting(EnableLanguages)</selected>
-                        <onclick>Skin.ToggleSetting(EnableLanguages)</onclick>
-                    </control>
-
                     <control type="radiobutton" id="19798" description="Minimal Busy Loader">
                         <visible>Integer.IsEqual(Window.Property(CurrentFocus),9007)</visible>
                         <include>Defs_Settings_Button</include>
                         <label>$LOCALIZE[31108]</label>
                         <selected>Skin.HasSetting(MinimalBusyLoader)</selected>
                         <onclick>Skin.ToggleSetting(MinimalBusyLoader)</onclick>
+                    </control>
+
+                    <control type="radiobutton" id="19706" description="Languages">
+                        <visible>Integer.IsEqual(Window.Property(CurrentFocus),9007)</visible>
+                        <include>Defs_Settings_Button</include>
+                        <label>$LOCALIZE[31151]</label>
+                        <selected>Skin.HasSetting(EnableLanguages)</selected>
+                        <onclick>Skin.ToggleSetting(EnableLanguages)</onclick>
                     </control>
 
                     
