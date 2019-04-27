@@ -16,6 +16,8 @@
             <param name="labelinclude" value="Defs_Null" />
             <param name="itemwidth" value="$PARAM[itemwidth]" />
             <param name="diffuse" value="$PARAM[diffuse]" />
+            <param name="aspectratio" value="$PARAM[aspectratio]" />
+            <param name="icon" value="$PARAM[icon]" />
             <param name="visible" value="Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating" />
             <animation effect="fade" start="100" end="0" condition="!Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating">Conditional</animation>
             <content target="$PARAM[target]" sortby="file" limit="$PARAM[limit]">$PARAM[path]$INFO[Skin.String(SearchTerm)]</content>

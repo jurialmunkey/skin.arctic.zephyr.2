@@ -16,8 +16,13 @@
             <property name="diffuse" tag="property" attribute="name|widgetAspect" value="Landscape">diffuse/landscape-wall.png</property>
             <property name="diffuse">diffuse/poster-wall.png</property>
 
-            <property name="limit" tag="property" attribute="name|widgetLimit" />
+            <property name="icon" tag="property" attribute="name|widgetAspect" value="Landscape">$VAR[Image_Landscape]</property>
+            <property name="icon">$VAR[Image_Poster]</property>
 
+            <property name="aspectratio" tag="property" attribute="name|widgetAspect" value="Square">keep</property>
+            <property name="aspectratio">scale</property>
+
+            <property name="limit" tag="property" attribute="name|widgetLimit" />
             <property name="target" tag="property" attribute="name|widgetTarget" />
             <property name="target">videos</property>
 
@@ -81,6 +86,8 @@
                     <param name="diffuse" value="$SKINSHORTCUTS[diffuse]" />
                     <param name="limit" value="$SKINSHORTCUTS[limit]" />
                     <param name="target" value="$SKINSHORTCUTS[target]" />
+                    <param name="icon" value="$SKINSHORTCUTS[icon]" />
+                    <param name="aspectratio" value="$SKINSHORTCUTS[aspectratio]" />
                 </include>
             </controls>
         </items>
