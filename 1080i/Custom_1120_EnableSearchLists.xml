@@ -26,11 +26,6 @@
                 <pagecontrol>61</pagecontrol>
                 <orientation>vertical</orientation>
                 <usecontrolcoords>true</usecontrolcoords>
-                <control type="button" id="9099">
-                    <label>Edit custom search lists</label>
-                    <include>Dialog_Standard_Button</include>
-                    <onclick>RunScript(script.skinshortcuts,type=manage&amp;group=searchmenu)</onclick>
-                </control>
                 <control type="radiobutton" id="9001">
                     <label>$LOCALIZE[342]</label>
                     <radioposx>730</radioposx>
@@ -144,7 +139,11 @@
                     <onclick>Skin.ToggleSetting(DisableSearchList.YouTube)</onclick>
                     <selected>!Skin.HasSetting(DisableSearchList.YouTube)</selected>
                 </control>
-                
+                <control type="button" id="9099">
+                    <label>$LOCALIZE[31169]</label>
+                    <include>Dialog_Standard_Button</include>
+                    <onclick>RunScript(script.skinshortcuts,type=manage&amp;group=searchmenu)</onclick>
+                </control>
             </control>
 
             <include content="Dialog_Scrollbar">
