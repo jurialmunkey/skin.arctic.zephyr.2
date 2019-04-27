@@ -19,7 +19,7 @@
     </variable>
 
     <variable name="Label_SkinShortcuts_SubmenuWidget">
-        <value condition="String.EndsWith(Window.Property(groupname),.1)">$LOCALIZE[31011]</value>
+        <value condition="String.EndsWith(Window.Property(groupname),.1) | String.IsEqual(Window.Property(groupname),searchmenu)">$LOCALIZE[31011]</value>
         <value>$LOCALIZE[31038] - $LOCALIZE[31011]</value>
     </variable>
 

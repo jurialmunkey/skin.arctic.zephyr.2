@@ -1,7 +1,7 @@
 <window>
     <defaultcontrol always="true">300</defaultcontrol>
     <include>Defs_Settings_OnLoad</include>
-    <onunload>RunScript(script.skinshortcuts,type=buildxml&amp;mainmenuID=301&amp;levels=1&amp;group=mainmenu|powermenu)</onunload>
+    <onunload>RunScript(script.skinshortcuts,type=buildxml&amp;mainmenuID=301&amp;levels=1&amp;group=mainmenu|powermenu|searchmenu)</onunload>
     <onunload condition="System.HasAddon(script.colorbox)">SetProperty(NINE_manual_set,"var=main,set=$INFO[Skin.String(colorbox_main)]|var=comp,set=$INFO[Skin.String(colorbox_comp)]|var=quality,set=$INFO[Skin.String(colorbox_quality)]|var=blursize,set=$INFO[Skin.String(colorbox_blursize)]|var=bitsize,set=$INFO[Skin.String(colorbox_bitsize)]|var=pixelsize,set=$INFO[Skin.String(colorbox_pixelsize)]|var=black,set=$INFO[Skin.String(colorbox_black)]|var=white,set=$INFO[Skin.String(colorbox_white)]|var=blend,set=$INFO[Skin.String(colorbox_blend)]|var=desat,set=$INFO[Skin.String(colorbox_desat)]",home)</onunload> 
     <onload condition="String.IsEmpty(Window.Property(CurrentFocus))">SetProperty(CurrentFocus,$NUMBER[9001])</onload>
     <controls>
@@ -337,13 +337,27 @@
                         <onclick>RunScript(script.skinshortcuts,type=manage&amp;group=powermenu)</onclick>
                     </control>
 
+                    <control type="button" id="19304" description="Info lists">
+                        <visible>Integer.IsEqual(Window.Property(CurrentFocus),9003)</visible>
+                        <include>Defs_Settings_Button</include>
+                        <label>$LOCALIZE[31015]</label>
+                        <onclick>ActivateWindow(1119)</onclick>
+                    </control>
+
+                    <control type="button" id="19306" description="Search lists">
+                        <visible>Integer.IsEqual(Window.Property(CurrentFocus),9003)</visible>
+                        <include>Defs_Settings_Button</include>
+                        <label>$LOCALIZE[31166]</label>
+                        <onclick>ActivateWindow(1120)</onclick>
+                    </control>
+
                     <control type="label" id="19383" description="LABEL">
                         <visible>Integer.IsEqual(Window.Property(CurrentFocus),9003)</visible>
                         <include>Dialog_Standard_HintLabel</include>
                         <label>$LOCALIZE[31164]</label>
                     </control>
 
-                    <control type="button" id="19304" description="Startup Video">
+                    <control type="button" id="19305" description="Startup Video">
                         <visible>Integer.IsEqual(Window.Property(CurrentFocus),9003)</visible>
                         <include>Defs_Settings_Button</include>
                         <label>31168</label>
@@ -356,6 +370,27 @@
                     <!-- ======= -->
                     <!-- Library -->
                     <!-- ======= -->
+                    <control type="label" id="19483" description="LABEL">
+                        <visible>Integer.IsEqual(Window.Property(CurrentFocus),9004)</visible>
+                        <include>Dialog_Standard_HintLabel</include>
+                        <label>$LOCALIZE[31146]</label>
+                    </control>
+                    
+
+                    <control type="button" id="19410" description="Ratings">
+                        <visible>Integer.IsEqual(Window.Property(CurrentFocus),9004)</visible>
+                        <include>Defs_Settings_Button</include>
+                        <label>$LOCALIZE[31116]</label>
+                        <onclick>ActivateWindow(1118)</onclick>
+                    </control>
+
+                    <control type="radiobutton" id="19411" description="Plot overlay">
+                        <visible>Integer.IsEqual(Window.Property(CurrentFocus),9004)</visible>
+                        <include>Defs_Settings_Button</include>
+                        <label>$LOCALIZE[31379]</label>
+                        <selected>Skin.HasSetting(AutoPlotOverlay)</selected>
+                        <onclick>Skin.ToggleSetting(AutoPlotOverlay)</onclick>
+                    </control>
 
                     <control type="label" id="19481" description="LABEL">
                         <visible>Integer.IsEqual(Window.Property(CurrentFocus),9004)</visible>
@@ -424,38 +459,6 @@
                         <include>Defs_Settings_Button</include>
                         <selected>Skin.HasSetting(SkinHelper.EnableAnimatedPosters)</selected>
                         <onclick>Skin.ToggleSetting(SkinHelper.EnableAnimatedPosters)</onclick>
-                    </control>
-
-                    <control type="label" id="19483" description="LABEL">
-                        <visible>Integer.IsEqual(Window.Property(CurrentFocus),9004)</visible>
-                        <include>Dialog_Standard_HintLabel</include>
-                        <label>$LOCALIZE[31146]</label>
-                    </control>
-                    <control type="button" id="19404" description="Info lists">
-                        <visible>Integer.IsEqual(Window.Property(CurrentFocus),9004)</visible>
-                        <include>Defs_Settings_Button</include>
-                        <label>$LOCALIZE[31015]</label>
-                        <onclick>ActivateWindow(1119)</onclick>
-                    </control>
-
-                    <control type="button" id="19410" description="Ratings">
-                        <visible>Integer.IsEqual(Window.Property(CurrentFocus),9004)</visible>
-                        <include>Defs_Settings_Button</include>
-                        <label>$LOCALIZE[31116]</label>
-                        <onclick>ActivateWindow(1118)</onclick>
-                    </control>
-
-                    <control type="label" id="19484" description="LABEL">
-                        <visible>Integer.IsEqual(Window.Property(CurrentFocus),9004)</visible>
-                        <include>Dialog_Standard_HintLabel</include>
-                        <label>$LOCALIZE[31153]</label>
-                    </control>
-                    <control type="radiobutton" id="19411" description="Plot overlay">
-                        <visible>Integer.IsEqual(Window.Property(CurrentFocus),9004)</visible>
-                        <include>Defs_Settings_Button</include>
-                        <label>$LOCALIZE[31379]</label>
-                        <selected>Skin.HasSetting(AutoPlotOverlay)</selected>
-                        <onclick>Skin.ToggleSetting(AutoPlotOverlay)</onclick>
                     </control>
 
                     <!-- ================= -->
@@ -633,7 +636,7 @@
                     <control type="label" id="19682" description="LABEL">
                         <visible>Integer.IsEqual(Window.Property(CurrentFocus),9006)</visible>
                         <include>Dialog_Standard_HintLabel</include>
-                        <label>$LOCALIZE[31157]</label>
+                        <label>$LOCALIZE[31146]</label>
                     </control>
 
                     <control type="radiobutton" id="19602" description="Colordiffuse to icons">
