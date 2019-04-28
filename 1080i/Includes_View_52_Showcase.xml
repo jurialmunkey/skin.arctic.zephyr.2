@@ -182,6 +182,7 @@
         <param name="plotheight" default="120" />
         <definition>
             <control type="grouplist">
+                <top>-15</top>
                 <orientation>vertical</orientation>
                 <usecontrolcoords>true</usecontrolcoords>
                 <itemgap>0</itemgap>
@@ -417,6 +418,101 @@
                 <onback>522</onback>
                 <content target="videos" sortby="episode" sortorder="ascending">$INFO[Container(522).ListItem.FolderPath]</content>
             </include>
+        </control>
+    </include>
+
+    <include name="View_524_Showcase_Seasons">
+        <control type="group">
+            <include>View_Group</include>
+            <visible>Control.IsVisible(524)</visible>
+            
+            <control type="group">
+                <right>761.44</right>
+                <include content="View_51_Wall_Container">
+                    <param name="id" value="524" />
+                    <param name="height" value="view_height" />
+                    <param name="viewtype" value="$LOCALIZE[31171]" />
+                    <param name="viewtypename" value="biglist" />
+                    <param name="forced" value="true" />
+                    <param name="visible" value="Container.Content(seasons)" />
+                    <param name="orientation" value="vertical" />
+                    <param name="controltype" value="wraplist" />
+                    <param name="controllayout" value="View_514_Wall_Info_Layout" />
+                    <width>item_poster_width</width>
+                    <onleft>300</onleft>
+                    <onright condition="!Container(5229).IsUpdating">SetFocus(5229,0,absolute)</onright>
+                    <ondown>524</ondown>
+                    <onunp>524</onunp>
+                </include>
+            </control>
+
+            <include content="View_522_Showcase_Seasons_Info">
+                <param name="visible" value="!Control.HasFocus(5229)" />
+                <param name="iconvisible" value="!String.IsEmpty(Container(524).ListItem.Art(fanart))" />
+                <param name="icon" value="$VAR[Image_Landscape]" />
+                <param name="title" value="$INFO[Container(524).ListItem.TvShowTitle]" />
+                <param name="plot" value="$VAR[Label_Plot]" />
+                <param name="seasons" value="true" />
+            </include>
+
+            <include content="View_522_Showcase_Seasons_Info">
+                <param name="visible" value="Control.HasFocus(5229)" />
+                <param name="iconvisible" value="true" />
+                <param name="icon" value="$INFO[Container(5229).ListItem.Art(thumb)]" />
+                <param name="title" value="$INFO[Container(5229).ListItem.Title]" />
+                <param name="plot" value="$INFO[Container(5229).ListItem.Plot]" />
+                <param name="seasons" value="false" />
+            </include>
+
+            <control type="group">
+                <left>item_poster_width</left>
+                <include content="View_50_List_Control">
+                    <param name="top" value="0" />
+                    <param name="height" value="view_list_height" />
+                    <param name="right" value="771.44" />
+                    <param name="id" value="5229" />
+                    <param name="forced" value="false" />
+                    <param name="visible" value="Control.IsVisible(524) + !Container(524).ListItem.IsParentFolder" />
+                    <param name="controllayout" value="Defs_Null" />
+                    <param name="controltype" value="list" />
+                    <param name="flipsides" value="Skin.HasSetting(FlipSide)" />
+                    <animation effect="fade" start="100" end="0" condition="Container(5229).IsUpdating">Conditional</animation>
+                    <pagecontrol>64</pagecontrol>
+                    <movement>2</movement>
+                    <focusposition>2</focusposition>
+                    <onleft>SetFocus(5229,0,absolute)</onleft>
+                    <onleft>524</onleft>
+                    <onright>64</onright>
+
+                    <onup>SetFocus(524)</onup>
+                    <onup>Up</onup>
+                    <onup>SetFocus(5229,0,absolute)</onup>
+
+                    <ondown>SetFocus(524)</ondown>
+                    <ondown>Down</ondown>
+                    <ondown>SetFocus(5229,0,absolute)</ondown>
+
+                    <onback>SetFocus(5229,0,absolute)</onback>
+                    <onback>524</onback>
+                    <content target="videos" sortby="episode" sortorder="ascending">$INFO[Container(524).ListItem.FolderPath]</content>
+                </include>
+                <control type="scrollbar" id="64">
+                    <onback>5229</onback>
+                    <centerright>-40</centerright>
+                    <width>8</width>
+                    <top>0</top>
+                    <bottom>0</bottom>
+                    <showonepage>false</showonepage>
+                    <orientation>vertical</orientation>
+                    <onleft>5229</onleft>
+                    <texturesliderbackground colordiffuse="main_fg_12" border="4">common/white.png</texturesliderbackground>
+                    <texturesliderbar colordiffuse="main_fg_30" border="4">scrollbar/scrollv.png</texturesliderbar>
+                    <texturesliderbarfocus colordiffuse="main_fg_100" border="4">scrollbar/scrollv.png</texturesliderbarfocus>
+                    <animation effect="fade" start="100" end="0" time="400" condition="!Control.HasFocus(64) + !Container.Scrolling">Conditional</animation>
+                    <include>Animation_FadeIn</include>
+                    <include>Animation_FadeOut</include>
+                </control>
+            </control>
         </control>
     </include>
 

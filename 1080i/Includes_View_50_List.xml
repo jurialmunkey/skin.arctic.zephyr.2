@@ -477,6 +477,7 @@
         <param name="flipsides" default="false" />
         <definition>
             <control type="$PARAM[controltype]" id="$PARAM[id]">
+                <nested />
                 <scrolltime tween="quadratic">400</scrolltime>
                 <top>$PARAM[top]</top>
                 <visible>$PARAM[visible]</visible>
@@ -513,7 +514,6 @@
                         </include>
                     </control>
                 </focusedlayout>
-                <nested />
             </control>
         </definition>
     </include>

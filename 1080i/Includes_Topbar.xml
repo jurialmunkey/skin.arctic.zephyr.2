@@ -62,27 +62,41 @@
     </include>
 
     <include name="Topbar_Center">
-        <control type="label" id="9935">
+        <control type="label">
             <visible>$PARAM[visible]</visible>
             <visible>!Skin.HasSetting(DisableCenter)</visible>
             <aligny>center</aligny>
             <align>center</align>
             <font>font_byline</font>
+            <width>1200</width>
+            <centerleft>50%</centerleft>
             <textcolor>$PARAM[fgcolor]_70</textcolor>
             <label>$VAR[Label_Header_Center]</label>
             <include>Animation_FadeInOut</include>
             <visible>!Control.HasFocus(300) | Window.IsVisible(SettingsCategory.xml) | Window.IsVisible(SettingsProfile.xml) | Window.IsVisible(SkinSettings.xml) | Window.IsVisible(eventlog) | Window.IsVisible(SettingsSystemInfo.xml)</visible>
-            <visible>String.IsEmpty(Control.GetLabel(9934)) | !Control.IsVisible(9934)</visible>
+            <visible>!Skin.HasSetting(EnableClearlogo)</visible>
         </control>
-        <control type="image" id="9934">
+        <control type="label">
+            <visible>$PARAM[visible]</visible>
+            <visible>!Skin.HasSetting(DisableCenter)</visible>
+            <aligny>center</aligny>
+            <align>center</align>
+            <font>font_byline</font>
+            <width>1200</width>
+            <centerleft>50%</centerleft>
+            <textcolor>$PARAM[fgcolor]_70</textcolor>
+            <label>$VAR[Label_Header_Center]</label>
+            <visible>!Control.HasFocus(300) | Window.IsVisible(SettingsCategory.xml) | Window.IsVisible(SettingsProfile.xml) | Window.IsVisible(SkinSettings.xml) | Window.IsVisible(eventlog) | Window.IsVisible(SettingsSystemInfo.xml)</visible>
+            <visible>[Skin.HasSetting(EnableClearlogo) + String.IsEmpty(ListItem.Art(clearlogo)) + String.IsEmpty(ListItem.Art(tvshow.clearlogo))]</visible>
+        </control>
+        <control type="image">
             <visible>$PARAM[visible]</visible>
             <visible>Skin.HasSetting(EnableClearlogo)</visible>
             <texture background="true">$VAR[Image_ClearLogo]</texture>
             <aspectratio align="center" aligny="center">keep</aspectratio>
+            <height>80%</height>
             <centertop>50%</centertop>
-            <include>Animation_FadeInOut</include>
             <visible>!Control.HasFocus(300) | Window.IsVisible(SettingsCategory.xml) | Window.IsVisible(SettingsProfile.xml) | Window.IsVisible(SkinSettings.xml) | Window.IsVisible(eventlog) | Window.IsVisible(SettingsSystemInfo.xml)</visible>
-            <visible>!Control.IsVisible(9935)</visible>
         </control>
     </include>
     <include name="Topbar_Right">

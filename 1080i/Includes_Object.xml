@@ -417,6 +417,126 @@
         </control>
     </include>
 
+    <include name="Object_Languages_Items">
+        <control type="image">
+            <top>5</top>
+            <height>24</height>
+            <width>24</width>
+            <texture colordiffuse="main_fg_90">flags/studio.png</texture>
+            <visible>!String.IsEmpty(ListItem.Studio)</visible>
+        </control>
+        <control type="label">
+            <left>-20</left>
+            <top>0</top>
+            <align>left</align>
+            <aligny>center</aligny>
+            <width>auto</width>
+            <font>font_mini</font>
+            <textcolor>main_fg_70</textcolor>
+            <label>$INFO[ListItem.Studio]</label>
+            <height>32</height>
+            <visible>!String.IsEmpty(ListItem.Studio)</visible>
+        </control>
+        <control type="image">
+            <top>5</top>
+            <height>24</height>
+            <width>24</width>
+            <texture colordiffuse="main_fg_90">flags/lang.png</texture>
+            <visible>!String.IsEmpty(ListItem.Country)</visible>
+        </control>
+        <control type="label">
+            <left>-20</left>
+            <top>0</top>
+            <align>left</align>
+            <aligny>center</aligny>
+            <width>auto</width>
+            <font>font_mini</font>
+            <textcolor>main_fg_70</textcolor>
+            <label>$INFO[ListItem.Country]</label>
+            <height>32</height>
+            <visible>!String.IsEmpty(ListItem.Country)</visible>
+        </control>
+        <control type="image">
+            <top>5</top>
+            <height>24</height>
+            <width>24</width>
+            <texture colordiffuse="main_fg_90">flags/language.png</texture>
+            <visible>!String.IsEmpty(ListItem.Property(AudioLanguage.1))</visible>
+        </control>
+        <control type="label">
+            <left>-20</left>
+            <top>0</top>
+            <align>left</align>
+            <aligny>center</aligny>
+            <width>auto</width>
+            <font>font_mini</font>
+            <textcolor>main_fg_70</textcolor>
+            <label>$INFO[ListItem.Property(AudioLanguage.1)]$INFO[ListItem.Property(AudioLanguage.2), / ,]$INFO[ListItem.Property(AudioLanguage.3), / ,]$INFO[ListItem.Property(AudioLanguage.4), / ,]$INFO[ListItem.Property(AudioLanguage.5), / ,]</label>
+            <visible>!String.IsEmpty(ListItem.Property(AudioLanguage.1))</visible>
+            <height>32</height>
+        </control>
+        <control type="image">
+            <top>5</top>
+            <height>24</height>
+            <width>24</width>
+            <texture colordiffuse="main_fg_90">flags/subtitles.png</texture>
+            <visible>!String.IsEmpty(ListItem.Property(SubtitleLanguage.1))</visible>
+        </control>
+        <control type="label">
+            <top>0</top>
+            <left>-20</left>
+            <align>left</align>
+            <aligny>center</aligny>
+            <width>auto</width>
+            <font>font_mini</font>
+            <textcolor>main_fg_70</textcolor>
+            <label>$INFO[ListItem.Property(SubtitleLanguage.1)]$INFO[ListItem.Property(SubtitleLanguage.2), / ,]$INFO[ListItem.Property(SubtitleLanguage.3), / ,]$INFO[ListItem.Property(SubtitleLanguage.4), / ,]$INFO[ListItem.Property(SubtitleLanguage.5), / ,]</label>
+            <height>32</height>
+            <visible>!String.IsEmpty(ListItem.Property(SubtitleLanguage.1))</visible>
+        </control>
+
+        <control type="image">
+            <top>5</top>
+            <height>24</height>
+            <width>24</width>
+            <texture colordiffuse="main_fg_90">flags/video.png</texture>
+            <visible>Skin.HasSetting(DisableCodecs)</visible>
+            <visible>!String.IsEmpty(ListItem.VideoCodec)</visible>
+        </control>
+        <control type="label">
+            <top>0</top>
+            <left>-20</left>
+            <align>left</align>
+            <aligny>center</aligny>
+            <width>auto</width>
+            <font>font_mini</font>
+            <textcolor>main_fg_70</textcolor>
+            <label>$INFO[ListItem.VideoCodec]$INFO[ListItem.VideoResolution,  •  ,]$INFO[ListItem.VideoAspect,  •  ,]</label>
+            <height>32</height>
+            <visible>Skin.HasSetting(DisableCodecs)</visible>
+        </control>
+        <control type="image">
+            <top>5</top>
+            <height>24</height>
+            <width>24</width>
+            <texture colordiffuse="main_fg_90">flags/audio.png</texture>
+            <visible>Skin.HasSetting(DisableCodecs)</visible>
+            <visible>!String.IsEmpty(ListItem.AudioCodec)</visible>
+        </control>
+        <control type="label">
+            <top>0</top>
+            <left>-20</left>
+            <align>left</align>
+            <aligny>center</aligny>
+            <width>auto</width>
+            <font>font_mini</font>
+            <textcolor>main_fg_70</textcolor>
+            <label>$INFO[ListItem.AudioCodec]$VAR[Label_AudioChannels,  •  ,]</label>
+            <height>32</height>
+            <visible>Skin.HasSetting(DisableCodecs)</visible>
+        </control>
+    </include>
+
     <include name="Object_Info_Languages">
         <control type="grouplist">
             <top>32</top>
@@ -425,247 +545,39 @@
             <itemgap>40</itemgap>
             <orientation>horizontal</orientation>
             <usecontrolcoords>true</usecontrolcoords>
-            <control type="image">
-                <top>5</top>
-                <height>24</height>
-                <width>24</width>
-                <texture colordiffuse="main_fg_90">flags/studio.png</texture>
-                <visible>!String.IsEmpty(ListItem.Studio)</visible>
-            </control>
-            <control type="label">
-                <left>-20</left>
-                <top>0</top>
-                <align>left</align>
-                <aligny>center</aligny>
-                <width>auto</width>
-                <font>font_mini</font>
-                <textcolor>main_fg_70</textcolor>
-                <label>$INFO[ListItem.Studio]</label>
-                <height>32</height>
-                <visible>!String.IsEmpty(ListItem.Studio)</visible>
-            </control>
-            <control type="image">
-                <top>5</top>
-                <height>24</height>
-                <width>24</width>
-                <texture colordiffuse="main_fg_90">flags/lang.png</texture>
-                <visible>!String.IsEmpty(ListItem.Country)</visible>
-            </control>
-            <control type="label">
-                <left>-20</left>
-                <top>0</top>
-                <align>left</align>
-                <aligny>center</aligny>
-                <width>auto</width>
-                <font>font_mini</font>
-                <textcolor>main_fg_70</textcolor>
-                <label>$INFO[ListItem.Country]</label>
-                <height>32</height>
-                <visible>!String.IsEmpty(ListItem.Country)</visible>
-            </control>
-            <control type="image">
-                <top>5</top>
-                <height>24</height>
-                <width>24</width>
-                <texture colordiffuse="main_fg_90">flags/language.png</texture>
-                <visible>!String.IsEmpty(ListItem.Property(AudioLanguage.1))</visible>
-            </control>
-            <control type="label">
-                <left>-20</left>
-                <top>0</top>
-                <align>left</align>
-                <aligny>center</aligny>
-                <width>auto</width>
-                <font>font_mini</font>
-                <textcolor>main_fg_70</textcolor>
-                <label>$INFO[ListItem.Property(AudioLanguage.1)]$INFO[ListItem.Property(AudioLanguage.2), / ,]$INFO[ListItem.Property(AudioLanguage.3), / ,]$INFO[ListItem.Property(AudioLanguage.4), / ,]$INFO[ListItem.Property(AudioLanguage.5), / ,]</label>
-                <visible>!String.IsEmpty(ListItem.Property(AudioLanguage.1))</visible>
-                <height>32</height>
-            </control>
-            <control type="image">
-                <top>5</top>
-                <height>24</height>
-                <width>24</width>
-                <texture colordiffuse="main_fg_90">flags/subtitles.png</texture>
-                <visible>!String.IsEmpty(ListItem.Property(SubtitleLanguage.1))</visible>
-            </control>
-            <control type="label">
-                <top>0</top>
-                <left>-20</left>
-                <align>left</align>
-                <aligny>center</aligny>
-                <width>auto</width>
-                <font>font_mini</font>
-                <textcolor>main_fg_70</textcolor>
-                <label>$INFO[ListItem.Property(SubtitleLanguage.1)]$INFO[ListItem.Property(SubtitleLanguage.2), / ,]$INFO[ListItem.Property(SubtitleLanguage.3), / ,]$INFO[ListItem.Property(SubtitleLanguage.4), / ,]$INFO[ListItem.Property(SubtitleLanguage.5), / ,]</label>
-                <height>32</height>
-                <visible>!String.IsEmpty(ListItem.Property(SubtitleLanguage.1))</visible>
-            </control>
-
-            <control type="image">
-                <top>5</top>
-                <height>24</height>
-                <width>24</width>
-                <texture colordiffuse="main_fg_90">flags/video.png</texture>
-                <visible>Skin.HasSetting(DisableCodecs)</visible>
-                <visible>!String.IsEmpty(ListItem.VideoCodec)</visible>
-            </control>
-            <control type="label">
-                <top>0</top>
-                <left>-20</left>
-                <align>left</align>
-                <aligny>center</aligny>
-                <width>auto</width>
-                <font>font_mini</font>
-                <textcolor>main_fg_70</textcolor>
-                <label>$INFO[ListItem.VideoCodec]$INFO[ListItem.VideoResolution,  •  ,]$INFO[ListItem.VideoAspect,  •  ,]</label>
-                <height>32</height>
-                <visible>Skin.HasSetting(DisableCodecs)</visible>
-            </control>
-            <control type="image">
-                <top>5</top>
-                <height>24</height>
-                <width>24</width>
-                <texture colordiffuse="main_fg_90">flags/audio.png</texture>
-                <visible>Skin.HasSetting(DisableCodecs)</visible>
-                <visible>!String.IsEmpty(ListItem.AudioCodec)</visible>
-            </control>
-            <control type="label">
-                <top>0</top>
-                <left>-20</left>
-                <align>left</align>
-                <aligny>center</aligny>
-                <width>auto</width>
-                <font>font_mini</font>
-                <textcolor>main_fg_70</textcolor>
-                <label>$INFO[ListItem.AudioCodec]$VAR[Label_AudioChannels,  •  ,]</label>
-                <height>32</height>
-                <visible>Skin.HasSetting(DisableCodecs)</visible>
-            </control>
+            <include>Object_Languages_Items</include>
             <nested />
         </control>
     </include>
 
     <include name="Object_Languages">
-        <control type="group">
-            <visible>!Window.IsVisible(DialogBusy.xml) | !Skin.HasSetting(MinimalBusyLoader)</visible>
-            <visible>[!Skin.HasSetting(DisableNowPlaying) + !Player.HasMedia] | Skin.HasSetting(DisableNowPlaying)</visible>
-            <visible>![Window.IsVisible(SkinSettings.xml) | Window.IsVisible(SettingsCategory.xml) | Window.IsVisible(SettingsProfile.xml) | Window.IsVisible(SettingsSystemInfo.xml)]</visible>
-            <visible>!Control.HasFocus(62)</visible>
-            <visible>!Window.IsVisible(DialogExtendedProgressBar.xml)</visible>
-            <visible>!Window.IsVisible(DialogNotification.xml)</visible>
-            <visible>!$EXP[Exp_InfoVisible]</visible>
-            <visible>Skin.HasSetting(EnableLanguages)</visible>
-            <height>view_bottom</height>
-            <bottom>0</bottom>
-            <left>view_pad</left>
-            <right>view_pad</right>
-            <control type="grouplist">
-                <centertop>50%</centertop>
-                <height>32</height>
-                <align>left</align>
-                <itemgap>40</itemgap>
-                <orientation>horizontal</orientation>
-                <usecontrolcoords>true</usecontrolcoords>
-                <control type="image">
-                    <top>5</top>
-                    <height>24</height>
-                    <width>24</width>
-                    <texture colordiffuse="main_fg_90">flags/genre.png</texture>
-                    <visible>!String.IsEmpty(ListItem.Genre)</visible>
-                </control>
-                <control type="label">
-                    <left>-20</left>
-                    <top>0</top>
-                    <align>left</align>
-                    <aligny>center</aligny>
-                    <width>auto</width>
-                    <font>font_mini</font>
-                    <textcolor>main_fg_70</textcolor>
-                    <label>$INFO[ListItem.Genre]</label>
+        <param name="infohide" default="true" />
+        <definition>
+            <control type="group">
+                <visible>!Window.IsVisible(DialogBusy.xml) | !Skin.HasSetting(MinimalBusyLoader)</visible>
+                <visible>[!Skin.HasSetting(DisableNowPlaying) + !Player.HasMedia] | Skin.HasSetting(DisableNowPlaying)</visible>
+                <visible>![Window.IsVisible(SkinSettings.xml) | Window.IsVisible(SettingsCategory.xml) | Window.IsVisible(SettingsProfile.xml) | Window.IsVisible(SettingsSystemInfo.xml)]</visible>
+                <visible>!Control.HasFocus(62)</visible>
+                <visible>!Window.IsVisible(DialogExtendedProgressBar.xml)</visible>
+                <visible>!Window.IsVisible(DialogNotification.xml)</visible>
+                <visible>Skin.HasSetting(EnableLanguages)</visible>
+                <height>view_bottom</height>
+                <bottom>0</bottom>
+                <left>view_pad</left>
+                <right>view_pad</right>
+                <include condition="$PARAM[infohide]">Defs_InfoDialog_Visible</include>
+                <control type="grouplist">
+                    <centertop>50%</centertop>
                     <height>32</height>
-                    <visible>!String.IsEmpty(ListItem.Genre)</visible>
-                </control>
-                <control type="image">
-                    <top>5</top>
-                    <height>24</height>
-                    <width>24</width>
-                    <texture colordiffuse="main_fg_90">flags/studio.png</texture>
-                    <visible>!String.IsEmpty(ListItem.Studio)</visible>
-                </control>
-                <control type="label">
-                    <left>-20</left>
-                    <top>0</top>
                     <align>left</align>
-                    <aligny>center</aligny>
-                    <width>auto</width>
-                    <font>font_mini</font>
-                    <textcolor>main_fg_70</textcolor>
-                    <label>$INFO[ListItem.Studio]</label>
-                    <height>32</height>
-                    <visible>!String.IsEmpty(ListItem.Studio)</visible>
+                    <itemgap>40</itemgap>
+                    <orientation>horizontal</orientation>
+                    <usecontrolcoords>true</usecontrolcoords>
+                    <include>Object_Languages_Items</include>
+                    <nested />
                 </control>
-                <!-- <control type="image">
-                    <top>5</top>
-                    <height>24</height>
-                    <width>24</width>
-                    <texture colordiffuse="main_fg_90">flags/lang.png</texture>
-                    <visible>!String.IsEmpty(ListItem.Country)</visible>
-                </control>
-                <control type="label">
-                    <left>-20</left>
-                    <top>0</top>
-                    <align>left</align>
-                    <aligny>center</aligny>
-                    <width>auto</width>
-                    <font>font_mini</font>
-                    <textcolor>main_fg_70</textcolor>
-                    <label>$INFO[ListItem.Country]</label>
-                    <height>32</height>
-                    <visible>!String.IsEmpty(ListItem.Country)</visible>
-                </control> -->
-                <control type="image">
-                    <top>5</top>
-                    <height>24</height>
-                    <width>24</width>
-                    <texture colordiffuse="main_fg_90">flags/language.png</texture>
-                    <visible>!String.IsEmpty(ListItem.Property(AudioLanguage.1))</visible>
-                </control>
-                <control type="label">
-                    <left>-20</left>
-                    <top>0</top>
-                    <align>left</align>
-                    <aligny>center</aligny>
-                    <width>auto</width>
-                    <font>font_mini</font>
-                    <textcolor>main_fg_70</textcolor>
-                    <label>$INFO[ListItem.Property(AudioLanguage.1)]$INFO[ListItem.Property(AudioLanguage.2), / ,]$INFO[ListItem.Property(AudioLanguage.3), / ,]$INFO[ListItem.Property(AudioLanguage.4), / ,]$INFO[ListItem.Property(AudioLanguage.5), / ,]</label>
-                    <visible>!String.IsEmpty(ListItem.Property(AudioLanguage.1))</visible>
-                    <height>32</height>
-                </control>
-                <control type="image">
-                    <top>5</top>
-                    <height>24</height>
-                    <width>24</width>
-                    <texture colordiffuse="main_fg_90">flags/subtitles.png</texture>
-                    <visible>!String.IsEmpty(ListItem.Property(SubtitleLanguage.1))</visible>
-                </control>
-                <control type="label">
-                    <top>0</top>
-                    <left>-20</left>
-                    <align>left</align>
-                    <aligny>center</aligny>
-                    <width>auto</width>
-                    <font>font_mini</font>
-                    <textcolor>main_fg_70</textcolor>
-                    <label>$INFO[ListItem.Property(SubtitleLanguage.1)]$INFO[ListItem.Property(SubtitleLanguage.2), / ,]$INFO[ListItem.Property(SubtitleLanguage.3), / ,]$INFO[ListItem.Property(SubtitleLanguage.4), / ,]$INFO[ListItem.Property(SubtitleLanguage.5), / ,]</label>
-                    <height>32</height>
-                    <visible>!String.IsEmpty(ListItem.Property(SubtitleLanguage.1))</visible>
-                </control>
-
-                <nested />
             </control>
-        </control>
+        </definition>
     </include>
 
     <include name="Object_Info_Details">
@@ -2373,6 +2285,7 @@
                 <include>Animation_FadeIn_Delay</include>
                 <include>Animation_FadeOut</include>
                 <visible>!Control.HasFocus(6)</visible>
+                <visible>!ControlGroup(300).HasFocus() | !Skin.HasSetting(EnableLanguages)</visible>
                 <visible>!Control.HasFocus($PARAM[artworkid])</visible>
                 <visible>Container($PARAM[id]).HasNext</visible>
                 <include content="Object_DoubleArrow_Down">

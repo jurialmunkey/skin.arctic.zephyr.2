@@ -53,6 +53,7 @@
     </variable>
 
     <variable name="Label_Header_Center">
+        <value condition="Skin.HasSetting(EnableClearlogo) + [String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,set) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season)]">$INFO[ListItem.Title]</value>
         <value condition="Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml)">$LOCALIZE[19033]</value>
         <value condition="!String.IsEmpty(Window.Property(Header_Center_Text))">$INFO[Window.Property(Header_Center_Text)]</value>
         <value condition="Window.IsVisible(MyWeather.xml)">$INFO[Weather.Location]</value>

@@ -468,7 +468,7 @@
                                 <include>Object_Info_Line</include>
                                 <include>Object_Info_Ratings</include>
                                 <include>Object_Info_Plot</include>
-                                <include>Object_Info_Languages</include>
+                                <include condition="!Skin.HasSetting(EnableLanguages)">Object_Info_Languages</include>
                                 <include>Object_Info_Details</include>
                             </control>
                             <include>Info_Button_Grouplist</include>
@@ -797,6 +797,14 @@
             <include content="Object_Codecs">
                 <param name="infohide" value="false" />
             </include>
+
+            <!-- Languages -->
+            <control type="group">
+                <visible>!Control.HasFocus(6)</visible>
+                <include content="Object_Languages">
+                    <param name="infohide" value="false" />
+                </include>
+            </control>
 
             <!-- File Path -->
             <include content="Object_Icon_Details">
