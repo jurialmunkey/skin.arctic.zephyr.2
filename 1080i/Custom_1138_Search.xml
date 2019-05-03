@@ -26,13 +26,13 @@
 
                 <include>skinshortcuts-template-search</include>
 
-                <include content="View_Cast_Toplabel">
+                <include content="View_Cast_Toplabel" condition="!Skin.HasSetting(DisableSearchList.Movies)">
                     <param name="groupid" value="7501" />
                     <param name="id" value="5001" />
                     <param name="label" value="$INFO[Container(5001).NumItems,$LOCALIZE[342] (,)]" />
                     <visible>Control.IsVisible(5001)</visible>
                 </include>
-                <include content="View_51_Wall_Container">
+                <include content="View_51_Wall_Container" condition="!Skin.HasSetting(DisableSearchList.Movies)">
                     <param name="controllayout" value="View_Cast" />
                     <param name="id" value="5001" />
                     <param name="height" value="item_cast_height" />
@@ -41,16 +41,15 @@
                     <param name="visible" value="Integer.IsGreater(Container(5001).NumItems,0) | Container(5001).IsUpdating" />
                     <animation effect="fade" start="100" end="0" condition="!Integer.IsGreater(Container(5001).NumItems,0) | Container(5001).IsUpdating">Conditional</animation>
                     <content target="videos">videodb://movies/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22$INFO[Skin.String(SearchTerm)]%22%5D%7D%5D%7D%2C%22type%22%3A%22movies%22%7D</content>
-                    <visible>!Skin.HasSetting(DisableSearchList.Movies)</visible>
                 </include>
 
-                <include content="View_Cast_Toplabel">
+                <include content="View_Cast_Toplabel" condition="!Skin.HasSetting(DisableSearchList.TvShows)">
                     <param name="groupid" value="7502" />
                     <param name="id" value="5002" />
                     <param name="label" value="$INFO[Container(5002).NumItems,$LOCALIZE[20343] (,)]" />
                     <visible>Control.IsVisible(5002)</visible>
                 </include>
-                <include content="View_51_Wall_Container">
+                <include content="View_51_Wall_Container" condition="!Skin.HasSetting(DisableSearchList.TvShows)">
                     <param name="controllayout" value="View_Cast" />
                     <param name="id" value="5002" />
                     <param name="height" value="item_cast_height" />
@@ -59,16 +58,15 @@
                     <param name="visible" value="Integer.IsGreater(Container(5002).NumItems,0) | Container(5002).IsUpdating" />
                     <animation effect="fade" start="100" end="0" condition="!Integer.IsGreater(Container(5002).NumItems,0) | Container(5002).IsUpdating">Conditional</animation>
                     <content target="videos">videodb://tvshows/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22$INFO[Skin.String(SearchTerm)]%22%5D%7D%5D%7D%2C%22type%22%3A%22tvshows%22%7D</content>
-                    <visible>!Skin.HasSetting(DisableSearchList.TvShows)</visible>
                 </include>
 
-                <include content="View_Cast_Toplabel">
+                <include content="View_Cast_Toplabel" condition="!Skin.HasSetting(DisableSearchList.Episodes)">
                     <param name="groupid" value="7503" />
                     <param name="id" value="5003" />
                     <param name="label" value="$INFO[Container(5003).NumItems,$LOCALIZE[20360] (,)]" />
                     <visible>Control.IsVisible(5003)</visible>
                 </include>
-                <include content="View_51_Wall_Container">
+                <include content="View_51_Wall_Container" condition="!Skin.HasSetting(DisableSearchList.Episodes)">
                     <param name="controllayout" value="View_Cast" />
                     <param name="id" value="5003" />
                     <param name="height" value="item_cast_height" />
@@ -82,16 +80,15 @@
                     <param name="visible" value="Integer.IsGreater(Container(5003).NumItems,0) | Container(5003).IsUpdating" />
                     <animation effect="fade" start="100" end="0" condition="!Integer.IsGreater(Container(5003).NumItems,0) | Container(5003).IsUpdating">Conditional</animation>
                     <content target="videos">videodb://tvshows/titles/-1/-1/-1/-1/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22$INFO[Skin.String(SearchTerm)]%22%5D%7D%5D%7D%2C%22type%22%3A%22episodes%22%7D</content>
-                    <visible>!Skin.HasSetting(DisableSearchList.Episodes)</visible>
                 </include>
 
-                <include content="View_Cast_Toplabel">
+                <include content="View_Cast_Toplabel" condition="!Skin.HasSetting(DisableSearchList.Genre)">
                     <param name="groupid" value="7507" />
                     <param name="id" value="5007" />
                     <param name="label" value="$INFO[Skin.String(SearchTerm),$LOCALIZE[515] &quot;[CAPITALIZE],[/CAPITALIZE]&quot;]$INFO[Container(5007).NumItems, (,)]" />
                     <visible>Control.IsVisible(5007)</visible>
                 </include>
-                <include content="View_51_Wall_Container">
+                <include content="View_51_Wall_Container" condition="!Skin.HasSetting(DisableSearchList.Genre)">
                     <param name="controllayout" value="View_Cast" />
                     <param name="id" value="5007" />
                     <param name="height" value="item_cast_height" />
@@ -101,16 +98,15 @@
                     <animation effect="fade" start="100" end="0" condition="!Integer.IsGreater(Container(5007).NumItems,0) | Container(5007).IsUpdating">Conditional</animation>
                     <content target="videos">videodb://movies/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22genre%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22$INFO[Skin.String(SearchTerm)]%22%5D%7D%5D%7D%2C%22type%22%3A%22movies%22%7D</content>
                     <content target="videos">videodb://tvshows/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22genre%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22$INFO[Skin.String(SearchTerm)]%22%5D%7D%5D%7D%2C%22type%22%3A%22tvshows%22%7D</content>
-                    <visible>!Skin.HasSetting(DisableSearchList.Genre)</visible>
                 </include>
 
-                <include content="View_Cast_Toplabel">
+                <include content="View_Cast_Toplabel" condition="!Skin.HasSetting(DisableSearchList.Year)">
                     <param name="groupid" value="7510" />
                     <param name="id" value="5010" />
                     <param name="label" value="$INFO[Skin.String(SearchTerm),$LOCALIZE[31041] &quot;,&quot;]$INFO[Container(5010).NumItems, (,)]" />
                     <visible>Control.IsVisible(5010)</visible>
                 </include>
-                <include content="View_51_Wall_Container">
+                <include content="View_51_Wall_Container" condition="!Skin.HasSetting(DisableSearchList.Year)">
                     <param name="controllayout" value="View_Cast" />
                     <param name="id" value="5010" />
                     <param name="height" value="item_cast_height" />
@@ -120,16 +116,15 @@
                     <animation effect="fade" start="100" end="0" condition="!Integer.IsGreater(Container(5010).NumItems,0) | Container(5010).IsUpdating">Conditional</animation>
                     <content target="videos">videodb://movies/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22year%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22$INFO[Skin.String(SearchTerm)]%22%5D%7D%5D%7D%2C%22type%22%3A%22movies%22%7D</content>
                     <content target="videos">videodb://tvshows/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22year%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22$INFO[Skin.String(SearchTerm)]%22%5D%7D%5D%7D%2C%22type%22%3A%22tvshows%22%7D</content>
-                    <visible>!Skin.HasSetting(DisableSearchList.Year)</visible>
                 </include>
 
-                <include content="View_Cast_Toplabel">
+                <include content="View_Cast_Toplabel" condition="!Skin.HasSetting(DisableSearchList.Studio)">
                     <param name="groupid" value="7511" />
                     <param name="id" value="5011" />
                     <param name="label" value="$INFO[Skin.String(SearchTerm),$LOCALIZE[572] &quot;[CAPITALIZE],[/CAPITALIZE]&quot;]$INFO[Container(5011).NumItems, (,)]" />
                     <visible>Control.IsVisible(5011)</visible>
                 </include>
-                <include content="View_51_Wall_Container">
+                <include content="View_51_Wall_Container" condition="!Skin.HasSetting(DisableSearchList.Studio)">
                     <param name="controllayout" value="View_Cast" />
                     <param name="id" value="5011" />
                     <param name="height" value="item_cast_height" />
@@ -139,16 +134,15 @@
                     <animation effect="fade" start="100" end="0" condition="!Integer.IsGreater(Container(5011).NumItems,0) | Container(5011).IsUpdating">Conditional</animation>
                     <content target="videos">videodb://movies/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22studio%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22$INFO[Skin.String(SearchTerm)]%22%5D%7D%5D%7D%2C%22type%22%3A%22movies%22%7D</content>
                     <content target="videos">videodb://tvshows/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22studio%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22$INFO[Skin.String(SearchTerm)]%22%5D%7D%5D%7D%2C%22type%22%3A%22tvshows%22%7D</content>
-                    <visible>!Skin.HasSetting(DisableSearchList.Studio)</visible>
                 </include>
 
-                <include content="View_Cast_Toplabel">
+                <include content="View_Cast_Toplabel" condition="!Skin.HasSetting(DisableSearchList.Country)">
                     <param name="groupid" value="7512" />
                     <param name="id" value="5012" />
                     <param name="label" value="$INFO[Skin.String(SearchTerm),$LOCALIZE[574] &quot;[CAPITALIZE],[/CAPITALIZE]&quot;]$INFO[Container(5012).NumItems, (,)]" />
                     <visible>Control.IsVisible(5012)</visible>
                 </include>
-                <include content="View_51_Wall_Container">
+                <include content="View_51_Wall_Container" condition="!Skin.HasSetting(DisableSearchList.Country)">
                     <param name="controllayout" value="View_Cast" />
                     <param name="id" value="5012" />
                     <param name="height" value="item_cast_height" />
@@ -157,16 +151,15 @@
                     <param name="visible" value="Integer.IsGreater(Container(5012).NumItems,0) | Container(5012).IsUpdating" />
                     <animation effect="fade" start="100" end="0" condition="!Integer.IsGreater(Container(5012).NumItems,0) | Container(5012).IsUpdating">Conditional</animation>
                     <content target="videos">videodb://movies/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22country%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22$INFO[Skin.String(SearchTerm)]%22%5D%7D%5D%7D%2C%22type%22%3A%22movies%22%7D</content>
-                    <visible>!Skin.HasSetting(DisableSearchList.Country)</visible>
                 </include>
 
-                <include content="View_Cast_Toplabel">
+                <include content="View_Cast_Toplabel" condition="!Skin.HasSetting(DisableSearchList.Actor)">
                     <param name="groupid" value="7508" />
                     <param name="id" value="5008" />
                     <param name="label" value="$INFO[Skin.String(SearchTerm),$LOCALIZE[31042] &quot;[CAPITALIZE],[/CAPITALIZE]&quot;]$INFO[Container(5008).NumItems, (,)]" />
                     <visible>Control.IsVisible(5008)</visible>
                 </include>
-                <include content="View_51_Wall_Container">
+                <include content="View_51_Wall_Container" condition="!Skin.HasSetting(DisableSearchList.Actor)">
                     <param name="controllayout" value="View_Cast" />
                     <param name="id" value="5008" />
                     <param name="height" value="item_cast_height" />
@@ -176,16 +169,15 @@
                     <animation effect="fade" start="100" end="0" condition="!Integer.IsGreater(Container(5008).NumItems,0) | Container(5008).IsUpdating">Conditional</animation>
                     <content target="videos">videodb://movies/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22actor%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22$INFO[Skin.String(SearchTerm)]%22%5D%7D%5D%7D%2C%22type%22%3A%22movies%22%7D</content>
                     <content target="videos">videodb://tvshows/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22actor%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22$INFO[Skin.String(SearchTerm)]%22%5D%7D%5D%7D%2C%22type%22%3A%22tvshows%22%7D</content>
-                    <visible>!Skin.HasSetting(DisableSearchList.Actor)</visible>
                 </include>
 
-                <include content="View_Cast_Toplabel">
+                <include content="View_Cast_Toplabel" condition="!Skin.HasSetting(DisableSearchList.Director)">
                     <param name="groupid" value="7513" />
                     <param name="id" value="5013" />
                     <param name="label" value="$INFO[Skin.String(SearchTerm),$LOCALIZE[31043] &quot;[CAPITALIZE],[/CAPITALIZE]&quot;]$INFO[Container(5013).NumItems, (,)]" />
                     <visible>Control.IsVisible(5013)</visible>
                 </include>
-                <include content="View_51_Wall_Container">
+                <include content="View_51_Wall_Container" condition="!Skin.HasSetting(DisableSearchList.Director)">
                     <param name="controllayout" value="View_Cast" />
                     <param name="id" value="5013" />
                     <param name="height" value="item_cast_height" />
@@ -195,16 +187,15 @@
                     <animation effect="fade" start="100" end="0" condition="!Integer.IsGreater(Container(5013).NumItems,0) | Container(5013).IsUpdating">Conditional</animation>
                     <content target="videos">videodb://movies/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22director%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22$INFO[Skin.String(SearchTerm)]%22%5D%7D%5D%7D%2C%22type%22%3A%22movies%22%7D</content>
                     <content target="videos">videodb://tvshows/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22director%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22$INFO[Skin.String(SearchTerm)]%22%5D%7D%5D%7D%2C%22type%22%3A%22tvshows%22%7D</content>
-                    <visible>!Skin.HasSetting(DisableSearchList.Director)</visible>
                 </include>
 
-                <include content="View_Cast_Toplabel">
+                <include content="View_Cast_Toplabel" condition="!Skin.HasSetting(DisableSearchList.Albums)">
                     <param name="groupid" value="7504" />
                     <param name="id" value="5004" />
                     <param name="label" value="$INFO[Container(5004).NumItems,$LOCALIZE[132] (,)]" />
                     <visible>Control.IsVisible(5004)</visible>
                 </include>
-                <include content="View_51_Wall_Container">
+                <include content="View_51_Wall_Container" condition="!Skin.HasSetting(DisableSearchList.Albums)">
                     <param name="controllayout" value="View_Cast" />
                     <param name="id" value="5004" />
                     <param name="height" value="item_cast_height" />
@@ -214,16 +205,15 @@
                     <param name="visible" value="Integer.IsGreater(Container(5004).NumItems,0) | Container(5004).IsUpdating" />
                     <animation effect="fade" start="100" end="0" condition="!Integer.IsGreater(Container(5004).NumItems,0) | Container(5005).IsUpdating">Conditional</animation>
                     <content target="music">musicdb://albums/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22album%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22$INFO[Skin.String(SearchTerm)]%22%5D%7D%5D%7D%2C%22type%22%3A%22albums%22%7D</content>
-                    <visible>!Skin.HasSetting(DisableSearchList.Albums)</visible>
                 </include>
 
-                <include content="View_Cast_Toplabel">
+                <include content="View_Cast_Toplabel" condition="!Skin.HasSetting(DisableSearchList.Artists)">
                     <param name="groupid" value="7505" />
                     <param name="id" value="5005" />
                     <param name="label" value="$INFO[Container(5005).NumItems,$LOCALIZE[133] (,)]" />
                     <visible>Control.IsVisible(5005)</visible>
                 </include>
-                <include content="View_51_Wall_Container">
+                <include content="View_51_Wall_Container" condition="!Skin.HasSetting(DisableSearchList.Artists)">
                     <param name="controllayout" value="View_Cast" />
                     <param name="id" value="5005" />
                     <param name="height" value="item_cast_height" />
@@ -233,16 +223,15 @@
                     <param name="visible" value="Integer.IsGreater(Container(5005).NumItems,0) | Container(5005).IsUpdating" />
                     <animation effect="fade" start="100" end="0" condition="!Integer.IsGreater(Container(5005).NumItems,0) | Container(5005).IsUpdating">Conditional</animation>
                     <content target="music">musicdb://artists/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22artist%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22$INFO[Skin.String(SearchTerm)]%22%5D%7D%5D%7D%2C%22type%22%3A%22artists%22%7D</content>
-                    <visible>!Skin.HasSetting(DisableSearchList.Artists)</visible>
                 </include>
 
-                <include content="View_Cast_Toplabel">
+                <include content="View_Cast_Toplabel" condition="!Skin.HasSetting(DisableSearchList.ArtistAlbums) + !Skin.HasSetting(DisableSearchList.Artists)">
                     <param name="groupid" value="7506" />
                     <param name="id" value="5006" />
                     <param name="label" value="$INFO[Container(5005).ListItem.Label,$LOCALIZE[31044] ,]$INFO[Container(5006).NumItems, (,)]" />
                     <visible>Control.IsVisible(5006)</visible>
                 </include>
-                <include content="View_51_Wall_Container">
+                <include content="View_51_Wall_Container" condition="!Skin.HasSetting(DisableSearchList.ArtistAlbums) + !Skin.HasSetting(DisableSearchList.Artists)">
                     <param name="controllayout" value="View_Cast" />
                     <param name="id" value="5006" />
                     <param name="height" value="item_cast_height" />
@@ -252,17 +241,15 @@
                     <param name="visible" value="!String.IsEmpty(Container(5005).ListItem.Label) + [Integer.IsGreater(Container(5006).NumItems,0) | Container(5006).IsUpdating]" />
                     <animation effect="fade" start="100" end="0" condition="!Integer.IsGreater(Container(5006).NumItems,0) | Container(5006).IsUpdating">Conditional</animation>
                     <content target="music">musicdb://albums/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22artist%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22$INFO[Container(5005).ListItem.Label]%22%5D%7D%5D%7D%2C%22type%22%3A%22albums%22%7D</content>
-                    <visible>!Skin.HasSetting(DisableSearchList.ArtistAlbums)</visible>
-                    <visible>!Skin.HasSetting(DisableSearchList.Artists)</visible>
                 </include>
                 <!-- MUSICVIDEOS by SearchString in Title -->
-                <include content="View_Cast_Toplabel">
+                <include content="View_Cast_Toplabel" condition="!Skin.HasSetting(DisableSearchList.MusicVideos)">
                     <param name="groupid" value="7515" />
                     <param name="id" value="5015" />
                     <param name="label" value="$INFO[Container(5015).NumItems,$LOCALIZE[20389] (,)]" />
                     <visible>Control.IsVisible(5015)</visible>
                 </include>
-                <include content="View_51_Wall_Container">
+                <include content="View_51_Wall_Container" condition="!Skin.HasSetting(DisableSearchList.MusicVideos)">
                     <param name="controllayout" value="View_Cast" />
                     <param name="id" value="5015" />
                     <param name="height" value="360.5" />
@@ -275,17 +262,16 @@
                     <param name="visible" value="Integer.IsGreater(Container(5015).NumItems,0) | Container(5015).IsUpdating" />
                     <animation effect="fade" start="100" end="0" condition="!Integer.IsGreater(Container(5015).NumItems,0) | Container(5015).IsUpdating">Conditional</animation>
                     <content target="videos">videodb://musicvideos/titles/?xsp=%7b%22order%22%3a%7b%22direction%22%3a%22ascending%22%2c%22ignorefolders%22%3a0%2c%22method%22%3a%22sorttitle%22%7d%2c%22rules%22%3a%7b%22and%22%3a%5b%7b%22field%22%3a%22title%22%2c%22operator%22%3a%22contains%22%2c%22value%22%3a%5b%22$INFO[Skin.String(SearchTerm)]%22%5d%7d%5d%7d%2c%22type%22%3a%22musicvideos%22%7d</content>
-                    <visible>!Skin.HasSetting(DisableSearchList.MusicVideos)</visible>
                 </include>
 
                 <!-- MUSICVIDEOS by SearchString in Artist -->
-                <include content="View_Cast_Toplabel">
+                <include content="View_Cast_Toplabel" condition="!Skin.HasSetting(DisableSearchList.MusicVideoArtists)">
                     <param name="groupid" value="7516" />
                     <param name="id" value="5016" />
                     <param name="label" value="$INFO[Skin.String(SearchTerm),$LOCALIZE[31432] [CAPITALIZE]&quot; , &quot;[/CAPITALIZE]]$INFO[Container(5013).NumItems, (,)]" />
                     <visible>Control.IsVisible(5016)</visible>
                 </include>
-                <include content="View_51_Wall_Container">
+                <include content="View_51_Wall_Container" condition="!Skin.HasSetting(DisableSearchList.MusicVideoArtists)">
                     <param name="controllayout" value="View_Cast" />
                     <param name="id" value="5016" />
                     <param name="height" value="360.5" />
@@ -298,15 +284,14 @@
                     <param name="visible" value="Integer.IsGreater(Container(5016).NumItems,0) | Container(5016).IsUpdating" />
                     <animation effect="fade" start="100" end="0" condition="!Integer.IsGreater(Container(5016).NumItems,0) | Container(5016).IsUpdating">Conditional</animation>
                     <content target="videos">videodb://musicvideos/titles/?xsp=%7b%22order%22%3a%7b%22direction%22%3a%22ascending%22%2c%22ignorefolders%22%3a0%2c%22method%22%3a%22sorttitle%22%7d%2c%22rules%22%3a%7b%22and%22%3a%5b%7b%22field%22%3a%22artist%22%2c%22operator%22%3a%22contains%22%2c%22value%22%3a%5b%22$INFO[Skin.String(SearchTerm)]%22%5d%7d%5d%7d%2c%22type%22%3a%22musicvideos%22%7d</content>
-                    <visible>!Skin.HasSetting(DisableSearchList.MusicVideoArtists)</visible>
                 </include>
-                <include content="View_Cast_Toplabel">
+                <include content="View_Cast_Toplabel" condition="!Skin.HasSetting(DisableSearchList.Addons)">
                     <param name="groupid" value="7514" />
                     <param name="id" value="5014" />
                     <param name="label" value="$INFO[Container(5014).NumItems,$LOCALIZE[24001] (,)]" />
                     <visible>Control.IsVisible(5014)</visible>
                 </include>
-                <include content="View_51_Wall_Container">
+                <include content="View_51_Wall_Container" condition="!Skin.HasSetting(DisableSearchList.Addons)">
                     <param name="controllayout" value="View_Cast" />
                     <param name="id" value="5014" />
                     <param name="height" value="item_cast_height" />
@@ -316,16 +301,15 @@
                     <param name="visible" value="Integer.IsGreater(Container(5014).NumItems,0) | Container(5014).IsUpdating" />
                     <animation effect="fade" start="100" end="0" condition="!Integer.IsGreater(Container(5014).NumItems,0) | Container(5014).IsUpdating">Conditional</animation>
                     <content target="addons">addons://search/$INFO[Skin.String(SearchTerm)]</content>
-                    <visible>!Skin.HasSetting(DisableSearchList.Addons)</visible>
                 </include>
 
-                <include content="View_Cast_Toplabel">
+                <include content="View_Cast_Toplabel" condition="System.HasAddon(plugin.video.youtube) + !Skin.HasSetting(DisableSearchList.YouTube)">
                     <param name="groupid" value="7509" />
                     <param name="id" value="5009" />
                     <param name="label" value="$INFO[Container(5009).NumItems,$LOCALIZE[31141] (,)]" />
                     <visible>Control.IsVisible(5009)</visible>
                 </include>
-                <include content="View_51_Wall_Container">
+                <include content="View_51_Wall_Container" condition="System.HasAddon(plugin.video.youtube) + !Skin.HasSetting(DisableSearchList.YouTube)">
                     <param name="controllayout" value="View_Cast" />
                     <param name="id" value="5009" />
                     <param name="height" value="item_cast_height" />
@@ -339,8 +323,6 @@
                     <param name="visible" value="Integer.IsGreater(Container(5009).NumItems,0) | Container(5009).IsUpdating" />
                     <animation effect="fade" start="100" end="0" condition="!Integer.IsGreater(Container(5009).NumItems,0) | Container(5009).IsUpdating">Conditional</animation>
                     <content target="videos" sortby="file" limit="25">plugin://plugin.video.youtube/search/?q=$INFO[Skin.String(SearchTerm)]</content>
-                    <visible>System.HasAddon(plugin.video.youtube)</visible>
-                    <visible>!Skin.HasSetting(DisableSearchList.YouTube)</visible>
                 </include>
 
             </control>
