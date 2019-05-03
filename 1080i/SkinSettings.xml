@@ -444,6 +444,14 @@
                         <label>$LOCALIZE[31144]</label>
                     </control>
 
+                    <control type="radiobutton" id="19431">
+                        <visible>Integer.IsEqual(Window.Property(CurrentFocus),9004)</visible>
+                        <label>Landscape art</label>
+                        <include>Defs_Settings_Button</include>
+                        <selected>Skin.HasSetting(LandscapeArt)</selected>
+                        <onclick>Skin.ToggleSetting(LandscapeArt)</onclick>
+                    </control>
+
                     <control type="radiobutton" id="19407" description="Roboto Fonts">
                         <visible>Integer.IsEqual(Window.Property(CurrentFocus),9004)</visible>
                         <include>Defs_Settings_Button</include>
