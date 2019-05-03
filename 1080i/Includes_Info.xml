@@ -532,13 +532,13 @@
                             <onback>300</onback>
                         </include>
 
-                        <include content="View_Cast_Toplabel">
+                        <include content="View_Cast_Toplabel" condition="!Skin.HasSetting(DisableInfoListSets)">
                             <param name="groupid" value="7501" />
                             <param name="id" value="5001" />
                             <param name="label" value="$INFO[ListItem.Set,$LOCALIZE[31057] ,]" />
                             <visible>Control.IsVisible(5001)</visible>
                         </include>
-                        <include content="View_51_Wall_Container">
+                        <include content="View_51_Wall_Container" condition="!Skin.HasSetting(DisableInfoListSets)">
                             <param name="controllayout" value="View_Cast" />
                             <param name="id" value="5001" />
                             <param name="height" value="item_cast_height" />
@@ -553,15 +553,14 @@
                             <onback>SetFocus(5000)</onback>
                             <onback>300</onback>
                             <content limit="25" target="videos">$INFO[ListItem.SetID,videodb://movies/sets/,/]</content>
-                            <visible>!Skin.HasSetting(DisableInfoListSets)</visible>
                         </include>
-                        <include content="View_Cast_Toplabel">
+                        <include content="View_Cast_Toplabel" condition="System.HasAddon(script.skin.helper.widgets) + !Skin.HasSetting(DisableInfoListSimilar)">
                             <param name="groupid" value="7502" />
                             <param name="id" value="5002" />
                             <param name="label" value="$INFO[ListItem.Title,$LOCALIZE[31051] ,]" />
                             <visible>Control.IsVisible(5002)</visible>
                         </include>
-                        <include content="View_51_Wall_Container">
+                        <include content="View_51_Wall_Container" condition="System.HasAddon(script.skin.helper.widgets) + !Skin.HasSetting(DisableInfoListSimilar)">
                             <param name="controllayout" value="View_Cast" />
                             <param name="id" value="5002" />
                             <param name="height" value="item_cast_height" />
@@ -577,16 +576,14 @@
                             <onback>300</onback>
                             <content limit="25" target="videos">$INFO[ListItem.IMDBNumber,plugin://script.skin.helper.widgets/?action=similar&amp;mediatype=movies&amp;imdbid=,]</content>
                             <visible>Container.Content(movies)</visible>
-                            <visible>System.HasAddon(script.skin.helper.widgets)</visible>
-                            <visible>!Skin.HasSetting(DisableInfoListSimilar)</visible>
                         </include>
-                        <include content="View_Cast_Toplabel">
+                        <include content="View_Cast_Toplabel" condition="!Skin.HasSetting(DisableInfoListDirector)">
                             <param name="groupid" value="7503" />
                             <param name="id" value="5003" />
                             <param name="label" value="$INFO[ListItem.Director,$LOCALIZE[31052] ,]" />
                             <visible>Control.IsVisible(5003)</visible>
                         </include>
-                        <include content="View_51_Wall_Container">
+                        <include content="View_51_Wall_Container" condition="!Skin.HasSetting(DisableInfoListDirector)">
                             <param name="controllayout" value="View_Cast" />
                             <param name="id" value="5003" />
                             <param name="height" value="item_cast_height" />
@@ -602,15 +599,14 @@
                             <onback>300</onback>
                             <content limit="25" target="videos">$VAR[Info_DirectorMovies]</content>
                             <visible>Container.Content(movies)</visible>
-                            <visible>!Skin.HasSetting(DisableInfoListDirector)</visible>
                         </include>
-                        <include content="View_Cast_Toplabel">
+                        <include content="View_Cast_Toplabel" condition="!Skin.HasSetting(DisableInfoListStudio)">
                             <param name="groupid" value="7504" />
                             <param name="id" value="5004" />
                             <param name="label" value="$INFO[ListItem.Studio,$LOCALIZE[31053] ,]" />
                             <visible>Control.IsVisible(5004)</visible>
                         </include>
-                        <include content="View_51_Wall_Container">
+                        <include content="View_51_Wall_Container" condition="!Skin.HasSetting(DisableInfoListStudio)">
                             <param name="controllayout" value="View_Cast" />
                             <param name="id" value="5004" />
                             <param name="height" value="item_cast_height" />
@@ -626,16 +622,15 @@
                             <onback>300</onback>
                             <content limit="25" target="videos">$VAR[Info_StudioMovies]</content>
                             <visible>Container.Content(movies)</visible>
-                            <visible>!Skin.HasSetting(DisableInfoListStudio)</visible>
                         </include>
 
-                        <include content="View_Cast_Toplabel">
+                        <include content="View_Cast_Toplabel" condition="!Skin.HasSetting(DisableInfoListNextUp)">
                             <param name="groupid" value="7505" />
                             <param name="id" value="5005" />
                             <param name="label" value="$LOCALIZE[31054]" />
                             <visible>Control.IsVisible(5005)</visible>
                         </include>
-                        <include content="View_51_Wall_Container">
+                        <include content="View_51_Wall_Container" condition="!Skin.HasSetting(DisableInfoListNextUp)">
                             <param name="controllayout" value="View_Cast" />
                             <param name="id" value="5005" />
                             <param name="height" value="item_cast_height" />
@@ -658,16 +653,15 @@
                             <onback>300</onback>
                             <content limit="3" sortby="playcount" sortorder="ascending">videodb://inprogresstvshows/$INFO[ListItem.DBID]/-2/?tvshowid=$INFO[ListItem.DBID]</content>
                             <visible>Container.Content(tvshows) | Container.Content(seasons)</visible>
-                            <visible>!Skin.HasSetting(DisableInfoListNextUp)</visible>
                         </include>
 
-                        <include content="View_Cast_Toplabel">
+                        <include content="View_Cast_Toplabel" condition="!Skin.HasSetting(DisableInfoListSeasons)">
                             <param name="groupid" value="7506" />
                             <param name="id" value="5006" />
                             <param name="label" value="$LOCALIZE[33054]" />
                             <visible>Control.IsVisible(5006)</visible>
                         </include>
-                        <include content="View_51_Wall_Container">
+                        <include content="View_51_Wall_Container" condition="!Skin.HasSetting(DisableInfoListSeasons)">
                             <param name="controllayout" value="View_Cast" />
                             <param name="id" value="5006" />
                             <param name="height" value="item_cast_height" />
@@ -685,16 +679,15 @@
                             <onback>300</onback>
                             <content limit="25" target="videos">$INFO[ListItem.DBID,videodb://tvshows/titles/,/]</content>
                             <visible>Container.Content(tvshows)</visible>
-                            <visible>!Skin.HasSetting(DisableInfoListSeasons)</visible>
                         </include>
 
-                        <include content="View_Cast_Toplabel">
+                        <include content="View_Cast_Toplabel" condition="!Skin.HasSetting(DisableInfoListCastFeature)">
                             <param name="groupid" value="7550" />
                             <param name="id" value="5050" />
                             <param name="label" value="$LOCALIZE[31055]" />
                             <visible>Control.IsVisible(5050)</visible>
                         </include>
-                        <include content="View_51_Wall_Container">
+                        <include content="View_51_Wall_Container" condition="!Skin.HasSetting(DisableInfoListCastFeature)">
                             <param name="controllayout" value="View_Cast" />
                             <param name="id" value="5050" />
                             <param name="height" value="item_cast_height" />
@@ -710,16 +703,15 @@
                             <onback>300</onback>
                             <content limit="25" target="videos" sortby="random">videodb://movies/titles/?xsp=%7B%22rules%22%3A%7B%22or%22%3A%5B%7B%22field%22%3A%22actor%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22$INFO[Container(50).ListItemAbsolute(0).Label]%22%5D%7D%2C%7B%22field%22%3A%22actor%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22$INFO[Container(50).ListItemAbsolute(1).Label]%22%5D%7D%2C%7B%22field%22%3A%22actor%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22$INFO[Container(50).ListItemAbsolute(2).Label]%22%5D%7D%2C%7B%22field%22%3A%22actor%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22$INFO[Container(50).ListItemAbsolute(3).Label]%22%5D%7D%2C%7B%22field%22%3A%22actor%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22$INFO[Container(50).ListItemAbsolute(4).Label]%22%5D%7D%2C%7B%22field%22%3A%22actor%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22$INFO[Container(50).ListItemAbsolute(5).Label]%22%5D%7D%2C%7B%22field%22%3A%22actor%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22$INFO[Container(50).ListItemAbsolute(6).Label]%22%5D%7D%5D%7D%2C%22type%22%3A%22movies%22%7D</content>
                             <visible>Container.Content(movies)</visible>
-                            <visible>!Skin.HasSetting(DisableInfoListCastFeature)</visible>
                         </include>
 
-                        <include content="View_Cast_Toplabel">
+                        <include content="View_Cast_Toplabel" condition="!Skin.HasSetting(DisableInfoListExtras)">
                             <param name="groupid" value="7507" />
                             <param name="id" value="5007" />
                             <param name="label" value="$LOCALIZE[31056]" />
                             <visible>Control.IsVisible(5007)</visible>
                         </include>
-                        <include content="View_51_Wall_Container">
+                        <include content="View_51_Wall_Container" condition="!Skin.HasSetting(DisableInfoListExtras)">
                             <param name="controllayout" value="View_Cast" />
                             <param name="id" value="5007" />
                             <param name="height" value="item_cast_height" />
@@ -740,16 +732,15 @@
                             <onback>300</onback>
                             <content limit="25" target="videos" sortby="file">$VAR[Defs_VideoInfo_Extras]</content>
                             <visible>Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)</visible>
-                            <visible>!Skin.HasSetting(DisableInfoListExtras)</visible>
                         </include>
 
-                        <include content="View_Cast_Toplabel">
+                        <include content="View_Cast_Toplabel" condition="System.HasAddon(plugin.video.youtube) + !Skin.HasSetting(DisableInfoListYouTube)">
                             <param name="groupid" value="7508" />
                             <param name="id" value="5008" />
                             <param name="label" value="$LOCALIZE[31141]" />
                             <visible>Control.IsVisible(5008)</visible>
                         </include>
-                        <include content="View_51_Wall_Container">
+                        <include content="View_51_Wall_Container" condition="System.HasAddon(plugin.video.youtube) + !Skin.HasSetting(DisableInfoListYouTube)">
                             <param name="controllayout" value="View_Cast" />
                             <param name="id" value="5008" />
                             <param name="height" value="item_cast_height" />
@@ -770,8 +761,6 @@
                             <onback>300</onback>
                             <content limit="25" target="videos" sortby="file">$VAR[Info_Youtube]</content>
                             <visible>Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)</visible>
-                            <visible>System.HasAddon(plugin.video.youtube)</visible>
-                            <visible>!Skin.HasSetting(DisableInfoListYouTube)</visible>
                         </include>
 
                     </control>
