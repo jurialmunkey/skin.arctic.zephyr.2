@@ -227,6 +227,8 @@
                 <bottom>0</bottom>
                 <texture>common/osd-dim.png</texture>
             </control>
+
+            <!-- Large Info OSD -->
             <control type="group">
                 <visible>!String.IsEmpty(Window(Home).Property(OSDInfo)) | Player.ShowInfo | Window.IsActive(DialogFullScreenInfo.xml) | [Player.Paused + Skin.HasSetting(ShowInfoPaused)]</visible>
                 <visible>!Window.IsVisible(DialogPlayerProcessInfo.xml)</visible>
@@ -450,6 +452,55 @@
                 </control>
             </control>
 
+            <!-- Small Info OSD -->
+            <control type="group">
+                <visible>!Window.IsVisible(DialogPlayerProcessInfo.xml)</visible>
+                <visible>Skin.HasSetting(DisableOSDInfo)</visible>
+                <include>Animation_FadeIn</include>
+                <include>Animation_FadeOut</include>
+
+                <control type="group" description="info">
+                    <left>view_pad</left>
+                    <right>view_pad</right>
+                    <height>480</height>
+                    <bottom>170</bottom>
+                    <control type="grouplist">
+                        <left>0</left>
+                        <usecontrolcoords>true</usecontrolcoords>
+                        <bottom>0</bottom>
+                        <right>0</right>
+                        <align>bottom</align>
+                        <control type="label">
+                            <top>25</top>
+                            <aligny>top</aligny>
+                            <height>100</height>
+                            <width>1430</width>
+                            <scroll>false</scroll>
+                            <font>font_title_large</font>
+                            <textcolor>panel_fg_100</textcolor>
+                            <label>$VAR[Label_OSD_Title]</label>
+                        </control>
+                        <control type="grouplist">
+                            <top>-25</top>
+                            <height>58</height>
+                            <orientation>horizontal</orientation>
+                            <usecontrolcoords>true</usecontrolcoords>
+                            <itemgap>0</itemgap>
+                            <left>0</left>
+                            <right>0</right>
+                            <visible>!String.IsEmpty(VideoPlayer.TvShowTitle) | !String.IsEmpty(VideoPlayer.Year) | !String.IsEmpty(VideoPlayer.MPAA) | !String.IsEmpty(VideoPlayer.Genre)</visible>
+                            <control type="label">
+                                <label>$VAR[Label_OSD_InfoLine]</label>
+                                <height>40</height>
+                                <aligny>top</aligny>
+                                <textcolor>$VAR[ColorHighlight]</textcolor>
+                                <font>font_small</font>
+                            </control>
+                        </control>
+                    </control>
+                </control>
+            </control>
+
             <include>OSD_Progress_Text</include>
             <include>OSD_Progress_Bar</include>
         </control>
@@ -486,12 +537,13 @@
                     <label>$INFO[VideoPlayer.TvShowTitle,[COLOR=panel_fg_70],[/COLOR][COLOR=panel_fg_30]  •  [/COLOR]]$INFO[MusicPlayer.Artist,[COLOR=panel_fg_70],[/COLOR][COLOR=panel_fg_30]  •  [/COLOR]]$INFO[VideoPlayer.Season,,x]$INFO[VideoPlayer.Episode,,. ]$INFO[Player.Title]</label>
                     <animation effect="fade" end="100" start="0" delay="300" time="1" reversible="false">Visible</animation>
                     <visible>![!String.IsEmpty(Window(Home).Property(OSDInfo)) | Player.ShowInfo | Window.IsActive(DialogFullScreenInfo.xml) | [Player.Paused + Skin.HasSetting(ShowInfoPaused)]]</visible>
+                    <visible>!Skin.HasSetting(DisableOSDInfo)</visible>
                 </control>
                 <control type="label">
                     <align>center</align>
                     <include>OSD_Menubar_Items</include>
                     <label>$VAR[Label_OSD_FinishTime]</label>
-                    <visible>!String.IsEmpty(Window(Home).Property(OSDInfo)) | Player.ShowInfo | Window.IsActive(DialogFullScreenInfo.xml) | [Player.Paused + Skin.HasSetting(ShowInfoPaused)]</visible>
+                    <visible>!String.IsEmpty(Window(Home).Property(OSDInfo)) | Player.ShowInfo | Window.IsActive(DialogFullScreenInfo.xml) | [Player.Paused + Skin.HasSetting(ShowInfoPaused)] | Skin.HasSetting(DisableOSDInfo)</visible>
                     <animation effect="fade" start="100" end="0" delay="300" time="1" reversible="false">Hidden</animation>
                 </control>
             </control>
