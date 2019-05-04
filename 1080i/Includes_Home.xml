@@ -840,6 +840,7 @@
         <definition>
             <control type="grouplist">
                 <nested />
+                <visible>!String.IsEmpty(Container($PARAM[id]).ListItem.Label)</visible>
                 <orientation>vertical</orientation>
                 <usecontrolcoords>true</usecontrolcoords>
                 <itemgap>0</itemgap>
