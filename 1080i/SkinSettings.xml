@@ -641,13 +641,22 @@
                         <onclick>Skin.ToggleSetting(PVRGuide.SlimMode)</onclick>
                     </control>
 
+                    <control type="radiobutton" id="19602" description="Replace genre with time">
+                        <visible>Integer.IsEqual(Window.Property(CurrentFocus),9006)</visible>
+                        <include>Defs_Settings_Button</include>
+                        <label>$LOCALIZE[31175]</label>
+                        <selected>Skin.HasSetting(PVRGuide.StartEnd)</selected>
+                        <enable>!Skin.HasSetting(PVRGuide.SlimMode)</enable>
+                        <onclick>Skin.ToggleSetting(PVRGuide.StartEnd)</onclick>
+                    </control>
+
                     <control type="label" id="19682" description="LABEL">
                         <visible>Integer.IsEqual(Window.Property(CurrentFocus),9006)</visible>
                         <include>Dialog_Standard_HintLabel</include>
                         <label>$LOCALIZE[31146]</label>
                     </control>
 
-                    <control type="radiobutton" id="19602" description="Colordiffuse to icons">
+                    <control type="radiobutton" id="19611" description="Colordiffuse to icons">
                         <visible>Integer.IsEqual(Window.Property(CurrentFocus),9006)</visible>
                         <include>Defs_Settings_Button</include>
                         <label>$LOCALIZE[31094]</label>

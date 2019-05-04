@@ -732,7 +732,7 @@
                 <textoffsetx>0</textoffsetx>
                 <font>font_statusbar</font>
                 <label>$INFO[ListItem.Genre]</label>
-                <visible>!Skin.HasSetting(PVRGuideGenreName)</visible>
+                <visible>!Skin.HasSetting(PVRGuide.StartEnd)</visible>
                 <visible>$PARAM[visible]</visible>
                 <visible>$PARAM[sublabel]</visible>
             </control>
@@ -744,7 +744,7 @@
                 <textoffsetx>0</textoffsetx>
                 <font>font_statusbar</font>
                 <label>$INFO[ListItem.StartTime]$INFO[ListItem.EndTime, - ,]</label>
-                <visible>Skin.HasSetting(PVRGuideGenreName)</visible>
+                <visible>Skin.HasSetting(PVRGuide.StartEnd)</visible>
                 <visible>$PARAM[visible]</visible>
                 <visible>$PARAM[sublabel]</visible>
             </control>
