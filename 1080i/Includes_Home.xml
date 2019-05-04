@@ -391,10 +391,12 @@
         </control>
         <control type="group">
             <animation effect="slide" start="0" end="-257.14" time="200" condition="ControlGroup(3000).HasFocus() | Control.HasFocus(5000) | Control.HasFocus(5100)">Conditional</animation>
+            <animation effect="slide" start="0" end="-380" time="200" condition="Control.HasFocus(6000)">Conditional</animation>
             <control type="group">
                 <include>Animation_Right</include>
                 <control type="group">
                     <left>380</left>
+                    <right>-380</right>
                     <visible>String.IsEqual(Container(9989).ListItemAbsolute(0).Property(list),Weather)</visible>
                     <include>Weather</include>
                 </control>
@@ -456,7 +458,7 @@
                                 <onback>301</onback>
                                 <include>Defs_InfoDialog_Visible</include>
                                 <left>0</left>
-                                <animation effect="fade" start="100" end="0" time="200" condition="ControlGroup(3000).HasFocus() | Control.HasFocus(5000) | Control.HasFocus(5100)">Conditional</animation>
+                                <animation effect="fade" start="100" end="0" time="200" condition="ControlGroup(3000).HasFocus() | Control.HasFocus(5000) | Control.HasFocus(5100) | Control.HasFocus(6000)">Conditional</animation>
                                 <top>item_list_height</top>
                                 <width>257.14</width>
                                 <onright>3000</onright>
@@ -497,10 +499,11 @@
                             <onleft condition="!Skin.HasSetting(SubmenuOnly) + Integer.IsGreater(Container(302).NumItems,0)">SetProperty(widgetAspect,$INFO[Container(301).ListItem.Property(widgetAspect)],home)</onleft>
                             <onleft condition="!Skin.HasSetting(SubmenuOnly) + Integer.IsGreater(Container(302).NumItems,0)">ActivateWindow(1135)</onleft>
                             <onleft condition="Skin.HasSetting(SubmenuOnly) + Integer.IsGreater(Container(302).NumItems,0)">SetFocus(302,0)</onleft>
-                            <animation effect="fade" start="100" end="0" time="200" condition="ControlGroup(3000).HasFocus() | Control.HasFocus(5000) | Control.HasFocus(5100)">Conditional</animation>
+                            <animation effect="fade" start="100" end="0" time="200" condition="ControlGroup(3000).HasFocus() | Control.HasFocus(5000) | Control.HasFocus(5100) | Control.HasFocus(6000)">Conditional</animation>
                             <top>0</top>
-                            <onright condition="!String.IsEqual(Container(9989).ListItem.Property(list),Settings)">3000</onright>
+                            <onright condition="!String.IsEqual(Container(9989).ListItem.Property(list),Settings) + !String.IsEqual(Container(9989).ListItem.Property(list),Weather)">3000</onright>
                             <onright condition="String.IsEqual(Container(9989).ListItem.Property(list),Settings)">5000</onright>
+                            <onright condition="String.IsEqual(Container(9989).ListItem.Property(list),Weather)">6000</onright>
                             <width>257.14</width>
                             <orientation>vertical</orientation>                
                             <itemlayout width="257.14" height="item_list_height" condition="!Skin.HasSetting(HomeIcons)">
@@ -733,6 +736,7 @@
 
         <ondown condition="!String.IsEqual(Container(9989).ListItemAbsolute(0).Property(list),Settings) + !String.IsEqual(Container(9989).ListItemAbsolute(0).Property(list),Weather)">3000</ondown>
         <ondown condition="String.IsEqual(Container(9989).ListItemAbsolute(0).Property(list),Settings)">5000</ondown>
+        <ondown condition="String.IsEqual(Container(9989).ListItemAbsolute(0).Property(list),Weather)">6000</ondown>
         <onfocus>ClearProperty(WidgetFocus,Home)</onfocus>
     </include>
 
