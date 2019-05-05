@@ -29,15 +29,6 @@
                 <param name="diffuse" value="diffuse/lovefilm.png" />
                 <param name="icon" value="$PARAM[icon]" />
             </include>
-            <!-- <control type="image">
-                <bottom>60</bottom>
-                <right>60</right>
-                <width>300</width>
-                <height>300</height>
-                <texture background="true">$INFO[ListItem.Art(clearlogo)]</texture>
-                <aspectratio align="right" aligny="bottom">keep</aspectratio>
-                <visible>!String.IsEmpty(ListItem.Art(clearlogo))</visible>
-            </control> -->
             <control type="group">
                 <top>-15</top>
                 <include>View_WatchedOverlay</include>
@@ -532,13 +523,13 @@
                             <onback>300</onback>
                         </include>
 
-                        <include content="View_Cast_Toplabel" condition="!Skin.HasSetting(DisableInfoListSets)">
+                        <include content="View_Cast_Toplabel">
                             <param name="groupid" value="7501" />
                             <param name="id" value="5001" />
                             <param name="label" value="$INFO[ListItem.Set,$LOCALIZE[31057] ,]" />
                             <visible>Control.IsVisible(5001)</visible>
                         </include>
-                        <include content="View_51_Wall_Container" condition="!Skin.HasSetting(DisableInfoListSets)">
+                        <include content="View_51_Wall_Container">
                             <param name="controllayout" value="View_Cast" />
                             <param name="id" value="5001" />
                             <param name="height" value="item_cast_height" />
@@ -553,6 +544,8 @@
                             <onback>SetFocus(5000)</onback>
                             <onback>300</onback>
                             <content limit="25" target="videos">$INFO[ListItem.SetID,videodb://movies/sets/,/]</content>
+                            <visible>!Skin.HasSetting(DisableInfoListSets)</visible>
+                            <visible>!String.IsEmpty(ListItem.SetID)</visible>
                         </include>
                         <include content="View_Cast_Toplabel" condition="System.HasAddon(script.skin.helper.widgets) + !Skin.HasSetting(DisableInfoListSimilar)">
                             <param name="groupid" value="7502" />
