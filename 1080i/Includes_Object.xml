@@ -691,6 +691,7 @@
         <param name="label" default="$VAR[Label_ShowCase_InfoLine]" />
         <param name="hdsd" default="Skin.HasSetting(Hide_Codecs)" />
         <param name="nextaired" default="true" />
+        <param name="textcolor" default="main_fg_100" />
         <definition>
             <control type="grouplist">
                 <height>40</height>
@@ -709,7 +710,7 @@
                 </control>
                 <control type="label">
                     <width>auto</width>
-                    <label>$VAR[Label_Info_NextAired_Status,  |  [COLOR=main_fg_100],[/COLOR]]$VAR[Label_Info_NextAired_Date, [COLOR=main_fg_100],[/COLOR]]</label>
+                    <label>$VAR[Label_Info_NextAired_Status,  |  [COLOR=$PARAM[textcolor]],[/COLOR]]$VAR[Label_Info_NextAired_Date, [COLOR=$PARAM[textcolor]],[/COLOR]]</label>
                     <height>40</height>
                     <aligny>top</aligny>
                     <textcolor>$VAR[ColorHighlight]</textcolor>
