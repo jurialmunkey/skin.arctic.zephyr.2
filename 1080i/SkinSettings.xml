@@ -483,7 +483,6 @@
                         <label>$LOCALIZE[31145]</label>
                         <selected>Skin.HasSetting(ShowInfoPaused)</selected>
                         <onclick>Skin.ToggleSetting(ShowInfoPaused)</onclick>
-                        <onclick>Skin.Reset(DisableOSDInfo)</onclick>
                     </control>
                     <control type="radiobutton" id="19503" description="Only show seekbar on pressing info">
                         <visible>Integer.IsEqual(Window.Property(CurrentFocus),9005)</visible>
@@ -491,7 +490,6 @@
                         <label>$LOCALIZE[31201]</label>
                         <selected>Skin.HasSetting(DisableOSDInfo)</selected>
                         <onclick>Skin.ToggleSetting(DisableOSDInfo)</onclick>
-                        <onclick>Skin.Reset(ShowInfoPaused)</onclick>
                     </control>
 
                     <control type="radiobutton" id="19504" description="Dont pause on information">
