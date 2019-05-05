@@ -580,6 +580,24 @@
         </definition>
     </include>
 
+    <include name="Object_Info_Details_Addons">
+        <include content="Object_Info_TextPairs">
+            <param name="pad" value="32" />
+            <param name="name" value="Addon ID" />
+            <param name="label" value="ListItem.Property(Addon.ID)" />
+        </include>
+        <include content="Object_Info_TextPairs">
+            <param name="pad" value="16" />
+            <param name="name" value="Path" />
+            <param name="label" value="ListItem.FileNameAndPath" />
+        </include>
+        <include content="Object_Info_TextPairs">
+            <param name="pad" value="16" />
+            <param name="name" value="Status" />
+            <param name="label" value="ListItem.Property(Addon.Status)" />
+        </include>
+    </include>
+
     <include name="Object_Info_Details">
         <include content="Object_Info_TextPairs">
             <param name="pad" value="32" />

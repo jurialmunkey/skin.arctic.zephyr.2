@@ -67,16 +67,26 @@
                                     <height>230</height>
                                     <visible>Integer.IsGreater(Container(50).NumItems,0)</visible>
                                 </control>
-                                <include content="Object_Info_Plot">
-                                    <param name="maxheight" value="320" />
-                                    <param name="label" value="$VAR[Label_OverlayPlot]" />
+                                <control type="grouplist">
                                     <visible>Integer.IsGreater(Container(50).NumItems,0)</visible>
-                                </include>
-                                <include content="Object_Info_Plot">
-                                    <param name="maxheight" value="560" />
-                                    <param name="label" value="$VAR[Label_OverlayPlot]" />
-                                    <visible>Integer.IsEqual(Container(50).NumItems,0)</visible>
-                                </include>
+                                    <height>360</height>
+                                    <orientation>vertical</orientation>
+                                    <usecontrolcoords>true</usecontrolcoords>
+                                    <itemgap>0</itemgap>
+                                    <include content="Object_Info_Plot">
+                                        <param name="maxheight" value="160" />
+                                    </include>
+                                    <include>Object_Info_Details_Addons</include>
+                                </control>
+                                <control type="grouplist">
+                                    <visible>!Integer.IsGreater(Container(50).NumItems,0)</visible>
+                                    <height>560</height>
+                                    <orientation>vertical</orientation>
+                                    <usecontrolcoords>true</usecontrolcoords>
+                                    <itemgap>0</itemgap>
+                                    <include>Object_Info_Plot</include>
+                                    <include>Object_Info_Details_Addons</include>
+                                </control>
                             </control>
                             <include content="View_51_Wall_Container">
                                 <param name="controllayout" value="View_Cast" />
