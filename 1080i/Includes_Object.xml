@@ -1702,10 +1702,9 @@
                     <width>52</width>
                     <height>32</height>
                     <texture colordiffuse="$PARAM[colordiffuse]">flags/$PARAM[directory]/ratings/imdb.png</texture>
-                    <visible>!String.IsEmpty(ListItem.RatingAndVotes) | !String.IsEmpty(Window(home).Property(SkinHelper.ListItem.Rating.IMDB))</visible>
+                    <visible>!String.IsEmpty(Window(home).Property(SkinHelper.ListItem.Rating.IMDB))</visible>
                     <visible>$PARAM[imdb]</visible>
                     <visible>!Skin.HasSetting(Ratings.IMDB)</visible>
-                    <visible>Container.Content(movies)</visible>
                 </control>
                 <control type="label">
                     <textcolor>main_fg_70</textcolor>
@@ -1719,21 +1718,6 @@
                     <visible>$PARAM[imdb]</visible>
                     <visible>!Skin.HasSetting(Ratings.IMDB)</visible>
                     <visible>$PARAM[imdbvotes]</visible>
-                    <visible>Container.Content(movies)</visible>
-                </control>
-                <control type="label">
-                    <textcolor>main_fg_70</textcolor>
-                    <top>2</top>
-                    <width>auto</width>
-                    <height>28</height>
-                    <align>right</align>
-                    <font>font_tiny</font>
-                    <label>$INFO[ListItem.RatingAndVotes, ,]</label>
-                    <visible>String.IsEmpty(Window(home).Property(SkinHelper.ListItem.Rating.IMDB)) + !String.IsEmpty(ListItem.RatingAndVotes)</visible>
-                    <visible>$PARAM[imdbvotes]</visible>
-                    <visible>$PARAM[imdb]</visible>
-                    <visible>!Skin.HasSetting(Ratings.IMDB)</visible>
-                    <visible>Container.Content(movies)</visible>
                 </control>
                 <control type="label">
                     <textcolor>main_fg_70</textcolor>
@@ -1747,21 +1731,6 @@
                     <visible>$PARAM[imdb]</visible>
                     <visible>!Skin.HasSetting(Ratings.IMDB)</visible>
                     <visible>!$PARAM[imdbvotes]</visible>
-                    <visible>Container.Content(movies)</visible>
-                </control>
-                <control type="label">
-                    <textcolor>main_fg_70</textcolor>
-                    <top>2</top>
-                    <width>auto</width>
-                    <height>28</height>
-                    <align>right</align>
-                    <font>font_tiny</font>
-                    <label>$INFO[ListItem.Rating, ,]</label>
-                    <visible>String.IsEmpty(Window(home).Property(SkinHelper.ListItem.Rating.IMDB)) + !String.IsEmpty(ListItem.Rating)</visible>
-                    <visible>$PARAM[imdb]</visible>
-                    <visible>!Skin.HasSetting(Ratings.IMDB)</visible>
-                    <visible>!$PARAM[imdbvotes]</visible>
-                    <visible>Container.Content(movies)</visible>
                 </control>
                 <control type="label">
                     <textcolor>main_fg_70</textcolor>
@@ -1771,13 +1740,10 @@
                     <align>right</align>
                     <font>font_tiny</font>
                     <label>$INFO[Window(Home).Property(SkinHelper.ListItem.IMDB.Top250),#,]</label>
-                    <visible>!Window.IsVisible(script-script.extendedinfo-DialogInfo.xml)</visible>
-                    <visible>!Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml)</visible>
                     <visible>Integer.IsGreater(Window(home).Property(SkinHelper.ListItem.IMDB.Top250),0)</visible>
                     <visible>$PARAM[imdb]</visible>
                     <visible>!Skin.HasSetting(Ratings.IMDB)</visible>
                     <visible>$PARAM[top250]</visible>
-                    <visible>Container.Content(movies)</visible>
                 </control>
             </control>
         </definition>
