@@ -369,6 +369,15 @@
                     <width>71</width>
                     <height>48</height>
                     <aspectratio>keep</aspectratio>
+                    <texture colordiffuse="main_fg_90">$INFO[ListItem.VideoAspect,flags/monochrome/aspectratio/,.png]</texture>
+                    <visible>String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,video)</visible>
+                </control>
+                <control type="image">
+                    <fadetime>100</fadetime>
+                    <centertop>50%</centertop>
+                    <width>71</width>
+                    <height>48</height>
+                    <aspectratio>keep</aspectratio>
                     <texture colordiffuse="main_fg_90">$VAR[Image_AudioCodec]</texture>
                     <visible>String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,video)</visible>
                 </control>
