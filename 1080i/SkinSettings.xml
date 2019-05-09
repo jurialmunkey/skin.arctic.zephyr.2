@@ -147,7 +147,7 @@
                     <control type="button" id="19102" description="Home Style">
                         <visible>Integer.IsEqual(Window.Property(CurrentFocus),9001)</visible>
                         <include>Defs_Settings_Button</include>
-                        <label>Home layout</label>
+                        <label>$LOCALIZE[31433]</label>
                         <label2>$VAR[Label_SkinSettings_HomeLayout]</label2>
                         <onclick condition="!Skin.HasSetting(VerticalHome)">Skin.SetBool(VerticalHome)</onclick>
                         <onclick condition="Skin.HasSetting(VerticalHome) + !Skin.HasSetting(AuraStyleHome)">Skin.SetBool(AuraStyleHome)</onclick>
