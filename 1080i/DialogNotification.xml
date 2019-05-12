@@ -7,7 +7,7 @@
             <visible>!Window.IsVisible(DialogBusy.xml)</visible>
             <control type="group">
                 <visible>!Window.IsVisible(fullscreenvideo) + !Window.IsVisible(visualisation)</visible>
-                <visible>!Window.IsVisible(Home.xml) | Skin.HasSetting(VerticalHome) | Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(DialogAddonInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) | String.IsEqual(Window(Home).Property(SkinHelper.WidgetContainer),5610)</visible>
+                <visible>!Window.IsVisible(Home.xml) | Skin.HasSetting(HomeMulti) | Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(DialogAddonInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) | String.IsEqual(Window(Home).Property(SkinHelper.WidgetContainer),5610)</visible>
                 <include content="Dialog_Notification_Group" condition="![Window.IsVisible(SkinSettings.xml) | Window.IsVisible(SettingsCategory.xml) | Window.IsVisible(SettingsProfile.xml) | Window.IsVisible(SettingsSystemInfo.xml)]">
                     <param name="main_id" value="9401" />
                     <param name="sub_id" value="9402" />
@@ -24,7 +24,7 @@
             </control>
 
             <control type="group">
-                <visible>!Window.IsVisible(Home.xml) | [!Skin.HasSetting(VerticalHome) + ![Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(DialogAddonInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) | String.IsEqual(Window(Home).Property(SkinHelper.WidgetContainer),5610)]]</visible>
+                <visible>!Window.IsVisible(Home.xml) | [!Skin.HasSetting(HomeMulti) + ![Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(DialogAddonInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) | String.IsEqual(Window(Home).Property(SkinHelper.WidgetContainer),5610)]]</visible>
                 <visible>Window.IsVisible(fullscreenvideo) | Window.IsVisible(visualisation) | Window.IsVisible(Home)</visible>
                 <include content="Dialog_Notification_Group">
                     <param name="main_id" value="9401" />

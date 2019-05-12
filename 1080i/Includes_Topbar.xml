@@ -104,7 +104,7 @@
     <include name="Topbar_Right">
         <control type="grouplist">
             <visible>!Skin.HasSetting(DisableClock)</visible>
-            <animation effect="slide" start="0" end="-80" time="200" tween="sine" condition="Window.IsVisible(DialogVolumeBar.xml) + ![Window.IsVisible(Home) + !Skin.HasSetting(VerticalHome)]">Conditional</animation>
+            <animation effect="slide" start="0" end="-80" time="200" tween="sine" condition="Window.IsVisible(DialogVolumeBar.xml) + ![Window.IsVisible(Home) + !Skin.HasSetting(HomeMulti)]">Conditional</animation>
             <right>view_pad</right>
             <align>right</align>
             <orientation>horizontal</orientation>

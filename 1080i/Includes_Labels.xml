@@ -2,9 +2,17 @@
 <includes>
 
     <variable name="Label_SkinSettings_HomeLayout">
-        <value condition="Skin.HasSetting(VerticalHome) + !Skin.HasSetting(AuraStyleHome)">Vertical menu | Multiple widgets</value>
-        <value condition="Skin.HasSetting(VerticalHome) + Skin.HasSetting(AuraStyleHome)">Horizontal menu | Multiple widgets</value>
+        <value condition="Skin.HasSetting(HomeMulti) + !Skin.HasSetting(HomeMultiHorizontal)">Vertical menu | Multiple widgets</value>
+        <value condition="Skin.HasSetting(HomeMulti) + Skin.HasSetting(HomeMultiHorizontal)">Horizontal menu | Multiple widgets</value>
         <value>Basic</value>
+    </variable>
+
+    <variable name="Label_SkinSettings_MenuStyle">
+        <value condition="Skin.HasSetting(HomeMulti) + !Skin.HasSetting(HomeMultiHorizontal) + Skin.HasSetting(HomeIcons)">Icons + Text</value>
+        <value condition="Skin.HasSetting(HomeMulti) + !Skin.HasSetting(HomeMultiHorizontal) + !Skin.HasSetting(HomeIcons)">Text</value>
+        <value condition="Skin.HasSetting(HomeIcons)">Icons</value>
+        <value condition="Skin.HasSetting(HomeTextAutoWidth)">Auto-width Text</value>
+        <value>Fixed-width Text</value>
     </variable>
 
     <variable name="Label_AudioChannels">
@@ -62,8 +70,8 @@
         <value condition="Window.IsVisible(MyPVRGuide.xml)">$INFO[Control.GetLabel(30)]</value>
         <value condition="Window.IsVisible(Settings.xml)">$LOCALIZE[31069]</value>
         <value condition="Window.IsVisible(SettingsCategory.xml) | Window.IsVisible(SkinSettings.xml) | Window.IsVisible(SettingsProfile.xml) | Window.IsVisible(SettingsSystemInfo.xml) | Window.IsVisible(eventlog)">$VAR[Label_Settings_Header]</value>
-        <value condition="Window.IsVisible(Home) + Skin.HasSetting(VerticalHome) + [Control.HasFocus(302) | ControlGroup(3000).HasFocus()]">$INFO[Container(301).ListItem.Label]</value>
-        <value condition="Window.IsVisible(Home) + Skin.HasSetting(VerticalHome)">$INFO[Container(301).ListItem.Label]</value>
+        <value condition="Window.IsVisible(Home) + Skin.HasSetting(HomeMulti) + [Control.HasFocus(302) | ControlGroup(3000).HasFocus()]">$INFO[Container(301).ListItem.Label]</value>
+        <value condition="Window.IsVisible(Home) + Skin.HasSetting(HomeMulti)">$INFO[Container(301).ListItem.Label]</value>
         <value condition="Window.IsVisible(Home)">$LOCALIZE[1034]</value>
         <value condition="Container.Content() + String.StartsWith(Container.FolderPath,library://video/movies/)">$LOCALIZE[14022]</value>
         <value condition="[Container.Content(seasons) | Container.Content(episodes)] + !String.IsEmpty(Container.ShowTitle)">$INFO[Container.ShowTitle]</value>
@@ -73,7 +81,7 @@
     <variable name="Label_Header_Content">
         <value condition="!String.IsEmpty(Window.Property(Header_Left_Text))">$INFO[Window.Property(Header_Left_Text)]</value>
         <value condition="Window.IsVisible(Settings.xml) | Window.IsVisible(SettingsCategory.xml) | Window.IsVisible(SkinSettings.xml) | Window.IsVisible(SettingsProfile.xml) | Window.IsVisible(SettingsSystemInfo.xml) | Window.IsVisible(eventlog)">$LOCALIZE[5]</value>
-        <value condition="Window.IsVisible(Home) + !Skin.HasSetting(VerticalHome) + [Control.HasFocus(302) | Control.HasFocus(5610) | Control.HasFocus(301)]">$INFO[Container(301).ListItem.Label]</value>
+        <value condition="Window.IsVisible(Home) + !Skin.HasSetting(HomeMulti) + [Control.HasFocus(302) | Control.HasFocus(5610) | Control.HasFocus(301)]">$INFO[Container(301).ListItem.Label]</value>
         <value condition="Window.IsVisible(MyWeather.xml)">$LOCALIZE[8]</value>
         <value condition="Window.IsVisible(MyPlaylist.xml)">$LOCALIZE[559]</value>
         <value condition="String.Contains(Container.FolderPath,/movies/) | Container.Content(movies)">$LOCALIZE[342]</value>

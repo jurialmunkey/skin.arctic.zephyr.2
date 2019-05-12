@@ -144,15 +144,31 @@
                         <onclick>RunScript(script.skinshortcuts,type=manage&amp;group=mainmenu)</onclick>
                     </control>
 
-                    <control type="button" id="19102" description="Home Style">
+                    <control type="button" id="19102" description="Home Layout">
                         <visible>Integer.IsEqual(Window.Property(CurrentFocus),9001)</visible>
                         <include>Defs_Settings_Button</include>
                         <label>Home layout</label>
                         <label2>$VAR[Label_SkinSettings_HomeLayout]</label2>
-                        <onclick condition="!Skin.HasSetting(VerticalHome)">Skin.SetBool(VerticalHome)</onclick>
-                        <onclick condition="Skin.HasSetting(VerticalHome) + !Skin.HasSetting(AuraStyleHome)">Skin.SetBool(AuraStyleHome)</onclick>
-                        <onclick condition="Skin.HasSetting(VerticalHome) + Skin.HasSetting(AuraStyleHome)">Skin.Reset(VerticalHome)</onclick>
-                        <onclick condition="Skin.HasSetting(VerticalHome) + Skin.HasSetting(AuraStyleHome)">Skin.Reset(AuraStyleHome)</onclick>
+                        <onclick condition="!Skin.HasSetting(HomeMulti)">Skin.SetBool(HomeMulti)</onclick>
+                        <onclick condition="Skin.HasSetting(HomeMulti) + !Skin.HasSetting(HomeMultiHorizontal)">Skin.SetBool(HomeMultiHorizontal)</onclick>
+                        <onclick condition="Skin.HasSetting(HomeMulti) + Skin.HasSetting(HomeMultiHorizontal)">Skin.Reset(HomeMulti)</onclick>
+                        <onclick condition="Skin.HasSetting(HomeMulti) + Skin.HasSetting(HomeMultiHorizontal)">Skin.Reset(HomeMultiHorizontal)</onclick>
+                    </control>
+
+                    <control type="button" id="19109" description="Menu Style">
+                        <visible>Integer.IsEqual(Window.Property(CurrentFocus),9001)</visible>
+                        <include>Defs_Settings_Button</include>
+                        <label>Menu style</label>
+                        <label2>$VAR[Label_SkinSettings_MenuStyle]</label2>
+
+                        <!-- If vertical just toggle icons -->
+                        <onclick condition="Skin.HasSetting(HomeMulti) + !Skin.HasSetting(HomeMultiHorizontal)">Skin.ToggleSetting(HomeIcons)</onclick>
+
+                        <!-- If not vertical toggle both -->
+                        <onclick condition="[!Skin.HasSetting(HomeMulti) | Skin.HasSetting(HomeMultiHorizontal)] + !Skin.HasSetting(HomeTextAutoWidth) + !Skin.HasSetting(HomeIcons)">Skin.SetBool(HomeTextAutoWidth)</onclick>
+                        <onclick condition="[!Skin.HasSetting(HomeMulti) | Skin.HasSetting(HomeMultiHorizontal)] + Skin.HasSetting(HomeTextAutoWidth) + !Skin.HasSetting(HomeIcons)">Skin.SetBool(HomeIcons)</onclick>
+                        <onclick condition="[!Skin.HasSetting(HomeMulti) | Skin.HasSetting(HomeMultiHorizontal)] + Skin.HasSetting(HomeIcons)">Skin.Reset(HomeTextAutoWidth)</onclick>
+                        <onclick condition="[!Skin.HasSetting(HomeMulti) | Skin.HasSetting(HomeMultiHorizontal)] + Skin.HasSetting(HomeIcons)">Skin.Reset(HomeIcons)</onclick>
                     </control>
 
                     <control type="radiobutton" id="19104" description="Submenu Only">
@@ -161,14 +177,6 @@
                         <label>$LOCALIZE[31009]</label>
                         <selected>!Skin.HasSetting(SubmenuOnly)</selected>
                         <onclick>Skin.ToggleSetting(SubmenuOnly)</onclick>
-                    </control>
-
-                    <control type="radiobutton" id="19109" description="Icons">
-                        <visible>Integer.IsEqual(Window.Property(CurrentFocus),9001)</visible>
-                        <include>Defs_Settings_Button</include>
-                        <label>$LOCALIZE[31115]</label>
-                        <selected>Skin.HasSetting(HomeIcons)</selected>
-                        <onclick>Skin.ToggleSetting(HomeIcons)</onclick>
                     </control>
 
                     <control type="button" id="19105" description="Global Widget">
