@@ -674,7 +674,6 @@
                     <include content="Object_Ratings_Content" condition="!Skin.HasSetting(DisableStarRating)">
                         <param name="colordiffuse" value="main_fg_100" />
                         <param name="align" value="left" />
-                        <param name="tmdb" value="false" />
                         <param name="imdbvotes" value="$PARAM[imdbvotes]" />
                         <param name="top250" value="$PARAM[top250]" />
                         <param name="oscars" value="$PARAM[oscars]" />
@@ -686,7 +685,6 @@
                     <include content="Object_Ratings_Content" condition="Skin.HasSetting(DisableStarRating)">
                         <param name="colordiffuse" value="main_fg_100" />
                         <param name="align" value="left" />
-                        <param name="tmdb" value="false" />
                         <param name="imdbvotes" value="$PARAM[imdbvotes]" />
                         <param name="top250" value="$PARAM[top250]" />
                         <param name="oscars" value="$PARAM[oscars]" />
@@ -1596,7 +1594,7 @@
                     <texture colordiffuse="$PARAM[colordiffuse]">flags/$PARAM[directory]/ratings/tmdb.png</texture>
                     <visible>!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Rating.TMDB))</visible>
                     <visible>$PARAM[tmdb]</visible>
-                    <visible>!Skin.HasSetting(Ratings.TheMovieDB)</visible>
+                    <visible>Skin.HasSetting(Ratings.TheMovieDB)</visible>
                 </control>
                 <control type="label">
                     <textcolor>main_fg_70</textcolor>
@@ -1608,7 +1606,7 @@
                     <label>$INFO[Window(Home).Property(SkinHelper.ListItem.Rating.TMDB), ,   ]</label>
                     <visible>!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Rating.TMDB))</visible>
                     <visible>$PARAM[tmdb]</visible>
-                    <visible>!Skin.HasSetting(Ratings.TheMovieDB)</visible>
+                    <visible>Skin.HasSetting(Ratings.TheMovieDB)</visible>
                 </control>
 
                 <control type="image">
