@@ -933,6 +933,7 @@
         <definition>
             <control type="grouplist">
                 <nested />
+                <animation effect="fade" end="50" condition="true">Conditional</animation>
                 <visible>!String.IsEmpty(Container($PARAM[id]).ListItem.Label)</visible>
                 <orientation>vertical</orientation>
                 <usecontrolcoords>true</usecontrolcoords>

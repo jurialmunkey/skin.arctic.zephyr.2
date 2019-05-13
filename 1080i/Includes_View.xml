@@ -689,6 +689,19 @@
                     <font>font_tiny_bold</font>
                     <height>24</height>
                     <visible>$PARAM[toplabel]</visible>
+                    <visible>Control.HasFocus(5000)</visible>
+                </control>
+                <control type="label">
+                    <top>0</top>
+                    <left>0</left>
+                    <width>auto</width>
+                    <label>Management</label>
+                    <aligny>center</aligny>
+                    <textcolor>main_fg_30</textcolor>
+                    <font>font_tiny_bold</font>
+                    <height>24</height>
+                    <visible>$PARAM[toplabel]</visible>
+                    <visible>!Control.HasFocus(5000)</visible>
                 </control>
                 <control type="group">
                     <top>$PARAM[top]</top>
@@ -735,6 +748,19 @@
                         <font>font_tiny_bold</font>
                         <height>24</height>
                         <visible>$PARAM[toplabel]</visible>
+                        <visible>Control.HasFocus(5100)</visible>
+                    </control>
+                    <control type="label">
+                        <top>-52</top>
+                        <left>0</left>
+                        <width>auto</width>
+                        <label>Settings</label>
+                        <aligny>center</aligny>
+                        <textcolor>main_fg_30</textcolor>
+                        <font>font_tiny_bold</font>
+                        <height>24</height>
+                        <visible>$PARAM[toplabel]</visible>
+                        <visible>!Control.HasFocus(5100)</visible>
                     </control>
                     <include content="View_51_Wall_Container">
                         <param name="id" value="5100" />
