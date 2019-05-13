@@ -661,12 +661,54 @@
         <include condition="Skin.HasSetting(HomeMulti)">Home_Submenu</include>
     </include>
 
+    <include name="Home_Horizontal_Fixed_List">
+        <control type="list" id="$PARAM[id]">
+            <nested />
+            <top>0</top>
+            <left>70</left>
+            <right>-70</right>
+            <orientation>horizontal</orientation>
+            <visible>Window.IsVisible(Home) + !$EXP[Exp_InfoVisible]</visible>
+            <itemlayout width="200" height="70">
+                <control type="label">
+                    <left>5</left>
+                    <right>5</right>
+                    <label>$INFO[ListItem.Label]</label>
+                    <align>center</align>
+                    <height>70</height>
+                    <font>$PARAM[font]_small</font>
+                    <textcolor>main_fg_30</textcolor>
+                </control>
+            </itemlayout>
+            <focusedlayout width="200" height="70">
+                <control type="label">
+                    <left>5</left>
+                    <right>5</right>
+                    <label>$INFO[ListItem.Label]</label>
+                    <align>center</align>
+                    <height>70</height>
+                    <font>$PARAM[font]</font>
+                    <textcolor>main_fg_100</textcolor>
+                    <visible>Control.HasFocus($PARAM[id])</visible>
+                </control>
+                <control type="label">
+                    <left>5</left>
+                    <right>5</right>
+                    <label>$INFO[ListItem.Label]</label>
+                    <align>center</align>
+                    <height>70</height>
+                    <font>$PARAM[font]</font>
+                    <textcolor>main_fg_30</textcolor>
+                    <visible>!Control.HasFocus($PARAM[id])</visible>
+                </control>
+            </focusedlayout>
+        </control>
+    </include>
+
     <include name="Home_Horizontal_Fixed">
         <control type="group">
             <top>55</top>
             <left>view_pad</left>
-            <include>Animation_Home_MenuFlip</include>
-            <visible>!Control.HasFocus(302) | !Skin.HasSetting(HomeMultiHorizontal) | !Skin.HasSetting(HomeMulti)</visible>
             <control type="group">
                 <height>70</height>
                 <width>1200</width>
@@ -679,55 +721,33 @@
                 </control>
                 <control type="image">
                     <right>-134</right>
-                    <visible>Container(301).HasNext | Container(301).HasPrevious</visible>
+                    <visible>[!Control.HasFocus(302) + [Container(301).HasNext | Container(301).HasPrevious]] | [Control.HasFocus(302) + [Container(302).HasNext | Container(302).HasPrevious]]</visible>
                     <centertop>55%</centertop>
                     <width>24</width>
                     <height>24</height>
                     <texture flipx="true" colordiffuse="main_fg_30">buttons/spin-left.png</texture>
                 </control>
-                <control type="list" id="301">
+                <include content="Home_Horizontal_Fixed_List">
+                    <param name="id" value="301" />
+                    <param name="font" value="font_topbar" />
+                    <include content="Animation_Home_MenuFlip_Conditional">
+                        <param name="condition" value="[!Control.HasFocus(302) | !Skin.HasSetting(HomeMultiHorizontal) | !Skin.HasSetting(HomeMulti)]" />
+                    </include>
                     <include condition="Skin.HasSetting(HomeMulti)">Home_Multi_Movement</include>
                     <include condition="!Skin.HasSetting(HomeMulti)">Home_Simple_Movement</include>
-                    <top>0</top>
-                    <left>70</left>
-                    <right>-70</right>
-                    <orientation>horizontal</orientation>
-                    <visible>Window.IsVisible(Home) + !$EXP[Exp_InfoVisible]</visible>
-                    <itemlayout width="200" height="70">
-                        <control type="label">
-                            <left>10</left>
-                            <right>10</right>
-                            <label>$INFO[ListItem.Label]</label>
-                            <align>center</align>
-                            <height>70</height>
-                            <font>font_topbar_small</font>
-                            <textcolor>main_fg_30</textcolor>
-                        </control>
-                    </itemlayout>
-                    <focusedlayout width="200" height="70">
-                        <control type="label">
-                            <left>10</left>
-                            <right>10</right>
-                            <label>$INFO[ListItem.Label]</label>
-                            <align>center</align>
-                            <height>70</height>
-                            <font>font_topbar</font>
-                            <textcolor>main_fg_100</textcolor>
-                            <visible>Control.HasFocus(301)</visible>
-                        </control>
-                        <control type="label">
-                            <left>10</left>
-                            <right>10</right>
-                            <label>$INFO[ListItem.Label]</label>
-                            <align>center</align>
-                            <height>70</height>
-                            <font>font_topbar</font>
-                            <textcolor>main_fg_30</textcolor>
-                            <visible>!Control.HasFocus(301)</visible>
-                        </control>
-                    </focusedlayout>
                     <content><include>skinshortcuts-mainmenu</include></content>
-                </control>
+                </include>
+                <include content="Home_Horizontal_Fixed_List">
+                    <param name="id" value="302" />
+                    <param name="font" value="font_submenu" />
+                    <include content="Animation_Home_MenuFlip_Conditional">
+                        <param name="condition" value="Control.HasFocus(302)" />
+                    </include>
+                    <onup>301</onup>
+                    <ondown>301</ondown>
+                    <onback>301</onback>
+                    <content><include>skinshortcuts-submenu</include></content>
+                </include>
             </control>
         </control>
     </include>

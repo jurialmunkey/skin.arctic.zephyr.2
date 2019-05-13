@@ -347,6 +347,19 @@
                         <font>font_tiny_bold</font>
                         <height>24</height>
                         <visible>Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating</visible>
+                        <visible>Control.HasFocus($PARAM[id]) | Control.HasFocus($PARAM[altid])</visible>
+                    </control>
+                    <control type="label">
+                        <top>20</top>
+                        <left>15</left>
+                        <width>auto</width>
+                        <label>$PARAM[label]</label>
+                        <aligny>center</aligny>
+                        <textcolor>main_fg_30</textcolor>
+                        <font>font_tiny_bold</font>
+                        <height>24</height>
+                        <visible>Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating</visible>
+                        <visible>![Control.HasFocus($PARAM[id]) | Control.HasFocus($PARAM[altid])]</visible>
                     </control>
                     <control type="label">
                         <top>20</top>
