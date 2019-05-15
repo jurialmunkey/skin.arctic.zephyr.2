@@ -200,6 +200,15 @@
                         <onclick>SetProperty(Dialog.3.BuiltIn,Skin.SetPath(HomeBackgroundImage))</onclick>
                         <onclick>RunScript(script.toolbox,info=selectdialog,header=$LOCALIZE[31150])</onclick>
                     </control>
+
+                    <control type="radiobutton" id="19107" description="Auto Scroll Single Widgets">
+                        <visible>Integer.IsEqual(Window.Property(CurrentFocus),9001)</visible>
+                        <include>Defs_Settings_Button</include>
+                        <label>Auto-scroll single widgets</label>
+                        <selected>!Skin.HasSetting(DisableAutoScrollWidgets)</selected>
+                        <onclick>Skin.ToggleSetting(DisableAutoScrollWidgets)</onclick>
+                    </control>
+
                     
 
                     <!-- ========== -->
