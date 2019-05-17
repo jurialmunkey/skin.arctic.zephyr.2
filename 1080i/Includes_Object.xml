@@ -818,6 +818,7 @@
         <param name="oscar_prop" default="Window(Home).Property(SkinHelper.ListItem.Awards)" />
         <param name="rt_audience_prop" default="Window(Home).Property(ListItemHelper.rating.rottentomatoes.audience)" />
         <param name="tvdb_prop" default="Window(Home).Property(SkinHelper.ListItem.Rating.TVDB)" />
+        <param name="tmdb_prop" default="Window(Home).Property(SkinHelper.ListItem.Rating.TMDB)" />
         <param name="top250_prop" default="Window(Home).Property(SkinHelper.ListItem.IMDB.Top250)" />
         <definition>
             <control type="grouplist">
@@ -867,6 +868,28 @@
                         <align>center</align>
                         <font>font_tiny_bold</font>
                         <label>$INFO[$PARAM[metacritic_prop]]</label>
+                    </control>
+                </control>
+                <control type="group">
+                    <width>64</width>
+                    <visible>String.IsEqual(Container($PARAM[id]).ListItem.DBType,movie)</visible>
+                    <visible>!String.IsEmpty($PARAM[tmdb_prop])</visible>
+                    <visible>Skin.HasSetting(Ratings.TheMovieDB)</visible>
+                    <control type="image">
+                        <top>0</top>
+                        <centerleft>50%</centerleft>
+                        <width>32</width>
+                        <height>32</height>
+                        <texture colordiffuse="main_fg_100">flags/monochrome/ratings/tmdb.png</texture>
+                    </control>
+                    <control type="label">
+                        <textcolor>main_fg_70</textcolor>
+                        <top>40</top>
+                        <width>auto</width>
+                        <height>28</height>
+                        <align>center</align>
+                        <font>font_tiny_bold</font>
+                        <label>$INFO[$PARAM[tmdb_prop]]</label>
                     </control>
                 </control>
                 <control type="group">
