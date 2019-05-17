@@ -237,6 +237,18 @@
                                     <param name="icon" value="special://skin/extras/icons/userrating.png" />
                                 </include> -->
                                 <include content="Object_Info_Button">
+                                    <param name="id" value="8124" />
+                                    <param name="groupid" value="8024" />
+                                    <param name="label" value="$LOCALIZE[208]" />
+                                    <param name="icon" value="special://skin/extras/icons/play3.png" />
+                                    <onclick condition="String.IsEmpty(ListItem.DBID)">PlayMedia($INFO[ListItem.FilenameAndPath])</onclick>
+                                    <onclick condition="System.HasAddon(script.playalbum) + String.IsEqual(ListItem.DBType,album)">RunScript(script.playalbum,albumid=$INFO[ListItem.DBID])</onclick>
+                                    <onclick condition="System.HasAddon(script.playalbum) + String.IsEqual(ListItem.DBType,song)">RunScript(script.playalbum,songid=$INFO[ListItem.DBID])</onclick>
+                                    <onclick condition="System.HasAddon(script.playalbum)">Action(close)</onclick>
+                                    <onclick condition="!System.HasAddon(script.playalbum) + !String.IsEmpty(ListItem.DBID)">InstallAddon(script.playalbum)</onclick>
+                                    <visible>!String.IsEqual(ListItem.DBType,artist)</visible>
+                                </include>
+                                <include content="Object_Info_Button">
                                     <param name="id" value="8123" />
                                     <param name="groupid" value="8023" />
                                     <param name="label" value="31141" />
