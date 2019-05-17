@@ -737,7 +737,7 @@
                     <include condition="!Skin.HasSetting(HomeMulti)">Home_Simple_Movement</include>
                     <content><include>skinshortcuts-mainmenu</include></content>
                 </include>
-                <include content="Home_Horizontal_Fixed_List">
+                <include content="Home_Horizontal_Fixed_List" condition="Skin.HasSetting(HomeMulti)">
                     <param name="id" value="302" />
                     <param name="font" value="font_submenu" />
                     <include content="Animation_Home_MenuFlip_Conditional">
