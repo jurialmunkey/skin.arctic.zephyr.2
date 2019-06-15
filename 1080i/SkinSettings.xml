@@ -435,8 +435,8 @@
                         <visible>Integer.IsEqual(Window.Property(CurrentFocus),9004)</visible>
                         <include>Defs_Settings_Button</include>
                         <label>$LOCALIZE[31095]</label>
-                        <selected>Skin.HasSetting(UseStandardLabels)</selected>
-                        <onclick>Skin.ToggleSetting(UseStandardLabels)</onclick>
+                        <selected>!Skin.HasSetting(EnhancedAddonLabels)</selected>
+                        <onclick>Skin.ToggleSetting(EnhancedAddonLabels)</onclick>
                     </control>
 
                     <control type="radiobutton" id="19409" description="Tracknaming template">
@@ -675,8 +675,8 @@
                         <visible>Integer.IsEqual(Window.Property(CurrentFocus),9006)</visible>
                         <include>Defs_Settings_Button</include>
                         <label>$LOCALIZE[31094]</label>
-                        <selected>!Skin.HasSetting(PVRGuide.DisableColorDiffuse)</selected>
-                        <onclick>Skin.ToggleSetting(PVRGuide.DisableColorDiffuse)</onclick>
+                        <selected>Skin.HasSetting(PVRGuide.ColorDiffuse)</selected>
+                        <onclick>Skin.ToggleSetting(PVRGuide.ColorDiffuse)</onclick>
                     </control>
 
 

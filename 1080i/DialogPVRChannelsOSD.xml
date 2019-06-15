@@ -36,12 +36,12 @@
                         <bottom>0</bottom>
                         <height>dialog_right_iconwidth</height>
                         <control type="image">
-                            <visible>!Skin.HasSetting(PVRGuide.DisableColorDiffuse)</visible>
+                            <visible>Skin.HasSetting(PVRGuide.ColorDiffuse)</visible>
                             <texture colordiffuse="dialog_fg_70">$INFO[Container(11).ListItem.Icon]</texture>
                             <aspectratio align="center" aligny="bottom">keep</aspectratio>
                         </control>
                         <control type="image">
-                            <visible>Skin.HasSetting(PVRGuide.DisableColorDiffuse)</visible>
+                            <visible>!Skin.HasSetting(PVRGuide.ColorDiffuse)</visible>
                             <texture>$INFO[Container(11).ListItem.Icon]</texture>
                             <aspectratio align="center" aligny="bottom">keep</aspectratio>
                         </control>

@@ -270,7 +270,7 @@
                 <bordersize>20</bordersize>
                 <texture colordiffuse="$PARAM[fgcolor]_100">$INFO[ListItem.Icon]</texture>
                 <aspectratio aligny="center" align="right">keep</aspectratio>
-                <visible>!Skin.HasSetting(PVRGuide.DisableColorDiffuse)</visible>
+                <visible>Skin.HasSetting(PVRGuide.ColorDiffuse)</visible>
             </control>
             <control type="image">
                 <top>4</top>
@@ -280,7 +280,7 @@
                 <bordersize>20</bordersize>
                 <texture>$INFO[ListItem.Icon]</texture>
                 <aspectratio aligny="center" align="right">keep</aspectratio>
-                <visible>Skin.HasSetting(PVRGuide.DisableColorDiffuse)</visible>
+                <visible>!Skin.HasSetting(PVRGuide.ColorDiffuse)</visible>
             </control>
             <control type="image">
                 <top>4</top>
