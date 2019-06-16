@@ -64,7 +64,7 @@
                                 <textcolor>panel_fg_100</textcolor>
                                 <selectedcolor>panel_fg_100</selectedcolor>
                                 <label>Now Playing</label>
-                                <visible>!Integer.IsEqual(Control.GetLabel(9912),0)</visible>
+                                <visible>Integer.IsGreater(Control.GetLabel(9912),0) + Integer.IsLess(Control.GetLabel(9912),100)</visible>
                             </control>
                             <control type="label">
                                 <font>font_button</font>
@@ -72,7 +72,7 @@
                                 <textcolor>panel_fg_100</textcolor>
                                 <selectedcolor>panel_fg_100</selectedcolor>
                                 <label>$INFO[ListItem.StartDate]</label>
-                                <visible>Integer.IsEqual(Control.GetLabel(9912),0)</visible>
+                                <visible>!Integer.IsGreater(Control.GetLabel(9912),0) | !Integer.IsLess(Control.GetLabel(9912),100)</visible>
                             </control>
                             <control type="label">
                                 <font>font_title_small</font>
@@ -147,7 +147,7 @@
                                 <textcolor>panel_fg_100</textcolor>
                                 <selectedcolor>panel_fg_100</selectedcolor>
                                 <label>Now Playing</label>
-                                <visible>!Integer.IsEqual(Control.GetLabel(9911),0)</visible>
+                                <visible>Integer.IsGreater(Control.GetLabel(9911),0) + Integer.IsLess(Control.GetLabel(9911),100)</visible>
                             </control>
                             <control type="label">
                                 <font>font_button</font>
@@ -155,7 +155,7 @@
                                 <textcolor>panel_fg_100</textcolor>
                                 <selectedcolor>panel_fg_100</selectedcolor>
                                 <label>$INFO[ListItem.StartDate]</label>
-                                <visible>Integer.IsEqual(Control.GetLabel(9911),0)</visible>
+                                <visible>!Integer.IsGreater(Control.GetLabel(9911),0) | !Integer.IsLess(Control.GetLabel(9911),100)</visible>
                             </control>
                             <control type="label">
                                 <font>font_title_small</font>
