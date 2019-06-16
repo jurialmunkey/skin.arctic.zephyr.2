@@ -15,13 +15,21 @@
             <animation effect="fade" start="100" end="0" time="200" condition="Control.HasFocus(9605)">Conditional</animation>
                 
             <control type="grouplist" id="9000">
-                <include condition="!VideoPlayer.Content(musicvideos)">OSD_VideoPosition</include>
-                <include condition="VideoPlayer.Content(musicvideos)">OSD_MusicPosition</include>
+                <include condition="!VideoPlayer.Content(musicvideos) + !VideoPlayer.Content(LiveTV)">OSD_VideoPosition</include>
+                <include condition="VideoPlayer.Content(musicvideos) + !VideoPlayer.Content(LiveTV)">OSD_MusicPosition</include>
+                <include condition="VideoPlayer.Content(LiveTV)">OSD_LiveTVPosition</include>
                 <itemgap>32</itemgap>
-                <onup condition="String.IsEmpty(Window(Home).Property(OSDInfo))">SetProperty(OSDInfo,1,Home)</onup>
-                <onup condition="!String.IsEmpty(Window(Home).Property(OSDInfo))">ClearProperty(OSDInfo,Home)</onup>
-                <ondown condition="String.IsEmpty(Window(Home).Property(OSDInfo))">Close</ondown>
-                <ondown condition="!String.IsEmpty(Window(Home).Property(OSDInfo))">ClearProperty(OSDInfo,Home)</ondown>
+
+                <onup condition="!VideoPlayer.Content(LiveTV) + String.IsEmpty(Window(Home).Property(OSDInfo))">SetProperty(OSDInfo,1,Home)</onup>
+                <onup condition="!VideoPlayer.Content(LiveTV) + !String.IsEmpty(Window(Home).Property(OSDInfo))">ClearProperty(OSDInfo,Home)</onup>
+                <ondown condition="!VideoPlayer.Content(LiveTV) + String.IsEmpty(Window(Home).Property(OSDInfo))">Close</ondown>
+                <ondown condition="!VideoPlayer.Content(LiveTV) + !String.IsEmpty(Window(Home).Property(OSDInfo))">ClearProperty(OSDInfo,Home)</ondown>
+
+                <onup condition="VideoPlayer.Content(LiveTV)">Close</onup>
+                <onup condition="VideoPlayer.Content(LiveTV)">ActivateWindow(pvrosdchannels)</onup>
+                <ondown condition="VideoPlayer.Content(LiveTV)">Close</ondown>
+                <ondown condition="VideoPlayer.Content(LiveTV)">ActivateWindow(pvrosdchannels)</ondown>
+
                 <orientation>horizontal</orientation>
                 <usecontrolcoords>true</usecontrolcoords>
                 <include>OSD_Controls</include>
