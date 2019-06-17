@@ -26,9 +26,9 @@
                 <ondown condition="!VideoPlayer.Content(LiveTV) + !String.IsEmpty(Window(Home).Property(OSDInfo))">ClearProperty(OSDInfo,Home)</ondown>
 
                 <onup condition="VideoPlayer.Content(LiveTV)">Close</onup>
-                <onup condition="VideoPlayer.Content(LiveTV)">ActivateWindow(pvrosdchannels)</onup>
+                <onup condition="VideoPlayer.Content(LiveTV)">ActivateWindow(1139)</onup>
                 <ondown condition="VideoPlayer.Content(LiveTV)">Close</ondown>
-                <ondown condition="VideoPlayer.Content(LiveTV)">ActivateWindow(pvrosdchannels)</ondown>
+                <ondown condition="VideoPlayer.Content(LiveTV)">ActivateWindow(1139)</ondown>
 
                 <orientation>horizontal</orientation>
                 <usecontrolcoords>true</usecontrolcoords>

@@ -225,7 +225,7 @@
 
     <include name="OSD_LiveTV_Seekbar">
         <control type="group">
-            <visible>!Window.IsVisible(DialogPVRChannelsOSD.xml) + !Window.IsVisible(DialogPVRChannelGuide.xml)</visible>
+            <visible>!Window.IsVisible(DialogPVRChannelsOSD.xml) + !Window.IsVisible(DialogPVRChannelGuide.xml) + !Window.IsVisible(1139)</visible>
             <left>view_pad</left>
             <right>view_pad</right>
             <top>view_pad</top>
@@ -262,8 +262,7 @@
                 </control>
             </control>
 
-            <!-- Now Playing -->
-            <control type="group">
+            <control type="group" description="Main Info">
                 <left>231</left>
                 <width>762.5</width>
                 <height>227</height>
@@ -348,6 +347,39 @@
                         <selectedcolor>panel_fg_100</selectedcolor>
                         <label>$INFO[VideoPlayer.StartTime]$INFO[VideoPlayer.EndTime, - ,]</label>
                         <visible>!Window.IsVisible(videoosd)</visible>
+                    </control>
+                </control>
+            </control>
+
+            <control type="group" description="Plot Info">
+                <visible>!String.IsEmpty(Window(Home).Property(SkinHelper.Player.Plot)) | !String.IsEmpty(VideoPlayer.Plot)</visible>
+                <left>997.5</left>
+                <width>762.5</width>
+                <height>227</height>
+                <bottom>0</bottom>
+                <control type="image">
+                    <texture colordiffuse="panel_bg" border="10">diffuse/box.png</texture>
+                    <animation effect="fade" end="75" condition="true">Conditional</animation>
+                </control>
+                <control type="group">
+                    <left>30</left>
+                    <right>30</right>
+                    <top>25</top>
+                    <bottom>25</bottom>
+                    <control type="label">
+                        <font>font_button</font>
+                        <aligny>top</aligny>
+                        <textcolor>panel_fg_100</textcolor>
+                        <selectedcolor>panel_fg_100</selectedcolor>
+                        <label>$LOCALIZE[14116]</label>
+                    </control>
+                    <control type="textbox">
+                        <font>font_plotbox</font>
+                        <top>57</top>
+                        <aligny>top</aligny>
+                        <textcolor>panel_fg_100</textcolor>
+                        <selectedcolor>panel_fg_100</selectedcolor>
+                        <label>$VAR[Label_Player_Plot]</label>
                     </control>
                 </control>
             </control>

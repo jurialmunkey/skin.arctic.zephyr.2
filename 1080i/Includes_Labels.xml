@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
 
+    <variable name="Label_Player_Plot">
+        <value condition="!String.IsEmpty(VideoPlayer.Plot)">$INFO[VideoPlayer.Plot]</value>
+        <value condition="!String.IsEmpty(Window(Home).Property(SkinHelper.Player.Plot))">$INFO[Window(Home).Property(SkinHelper.Player.Plot)]</value>
+    </variable>
+
     <variable name="Label_SkinSettings_HomeLayout">
         <value condition="Skin.HasSetting(HomeMulti) + !Skin.HasSetting(HomeMultiHorizontal)">Vertical menu | Multiple widgets</value>
         <value condition="Skin.HasSetting(HomeMulti) + Skin.HasSetting(HomeMultiHorizontal)">Horizontal menu | Multiple widgets</value>
