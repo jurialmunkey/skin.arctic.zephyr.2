@@ -352,7 +352,7 @@
             </control>
 
             <control type="group" description="Plot Info">
-                <visible>!String.IsEmpty(Window(Home).Property(SkinHelper.Player.Plot)) | !String.IsEmpty(VideoPlayer.Plot)</visible>
+                <visible>!String.IsEmpty(VideoPlayer.Plot)</visible>
                 <left>997.5</left>
                 <width>762.5</width>
                 <height>227</height>
@@ -379,7 +379,7 @@
                         <aligny>top</aligny>
                         <textcolor>panel_fg_100</textcolor>
                         <selectedcolor>panel_fg_100</selectedcolor>
-                        <label>$VAR[Label_Player_Plot]</label>
+                        <label>$INFO[VideoPlayer.Plot]</label>
                     </control>
                 </control>
             </control>

@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
     <defaultcontrol always="true">11</defaultcontrol>
-    <onload>SetProperty(SkinHelper.WidgetContainer,11,Home)</onload>
-    <onunload>ClearProperty(SkinHelper.WidgetContainer,Home)</onunload>
     <controls>
         <control type="group">
             <left>view_pad</left>
@@ -180,6 +178,7 @@
                             <top>4</top>
                             <bottom>0</bottom>
                             <visible>ListItem.HasEpg</visible>
+                            <visible>!String.IsEmpty(ListItem.Plot)</visible>
                             <control type="image">
                                 <texture colordiffuse="panel_bg" border="10">diffuse/box.png</texture>
                                 <animation effect="fade" end="85" condition="true">Conditional</animation>
@@ -202,11 +201,12 @@
                                     <aligny>top</aligny>
                                     <textcolor>panel_fg_100</textcolor>
                                     <selectedcolor>panel_fg_100</selectedcolor>
-                                    <label>$VAR[Label_Plot]</label>
+                                    <label>$INFO[ListItem.Plot]</label>
                                 </control>
                             </control>
                         </control>
                         <control type="group">
+                            <animation effect="slide" start="0" end="0,-231" condition="String.IsEmpty(ListItem.Plot)">Conditional</animation>
                             <top>235</top>
                             <height>227</height>
                             <left>997.5</left>
