@@ -726,9 +726,6 @@
                     <aspectratio>keep</aspectratio>
                     <texturenofocus colordiffuse="main_fg_30">special://skin/extras/icons/search.png</texturenofocus>
                     <texturefocus colordiffuse="main_fg_100">special://skin/extras/icons/search.png</texturefocus>
-                    <ondown condition="!String.IsEqual(Container(9989).ListItemAbsolute(0).Property(list),Settings) + !String.IsEqual(Container(9989).ListItemAbsolute(0).Property(list),Weather)">3000</ondown>
-                    <ondown condition="String.IsEqual(Container(9989).ListItemAbsolute(0).Property(list),Settings)">5000</ondown>
-                    <ondown condition="String.IsEqual(Container(9989).ListItemAbsolute(0).Property(list),Weather)">6000</ondown>
                     <onfocus>ClearProperty(WidgetFocus,Home)</onfocus>
                     <onclick>Skin.Reset(SearchTerm)</onclick>
                     <onclick>Skin.SetString(SearchTerm)</onclick>
@@ -888,13 +885,14 @@
         <include condition="!Skin.HasSetting(HomeIcons) + Skin.HasSetting(HomeTextAutoWidth)">Home_Horizontal_Text</include>
         <include condition="!Skin.HasSetting(HomeIcons) + !Skin.HasSetting(HomeTextAutoWidth)">Home_Horizontal_Fixed</include>
         <control type="group">
-            <visible>String.IsEqual(Container(9989).ListItemAbsolute(0).Property(list),Weather)</visible>
+            <visible>String.IsEqual(Container(9989).ListItemAbsolute(0).Property(list),Weather) | Control.HasFocus(9999)</visible>
+            <visible>Weather.IsFetched</visible>
             <include>Weather</include>
         </control>
         <control type="group">
             <include>Animation_Common</include>
             <control type="group">
-                <visible>String.IsEqual(Container(9989).ListItemAbsolute(0).Property(list),Settings)</visible>
+                <visible>String.IsEqual(Container(9989).ListItemAbsolute(0).Property(list),Settings) + !Control.HasFocus(9999)</visible>
                 <include content="View_Settings">
                     <param name="hideonwindowopen" value="false" />
                 </include>
@@ -916,7 +914,7 @@
                 <right>-15</right>
                 <left>-15</left>
                 <bottom>-15</bottom>
-                <visible>!String.IsEqual(Container(9989).ListItemAbsolute(0).Property(list),Settings) + !String.IsEqual(Container(9989).ListItemAbsolute(0).Property(list),Weather)</visible>
+                <visible>!String.IsEqual(Container(9989).ListItemAbsolute(0).Property(list),Settings) + !String.IsEqual(Container(9989).ListItemAbsolute(0).Property(list),Weather) + !Control.HasFocus(9999)</visible>
                 <control type="grouplist" id="3000">
                     <top>-5</top>
                     <onup>301</onup>
