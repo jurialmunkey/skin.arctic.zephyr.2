@@ -773,9 +773,22 @@
                 <bordersize>15</bordersize>
                 <aspectratio scalediffuse="false">scale</aspectratio>
                 <bordertexture border="30" colordiffuse="Shadow">common/shadow-15.png</bordertexture>
-                <texture colordiffuse="PosterBack" diffuse="$PARAM[diffuse]">common/geometric.png</texture>
+                <include content="Object_Geometric_Panel" condition="!Skin.HasSetting(DisableGeometric)">
+                    <param name="diffuse" value="$PARAM[diffuse]" />
+                    <param name="colordiffuse" value="PosterBack" />
+                    <param name="texture" value="common/geometric.png" />
+                </include>
+                <include content="Object_Geometric_Panel" condition="Skin.HasSetting(DisableGeometric)">
+                    <param name="diffuse" value="$PARAM[diffuse]" />
+                    <param name="colordiffuse" value="AltPosterBack" />
+                    <param name="texture" value="$PARAM[diffuse]" />
+                </include>
             </control>
         </definition>
+    </include>
+
+    <include name="Object_Geometric_Panel">
+        <texture colordiffuse="$PARAM[colordiffuse]" diffuse="$PARAM[diffuse]">$PARAM[texture]</texture>
     </include>
 
     <include name="Object_DefaultIcon">

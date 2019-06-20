@@ -341,6 +341,22 @@
                         <onclick condition="String.IsEqual(Skin.String(PosterHighlight),Highlight)">Skin.SetString(PosterHighlight,White)</onclick>
                     </control>
 
+                    <control type="radiobutton" id="19312" description="Geometric panels">
+                        <visible>Integer.IsEqual(Window.Property(CurrentFocus),9003)</visible>
+                        <include>Defs_Settings_Button</include>
+                        <label>$LOCALIZE[31189]</label>
+                        <selected>!Skin.HasSetting(DisableGeometric)</selected>
+                        <onclick>Skin.ToggleSetting(DisableGeometric)</onclick>
+                    </control>
+
+                    <control type="radiobutton" id="19307" description="Automatic Theme Switch">
+                        <visible>Integer.IsEqual(Window.Property(CurrentFocus),9003)</visible>
+                        <include>Defs_Settings_Button</include>
+                        <label>$LOCALIZE[31188]</label>
+                        <selected>Skin.HasSetting(ThemeSwitcher)</selected>
+                        <onclick>Skin.ToggleSetting(ThemeSwitcher)</onclick>
+                    </control>
+
                     <control type="label" id="19382" description="LABEL">
                         <visible>Integer.IsEqual(Window.Property(CurrentFocus),9003)</visible>
                         <include>Dialog_Standard_HintLabel</include>
@@ -366,21 +382,7 @@
                         <include>Defs_Settings_Button</include>
                         <label>$LOCALIZE[31166]</label>
                         <onclick>ActivateWindow(1120)</onclick>
-                    </control>
-
-                    <control type="label" id="19383" description="LABEL">
-                        <visible>Integer.IsEqual(Window.Property(CurrentFocus),9003)</visible>
-                        <include>Dialog_Standard_HintLabel</include>
-                        <label>$LOCALIZE[31186]</label>
-                    </control>
-
-                    <control type="radiobutton" id="19307" description="Automatic Theme Switch">
-                        <visible>Integer.IsEqual(Window.Property(CurrentFocus),9003)</visible>
-                        <include>Defs_Settings_Button</include>
-                        <label>$LOCALIZE[31188]</label>
-                        <selected>Skin.HasSetting(ThemeSwitcher)</selected>
-                        <onclick>Skin.ToggleSetting(ThemeSwitcher)</onclick>
-                    </control>
+                    </control>                    
 
                     <control type="label" id="19384" description="LABEL">
                         <visible>Integer.IsEqual(Window.Property(CurrentFocus),9003)</visible>
