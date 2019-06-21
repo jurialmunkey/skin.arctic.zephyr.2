@@ -55,6 +55,7 @@
         <param name="labelinclude" default="View_51_Wall_Label" />
         <param name="aspectratio" default="scale" />
         <param name="diffuse" default="diffuse/poster-wall.png" /> <!-- FIX ME -->
+        <param name="colordiffuse" default="panel_fg_70" />
         <definition>
             <control type="group">
                 <right>10</right>
@@ -67,13 +68,13 @@
                     <centerleft>50%</centerleft>
                     <width>128</width>
                     <height>128</height>
-                    <texture>$INFO[ListItem.Icon]</texture>
+                    <texture colordiffuse="$PARAM[colordiffuse]">$INFO[ListItem.Icon]</texture>
                 </control>
                 <control type="label">
                     <left>15</left>
                     <right>15</right>
                     <font>font_tiny_bold</font>
-                    <textcolor>panel_fg_100</textcolor>
+                    <textcolor>$PARAM[colordiffuse]</textcolor>
                     <height>30</height>
                     <bottom>40</bottom>
                     <aligny>center</aligny>
@@ -709,6 +710,8 @@
                         <param name="id" value="5000" />
                         <param name="height" value="275" />
                         <param name="itemlayout" value="View_Settings_Itemlayout" />
+                        <param name="colordiffuse_nf" value="$VAR[Defs_SettingsPanel_NF]" />
+                        <param name="colordiffuse_fo" value="panel_fg_100" />
                         <param name="itemwidth" value="450" />
                         <param name="itemheight" value="230" />
                         <param name="iconheight" value="230" />
@@ -766,6 +769,8 @@
                         <param name="id" value="5100" />
                         <param name="height" value="550" />
                         <param name="itemlayout" value="View_Settings_Itemlayout" />
+                        <param name="colordiffuse_nf" value="$VAR[Defs_SettingsPanel_NF]" />
+                        <param name="colordiffuse_fo" value="panel_fg_100" />
                         <param name="itemwidth" value="450" />
                         <param name="itemheight" value="230" />
                         <param name="iconheight" value="230" />

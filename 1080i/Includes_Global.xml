@@ -28,6 +28,14 @@
             <visible>!Window.IsVisible(Home) | [Window.IsVisible(Home) + [Skin.HasSetting(HomeMulti) | $EXP[Exp_InfoVisible]]]</visible>
         </control>
     </include>
+
+    <include name="Global_Videowindow_Hidden">
+        <control type="videowindow">
+            <visible>Player.HasVideo</visible>
+            <visible>String.IsEmpty(Window(Home).Property(TrailerPlaying))</visible>
+            <include>Dimensions_Fullscreen</include>
+        </control>
+    </include>
     
     <include name="Global_Visualisation">
         <control type="group">
@@ -72,6 +80,7 @@
             <visible>Skin.HasSetting(EnableBlur)</visible>
         </control>
         <include condition="Skin.HasSetting(global.showvideo)">Global_Videowindow</include>
+        <include condition="!Skin.HasSetting(global.showvideo)">Global_Videowindow_Hidden</include>
         <include condition="Skin.HasSetting(global.showvisualisation)">Global_Visualisation</include>
         <control type="group">
             <visible>$EXP[Exp_GlobalBackground]</visible>
@@ -84,6 +93,7 @@
                 <width>1920</width>
                 <height>1080</height>
                 <aspectratio>scale</aspectratio>
+                <include condition="Skin.HasSetting(EnableBlur) + !Skin.HasSetting(OnlyBlurInfo)">Defs_Global_Fade_Blur</include>
                 <fadetime>600</fadetime>
                 <animation effect="fade" start="45" end="15" time="300" reversible="false" condition="![[Skin.HasSetting(EnableBlur) + !Skin.HasSetting(OnlyBlurInfo)] | [Skin.HasSetting(EnableBlur) + Skin.HasSetting(OnlyBlurInfo) + [Window.IsActive(DialogVideoInfo.xml) | Window.IsActive(DialogMusicInfo.xml) | Window.IsActive(DialogAddonInfo.xml)]]]">Conditional</animation>
                 <animation effect="fade" end="45" start="15" delay="600" time="600" reversible="false" condition="[Skin.HasSetting(EnableBlur) + !Skin.HasSetting(OnlyBlurInfo)] | [Skin.HasSetting(EnableBlur) + Skin.HasSetting(OnlyBlurInfo) + [Window.IsActive(DialogVideoInfo.xml) | Window.IsActive(DialogMusicInfo.xml) | Window.IsActive(DialogAddonInfo.xml)]]">Conditional</animation>
@@ -148,7 +158,7 @@
         <value condition="Window.IsVisible(Home) + Skin.HasSetting(HomeMulti) + [String.IsEqual(Container(9989).ListItem.Property(list),Settings) | String.IsEqual(Container(301).ListItem.Property(widget),Settings)]">$VAR[Global_Background_Image_NoFanart]</value>
 
         <!-- Weather -->
-        <value condition="[Window.IsVisible(weather) | [Window.IsVisible(Home) + !Skin.HasSetting(HomeMulti) + String.IsEqual(Container(301).ListItem.Property(widget),Weather)] | [Window.IsVisible(Home) + Skin.HasSetting(HomeMulti) + String.IsEqual(Container(9989).ListItem.Property(list),Weather)]] + System.HasAddon(resource.images.weatherfanart.multi)">$INFO[Window(Weather).Property(Current.FanartCode),resource://resource.images.weatherfanart.multi/,/]</value>     
+        <value condition="[Window.IsVisible(weather) | [Window.IsVisible(Home) + !Skin.HasSetting(HomeMulti) + String.IsEqual(Container(301).ListItem.Property(widget),Weather)] | [Window.IsVisible(Home) + Skin.HasSetting(HomeMulti) + [Control.HasFocus(9999) | String.IsEqual(Container(9989).ListItem.Property(list),Weather)]]] + System.HasAddon(resource.images.weatherfanart.multi)">$INFO[Window(Weather).Property(Current.FanartCode),resource://resource.images.weatherfanart.multi/,/]</value>     
 
         <!-- Animated Fanart -->
         <value condition="Skin.HasSetting(SkinHelper.EnableAnimatedPosters) + !String.IsEmpty(ListItem.Art(animatedfanart))">$INFO[ListItem.Art(animatedfanart)]</value>
