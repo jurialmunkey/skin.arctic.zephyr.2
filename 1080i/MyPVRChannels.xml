@@ -4,13 +4,14 @@
     <background>0</background>
     <defaultcontrol always="true">50</defaultcontrol>
     
-    <views>50</views>
+    <views>50,51</views>
     <controls>
         <include>Global_Background</include>
         <include>Topbar</include>
 
         <control type="label" id="29"><visible>false</visible></control>
 
+        <!-- List with Info -->
         <control type="group">
             <visible>Control.IsVisible(50)</visible>
             <include>View_Group</include>
@@ -30,15 +31,43 @@
                     <param name="selectbox" value="false" />
                     <param name="controllayout" value="View_PVR_Channels" />
                     <param name="controltype" value="list" />
+                    <param name="viewtype" value="$LOCALIZE[31191]" />
+                </include>
+            </control>
+        </control>
+
+        <!-- List without info -->
+        <control type="group">
+            <visible>Control.IsVisible(51)</visible>
+            <include>View_Group</include>
+            <control type="group">
+                <right>-4</right>
+                <include content="View_50_List_Control">
+                    <param name="top" value="0" />
+                    <param name="height" value="780" />
+                    <param name="left" value="0" />
+                    <param name="right" value="0" />
+                    <param name="id" value="51" />
+                    <param name="altid" value="9000" />
+                    <param name="visible" value="true" />
+                    <param name="itemlayout" value="View_50_PVR_Itemlayout" />
+                    <param name="itemheight" value="97.5" />
+                    <param name="selectbox" value="false" />
+                    <param name="controllayout" value="View_PVR_Channels" />
+                    <param name="controltype" value="list" />
                 </include>
             </control>
         </control>
 
         <control type="button" id="9000">
-            <onleft>50</onleft>
-            <onup>Control.Move(50,-1)</onup>
-            <ondown>Control.Move(50,1)</ondown>
-            <onclick>SetFocus(50)</onclick>
+            <onleft condition="Control.IsVisible(50)">50</onleft>
+            <onup condition="Control.IsVisible(50)">Control.Move(50,-1)</onup>
+            <ondown condition="Control.IsVisible(50)">Control.Move(50,1)</ondown>
+            <onclick condition="Control.IsVisible(50)">SetFocus(50)</onclick>
+            <onleft condition="Control.IsVisible(51)">51</onleft>
+            <onup condition="Control.IsVisible(51)">Control.Move(51,-1)</onup>
+            <ondown condition="Control.IsVisible(51)">Control.Move(51,1)</ondown>
+            <onclick condition="Control.IsVisible(51)">SetFocus(51)</onclick>
             <onclick>Action(Select)</onclick>
             <onclick>SetFocus(9000)</onclick>
             <include>Defs_Hidden_Button</include>

@@ -349,13 +349,6 @@
 
     <include name="Items_View">
         <content>
-            <!-- Group -->
-            <item>
-                <label>$INFO[Control.GetLabel(28)]</label>
-                <icon>special://skin/extras/icons/years.png</icon>
-                <onclick>SendClick(28)</onclick>
-                <visible>Control.IsEnabled(28)</visible>
-            </item>
             <!-- Viewmode -->
             <item>
                 <label>$INFO[Container.Viewmode]</label>
@@ -363,8 +356,15 @@
                 <include>Items_LockUnlock</include>
                 <onclick>Container.NextViewMode</onclick>
                 <visible>Control.IsEnabled(2)</visible>
-                <visible>Window.IsVisible(MyVideoNav.xml) | Window.IsVisible(MyMusicNav.xml) | Window.IsVisible(AddonBrowser.xml) | Window.IsVisible(MyPics.xml) | Window.IsVisible(MyPrograms.xml) | Window.IsVisible(MyGames.xml)</visible>
+                <visible>Window.IsVisible(MyVideoNav.xml) | Window.IsVisible(MyMusicNav.xml) | Window.IsVisible(AddonBrowser.xml) | Window.IsVisible(MyPics.xml) | Window.IsVisible(MyPrograms.xml) | Window.IsVisible(MyGames.xml) | Window.IsVisible(MyPVRChannels.xml)</visible>
                 <visible>!Skin.HasSetting(global.kioskmode)</visible>
+            </item>
+            <!-- Group -->
+            <item>
+                <label>$INFO[Control.GetLabel(28)]</label>
+                <icon>special://skin/extras/icons/years.png</icon>
+                <onclick>SendClick(28)</onclick>
+                <visible>Control.IsEnabled(28)</visible>
             </item>
             <!-- Lock viewmode -->
             <item>
