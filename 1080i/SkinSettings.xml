@@ -256,7 +256,7 @@
                         <label>$LOCALIZE[31133]</label>
                         <selected>Skin.HasSetting(PosterBlur)</selected>
                         <onclick>Skin.ToggleSetting(PosterBlur)</onclick>
-                        <enable>Skin.HasSetting(EnableBlur) + System.HasAddon(script.colorbox)</enable>
+                        <enable>!Skin.HasSetting(OnlyBlurInfo) + Skin.HasSetting(EnableBlur) + System.HasAddon(script.colorbox)</enable>
                     </control>
 
                     <control type="button" id="19204" description="Set Fallback Image">

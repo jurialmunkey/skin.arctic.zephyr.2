@@ -122,11 +122,11 @@
     <variable name="Global_Background_Image_Var">
         <value condition="Skin.HasSetting(NoFanart) | ListItem.IsParentFolder">$VAR[Global_Background_Image_NoFanart]</value>
 
-        <value condition="Skin.HasSetting(EnableBlur) + Skin.HasSetting(PosterBlur) + !String.IsEmpty(Window.Property(thumb)) + [Window.IsVisible(script-script.extendedinfo-DialogInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml)]">$INFO[Window.Property(thumb)]</value>
-        <value condition="Skin.HasSetting(EnableBlur) + Skin.HasSetting(PosterBlur) + !String.IsEmpty(Container.ListItem.Art(season.poster))">$INFO[Container.ListItem.Art(season.poster)]</value>
-        <value condition="Skin.HasSetting(EnableBlur) + Skin.HasSetting(PosterBlur) + !String.IsEmpty(Container.ListItem.Art(poster))">$INFO[Container.ListItem.Art(poster)]</value>
-        <value condition="Skin.HasSetting(EnableBlur) + Skin.HasSetting(PosterBlur) + !String.IsEmpty(Container.ListItem.Art(tvshow.poster))">$INFO[Container.ListItem.Art(tvshow.poster)]</value>
-        <value condition="Skin.HasSetting(EnableBlur) + Skin.HasSetting(PosterBlur) + !String.IsEmpty(Container.ListItem.Art(thumb)) + !String.StartsWith(Container.ListItem.Art(thumb),special://skin/extras/icons/) + !String.StartsWith(Container.ListItem.Art(thumb),Default)">$INFO[Container.ListItem.Art(thumb)]</value>
+        <value condition="Skin.HasSetting(EnableBlur) + Skin.HasSetting(PosterBlur) + [!Window.IsVisible(Home) | Skin.HasSetting(HomeMulti)] + !Skin.HasSetting(OnlyBlurInfo) + !String.IsEmpty(Window.Property(thumb)) + [Window.IsVisible(script-script.extendedinfo-DialogInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml)]">$INFO[Window.Property(thumb)]</value>
+        <value condition="Skin.HasSetting(EnableBlur) + Skin.HasSetting(PosterBlur) + [!Window.IsVisible(Home) | Skin.HasSetting(HomeMulti)] + !Skin.HasSetting(OnlyBlurInfo) + !String.IsEmpty(Container.ListItem.Art(season.poster))">$INFO[Container.ListItem.Art(season.poster)]</value>
+        <value condition="Skin.HasSetting(EnableBlur) + Skin.HasSetting(PosterBlur) + [!Window.IsVisible(Home) | Skin.HasSetting(HomeMulti)] + !Skin.HasSetting(OnlyBlurInfo) + !String.IsEmpty(Container.ListItem.Art(poster))">$INFO[Container.ListItem.Art(poster)]</value>
+        <value condition="Skin.HasSetting(EnableBlur) + Skin.HasSetting(PosterBlur) + [!Window.IsVisible(Home) | Skin.HasSetting(HomeMulti)] + !Skin.HasSetting(OnlyBlurInfo) + !String.IsEmpty(Container.ListItem.Art(tvshow.poster))">$INFO[Container.ListItem.Art(tvshow.poster)]</value>
+        <value condition="Skin.HasSetting(EnableBlur) + Skin.HasSetting(PosterBlur) + [!Window.IsVisible(Home) | Skin.HasSetting(HomeMulti)] + !Skin.HasSetting(OnlyBlurInfo) + !String.IsEmpty(Container.ListItem.Art(thumb)) + !String.StartsWith(Container.ListItem.Art(thumb),special://skin/extras/icons/) + !String.StartsWith(Container.ListItem.Art(thumb),Default)">$INFO[Container.ListItem.Art(thumb)]</value>
 
         <!-- Next up -->
         <value condition="Window.IsVisible(script-nextup-notification-PostPlayInfo.xml)">$INFO[Window.Property(background)]</value>
