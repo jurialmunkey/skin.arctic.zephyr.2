@@ -540,16 +540,20 @@
                     <label>$VAR[Label_List_Left]</label>
                 </control>
                 <control type="image">
-                    <animation effect="slide" end="-10" condition="!String.IsEqual(ListItem.DBType,episode)">Conditional</animation>
+                    <animation effect="slide" end="-40" condition="!String.IsEqual(ListItem.DBType,episode)">Conditional</animation>
+                    <animation effect="slide" end="-15" condition="String.IsEqual(ListItem.DBType,episode) + !Integer.IsGreater(ListItem.Season,999)">Conditional</animation>
+                    <animation effect="slide" end="-15" condition="String.IsEqual(ListItem.DBType,episode) + !Integer.IsGreater(ListItem.Season,99)">Conditional</animation>
                     <centertop>50%</centertop>
-                    <left>90</left>
+                    <left>120</left>
                     <width>32</width>
                     <height>32</height>
                     <texture colordiffuse="$PARAM[fgcolor]_90">$VAR[Image_Overlay_List]</texture>
                 </control>                
                 <control type="label">
-                    <animation effect="slide" end="-10" condition="!String.IsEqual(ListItem.DBType,episode)">Conditional</animation>
-                    <left>142</left>
+                    <animation effect="slide" end="-40" condition="!String.IsEqual(ListItem.DBType,episode)">Conditional</animation>
+                    <animation effect="slide" end="-15" condition="String.IsEqual(ListItem.DBType,episode) + !Integer.IsGreater(ListItem.Season,999)">Conditional</animation>
+                    <animation effect="slide" end="-15" condition="String.IsEqual(ListItem.DBType,episode) + !Integer.IsGreater(ListItem.Season,99)">Conditional</animation>
+                    <left>172</left>
                     <font>font_small_bold</font>
                     <textcolor>$PARAM[fgcolor]_100</textcolor>
                     <selectedcolor>$PARAM[fgcolor]_100</selectedcolor>
