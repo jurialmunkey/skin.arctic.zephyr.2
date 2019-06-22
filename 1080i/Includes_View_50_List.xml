@@ -541,8 +541,8 @@
                 </control>
                 <control type="image">
                     <animation effect="slide" end="-40" condition="!String.IsEqual(ListItem.DBType,episode)">Conditional</animation>
-                    <animation effect="slide" end="-15" condition="String.IsEqual(ListItem.DBType,episode) + !Integer.IsGreater(ListItem.Season,999)">Conditional</animation>
-                    <animation effect="slide" end="-15" condition="String.IsEqual(ListItem.DBType,episode) + !Integer.IsGreater(ListItem.Season,99)">Conditional</animation>
+                    <animation effect="slide" end="-30" condition="String.IsEqual(ListItem.DBType,episode) + !Integer.IsGreater(ListItem.Season,999)">Conditional</animation>
+                    <animation effect="slide" end="15" condition="String.IsEqual(ListItem.DBType,episode) + Integer.IsGreater(ListItem.Episode,99)">Conditional</animation>
                     <centertop>50%</centertop>
                     <left>120</left>
                     <width>32</width>
@@ -551,8 +551,8 @@
                 </control>                
                 <control type="label">
                     <animation effect="slide" end="-40" condition="!String.IsEqual(ListItem.DBType,episode)">Conditional</animation>
-                    <animation effect="slide" end="-15" condition="String.IsEqual(ListItem.DBType,episode) + !Integer.IsGreater(ListItem.Season,999)">Conditional</animation>
-                    <animation effect="slide" end="-15" condition="String.IsEqual(ListItem.DBType,episode) + !Integer.IsGreater(ListItem.Season,99)">Conditional</animation>
+                    <animation effect="slide" end="-30" condition="String.IsEqual(ListItem.DBType,episode) + !Integer.IsGreater(ListItem.Season,999)">Conditional</animation>
+                    <animation effect="slide" end="15" condition="String.IsEqual(ListItem.DBType,episode) + Integer.IsGreater(ListItem.Episode,99)">Conditional</animation>
                     <left>172</left>
                     <font>font_small_bold</font>
                     <textcolor>$PARAM[fgcolor]_100</textcolor>
