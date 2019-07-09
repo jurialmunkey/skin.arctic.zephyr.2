@@ -491,6 +491,7 @@
         <onright>60</onright>
     </include>
     <include name="View_Horizontal_Movement">
+        <oninfo condition="ListItem.IsCollection">ActivateWindow(1140)</oninfo>
         <onup>SetFocus(300)</onup>
         <ondown>62</ondown>
     </include>
@@ -502,12 +503,14 @@
     </include>
 
     <include name="View_Vertical">
+        <oninfo condition="ListItem.IsCollection">ActivateWindow(1140)</oninfo>
         <onleft>SetFocus(300)</onleft>
         <onright>60</onright>
         <orientation>vertical</orientation>
     </include>
 
-    <include name="View_Horizontal">    
+    <include name="View_Horizontal">
+        <oninfo condition="ListItem.IsCollection">ActivateWindow(1140)</oninfo>
         <onup>SetFocus(300)</onup>
         <ondown>60</ondown>
         <orientation>horizontal</orientation>
