@@ -202,7 +202,7 @@
                     <width>80</width>
                     <height>80</height>
                     <texture background="true" fallback="DefaultGenres.png">$VAR[Image_GenreIcons]</texture>
-                    <visible>String.IsEqual(ListItem.DBType,genre)</visible>
+                    <visible>String.IsEqual(ListItem.DBType,genre) | String.EndsWith(Container.FolderPath,Genres)</visible>
                 </control>
                 <control type="image">
                     <bordersize>15</bordersize>
@@ -224,12 +224,31 @@
                     <aspectratio>keep</aspectratio>
                     <texture background="true">$INFO[ListItem.Icon]</texture>
                     <visible>String.IsEmpty(ListItem.DBType) + !String.IsEmpty(ListItem.Icon) + String.StartsWith(ListItem.Icon,Default)</visible>
+                    <visible>!String.EndsWith(Container.FolderPath,Genres)</visible>
+                </control>
+                <control type="image">
+                    <bordersize>15</bordersize>
+                    <width>3015</width>
+                    <aspectratio scalediffuse="false" align="left">stretch</aspectratio>
+                    <texture background="true" diffuse="$PARAM[diffuse]-left.png">$INFO[ListItem.Icon]</texture>
+                    <visible>String.IsEmpty(ListItem.DBType) + !String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
+                    <visible>!String.EndsWith(Container.FolderPath,Genres)</visible>
+                </control>
+                <control type="image">
+                    <bordersize>15</bordersize>
+                    <width>3015</width>
+                    <right>0</right>
+                    <aspectratio scalediffuse="false" align="right">stretch</aspectratio>
+                    <texture background="true" diffuse="$PARAM[diffuse]-right.png">$INFO[ListItem.Icon]</texture>
+                    <visible>String.IsEmpty(ListItem.DBType) + !String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
+                    <visible>!String.EndsWith(Container.FolderPath,Genres)</visible>
                 </control>
                 <control type="image">
                     <bordersize>15</bordersize>
                     <aspectratio scalediffuse="false">keep</aspectratio>
                     <texture background="true" diffuse="$PARAM[diffuse]">$INFO[ListItem.Icon]</texture>
                     <visible>String.IsEmpty(ListItem.DBType) + !String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
+                    <visible>!String.EndsWith(Container.FolderPath,Genres)</visible>
                 </control>
                 <control type="textbox">
                     <left>50</left>
