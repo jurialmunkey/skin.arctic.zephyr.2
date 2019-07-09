@@ -428,6 +428,19 @@
         <include>Object_PlotOverlay</include>
     </include>
 
+    <include name="Info_Button_300">
+        <control type="button" id="300">
+            <include>Defs_Hidden_Button</include>
+            <onfocus>8300</onfocus>
+        </control>
+        <control type="button" id="8300">
+            <include>Defs_Hidden_Button</include>
+            <onup>9601</onup>
+            <ondown>4100</ondown>
+            <oninfo>Close</oninfo>
+        </control>
+    </include>
+
     <include name="Info_Video">
         <control type="group">
             <top>view_top</top>
@@ -474,7 +487,8 @@
                                 <include condition="!Skin.HasSetting(EnableLanguages)">Object_Info_Languages</include>
                                 <include>Object_Info_Details</include>
                             </control>
-                            <include>Info_Button_Grouplist</include>
+                            <include condition="!ListItem.IsCollection">Info_Button_Grouplist</include>
+                            <include condition="ListItem.IsCollection">Info_Button_300</include>
                         </control>
                     </control>
                 </control>
