@@ -59,7 +59,7 @@
                         <include content="View_50_Poster">
                             <param name="include" value="Animation_Left_Delay" />
                             <param name="defaulticonvisible" value="false" />
-                            <param name="icon" value="$INFO[Window.Property(thumb)]" />
+                            <param name="icon" value="$INFO[Window.Property(movie.poster)]" />
                             <param name="diffuse" value="diffuse/poster-big.png" />
                         </include>
 
@@ -73,47 +73,47 @@
                                 <usecontrolcoords>true</usecontrolcoords>
                                 <itemgap>0</itemgap>
                                 <include content="Object_Info_Title">
-                                    <param name="label" value="$INFO[Window.Property(Title)]" />
+                                    <param name="label" value="$INFO[Window.Property(movie.title)]" />
                                 </include>
                                 <include content="Object_Info_Line">
                                     <param name="hdsd" value="false" />
                                     <param name="nextaired" value="false" />
-                                    <param name="label" value="$INFO[Window.Property(year),[COLOR=main_fg_100],[/COLOR]]$INFO[Window.Property(mpaa),  |  [COLOR=main_fg_100],[/COLOR]]$INFO[Window.Property(duration),  |  [COLOR=main_fg_100], $LOCALIZE[31102][/COLOR]]$INFO[Window.Property(rating),  |  [COLOR=main_fg_100],[/COLOR]]" />
+                                    <param name="label" value="$INFO[Window.Property(movie.year),[COLOR=main_fg_100],[/COLOR]]$INFO[Window.Property(movie.mpaa),  |  [COLOR=main_fg_100],[/COLOR]]$INFO[Window.Property(movie.duration),  |  [COLOR=main_fg_100], $LOCALIZE[31102][/COLOR]]$INFO[Window.Property(movie.rating),  |  [COLOR=main_fg_100],[/COLOR]]" />
                                 </include>
                                 <include content="Object_Info_Plot">
-                                    <param name="label" value="$INFO[Window.Property(plot)]" />
+                                    <param name="label" value="$INFO[Window.Property(movie.plot)]" />
                                     <param name="maxheight" value="360" />
                                     <param name="height" value="auto" />
                                 </include>
                                 <include content="Object_Info_TextPairs">
                                     <param name="pad" value="32" />
                                     <param name="name" value="Genre" />
-                                    <param name="label" value="Window.Property(Genre)" />
+                                    <param name="label" value="Window.Property(movie.Genre)" />
                                 </include>
                                 <include content="Object_Info_TextPairs">
                                     <param name="pad" value="24" />
                                     <param name="name" value="Revenue" />
-                                    <param name="label" value="Window.Property(Revenue)" />
+                                    <param name="label" value="Window.Property(movie.Revenue)" />
                                 </include>
                                 <include content="Object_Info_TextPairs">
                                     <param name="pad" value="24" />
                                     <param name="name" value="Budget" />
-                                    <param name="label" value="Window.Property(Budget)" />
+                                    <param name="label" value="Window.Property(movie.Budget)" />
                                 </include>
                                 <include content="Object_Info_TextPairs">
                                     <param name="pad" value="24" />
                                     <param name="name" value="Director" />
-                                    <param name="label" value="Window.Property(Director)" />
+                                    <param name="label" value="Window.Property(movie.Director)" />
                                 </include>
                                 <include content="Object_Info_TextPairs">
                                     <param name="pad" value="24" />
                                     <param name="name" value="Writer" />
-                                    <param name="label" value="Window.Property(Writer)" />
+                                    <param name="label" value="Window.Property(movie.Writer)" />
                                 </include>
                             </control>
-                            <control type="grouplistbutton" id="3100">
+                            <control type="grouplist" id="3100">
                                 <onup>9601</onup>
-                                <ondown>1000</ondown>
+                                <ondown>SetFocus(1000)</ondown>
                                 <include>Defs_ButtonList</include>
                                 <include content="Object_Info_Button">
                                     <param name="id" value="8" />
@@ -147,7 +147,7 @@
                                     <param name="visible" value="!String.IsEqual(Window.Property(Type),tvshow) + !String.IsEqual(Window.Property(Type),movie) + !String.IsEqual(Window.Property(Type),season) + !String.IsEqual(Window.Property(Type),episode)" />
                                     <ondown>SetFocus(1000)</ondown>
                                 </include>
-                                <include content="Object_Info_Button">
+                                <!-- <include content="Object_Info_Button">
                                     <param name="id" value="18" />
                                     <param name="groupid" value="8018" />
                                     <param name="label" value="Library" />
@@ -178,7 +178,7 @@
                                     <param name="icon" value="special://skin/extras/icons/play3.png" />
                                     <param name="visible" value="!String.IsEmpty(Window.Property(movie.DBID)) + !String.IsEqual(Window.Property(Type),movie) + !String.IsEqual(Window.Property(Type),episode) + !String.IsEqual(Window.Property(Type),season)" />
                                     <ondown>SetFocus(1000)</ondown>
-                                </include>
+                                </include> -->
                             </control>
                         </control>
                     </control>
@@ -198,7 +198,7 @@
                         <include content="View_Cast_Toplabel">
                             <param name="groupid" value="7510" />
                             <param name="id" value="1000" />
-                            <param name="label" value="$INFO[Window.Property(title),$LOCALIZE[31058] ,]" />
+                            <param name="label" value="$INFO[Window.Property(movie.title),$LOCALIZE[31058] ,]" />
                             <visible>Control.IsVisible(1000)</visible>
                         </include>
                         <include content="View_51_Wall_Container">
@@ -215,7 +215,7 @@
                         <include content="View_Cast_Toplabel">
                             <param name="groupid" value="7515" />
                             <param name="id" value="150" />
-                            <param name="label" value="$INFO[Window.Property(title),$LOCALIZE[31051] ,]" />
+                            <param name="label" value="$INFO[Window.Property(movie.title),$LOCALIZE[31051] ,]" />
                             <visible>Control.IsVisible(150)</visible>
                         </include>
                         <include content="View_51_Wall_Container">
@@ -232,7 +232,7 @@
                         <include content="View_Cast_Toplabel">
                             <param name="groupid" value="7525" />
                             <param name="id" value="250" />
-                            <param name="label" value="$INFO[Window.Property(set),$LOCALIZE[31057] ,]" />
+                            <param name="label" value="$INFO[Window.Property(movie.set),$LOCALIZE[31057] ,]" />
                             <visible>Control.IsVisible(250)</visible>
                         </include>
                         <include content="View_51_Wall_Container">
@@ -249,7 +249,7 @@
                         <include content="View_Cast_Toplabel">
                             <param name="groupid" value="7535" />
                             <param name="id" value="350" />
-                            <param name="label" value="$INFO[Window.Property(title),, $LOCALIZE[31141]]" />
+                            <param name="label" value="$INFO[Window.Property(movie.title),, $LOCALIZE[31141]]" />
                             <visible>Control.IsVisible(350)</visible>
                         </include>
                         <include content="View_51_Wall_Container">
@@ -270,7 +270,7 @@
                         <include content="View_Cast_Toplabel">
                             <param name="groupid" value="7575" />
                             <param name="id" value="750" />
-                            <param name="label" value="$INFO[Window.Property(title),$LOCALIZE[31066] ,]" />
+                            <param name="label" value="$INFO[Window.Property(movie.title),$LOCALIZE[31066] ,]" />
                             <visible>Control.IsVisible(750)</visible>
                         </include>
                         <include content="View_51_Wall_Container">
@@ -287,7 +287,7 @@
                         <include content="View_Cast_Toplabel">
                             <param name="groupid" value="75115" />
                             <param name="id" value="1150" />
-                            <param name="label" value="$INFO[Window.Property(title),, $LOCALIZE[31067]]" />
+                            <param name="label" value="$INFO[Window.Property(movie.title),, $LOCALIZE[31067]]" />
                             <visible>Control.IsVisible(1150)</visible>
                         </include>
                         <include content="View_51_Wall_Container">
@@ -317,6 +317,10 @@
                 <control type="group"></control>
             </control>
         </control>
+
+        
+
+        
 
         <!-- Dummy Lists -->
         <control type="list" id="450"><visible>false</visible></control>

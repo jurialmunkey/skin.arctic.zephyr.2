@@ -61,7 +61,7 @@
                         <include content="View_50_Poster">
                             <param name="include" value="Animation_Left_Delay" />
                             <param name="defaulticonvisible" value="false" />
-                            <param name="icon" value="$INFO[Window.Property(thumb)]" />
+                            <param name="icon" value="$INFO[Window.Property(actor.thumb)]" />
                             <param name="diffuse" value="diffuse/poster-big.png" />
                         </include>
 
@@ -75,15 +75,15 @@
                                 <usecontrolcoords>true</usecontrolcoords>
                                 <itemgap>0</itemgap>
                                 <include content="Object_Info_Title">
-                                    <param name="label" value="$INFO[Window.Property(label)]" />
+                                    <param name="label" value="$INFO[Window.Property(actor.title)]" />
                                 </include>
                                 <include content="Object_Info_Line">
                                     <param name="hdsd" value="false" />
                                     <param name="nextaired" value="false" />
-                                    <param name="label" value="[CAPITALIZE]$INFO[Window.Property(Birthday),[COLOR=main_fg_100],[/COLOR]]$INFO[Window.Property(PlaceOfBirth),  |  [COLOR=main_fg_100],[/COLOR]]$INFO[Window.Property(Age),  |  [COLOR=main_fg_100], $LOCALIZE[31356][/COLOR]]$INFO[Window.Property(Deathday),  |  [COLOR=main_fg_100]$LOCALIZE[21897] ,[/COLOR]][/CAPITALIZE]" />
+                                    <param name="label" value="[CAPITALIZE]$INFO[Window.Property(actor.Birthday),[COLOR=main_fg_100],[/COLOR]]$INFO[Window.Property(actor.PlaceOfBirth),  |  [COLOR=main_fg_100],[/COLOR]]$INFO[Window.Property(actor.Age),  |  [COLOR=main_fg_100], $LOCALIZE[31356][/COLOR]]$INFO[Window.Property(actor.Deathday),  |  [COLOR=main_fg_100]$LOCALIZE[21897] ,[/COLOR]][/CAPITALIZE]" />
                                 </include>
                                 <include content="Object_Info_Plot">
-                                    <param name="label" value="$INFO[Window.Property(biography)]" />
+                                    <param name="label" value="$INFO[Window.Property(actor.biography)]" />
                                     <param name="maxheight" value="600" />
                                     <param name="height" value="600" />
                                 </include>
@@ -111,7 +111,7 @@
                         <include content="View_Cast_Toplabel">
                             <param name="groupid" value="7515" />
                             <param name="id" value="150" />
-                            <param name="label" value="$INFO[Window.Property(label),$LOCALIZE[31060] ,]" />
+                            <param name="label" value="$INFO[Window.Property(actor.title),$LOCALIZE[31060] ,]" />
                             <visible>Control.IsVisible(150)</visible>
                         </include>
                         <include content="View_51_Wall_Container">
@@ -127,7 +127,7 @@
                         <include content="View_Cast_Toplabel">
                             <param name="groupid" value="7525" />
                             <param name="id" value="250" />
-                            <param name="label" value="$INFO[Window.Property(label),$LOCALIZE[31061] ,]" />
+                            <param name="label" value="$INFO[Window.Property(actor.title),$LOCALIZE[31061] ,]" />
                             <visible>Control.IsVisible(250)</visible>
                         </include>
                         <include content="View_51_Wall_Container">
@@ -143,7 +143,7 @@
                         <include content="View_Cast_Toplabel">
                             <param name="groupid" value="7555" />
                             <param name="id" value="550" />
-                            <param name="label" value="$INFO[Window.Property(label),$LOCALIZE[31062] , $LOCALIZE[31063]]" />
+                            <param name="label" value="$INFO[Window.Property(actor.title),$LOCALIZE[31062] , $LOCALIZE[31063]]" />
                             <visible>Control.IsVisible(550)</visible>
                         </include>
                         <include content="View_51_Wall_Container">
@@ -159,7 +159,7 @@
                         <include content="View_Cast_Toplabel">
                             <param name="groupid" value="7565" />
                             <param name="id" value="650" />
-                            <param name="label" value="$INFO[Window.Property(label),$LOCALIZE[31064] , $LOCALIZE[31063]]" />
+                            <param name="label" value="$INFO[Window.Property(actor.title),$LOCALIZE[31064] , $LOCALIZE[31063]]" />
                             <visible>Control.IsVisible(650)</visible>
                         </include>
                         <include content="View_51_Wall_Container">
@@ -175,7 +175,7 @@
                         <include content="View_Cast_Toplabel">
                             <param name="groupid" value="7535" />
                             <param name="id" value="350" />
-                            <param name="label" value="$INFO[Window.Property(label),, $LOCALIZE[31141]]" />
+                            <param name="label" value="$INFO[Window.Property(actor.title),, $LOCALIZE[31141]]" />
                             <visible>Control.IsVisible(350)</visible>
                         </include>
                         <include content="View_51_Wall_Container">
@@ -195,7 +195,7 @@
                         <include content="View_Cast_Toplabel">
                             <param name="groupid" value="7545" />
                             <param name="id" value="450" />
-                            <param name="label" value="$INFO[Window.Property(label),$LOCALIZE[31065] ,]" />
+                            <param name="label" value="$INFO[Window.Property(actor.title),$LOCALIZE[31065] ,]" />
                             <visible>Control.IsVisible(450)</visible>
                         </include>
                         <include content="View_51_Wall_Container">
