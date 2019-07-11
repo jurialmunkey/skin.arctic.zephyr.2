@@ -631,7 +631,7 @@
                             <param name="height" value="item_cast_height" />
                             <param name="orientation" value="horizontal" />
                             <param name="labelinclude" value="Defs_Null" />
-                            <param name="visible" value="Integer.IsGreater(Container(5004).NumItems,1) | Container(5004).IsUpdating" />
+                            <param name="visible" value="[Integer.IsGreater(Container(5004).NumItems,1) | Container(5004).IsUpdating] + !String.IsEmpty(ListItem.Studio)" />
                             <animation effect="fade" start="100" end="0" condition="!Integer.IsGreater(Container(5004).NumItems,0) | Container(5004).IsUpdating">Conditional</animation>
                             <include content="Defs_InfoTrick">
                                 <param name="id" value="5004" />
