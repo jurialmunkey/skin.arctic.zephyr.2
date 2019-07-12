@@ -970,17 +970,17 @@
             <control type="grouplist">
                 <nested />
                 <animation effect="fade" end="50" condition="true">Conditional</animation>
-                <visible>!String.IsEmpty(Container($PARAM[id]).ListItem.Label)</visible>
+                <visible>!String.IsEmpty(Container($PARAM[id]).ListItem.Title)</visible>
                 <orientation>vertical</orientation>
                 <usecontrolcoords>true</usecontrolcoords>
                 <itemgap>0</itemgap>
                 <include content="Object_Info_Title">
-                    <param name="label" value="$INFO[Container($PARAM[id]).ListItem.Label]" />
+                    <param name="label" value="$INFO[Container($PARAM[id]).ListItem.Title]" />
                     <param name="font" value="$PARAM[font]" />
                     <param name="titleheight" value="$PARAM[titleheight]" />
                 </include>
                 <include content="Object_Info_Line">
-                    <param name="label" value="$INFO[Container($PARAM[id]).ListItem.MPAA,[COLOR=main_fg_100],[/COLOR]  |  ]$INFO[Container($PARAM[id]).ListItem.Year,[COLOR=main_fg_100],[/COLOR]]$INFO[Container($PARAM[id]).ListItem.Property(Album_Label),  |  [COLOR=main_fg_100],[/COLOR]]" />
+                    <param name="label" value="$INFO[Container($PARAM[id]).ListItem.MPAA,[COLOR=main_fg_100],[/COLOR]  |  ]$INFO[Container($PARAM[id]).ListItem.Year,[COLOR=main_fg_100],[/COLOR]]$INFO[Container($PARAM[id]).ListItem.Property(Album_Label),  |  [COLOR=main_fg_100],[/COLOR]]$INFO[Container($PARAM[id]).ListItem.ChannelName,[COLOR=main_fg_100],[/COLOR]]" />
                 </include>
                 <control type="group">
                     <top>-5</top>

@@ -252,6 +252,15 @@
                     <texture background="true" diffuse="$PARAM[diffuse]">$INFO[ListItem.Icon]</texture>
                     <visible>String.IsEmpty(ListItem.DBType) + !String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
                     <visible>!String.EndsWith(Container.FolderPath,Genres)</visible>
+                    <visible>!String.StartsWith(ListItem.FolderPath,pvr://)</visible>
+                </control>
+                <control type="image">
+                    <bordersize>60</bordersize>
+                    <aspectratio scalediffuse="false">keep</aspectratio>
+                    <texture background="true" diffuse="$PARAM[diffuse]">$INFO[ListItem.Icon]</texture>
+                    <visible>String.IsEmpty(ListItem.DBType) + !String.IsEmpty(ListItem.Icon) + !String.StartsWith(ListItem.Icon,Default)</visible>
+                    <visible>!String.EndsWith(Container.FolderPath,Genres)</visible>
+                    <visible>String.StartsWith(ListItem.FolderPath,pvr://)</visible>
                 </control>
                 <control type="textbox">
                     <left>50</left>
