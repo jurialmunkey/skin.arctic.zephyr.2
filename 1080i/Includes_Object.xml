@@ -658,12 +658,14 @@
                     <left>-14</left>
                     <visible>String.IsEmpty(ListItem.UserRating)</visible>
                     <visible>!Skin.HasSetting(DisableStarRating)</visible>
+                    <visible>!Skin.HasSetting(NumericStarRating)</visible>
                     <include>Object_StarRating</include>
                 </control>
                 <control type="group">
                     <left>-14</left>
                     <visible>!String.IsEmpty(ListItem.UserRating)</visible>
                     <visible>!Skin.HasSetting(DisableStarRating)</visible>
+                    <visible>!Skin.HasSetting(NumericStarRating)</visible>
                     <include content="Object_StarRating">
                         <param name="rating_prop" value="ListItem.UserRating" />
                     </include>
@@ -671,7 +673,7 @@
                 <control type="group">
                     <top>41</top>
                     <left>260</left>
-                    <include content="Object_Ratings_Content" condition="!Skin.HasSetting(DisableStarRating)">
+                    <include content="Object_Ratings_Content" condition="!Skin.HasSetting(DisableStarRating) + !Skin.HasSetting(NumericStarRating)">
                         <param name="colordiffuse" value="main_fg_100" />
                         <param name="align" value="left" />
                         <param name="imdbvotes" value="$PARAM[imdbvotes]" />
@@ -682,7 +684,7 @@
                 <control type="group">
                     <top>41</top>
                     <left>0</left>
-                    <include content="Object_Ratings_Content" condition="Skin.HasSetting(DisableStarRating)">
+                    <include content="Object_Ratings_Content" condition="Skin.HasSetting(DisableStarRating) | Skin.HasSetting(NumericStarRating)">
                         <param name="colordiffuse" value="main_fg_100" />
                         <param name="align" value="left" />
                         <param name="imdbvotes" value="$PARAM[imdbvotes]" />
@@ -1572,6 +1574,7 @@
         <param name="tvdb" default="true" />
         <param name="metacritic" default="true" />
         <param name="oscars" default="true" />
+        <param name="numericstarrating" default="Skin.HasSetting(NumericStarRating) + !Skin.HasSetting(DisableStarRating)" />
         <param name="top250" default="true" />
         <definition>
             <control type="grouplist">
@@ -1581,6 +1584,50 @@
                 <align>$PARAM[align]</align>
                 <itemgap>8</itemgap>
                 <usecontrolcoords>true</usecontrolcoords>
+                
+
+                <control type="image">
+                    <top>-17</top>
+                    <left>-14</left>
+                    <width>64</width>
+                    <height>64</height>
+                    <texture colordiffuse="$PARAM[colordiffuse]">flags/star10.png</texture>
+                    <visible>$PARAM[numericstarrating]</visible>
+                    <visible>!String.IsEmpty(ListItem.Rating)</visible>
+                </control>
+                <control type="label">
+                    <left>-11</left>
+                    <textcolor>main_fg_70</textcolor>
+                    <top>2</top>
+                    <width>auto</width>
+                    <height>28</height>
+                    <align>right</align>
+                    <font>font_tiny</font>
+                    <label>$INFO[ListItem.Rating,,   ]</label>
+                    <visible>$PARAM[numericstarrating]</visible>
+                    <visible>!String.IsEmpty(ListItem.Rating)</visible>
+                </control>
+
+                <control type="image">
+                    <top>0</top>
+                    <width>32</width>
+                    <height>32</height>
+                    <texture colordiffuse="$PARAM[colordiffuse]">flags/$PARAM[directory]/ratings/user_rating.png</texture>
+                    <visible>$PARAM[numericstarrating]</visible>
+                    <visible>!String.IsEmpty(ListItem.UserRating)</visible>
+                </control>
+                <control type="label">
+                    <textcolor>main_fg_70</textcolor>
+                    <top>2</top>
+                    <width>auto</width>
+                    <height>28</height>
+                    <align>right</align>
+                    <font>font_tiny</font>
+                    <label>$INFO[ListItem.UserRating,,.0   ]</label>
+                    <visible>$PARAM[numericstarrating]</visible>
+                    <visible>!String.IsEmpty(ListItem.UserRating)</visible>
+                </control>
+
                 <control type="image">
                     <top>0</top>
                     <width>32</width>

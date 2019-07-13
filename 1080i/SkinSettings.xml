@@ -417,7 +417,15 @@
                         <onclick>ActivateWindow(1118)</onclick>
                     </control>
 
-                    <control type="radiobutton" id="19411" description="Plot overlay">
+                    <control type="radiobutton" id="19411" description="Star Rating as Numeric">
+                        <visible>Integer.IsEqual(Window.Property(CurrentFocus),9004)</visible>
+                        <include>Defs_Settings_Button</include>
+                        <label>$LOCALIZE[31192]</label>
+                        <selected>Skin.HasSetting(NumericStarRating)</selected>
+                        <onclick>Skin.ToggleSetting(NumericStarRating)</onclick>
+                    </control>
+
+                    <control type="radiobutton" id="19412" description="Plot overlay">
                         <visible>Integer.IsEqual(Window.Property(CurrentFocus),9004)</visible>
                         <include>Defs_Settings_Button</include>
                         <label>$LOCALIZE[31379]</label>
