@@ -286,8 +286,8 @@
                         <label>31172</label>
                         <selected>Skin.HasSetting(global.showvisualisation)</selected>
                         <onclick>Skin.ToggleSetting(global.showvisualisation)</onclick>
-                    </control>
- -->
+                    </control> -->
+
                     <control type="button" id="192047" description="Set Timer Per Image">
                         <visible>Integer.IsEqual(Window.Property(CurrentFocus),9002)</visible>
                         <include>Defs_Settings_Button</include>
@@ -311,7 +311,13 @@
                         <onclick>RunScript(script.toolbox,info=selectdialog,header=$LOCALIZE[31128])</onclick>
                     </control>
                     
-                    
+                    <control type="radiobutton" id="19206" description="Animate background ken burns">
+                        <visible>Integer.IsEqual(Window.Property(CurrentFocus),9002)</visible>
+                        <include>Defs_Settings_Button</include>
+                        <label>$LOCALIZE[31205]</label>
+                        <selected>Skin.HasSetting(KenBurnsEffect)</selected>
+                        <onclick>Skin.ToggleSetting(KenBurnsEffect)</onclick>
+                    </control>
 
                     <!-- ============= -->
                     <!-- Miscellaneous -->
