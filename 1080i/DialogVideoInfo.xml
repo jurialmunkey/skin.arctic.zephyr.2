@@ -30,6 +30,9 @@
     <onunload condition="String.IsEmpty(Window(Home).Property(InfoTrick.2.Title)) + !String.IsEmpty(Window(Home).Property(InfoTrick.1.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.Active))">ReplaceWindow(1137)</onunload>
     <onunload condition="String.IsEmpty(Window(Home).Property(InfoTrick.1.Title)) + !String.IsEmpty(Window(Home).Property(InfoTrick.0.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.Active))">Action(Back)</onunload>
     <onunload condition="String.IsEmpty(Window(Home).Property(InfoTrick.1.Title)) + !String.IsEmpty(Window(Home).Property(InfoTrick.0.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.Active))">Action(OSD)</onunload>
+
+    <onload>ClearProperty(OSD_Menu,Home)</onload>
+    <onunload>ClearProperty(OSD_Menu,Home)</onunload>
     <controls>
 
         <!-- Top Info -->
@@ -43,6 +46,24 @@
         <!-- Main Group -->
         <include condition="!String.IsEqual(ListItem.DBType,musicvideo)">Info_Video</include>
         <include condition="String.IsEqual(ListItem.DBType,musicvideo)">Info_Music</include>
+
+        <control type="group">
+            <include>Global_Overlay</include>
+            <visible>Control.HasFocus(8111)</visible>
+        </control>
+        <include content="OSD_Menu_List">
+            <param name="id" value="8111" />
+            <param name="osd_id" value="300" />
+            <param name="content" value="Items_Info_Manage" />
+            <param name="label" value="Manage" />
+            <param name="height" value="422" />
+        </include>
+        <control type="button" id="6">
+            <include>Defs_Hidden_Button</include>
+        </control>
+        <control type="button" id="10">
+            <include>Defs_Hidden_Button</include>
+        </control>
 
     </controls>
 </window>
