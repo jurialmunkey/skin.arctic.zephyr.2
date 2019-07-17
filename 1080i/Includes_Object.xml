@@ -607,6 +607,26 @@
         </include>
     </include>
 
+    <include name="Object_Info_Details_PVR">
+        <include content="Object_Info_TextPairs">
+            <param name="pad" value="24" />
+            <param name="name" value="Date" />
+            <param name="label" value="ListItem.StartDate" />
+        </include>
+        <include content="Object_Info_TextPairs">
+            <param name="pad" value="24" />
+            <param name="name" value="Time" />
+            <param name="label" value="ListItem.StartTime" />
+            <param name="label2" value="$INFO[ListItem.EndTime,  -  ,]" />
+        </include>
+        <!-- <include content="Object_Info_TextPairs">
+            <param name="pad" value="24" />
+            <param name="name" value="Channel" />
+            <param name="label" value="ListItem.ChannelName" />
+            <param name="label2" value="$INFO[ListItem.ChannelNumberLabel,  -  Ch.,]" />
+        </include> -->
+    </include>
+
     <include name="Object_Info_Details">
         <include content="Object_Info_TextPairs">
             <param name="pad" value="32" />
@@ -1112,7 +1132,7 @@
                     <aligny>top</aligny>
                     <font>font_tiny</font>
                     <textcolor>main_fg_70</textcolor>
-                    <label>$INFO[$PARAM[label]]</label>
+                    <label>$INFO[$PARAM[label]]$PARAM[label2]</label>
                     <height>30</height>
                     <haspath>$PARAM[haspath]</haspath>
                 </control>

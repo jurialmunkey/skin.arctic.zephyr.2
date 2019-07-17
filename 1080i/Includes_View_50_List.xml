@@ -925,6 +925,8 @@
     <include name="View_50_Info">
         <param name="height" default="654" />
         <param name="width" default="654" />
+        <param name="label" default="$VAR[Label_MainTitle]" />
+        <param name="label2" default="$VAR[Label_SubTitle]" />
         <definition>
             <control type="group">
                 <left>-15</left>
@@ -943,13 +945,13 @@
                         <height>50</height>
                         <font>font_title_small</font>
                         <textcolor>main_fg_100</textcolor>
-                        <label>$VAR[Label_MainTitle]</label>
+                        <label>$PARAM[label]</label>
                     </control>
                     <control type="label">
                         <height>40</height>
                         <aligny>top</aligny>
                         <align>center</align>
-                        <label>$VAR[Label_SubTitle]</label>
+                        <label>$PARAM[label2]</label>
                         <textcolor>main_fg_100</textcolor>
                         <font>font_small</font>
                     </control>
@@ -988,6 +990,7 @@
                         <param name="diffuse" value="$PARAM[diffuse]" />
                         <param name="fadetime" value="$PARAM[fadetime]" />
                         <param name="visible" value="$PARAM[iconvisible]" />
+                        <param name="bordersize" value="$PARAM[bordersize]" />
                     </include>
                 </control>
             </control>

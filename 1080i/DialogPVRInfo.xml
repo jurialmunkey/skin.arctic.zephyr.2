@@ -2,142 +2,140 @@
 <window id="2003">
     <defaultcontrol always="true">9000</defaultcontrol>
     <controls>
-        <include>Global_Overlay</include>
-        <control type="group">
-            <include content="Dialog_Standard_Group">
-                <param name="width" value="1400" />
-                <param name="height" value="650" />
-            </include>
 
-            <control type="label" id="2">
-                <include>Dialog_Standard_Header</include>
-                <label>$INFO[ListItem.EpgEventTitle]$INFO[ListItem.EpisodeName, - ,]</label>
+        <!-- Top Info -->
+        <control type="group">
+            <animation effect="fade" condition="Window.IsVisible(Home.xml)" time="1" delay="350" start="0" end="100">WindowOpen</animation>
+            <control type="group">
+                <visible>Window.IsVisible(fullscreenvideo)</visible>
+                <include>Global_Background</include>
             </control>
-            <control type="grouplist">
-                <left>30</left>
-                <top>100</top>
-                <right>60</right>
-                <include>Dialog_Info_Details_Grouplist</include>
-                <!-- Start Time -->
-                <control type="group">
-                    <height>50</height>
-                    <control type="label">
-                        <left>0</left>
-                        <width>160</width>
-                        <align>right</align>
-                        <textcolor>dialog_fg_30</textcolor>
-                        <font>font_small</font>
-                        <label>19126</label>
-                        <aligny>top</aligny>
-                    </control>
-                    <control type="label">
-                        <left>176</left>
-                        <textcolor>dialog_fg_70</textcolor>
-                        <font>font_small</font>
-                        <aligny>top</aligny>
-                        <label fallback="19055">$INFO[ListItem.StartDate] - $INFO[ListItem.StartTime]</label>
-                    </control>
-                </control>
-                <!-- End Time -->
-                <control type="group">
-                    <height>50</height>
-                    <control type="label">
-                        <left>0</left>
-                        <width>160</width>
-                        <align>right</align>
-                        <textcolor>dialog_fg_30</textcolor>
-                        <font>font_small</font>
-                        <label>19127</label>
-                        <aligny>top</aligny>
-                    </control>
-                    <control type="label">
-                        <left>176</left>
-                        <textcolor>dialog_fg_70</textcolor>
-                        <font>font_small</font>
-                        <aligny>top</aligny>
-                        <label fallback="19055">$INFO[ListItem.EndDate] - $INFO[ListItem.EndTime]</label>
-                    </control>
-                </control>
-                <!-- Channel Name -->
-                <control type="group">
-                    <height>50</height>
-                    <control type="label">
-                        <left>0</left>
-                        <width>160</width>
-                        <align>right</align>
-                        <textcolor>dialog_fg_30</textcolor>
-                        <font>font_small</font>
-                        <label>19029</label>
-                        <aligny>top</aligny>
-                    </control>
-                    <control type="label">
-                        <left>176</left>
-                        <textcolor>dialog_fg_70</textcolor>
-                        <font>font_small</font>
-                        <aligny>top</aligny>
-                        <label fallback="19055">$INFO[ListItem.ChannelName]$INFO[ListItem.ChannelNumber, (,)]</label>
-                    </control>
-                </control>
-                <!-- Plot -->
-                <control type="group">
-                    <height>250</height>
-                    <control type="label">
-                        <left>0</left>
-                        <width>160</width>
-                        <align>right</align>
-                        <textcolor>dialog_fg_30</textcolor>
-                        <font>font_small</font>
-                        <label>21821</label>
-                        <aligny>top</aligny>
-                    </control>
-                    <control type="textbox">
-                        <left>176</left>
-                        <textcolor>dialog_fg_70</textcolor>
-                        <font>font_plotbox</font>
-                        <aligny>top</aligny>
-                        <label fallback="19055">$INFO[ListItem.Plot]</label>
-                    </control>
-                </control>
-            </control>
-            <!-- Buttons -->
+            <include content="Topbar">
+                <param name="info_hide" value="false" />
+            </include>
+        </control>
+
+        <!-- Main Group -->
+        <control type="group">
+            <top>view_top</top>
+            <left>view_pad</left>
+            <right>view_pad</right>
+            <visible allowhiddenfocus="true">!$EXP[Exp_HideFurniture]</visible>
+            <include>Animation_FadeInOut</include>
             <control type="grouplist" id="9000">
-                <left>30</left>
-                <right>30</right>
-                <align>center</align>
-                <bottom>20</bottom>
-                <height>item_list_height</height>
-                <orientation>horizontal</orientation>
-                <itemgap>14</itemgap>
-                <control type="button" id="4">
-                    <label>19003</label>
-                    <include>Dialog_Info_Buttons</include>
-                    <visible>Window.IsActive(PVRGuideInfo)</visible>
-                </control>
-                <control type="button" id="5">
-                    <label>19165</label>
-                    <include>Dialog_Info_Buttons</include>
-                    <visible>Window.IsActive(PVRGuideInfo)</visible>
-                </control>
-                <control type="button" id="6">
-                    <include>Dialog_Info_Buttons</include>
-                    <visible>Window.IsActive(PVRGuideInfo)</visible>
-                </control>
-                <control type="button" id="8">
-                    <label>19687</label>
-                    <include>Dialog_Info_Buttons</include>
-                    <visible>Window.IsActive(PVRGuideInfo) | Window.IsActive(PVRRecordingInfo)</visible>
-                </control>
-                <control type="button" id="10">
-                    <label>$LOCALIZE[19190]</label>
-                    <include>Dialog_Info_Buttons</include>
-                    <visible>Window.IsActive(PVRGuideInfo)</visible>
-                </control>
-                <control type="button" id="7">
-                    <label>186</label>
-                    <include>Dialog_Info_Buttons</include>
+                <top>-15</top>
+                <left>-15</left>
+                <right>-15</right>
+                <height>view_height</height>
+                <orientation>vertical</orientation>
+                <itemgap>0</itemgap>
+                <scrolltime tween="quadratic">400</scrolltime>
+                <control type="group" id="3000">
+                    <height>view_height</height>
+                    <control type="group">
+                        <top>15</top>
+                        <left>15</left>
+                        <right>15</right>
+                        <height>view_list_height</height>
+                        <!-- Poster -->
+                        <control type="group">
+                            <include>Animation_Left_Delay</include>
+                            <include content="View_50_Poster">
+                                <param name="include" value="Defs_Null" />
+                                <param name="visible" value="true" />
+                                <param name="height" value="654" />
+                                <param name="width" value="654" />
+                                <param name="bordersize" value="90" />
+                                <param name="aspectratio" value="keep" />
+                                <param name="diffuse" value="diffuse/square-big.png" />
+                            </include>
+                            <include content="View_50_Info">
+                                <param name="label" value="$INFO[ListItem.ChannelName]" />
+                                <param name="label2" value="$INFO[ListItem.ChannelNumberLabel,Channel ,]" />
+                            </include>
+                        </control>
+
+                        <!-- Info -->
+                        <control type="group">
+                            <top>-15</top>
+                            <left>669</left>
+                            <include>Animation_Right_Delay</include>
+                            <control type="grouplist">
+                                <orientation>vertical</orientation>
+                                <usecontrolcoords>true</usecontrolcoords>
+                                <itemgap>0</itemgap>
+                                <include content="Object_Info_Title">
+                                    <param name="label" value="$VAR[Label_MainTitle]" />
+                                </include>
+                                <include content="Object_Info_Line">
+                                    <param name="label" value="$VAR[Label_SubTitle]" />
+                                </include>
+                                <include content="Object_Info_Plot">
+                                    <param name="maxheight" value="360" />
+                                </include>
+                                <control type="group">
+                                    <height>16</height>
+                                </control>
+                                <include>Object_Info_Details_PVR</include>
+                            </control>
+                            <control type="grouplist" id="300">
+                                <onup>50</onup>
+                                <include>Defs_ButtonList</include>
+                                <!-- Switch -->
+                                <include content="Object_Info_Button">
+                                    <param name="width" value="128" />
+                                    <param name="id" value="5" />
+                                    <param name="groupid" value="8005" />
+                                    <param name="label" value="$LOCALIZE[19165]" />
+                                    <param name="icon" value="special://skin/extras/icons/signpost.png" />
+                                    <param name="visible" value="Control.IsVisible(5) + Window.IsActive(PVRGuideInfo)" />
+                                </include>
+                                <!-- Switch -->
+                                <include content="Object_Info_Button">
+                                    <param name="width" value="128" />
+                                    <param name="id" value="6" />
+                                    <param name="groupid" value="8006" />
+                                    <param name="label" value="$INFO[Control.GetLabel(6)]" />
+                                    <param name="icon" value="special://skin/extras/icons/alarm.png" />
+                                    <param name="visible" value="Control.IsVisible(6) + Window.IsActive(PVRGuideInfo)" />
+                                </include>
+                                <!-- Switch -->
+                                <include content="Object_Info_Button">
+                                    <param name="width" value="128" />
+                                    <param name="id" value="8" />
+                                    <param name="groupid" value="8008" />
+                                    <param name="label" value="Play" />
+                                    <param name="icon" value="special://skin/extras/icons/database.png" />
+                                    <param name="visible" value="Control.IsVisible(8) + [Window.IsActive(PVRGuideInfo) | Window.IsActive(PVRRecordingInfo)]" />
+                                </include>
+                                <!-- Switch -->
+                                <include content="Object_Info_Button">
+                                    <param name="width" value="128" />
+                                    <param name="id" value="10" />
+                                    <param name="groupid" value="8010" />
+                                    <param name="label" value="Play" />
+                                    <param name="icon" value="special://skin/extras/icons/play3.png" />
+                                    <param name="visible" value="Control.IsVisible(10) + Window.IsActive(PVRGuideInfo)" />
+                                </include>
+                                <!-- Similar -->
+                                <include content="Object_Info_Button">
+                                    <param name="width" value="128" />
+                                    <param name="id" value="4" />
+                                    <param name="groupid" value="8004" />
+                                    <param name="label" value="Similar" />
+                                    <param name="icon" value="special://skin/extras/icons/search.png" />
+                                    <param name="visible" value="Control.IsVisible(4) + Window.IsActive(PVRGuideInfo)" />
+                                </include>
+                            </control>
+                        </control>
+                    </control>
                 </control>
             </control>
         </control>
+
+       
+        <include>Object_PlotOverlay</include>
+
     </controls>
 
 </window>
