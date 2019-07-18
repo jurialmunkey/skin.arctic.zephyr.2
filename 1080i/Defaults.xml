@@ -202,7 +202,7 @@
         <autoscroll delay="6000" time="3000" repeat="10000"/>
     </default>
 
-    <expression name="Exp_InfoVisible">[Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(DialogAddonInfo.xml)]</expression>
+    <expression name="Exp_InfoVisible">[Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(DialogAddonInfo.xml) | Window.IsVisible(1140) | Window.IsVisible(DialogPVRInfo.xml)]</expression>
 
     <expression name="Exp_IsPluginAdvancedLauncher">String.StartsWith(Container.FolderPath,plugin://plugin.program.advanced.launcher/) | String.StartsWith(Container.FolderPath,plugin://plugin.program.advanced.emulator.launcher/) | String.StartsWith(Container.FolderPath,plugin://plugin.program.advanced.MAME.launcher/)</expression>
 
