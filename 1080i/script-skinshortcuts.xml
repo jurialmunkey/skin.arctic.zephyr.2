@@ -218,6 +218,15 @@
                     <visible>!String.IsEqual(Window.Property(groupname),searchmenu)</visible>
                 </control>
 
+                <control type="button" id="4101" description="Choose Search Item">
+                    <label>Default search items</label>
+                    <onclick>SetProperty(custom-grouping,customsearchdefaultitems)</onclick>
+                    <onclick>SendClick(401)</onclick>
+                    <visible>!String.IsEqual(Container(211).ListItem.Property(skinshortcuts-disabled),True)</visible>
+                    <include>Dialog_Standard_Button</include>
+                    <visible>String.IsEqual(Window.Property(groupname),searchmenu)</visible>
+                </control>
+
                 <control type="button" id="3007" description="Action">
                     <label>31267</label>
                     <label2>$INFO[Container(211).ListItem.Property(Path)]</label2>
@@ -355,7 +364,7 @@
                 <control type="button" id="308" description="Reset">
                     <visible>!String.IsEqual(Container(211).ListItem.Property(skinshortcuts-disabled),True)</visible>
                     <include>Dialog_Standard_Button</include>
-                    <visible>![String.EndsWith(Window.Property(groupname),.1) | String.IsEqual(Window.Property(groupname),searchmenu)]</visible>
+                    <visible>![String.EndsWith(Window.Property(groupname),.1)]</visible>
                 </control>
 
             </control>

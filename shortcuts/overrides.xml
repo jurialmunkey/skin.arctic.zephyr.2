@@ -98,6 +98,19 @@
     <property property="widgetLimit" label="100 ">$NUMBER[100]</property>
     <propertySettings property="widgetLimit" buttonID="9905" title="Widget Item Limit" />
 
+    <!-- Search Item Default Properties -->
+    <propertydefault labelID="artists" group="searchmenu" property="widgetAspect">Square</propertydefault>
+    <propertydefault labelID="albums" group="searchmenu" property="widgetAspect">Square</propertydefault>
+    <propertydefault labelID="add-ons" group="searchmenu" property="widgetAspect">Square</propertydefault>
+    <propertydefault labelID="spotifyartists" group="searchmenu" property="widgetAspect">Square</propertydefault>
+    <propertydefault labelID="spotifyalbums" group="searchmenu" property="widgetAspect">Square</propertydefault>
+    <propertydefault labelID="spotifysongs" group="searchmenu" property="widgetAspect">Square</propertydefault>
+    <propertydefault labelID="spotifyplaylists" group="searchmenu" property="widgetAspect">Square</propertydefault>
+    <propertydefault labelID="musicvideos" group="searchmenu" property="widgetAspect">Square</propertydefault>
+    <propertydefault labelID="musicvideoartists" group="searchmenu" property="widgetAspect">Square</propertydefault>
+    <propertydefault labelID="youtube" group="searchmenu" property="widgetAspect">Landscape</propertydefault>
+    <propertydefault labelID="episodes" group="searchmenu" property="widgetAspect">Landscape</propertydefault>
+
     <!-- Icon Overrides -->
     <icon labelID="livetv">special://skin/extras/icons/livetv.png</icon>
     <icon labelID="radio">special://skin/extras/icons/radio.png</icon>
@@ -182,8 +195,6 @@
 
     <availableshortcutlabel action="ActivateWindow(Videos)">$LOCALIZE[3]</availableshortcutlabel>
     <availableshortcutlabel action="ActivateWindow(Music)">$LOCALIZE[2]</availableshortcutlabel>
-
-    
 
     <!-- GROUPINGS -->
     <!-- Main Grouping -->
@@ -306,6 +317,27 @@
             <content>addon-program</content>
         </node>
     </customsearch-groupings>
+    <customsearchdefaultitems-groupings>
+        <shortcut label="Movies" type="571" icon="special://skin/extras/icons/film.png">DefaultSearch-Movies</shortcut>
+        <shortcut label="Tv Shows" type="571" icon="special://skin/extras/icons/tv.png">DefaultSearch-TvShows</shortcut>
+        <shortcut label="Episodes" type="571" icon="special://skin/extras/icons/tv.png">DefaultSearch-Episodes</shortcut>
+        <shortcut label="Genres" type="571" icon="special://skin/extras/icons/genres.png">DefaultSearch-Genres</shortcut>
+        <shortcut label="Year" type="571" icon="special://skin/extras/icons/years.png">DefaultSearch-Year</shortcut>
+        <shortcut label="Studio" type="571" icon="special://skin/extras/icons/studio.png">DefaultSearch-Studio</shortcut>
+        <shortcut label="Country" type="571" icon="special://skin/extras/icons/country.png">DefaultSearch-Country</shortcut>
+        <shortcut label="Actor" type="571" icon="special://skin/extras/icons/person.png">DefaultSearch-Actor</shortcut>
+        <shortcut label="Director" type="571" icon="special://skin/extras/icons/person.png">DefaultSearch-Director</shortcut>
+        <shortcut label="Albums" type="571" icon="special://skin/extras/icons/songs.png">DefaultSearch-Albums</shortcut>
+        <shortcut label="Artists" type="571" icon="special://skin/extras/icons/songs.png">DefaultSearch-Artists</shortcut>
+        <shortcut label="Music Videos" type="571" icon="special://skin/extras/icons/musicvideo.png">DefaultSearch-MusicVideos</shortcut>
+        <shortcut label="Music Video Artists" type="571" icon="special://skin/extras/icons/musicvideo.png">DefaultSearch-MusicVideoArtists</shortcut>
+        <shortcut label="Add-ons" type="571" icon="special://skin/extras/icons/addons.png">DefaultSearch-Addons</shortcut>
+        <shortcut label="Youtube" type="571" icon="special://skin/extras/icons/youtube.png">DefaultSearch-Youtube</shortcut>
+        <shortcut label="Spotify Artists" type="571" icon="special://skin/extras/icons/spotify.png">DefaultSearch-SpotifyArtists</shortcut>
+        <shortcut label="Spotify Albums" type="571" icon="special://skin/extras/icons/spotify.png">DefaultSearch-SpotifyAlbums</shortcut>
+        <shortcut label="Spotify Songs" type="571" icon="special://skin/extras/icons/spotify.png">DefaultSearch-SpotifySongs</shortcut>
+        <shortcut label="Spotify Playlists" type="571" icon="special://skin/extras/icons/spotify.png">DefaultSearch-SpotifyPlaylists</shortcut>
+    </customsearchdefaultitems-groupings>
 
     <!-- Hub Grouping -->
     <customhub-groupings>

@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
 
+    <variable name="Label_SmallLandscapeWidget_Sublabel">
+        <value condition="!String.IsEmpty(ListItem.TvShowTitle) + !String.IsEqual(ListItem.Label,ListItem.TvShowTitle)">$INFO[ListItem.TvShowTitle]</value>
+        <value condition="!String.IsEmpty(ListItem.Studio) + [String.IsEqual(ListItem.DBType,video) | [String.IsEmpty(ListItem.DBType) + String.IsEmpty(ListItem.Genre)]]">$INFO[ListItem.Studio]</value>
+        <value condition="!String.IsEmpty(ListItem.Artist) + !String.IsEqual(ListItem.Label,ListItem.Artist)">$INFO[ListItem.Artist]</value>
+        <value>$INFO[ListItem.Genre]</value>
+    </variable>
+
+    <variable name="Label_SmallLandscapeWidget_Sublabel2">
+        <value condition="!String.IsEmpty(ListItem.Rating)">$INFO[ListItem.Rating]</value>
+        <value>$INFO[ListItem.Premiered]</value>
+    </variable>
+
     <variable name="Label_Player_Plot">
         <value condition="!String.IsEmpty(VideoPlayer.Plot)">$INFO[VideoPlayer.Plot]</value>
         <value condition="!String.IsEmpty(Window(Home).Property(SkinHelper.Player.Plot))">$INFO[Window(Home).Property(SkinHelper.Player.Plot)]</value>

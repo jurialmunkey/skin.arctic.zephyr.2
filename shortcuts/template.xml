@@ -6,14 +6,66 @@
         </controls>
         <items insert="searchlist">
             <property name="label" tag="label" />
+
+            <property name="path" tag="property" attribute="name|list" value="DefaultSearch-Movies">videodb://movies/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22</property>
+            <property name="path2" tag="property" attribute="name|list" value="DefaultSearch-Movies">%22%5D%7D%5D%7D%2C%22type%22%3A%22movies%22%7D</property>
+
+            <property name="path" tag="property" attribute="name|list" value="DefaultSearch-TvShows">videodb://tvshows/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22</property>
+            <property name="path2" tag="property" attribute="name|list" value="DefaultSearch-TvShows">%22%5D%7D%5D%7D%2C%22type%22%3A%22tvshows%22%7D</property>
+
+            <property name="path" tag="property" attribute="name|list" value="DefaultSearch-Episodes">videodb://tvshows/titles/-1/-1/-1/-1/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22</property>
+            <property name="path2" tag="property" attribute="name|list" value="DefaultSearch-Episodes">%22%5D%7D%5D%7D%2C%22type%22%3A%22episodes%22%7D</property>
+
+            <property name="path" tag="property" attribute="name|list" value="DefaultSearch-Genres">videodb://movies/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22genre%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22</property>
+            <property name="path2" tag="property" attribute="name|list" value="DefaultSearch-Genres">%22%5D%7D%5D%7D%2C%22type%22%3A%22movies%22%7D</property>
+
+            <property name="path" tag="property" attribute="name|list" value="DefaultSearch-Year">videodb://movies/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22year%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22</property>
+            <property name="path2" tag="property" attribute="name|list" value="DefaultSearch-Year">%22%5D%7D%5D%7D%2C%22type%22%3A%22movies%22%7D</property>
+
+            <property name="path" tag="property" attribute="name|list" value="DefaultSearch-Studio">videodb://movies/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22studio%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22</property>
+            <property name="path2" tag="property" attribute="name|list" value="DefaultSearch-Studio">%22%5D%7D%5D%7D%2C%22type%22%3A%22movies%22%7D</property>
+
+            <property name="path" tag="property" attribute="name|list" value="DefaultSearch-Country">videodb://movies/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22country%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22</property>
+            <property name="path2" tag="property" attribute="name|list" value="DefaultSearch-Country">%22%5D%7D%5D%7D%2C%22type%22%3A%22movies%22%7D</property>
+
+            <property name="path" tag="property" attribute="name|list" value="DefaultSearch-Actor">videodb://movies/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22actor%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22</property>
+            <property name="path2" tag="property" attribute="name|list" value="DefaultSearch-Actor">%22%5D%7D%5D%7D%2C%22type%22%3A%22movies%22%7D</property>
+
+            <property name="path" tag="property" attribute="name|list" value="DefaultSearch-Director">videodb://movies/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22director%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22</property>
+            <property name="path2" tag="property" attribute="name|list" value="DefaultSearch-Director">%22%5D%7D%5D%7D%2C%22type%22%3A%22movies%22%7D</property>
+
+            <property name="path" tag="property" attribute="name|list" value="DefaultSearch-Albums">musicdb://albums/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22album%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22</property>
+            <property name="path2" tag="property" attribute="name|list" value="DefaultSearch-Albums">%22%5D%7D%5D%7D%2C%22type%22%3A%22albums%22%7D</property>
+
+            <property name="path" tag="property" attribute="name|list" value="DefaultSearch-Artists">musicdb://artists/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22artist%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22</property>
+            <property name="path2" tag="property" attribute="name|list" value="DefaultSearch-Artists">%22%5D%7D%5D%7D%2C%22type%22%3A%22artists%22%7D</property>
+
+            <property name="path" tag="property" attribute="name|list" value="DefaultSearch-MusicVideos">videodb://musicvideos/titles/?xsp=%7b%22order%22%3a%7b%22direction%22%3a%22ascending%22%2c%22ignorefolders%22%3a0%2c%22method%22%3a%22sorttitle%22%7d%2c%22rules%22%3a%7b%22and%22%3a%5b%7b%22field%22%3a%22title%22%2c%22operator%22%3a%22contains%22%2c%22value%22%3a%5b%22</property>
+            <property name="path2" tag="property" attribute="name|list" value="DefaultSearch-MusicVideos">%22%5d%7d%5d%7d%2c%22type%22%3a%22musicvideos%22%7d</property>
+
+            <property name="path" tag="property" attribute="name|list" value="DefaultSearch-MusicVideoArtists">videodb://musicvideos/titles/?xsp=%7b%22order%22%3a%7b%22direction%22%3a%22ascending%22%2c%22ignorefolders%22%3a0%2c%22method%22%3a%22sorttitle%22%7d%2c%22rules%22%3a%7b%22and%22%3a%5b%7b%22field%22%3a%22artist%22%2c%22operator%22%3a%22contains%22%2c%22value%22%3a%5b%22</property>
+            <property name="path2" tag="property" attribute="name|list" value="DefaultSearch-MusicVideoArtists">%22%5d%7d%5d%7d%2c%22type%22%3a%22musicvideos%22%7d</property>
+            <property name="path" tag="property" attribute="name|list" value="DefaultSearch-Youtube">plugin://plugin.video.youtube/search/?q=</property>
+            <property name="path2" tag="property" attribute="name|list" value="DefaultSearch-Youtube">&amp;search_type=notvalid</property>
+
+            <property name="path" tag="property" attribute="name|list" value="DefaultSearch-Addons">addons://search/</property>
+            <property name="path" tag="property" attribute="name|list" value="DefaultSearch-SpotifyArtists">plugin://plugin.audio.spotify/?action=search_artists&amp;artistid=</property>
+            <property name="path" tag="property" attribute="name|list" value="DefaultSearch-SpotifyAlbums">plugin://plugin.audio.spotify/?action=search_albums&amp;albumid=</property>
+            <property name="path" tag="property" attribute="name|list" value="DefaultSearch-SpotifySongs">plugin://plugin.audio.spotify/?action=search_albums&amp;songid=</property>
+            <property name="path" tag="property" attribute="name|list" value="DefaultSearch-SpotifyPlaylists">plugin://plugin.audio.spotify/?action=search_songs&amp;playlistid=</property>
+            <property name="path" tag="property" attribute="name|list" value="DefaultSearch-SpotifyPlaylists">plugin://plugin.audio.spotify/?action=search_playlists&amp;playlistid=</property>
             <property name="path" tag="property" attribute="name|list"/>
 
             <property name="itemwidth" tag="property" attribute="name|widgetAspect" value="Square">item_square_width</property>
-            <property name="itemwidth" tag="property" attribute="name|widgetAspect" value="Landscape">item_landscape_width</property>
+            <property name="itemwidth" tag="property" attribute="name|widgetAspect" value="Landscape">item_smalllandscape_width</property>
             <property name="itemwidth">item_poster_width</property>
 
+            <property name="labelinclude" tag="property" attribute="name|widgetAspect" value="Landscape">View_51_Wall_SmallLandscape_Home_Label</property>
+            <property name="iconheight" tag="property" attribute="name|widgetAspect" value="Landscape">item_smalllandscape_iconheight</property>
+            <property name="iconheight">item_icon_height</property>
+
             <property name="diffuse" tag="property" attribute="name|widgetAspect" value="Square">diffuse/square-wall.png</property>
-            <property name="diffuse" tag="property" attribute="name|widgetAspect" value="Landscape">diffuse/landscape-wall.png</property>
+            <property name="diffuse" tag="property" attribute="name|widgetAspect" value="Landscape">diffuse/landscape-small-wall.png</property>
             <property name="diffuse">diffuse/poster-wall.png</property>
 
             <property name="icon" tag="property" attribute="name|widgetAspect" value="Landscape">$VAR[Image_Landscape]</property>
@@ -23,6 +75,14 @@
             <property name="aspectratio">scale</property>
 
             <property name="limit" tag="property" attribute="name|widgetLimit" />
+
+            <property name="target" tag="property" attribute="name|list" value="DefaultSearch-Albums">music</property>
+            <property name="target" tag="property" attribute="name|list" value="DefaultSearch-Artists">music</property>
+            <property name="target" tag="property" attribute="name|list" value="DefaultSearch-Addons">addons</property>
+            <property name="target" tag="property" attribute="name|list" value="DefaultSearch-SpotifyArtists">music</property>
+            <property name="target" tag="property" attribute="name|list" value="DefaultSearch-SpotifyAlbums">music</property>
+            <property name="target" tag="property" attribute="name|list" value="DefaultSearch-SpotifySongs">music</property>
+            <property name="target" tag="property" attribute="name|list" value="DefaultSearch-SpotifyPlaylists">music</property>
             <property name="target" tag="property" attribute="name|widgetTarget" />
             <property name="target">videos</property>
 
@@ -81,8 +141,11 @@
                     <param name="id" value="$PYTHON[int(id) + 5040]" />
                     <param name="groupid" value="$PYTHON[int(id) + 7540]" />
                     <param name="path" value="$SKINSHORTCUTS[path]" />
+                    <param name="path2" value="$SKINSHORTCUTS[path2]" />
                     <param name="label" value="$SKINSHORTCUTS[label]" />
                     <param name="itemwidth" value="$SKINSHORTCUTS[itemwidth]" />
+                    <param name="iconheight" value="$SKINSHORTCUTS[iconheight]" />
+                    <param name="labelinclude" value="$SKINSHORTCUTS[labelinclude]" />
                     <param name="diffuse" value="$SKINSHORTCUTS[diffuse]" />
                     <param name="limit" value="$SKINSHORTCUTS[limit]" />
                     <param name="target" value="$SKINSHORTCUTS[target]" />
@@ -120,7 +183,8 @@
                 <param name="target" value="$SKINSHORTCUTS[widgetTarget]" />
                 <param name="content" value="$SKINSHORTCUTS[widgetPath]" />
                 <param name="squarecondition" value="$PYTHON['true' if widgetAspect in 'Square' else 'false']" />
-                <param name="landscapecondition" value="$PYTHON['true' if widgetAspect in 'Landscape' else 'false']" />
+                <param name="smalllandscapecondition" value="$PYTHON['true' if widgetAspect in 'Landscape' else 'false']" />
+                <param name="landscapecondition" value="false" />
                 <param name="iconcondition" value="$PYTHON['true' if widgetAspect in 'Icon' else 'false']" />
                 <include content="Defs_AutoScroll">
                     <param name="condition" value="!ControlGroup(3000).HasFocus() + System.IdleTime(1) + !Skin.HasSetting(DisableAutoScrollWidgets)" />
@@ -226,7 +290,8 @@
                 <param name="sortby" value="$SKINSHORTCUTS[widgetSortby]" />
                 <param name="sortorder" value="$SKINSHORTCUTS[widgetSortorder]" />
                 <param name="squarecondition" value="$PYTHON['true' if widgetAspect in 'Square' else 'false']" />
-                <param name="landscapecondition" value="$PYTHON['true' if widgetAspect in 'Landscape' else 'false']" />
+                <param name="smalllandscapecondition" value="$PYTHON['true' if widgetAspect in 'Landscape' else 'false']" />
+                <param name="landscapecondition" value="false" />
                 <param name="iconcondition" value="$PYTHON['true' if widgetAspect in 'Icon' else 'false']" />
                 <onback>SetFocus($PYTHON[int(mainmenuid)]3101)</onback>
                 <onback>301</onback>

@@ -2,26 +2,30 @@
 <includes>
 
     <include name="Object_SearchList_Template">
-        <include content="View_Cast_Toplabel">
-            <param name="groupid" value="$PARAM[groupid]" />
-            <param name="id" value="$PARAM[id]" />
-            <param name="label" value="$PARAM[label]$INFO[Container($PARAM[id]).NumItems, (,)]" />
-            <visible>Control.IsVisible($PARAM[id])</visible>
-        </include>
-        <include content="View_51_Wall_Container">
-            <param name="controllayout" value="View_Cast" />
-            <param name="id" value="$PARAM[id]" />
-            <param name="height" value="item_cast_height" />
-            <param name="orientation" value="horizontal" />
-            <param name="labelinclude" value="Defs_Null" />
-            <param name="itemwidth" value="$PARAM[itemwidth]" />
-            <param name="diffuse" value="$PARAM[diffuse]" />
-            <param name="aspectratio" value="$PARAM[aspectratio]" />
-            <param name="icon" value="$PARAM[icon]" />
-            <param name="visible" value="Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating" />
-            <animation effect="fade" start="100" end="0" condition="!Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating">Conditional</animation>
-            <content target="$PARAM[target]" sortby="file" limit="$PARAM[limit]">$PARAM[path]$INFO[Skin.String(SearchTerm)]</content>
-        </include>
+        <param name="labelinclude" default="Defs_Null" />
+        <definition>
+            <include content="View_Cast_Toplabel">
+                <param name="groupid" value="$PARAM[groupid]" />
+                <param name="id" value="$PARAM[id]" />
+                <param name="label" value="$PARAM[label]$INFO[Container($PARAM[id]).NumItems, (,)]" />
+                <visible>Control.IsVisible($PARAM[id])</visible>
+            </include>
+            <include content="View_51_Wall_Container">
+                <param name="controllayout" value="View_Cast" />
+                <param name="id" value="$PARAM[id]" />
+                <param name="height" value="item_cast_height" />
+                <param name="orientation" value="horizontal" />
+                <param name="labelinclude" value="$PARAM[labelinclude]" />
+                <param name="itemwidth" value="$PARAM[itemwidth]" />
+                <param name="iconheight" value="$PARAM[iconheight]" />
+                <param name="diffuse" value="$PARAM[diffuse]" />
+                <param name="aspectratio" value="$PARAM[aspectratio]" />
+                <param name="icon" value="$PARAM[icon]" />
+                <param name="visible" value="Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating" />
+                <animation effect="fade" start="100" end="0" condition="!Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating">Conditional</animation>
+                <content target="$PARAM[target]" sortby="file" limit="$PARAM[limit]">$PARAM[path]$INFO[Skin.String(SearchTerm)]$PARAM[path2]</content>
+            </include>
+        </definition>
     </include>
 
     <include name="Object_Icon_Details">
@@ -144,9 +148,11 @@
         <param name="squarecondition" default="[!String.IsEmpty(Container(302).ListItem.Property(widgetPath)) + String.IsEqual(Container(302).ListItem.Property(widgetAspect),Square)] | [String.IsEmpty(Container(302).ListItem.Property(widgetPath)) + String.IsEqual(Container(301).ListItem.Property(widgetAspect),Square)]" />
         <param name="iconcondition" default="[!String.IsEmpty(Container(302).ListItem.Property(widgetPath)) + String.IsEqual(Container(302).ListItem.Property(widgetAspect),Icon)] | [String.IsEmpty(Container(302).ListItem.Property(widgetPath)) + String.IsEqual(Container(301).ListItem.Property(widgetAspect),Icon)]" />
         <param name="landscapecondition" default="[!String.IsEmpty(Container(302).ListItem.Property(widgetPath)) + String.IsEqual(Container(302).ListItem.Property(widgetAspect),Landscape)] | [String.IsEmpty(Container(302).ListItem.Property(widgetPath)) + String.IsEqual(Container(301).ListItem.Property(widgetAspect),Landscape)]" />
+        <param name="smalllandscapecondition" default="false" />
         <param name="height" default="item_row_height" />
         <param name="top" default="397.5" />
         <param name="landscapelabelinclude" default="View_51_Wall_Landscape_Home_Label" />
+        <param name="smalllandscapelabelinclude" default="View_51_Wall_SmallLandscape_Home_Label" />
         <param name="left" default="-15" />
         <param name="right" default="-25" />
         <param name="limit" default="25" />
@@ -207,6 +213,29 @@
                         <param name="icon" value="$VAR[Image_Poster]" />
                         <param name="id" value="$PARAM[id]" />
                         <param name="labelinclude" value="$PARAM[labelinclude]" />
+                    </include>
+                </focusedlayout>
+
+                <itemlayout width="item_smalllandscape_width" height="item_row_height" condition="$PARAM[smalllandscapecondition]">
+                    <include content="View_51_Wall_Itemlayout">
+                        <param name="iconheight" value="item_smalllandscape_iconheight" />
+                        <param name="selectbox" value="false" />
+                        <param name="icon" value="$VAR[Image_Landscape]" />
+                        <param name="diffuse" value="diffuse/landscape-small-wall.png" />
+                        <param name="labelinclude" value="$PARAM[smalllandscapelabelinclude]" />
+                        <param name="clearlogo" value="[!String.IsEmpty(ListItem.Art(clearlogo)) | !String.IsEmpty(ListItem.Art(tvshow.clearlogo))] + [[String.IsEmpty(ListItem.Art(landscape)) + String.IsEmpty(ListItem.Art(tvshow.landscape))] | [[!String.IsEmpty(ListItem.Art(tvshow.landscape)) | !String.IsEmpty(ListItem.Art(landscape))] + !Skin.HasSetting(LandscapeArt)] | [!String.IsEmpty(ListItem.Art(thumb)) + [String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,video)] + String.IsEmpty(ListItem.Property(airday))]]" />
+                        <param name="id" value="$PARAM[id]" />
+                    </include>
+                </itemlayout>
+                <focusedlayout width="item_smalllandscape_width" height="item_row_height" condition="$PARAM[smalllandscapecondition]">
+                    <include content="View_51_Wall_Itemlayout">
+                        <param name="selectbox" value="true" />
+                        <param name="iconheight" value="item_smalllandscape_iconheight" />
+                        <param name="icon" value="$VAR[Image_Landscape]" />
+                        <param name="diffuse" value="diffuse/landscape-small-wall.png" />
+                        <param name="labelinclude" value="$PARAM[smalllandscapelabelinclude]" />
+                        <param name="clearlogo" value="[!String.IsEmpty(ListItem.Art(clearlogo)) | !String.IsEmpty(ListItem.Art(tvshow.clearlogo))] + [[String.IsEmpty(ListItem.Art(landscape)) + String.IsEmpty(ListItem.Art(tvshow.landscape))] | [[!String.IsEmpty(ListItem.Art(tvshow.landscape)) | !String.IsEmpty(ListItem.Art(landscape))] + !Skin.HasSetting(LandscapeArt)] | [!String.IsEmpty(ListItem.Art(thumb)) + [String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,video)] + String.IsEmpty(ListItem.Property(airday))]]" />
+                        <param name="id" value="$PARAM[id]" />
                     </include>
                 </focusedlayout>
 
