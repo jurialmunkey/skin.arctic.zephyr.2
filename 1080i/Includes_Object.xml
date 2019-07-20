@@ -281,7 +281,27 @@
                         <param name="labelinclude" value="$PARAM[labelinclude]" />
                     </include>
                 </focusedlayout>
-
+                
+                <itemlayout width="item_poster_width" height="item_row_height" condition="![$PARAM[squarecondition] | $PARAM[iconcondition] | $PARAM[landscapecondition]]">
+                    <include content="View_51_Wall_Itemlayout">
+                        <param name="selectbox" value="false" />
+                        <param name="icon" value="$VAR[Image_Poster]" />
+                        <param name="id" value="$PARAM[id]" />
+                        <param name="labelinclude" value="$PARAM[labelinclude]" />
+                    </include>
+                </itemlayout>
+                <focusedlayout width="item_landscape_width" height="item_row_height" condition="$PARAM[landscapecondition]">
+                    <include content="View_51_Wall_Itemlayout">
+                        <param name="selectbox" value="true" />
+                        <param name="iconheight" value="item_icon_height" />
+                        <param name="icon" value="$VAR[Image_Landscape]" />
+                        <param name="diffuse" value="diffuse/landscape-wall.png" />
+                        <param name="labelinclude" value="$PARAM[landscapelabelinclude]" />
+                        <param name="clearlogo" value="[!String.IsEmpty(ListItem.Art(clearlogo)) | !String.IsEmpty(ListItem.Art(tvshow.clearlogo))] + [[String.IsEmpty(ListItem.Art(landscape)) + String.IsEmpty(ListItem.Art(tvshow.landscape))] | [[!String.IsEmpty(ListItem.Art(tvshow.landscape)) | !String.IsEmpty(ListItem.Art(landscape))] + !Skin.HasSetting(LandscapeArt)] | [!String.IsEmpty(ListItem.Art(thumb)) + [String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,video)] + String.IsEmpty(ListItem.Property(airday))]]" />
+                        <param name="id" value="$PARAM[id]" />
+                    </include>
+                </focusedlayout>
+                
                 <content target="$PARAM[target]" sortby="$PARAM[sortby]" sortorder="$PARAM[sortorder]" limit="$PARAM[limit]">$PARAM[content]</content>
             </control>
         </definition>
