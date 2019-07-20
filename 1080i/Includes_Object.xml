@@ -153,6 +153,7 @@
         <param name="top" default="397.5" />
         <param name="landscapelabelinclude" default="View_51_Wall_Landscape_Home_Label" />
         <param name="smalllandscapelabelinclude" default="View_51_Wall_SmallLandscape_Home_Label" />
+        <param name="squarelabelinclude" default="View_51_Wall_SmallSquare_Home_Label" />
         <param name="left" default="-15" />
         <param name="right" default="-25" />
         <param name="limit" default="25" />
@@ -168,51 +169,51 @@
                 <onfocus>SetProperty(ListItemHelper.WidgetContainerId,$PARAM[id],Home)</onfocus>
                 <preloaditems>2</preloaditems>
                 <orientation>horizontal</orientation>
-                <itemlayout width="item_square_width" height="item_row_height" condition="$PARAM[squarecondition]">
+                <!-- <itemlayout width="item_smallsquare_width" height="item_row_height" condition="$PARAM[squarecondition]">
                     <include content="View_51_Wall_Itemlayout">
                         <param name="aspectratio" value="keep" />
-                        <param name="iconheight" value="item_icon_height" />
+                        <param name="iconheight" value="item_smallsquare_iconheight" />
                         <param name="selectbox" value="false" />
                         <param name="diffuse" value="diffuse/square-wall.png" />
                         <param name="icon" value="$VAR[Image_Poster]" />
                         <param name="id" value="$PARAM[id]" />
-                        <param name="labelinclude" value="$PARAM[labelinclude]" />
+                        <param name="labelinclude" value="$PARAM[squarelabelinclude]" />
                     </include>
                 </itemlayout>
-                <focusedlayout width="item_square_width" height="item_row_height" condition="$PARAM[squarecondition]">
+                <focusedlayout width="item_smallsquare_width" height="item_row_height" condition="$PARAM[squarecondition]">
                     <include content="View_51_Wall_Itemlayout">
                         <param name="selectbox" value="true" />
                         <param name="aspectratio" value="keep" />
-                        <param name="iconheight" value="item_icon_height" />
+                        <param name="iconheight" value="item_smallsquare_iconheight" />
                         <param name="diffuse" value="diffuse/square-wall.png" />
                         <param name="icon" value="$VAR[Image_Poster]" />
                         <param name="id" value="$PARAM[id]" />
-                        <param name="labelinclude" value="$PARAM[labelinclude]" />
+                        <param name="labelinclude" value="$PARAM[squarelabelinclude]" />
                     </include>
-                </focusedlayout>
+                </focusedlayout> -->
 
-                <itemlayout width="item_square_width" height="item_row_height" condition="$PARAM[iconcondition]">
+                <itemlayout width="item_smallsquare_width" height="item_row_height" condition="$PARAM[iconcondition] | $PARAM[squarecondition]">
                     <include content="View_512_Wall_Itemlayout">
                         <param name="aspectratio" value="keep" />
-                        <param name="iconheight" value="item_icon_height" />
+                        <param name="iconheight" value="item_smallsquare_iconheight" />
                         <param name="bordersize" value="90" />
                         <param name="selectbox" value="false" />
                         <param name="diffuse" value="diffuse/square-wall.png" />
                         <param name="icon" value="$VAR[Image_Poster]" />
                         <param name="id" value="$PARAM[id]" />
-                        <param name="labelinclude" value="$PARAM[labelinclude]" />
+                        <param name="labelinclude" value="$PARAM[squarelabelinclude]" />
                     </include>
                 </itemlayout>
-                <focusedlayout width="item_square_width" height="item_row_height" condition="$PARAM[iconcondition]">
+                <focusedlayout width="item_smallsquare_width" height="item_row_height" condition="$PARAM[iconcondition] | $PARAM[squarecondition]">
                     <include content="View_512_Wall_Itemlayout">
                         <param name="selectbox" value="true" />
                         <param name="aspectratio" value="keep" />
-                        <param name="iconheight" value="item_icon_height" />
+                        <param name="iconheight" value="item_smallsquare_iconheight" />
                         <param name="bordersize" value="90" />
                         <param name="diffuse" value="diffuse/square-wall.png" />
                         <param name="icon" value="$VAR[Image_Poster]" />
                         <param name="id" value="$PARAM[id]" />
-                        <param name="labelinclude" value="$PARAM[labelinclude]" />
+                        <param name="labelinclude" value="$PARAM[squarelabelinclude]" />
                     </include>
                 </focusedlayout>
 
