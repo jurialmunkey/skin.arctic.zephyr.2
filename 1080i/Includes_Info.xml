@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
+
+    <variable name="Info_Similar">
+        <value condition="Container.Content(movies) + !String.IsEmpty(ListItem.IMDBNumber)">$INFO[ListItem.IMDBNumber,plugin://script.skin.helper.widgets/?action=similar&amp;mediatype=movies&amp;imdbid=,]</value>
+        <value condition="[Container.Content(episodes) | Container.Content(seasons) | Container.Content(tvshows)] + !String.IsEmpty(ListItem.IMDBNumber)">$INFO[ListItem.IMDBNumber,plugin://script.skin.helper.widgets/?action=similar&amp;mediatype=tvshows&amp;imdbid=,]</value>
+    </variable>
+
     <variable name="Info_Youtube">
         <value condition="!String.IsEmpty(ListItem.TvShowTitle) + System.HasAddon(plugin.video.youtube)">$INFO[ListItem.TvShowTitle,plugin://plugin.video.youtube/search/?q=,]</value>
         <value condition="!String.IsEmpty(ListItem.Artist) + System.HasAddon(plugin.video.youtube)">$INFO[ListItem.Artist,plugin://plugin.video.youtube/search/?q=,]</value>
@@ -565,8 +571,8 @@
                             <onback condition="Skin.HasSetting(DisableExtendedInfo)">SetFocus(50)</onback>
                             <onback>SetFocus(5000)</onback>
                             <onback>300</onback>
-                            <content limit="25" target="videos">$INFO[ListItem.IMDBNumber,plugin://script.skin.helper.widgets/?action=similar&amp;mediatype=movies&amp;imdbid=,]</content>
-                            <visible>Container.Content(movies)</visible>
+                            <content limit="25" target="videos">$VAR[Info_Similar]</content>
+                            <visible>!String.IsEmpty(ListItem.IMDBNumber)</visible>
                         </include>
                         <include content="View_Cast_Toplabel" condition="!Skin.HasSetting(DisableInfoListDirector)">
                             <param name="groupid" value="7503" />
