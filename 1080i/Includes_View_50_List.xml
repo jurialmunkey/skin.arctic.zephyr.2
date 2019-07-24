@@ -376,7 +376,6 @@
                     </control>
                     <include content="Object_Info_Line">
                         <param name="nextaired" value="false" />
-                        <param name="label" value="$INFO[ListItem.MPAA,[COLOR=main_fg_100],[/COLOR]  |  ]$VAR[Label_Premiered,[COLOR=main_fg_100],[/COLOR]  |  ]$VAR[Label_Duration,[COLOR=main_fg_100],[/COLOR]]" />
                     </include>
                     <control type="textbox">
                         <top>25</top>
@@ -952,7 +951,7 @@
                         <aligny>top</aligny>
                         <align>center</align>
                         <label>$PARAM[label2]</label>
-                        <textcolor>main_fg_100</textcolor>
+                        <textcolor>$VAR[ColorHighlight]</textcolor>
                         <font>font_small</font>
                     </control>
                 </control>

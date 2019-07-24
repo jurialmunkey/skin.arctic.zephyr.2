@@ -982,7 +982,7 @@
                     <param name="titleheight" value="$PARAM[titleheight]" />
                 </include>
                 <include content="Object_Info_Line">
-                    <param name="label" value="$INFO[Container($PARAM[id]).ListItem.MPAA,[COLOR=main_fg_100],[/COLOR]  |  ]$INFO[Container($PARAM[id]).ListItem.Year,[COLOR=main_fg_100],[/COLOR]]$INFO[Container($PARAM[id]).ListItem.Property(Album_Label),  |  [COLOR=main_fg_100],[/COLOR]]$INFO[Container($PARAM[id]).ListItem.ChannelName,[COLOR=main_fg_100],[/COLOR]]" />
+                    <param name="container" value="Container($PARAM[id])." />
                 </include>
                 <control type="group">
                     <top>-5</top>

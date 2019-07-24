@@ -51,7 +51,7 @@
                             </include>
                             <include content="View_50_Info">
                                 <param name="label" value="$INFO[ListItem.ChannelName]" />
-                                <param name="label2" value="$INFO[ListItem.ChannelNumberLabel,Channel ,]" />
+                                <param name="label2" value="$INFO[ListItem.ChannelNumberLabel,[COLOR=main_fg_100]Channel ,[/COLOR]]" />
                             </include>
                         </control>
 
@@ -67,8 +67,10 @@
                                 <include content="Object_Info_Title">
                                     <param name="label" value="$VAR[Label_MainTitle]" />
                                 </include>
-                                <include content="Object_Info_Line">
+                                <include content="Object_Info_Line_Label">
                                     <param name="label" value="$VAR[Label_SubTitle]" />
+                                    <param name="textcolor" value="$VAR[ColorHighlight]" />
+                                    <param name="divider" value="false" />
                                 </include>
                                 <include content="Object_Info_Plot">
                                     <param name="maxheight" value="360" />

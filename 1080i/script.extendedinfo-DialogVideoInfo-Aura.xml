@@ -75,10 +75,10 @@
                                 <include content="Object_Info_Title">
                                     <param name="label" value="$INFO[Window.Property(movie.title)]" />
                                 </include>
-                                <include content="Object_Info_Line">
-                                    <param name="hdsd" value="false" />
-                                    <param name="nextaired" value="false" />
+                                <include content="Object_Info_Line_Label">
                                     <param name="label" value="$INFO[Window.Property(movie.year),[COLOR=main_fg_100],[/COLOR]]$INFO[Window.Property(movie.mpaa),  |  [COLOR=main_fg_100],[/COLOR]]$INFO[Window.Property(movie.duration),  |  [COLOR=main_fg_100], $LOCALIZE[31102][/COLOR]]$INFO[Window.Property(movie.rating),  |  [COLOR=main_fg_100],[/COLOR]]" />
+                                    <param name="textcolor" value="$VAR[ColorHighlight]" />
+                                    <param name="divider" value="false" />
                                 </include>
                                 <include content="Object_Info_Plot">
                                     <param name="label" value="$INFO[Window.Property(movie.plot)]" />
