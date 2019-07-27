@@ -547,7 +547,7 @@
                             <onback condition="Skin.HasSetting(DisableExtendedInfo)">SetFocus(50)</onback>
                             <onback>SetFocus(5000)</onback>
                             <onback>300</onback>
-                            <content limit="25" target="videos">$INFO[ListItem.SetID,videodb://movies/sets/,/]</content>
+                            <content limit="25" target="videos" sortby="year" sortorder="ascending">$INFO[ListItem.SetID,videodb://movies/sets/,/]</content>
                             <visible>!Skin.HasSetting(DisableInfoListSets)</visible>
                             <visible>!String.IsEmpty(ListItem.SetID)</visible>
                         </include>

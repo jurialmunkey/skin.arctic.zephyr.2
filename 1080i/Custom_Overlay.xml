@@ -12,11 +12,6 @@
                 <texture colordiffuse="red">common/white.png</texture>
             </control>
             <control type="image">
-                <left>660</left>
-                <width>1</width>
-                <texture colordiffuse="red">common/white.png</texture>
-            </control>
-            <control type="image">
                 <right>view_pad</right>
                 <width>1</width>
                 <texture colordiffuse="red">common/white.png</texture>
@@ -32,12 +27,7 @@
                 <texture colordiffuse="red">common/white.png</texture>
             </control>
             <control type="image">
-                <bottom>view_pad</bottom>
-                <height>1</height>
-                <texture colordiffuse="red">common/white.png</texture>
-            </control>
-            <control type="image">
-                <bottom>100</bottom>
+                <bottom>60</bottom>
                 <height>1</height>
                 <texture colordiffuse="red">common/white.png</texture>
             </control>
@@ -52,11 +42,6 @@
                 <texture colordiffuse="red">common/white.png</texture>
             </control>
             <!-- <control type="image">
-                <bottom>view_top</bottom>
-                <height>1</height>
-                <texture colordiffuse="red">common/white.png</texture>
-            </control> -->
-            <control type="image">
                 <centertop>50%</centertop>
                 <height>1</height>
                 <texture colordiffuse="red">common/white.png</texture>
@@ -65,7 +50,7 @@
                 <centerleft>50%</centerleft>
                 <width>1</width>
                 <texture colordiffuse="red">common/white.png</texture>
-            </control>
+            </control> -->
         </control>
 
         <!-- Window/Dialog debug -->
@@ -985,14 +970,27 @@
 
         <control type="label">
             <left>15</left>
-            <posy>48r</posy>
+            <bottom>0</bottom>
             <right>15</right>
-            <height>21</height>
+            <height>60</height>
             <textcolor>FFFF0000</textcolor>
             <scroll>true</scroll>
             <font>font13</font>
             <align>left</align>
             <label>[COLOR=FF00FF00]$INFO[Container.FolderName,, - ][/COLOR]$INFO[Container.FolderPath]</label>
+            <visible>Skin.HasSetting(DebugInfo)</visible>
+        </control>
+
+        <control type="label">
+            <left>15</left>
+            <bottom>60</bottom>
+            <right>15</right>
+            <height>60</height>
+            <textcolor>FFFF0000</textcolor>
+            <scroll>true</scroll>
+            <font>font13</font>
+            <align>left</align>
+            <label>[COLOR=FFFF00FF]$INFO[ListItem.FolderPath][/COLOR]</label>
             <visible>Skin.HasSetting(DebugInfo)</visible>
         </control>
 
