@@ -403,11 +403,23 @@
         </definition>
     </include>
 
+    <include name="View_Widget_LandscapeLabel">
+        <include content="View_Cast_Label">
+            <param name="label2" value="$PARAM[label2]" />
+            <param name="bordersize" value="$PARAM[bordersize]" />
+            <param name="iconheight" value="$PARAM[iconheight]" />
+            <param name="diffuse" value="$PARAM[diffuse]" />
+            <param name="visible" value="String.IsEqual(ListItem.DBType,episode) + !String.IsEqual(ListItem.Label,ListItem.TvShowTitle)" />
+        </include>
+    </include>
+
     <include name="View_Cast_Label">
         <param name="label2" default="ListItem.Label2" />
         <param name="bordersize" default="15" />
+        <param name="visible" default="true" />
         <definition>
             <control type="group">
+                <visible>$PARAM[visible]</visible>
                 <height>$PARAM[iconheight]</height>
                 <control type="image">
                     <height>200</height>
@@ -425,7 +437,7 @@
                     <aligny>center</aligny>
                     <align>left</align>
                     <label>$INFO[ListItem.Label]</label>
-                    <visible>!String.IsEmpty($PARAM[label2])</visible>
+                    <visible>!String.IsEmpty($PARAM[label2]) + !String.IsEqual(ListItem.Label,$PARAM[label2])</visible>
                 </control>
                 <control type="label">
                     <left>25</left>
@@ -437,7 +449,7 @@
                     <aligny>center</aligny>
                     <align>left</align>
                     <info>$PARAM[label2]</info>
-                    <visible>!String.IsEmpty($PARAM[label2])</visible>
+                    <visible>!String.IsEmpty($PARAM[label2]) + !String.IsEqual(ListItem.Label,$PARAM[label2])</visible>
                 </control>
                 <control type="label">
                     <left>25</left>
@@ -449,7 +461,7 @@
                     <aligny>center</aligny>
                     <align>left</align>
                     <label>$INFO[ListItem.Label]</label>
-                    <visible>String.IsEmpty($PARAM[label2])</visible>
+                    <visible>String.IsEmpty($PARAM[label2]) | String.IsEqual(ListItem.Label,$PARAM[label2])</visible>
                 </control>
             </control>
         </definition>
