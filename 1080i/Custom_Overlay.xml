@@ -939,17 +939,26 @@
         </control>
 
         <!-- Control label -->
-
         <control type="label">
-            <posx>15r</posx>
-            <posy>15</posy>
+            <right>15</right>
+            <top>15</top>
             <width>780</width>
             <height>21</height>
             <textcolor>FF0000FF</textcolor>
-            
             <font>font13</font>
             <align>right</align>
             <label>$INFO[System.CurrentControl]</label>
+            <visible>Skin.HasSetting(DebugInfo)</visible>
+        </control>
+
+        <control type="label">
+            <right>15</right>
+            <posy>80</posy>
+            <height>110</height>
+            <textcolor>FF00FFFF</textcolor>
+            <font>font13</font>
+            <align>right</align>
+            <label>$INFO[Window(Home).Property(TheMovieDb.Helper.APIRequest)]</label>
             <visible>Skin.HasSetting(DebugInfo)</visible>
         </control>
 
