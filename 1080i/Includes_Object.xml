@@ -373,13 +373,24 @@
                 <control type="image">
                     <fadetime>100</fadetime>
                     <centertop>50%</centertop>
+                    <width>64</width>
+                    <height>56</height>
+                    <aspectratio align="left">keep</aspectratio>
+                    <texture colordiffuse="main_fg_90">flags/monochrome/other/HDR.png</texture>
+                    <visible>String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,video)</visible>
+                    <visible>String.Contains(ListItem.FileNameAndPath,HDR)</visible>
+                </control>
+                <control type="image" id="77881">
+                    <fadetime>100</fadetime>
+                    <centertop>50%</centertop>
                     <width>62</width>
                     <height>56</height>
                     <aspectratio align="left">keep</aspectratio>
                     <texture colordiffuse="main_fg_90">$VAR[Image_RipSource]</texture>
                     <visible>String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,video)</visible>
+                    <visible>!String.IsEmpty(Control.GetLabel(77881))</visible>
                 </control>
-                <control type="image">
+                <control type="image" id="77882">
                     <fadetime>100</fadetime>
                     <centertop>50%</centertop>
                     <width>64</width>
@@ -387,8 +398,9 @@
                     <aspectratio>keep</aspectratio>
                     <texture colordiffuse="main_fg_90">$INFO[ListItem.VideoResolution,flags/monochrome/resolution/,.png]</texture>
                     <visible>String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,video)</visible>
+                    <visible>!String.IsEmpty(Control.GetLabel(77882))</visible>
                 </control>
-                <control type="image">
+                <control type="image" id="77883">
                     <fadetime>100</fadetime>
                     <centertop>50%</centertop>
                     <width>71</width>
@@ -396,8 +408,9 @@
                     <aspectratio>keep</aspectratio>
                     <texture colordiffuse="main_fg_90">$INFO[ListItem.VideoCodec,flags/monochrome/source/,.png]</texture>
                     <visible>String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,video)</visible>
+                    <visible>!String.IsEmpty(Control.GetLabel(77883))</visible>
                 </control>
-                <control type="image">
+                <control type="image" id="77884">
                     <fadetime>100</fadetime>
                     <centertop>50%</centertop>
                     <width>71</width>
@@ -405,8 +418,9 @@
                     <aspectratio>keep</aspectratio>
                     <texture colordiffuse="main_fg_90">$INFO[ListItem.VideoAspect,flags/monochrome/aspectratio/,.png]</texture>
                     <visible>String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,video)</visible>
+                    <visible>!String.IsEmpty(Control.GetLabel(77884))</visible>
                 </control>
-                <control type="image">
+                <control type="image" id="77885">
                     <fadetime>100</fadetime>
                     <centertop>50%</centertop>
                     <width>71</width>
@@ -414,8 +428,9 @@
                     <aspectratio>keep</aspectratio>
                     <texture colordiffuse="main_fg_90">$VAR[Image_AudioCodec]</texture>
                     <visible>String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,video)</visible>
+                    <visible>!String.IsEmpty(Control.GetLabel(77885))</visible>
                 </control>
-                <control type="image">
+                <control type="image" id="77886">
                     <left>7</left>
                     <fadetime>100</fadetime>
                     <centertop>50%</centertop>
@@ -424,6 +439,7 @@
                     <aspectratio>keep</aspectratio>
                     <texture colordiffuse="main_fg_90">$INFO[ListItem.AudioChannels,flags/monochrome/channels/,.png]</texture>
                     <visible>String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,video)</visible>
+                    <visible>!String.IsEmpty(Control.GetLabel(77886))</visible>
                 </control>
             </control>
         </definition>
