@@ -2,37 +2,12 @@
 <window id="2003">
     <defaultcontrol always="true">300</defaultcontrol>
     <onload>ClearProperty(FilePath,home)</onload>
-    <onload>ClearProperty(InfoTrick.Active,Home)</onload>
-    <onload>SetProperty(InfoTrick.OriginalTitle,$INFO[ListItem.Title],Home)</onload>
     <onload>ClearProperty(Header_Left_Text)</onload>
     <onload>ClearProperty(Header_Center_Text)</onload>
-    <onunload>ClearProperty(FilePath,home)</onunload>
-
-    <onunload condition="!String.IsEmpty(Window(Home).Property(InfoTrick.9.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.Active))">ClearProperty(InfoTrick.9.Title,Home)</onunload>
-    <onunload condition="String.IsEmpty(Window(Home).Property(InfoTrick.9.Title)) + !String.IsEmpty(Window(Home).Property(InfoTrick.8.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.Active))">ClearProperty(InfoTrick.8.Title,Home)</onunload>
-    <onunload condition="String.IsEmpty(Window(Home).Property(InfoTrick.8.Title)) + !String.IsEmpty(Window(Home).Property(InfoTrick.7.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.Active))">ClearProperty(InfoTrick.7.Title,Home)</onunload>
-    <onunload condition="String.IsEmpty(Window(Home).Property(InfoTrick.7.Title)) + !String.IsEmpty(Window(Home).Property(InfoTrick.6.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.Active))">ClearProperty(InfoTrick.6.Title,Home)</onunload>
-    <onunload condition="String.IsEmpty(Window(Home).Property(InfoTrick.6.Title)) + !String.IsEmpty(Window(Home).Property(InfoTrick.5.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.Active))">ClearProperty(InfoTrick.5.Title,Home)</onunload>
-    <onunload condition="String.IsEmpty(Window(Home).Property(InfoTrick.5.Title)) + !String.IsEmpty(Window(Home).Property(InfoTrick.4.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.Active))">ClearProperty(InfoTrick.4.Title,Home)</onunload>
-    <onunload condition="String.IsEmpty(Window(Home).Property(InfoTrick.4.Title)) + !String.IsEmpty(Window(Home).Property(InfoTrick.3.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.Active))">ClearProperty(InfoTrick.3.Title,Home)</onunload>
-    <onunload condition="String.IsEmpty(Window(Home).Property(InfoTrick.3.Title)) + !String.IsEmpty(Window(Home).Property(InfoTrick.2.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.Active))">ClearProperty(InfoTrick.2.Title,Home)</onunload>
-    <onunload condition="String.IsEmpty(Window(Home).Property(InfoTrick.2.Title)) + !String.IsEmpty(Window(Home).Property(InfoTrick.1.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.Active))">ClearProperty(InfoTrick.1.Title,Home)</onunload>
-    <onunload condition="String.IsEmpty(Window(Home).Property(InfoTrick.1.Title)) + !String.IsEmpty(Window(Home).Property(InfoTrick.0.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.Active))">ClearProperty(InfoTrick.0.Title,Home)</onunload>
-
-    <onunload condition="!String.IsEmpty(Window(Home).Property(InfoTrick.9.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.Active))">ReplaceWindow(1137)</onunload>
-    <onunload condition="String.IsEmpty(Window(Home).Property(InfoTrick.9.Title)) + !String.IsEmpty(Window(Home).Property(InfoTrick.8.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.Active))">ReplaceWindow(1137)</onunload>
-    <onunload condition="String.IsEmpty(Window(Home).Property(InfoTrick.8.Title)) + !String.IsEmpty(Window(Home).Property(InfoTrick.7.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.Active))">ReplaceWindow(1137)</onunload>
-    <onunload condition="String.IsEmpty(Window(Home).Property(InfoTrick.7.Title)) + !String.IsEmpty(Window(Home).Property(InfoTrick.6.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.Active))">ReplaceWindow(1137)</onunload>
-    <onunload condition="String.IsEmpty(Window(Home).Property(InfoTrick.6.Title)) + !String.IsEmpty(Window(Home).Property(InfoTrick.5.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.Active))">ReplaceWindow(1137)</onunload>
-    <onunload condition="String.IsEmpty(Window(Home).Property(InfoTrick.5.Title)) + !String.IsEmpty(Window(Home).Property(InfoTrick.4.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.Active))">ReplaceWindow(1137)</onunload>
-    <onunload condition="String.IsEmpty(Window(Home).Property(InfoTrick.4.Title)) + !String.IsEmpty(Window(Home).Property(InfoTrick.3.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.Active))">ReplaceWindow(1137)</onunload>
-    <onunload condition="String.IsEmpty(Window(Home).Property(InfoTrick.3.Title)) + !String.IsEmpty(Window(Home).Property(InfoTrick.2.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.Active))">ReplaceWindow(1137)</onunload>
-    <onunload condition="String.IsEmpty(Window(Home).Property(InfoTrick.2.Title)) + !String.IsEmpty(Window(Home).Property(InfoTrick.1.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.Active))">ReplaceWindow(1137)</onunload>
-    <onunload condition="String.IsEmpty(Window(Home).Property(InfoTrick.1.Title)) + !String.IsEmpty(Window(Home).Property(InfoTrick.0.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.Active))">Action(Back)</onunload>
-    <onunload condition="String.IsEmpty(Window(Home).Property(InfoTrick.1.Title)) + !String.IsEmpty(Window(Home).Property(InfoTrick.0.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.Active))">Action(OSD)</onunload>
-
     <onload>ClearProperty(OSD_Menu,Home)</onload>
+    <onunload>ClearProperty(FilePath,home)</onunload>
     <onunload>ClearProperty(OSD_Menu,Home)</onunload>
+    <onunload condition="Window.IsVisible(1136)">RunScript(plugin.video.themoviedb.helper,del_path,call_id=1137)</onunload>
     <controls>
 
         <!-- Top Info -->
@@ -44,8 +19,8 @@
         </control>
 
         <!-- Main Group -->
-        <include condition="!String.IsEqual(ListItem.DBType,musicvideo)">Info_Video</include>
-        <include condition="String.IsEqual(ListItem.DBType,musicvideo)">Info_Music</include>
+        <include condition="!String.IsEqual(ListItem.DBType,musicvideo)">DialogVideoInfo</include>
+        <include condition="String.IsEqual(ListItem.DBType,musicvideo)">DialogMusicInfo</include>
 
         <control type="group">
             <include>Global_Overlay</include>

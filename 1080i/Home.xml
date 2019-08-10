@@ -2,21 +2,11 @@
 <!-- Foundation -->
 <window id="0">
     <defaultcontrol always="false">301</defaultcontrol>
+    <onload>RunScript(plugin.video.themoviedb.helper,reset_path)</onload>
     <onload condition="Skin.HasSetting(ThemeSwitcher) + System.Time(06:00,18:00) + !String.IsEqual(Skin.CurrentColourTheme,SKINDEFAULT)">XBMC.RunScript(script.skin.helper.service,action=setkodisetting,setting=lookandfeel.skincolors,value=SKINDEFAULT)</onload>
     <onload condition="Skin.HasSetting(ThemeSwitcher) + !System.Time(06:00,18:00) + !String.IsEqual(Skin.CurrentColourTheme,Dark)">XBMC.RunScript(script.skin.helper.service,action=setkodisetting,setting=lookandfeel.skincolors,value=Dark)</onload>
 
     <onload>SetProperty(ListItemHelper.WidgetContainerWindowName,home,home)</onload>
-
-    <onload>ClearProperty(InfoTrick.0.Title,Home)</onload>
-    <onload>ClearProperty(InfoTrick.1.Title,Home)</onload>
-    <onload>ClearProperty(InfoTrick.2.Title,Home)</onload>
-    <onload>ClearProperty(InfoTrick.3.Title,Home)</onload>
-    <onload>ClearProperty(InfoTrick.4.Title,Home)</onload>
-    <onload>ClearProperty(InfoTrick.5.Title,Home)</onload>
-    <onload>ClearProperty(InfoTrick.6.Title,Home)</onload>
-    <onload>ClearProperty(InfoTrick.7.Title,Home)</onload>
-    <onload>ClearProperty(InfoTrick.8.Title,Home)</onload>
-    <onload>ClearProperty(InfoTrick.9.Title,Home)</onload>
 
     <onunload condition="!Control.HasFocus(301) + [Window.Next(VideoFullScreen.xml) | Window.Next(MusicVisualisation.xml)]">SetFocus(301)</onunload>
     <onload condition="Window.Previous(VideoFullScreen.xml) | Window.Previous(MusicVisualisation.xml)">SetFocus(301)</onload>
