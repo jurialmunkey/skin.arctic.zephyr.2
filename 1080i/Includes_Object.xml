@@ -800,6 +800,7 @@
         <param name="nextaired" default="true" />
         <param name="textcolor" default="main_fg_100" />
         <param name="container" default="" />
+        <param name="uid" default="661" />
         <definition>
             <control type="grouplist">
                 <height>40</height>
@@ -815,86 +816,86 @@
                     <param name="textcolor" value="$PARAM[textcolor]" />
                     <param name="divider" value="false" />
                     <param name="fallback" value="Not Rated" />
-                    <param name="visible" value="![String.IsEqual(ListItem.DBType,artist) | String.IsEqual(ListItem.DBType,album) | String.IsEqual(ListItem.DBType,song)]" />
+                    <param name="visible" value="![String.IsEqual($PARAM[container]ListItem.DBType,artist) | String.IsEqual($PARAM[container]ListItem.DBType,album) | String.IsEqual($PARAM[container]ListItem.DBType,song)]" />
                 </include>
                 <include content="Object_Info_Line_Label">
                     <param name="label" value="$INFO[$PARAM[container]ListItem.Property(Artist_Genre)]" />
                     <param name="textcolor" value="$PARAM[textcolor]" />
                     <param name="divider" value="false" />
                     <param name="fallback" value="N/A" />
-                    <param name="visible" value="String.IsEqual(ListItem.DBType,artist)" />
+                    <param name="visible" value="String.IsEqual($PARAM[container]ListItem.DBType,artist)" />
                 </include>
                 <include content="Object_Info_Line_Label">
                     <param name="label" value="$INFO[$PARAM[container]ListItem.Year]" />
                     <param name="textcolor" value="$PARAM[textcolor]" />
                     <param name="divider" value="false" />
                     <param name="fallback" value="N/A" />
-                    <param name="visible" value="String.IsEqual(ListItem.DBType,album) | String.IsEqual(ListItem.DBType,song)" />
+                    <param name="visible" value="String.IsEqual($PARAM[container]ListItem.DBType,album) | String.IsEqual($PARAM[container]ListItem.DBType,song)" />
                 </include>
 
                 <!-- Further Items -->
                 <include content="Object_Info_Line_Label">
-                    <param name="id" value="66101" />
+                    <param name="id" value="$PARAM[uid]01" />
                     <param name="label" value="$INFO[$PARAM[container]ListItem.Premiered]" />
                     <param name="textcolor" value="$PARAM[textcolor]" />
                     <param name="visible" value="String.IsEqual($PARAM[container]ListItem.DBType,episode)" />
                 </include>
                 <include content="Object_Info_Line_Label">
-                    <param name="id" value="66102" />
+                    <param name="id" value="$PARAM[uid]02" />
                     <param name="label" value="$INFO[$PARAM[container]ListItem.Year]" />
                     <param name="textcolor" value="$PARAM[textcolor]" />
                     <param name="visible" value="![String.IsEqual($PARAM[container]ListItem.DBType,episode) | String.IsEqual($PARAM[container]ListItem.DBType,album) | String.IsEqual($PARAM[container]ListItem.DBType,song)]" />
                 </include>
                 <include content="Object_Info_Line_Label">
-                    <param name="id" value="66103" />
+                    <param name="id" value="$PARAM[uid]03" />
                     <param name="label" value="$INFO[$PARAM[container]ListItem.Property(WatchedEpisodes),$LOCALIZE[16102] , $LOCALIZE[20163] ]$INFO[$PARAM[container]ListItem.Property(TotalEpisodes),,]" />
                     <param name="textcolor" value="$PARAM[textcolor]" />
                     <param name="visible" value="String.IsEqual($PARAM[container]ListItem.DBType,tvshow) | String.IsEqual($PARAM[container]ListItem.DBType,season)" />
                 </include>
                 <include content="Object_Info_Line_Label">
-                    <param name="id" value="66104" />
+                    <param name="id" value="$PARAM[uid]04" />
                     <param name="label" value="$INFO[$PARAM[container]ListItem.Duration(h),, $LOCALIZE[31036] ]$INFO[$PARAM[container]ListItem.Duration(mm),, $LOCALIZE[31020]]" />
                     <param name="textcolor" value="$PARAM[textcolor]" />
                     <param name="visible" value="[String.IsEqual($PARAM[container]ListItem.DBType,movie) | String.IsEqual($PARAM[container]ListItem.DBType,episode)] + [!String.IsEmpty($PARAM[container]ListItem.Duration) + Integer.IsGreater($PARAM[container]ListItem.Duration(h),0)]" />
                 </include>
                 <include content="Object_Info_Line_Label">
-                    <param name="id" value="66105" />
+                    <param name="id" value="$PARAM[uid]05" />
                     <param name="label" value="$INFO[$PARAM[container]ListItem.Duration(mins),, $LOCALIZE[31020]]" />
                     <param name="textcolor" value="$PARAM[textcolor]" />
                     <param name="visible" value="[String.IsEqual($PARAM[container]ListItem.DBType,movie) | String.IsEqual($PARAM[container]ListItem.DBType,episode)] + [!String.IsEmpty($PARAM[container]ListItem.Duration) + !Integer.IsGreater($PARAM[container]ListItem.Duration(h),0)]" />
                 </include>
                 <include content="Object_Info_Line_Label">
-                    <param name="id" value="66106" />
+                    <param name="id" value="$PARAM[uid]06" />
                     <param name="label" value="$INFO[$PARAM[container]ListItem.EndTime,$LOCALIZE[31106],]" />
                     <param name="textcolor" value="$PARAM[textcolor]" />
                     <param name="visible" value="[String.IsEqual($PARAM[container]ListItem.DBType,movie) | String.IsEqual($PARAM[container]ListItem.DBType,episode)] + [!String.IsEmpty($PARAM[container]ListItem.EndTime) + !String.IsEqual($PARAM[container]ListItem.EndTime,System.Time)]" />
                 </include>
                 <include content="Object_Info_Line_Label">
-                    <param name="id" value="66107" />
+                    <param name="id" value="$PARAM[uid]07" />
                     <param name="label" value="$INFO[$PARAM[container]ListItem.Artist]" />
                     <param name="textcolor" value="$PARAM[textcolor]" />
                     <param name="visible" value="String.IsEqual($PARAM[container]ListItem.DBType,song)" />
                 </include>
                 <include content="Object_Info_Line_Label">
-                    <param name="id" value="66108" />
+                    <param name="id" value="$PARAM[uid]08" />
                     <param name="label" value="$INFO[$PARAM[container]ListItem.Album]" />
                     <param name="textcolor" value="$PARAM[textcolor]" />
                     <param name="visible" value="String.IsEqual($PARAM[container]ListItem.DBType,song)" />
                 </include>
                 <include content="Object_Info_Line_Label">
-                    <param name="id" value="66109" />
+                    <param name="id" value="$PARAM[uid]09" />
                     <param name="label" value="$INFO[$PARAM[container]ListItem.Property(Album_Label)]" />
                     <param name="textcolor" value="$PARAM[textcolor]" />
                     <param name="visible" value="String.IsEqual($PARAM[container]ListItem.DBType,album)" />
                 </include>
                 <include content="Object_Info_Line_Label">
-                    <param name="id" value="66110" />
+                    <param name="id" value="$PARAM[uid]10" />
                     <param name="label" value="$INFO[$PARAM[container]ListItem.Genre]" />
                     <param name="textcolor" value="$PARAM[textcolor]" />
                     <param name="visible" value="String.IsEqual($PARAM[container]ListItem.DBType,album)" />
                 </include>
                 <include content="Object_Info_Line_Label">
-                    <param name="id" value="66110" />
+                    <param name="id" value="$PARAM[uid]10" />
                     <param name="label" value="$INFO[Window(Home).Property(SkinHelper.ListItem.WatchedCount),, $LOCALIZE[20163] ]$INFO[Window(Home).Property(SkinHelper.ListItem.Count),, [LOWERCASE]$LOCALIZE[16102][/LOWERCASE]]" />
                     <param name="textcolor" value="$PARAM[textcolor]" />
                     <param name="visible" value="String.IsEqual($PARAM[container]ListItem.DBType,set)" />
@@ -2014,6 +2015,7 @@
                     <visible>$PARAM[imdb]</visible>
                     <visible>!Skin.HasSetting(Ratings.IMDB)</visible>
                     <visible>$PARAM[top250]</visible>
+                    <visible>!Skin.HasSetting(Ratings.Top250)</visible>
                 </control>
             </control>
         </definition>
