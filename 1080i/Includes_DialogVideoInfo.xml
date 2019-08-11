@@ -112,13 +112,14 @@
                         </include>
                         <!-- Sets -->
                         <include content="Info_Widget_Poster">
-                            <param name="includecondition" value="!Skin.HasSetting(DisableInfoListSets)" />
+                            <param name="includecondition" value="true" />
                             <param name="id" value="5001" />
                             <param name="groupid" value="7501" />
                             <param name="label" value="$INFO[ListItem.Set,$LOCALIZE[31057] ,]" />
                             <include>Defs_InfoList_OnClick</include>
                             <include>Defs_InfoList_OnBack</include>
                             <visible>!String.IsEmpty(ListItem.Set)</visible>
+                            <visible>!Skin.HasSetting(DisableInfoListSets)</visible>
                             <content limit="25" target="videos" sortby="year" sortorder="ascending">$VAR[Info_Sets]</content>
                         </include>
                         <!-- NextUp -->
