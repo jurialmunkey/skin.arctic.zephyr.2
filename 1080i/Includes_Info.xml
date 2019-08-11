@@ -189,7 +189,18 @@
                 <param name="groupid" value="8008" />
                 <param name="label" value="Play" />
                 <param name="icon" value="special://skin/extras/icons/play3.png" />
-                <param name="visible" value="Control.IsEnabled(8)" />
+                <param name="visible" value="Control.IsEnabled(8) + String.IsEmpty(ListItem.Property(tmdb_id))" />
+            </include>
+            <include content="Object_Info_Button">
+                <param name="id" value="8115" />
+                <param name="groupid" value="8015" />
+                <param name="label" value="Search" />
+                <param name="icon" value="special://skin/extras/icons/search.png" />
+                <param name="visible" value="!String.IsEmpty(ListItem.Property(tmdb_id))" />
+                <onclick>Dialog.Close(all,force)</onclick>
+                <onclick>Skin.Reset(SearchTerm)</onclick>
+                <onclick>Skin.SetString(SearchTerm, $INFO[ListItem.Title])</onclick>
+                <onclick>ActivateWindow(1138)</onclick>
             </include>
             <include content="Object_Info_Button">
                 <param name="id" value="11" />

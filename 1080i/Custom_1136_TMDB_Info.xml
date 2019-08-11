@@ -167,7 +167,7 @@
                             <param name="id" value="5006" />
                             <param name="groupid" value="7506" />
                             <param name="label" value="$INFO[Container(3100).ListItemAbsolute(5).Label]" />
-                            <onclick>ShowPicture($INFO[ListItem.Art(poster)])</onclick>
+                            <onclick>SetFocus(9506)</onclick>
                             <include>Defs_InfoList_OnBack</include>
                             <content limit="25" target="videos">$VAR[Info_Cast_List05]</content>
                         </include>
@@ -175,5 +175,22 @@
                 </control>
             </control>
         </control>
+
+        <control type="button" id="9506">
+            <include>Defs_Hidden_Button</include>
+            <onleft>Control.Move(5006,-1)</onleft>
+            <onright>Control.Move(5006,1)</onright>
+            <onback>5006</onback>
+        </control>
+        <control type="group">
+            <include>Animation_FadeInOut</include>
+            <include>Global_Overlay</include>
+            <include>Global_Overlay</include>
+            <visible>Control.HasFocus(9506)</visible>
+            <control type="image">
+                <aspectratio>keep</aspectratio>
+                <texture background="true">$INFO[Container(5006).ListItem.Art(poster)]</texture>
+            </control>
+        </control>        
     </controls>
 </window>
