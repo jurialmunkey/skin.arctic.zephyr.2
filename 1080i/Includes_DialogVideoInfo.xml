@@ -283,7 +283,16 @@
                             <visible>Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)</visible>
                         </include>
                         
-
+                        <!-- Posters -->
+                        <include content="Info_Widget_Poster">
+                            <param name="includecondition" value="!Skin.HasSetting(DisableInfoListPosters)" />
+                            <param name="id" value="5059" />
+                            <param name="groupid" value="7559" />
+                            <param name="label" value="Posters" />
+                            <include>Defs_InfoList_OnBack</include>
+                            <visible>Container.Content(movies) | Container.Content(tvshows)</visible>
+                            <content target="images">$VAR[Info_Posters]</content>
+                        </include>
                         
                     </control>
                 </control>
@@ -295,7 +304,8 @@
                     <onback condition="Skin.HasSetting(DisableExtendedInfo)">SetFocus(50)</onback>
                     <onback>SetFocus(5000)</onback>
                     <onback>300</onback>
-                    <include>Items_Info_Gallery</include>
+                    <include condition="String.IsEmpty(ListItem.Property(tmdb_id)) + [!String.IsEmpty(ListItem.Art(fanart1)) | !String.IsEmpty(ListItem.Art(discart))]">Items_Info_Gallery</include>
+                    <include condition="!String.IsEmpty(ListItem.Property(tmdb_id)) | [String.IsEmpty(ListItem.Art(fanart1)) + String.IsEmpty(ListItem.Art(discart))]">Info_Fanart_List</include>
                     <visible>Integer.IsGreater(Container(6000).NumItems,0) | Container(6000).IsUpdating</visible>
                 </include>
                 <control type="group"></control>

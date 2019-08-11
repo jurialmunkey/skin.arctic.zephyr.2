@@ -15,6 +15,16 @@
         <value condition="Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episode)">type=tv</value>
     </variable>
 
+    <variable name="Info_Fanart">
+        <value condition="[Container.Content(movies) | Container.Content(tvshows)] + !Skin.HasSetting(DisableExtendedInfo) + System.HasAddon(plugin.video.themoviedb.helper)">plugin://plugin.video.themoviedb.helper/?info=fanart&amp;$VAR[Info_Param_Type]&amp;$VAR[Info_Param_IMDB_or_QUERY]</value>
+    </variable>
+
+    <include name="Info_Fanart_List"><content target="images">$VAR[Info_Fanart]</content></include>
+
+    <variable name="Info_Posters">
+        <value condition="[Container.Content(movies) | Container.Content(tvshows)] + !Skin.HasSetting(DisableExtendedInfo) + System.HasAddon(plugin.video.themoviedb.helper)">plugin://plugin.video.themoviedb.helper/?info=posters&amp;$VAR[Info_Param_Type]&amp;$VAR[Info_Param_IMDB_or_QUERY]</value>
+    </variable>
+
     <variable name="Info_Sets">
         <value condition="Container.Content(movies) + !Skin.HasSetting(DisableExtendedInfo) + System.HasAddon(plugin.video.themoviedb.helper) + !String.IsEmpty(ListItem.Set)">plugin://plugin.video.themoviedb.helper/?info=collection&amp;type=movie&amp;query=$INFO[ListItem.Set]</value>
         <value condition="Container.Content(movies)">$INFO[ListItem.SetID,videodb://movies/sets/,/]</value>
