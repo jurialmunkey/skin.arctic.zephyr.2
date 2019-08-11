@@ -240,6 +240,17 @@
                             <visible>Container.Content(tvshows)</visible>
                             <content limit="25" target="videos">$INFO[ListItem.DBID,videodb://tvshows/titles/,/]</content>
                         </include>
+                        <!-- Crew -->
+                        <include content="Info_Widget_Poster">
+                            <param name="includecondition" value="!Skin.HasSetting(DisableInfoListCrew)" />
+                            <param name="id" value="5011" />
+                            <param name="groupid" value="7511" />
+                            <param name="label" value="Crew" />
+                            <param name="labelinclude" value="View_Cast_Job_Label" />
+                            <include>Defs_InfoList_OnClick</include>
+                            <include>Defs_InfoList_OnBack</include>
+                            <content limit="25" target="videos">$VAR[Info_CrewMembers]</content>
+                        </include>
                         <!-- Cast Stars In -->
                         <include content="Info_Widget_Poster">
                             <param name="includecondition" value="!Skin.HasSetting(DisableInfoListCastFeature)" />
