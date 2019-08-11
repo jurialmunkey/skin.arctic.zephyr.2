@@ -257,4 +257,28 @@
             <oninfo>Close</oninfo>
         </control>
     </include>
+
+    <include name="Info_ImageViewer">
+        <param name="listid" default="5006" />
+        <param name="buttonid" default="9506" />
+        <param name="art" default="Art(poster)" />
+        <definition>
+            <control type="button" id="$PARAM[buttonid]">
+                <include>Defs_Hidden_Button</include>
+                <onleft>Control.Move($PARAM[listid],-1)</onleft>
+                <onright>Control.Move($PARAM[listid],1)</onright>
+                <onback>$PARAM[listid]</onback>
+            </control>
+            <control type="group">
+                <include>Animation_FadeInOut</include>
+                <include>Global_Overlay</include>
+                <include>Global_Overlay</include>
+                <visible>Control.HasFocus($PARAM[buttonid])</visible>
+                <control type="image">
+                    <aspectratio>keep</aspectratio>
+                    <texture background="true">$INFO[Container($PARAM[listid]).ListItem.$PARAM[art]]</texture>
+                </control>
+            </control>
+        </definition>
+    </include>
 </includes>

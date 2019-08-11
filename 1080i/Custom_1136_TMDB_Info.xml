@@ -176,21 +176,6 @@
             </control>
         </control>
 
-        <control type="button" id="9506">
-            <include>Defs_Hidden_Button</include>
-            <onleft>Control.Move(5006,-1)</onleft>
-            <onright>Control.Move(5006,1)</onright>
-            <onback>5006</onback>
-        </control>
-        <control type="group">
-            <include>Animation_FadeInOut</include>
-            <include>Global_Overlay</include>
-            <include>Global_Overlay</include>
-            <visible>Control.HasFocus(9506)</visible>
-            <control type="image">
-                <aspectratio>keep</aspectratio>
-                <texture background="true">$INFO[Container(5006).ListItem.Art(poster)]</texture>
-            </control>
-        </control>        
+        <include>Info_ImageViewer</include>
     </controls>
 </window>

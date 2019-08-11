@@ -289,6 +289,7 @@
                             <param name="id" value="5059" />
                             <param name="groupid" value="7559" />
                             <param name="label" value="Posters" />
+                            <onclick>SetFocus(9559)</onclick>
                             <include>Defs_InfoList_OnBack</include>
                             <visible>Container.Content(movies) | Container.Content(tvshows)</visible>
                             <content target="images">$VAR[Info_Posters]</content>
@@ -336,6 +337,10 @@
             </include>
         </control>        
 
+        <include content="Info_ImageViewer">
+            <param name="listid" value="5059" />
+            <param name="buttonid" value="9559" />
+        </include>
         <include>Object_PlotOverlay</include>
     </include>
 </includes>
