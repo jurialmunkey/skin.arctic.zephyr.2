@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
 
+    <variable name="Image_Info_PlayButton">
+        <value condition="String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season)">special://skin/extras/icons/folder.png</value>
+        <value>special://skin/extras/icons/play3.png</value>
+    </variable>
+
     <variable name="Image_Home_Clearlogo">
         <value condition="!String.IsEmpty(Container(5600).ListItem.Art(tvshow.clearlogo))">$INFO[Container(5600).ListItem.Art(tvshow.clearlogo)]</value>
         <value condition="!String.IsEmpty(Container(5600).ListItem.Art(clearlogo))">$INFO[Container(5600).ListItem.Art(clearlogo)]</value>
