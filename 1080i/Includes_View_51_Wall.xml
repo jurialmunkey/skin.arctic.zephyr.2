@@ -70,75 +70,63 @@
     </include>
 
     <include name="View_51_Wall_SmallLandscape_Home_Label">
-        <control type="group">
-            <top>$PARAM[iconheight]</top>
-            <control type="label">
-                <left>15</left>
-                <right>15</right>
-                <font>font_statusbar</font>
-                <selectedcolor>main_fg_100</selectedcolor>
-                <textcolor>main_fg_100</textcolor>
-                <top>10</top>
-                <height>20</height>
-                <aligny>center</aligny>
-                <align>left</align>
-                <label>$INFO[ListItem.Label]</label>
+        <param name="textfade_end" default="100" />
+        <param name="textfade_start" default="100" />
+        <definition>
+            <control type="group">
+                <top>$PARAM[icononlyheight]</top>
+                <left>20</left>
+                <right>20</right>
+                <animation effect="fade" start="$PARAM[textfade_start]" end="$PARAM[textfade_end]" condition="Control.HasFocus($PARAM[id])">Conditional</animation>
+                <control type="label">
+                    <left>15</left>
+                    <right>15</right>
+                    <font>font_tiny_bold</font>
+                    <selectedcolor>panel_fg_100</selectedcolor>
+                    <textcolor>panel_fg_100</textcolor>
+                    <top>5</top>
+                    <height>20</height>
+                    <aligny>center</aligny>
+                    <align>center</align>
+                    <label>$INFO[ListItem.Label]</label>
+                </control>
+                <control type="label">
+                    <left>15</left>
+                    <right>15</right>
+                    <font>font_statusbar</font>
+                    <selectedcolor>panel_fg_70</selectedcolor>
+                    <textcolor>panel_fg_70</textcolor>
+                    <top>35</top>
+                    <height>20</height>
+                    <aligny>center</aligny>
+                    <align>center</align>
+                    <label>$VAR[Label_SmallLandscapeWidget_Sublabel]</label>
+                </control>
             </control>
-            <control type="label">
-                <left>15</left>
-                <right>15</right>
-                <font>font_statusbar</font>
-                <selectedcolor>main_fg_100</selectedcolor>
-                <textcolor>main_fg_100</textcolor>
-                <top>10</top>
-                <height>20</height>
-                <aligny>center</aligny>
-                <align>right</align>
-                <label>$VAR[Label_Duration]</label>
-            </control>
-            <control type="label">
-                <left>15</left>
-                <right>15</right>
-                <font>font_statusbar</font>
-                <selectedcolor>main_fg_70</selectedcolor>
-                <textcolor>main_fg_70</textcolor>
-                <top>40</top>
-                <height>20</height>
-                <aligny>center</aligny>
-                <align>left</align>
-                <label>$VAR[Label_SmallLandscapeWidget_Sublabel]</label>
-            </control>
-            <control type="label">
-                <left>15</left>
-                <right>15</right>
-                <font>font_statusbar</font>
-                <selectedcolor>main_fg_70</selectedcolor>
-                <textcolor>main_fg_70</textcolor>
-                <top>40</top>
-                <height>20</height>
-                <aligny>center</aligny>
-                <align>right</align>
-                <label>$VAR[Label_SmallLandscapeWidget_Sublabel2]</label>
-            </control>
-        </control>
+        </definition>
     </include>
 
     <include name="View_51_Wall_SmallSquare_Home_Label">
-        <control type="group">
-            <top>$PARAM[iconheight]</top>
-            <control type="label">
-                <left>15</left>
-                <right>15</right>
-                <font>font_statusbar</font>
-                <selectedcolor>main_fg_100</selectedcolor>
-                <textcolor>main_fg_100</textcolor>
-                <top>10</top>
-                <height>20</height>
-                <aligny>center</aligny>
-                <align>center</align>
-                <label>$INFO[ListItem.Label]</label>
+        <param name="textfade_end" default="100" />
+        <param name="textfade_start" default="100" />
+        <definition>
+            <control type="group">
+                <top>$PARAM[icononlyheight]</top>
+                <animation effect="fade" start="$PARAM[textfade_start]" end="$PARAM[textfade_end]" condition="Control.HasFocus($PARAM[id])">Conditional</animation>
+                <control type="label">
+                    <left>35</left>
+                    <right>45</right>
+                    <font>font_statusbar_bold</font>
+                    <selectedcolor>panel_fg_100</selectedcolor>
+                    <textcolor>panel_fg_100</textcolor>
+                    <top>5</top>
+                    <height>20</height>
+                    <aligny>center</aligny>
+                    <align>center</align>
+                    <label>$INFO[ListItem.Label]</label>
+                </control>
             </control>
-        </control>
+        </definition>
     </include>
 
     <include name="View_51_Wall_Circle">
@@ -173,6 +161,7 @@
         <param name="altid" default="999999" />
         <param name="icon" default="$VAR[Image_Poster]" />
         <param name="iconheight" default="item_icon_height" />
+        <param name="icononlyheight" default="100%" />
         <param name="labelinclude" default="View_51_Wall_Label" />
         <param name="aspectratio" default="scale" />
         <param name="clearlogo" default="false" />
@@ -193,14 +182,17 @@
                         <param name="diffuse" value="$PARAM[diffuse]" />
                     </include>
                     
-                    <include>Object_DefaultIcon</include>
+                    <control type="group">
+                        <height>$PARAM[icononlyheight]</height>
+                        <include>Object_DefaultIcon</include>
 
-                    <include content="Object_Poster">
-                        <param name="icon" value="$PARAM[icon]" />
-                        <param name="aspectratio" value="$PARAM[aspectratio]" />
-                        <param name="bordersize" value="$PARAM[bordersize]" />
-                        <param name="diffuse" value="$PARAM[diffuse]" />
-                    </include>
+                        <include content="Object_Poster">
+                            <param name="icon" value="$PARAM[icon]" />
+                            <param name="aspectratio" value="$PARAM[aspectratio]" />
+                            <param name="bordersize" value="$PARAM[bordersize]" />
+                            <param name="diffuse" value="$PARAM[diffuse]" />
+                        </include>
+                    </control>
 
                     <control type="image">
                         <bordersize>15</bordersize>
@@ -223,7 +215,11 @@
                     <param name="bordersize" value="$PARAM[bordersize]" />
                     <param name="diffuse" value="$PARAM[diffuse]" />
                     <param name="iconheight" value="$PARAM[iconheight]" />
+                    <param name="icononlyheight" value="$PARAM[icononlyheight]" />
                     <param name="label2" value="$PARAM[label2]" />
+                    <param name="textfade_end" value="$PARAM[textfade_end]" />
+                    <param name="textfade_start" value="$PARAM[textfade_start]" />
+                    <param name="id" value="$PARAM[id]" />
                 </include>
 
                 <control type="group">
@@ -258,6 +254,7 @@
     <include name="View_512_Wall_Itemlayout">
         <param name="icon" default="$INFO[ListItem.Icon]" />
         <param name="iconheight" default="item_icon_height" />
+        <param name="icononlyheight" default="100%" />
         <param name="labelinclude" default="View_512_Wall_Label" />
         <param name="aspectratio" default="scale" />
         <param name="diffuse" default="diffuse/poster-wall.png" /> <!-- FIX ME -->
@@ -269,76 +266,80 @@
                 <include content="Object_Geometric">
                     <param name="diffuse" value="$PARAM[diffuse]" />
                 </include>
-                <control type="image">
-                    <centertop>50%</centertop>
-                    <centerleft>50%</centerleft>
-                    <width>80</width>
-                    <height>80</height>
-                    <texture background="true" fallback="DefaultGenres.png">$VAR[Image_GenreIcons]</texture>
-                    <visible>String.IsEqual(ListItem.DBType,genre) | String.EndsWith(Container.FolderPath,Genres)</visible>
 
-                </control>
-                <control type="image">
-                    <bordersize>15</bordersize>
-                    <aspectratio>keep</aspectratio>
-                    <texture background="true" fallback="DefaultCountry.png" colordiffuse="panel_fg_30">$INFO[ListItem.Label,resource://resource.images.moviecountryicons.maps/,.png]</texture>
-                    <visible>String.IsEqual(ListItem.DBType,country)</visible>
-                </control>
-                <control type="image">
-                    <bordersize>30</bordersize>
-                    <aspectratio>keep</aspectratio>
-                    <texture background="true" fallback="DefaultStudios.png" colordiffuse="panel_fg_100">$INFO[ListItem.Label,resource://resource.images.studios.white/,.png]</texture>
-                    <visible>String.IsEqual(ListItem.DBType,studio)</visible>
-                </control>
-                <control type="image">
-                    <width>128</width>
-                    <height>128</height>
-                    <centertop>50%</centertop>
-                    <centerleft>50%</centerleft>
-                    <aspectratio>keep</aspectratio>
-                    <texture background="true">$INFO[ListItem.Icon]</texture>
-                    <visible>String.IsEmpty(ListItem.DBType) + !String.IsEmpty(ListItem.Icon) + String.StartsWith(ListItem.Icon,Default)</visible>
-                </control>
-                <control type="image">
-                    <bordersize>15</bordersize>
-                    <width>3015</width>
-                    <aspectratio scalediffuse="false" align="left">stretch</aspectratio>
-                    <texture background="true" diffuse="$PARAM[diffuse]-left.png">$INFO[ListItem.Icon]</texture>
-                    <visible>![String.IsEqual(ListItem.DBType,country) | String.IsEqual(ListItem.DBType,director) | String.IsEqual(ListItem.DBType,year) | String.IsEqual(ListItem.DBType,genre) | String.EndsWith(Container.FolderPath,Genres) | String.IsEqual(ListItem.DBType,studio) | [String.IsEmpty(ListItem.DBType) + !String.IsEmpty(ListItem.Icon) + String.StartsWith(ListItem.Icon,Default)]]</visible>
-                    <visible>$PARAM[stretchsides]</visible>
-                </control>
-                <control type="image">
-                    <bordersize>15</bordersize>
-                    <width>3015</width>
-                    <right>0</right>
-                    <aspectratio scalediffuse="false" align="right">stretch</aspectratio>
-                    <texture background="true" diffuse="$PARAM[diffuse]-right.png">$INFO[ListItem.Icon]</texture>
-                    <visible>![String.IsEqual(ListItem.DBType,country) | String.IsEqual(ListItem.DBType,director) | String.IsEqual(ListItem.DBType,year) | String.IsEqual(ListItem.DBType,genre) | String.EndsWith(Container.FolderPath,Genres) | String.IsEqual(ListItem.DBType,studio) | [String.IsEmpty(ListItem.DBType) + !String.IsEmpty(ListItem.Icon) + String.StartsWith(ListItem.Icon,Default)]]</visible>
-                    <visible>$PARAM[stretchsides]</visible>
-                </control>
-                <control type="image">
-                    <bordersize>15</bordersize>
-                    <aspectratio scalediffuse="false">keep</aspectratio>
-                    <texture background="true" diffuse="$PARAM[diffuse]">$INFO[ListItem.Icon]</texture>
-                    <visible>![String.IsEqual(ListItem.DBType,country) | String.IsEqual(ListItem.DBType,director) | String.IsEqual(ListItem.DBType,year) | String.IsEqual(ListItem.DBType,genre) | String.EndsWith(Container.FolderPath,Genres) | String.IsEqual(ListItem.DBType,studio) | [String.IsEmpty(ListItem.DBType) + !String.IsEmpty(ListItem.Icon) + String.StartsWith(ListItem.Icon,Default)]]</visible>
-                    <visible>!String.StartsWith(ListItem.FolderPath,pvr://)</visible>
-                </control>
-                <control type="image">
-                    <bordersize>60</bordersize>
-                    <aspectratio scalediffuse="false">keep</aspectratio>
-                    <texture background="true" diffuse="$PARAM[diffuse]">$INFO[ListItem.Icon]</texture>
-                    <visible>![String.IsEqual(ListItem.DBType,country) | String.IsEqual(ListItem.DBType,director) | String.IsEqual(ListItem.DBType,year) | String.IsEqual(ListItem.DBType,genre) | String.EndsWith(Container.FolderPath,Genres) | String.IsEqual(ListItem.DBType,studio) | [String.IsEmpty(ListItem.DBType) + !String.IsEmpty(ListItem.Icon) + String.StartsWith(ListItem.Icon,Default)]]</visible>
-                    <visible>String.StartsWith(ListItem.FolderPath,pvr://)</visible>
-                </control>
-                <control type="textbox">
-                    <left>50</left>
-                    <right>50</right>
-                    <align>center</align>
-                    <aligny>center</aligny>
-                    <font>font_medium_bold</font>
-                    <textcolor>panel_fg_100</textcolor>
-                    <label>$INFO[ListItem.Label]</label>
-                    <visible>String.IsEqual(ListItem.DBType,country) | String.IsEqual(ListItem.DBType,director) | String.IsEqual(ListItem.DBType,year) | [String.IsEmpty(ListItem.DBType) + String.IsEmpty(ListItem.Icon)]</visible>
+                <control type="group">
+                    <height>$PARAM[icononlyheight]</height>
+                    <control type="image">
+                        <centertop>50%</centertop>
+                        <centerleft>50%</centerleft>
+                        <width>80</width>
+                        <height>80</height>
+                        <texture background="true" fallback="DefaultGenres.png">$VAR[Image_GenreIcons]</texture>
+                        <visible>String.IsEqual(ListItem.DBType,genre) | String.EndsWith(Container.FolderPath,Genres)</visible>
+
+                    </control>
+                    <control type="image">
+                        <bordersize>15</bordersize>
+                        <aspectratio>keep</aspectratio>
+                        <texture background="true" fallback="DefaultCountry.png" colordiffuse="panel_fg_30">$INFO[ListItem.Label,resource://resource.images.moviecountryicons.maps/,.png]</texture>
+                        <visible>String.IsEqual(ListItem.DBType,country)</visible>
+                    </control>
+                    <control type="image">
+                        <bordersize>30</bordersize>
+                        <aspectratio>keep</aspectratio>
+                        <texture background="true" fallback="DefaultStudios.png" colordiffuse="panel_fg_100">$INFO[ListItem.Label,resource://resource.images.studios.white/,.png]</texture>
+                        <visible>String.IsEqual(ListItem.DBType,studio)</visible>
+                    </control>
+                    <control type="image">
+                        <width>128</width>
+                        <height>128</height>
+                        <centertop>50%</centertop>
+                        <centerleft>50%</centerleft>
+                        <aspectratio>keep</aspectratio>
+                        <texture background="true">$INFO[ListItem.Icon]</texture>
+                        <visible>String.IsEmpty(ListItem.DBType) + !String.IsEmpty(ListItem.Icon) + String.StartsWith(ListItem.Icon,Default)</visible>
+                    </control>
+                    <control type="image">
+                        <bordersize>15</bordersize>
+                        <width>3015</width>
+                        <aspectratio scalediffuse="false" align="left">stretch</aspectratio>
+                        <texture background="true" diffuse="$PARAM[diffuse]-left.png">$INFO[ListItem.Icon]</texture>
+                        <visible>![String.IsEqual(ListItem.DBType,country) | String.IsEqual(ListItem.DBType,director) | String.IsEqual(ListItem.DBType,year) | String.IsEqual(ListItem.DBType,genre) | String.EndsWith(Container.FolderPath,Genres) | String.IsEqual(ListItem.DBType,studio) | [String.IsEmpty(ListItem.DBType) + !String.IsEmpty(ListItem.Icon) + String.StartsWith(ListItem.Icon,Default)]]</visible>
+                        <visible>$PARAM[stretchsides]</visible>
+                    </control>
+                    <control type="image">
+                        <bordersize>15</bordersize>
+                        <width>3015</width>
+                        <right>0</right>
+                        <aspectratio scalediffuse="false" align="right">stretch</aspectratio>
+                        <texture background="true" diffuse="$PARAM[diffuse]-right.png">$INFO[ListItem.Icon]</texture>
+                        <visible>![String.IsEqual(ListItem.DBType,country) | String.IsEqual(ListItem.DBType,director) | String.IsEqual(ListItem.DBType,year) | String.IsEqual(ListItem.DBType,genre) | String.EndsWith(Container.FolderPath,Genres) | String.IsEqual(ListItem.DBType,studio) | [String.IsEmpty(ListItem.DBType) + !String.IsEmpty(ListItem.Icon) + String.StartsWith(ListItem.Icon,Default)]]</visible>
+                        <visible>$PARAM[stretchsides]</visible>
+                    </control>
+                    <control type="image">
+                        <bordersize>15</bordersize>
+                        <aspectratio scalediffuse="false">keep</aspectratio>
+                        <texture background="true" diffuse="$PARAM[diffuse]">$INFO[ListItem.Icon]</texture>
+                        <visible>![String.IsEqual(ListItem.DBType,country) | String.IsEqual(ListItem.DBType,director) | String.IsEqual(ListItem.DBType,year) | String.IsEqual(ListItem.DBType,genre) | String.EndsWith(Container.FolderPath,Genres) | String.IsEqual(ListItem.DBType,studio) | [String.IsEmpty(ListItem.DBType) + !String.IsEmpty(ListItem.Icon) + String.StartsWith(ListItem.Icon,Default)]]</visible>
+                        <visible>!String.StartsWith(ListItem.FolderPath,pvr://)</visible>
+                    </control>
+                    <control type="image">
+                        <bordersize>60</bordersize>
+                        <aspectratio scalediffuse="false">keep</aspectratio>
+                        <texture background="true" diffuse="$PARAM[diffuse]">$INFO[ListItem.Icon]</texture>
+                        <visible>![String.IsEqual(ListItem.DBType,country) | String.IsEqual(ListItem.DBType,director) | String.IsEqual(ListItem.DBType,year) | String.IsEqual(ListItem.DBType,genre) | String.EndsWith(Container.FolderPath,Genres) | String.IsEqual(ListItem.DBType,studio) | [String.IsEmpty(ListItem.DBType) + !String.IsEmpty(ListItem.Icon) + String.StartsWith(ListItem.Icon,Default)]]</visible>
+                        <visible>String.StartsWith(ListItem.FolderPath,pvr://)</visible>
+                    </control>
+                    <control type="textbox">
+                        <left>50</left>
+                        <right>50</right>
+                        <align>center</align>
+                        <aligny>center</aligny>
+                        <font>font_medium_bold</font>
+                        <textcolor>panel_fg_100</textcolor>
+                        <label>$INFO[ListItem.Label]</label>
+                        <visible>String.IsEqual(ListItem.DBType,country) | String.IsEqual(ListItem.DBType,director) | String.IsEqual(ListItem.DBType,year) | [String.IsEmpty(ListItem.DBType) + String.IsEmpty(ListItem.Icon)]</visible>
+                    </control>
                 </control>
                 <control type="group">
                     <visible>Control.HasFocus($PARAM[id])</visible>
@@ -347,6 +348,10 @@
             </control>
             <include content="$PARAM[labelinclude]">
                 <param name="iconheight" value="$PARAM[iconheight]" />
+                <param name="icononlyheight" value="$PARAM[icononlyheight]" />
+                <param name="textfade_end" value="$PARAM[textfade_end]" />
+                <param name="textfade_start" value="$PARAM[textfade_start]" />
+                <param name="id" value="$PARAM[id]" />
             </include>
         </definition>
     </include>

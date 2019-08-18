@@ -177,7 +177,9 @@
                 <itemlayout width="item_smallsquare_width" height="item_row_height" condition="$PARAM[smallsquarecondition]">
                     <include content="View_512_Wall_Itemlayout">
                         <param name="aspectratio" value="keep" />
-                        <param name="iconheight" value="item_smallsquare_iconheight" />
+                        <param name="icononlyheight" value="item_smallsquare_iconheight" />
+                        <param name="textfade_end" value="40" />
+                        <param name="textfade_start" value="40" />
                         <param name="bordersize" value="90" />
                         <param name="selectbox" value="false" />
                         <param name="diffuse" value="diffuse/square-wall.png" />
@@ -190,7 +192,8 @@
                     <include content="View_512_Wall_Itemlayout">
                         <param name="selectbox" value="true" />
                         <param name="aspectratio" value="keep" />
-                        <param name="iconheight" value="item_smallsquare_iconheight" />
+                        <param name="icononlyheight" value="item_smallsquare_iconheight" />
+                        <param name="textfade_start" value="40" />
                         <param name="bordersize" value="90" />
                         <param name="diffuse" value="diffuse/square-wall.png" />
                         <param name="icon" value="$VAR[Image_Poster]" />
@@ -224,23 +227,26 @@
 
                 <itemlayout width="item_smalllandscape_width" height="item_row_height" condition="$PARAM[smalllandscapecondition]">
                     <include content="View_51_Wall_Itemlayout">
-                        <param name="iconheight" value="item_smalllandscape_iconheight" />
+                        <param name="iconheight" value="item_icon_height" />
+                        <param name="icononlyheight" value="item_smalllandscape_iconheight" />
+                        <param name="textfade_end" value="40" />
+                        <param name="textfade_start" value="40" />
                         <param name="selectbox" value="false" />
                         <param name="icon" value="$VAR[Image_Landscape]" />
                         <param name="diffuse" value="diffuse/landscape-small-wall.png" />
                         <param name="labelinclude" value="$PARAM[smalllandscapelabelinclude]" />
-                        <param name="clearlogo" value="[!String.IsEmpty(ListItem.Art(clearlogo)) | !String.IsEmpty(ListItem.Art(tvshow.clearlogo))] + [[String.IsEmpty(ListItem.Art(landscape)) + String.IsEmpty(ListItem.Art(tvshow.landscape))] | [[!String.IsEmpty(ListItem.Art(tvshow.landscape)) | !String.IsEmpty(ListItem.Art(landscape))] + !Skin.HasSetting(LandscapeArt)] | [!String.IsEmpty(ListItem.Art(thumb)) + [String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,video)] + String.IsEmpty(ListItem.Property(airday))]]" />
                         <param name="id" value="$PARAM[id]" />
                     </include>
                 </itemlayout>
                 <focusedlayout width="item_smalllandscape_width" height="item_row_height" condition="$PARAM[smalllandscapecondition]">
                     <include content="View_51_Wall_Itemlayout">
                         <param name="selectbox" value="true" />
-                        <param name="iconheight" value="item_smalllandscape_iconheight" />
+                        <param name="iconheight" value="item_icon_height" />
+                        <param name="textfade_start" value="40" />
+                        <param name="icononlyheight" value="item_smalllandscape_iconheight" />
                         <param name="icon" value="$VAR[Image_Landscape]" />
                         <param name="diffuse" value="diffuse/landscape-small-wall.png" />
                         <param name="labelinclude" value="$PARAM[smalllandscapelabelinclude]" />
-                        <param name="clearlogo" value="[!String.IsEmpty(ListItem.Art(clearlogo)) | !String.IsEmpty(ListItem.Art(tvshow.clearlogo))] + [[String.IsEmpty(ListItem.Art(landscape)) + String.IsEmpty(ListItem.Art(tvshow.landscape))] | [[!String.IsEmpty(ListItem.Art(tvshow.landscape)) | !String.IsEmpty(ListItem.Art(landscape))] + !Skin.HasSetting(LandscapeArt)] | [!String.IsEmpty(ListItem.Art(thumb)) + [String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,video)] + String.IsEmpty(ListItem.Property(airday))]]" />
                         <param name="id" value="$PARAM[id]" />
                     </include>
                 </focusedlayout>
@@ -251,7 +257,7 @@
                         <param name="selectbox" value="false" />
                         <param name="icon" value="$VAR[Image_Landscape]" />
                         <param name="diffuse" value="diffuse/landscape-wall.png" />
-                        <param name="labelinclude" value="$PARAM[landscapelabelinclude]" />
+                        <param name="labelinclude" value="Defs_Null" />
                         <param name="clearlogo" value="[!String.IsEmpty(ListItem.Art(clearlogo)) | !String.IsEmpty(ListItem.Art(tvshow.clearlogo))] + [[String.IsEmpty(ListItem.Art(landscape)) + String.IsEmpty(ListItem.Art(tvshow.landscape))] | [[!String.IsEmpty(ListItem.Art(tvshow.landscape)) | !String.IsEmpty(ListItem.Art(landscape))] + !Skin.HasSetting(LandscapeArt)] | [!String.IsEmpty(ListItem.Art(thumb)) + [String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,video)] + String.IsEmpty(ListItem.Property(airday))]]" />
                         <param name="id" value="$PARAM[id]" />
                         <param name="label2" value="$PARAM[label2]" />
@@ -263,7 +269,7 @@
                         <param name="iconheight" value="item_icon_height" />
                         <param name="icon" value="$VAR[Image_Landscape]" />
                         <param name="diffuse" value="diffuse/landscape-wall.png" />
-                        <param name="labelinclude" value="$PARAM[landscapelabelinclude]" />
+                        <param name="labelinclude" value="Defs_Null" />
                         <param name="clearlogo" value="[!String.IsEmpty(ListItem.Art(clearlogo)) | !String.IsEmpty(ListItem.Art(tvshow.clearlogo))] + [[String.IsEmpty(ListItem.Art(landscape)) + String.IsEmpty(ListItem.Art(tvshow.landscape))] | [[!String.IsEmpty(ListItem.Art(tvshow.landscape)) | !String.IsEmpty(ListItem.Art(landscape))] + !Skin.HasSetting(LandscapeArt)] | [!String.IsEmpty(ListItem.Art(thumb)) + [String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,video)] + String.IsEmpty(ListItem.Property(airday))]]" />
                         <param name="id" value="$PARAM[id]" />
                         <param name="label2" value="$PARAM[label2]" />
