@@ -17,8 +17,7 @@
         </control>
 
         <control type="group">
-            <visible>!String.Contains(Window(Home).Property(TMDbHelper.Path.Current),type=person) | Control.HasFocus(9999)</visible>
-            <visible>!Window.IsVisible(DialogVideoInfo.xml)</visible>
+            <visible>[!String.Contains(Window(Home).Property(TMDbHelper.Path.Current),type=person) | Control.HasFocus(9999)] + !Window.IsVisible(DialogVideoInfo.xml)</visible>
             <include>Dialog_Busy</include>
         </control>
 

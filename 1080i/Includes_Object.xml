@@ -106,7 +106,9 @@
         </control>
 
         <control type="group">
+            <visible>String.IsEmpty(Window(Home).Property(FilePath))</visible>
             <visible>!Window.IsVisible(DialogBusy.xml) | !Skin.HasSetting(MinimalBusyLoader)</visible>
+            <visible>![[!String.Contains(Window(Home).Property(TMDbHelper.Path.Current),type=person) | Control.HasFocus(9999)] + !Window.IsVisible(DialogVideoInfo.xml) + Window.IsVisible(1136) + Skin.HasSetting(MinimalBusyLoader)]</visible>
             <visible>!Skin.HasSetting(DisableNowPlaying)</visible>
             <visible>![Window.IsVisible(SkinSettings.xml) | Window.IsVisible(SettingsCategory.xml) | Window.IsVisible(SettingsProfile.xml) | Window.IsVisible(SettingsSystemInfo.xml)]</visible>
             <visible>!Control.HasFocus(62)</visible>
@@ -114,6 +116,8 @@
             <visible>!Window.IsVisible(DialogExtendedProgressBar.xml)</visible>
             <visible>!Window.IsVisible(DialogNotification.xml)</visible>
             <visible>![$EXP[Exp_InfoVisible] + !String.IsEmpty(Window(Home).Property(FilePath))]</visible>
+            <include>Animation_FadeIn_Delay</include>
+            <include>Animation_FadeOut</include>
             <include content="Dialog_Notification_Group">
                 <param name="progress" value="Control.GetLabel(933)" />
                 <param name="main_id" value="9901" />

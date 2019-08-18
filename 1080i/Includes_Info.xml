@@ -245,6 +245,8 @@
                 <param name="label" value="Manage" />
                 <param name="icon" value="special://skin/extras/icons/settings.png" />
                 <param name="visible" value="Control.IsEnabled(6)" />
+                <onfocus>SetProperty(FilePath,1,Home)</onfocus>
+                <onunfocus>ClearProperty(FilePath,Home)</onunfocus>
                 <onclick>SetFocus(8111)</onclick>
             </include>
         </control>
