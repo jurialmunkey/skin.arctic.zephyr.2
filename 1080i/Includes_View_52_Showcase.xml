@@ -173,7 +173,7 @@
     <include name="View_52_Showcase_Aura_Layout">
         <focusposition>0</focusposition>
         <movement>6</movement>
-        <bottom>-30</bottom>
+        <bottom>-25</bottom>
         <right>-15</right>
         <left>-15</left>
         <preloaditems>2</preloaditems>
@@ -241,8 +241,9 @@
 
             <include content="View_51_Wall_Container" condition="Skin.HasSetting(UseAuraShowcase)">
                 <param name="id" value="52" />
-                <param name="height" value="item_row_height" />
+                <param name="height" value="item_cast_height" />
                 <param name="orientation" value="horizontal" />
+                <param name="labelinclude" value="Defs_Null" />
                 <param name="controltype" value="fixedlist" />
                 <param name="controllayout" value="View_52_Showcase_Aura_Layout" />
                 <param name="visible" value="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons)" />
@@ -290,6 +291,7 @@
                 <param name="id" value="520" />
                 <param name="itemwidth" value="item_square_width" />
                 <param name="height" value="item_row_height" />
+                <param name="labelinclude" value="Defs_Null" />
                 <param name="diffuse" value="diffuse/square-wall.png" />
                 <param name="orientation" value="horizontal" />
                 <param name="controltype" value="fixedlist" />
@@ -337,14 +339,14 @@
 
             <include content="View_51_Wall_Container" condition="Skin.HasSetting(UseAuraShowcase)">
                 <param name="id" value="521" />
-                <param name="height" value="423.75" />
+                <param name="height" value="item_cast_height" />
                 <param name="orientation" value="horizontal" />
                 <param name="controltype" value="fixedlist" />
                 <param name="controllayout" value="View_52_Showcase_Aura_Layout" />
-                <param name="labelinclude" value="View_51_Wall_Landscape_Label" />
+                <param name="labelinclude" value="Defs_Null" />
                 <param name="diffuse" value="diffuse/landscape-wall.png" />
                 <param name="itemwidth" value="item_landscape_width" />
-                <param name="itemheight" value="423.75" />
+                <param name="itemheight" value="item_cast_height" />
                 <param name="icon" value="$VAR[Image_Landscape]" />
                 <param name="clearlogo" value="[!String.IsEmpty(ListItem.Art(clearlogo)) | !String.IsEmpty(ListItem.Art(tvshow.clearlogo))] + [[String.IsEmpty(ListItem.Art(landscape)) + String.IsEmpty(ListItem.Art(tvshow.landscape))] | [[!String.IsEmpty(ListItem.Art(tvshow.landscape)) | !String.IsEmpty(ListItem.Art(landscape))] + !Skin.HasSetting(LandscapeArt)] | [!String.IsEmpty(ListItem.Art(thumb)) + [String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,video)] + String.IsEmpty(ListItem.Property(airday))]]" />
                 <param name="iconheight" value="item_icon_height" />
