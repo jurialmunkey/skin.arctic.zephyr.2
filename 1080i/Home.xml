@@ -67,10 +67,14 @@
             <content>$INFO[Container(301).ListItem.Property(backgroundPlaylist)]</content>
         </control>
 
-
-        <include condition="Skin.HasSetting(HomeMulti) + !Skin.HasSetting(HomeMultiHorizontal)">Home_Multi_Vertical</include>
-        <include condition="Skin.HasSetting(HomeMulti) + Skin.HasSetting(HomeMultiHorizontal)">Home_Multi_Horizontal</include>
-        <include condition="!Skin.HasSetting(HomeMulti)">Home_Simple</include>
+        <control type="group">
+            <visible allowhiddenfocus="true">!$EXP[Exp_ShowPlotOverlay]</visible>
+            <include>Animation_FadeInOut</include>
+            <include condition="Skin.HasSetting(HomeMulti) + !Skin.HasSetting(HomeMultiHorizontal)">Home_Multi_Vertical</include>
+            <include condition="Skin.HasSetting(HomeMulti) + Skin.HasSetting(HomeMultiHorizontal)">Home_Multi_Horizontal</include>
+            <include condition="!Skin.HasSetting(HomeMulti)">Home_Simple</include>
+        </control>
+        <include>Object_PlotOverlay</include>
 
         <!-- Splash -->
         <control type="image" description="Background">

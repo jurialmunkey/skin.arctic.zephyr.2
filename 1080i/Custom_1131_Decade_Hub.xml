@@ -9,7 +9,8 @@
         
         <control type="group">
             <include>View_Group</include>
-        
+            <visible allowhiddenfocus="true">!$EXP[Exp_ShowPlotOverlay]</visible>
+            <include>Animation_FadeInOut</include>
             <control type="panel" id="5600">
                 <ondown>5610</ondown>
                 <include content="View_TopItems">
@@ -239,8 +240,8 @@
                     <visible>Integer.IsEqual(Container(1900).NumItems,0) | String.IsEqual(Container(5600).ListItem.Label,1900s)</visible>
                 </include>
             </control>
-
-
         </control>
+
+        <include>Object_PlotOverlay</include>
     </controls>
 </window>

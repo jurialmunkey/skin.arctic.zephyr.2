@@ -8,8 +8,9 @@
         <include>Topbar</include>
 
         <control type="group">
+            <visible allowhiddenfocus="true">!$EXP[Exp_ShowPlotOverlay]</visible>
+            <include>Animation_FadeInOut</include>
             <include>View_Group</include>
-        
             <control type="panel" id="5600">
                 <ondown>5610</ondown>
                 <onclick>ActivateWindow(videos,$INFO[Container(5600).ListItem.DBID,videodb://movies/genres/,/],return)</onclick>
@@ -37,7 +38,8 @@
                 <param name="sortorder" value="descending" />
                 <onup>5600</onup>
             </include>
-
         </control>
+
+        <include>Object_PlotOverlay</include>
     </controls>
 </window>

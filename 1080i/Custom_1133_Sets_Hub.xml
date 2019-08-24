@@ -8,8 +8,9 @@
         <include>Topbar</include>
 
         <control type="group">
+            <visible allowhiddenfocus="true">!$EXP[Exp_ShowPlotOverlay]</visible>
+            <include>Animation_FadeInOut</include>
             <include>View_Group</include>
-        
             <control type="fixedlist" id="5600">
                 <focusposition>2</focusposition>
                 <movement>2</movement>
@@ -75,7 +76,8 @@
                 <movement>3</movement>
                 <animation effect="slide" end="-122.14" condition="Integer.IsEqual(Container(5610).NumItems,6) | Integer.IsEqual(Container(5610).NumItems,4) | Integer.IsEqual(Container(5610).NumItems,2)">Conditional</animation>
             </include>
-
         </control>
+
+        <include>Object_PlotOverlay</include>
     </controls>
 </window>

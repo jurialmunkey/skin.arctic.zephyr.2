@@ -8,6 +8,8 @@
         <include>Topbar</include>
 
         <control type="group">
+            <visible allowhiddenfocus="true">!$EXP[Exp_ShowPlotOverlay]</visible>
+            <include>Animation_FadeInOut</include>
             <include>View_Group</include>
         
             <control type="panel" id="5600">
@@ -59,5 +61,7 @@
             </control>
 
         </control>
+
+        <include>Object_PlotOverlay</include>
     </controls>
 </window>

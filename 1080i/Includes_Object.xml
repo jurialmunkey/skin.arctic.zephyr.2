@@ -362,7 +362,7 @@
             <control type="grouplist">
                 <visible>!Skin.HasSetting(DisableCodecs)</visible>
                 <include condition="$PARAM[infohide]">Defs_InfoDialog_Visible</include>
-                <visible>!$EXP[Exp_HideFurniture]</visible>
+                <visible>!$EXP[Exp_ShowPlotOverlay]</visible>
                 <visible>!Control.HasFocus(62)</visible>
                 <orientation>horizontal</orientation>
                 <align>right</align>
@@ -2648,7 +2648,7 @@
                     <right>view_pad</right>
                     <top>view_top</top>
                     <bottom>view_bottom</bottom>
-                    <visible>$EXP[Exp_PlotOverlay]</visible>
+                    <visible>$EXP[Exp_ShowPlotOverlay]</visible>
                     <include>Animation_FadeIn</include>
                     <control type="group">
                         <top>12</top>

@@ -19,7 +19,6 @@
         </control>
         <control type="videowindow">
             <visible>Player.HasVideo</visible>
-            <visible>String.IsEmpty(Window(Home).Property(TrailerPlaying))</visible>
             <include>Dimensions_Fullscreen</include>
         </control>
         <control type="image" description="Background">
@@ -32,7 +31,6 @@
     <include name="Global_Videowindow_Hidden">
         <control type="videowindow">
             <visible>Player.HasVideo</visible>
-            <visible>String.IsEmpty(Window(Home).Property(TrailerPlaying))</visible>
             <include>Dimensions_Fullscreen</include>
         </control>
     </include>
