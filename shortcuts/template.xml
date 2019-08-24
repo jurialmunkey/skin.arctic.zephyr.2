@@ -380,6 +380,7 @@
 
     <submenuOther include="spotlight-submenu" container="302">
         <property name="widgetAspect" tag="property" attribute="name|widgetAspect" />
+        <property name="widgetAspect">Poster</property>
         <property name="widgetTarget" tag="property" attribute="name|widgetTarget" />
         <property name="widgetName" tag="property" attribute="name|widgetName" />
         <property name="widgetPath" tag="property" attribute="name|widgetPath" />
@@ -388,8 +389,16 @@
         <property name="id" tag="property" attribute="name|id" />
         <controls>
             <include content="Object_Widget_Spotlight">
+                <param name="labelinclude" value="Defs_Null" />
+                <param name="landscapelabelinclude" value="View_Widget_LandscapeLabel" />
+                <param name="label2" value="ListItem.TvShowTitle" />
                 <param name="target" value="$SKINSHORTCUTS[widgetTarget]" />
                 <param name="content" value="$SKINSHORTCUTS[widgetPath]" />
+                <param name="smallsquarecondition" value="$PYTHON['true' if widgetAspect in 'Small Square' else 'false']" />
+                <param name="squarecondition" value="$PYTHON['true' if widgetAspect in 'Square' else 'false']" />
+                <param name="smalllandscapecondition" value="$PYTHON['true' if widgetAspect in 'Small Landscape' else 'false']" />
+                <param name="landscapecondition" value="$PYTHON['true' if widgetAspect in 'Landscape' else 'false']" />
+                <param name="iconcondition" value="$PYTHON['true' if widgetAspect in 'Icon' else 'false']" />
                 <visible>String.IsEqual(Container(301).ListItem.Property(submenuVisibility),num-$SKINSHORTCUTS[submenuVisibility]) | String.IsEqual(Container(301).ListItem.Property(submenuVisibility),$SKINSHORTCUTS[submenuVisibility])</visible>
                 <visible>String.IsEqual(Container(302).ListItem.Property(id),$SKINSHORTCUTS[id])</visible>
                 <onup>302</onup>
@@ -400,6 +409,7 @@
     </submenuOther>
     <other include="spotlight-mainmenu">
         <property name="widgetAspect" tag="property" attribute="name|widgetAspect" />
+        <property name="widgetAspect">Poster</property>
         <property name="widgetTarget" tag="property" attribute="name|widgetTarget" />
         <property name="widgetName" tag="property" attribute="name|widgetName" />
         <property name="widgetPath" tag="property" attribute="name|widgetPath" />
@@ -407,8 +417,16 @@
         <property name="widgetPath">$INFO[Skin.String(widgetPath)]</property>
         <controls>
             <include content="Object_Widget_Spotlight">
+                <param name="labelinclude" value="Defs_Null" />
+                <param name="landscapelabelinclude" value="View_Widget_LandscapeLabel" />
+                <param name="label2" value="ListItem.TvShowTitle" />
                 <param name="target" value="$SKINSHORTCUTS[widgetTarget]" />
                 <param name="content" value="$SKINSHORTCUTS[widgetPath]" />
+                <param name="smallsquarecondition" value="$PYTHON['true' if widgetAspect in 'Small Square' else 'false']" />
+                <param name="squarecondition" value="$PYTHON['true' if widgetAspect in 'Square' else 'false']" />
+                <param name="smalllandscapecondition" value="$PYTHON['true' if widgetAspect in 'Small Landscape' else 'false']" />
+                <param name="landscapecondition" value="$PYTHON['true' if widgetAspect in 'Landscape' else 'false']" />
+                <param name="iconcondition" value="$PYTHON['true' if widgetAspect in 'Icon' else 'false']" />
                 <skinshortcuts>visibility</skinshortcuts>
                 <onup>302</onup>
                 <onback condition="Window.IsVisible(Home)">301</onback>

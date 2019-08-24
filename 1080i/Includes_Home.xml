@@ -365,14 +365,24 @@
 
             <control type="group">
                 <animation effect="fade" start="100" end="0" delay="200" time="200" condition="!$PARAM[widgetvisibility]">Conditional</animation>
-                <control type="label">
-                    <bottom>402.5</bottom>
+                <!-- <control type="label">
+                    <bottom>357.5</bottom>
                     <height>40</height>
                     <align>center</align>
                     <font>font_byline</font>
                     <textcolor>main_fg_70</textcolor>
                     <label>$VAR[Label_WidgetName]</label>
                     <visible>$PARAM[widget]</visible>
+                </control> -->
+                <control type="group">
+                    <top>337.5</top>
+                    <left>-15</left>
+                    <include content="View_Cast_Toplabel">
+                        <param name="groupid" value="7510" />
+                        <param name="id" value="5610" />
+                        <param name="label" value="$VAR[Label_WidgetName]" />
+                        <visible>$PARAM[widget]</visible>
+                    </include>
                 </control>
                 <include condition="$PARAM[widget]">skinshortcuts-template-spotlight-mainmenu</include>
                 <include condition="$PARAM[widget]">skinshortcuts-template-spotlight-submenu</include>

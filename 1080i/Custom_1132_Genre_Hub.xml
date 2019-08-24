@@ -22,13 +22,23 @@
                 <content sortorder="ascending" sortby="label">videodb://movies/genres/</content>
             </control>
 
-            <control type="label">
+            <!-- <control type="label">
                 <bottom>402.5</bottom>
                 <height>40</height>
                 <align>center</align>
                 <font>font_byline</font>
                 <textcolor>main_fg_70</textcolor>
                 <label>$INFO[Container(5600).ListItem.Label] $INFO[Window.Property(Header_Left_Text)]</label>
+            </control> -->
+
+            <control type="group">
+                <top>337.5</top>
+                <left>-15</left>
+                <include content="View_Cast_Toplabel">
+                    <param name="groupid" value="7510" />
+                    <param name="id" value="5600" />
+                    <param name="label" value="$INFO[Container(5600).ListItem.Label] $INFO[Window.Property(Header_Left_Text)]" />
+                </include>
             </control>
 
             <include content="Object_Widget_Spotlight">
@@ -36,6 +46,9 @@
                 <param name="content" value="$INFO[Container(5600).ListItem.DBID,videodb://movies/genres/,]" />
                 <param name="sortby" value="year" />
                 <param name="sortorder" value="descending" />
+                <param name="labelinclude" value="Defs_Null" />
+                <param name="landscapelabelinclude" value="View_Widget_LandscapeLabel" />
+                <param name="label2" value="ListItem.TvShowTitle" />
                 <onup>5600</onup>
             </include>
         </control>
