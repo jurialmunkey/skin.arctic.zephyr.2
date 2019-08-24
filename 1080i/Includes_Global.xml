@@ -121,8 +121,6 @@
 
     <variable name="Global_Background_Image_Var">
         <value condition="Skin.HasSetting(NoFanart) | ListItem.IsParentFolder">$VAR[Global_Background_Image_NoFanart]</value>
-
-        <value condition="Skin.HasSetting(EnableBlur) + Skin.HasSetting(PosterBlur) + [!Window.IsVisible(Home) | Skin.HasSetting(HomeMulti)] + !Skin.HasSetting(OnlyBlurInfo) + !String.IsEmpty(Window.Property(thumb)) + [Window.IsVisible(script-script.extendedinfo-DialogInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml)]">$INFO[Window.Property(thumb)]</value>
         <value condition="Skin.HasSetting(EnableBlur) + Skin.HasSetting(PosterBlur) + [!Window.IsVisible(Home) | Skin.HasSetting(HomeMulti)] + !Skin.HasSetting(OnlyBlurInfo) + !String.IsEmpty(Container.ListItem.Art(season.poster))">$INFO[Container.ListItem.Art(season.poster)]</value>
         <value condition="Skin.HasSetting(EnableBlur) + Skin.HasSetting(PosterBlur) + [!Window.IsVisible(Home) | Skin.HasSetting(HomeMulti)] + !Skin.HasSetting(OnlyBlurInfo) + !String.IsEmpty(Container.ListItem.Art(poster))">$INFO[Container.ListItem.Art(poster)]</value>
         <value condition="Skin.HasSetting(EnableBlur) + Skin.HasSetting(PosterBlur) + [!Window.IsVisible(Home) | Skin.HasSetting(HomeMulti)] + !Skin.HasSetting(OnlyBlurInfo) + !String.IsEmpty(Container.ListItem.Art(tvshow.poster))">$INFO[Container.ListItem.Art(tvshow.poster)]</value>
@@ -130,11 +128,6 @@
 
         <!-- Next up -->
         <value condition="Window.IsVisible(script-nextup-notification-PostPlayInfo.xml)">$INFO[Window.Property(background)]</value>
-        <!-- Extended Info -->
-        <value condition="Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) + !String.IsEmpty(Window.Property(fanart_original))">$INFO[Window.Property(fanart_original)]</value>
-        <value condition="Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml) + !String.IsEmpty(Skin.String(fanart.fallback))">$INFO[Skin.String(fanart.fallback)]</value>
-        <value condition="Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml)">null.png</value>
-        <value condition="Window.IsVisible(script-script.extendedinfo-VideoList.xml) + !String.IsEmpty(ListItem.Property(Fanart_Image))">$INFO[ListItem.Property(Fanart_Image)]</value>
 
         <!-- Next Aired -->
         <value condition="[Window.IsVisible(script-NextAired-TVGuide.xml) | Window.IsVisible(script-NextAired-TVGuide2.xml)] + [Control.HasFocus(200) | Control.HasFocus(8200)] + !String.IsEmpty(Container(200).ListItem.Property(Fanart))">$INFO[Container(200).ListItem.Property(Fanart)]</value>
