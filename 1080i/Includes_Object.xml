@@ -3,6 +3,11 @@
 
     <include name="Object_SearchList_Template">
         <param name="labelinclude" default="Defs_Null" />
+        <param name="smallsquarecondition" default="false" />
+        <param name="squarecondition" default="false" />
+        <param name="smalllandscapecondition" default="false" />
+        <param name="landscapecondition" default="false" />
+        <param name="iconcondition" default="false" />
         <definition>
             <include content="View_Cast_Toplabel">
                 <param name="groupid" value="$PARAM[groupid]" />
@@ -10,7 +15,32 @@
                 <param name="label" value="$PARAM[label]$INFO[Container($PARAM[id]).NumItems, (,)]" />
                 <visible>Control.IsVisible($PARAM[id])</visible>
             </include>
-            <include content="View_51_Wall_Container">
+            <include content="Object_Widget_Spotlight">
+                <param name="controltype" value="list" />
+                <param name="id" value="$PARAM[id]" />
+                <param name="top" value="52" />
+                <param name="left" value="0" />
+                <param name="right" value="-30" />
+                <param name="height" value="item_cast_height" />
+                <param name="orientation" value="horizontal" />
+                <param name="labelinclude" value="Defs_Null" />
+                <param name="landscapelabelinclude" value="View_Widget_LandscapeLabel" />
+                <param name="label2" value="ListItem.TvShowTitle" />
+                <param name="target" value="$PARAM[target]" />
+                <param name="sortby" value="file" />
+                <param name="limit" value="$PARAM[limit]" />
+                <param name="content" value="$PARAM[path]$INFO[Skin.String(SearchTerm)]$PARAM[path2]" />
+                <param name="smallsquarecondition" value="$PARAM[smallsquarecondition]" />
+                <param name="squarecondition" value="$PARAM[squarecondition]" />
+                <param name="smalllandscapecondition" value="$PARAM[smalllandscapecondition]" />
+                <param name="landscapecondition" value="$PARAM[landscapecondition]" />
+                <param name="iconcondition" value="$PARAM[iconcondition]" />
+                <onback>301</onback>
+                <movement>6</movement>
+                <animation effect="fade" start="100" end="0" condition="!Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating">Conditional</animation>
+                <visible>Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating</visible>
+            </include>
+            <!-- <include content="View_51_Wall_Container">
                 <param name="controllayout" value="View_Cast" />
                 <param name="id" value="$PARAM[id]" />
                 <param name="height" value="item_cast_height" />
@@ -24,7 +54,7 @@
                 <param name="visible" value="Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating" />
                 <animation effect="fade" start="100" end="0" condition="!Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating">Conditional</animation>
                 <content target="$PARAM[target]" sortby="file" limit="$PARAM[limit]">$PARAM[path]$INFO[Skin.String(SearchTerm)]$PARAM[path2]</content>
-            </include>
+            </include> -->
         </definition>
     </include>
 
