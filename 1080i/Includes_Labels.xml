@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
 
+    <variable name="Label_Studio">
+        <value condition="!String.IsEmpty(ListItem.Studio)">$INFO[ListItem.Studio]</value>
+        <value condition="!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Studio))">$INFO[Window(Home).Property(SkinHelper.ListItem.Studio)]</value>
+    </variable>
+
     <variable name="Label_Info_PlayButton">
         <value condition="String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season)">$LOCALIZE[1024]</value>
         <value>$LOCALIZE[208]</value>
@@ -331,6 +336,11 @@
         <value condition="Container.Content(episodes)">$INFO[ListItem.Season,,x]$INFO[ListItem.Episode,,. ]$INFO[ListItem.Title]</value>
         <value condition="!ListItem.IsParentFolder">$INFO[ListItem.Label]</value>
         <value condition="!String.IsEmpty(Container(50).ListItem.Label) + !Container(50).ListItem.IsParentFolder">$INFO[Container(50).ListItem.Label]</value>
+    </variable>
+
+    <variable name="Label_SetName">
+        <value condition="!String.IsEmpty(ListItem.Set)">$INFO[ListItem.Set]</value>
+        <value condition="!String.IsEmpty(ListItem.Title)">$INFO[ListItem.Title]</value>
     </variable>
 
     <variable name="Label_Sets_Count">

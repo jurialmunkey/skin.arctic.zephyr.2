@@ -936,6 +936,17 @@
                 <visible>Window.IsVisible(VisualisationPresetList.xml)</visible>
             </control>
 
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FFFF0000</textcolor>
+                
+                <font>font13</font>
+                <align>left</align>
+                <label>Custom_1140_SetsInfo.xml</label>
+                <visible>Window.IsVisible(Custom_1140_SetsInfo.xml)</visible>
+            </control>
+
         </control>
 
         <!-- Control label -->
@@ -943,11 +954,11 @@
             <right>15</right>
             <top>15</top>
             <width>780</width>
-            <height>21</height>
+            <height>42</height>
             <textcolor>FF0000FF</textcolor>
             <font>font13</font>
             <align>right</align>
-            <label>$INFO[System.CurrentControl]</label>
+            <label>$INFO[System.CurrentControl][CR][COLOR=FF00FF00]$INFO[System.CurrentWindow][/COLOR]</label>
             <visible>Skin.HasSetting(DebugInfo)</visible>
         </control>
 

@@ -27,6 +27,7 @@
 
     <variable name="Info_Sets">
         <value condition="Container.Content(movies) + !Skin.HasSetting(DisableExtendedInfo) + System.HasAddon(plugin.video.themoviedb.helper) + !String.IsEmpty(ListItem.Set)">plugin://plugin.video.themoviedb.helper/?info=collection&amp;type=movie&amp;query=$INFO[ListItem.Set]</value>
+        <value condition="Container.Content(sets) + !Skin.HasSetting(DisableExtendedInfo) + System.HasAddon(plugin.video.themoviedb.helper) + !String.IsEmpty(ListItem.Title)">plugin://plugin.video.themoviedb.helper/?info=collection&amp;type=movie&amp;query=$INFO[ListItem.Title]</value>
         <value condition="Container.Content(movies)">$INFO[ListItem.SetID,videodb://movies/sets/,/]</value>
     </variable>
 
@@ -255,7 +256,7 @@
     <include name="Info_Button_300">
         <control type="button" id="300">
             <include>Defs_Hidden_Button</include>
-            <onfocus>8300</onfocus>
+            <onfocus>SetFocus(8300)</onfocus>
         </control>
         <control type="button" id="8300">
             <include>Defs_Hidden_Button</include>

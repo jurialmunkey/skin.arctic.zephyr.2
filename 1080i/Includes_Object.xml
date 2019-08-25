@@ -524,7 +524,7 @@
             <height>24</height>
             <width>24</width>
             <texture colordiffuse="main_fg_90">flags/studio.png</texture>
-            <visible>!String.IsEmpty(ListItem.Studio)</visible>
+            <visible>!String.IsEmpty(ListItem.Studio) | !String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Studio))</visible>
         </control>
         <control type="label">
             <left>-20</left>
@@ -534,9 +534,9 @@
             <width>auto</width>
             <font>font_mini</font>
             <textcolor>main_fg_70</textcolor>
-            <label>$INFO[ListItem.Studio]</label>
+            <label>$VAR[Label_Studio]</label>
             <height>32</height>
-            <visible>!String.IsEmpty(ListItem.Studio)</visible>
+            <visible>!String.IsEmpty(ListItem.Studio) | !String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Studio))</visible>
         </control>
         <control type="image">
             <top>5</top>
@@ -757,6 +757,30 @@
         </include>
     </include>
 
+    <include name="Object_InfoSets_Details">
+        <include content="Object_Info_TextPairs">
+            <param name="pad" value="32" />
+            <param name="name" value="Genre" />
+            <param name="label" value="Window(Home).Property(SkinHelper.ListItem.Genre)" />
+        </include>
+        <include content="Object_Info_TextPairs">
+            <param name="pad" value="14" />
+            <param name="name" value="Director" />
+            <param name="label" value="Window(Home).Property(SkinHelper.ListItem.Director)" />
+        </include>
+        <include content="Object_Info_TextPairs">
+            <param name="pad" value="14" />
+            <param name="name" value="Writer" />
+            <param name="label" value="Window(Home).Property(SkinHelper.ListItem.Writer)" />
+        </include>
+        <include content="Object_Info_TextPairs">
+            <param name="pad" value="14" />
+            <param name="height" default="90" />
+            <param name="name" value="Titles" />
+            <param name="label" value="Window(Home).Property(SkinHelper.ListItem.Titles)" />
+        </include>
+    </include>
+
     <include name="Object_Info_Ratings">
         <param name="top" default="-5" />
         <param name="imdbvotes" default="true" />
@@ -854,11 +878,25 @@
                 <!-- First Items -->
                 <!-- Set a fallback so divider is not first item if blank -->
                 <include content="Object_Info_Line_Label">
-                    <param name="label" value="$INFO[$PARAM[container]ListItem.MPAA]" />
+                    <param name="label" value="$INFO[$PARAM[container]ListItem.Year]" />
                     <param name="textcolor" value="$PARAM[textcolor]" />
                     <param name="divider" value="false" />
-                    <param name="fallback" value="Not Rated" />
-                    <param name="visible" value="![String.IsEqual($PARAM[container]ListItem.DBType,artist) | String.IsEqual($PARAM[container]ListItem.DBType,album) | String.IsEqual($PARAM[container]ListItem.DBType,song)]" />
+                    <param name="fallback" value="N/A" />
+                    <param name="visible" value="!String.IsEqual($PARAM[container]ListItem.DBType,set) + !String.IsEqual($PARAM[container]ListItem.DBType,artist) + !String.IsEqual($PARAM[container]ListItem.DBType,album) + !String.IsEqual($PARAM[container]ListItem.DBType,song) + [!String.IsEqual($PARAM[container]ListItem.DBType,episode) | String.IsEmpty($PARAM[container]ListItem.Premiered)]" />
+                </include>
+                <include content="Object_Info_Line_Label">
+                    <param name="label" value="$INFO[$PARAM[container]ListItem.Premiered]" />
+                    <param name="textcolor" value="$PARAM[textcolor]" />
+                    <param name="divider" value="false" />
+                    <param name="fallback" value="N/A" />
+                    <param name="visible" value="String.IsEqual($PARAM[container]ListItem.DBType,episode) + !String.IsEmpty($PARAM[container]ListItem.Premiered)" />
+                </include>
+                <include content="Object_Info_Line_Label">
+                    <param name="label" value="$INFO[Window(Home).Property(SkinHelper.ListItem.Year)]" />
+                    <param name="textcolor" value="$PARAM[textcolor]" />
+                    <param name="divider" value="false" />
+                    <param name="fallback" value="N/A" />
+                    <param name="visible" value="String.IsEqual($PARAM[container]ListItem.DBType,set)" />
                 </include>
                 <include content="Object_Info_Line_Label">
                     <param name="label" value="$INFO[$PARAM[container]ListItem.Property(Artist_Genre)]" />
@@ -868,7 +906,7 @@
                     <param name="visible" value="String.IsEqual($PARAM[container]ListItem.DBType,artist)" />
                 </include>
                 <include content="Object_Info_Line_Label">
-                    <param name="label" value="$INFO[$PARAM[container]ListItem.Year]" />
+                    <param name="label" value="$INFO[$PARAM[container]ListItem.Artist]" />
                     <param name="textcolor" value="$PARAM[textcolor]" />
                     <param name="divider" value="false" />
                     <param name="fallback" value="N/A" />
@@ -877,16 +915,10 @@
 
                 <!-- Further Items -->
                 <include content="Object_Info_Line_Label">
-                    <param name="id" value="$PARAM[uid]01" />
-                    <param name="label" value="$INFO[$PARAM[container]ListItem.Premiered]" />
-                    <param name="textcolor" value="$PARAM[textcolor]" />
-                    <param name="visible" value="String.IsEqual($PARAM[container]ListItem.DBType,episode)" />
-                </include>
-                <include content="Object_Info_Line_Label">
                     <param name="id" value="$PARAM[uid]02" />
-                    <param name="label" value="$INFO[$PARAM[container]ListItem.Year]" />
+                    <param name="label" value="$INFO[$PARAM[container]ListItem.MPAA]" />
                     <param name="textcolor" value="$PARAM[textcolor]" />
-                    <param name="visible" value="![String.IsEqual($PARAM[container]ListItem.DBType,episode) | String.IsEqual($PARAM[container]ListItem.DBType,album) | String.IsEqual($PARAM[container]ListItem.DBType,song)]" />
+                    <param name="visible" value="![String.IsEqual($PARAM[container]ListItem.DBType,artist) | String.IsEqual($PARAM[container]ListItem.DBType,album) | String.IsEqual($PARAM[container]ListItem.DBType,song)]" />
                 </include>
                 <include content="Object_Info_Line_Label">
                     <param name="id" value="$PARAM[uid]03" />
@@ -914,13 +946,13 @@
                 </include>
                 <include content="Object_Info_Line_Label">
                     <param name="id" value="$PARAM[uid]07" />
-                    <param name="label" value="$INFO[$PARAM[container]ListItem.Artist]" />
+                    <param name="label" value="$INFO[$PARAM[container]ListItem.Album]" />
                     <param name="textcolor" value="$PARAM[textcolor]" />
                     <param name="visible" value="String.IsEqual($PARAM[container]ListItem.DBType,song)" />
                 </include>
                 <include content="Object_Info_Line_Label">
                     <param name="id" value="$PARAM[uid]08" />
-                    <param name="label" value="$INFO[$PARAM[container]ListItem.Album]" />
+                    <param name="label" value="$INFO[$PARAM[container]ListItem.Year]" />
                     <param name="textcolor" value="$PARAM[textcolor]" />
                     <param name="visible" value="String.IsEqual($PARAM[container]ListItem.DBType,song)" />
                 </include>
@@ -1314,11 +1346,12 @@
 
     <include name="Object_Info_TextPairs">
         <param name="haspath" default="false" />
+        <param name="height" default="30" />
         <definition>
             <control type="group">
                 <visible>!String.IsEmpty($PARAM[label])</visible>
                 <top>$PARAM[pad]</top>
-                <height>30</height>
+                <height>$PARAM[height]</height>
                 <control type="label">
                     <left>0</left>
                     <width>148</width>
@@ -1327,7 +1360,7 @@
                     <font>font_tiny_bold</font>
                     <textcolor>main_fg_100</textcolor>
                     <label>$PARAM[name]</label>
-                    <height>30</height>
+                    <height>$PARAM[height]</height>
                 </control>
                 <control type="label">
                     <left>176</left>
@@ -1336,7 +1369,7 @@
                     <font>font_tiny</font>
                     <textcolor>main_fg_70</textcolor>
                     <label>$INFO[$PARAM[label]]$PARAM[label2]</label>
-                    <height>30</height>
+                    <height>$PARAM[height]</height>
                     <haspath>$PARAM[haspath]</haspath>
                 </control>
             </control>

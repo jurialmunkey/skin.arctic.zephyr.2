@@ -44,7 +44,8 @@
                                 <include>Object_Info_Ratings</include>
                                 <include>Object_Info_Plot</include>
                                 <include condition="!Skin.HasSetting(EnableLanguages)">Object_Info_Languages</include>
-                                <include>Object_Info_Details</include>
+                                <include condition="!Window.IsVisible(1140)">Object_Info_Details</include>
+                                <include condition="Window.IsVisible(1140)">Object_InfoSets_Details</include>
                             </control>
                             <include condition="!ListItem.IsCollection">Info_Button_Grouplist</include>
                             <include condition="ListItem.IsCollection">Info_Button_300</include>
@@ -115,12 +116,27 @@
                             <param name="includecondition" value="true" />
                             <param name="id" value="5001" />
                             <param name="groupid" value="7501" />
-                            <param name="label" value="$INFO[ListItem.Set,$LOCALIZE[31057] ,]" />
+                            <param name="label" value="$VAR[Label_SetName,$LOCALIZE[31057] ,]" />
                             <include>Defs_InfoList_OnClick</include>
                             <include>Defs_InfoList_OnBack</include>
-                            <visible>!String.IsEmpty(ListItem.Set)</visible>
+                            <visible>!String.IsEmpty(ListItem.Set) | Container.Content(sets)</visible>
                             <visible>!Skin.HasSetting(DisableInfoListSets)</visible>
                             <content limit="25" target="videos" sortby="year" sortorder="ascending">$VAR[Info_Sets]</content>
+                        </include>
+                        <!-- 1140 Set Cast -->
+                        <include content="Info_Widget_Poster">
+                            <param name="includecondition" value="Window.IsVisible(1140)" />
+                            <param name="id" value="5077" />
+                            <param name="groupid" value="7577" />
+                            <param name="labelinclude" value="View_Cast_Label" />
+                            <param name="label" value="$INFO[Container(5001).ListItem.Label,Cast of ,]" />
+                            <onclick condition="Skin.HasSetting(DisableExtendedInfo)">SetFocus(50)</onclick>
+                            <onclick>SetFocus(5000)</onclick>
+                            <onclick>SetFocus(300)</onclick>
+                            <onclick>RunScript(plugin.video.themoviedb.helper,add_path=plugin://plugin.video.themoviedb.helper/?info=details&amp;type=person&amp;query=$INFO[Container(5077).ListItem.Label],call_id=1137,prevent_del,delay=0.35)</onclick>
+                            <include>Defs_InfoList_OnBack</include>
+                            <visible>!String.IsEmpty(Container(5001).ListItem.Property(tmdb_id)) + !Container(5001).IsUpdating</visible>
+                            <content limit="25" target="videos">plugin://plugin.video.themoviedb.helper/?info=cast&amp;type=movie&amp;tmdb_id=$INFO[Container(5001).ListItem.Property(tmdb_id)]</content>
                         </include>
                         <!-- NextUp -->
                         <include content="Info_Widget_Poster">
