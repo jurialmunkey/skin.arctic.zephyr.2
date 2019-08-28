@@ -48,6 +48,9 @@
             <property name="path" tag="property" attribute="name|list" value="DefaultSearch-Youtube">plugin://plugin.video.youtube/search/?q=</property>
             <property name="path2" tag="property" attribute="name|list" value="DefaultSearch-Youtube">&amp;search_type=notvalid</property>
 
+            <property name="path" tag="property" attribute="name|list" value="DefaultSearch-Netflix">plugin://plugin.video.netflix/directory/search/search/</property>
+            <property name="path2" tag="property" attribute="name|list" value="DefaultSearch-Netflix">/</property>
+
             <property name="path" tag="property" attribute="name|list" value="DefaultSearch-Addons">addons://search/</property>
             <property name="path" tag="property" attribute="name|list" value="DefaultSearch-SpotifyArtists">plugin://plugin.audio.spotify/?action=search_artists&amp;artistid=</property>
             <property name="path" tag="property" attribute="name|list" value="DefaultSearch-SpotifyAlbums">plugin://plugin.audio.spotify/?action=search_albums&amp;albumid=</property>
@@ -55,30 +58,6 @@
             <property name="path" tag="property" attribute="name|list" value="DefaultSearch-SpotifyPlaylists">plugin://plugin.audio.spotify/?action=search_songs&amp;playlistid=</property>
             <property name="path" tag="property" attribute="name|list" value="DefaultSearch-SpotifyPlaylists">plugin://plugin.audio.spotify/?action=search_playlists&amp;playlistid=</property>
             <property name="path" tag="property" attribute="name|list"/>
-
-            <property name="itemwidth" tag="property" attribute="name|widgetAspect" value="Small Square">item_smallsquare_width</property>
-            <property name="itemwidth" tag="property" attribute="name|widgetAspect" value="Square">item_square_width</property>
-            <property name="itemwidth" tag="property" attribute="name|widgetAspect" value="Small Landscape">item_smalllandscape_width</property>
-            <property name="itemwidth" tag="property" attribute="name|widgetAspect" value="Landscape">item_landscape_width</property>
-            <property name="itemwidth">item_poster_width</property>
-
-            <property name="labelinclude" tag="property" attribute="name|widgetAspect" value="Small Landscape">View_51_Wall_SmallLandscape_Home_Label</property>
-            <property name="labelinclude" tag="property" attribute="name|widgetAspect" value="Small Square">View_51_Wall_SmallSquare_Home_Label</property>
-
-            <property name="iconheight" tag="property" attribute="name|widgetAspect" value="Small Landscape">item_smalllandscape_iconheight</property>
-            <property name="iconheight" tag="property" attribute="name|widgetAspect" value="Small Square">item_smallsquare_iconheight</property>
-            <property name="iconheight">item_icon_height</property>
-
-            <property name="diffuse" tag="property" attribute="name|widgetAspect" value="Square">diffuse/square-wall.png</property>
-            <property name="diffuse" tag="property" attribute="name|widgetAspect" value="Small Landscape">diffuse/landscape-small-wall.png</property>
-            <property name="diffuse" tag="property" attribute="name|widgetAspect" value="Landscape">diffuse/landscape-wall.png</property>
-            <property name="diffuse">diffuse/poster-wall.png</property>
-
-            <property name="icon" tag="property" attribute="name|widgetAspect" value="Landscape">$VAR[Image_Landscape]</property>
-            <property name="icon">$VAR[Image_Poster]</property>
-
-            <property name="aspectratio" tag="property" attribute="name|widgetAspect" value="Square">keep</property>
-            <property name="aspectratio">scale</property>
 
             <property name="limit" tag="property" attribute="name|widgetLimit" />
 
@@ -91,6 +70,9 @@
             <property name="target" tag="property" attribute="name|list" value="DefaultSearch-SpotifyPlaylists">music</property>
             <property name="target" tag="property" attribute="name|widgetTarget" />
             <property name="target">videos</property>
+
+            <property name="widgetAspect" tag="property" attribute="name|widgetAspect" />
+            <property name="widgetAspect">Poster</property>
 
             <property name="id" tag="property" attribute="name|id" value="$NUMBER[1]">1</property>
             <property name="id" tag="property" attribute="name|id" value="$NUMBER[2]">2</property>
@@ -149,14 +131,13 @@
                     <param name="path" value="$SKINSHORTCUTS[path]" />
                     <param name="path2" value="$SKINSHORTCUTS[path2]" />
                     <param name="label" value="$SKINSHORTCUTS[label]" />
-                    <param name="itemwidth" value="$SKINSHORTCUTS[itemwidth]" />
-                    <param name="iconheight" value="$SKINSHORTCUTS[iconheight]" />
-                    <param name="labelinclude" value="$SKINSHORTCUTS[labelinclude]" />
-                    <param name="diffuse" value="$SKINSHORTCUTS[diffuse]" />
                     <param name="limit" value="$SKINSHORTCUTS[limit]" />
                     <param name="target" value="$SKINSHORTCUTS[target]" />
-                    <param name="icon" value="$SKINSHORTCUTS[icon]" />
-                    <param name="aspectratio" value="$SKINSHORTCUTS[aspectratio]" />
+                    <param name="smallsquarecondition" value="$PYTHON['true' if widgetAspect in 'Small Square' else 'false']" />
+                    <param name="squarecondition" value="$PYTHON['true' if widgetAspect in 'Square' else 'false']" />
+                    <param name="smalllandscapecondition" value="$PYTHON['true' if widgetAspect in 'Small Landscape' else 'false']" />
+                    <param name="landscapecondition" value="$PYTHON['true' if widgetAspect in 'Landscape' else 'false']" />
+                    <param name="iconcondition" value="$PYTHON['true' if widgetAspect in 'Icon' else 'false']" />
                 </include>
             </controls>
         </items>
@@ -380,6 +361,7 @@
 
     <submenuOther include="spotlight-submenu" container="302">
         <property name="widgetAspect" tag="property" attribute="name|widgetAspect" />
+        <property name="widgetAspect">Poster</property>
         <property name="widgetTarget" tag="property" attribute="name|widgetTarget" />
         <property name="widgetName" tag="property" attribute="name|widgetName" />
         <property name="widgetPath" tag="property" attribute="name|widgetPath" />
@@ -388,8 +370,16 @@
         <property name="id" tag="property" attribute="name|id" />
         <controls>
             <include content="Object_Widget_Spotlight">
+                <param name="labelinclude" value="Defs_Null" />
+                <param name="landscapelabelinclude" value="View_Widget_LandscapeLabel" />
+                <param name="label2" value="ListItem.TvShowTitle" />
                 <param name="target" value="$SKINSHORTCUTS[widgetTarget]" />
                 <param name="content" value="$SKINSHORTCUTS[widgetPath]" />
+                <param name="smallsquarecondition" value="$PYTHON['true' if widgetAspect in 'Small Square' else 'false']" />
+                <param name="squarecondition" value="$PYTHON['true' if widgetAspect in 'Square' else 'false']" />
+                <param name="smalllandscapecondition" value="$PYTHON['true' if widgetAspect in 'Small Landscape' else 'false']" />
+                <param name="landscapecondition" value="$PYTHON['true' if widgetAspect in 'Landscape' else 'false']" />
+                <param name="iconcondition" value="$PYTHON['true' if widgetAspect in 'Icon' else 'false']" />
                 <visible>String.IsEqual(Container(301).ListItem.Property(submenuVisibility),num-$SKINSHORTCUTS[submenuVisibility]) | String.IsEqual(Container(301).ListItem.Property(submenuVisibility),$SKINSHORTCUTS[submenuVisibility])</visible>
                 <visible>String.IsEqual(Container(302).ListItem.Property(id),$SKINSHORTCUTS[id])</visible>
                 <onup>302</onup>
@@ -400,6 +390,7 @@
     </submenuOther>
     <other include="spotlight-mainmenu">
         <property name="widgetAspect" tag="property" attribute="name|widgetAspect" />
+        <property name="widgetAspect">Poster</property>
         <property name="widgetTarget" tag="property" attribute="name|widgetTarget" />
         <property name="widgetName" tag="property" attribute="name|widgetName" />
         <property name="widgetPath" tag="property" attribute="name|widgetPath" />
@@ -407,8 +398,16 @@
         <property name="widgetPath">$INFO[Skin.String(widgetPath)]</property>
         <controls>
             <include content="Object_Widget_Spotlight">
+                <param name="labelinclude" value="Defs_Null" />
+                <param name="landscapelabelinclude" value="View_Widget_LandscapeLabel" />
+                <param name="label2" value="ListItem.TvShowTitle" />
                 <param name="target" value="$SKINSHORTCUTS[widgetTarget]" />
                 <param name="content" value="$SKINSHORTCUTS[widgetPath]" />
+                <param name="smallsquarecondition" value="$PYTHON['true' if widgetAspect in 'Small Square' else 'false']" />
+                <param name="squarecondition" value="$PYTHON['true' if widgetAspect in 'Square' else 'false']" />
+                <param name="smalllandscapecondition" value="$PYTHON['true' if widgetAspect in 'Small Landscape' else 'false']" />
+                <param name="landscapecondition" value="$PYTHON['true' if widgetAspect in 'Landscape' else 'false']" />
+                <param name="iconcondition" value="$PYTHON['true' if widgetAspect in 'Icon' else 'false']" />
                 <skinshortcuts>visibility</skinshortcuts>
                 <onup>302</onup>
                 <onback condition="Window.IsVisible(Home)">301</onback>

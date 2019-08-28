@@ -267,7 +267,7 @@
                 <control type="group">
                     <top>30</top>
                     <height>view_bottom</height>
-                    <visible allowhiddenfocus="true">!$EXP[Exp_HideFurniture]</visible>
+                    <visible allowhiddenfocus="true">!$EXP[Exp_ShowPlotOverlay]</visible>
                     <include>Animation_FadeInOut</include>
                     <include content="Topbar_Right">
                         <param name="fgcolor" value="main_fg" />
@@ -365,14 +365,24 @@
 
             <control type="group">
                 <animation effect="fade" start="100" end="0" delay="200" time="200" condition="!$PARAM[widgetvisibility]">Conditional</animation>
-                <control type="label">
-                    <bottom>402.5</bottom>
+                <!-- <control type="label">
+                    <bottom>357.5</bottom>
                     <height>40</height>
                     <align>center</align>
                     <font>font_byline</font>
                     <textcolor>main_fg_70</textcolor>
                     <label>$VAR[Label_WidgetName]</label>
                     <visible>$PARAM[widget]</visible>
+                </control> -->
+                <control type="group">
+                    <top>337.5</top>
+                    <left>-15</left>
+                    <include content="View_Cast_Toplabel">
+                        <param name="groupid" value="7510" />
+                        <param name="id" value="5610" />
+                        <param name="label" value="$VAR[Label_WidgetName]" />
+                        <visible>$PARAM[widget]</visible>
+                    </include>
                 </control>
                 <include condition="$PARAM[widget]">skinshortcuts-template-spotlight-mainmenu</include>
                 <include condition="$PARAM[widget]">skinshortcuts-template-spotlight-submenu</include>
@@ -389,7 +399,7 @@
             <top>view_top</top>
             <include>Animation_FadeIn_Delay</include>
             <visible>ControlGroup(3000).HasFocus()</visible>
-            <visible>!$EXP[Exp_HideFurniture]</visible>
+            <visible>!$EXP[Exp_ShowPlotOverlay]</visible>
             <include>Defs_InfoDialog_Visible</include>
             <visible>!String.IsEqual(Container(9989).ListItemAbsolute(0).Property(list),Settings) + !String.IsEqual(Container(9989).ListItemAbsolute(0).Property(list),Weather)</visible>
             <include content="Object_Info_Arrows">
@@ -805,7 +815,7 @@
                 <top>30</top>
                 <control type="group">
                     <height>120</height>
-                    <visible allowhiddenfocus="true">!$EXP[Exp_HideFurniture]</visible>
+                    <visible allowhiddenfocus="true">!$EXP[Exp_ShowPlotOverlay]</visible>
                     <include>Animation_FadeInOut</include>
                     <control type="grouplist">
                         <visible>!Skin.HasSetting(DisableHeader)</visible>
@@ -878,7 +888,7 @@
             <include>Defs_InfoDialog_Visible</include>
             <control type="group">
                 <height>120</height>
-                <visible allowhiddenfocus="true">!$EXP[Exp_HideFurniture]</visible>
+                <visible allowhiddenfocus="true">!$EXP[Exp_ShowPlotOverlay]</visible>
                 <include>Animation_FadeInOut</include>
                 <include content="Topbar_Right">
                     <param name="fgcolor" value="main_fg" />
@@ -903,7 +913,7 @@
         </control>
         <control type="group">
             <top>view_top</top>
-            <visible>!$EXP[Exp_HideFurniture]</visible>
+            <visible>!$EXP[Exp_ShowPlotOverlay]</visible>
             <visible>!String.IsEqual(Container(9989).ListItemAbsolute(0).Property(list),Settings) + !String.IsEqual(Container(9989).ListItemAbsolute(0).Property(list),Weather)</visible>
             <include>Defs_InfoDialog_Visible</include>
             <include content="Object_Info_Arrows">

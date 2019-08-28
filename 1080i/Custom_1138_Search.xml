@@ -8,8 +8,9 @@
         <include>Global_Background</include>
         <include>Topbar</include>
         
-        
         <control type="group">
+            <visible allowhiddenfocus="true">!$EXP[Exp_ShowPlotOverlay]</visible>
+            <include>Animation_FadeInOut</include>
             <include>View_Group</include>
             <control type="grouplist" id="5600">
                 <left>-15</left>
@@ -28,5 +29,7 @@
 
             </control>
         </control>
+
+        <include>Object_PlotOverlay</include>
     </controls>
 </window>
