@@ -73,21 +73,6 @@
                 <animation effect="fade" start="100" end="0" condition="!Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating">Conditional</animation>
                 <visible>Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating</visible>
             </include>
-            <!-- <include content="View_51_Wall_Container">
-                <param name="controllayout" value="View_Cast" />
-                <param name="id" value="$PARAM[id]" />
-                <param name="height" value="item_cast_height" />
-                <param name="orientation" value="horizontal" />
-                <param name="labelinclude" value="$PARAM[labelinclude]" />
-                <param name="itemwidth" value="$PARAM[itemwidth]" />
-                <param name="iconheight" value="$PARAM[iconheight]" />
-                <param name="diffuse" value="$PARAM[diffuse]" />
-                <param name="aspectratio" value="$PARAM[aspectratio]" />
-                <param name="icon" value="$PARAM[icon]" />
-                <param name="visible" value="Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating" />
-                <animation effect="fade" start="100" end="0" condition="!Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating">Conditional</animation>
-                <content target="$PARAM[target]" sortby="file" limit="$PARAM[limit]">$PARAM[path]$INFO[Skin.String(SearchTerm)]$PARAM[path2]</content>
-            </include> -->
         </definition>
     </include>
 
@@ -361,7 +346,7 @@
                     </include>
                 </focusedlayout>
 
-                <include content="Object_Widget_ContentPath" condition="includecontent">
+                <include content="Object_Widget_ContentPath" condition="$PARAM[includecontent]">
                     <param name="target" value="$PARAM[target]" />
                     <param name="sortby" value="$PARAM[sortby]" />
                     <param name="sortorder" value="$PARAM[sortorder]" />
