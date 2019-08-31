@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+    <defaultcontrol always="true">20</defaultcontrol>
+    <onload>Dialog.Close(fullscreeninfo,true)</onload>
+    <onload>Dialog.Close(videoosd,true)</onload>
+    <controls>
+
+        <control type="group">
+            <control type="image">
+                <height>300</height>
+                <top>0</top>
+                <texture flipy="true">common/osd-dim.png</texture>
+            </control>
+            <control type="group">
+                <left>view_pad</left>
+                <right>view_pad</right>
+                <top>view_pad</top>
+                <height>163</height>
+                <!-- Image -->
+                <control type="group">
+                    <width>290</width>
+                    <control type="image">
+                        <left>-15</left>
+                        <top>-15</top>
+                        <right>-15</right>
+                        <bottom>-15</bottom>
+                        <bordersize>15</bordersize>
+                        <bordertexture border="30" colordiffuse="Shadow">common/shadow-15.png</bordertexture>
+                        <aspectratio scalediffuse="true">scale</aspectratio>
+                        <texture background="true" diffuse="diffuse/landscape-small-wall.png">$VAR[Image_UpNext]</texture>
+                    </control>
+                    <control type="progress" id="3014">
+                        <height>8</height>
+                        <bottom>0</bottom>
+                        <left>0</left>
+                        <right>0</right>
+                    </control>
+                </control>
+
+                <!-- Info and Buttons -->
+                <control type="group">
+                    <left>330</left>
+                    <control type="label">
+                        <height>30</height>
+                        <font>font_title_small</font>
+                        <label>[CAPITALIZE]$ADDON[service.upnext 30024][/CAPITALIZE]</label>
+                        <textcolor>panel_fg_100</textcolor>
+                    </control>
+                    <control type="grouplist">
+                        <top>40</top>
+                        <height>40</height>
+                        <orientation>horizontal</orientation>
+                        <usecontrolcoords>true</usecontrolcoords>
+                        <itemgap>0</itemgap>
+                        <include content="Object_Info_Line_Label">
+                            <param name="label" value="$INFO[Window.Property(tvshowtitle)]" />
+                            <param name="textcolor" value="panel_fg_100" />
+                            <param name="divider" value="false" />
+                            <param name="fallback" value="N/A" />
+                            <param name="visible" value="true" />
+                            <param name="id" value="90001" />
+                        </include>
+                        <!-- Further Items -->
+                        <include content="Object_Info_Line_Label">
+                            <param name="id" value="90002" />
+                            <param name="label" value="$INFO[Window.Property(season),S,]$INFO[Window.Property(episode),E,]" />
+                            <param name="textcolor" value="panel_fg_100" />
+                            <param name="visible" value="true" />
+                        </include>
+                        <include content="Object_Info_Line_Label">
+                            <param name="id" value="90003" />
+                            <param name="label" value="$INFO[Window.Property(title)]" />
+                            <param name="textcolor" value="panel_fg_100" />
+                            <param name="visible" value="true" />
+                        </include>
+                        <include content="Object_Info_Line_Label">
+                            <param name="id" value="90004" />
+                            <param name="label" value="$INFO[Window.Property(year)]" />
+                            <param name="textcolor" value="panel_fg_100" />
+                            <param name="visible" value="true" />
+                        </include>
+                        <include content="Object_Info_Line_Label">
+                            <param name="id" value="90005" />
+                            <param name="label" value="$INFO[Window.Property(rating)]" />
+                            <param name="textcolor" value="panel_fg_100" />
+                            <param name="visible" value="true" />
+                        </include>
+                    </control>
+                    <control type="button" id="3012">
+                        <top>-1000</top>
+                        <include>Defs_Hidden_Button</include>
+                    </control>
+                    <control type="grouplist" id="20">
+                        <left>-16</left>
+                        <bottom>-16</bottom>
+                        <height>90</height>
+                        <orientation>horizontal</orientation>
+                        <itemgap>0</itemgap>
+                        <include content="Object_IconicButton">
+                            <param name="id" value="10" />
+                            <param name="groupid" value="9010" />
+                            <param name="label" value="$ADDON[service.upnext 30010]" />
+                            <param name="icon" value="special://skin/extras/icons/play3.png" />
+                            <param name="visible" value="Integer.IsGreater(Player.TimeRemaining,59)" />
+                            <onclick>SendClick(3012)</onclick>
+                        </include>
+                        <include content="Object_IconicButton">
+                            <param name="id" value="11" />
+                            <param name="groupid" value="9011" />
+                            <param name="label" value="$ADDON[service.upnext 30010] $ADDON[service.upnext 30036] [COLOR $VAR[ColorHighlight]]$INFO[Player.TimeRemaining(ss),,][/COLOR] $ADDON[service.upnext 30035]" />
+                            <param name="icon" value="special://skin/extras/icons/play3.png" />
+                            <param name="visible" value="!Integer.IsGreater(Player.TimeRemaining,59)" />
+                            <onclick>SendClick(3012)</onclick>
+                        </include>
+                        <include content="Object_IconicButton">
+                            <param name="id" value="3013" />
+                            <param name="groupid" value="9013" />
+                            <param name="label" value="$ADDON[service.upnext 30034]" />
+                            <param name="icon" value="special://skin/extras/icons/disabled.png" />
+                            <param name="visible" value="true" />
+                        </include>
+                    </control>
+                </control>
+
+
+            </control>
+        </control>
+
+        
+    </controls>
+</window>

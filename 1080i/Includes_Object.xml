@@ -2766,4 +2766,87 @@
             </control>
         </definition>
     </include>
+
+    <include name="Object_IconicButton_Left">
+        <control type="group">
+            <visible>$PARAM[visible]</visible>
+            <control type="image">
+                <texture colordiffuse="$PARAM[colordiffuse-texture]" border="24">$PARAM[texture]</texture>
+            </control>
+            <control type="image">
+                <left>16</left>
+                <centertop>50%</centertop>
+                <width>64</width>
+                <height>64</height>
+                <texture colordiffuse="$PARAM[colordiffuse-icon]">$PARAM[icon]</texture>
+            </control>
+        </control>
+    </include>
+
+    <include name="Object_IconicButton_Right">
+        <control type="group">
+            <visible>$PARAM[visible]</visible>
+            <control type="image">
+                <texture colordiffuse="$PARAM[colordiffuse-texture]" border="0,24,24,24" flipx="true">$PARAM[texture]</texture>
+            </control>
+        </control>
+    </include>
+
+    <include name="Object_IconicButton">
+        <param name="visible" default="true" />
+        <param name="controltype" default="button" />
+        <definition>
+            <control type="group" id="$PARAM[groupid]">
+                <width>84</width>
+                <height>90</height>
+                <visible>$PARAM[visible]</visible>
+                <include content="Object_IconicButton_Left">
+                    <param name="visible" value="Control.HasFocus($PARAM[id])" />
+                    <param name="texture" value="common/buttonshadow-fo.png" />
+                    <param name="icon" value="$PARAM[icon]" />
+                    <param name="colordiffuse-icon" value="main_bg_90" />
+                    <param name="colordiffuse-texture" value="main_fg_100" />
+                </include>
+                <include content="Object_IconicButton_Left">
+                    <param name="visible" value="!Control.HasFocus($PARAM[id])" />
+                    <param name="texture" value="common/buttonshadow-nf.png" />
+                    <param name="icon" value="$PARAM[icon]" />
+                    <param name="colordiffuse-icon" value="main_fg_70" />
+                    <param name="colordiffuse-texture" value="main_fg_12" />
+                </include>
+            </control>
+            <control type="$PARAM[controltype]" id="$PARAM[id]">
+                <left>10</left>
+                <width>auto</width>
+                <visible>$PARAM[visible]</visible>
+                <ondown>50</ondown>
+                <onup>9601</onup>
+                <height>90</height>
+                <texturenofocus border="0,24,0,24" flipx="true" colordiffuse="main_fg_12">common/buttonshadow-mid-nf.png</texturenofocus>
+                <texturefocus border="0,24,0,24" flipx="true" colordiffuse="main_fg_100">common/buttonshadow-mid-fo.png</texturefocus>
+                <font>font_info_buttons</font>
+                <label>$PARAM[label]</label>
+                <textoffsetx>0</textoffsetx>
+                <textcolor>main_fg_70</textcolor>
+                <focusedcolor>main_bg_100</focusedcolor>
+                <nested />
+            </control>
+            <control type="group" id="2$PARAM[groupid]">
+                <left>10</left>
+                <width>38</width>
+                <height>90</height>
+                <visible>$PARAM[visible]</visible>
+                <include content="Object_IconicButton_Right">
+                    <param name="visible" value="Control.HasFocus($PARAM[id])" />
+                    <param name="texture" value="common/buttonshadow-fo.png" />
+                    <param name="colordiffuse-texture" value="main_fg_100" />
+                </include>
+                <include content="Object_IconicButton_Right">
+                    <param name="visible" value="!Control.HasFocus($PARAM[id])" />
+                    <param name="texture" value="common/buttonshadow-nf.png" />
+                    <param name="colordiffuse-texture" value="main_fg_12" />
+                </include>
+            </control>
+        </definition>
+    </include>
 </includes>
