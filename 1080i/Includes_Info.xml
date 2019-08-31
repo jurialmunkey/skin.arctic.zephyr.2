@@ -63,6 +63,7 @@
 
     <variable name="Info_FromYear">
         <value condition="String.IsEqual(ListItem.DBType,movie) + !Skin.HasSetting(DisableExtendedInfo) + System.HasAddon(plugin.video.themoviedb.helper)">plugin://plugin.video.themoviedb.helper?info=discover&amp;type=movie&amp;year=$INFO[ListItem.Year]</value>
+        <!-- <value condition="String.IsEqual(ListItem.DBType,tvshow) + !Skin.HasSetting(DisableExtendedInfo) + System.HasAddon(plugin.video.themoviedb.helper)">plugin://plugin.video.themoviedb.helper?info=discover&amp;type=tv&amp;first_air_date_year=$INFO[ListItem.Year]</value> -->
     </variable>
 
     <variable name="Info_FromGenre">
