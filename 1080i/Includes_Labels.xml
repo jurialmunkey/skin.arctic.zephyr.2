@@ -12,6 +12,7 @@
     </variable>
 
     <variable name="Label_SmallLandscapeWidget_Sublabel">
+        <value condition="!String.IsEmpty(ListItem.Property(NextDay))">$INFO[ListItem.Property(NextDay)]$INFO[ListItem.Property(ShortTime), @ ,]</value>
         <value condition="!String.IsEmpty(ListItem.TvShowTitle) + !String.IsEqual(ListItem.Label,ListItem.TvShowTitle)">$INFO[ListItem.TvShowTitle]</value>
         <value condition="!String.IsEmpty(ListItem.Studio) + [String.IsEqual(ListItem.DBType,video) | [String.IsEmpty(ListItem.DBType) + String.IsEmpty(ListItem.Genre)]]">$INFO[ListItem.Studio]$VAR[Label_Duration, - ,]</value>
         <value condition="!String.IsEmpty(ListItem.Artist) + !String.IsEqual(ListItem.Label,ListItem.Artist)">$INFO[ListItem.Artist]</value>
@@ -102,7 +103,8 @@
         <value condition="Window.IsVisible(Home)">$LOCALIZE[1034]</value>
         <value condition="Container.Content() + String.StartsWith(Container.FolderPath,library://video/movies/)">$LOCALIZE[14022]</value>
         <value condition="[Container.Content(seasons) | Container.Content(episodes)] + !String.IsEmpty(Container.ShowTitle)">$INFO[Container.ShowTitle]</value>
-        <value condition="!String.IsEmpty(Container.FolderName)">$INFO[Container.FolderName]</value>"
+        <value condition="!String.IsEmpty(Container.FolderName)">$INFO[Container.FolderName]</value>
+        <value condition="Window.IsVisible(script-NextAired-TVGuide.xml) | Window.IsVisible(script-NextAired-TVGuide2.xml)">$INFO[System.Date]</value>
     </variable>
 
     <variable name="Label_Header_Content">
@@ -132,6 +134,7 @@
         <value condition="Window.IsVisible(FileManager.xml)">[CAPITALIZE]$LOCALIZE[7][/CAPITALIZE]</value>
         <value condition="Window.IsVisible(Home.xml)">$LOCALIZE[10000]</value>
         <value condition="Window.IsVisible(DialogPVRInfo.xml)">$LOCALIZE[19180]</value>
+        <value condition="Window.IsVisible(script-NextAired-TVGuide.xml) | Window.IsVisible(script-NextAired-TVGuide2.xml)">Next Aired</value>
     </variable>
 
     <variable name="Label_OSD_Time">

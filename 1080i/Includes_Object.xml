@@ -1,5 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
+    <include name="Object_NextAired_Template">
+        <definition>
+            <include content="View_Cast_Toplabel">
+                <param name="groupid" value="$PARAM[groupid]" />
+                <param name="id" value="$PARAM[id]" />
+                <param name="label" value="$PARAM[label]" />
+                <param name="uselabel2" value="true" />
+                <param name="label2" value="$INFO[Container($PARAM[id]).ListItem.TvShowTitle,, - ]$INFO[Container($PARAM[id]).ListItem.Season,S,]$INFO[Container($PARAM[id]).ListItem.Episode,E,]$INFO[Container($PARAM[id]).ListItem.Title, - ,]" />
+                <visible>Control.IsVisible($PARAM[id])</visible>
+            </include>
+            <include content="Object_Widget_Spotlight">
+                <param name="controltype" value="list" />
+                <param name="id" value="$PARAM[id]" />
+                <param name="top" value="52" />
+                <param name="left" value="0" />
+                <param name="right" value="-30" />
+                <param name="height" value="item_cast_height" />
+                <param name="orientation" value="horizontal" />
+                <param name="labelinclude" value="Defs_Null" />
+                <param name="landscapelabelinclude" value="View_Widget_LandscapeLabel" />
+                <param name="label2" value="ListItem.TvShowTitle" />
+                <param name="includecontent" value="false" />
+                <param name="smallsquarecondition" value="false" />
+                <param name="squarecondition" value="false" />
+                <param name="smalllandscapecondition" value="true" />
+                <param name="landscapecondition" value="false" />
+                <param name="iconcondition" value="false" />
+                <onback>301</onback>
+                <movement>6</movement>
+                <animation effect="fade" start="100" end="0" condition="!Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating">Conditional</animation>
+                <visible>Integer.IsGreater(Container($PARAM[id]).NumItems,0) | Container($PARAM[id]).IsUpdating</visible>
+            </include>
+        </definition>
+    </include>
 
     <include name="Object_SearchList_Template">
         <param name="labelinclude" default="Defs_Null" />
@@ -184,6 +218,7 @@
         <param name="smalllandscapecondition" default="false" />
         <param name="smallsquarecondition" default="false" />
         <param name="height" default="item_row_height" />
+        <param name="includecontent" default="true" />
         <param name="top" default="442.5" />
         <param name="landscapelabelinclude" default="View_51_Wall_Landscape_Home_Label" />
         <param name="smalllandscapelabelinclude" default="View_51_Wall_SmallLandscape_Home_Label" />
@@ -326,9 +361,19 @@
                     </include>
                 </focusedlayout>
 
-                <content target="$PARAM[target]" sortby="$PARAM[sortby]" sortorder="$PARAM[sortorder]" limit="$PARAM[limit]">$PARAM[content]</content>
+                <include content="Object_Widget_ContentPath" condition="includecontent">
+                    <param name="target" value="$PARAM[target]" />
+                    <param name="sortby" value="$PARAM[sortby]" />
+                    <param name="sortorder" value="$PARAM[sortorder]" />
+                    <param name="limit" value="$PARAM[limit]" />
+                    <param name="content" value="$PARAM[content]" />
+                </include>
             </control>
         </definition>
+    </include>
+
+    <include name="Object_Widget_ContentPath">
+        <content target="$PARAM[target]" sortby="$PARAM[sortby]" sortorder="$PARAM[sortorder]" limit="$PARAM[limit]">$PARAM[content]</content>
     </include>
 
     <include name="Object_PVR_Icon">

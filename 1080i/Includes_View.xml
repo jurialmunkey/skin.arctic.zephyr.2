@@ -318,6 +318,7 @@
 
     <include name="View_Cast_Toplabel">
         <param name="altid" default="999999" />
+        <param name="uselabel2" default="false" />
         <definition>
             <control type="group" id="$PARAM[groupid]">
                 <top>52</top>
@@ -385,6 +386,7 @@
                         <visible>Control.HasFocus($PARAM[id]) | Control.HasFocus($PARAM[altid])</visible>
                         <visible>Integer.IsGreater(Container($PARAM[id]).NumItems,0) + !Container($PARAM[id]).IsUpdating</visible>
                         <visible>!String.IsEqual(Container($PARAM[id]).ListItem.DBType,episode)</visible>
+                        <visible>!$PARAM[uselabel2]</visible>
                     </control>
                     <control type="label">
                         <top>20</top>
@@ -397,6 +399,19 @@
                         <visible>Control.HasFocus($PARAM[id]) | Control.HasFocus($PARAM[altid])</visible>
                         <visible>Integer.IsGreater(Container($PARAM[id]).NumItems,0) + !Container($PARAM[id]).IsUpdating</visible>
                         <visible>String.IsEqual(Container($PARAM[id]).ListItem.DBType,episode)</visible>
+                        <visible>!$PARAM[uselabel2]</visible>
+                    </control>
+                    <control type="label">
+                        <top>20</top>
+                        <width>auto</width>
+                        <label>$PARAM[label2]</label>
+                        <aligny>center</aligny>
+                        <textcolor>main_fg_100</textcolor>
+                        <font>font_tiny</font>
+                        <height>24</height>
+                        <visible>Control.HasFocus($PARAM[id]) | Control.HasFocus($PARAM[altid])</visible>
+                        <visible>Integer.IsGreater(Container($PARAM[id]).NumItems,0) + !Container($PARAM[id]).IsUpdating</visible>
+                        <visible>$PARAM[uselabel2]</visible>
                     </control>
                 </control>
             </control>
