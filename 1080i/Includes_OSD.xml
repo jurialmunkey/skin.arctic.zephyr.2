@@ -705,13 +705,15 @@
                 <control type="label">
                     <align>center</align>
                     <scroll>true</scroll>
+                    <textcolor>$VAR[ColorHighlight]</textcolor>
                     <include>OSD_Menubar_Items</include>
-                    <label>$INFO[VideoPlayer.TvShowTitle,[COLOR=panel_fg_70],[/COLOR][COLOR=panel_fg_30]  •  [/COLOR]]$INFO[MusicPlayer.Artist,[COLOR=panel_fg_70],[/COLOR][COLOR=panel_fg_30]  •  [/COLOR]]$INFO[VideoPlayer.Season,,x]$INFO[VideoPlayer.Episode,,. ]$INFO[Player.Title]</label>
+                    <label>$INFO[VideoPlayer.TvShowTitle,[COLOR=panel_fg_100],[/COLOR]  •  ]$INFO[MusicPlayer.Artist,[COLOR=panel_fg_100],[/COLOR]  •  ]$INFO[VideoPlayer.Season,[COLOR=panel_fg_100],x[/COLOR]]$INFO[VideoPlayer.Episode,[COLOR=panel_fg_100],. [/COLOR]]$INFO[Player.Title,[COLOR=panel_fg_100],[/COLOR]]</label>
                     <animation effect="fade" end="100" start="0" delay="300" time="1" reversible="false">Visible</animation>
                     <visible>![!String.IsEmpty(Window(Home).Property(OSDInfo)) | Player.ShowInfo | Window.IsActive(DialogFullScreenInfo.xml) | Skin.HasSetting(ShowInfoPaused)]</visible>
                 </control>
                 <control type="label">
                     <align>center</align>
+                    <textcolor>$VAR[ColorHighlight]</textcolor>
                     <include>OSD_Menubar_Items</include>
                     <label>$VAR[Label_OSD_FinishTime]</label>
                     <visible>!String.IsEmpty(Window(Home).Property(OSDInfo)) | Player.ShowInfo | Window.IsActive(DialogFullScreenInfo.xml) | Skin.HasSetting(ShowInfoPaused)</visible>
