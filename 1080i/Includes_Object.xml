@@ -7,7 +7,7 @@
                 <param name="id" value="$PARAM[id]" />
                 <param name="label" value="$PARAM[label]" />
                 <param name="uselabel2" value="true" />
-                <param name="label2" value="$INFO[Container($PARAM[id]).ListItem.TvShowTitle,, - ]$INFO[Container($PARAM[id]).ListItem.Season,S,]$INFO[Container($PARAM[id]).ListItem.Episode,E,]$INFO[Container($PARAM[id]).ListItem.Title, - ,]" />
+                <param name="label2" value="$INFO[Container($PARAM[id]).ListItem.Label]$INFO[Container($PARAM[id]).ListItem.Season, - S,]$INFO[Container($PARAM[id]).ListItem.Episode,E,]$INFO[Container($PARAM[id]).ListItem.Title, - ,]" />
                 <visible>Control.IsVisible($PARAM[id])</visible>
             </include>
             <include content="Object_Widget_Spotlight">
