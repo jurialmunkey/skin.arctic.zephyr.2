@@ -35,6 +35,11 @@
         <value>Basic</value>
     </variable>
 
+    <variable name="Label_SkinSettings_CornerIcon">
+        <value condition="!String.IsEmpty(Skin.String(CornerIcon))">$INFO[Skin.String(CornerIcon)]</value>
+        <value>Search</value>
+    </variable>
+
     <variable name="Label_SkinSettings_MenuStyle">
         <value condition="Skin.HasSetting(HomeMulti) + !Skin.HasSetting(HomeMultiHorizontal) + Skin.HasSetting(HomeIcons)">Icons + Text</value>
         <value condition="Skin.HasSetting(HomeMulti) + !Skin.HasSetting(HomeMultiHorizontal) + !Skin.HasSetting(HomeIcons)">Text</value>

@@ -171,6 +171,18 @@
                         <onclick condition="[!Skin.HasSetting(HomeMulti) | Skin.HasSetting(HomeMultiHorizontal)] + Skin.HasSetting(HomeIcons)">Skin.Reset(HomeIcons)</onclick>
                     </control>
 
+                    <control type="button" id="19108" description="Corner Icon">
+                        <visible>Integer.IsEqual(Window.Property(CurrentFocus),9001)</visible>
+                        <include>Defs_Settings_Button</include>
+                        <label>Corner icon</label>
+                        <label2>$VAR[Label_SkinSettings_CornerIcon]</label2>
+                        <onclick condition="String.IsEmpty(Skin.String(CornerIcon))">Skin.SetString(CornerIcon,Settings)</onclick>
+                        <onclick condition="String.IsEqual(Skin.String(CornerIcon),Settings)">Skin.SetString(CornerIcon,Power)</onclick>
+                        <onclick condition="String.IsEqual(Skin.String(CornerIcon),Power)">Skin.SetString(CornerIcon,Home)</onclick>
+                        <onclick condition="String.IsEqual(Skin.String(CornerIcon),Home)">Skin.Reset(CornerIcon)</onclick>
+                        <visible>!Skin.HasSetting(HomeTextAutoWidth) + [Skin.HasSetting(HomeMultiHorizontal) | !Skin.HasSetting(HomeMulti)] + !Skin.HasSetting(HomeIcons)</visible>
+                    </control>
+
                     <control type="radiobutton" id="19104" description="Submenu Only">
                         <visible>Integer.IsEqual(Window.Property(CurrentFocus),9001)</visible>
                         <include>Defs_Settings_Button</include>
