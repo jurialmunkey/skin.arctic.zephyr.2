@@ -281,7 +281,7 @@
                             <include>Defs_InfoList_OnClick</include>
                             <include>Defs_InfoList_OnBack</include>
                             <visible>String.IsEqual(ListItem.DBType,movie) + Integer.IsGreater(Container(50).NumItems,0)</visible>
-                            <content limit="25" target="videos" sortby="rating" sortorder="descending">$VAR[Info_CastFeature]</content>
+                            <content limit="25" target="videos">$VAR[Info_CastFeature]</content>
                         </include>
 
                         <!-- Youtube -->
