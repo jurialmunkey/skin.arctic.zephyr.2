@@ -180,7 +180,7 @@
                             <include>Defs_InfoList_OnClick</include>
                             <include>Defs_InfoList_OnBack</include>
                             <visible>!String.IsEmpty(ListItem.Director)</visible>
-                            <content limit="25" target="videos">$VAR[Info_FromDirector]</content>
+                            <content limit="25" target="videos" sortby="year" sortorder="descending">$VAR[Info_FromDirector]</content>
                         </include>
                         <!-- Crew -->
                         <include content="Info_Widget_Poster">
