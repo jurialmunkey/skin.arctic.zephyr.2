@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window id="20">
-    <defaultcontrol always="true">500</defaultcontrol>
+    <defaultcontrol always="true">50</defaultcontrol>
     <menucontrol>300</menucontrol>
-    <views>500,510,512</views>
+    <views>50,500,510,512</views>
     <controls>
         <include>Global_Background</include>
         <include>Topbar</include>
         <control type="group">
             <visible allowhiddenfocus="true">!$EXP[Exp_ShowPlotOverlay]</visible>
             <include>Animation_FadeInOut</include>
+            <include>View_50_List</include>
             <include>View_500_List_Square</include>
             <include>View_510_Wall_Square</include>
             <include>View_512_Wall_Icons</include>
+            <include>Object_Scrollbars</include>
         </control>
 
         <control type="list" id="300">
-            <ondown>500</ondown>
+            <ondown>50</ondown>
             <include>Topbar_Menu_Layout</include>
             <include>Items_View</include>
         </control>
