@@ -366,15 +366,6 @@
 
             <control type="group">
                 <animation effect="fade" start="100" end="0" delay="200" time="200" condition="!$PARAM[widgetvisibility]">Conditional</animation>
-                <!-- <control type="label">
-                    <bottom>357.5</bottom>
-                    <height>40</height>
-                    <align>center</align>
-                    <font>font_byline</font>
-                    <textcolor>main_fg_70</textcolor>
-                    <label>$VAR[Label_WidgetName]</label>
-                    <visible>$PARAM[widget]</visible>
-                </control> -->
                 <control type="group">
                     <top>337.5</top>
                     <left>-15</left>
@@ -776,13 +767,17 @@
         </control>
     </include>
 
+    <include name="Home_Width_Clock"><width>1200</width></include>
+    <include name="Home_Width_NoClock"><width>1620</width></include>
+
     <include name="Home_Horizontal_Fixed">
         <control type="group">
             <top>55</top>
             <left>view_pad</left>
             <control type="group">
                 <height>70</height>
-                <width>1200</width>
+                <include condition="!Skin.HasSetting(DisableClock)">Home_Width_Clock</include>
+                <include condition="Skin.HasSetting(DisableClock)">Home_Width_NoClock</include>
                 <visible>!$EXP[Exp_InfoVisible]</visible>
                 <include>Home_CornerIcon</include>
                 <control type="image">
