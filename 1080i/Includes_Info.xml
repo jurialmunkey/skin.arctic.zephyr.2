@@ -246,7 +246,7 @@
                 <param name="groupid" value="8001" />
                 <param name="label" value="Manage" />
                 <param name="icon" value="special://skin/extras/icons/settings.png" />
-                <param name="visible" value="Control.IsEnabled(6)" />
+                <param name="visible" value="Control.IsEnabled(6) + !Skin.HasSetting(KioskMode)" />
                 <onfocus>SetProperty(FilePath,1,Home)</onfocus>
                 <onunfocus>ClearProperty(FilePath,Home)</onunfocus>
                 <onclick>SetFocus(8111)</onclick>

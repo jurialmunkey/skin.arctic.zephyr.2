@@ -408,12 +408,20 @@
                         <label>$LOCALIZE[31166]</label>
                         <onclick>RunScript(script.skinshortcuts,type=manage&amp;group=searchmenu)</onclick>
                         <!-- <onclick>ActivateWindow(1120)</onclick> -->
-                    </control>                    
+                    </control>
 
-                    <control type="label" id="19384" description="LABEL">
+                    <control type="label" id="19385" description="LABEL">
                         <visible>Integer.IsEqual(Window.Property(CurrentFocus),9003)</visible>
                         <include>Dialog_Standard_HintLabel</include>
-                        <label>$LOCALIZE[31164]</label>
+                        <label>Other</label>
+                    </control>
+
+                    <control type="radiobutton" id="19323" description="Kiosk Mode">
+                        <visible>Integer.IsEqual(Window.Property(CurrentFocus),9003)</visible>
+                        <include>Defs_Settings_Button</include>
+                        <label>$LOCALIZE[31199]</label>
+                        <selected>Skin.HasSetting(KioskMode)</selected>
+                        <onclick>Skin.ToggleSetting(KioskMode)</onclick>
                     </control>
 
                     <control type="button" id="19399" description="Startup Video">

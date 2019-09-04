@@ -127,7 +127,7 @@
                                     <param name="groupid" value="8007" />
                                     <param name="label" value="$VAR[Label_AddonInfo_Enable]" />
                                     <param name="icon" value="$VAR[Image_AddonInfo_Enable]" />
-                                    <param name="visible" value="Control.IsEnabled(7)" />
+                                    <param name="visible" value="Control.IsEnabled(7) + !Skin.HasSetting(KioskMode)" />
                                 </include>
 
                                 <!-- install / uninstall -->
@@ -136,7 +136,7 @@
                                     <param name="groupid" value="8006" />
                                     <param name="label" value="$INFO[Control.GetLabel(6)]" />
                                     <param name="icon" value="$VAR[Image_AddonInfo_Install]" />
-                                    <param name="visible" value="Control.IsEnabled(6)" />
+                                    <param name="visible" value="Control.IsEnabled(6) + !Skin.HasSetting(KioskMode)" />
                                 </include>
 
                                 <!-- Update -->
@@ -145,7 +145,7 @@
                                     <param name="groupid" value="8008" />
                                     <param name="label" value="$LOCALIZE[24069]" />
                                     <param name="icon" value="special://skin/extras/icons/update.png" />
-                                    <param name="visible" value="Control.IsEnabled(8)" />
+                                    <param name="visible" value="Control.IsEnabled(8) + !Skin.HasSetting(KioskMode)" />
                                     <onfocus>SetProperty(FilePath,1,Home)</onfocus>
                                     <onunfocus>ClearProperty(FilePath,Home)</onunfocus>
                                 </include>
@@ -156,7 +156,7 @@
                                     <param name="groupid" value="8009" />
                                     <param name="label" value="$LOCALIZE[5]" />
                                     <param name="icon" value="special://skin/extras/icons/settings.png" />
-                                    <param name="visible" value="Control.IsEnabled(9)" />
+                                    <param name="visible" value="Control.IsEnabled(9) + !Skin.HasSetting(KioskMode)" />
                                 </include>
 
                                 <!-- Dependencies -->
@@ -165,7 +165,7 @@
                                     <param name="groupid" value="8010" />
                                     <param name="label" value="Depends" />
                                     <param name="icon" value="special://skin/extras/icons/dependencies.png" />
-                                    <param name="visible" value="Control.IsEnabled(10)" />
+                                    <param name="visible" value="Control.IsEnabled(10) + !Skin.HasSetting(KioskMode)" />
                                 </include>
 
                                 <!-- Auto Up -->
@@ -176,7 +176,7 @@
                                     <param name="label" value="$INFO[Control.GetLabel(13)]" />
                                     <param name="icon" value="$VAR[Image_AutoUpdate]" />
                                     <param name="controltype" value="radiobutton" />
-                                    <param name="visible" value="Control.IsEnabled(13)" />
+                                    <param name="visible" value="Control.IsEnabled(13) + !Skin.HasSetting(KioskMode)" />
                                 </include>
                             </control>
                         </control>
