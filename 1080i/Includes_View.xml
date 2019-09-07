@@ -418,6 +418,7 @@
                         <height>24</height>
                         <visible>Control.HasFocus($PARAM[id]) | Control.HasFocus($PARAM[altid])</visible>
                         <visible>Integer.IsGreater(Container($PARAM[id]).NumItems,0) + !Container($PARAM[id]).IsUpdating</visible>
+                        <visible>!String.StartsWith(ListItem.FolderPath,pvr://)</visible>
                         <visible>!String.IsEqual(Container($PARAM[id]).ListItem.DBType,episode)</visible>
                         <visible>!$PARAM[uselabel2]</visible>
                     </control>
@@ -431,7 +432,21 @@
                         <height>24</height>
                         <visible>Control.HasFocus($PARAM[id]) | Control.HasFocus($PARAM[altid])</visible>
                         <visible>Integer.IsGreater(Container($PARAM[id]).NumItems,0) + !Container($PARAM[id]).IsUpdating</visible>
+                        <visible>!String.StartsWith(ListItem.FolderPath,pvr://)</visible>
                         <visible>String.IsEqual(Container($PARAM[id]).ListItem.DBType,episode)</visible>
+                        <visible>!$PARAM[uselabel2]</visible>
+                    </control>
+                    <control type="label">
+                        <top>20</top>
+                        <width>auto</width>
+                        <label>$INFO[Container($PARAM[id]).ListItem.ChannelName]$INFO[Container($PARAM[id]).ListItem.Title, - ,]$INFO[Container($PARAM[id]).ListItem.StartTime, - ,]$INFO[Container($PARAM[id]).ListItem.EndTime, - ,]</label>
+                        <aligny>center</aligny>
+                        <textcolor>main_fg_100</textcolor>
+                        <font>font_tiny</font>
+                        <height>24</height>
+                        <visible>Control.HasFocus($PARAM[id]) | Control.HasFocus($PARAM[altid])</visible>
+                        <visible>Integer.IsGreater(Container($PARAM[id]).NumItems,0) + !Container($PARAM[id]).IsUpdating</visible>
+                        <visible>String.StartsWith(ListItem.FolderPath,pvr://)</visible>
                         <visible>!$PARAM[uselabel2]</visible>
                     </control>
                     <control type="label">

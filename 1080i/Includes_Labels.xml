@@ -25,6 +25,7 @@
     </variable>
 
     <variable name="Label_SmallLandscapeWidget_Sublabel">
+        <value condition="!String.IsEmpty(ListItem.ChannelName)">$INFO[ListItem.Title]</value>
         <value condition="!String.IsEmpty(ListItem.Property(NextDay))">$INFO[ListItem.Property(NextDay)]$INFO[ListItem.Property(ShortTime), @ ,]</value>
         <value condition="!String.IsEmpty(ListItem.TvShowTitle) + !String.IsEqual(ListItem.Label,ListItem.TvShowTitle)">$INFO[ListItem.TvShowTitle]</value>
         <value condition="!String.IsEmpty(ListItem.Studio) + [String.IsEqual(ListItem.DBType,video) | [String.IsEmpty(ListItem.DBType) + String.IsEmpty(ListItem.Genre)]]">$INFO[ListItem.Studio]$VAR[Label_Duration, - ,]</value>
