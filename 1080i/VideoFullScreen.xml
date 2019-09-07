@@ -5,18 +5,22 @@
     <controls>
 
         <control type="group" id="0">
-            <left>0</left>
             <include>Animation_FadeIn</include>
+            <left>0</left>
+            <top>0</top>
+            <width>1000</width>
+            <height>300</height>
             <visible>Control.IsVisible(10) | Control.IsVisible(11) | Control.IsVisible(12)</visible>
             <control type="image">
-                <width>1920</width>
-                <height>260</height>
-                <texture colordiffuse="panel_bg" flipy="false">common/white.png</texture>
+                <left>-100</left>
+                <right>-100</right>
+                <aspectratio>stretch</aspectratio>
+                <texture>common/shadowspot.png</texture>
             </control>
             <control type="grouplist">
+                <orientation>vertical</orientation>
                 <left>view_pad</left>
                 <top>view_pad</top>
-                <orientation>vertical</orientation>
                 <control type="label" id="10">
                     <description>row 1 label</description>
                     <width>auto</width>
@@ -24,6 +28,7 @@
                     <align>left</align>
                     <aligny>top</aligny>
                     <textcolor>panel_fg_100</textcolor>
+                    <font>font_tiny</font>
                 </control>
                 <control type="label" id="11">
                     <description>row 2 label</description>
@@ -32,6 +37,7 @@
                     <align>left</align>
                     <aligny>top</aligny>
                     <textcolor>panel_fg_100</textcolor>
+                    <font>font_tiny</font>
                 </control>
                 <control type="label" id="12">
                     <description>row 3 label</description>
@@ -40,6 +46,7 @@
                     <align>left</align>
                     <aligny>top</aligny>
                     <textcolor>panel_fg_100</textcolor>
+                    <font>font_tiny</font>
                 </control>
             </control>
         </control>
