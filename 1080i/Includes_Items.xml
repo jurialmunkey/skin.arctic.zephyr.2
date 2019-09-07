@@ -399,6 +399,46 @@
         </content>
     </include>
 
+    <include name="Items_PVRQuickJump">
+        <content>
+            <!-- Channels -->
+            <item>
+                <label>TV Channels</label>
+                <icon>special://skin/extras/icons/livetv.png</icon>
+                <onclick>ActivateWindow(tvchannels)</onclick>
+                <visible>!Window.IsVisible(MyPVRChannels.xml)</visible>
+            </item>
+            <!-- Guide -->
+            <item>
+                <label>TV Guide</label>
+                <icon>special://skin/extras/icons/tvguide.png</icon>
+                <onclick>ActivateWindow(tvguide)</onclick>
+                <visible>!Window.IsVisible(MyPVRGuide.xml)</visible>
+            </item>
+            <!-- Recordings -->
+            <item>
+                <label>TV Recordings</label>
+                <icon>special://skin/extras/icons/database.png</icon>
+                <onclick>ActivateWindow(tvrecordings)</onclick>
+                <visible>!Window.IsVisible(MyPVRRecordings.xml)</visible>
+            </item>
+            <!-- Timers -->
+            <item>
+                <label>TV Timers</label>
+                <icon>special://skin/extras/icons/alarm.png</icon>
+                <onclick>ActivateWindow(tvtimers)</onclick>
+                <visible>!Window.IsVisible(MyPVRTimers.xml)</visible>
+            </item>
+            <!-- Search -->
+            <item>
+                <label>TV Search</label>
+                <icon>special://skin/extras/icons/search.png</icon>
+                <onclick>ActivateWindow(tvsearch)</onclick>
+                <visible>!Window.IsVisible(MyPVRSearch.xml)</visible>
+            </item>
+        </content>
+    </include>
+
     <include name="Items_PVRGuide">
         <content>
             <!-- Viewmode -->
@@ -503,6 +543,7 @@
                 <onclick>Skin.Reset(SearchTerm)</onclick>
                 <onclick>Skin.SetString(SearchTerm)</onclick>
                 <onclick>ActivateWindow(1138)</onclick>
+                <visible>!Window.IsVisible(MyPVRChannels.xml) + !Window.IsVisible(MyPVRGuide.xml) + !Window.IsVisible(MyPVRTimers.xml) + !Window.IsVisible(MyPVRRecordings.xml) + !Window.IsVisible(MyPVRSearch.xml)</visible>
             </item>
             <!-- Filter -->
             <item>
