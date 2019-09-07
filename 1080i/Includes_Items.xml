@@ -399,6 +399,36 @@
         </content>
     </include>
 
+    <include name="Items_PVRGuide">
+        <content>
+            <!-- Viewmode -->
+            <item>
+                <label>Guide Style</label>
+                <icon>special://skin/extras/icons/viewmode.png</icon>
+                <onclick>Skin.ToggleSetting(PVRGuide.DisableSlimMode)</onclick>
+                <onclick>ReloadSkin()</onclick>
+                <visible>!Skin.HasSetting(KioskMode)</visible>
+            </item>
+            <!-- Info -->
+            <item>
+                <label>Show Info</label>
+                <icon>special://skin/extras/icons/infobubble.png</icon>
+                <onclick>Skin.ToggleSetting(PVRGuide.Info)</onclick>
+                <onclick>ReloadSkin()</onclick>
+                <visible>!Skin.HasSetting(KioskMode)</visible>
+            </item>
+            <!-- Numbers -->
+            <item>
+                <label>Channel Numbers</label>
+                <icon>special://skin/extras/icons/years.png</icon>
+                <onclick>Skin.ToggleSetting(PVRGuide.ChannelNumber)</onclick>
+                <onclick>ReloadSkin()</onclick>
+                <visible>!Skin.HasSetting(PVRGuide.DisableSlimMode)</visible>
+                <visible>!Skin.HasSetting(KioskMode)</visible>
+            </item>
+        </content>
+    </include>
+
     <include name="Items_View">
         <content>
             <!-- Viewmode -->

@@ -90,12 +90,43 @@
         </definition>
     </include>
 
+    <include name="View_PVR_Guide_Top"><top>234</top></include>
+
+    <include name="View_PVR_Guide_Info">
+        <control type="grouplist">
+            <orientation>vertical</orientation>
+            <usecontrolcoords>true</usecontrolcoords>
+            <itemgap>0</itemgap>
+            <include content="Object_Info_Title">
+                <param name="label" value="$VAR[Label_PVRGuide_Title]" />
+            </include>
+            <include content="Object_Info_Line_Label">
+                <param name="label" value="$VAR[Label_PVRGuide_SubTitle]" />
+                <param name="textcolor" value="$VAR[ColorHighlight]" />
+                <param name="divider" value="false" />
+            </include>
+            <include content="Object_Info_Plot">
+                <param name="maxheight" value="80" />
+                <top>15</top>
+            </include>
+        </control>
+    </include>
+
+    <include name="View_PVR_Guide_ProgressLine_Full">
+        <progresstexture border="5" colordiffuse="bf777777">pvr/progressline-full.png</progresstexture>
+    </include>
+
+    <include name="View_PVR_Guide_ProgressLine_Half">
+        <progresstexture border="5" colordiffuse="bf777777">pvr/progressline-half.png</progresstexture>
+    </include>
+
     <include name="View_PVR_Guide_Icon">
         <control type="epggrid" id="10" description="EPG">
             <onup>11</onup>
             <ondown>11</ondown>
             <viewtype label="19069">list</viewtype>
-            <progresstexture border="5" colordiffuse="bf777777">pvr/progressline-full.png</progresstexture>
+            <include condition="!Skin.HasSetting(PVRGuide.Info)">View_PVR_Guide_ProgressLine_Full</include>
+            <include condition="Skin.HasSetting(PVRGuide.Info)">View_PVR_Guide_ProgressLine_Half</include>
             <scrolltime tween="quadratic">300</scrolltime>
             <timeblocks>28</timeblocks>
             <rulerunit>6</rulerunit>
@@ -187,14 +218,16 @@
             <onup>11</onup>
             <ondown>11</ondown>
             <viewtype label="19069">list</viewtype>
-            <progresstexture border="5" colordiffuse="bf777777">pvr/progressline-full.png</progresstexture>
+            <include condition="!Skin.HasSetting(PVRGuide.Info)">View_PVR_Guide_ProgressLine_Full</include>
+            <include condition="Skin.HasSetting(PVRGuide.Info)">View_PVR_Guide_ProgressLine_Half</include>
             <scrolltime tween="quadratic">300</scrolltime>
             <timeblocks>28</timeblocks>
             <rulerunit>6</rulerunit>
             <pagecontrol>8060</pagecontrol>
             <rulerlayout height="item_list_height" width="521">
                 <control type="label" id="2">
-                    <top>37</top>
+                    <bottom>0</bottom>
+                    <height>42</height>
                     <width>521</width>
                     <align>left</align>
                     <aligny>top</aligny>
@@ -218,11 +251,11 @@
                     </control>
                     <control type="label">
                         <left>30</left>
-                        <right>90</right>
+                        <right>110</right>
                         <font>font_tiny</font>
                         <textcolor>main_fg_70</textcolor>
                         <selectedcolor>main_fg_70</selectedcolor>
-                        <label>$INFO[ListItem.ChannelName]</label>
+                        <label>$VAR[Label_PVRGuide_ChannelNumber,,. ]$INFO[ListItem.ChannelName]</label>
                     </control>
                 </control>
                 <include content="Object_PVR_Icon">
@@ -247,11 +280,11 @@
                         </control>
                         <control type="label">
                             <left>30</left>
-                            <right>90</right>
+                            <right>110</right>
                             <font>font_tiny</font>
                             <selectedcolor>main_fg_70</selectedcolor>
                             <textcolor>main_fg_70</textcolor>
-                            <label>$INFO[ListItem.ChannelName]</label>
+                            <label>$VAR[Label_PVRGuide_ChannelNumber,,. ]$INFO[ListItem.ChannelName]</label>
                         </control>
                     </control>
                     <include content="Object_PVR_Icon">
@@ -275,11 +308,11 @@
                         </control>
                         <control type="label">
                             <left>30</left>
-                            <right>90</right>
+                            <right>110</right>
                             <font>font_tiny_bold</font>
                             <textcolor>main_bg_100</textcolor>
                             <selectedcolor>main_bg_100</selectedcolor>
-                            <label>$INFO[ListItem.ChannelName]</label>
+                            <label>$VAR[Label_PVRGuide_ChannelNumber,,. ]$INFO[ListItem.ChannelName]</label>
                         </control>
                     </control>
                     <include content="Object_PVR_Icon">
