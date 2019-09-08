@@ -26,6 +26,10 @@
             <control type="group">
                 <visible>!Window.IsVisible(Home.xml) | [!Skin.HasSetting(HomeMulti) + ![Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(DialogAddonInfo.xml) | String.IsEqual(Window(Home).Property(SkinHelper.WidgetContainer),5610)]]</visible>
                 <visible>Window.IsVisible(fullscreenvideo) | Window.IsVisible(visualisation) | Window.IsVisible(Home)</visible>
+                <include content="Object_ShadowSpot_Group">
+                    <param name="height" value="50" />
+                    <param name="width" value="700" />
+                </include>
                 <include content="Dialog_Notification_Group">
                     <param name="main_id" value="9401" />
                     <param name="sub_id" value="9402" />
