@@ -206,7 +206,17 @@
                 <param name="groupid" value="8008" />
                 <param name="label" value="$VAR[Label_Info_PlayButton]" />
                 <param name="icon" value="$VAR[Image_Info_PlayButton]" />
-                <param name="visible" value="Control.IsEnabled(8) + String.IsEmpty(ListItem.Property(tmdb_id))" />
+                <param name="visible" value="Control.IsEnabled(8) + String.IsEmpty(Container.PluginName)" />
+            </include>
+            <include content="Object_Info_Button">
+                <param name="id" value="8888" />
+                <param name="groupid" value="8808" />
+                <param name="label" value="$VAR[Label_Info_PlayButton]" />
+                <param name="icon" value="$VAR[Image_Info_PlayButton]" />
+                <param name="visible" value="Control.IsEnabled(8) + !String.IsEmpty(Container.PluginName)" />
+                <onclick>Dialog.Close(all,force)</onclick>
+                <onclick>Container.Update($INFO[ListItem.FolderPath])</onclick>
+                <!-- <onclick>AlarmClock(launchit, Action(select), 00:01, silent, false)</onclick> -->
             </include>
             <include content="Object_Info_Button">
                 <param name="id" value="8115" />
