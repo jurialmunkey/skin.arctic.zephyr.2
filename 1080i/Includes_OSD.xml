@@ -695,9 +695,57 @@
     </include>
 
     <include name="OSD_Progress_Text">
+        <!-- Clock -->  
+        <control type="group">
+            <top>30</top>
+            <height>120</height>
+            <width>500</width>
+            <right>0</right>
+            <include>Animation_FadeInOut</include>
+            <visible>!Skin.HasSetting(DisableClock)</visible>
+            <control type="image">
+                <left>-400</left>
+                <right>-700</right>
+                <top>-200</top>
+                <bottom>-100</bottom>
+                <aspectratio>stretch</aspectratio>
+                <texture>common/shadowspot.png</texture>
+            </control>
+            <control type="grouplist">
+                <animation effect="slide" start="0" end="-80" time="200" tween="sine" condition="Window.IsVisible(DialogVolumeBar.xml)">Conditional</animation>
+                <right>view_pad</right>
+                <align>right</align>
+                <orientation>horizontal</orientation>
+                <itemgap>0</itemgap>
+                <width>700</width>
+                <usecontrolcoords>true</usecontrolcoords>
+                <control type="label">
+                    <width>auto</width>
+                    <font>font_tiny</font>
+                    <textcolor>panel_fg_100</textcolor>
+                    <label>$INFO[System.Time,$LOCALIZE[555] ,]</label>
+                </control>
+                <control type="label">
+                    <width>auto</width>
+                    <font>font_tiny</font>
+                    <textcolor>$VAR[ColorHighlight]</textcolor>
+                    <label>  |  </label>
+                    <visible>!String.IsEmpty(Player.FinishTime) | !String.IsEmpty(VideoPlayer.EndTime)</visible>
+                </control>
+                <control type="label">
+                    <width>auto</width>
+                    <font>font_tiny</font>
+                    <textcolor>panel_fg_100</textcolor>
+                    <label>$VAR[Label_OSD_FinishTime,$LOCALIZE[31207] ,]</label>
+                    <visible>!String.IsEmpty(Player.FinishTime) | !String.IsEmpty(VideoPlayer.EndTime)</visible>
+                </control>
+            </control>
+        </control>
+
+        <!-- Progress Text -->
         <control type="group">
             <centerbottom>95</centerbottom>
-            <height>20</height>
+            <height>30</height>
             <left>view_pad</left>
             <right>view_pad</right>
             <control type="label">
@@ -717,15 +765,7 @@
                     <include>OSD_Menubar_Items</include>
                     <label>$INFO[VideoPlayer.TvShowTitle,[COLOR=panel_fg_100],[/COLOR]  •  ]$INFO[MusicPlayer.Artist,[COLOR=panel_fg_100],[/COLOR]  •  ]$INFO[VideoPlayer.Season,[COLOR=panel_fg_100],x[/COLOR]]$INFO[VideoPlayer.Episode,[COLOR=panel_fg_100],. [/COLOR]]$INFO[Player.Title,[COLOR=panel_fg_100],[/COLOR]]</label>
                     <animation effect="fade" end="100" start="0" delay="300" time="1" reversible="false">Visible</animation>
-                    <visible>![!String.IsEmpty(Window(Home).Property(OSDInfo)) | Player.ShowInfo | Window.IsActive(DialogFullScreenInfo.xml) | Skin.HasSetting(ShowInfoPaused)]</visible>
-                </control>
-                <control type="label">
-                    <align>center</align>
-                    <textcolor>$VAR[ColorHighlight]</textcolor>
-                    <include>OSD_Menubar_Items</include>
-                    <label>$VAR[Label_OSD_FinishTime]</label>
-                    <visible>!String.IsEmpty(Window(Home).Property(OSDInfo)) | Player.ShowInfo | Window.IsActive(DialogFullScreenInfo.xml) | Skin.HasSetting(ShowInfoPaused)</visible>
-                    <animation effect="fade" start="100" end="0" delay="300" time="1" reversible="false">Hidden</animation>
+                    <!-- <visible>![!String.IsEmpty(Window(Home).Property(OSDInfo)) | Player.ShowInfo | Window.IsActive(DialogFullScreenInfo.xml) | Skin.HasSetting(ShowInfoPaused)]</visible> -->
                 </control>
             </control>
             <control type="grouplist">

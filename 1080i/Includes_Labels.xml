@@ -167,8 +167,8 @@
     </variable>
     
     <variable name="Label_OSD_FinishTime">
-        <value condition="VideoPlayer.Content(livetv)">$INFO[System.Time,[COLOR=panel_fg_100],$LOCALIZE[555]  [/COLOR],]$INFO[VideoPlayer.EndTime,  •  [COLOR=panel_fg_100]$LOCALIZE[31106] ,[/COLOR]]</value>
-        <value>$INFO[System.Time,[COLOR=panel_fg_100]$LOCALIZE[555]  ,[/COLOR]]$INFO[Player.FinishTime,  •  [COLOR=panel_fg_100]$LOCALIZE[31106] ,[/COLOR]]</value>
+        <value condition="VideoPlayer.Content(livetv)">$INFO[VideoPlayer.EndTime]</value>
+        <value condition="!String.IsEmpty(Player.FinishTime)">$INFO[Player.FinishTime]</value>
     </variable>
 
     <variable name="Label_OSD_Title">
