@@ -974,6 +974,23 @@
             <onfocus condition="!String.IsEmpty(Window(Home).Property(OSDExtendedInfo))">ClearProperty(OSDExtendedInfo,Home)</onfocus>
             <onfocus>ClearProperty(OSD_Menu,Home)</onfocus>
         </control>
+        <!-- <control type="button" id="39">
+            <centertop>50%</centertop>
+            <description>Audio</description>
+            <width>48</width>
+            <height>48</height>
+            <label/>
+            <font/>
+            <texturefocus colordiffuse="$VAR[ColorHighlight]">osd/audio-settings.png</texturefocus>
+            <texturenofocus colordiffuse="panel_fg_70">osd/audio-settings.png</texturenofocus>
+            <onclick condition="Skin.HasSetting(OSDAudioSettings)">ActivateWindow(osdaudiosettings)</onclick>
+            <onclick condition="!Skin.HasSetting(OSDAudioSettings)">Action(AudioNextLanguage)</onclick>
+            <onfocus condition="!String.IsEmpty(Window(Home).Property(OSDExtendedInfo)) + Player.Paused + !Skin.HasSetting(DontPauseOSD)">Play</onfocus>
+            <onfocus condition="!String.IsEmpty(Window(Home).Property(OSDExtendedInfo))">ClearProperty(OSDExtendedInfo,Home)</onfocus>
+            <onfocus>ClearProperty(OSD_Menu,Home)</onfocus>
+            <visible>Window.IsVisible(videoosd)</visible>
+            <visible>!VideoPlayer.Content(musicvideos)</visible>
+        </control> -->
         <control type="button" id="18">
             <centertop>50%</centertop>
             <description>Subs</description>
@@ -993,6 +1010,7 @@
             <visible>Window.IsVisible(videoosd)</visible>
             <visible>!VideoPlayer.Content(musicvideos)</visible>
         </control>
+        
         <control type="button" id="32">
             <centertop>50%</centertop>
             <description>extrainfo</description>
