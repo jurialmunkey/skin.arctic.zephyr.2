@@ -1,5 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
+
+    <include name="Object_ShadowSpot_Label">
+        <param name="font" default="font_tiny" />
+        <param name="textcolor" default="panel_fg_70" />
+        <param name="height" default="40" />
+        <param name="top" default="0" />
+        <definition>
+            <control type="label" id="$PARAM[id]">
+                <top>$PARAM[top]</top>
+                <width>auto</width>
+                <height>$PARAM[height]</height>
+                <align>left</align>
+                <aligny>top</aligny>
+                <textcolor>$PARAM[textcolor]</textcolor>
+                <font>$PARAM[font]</font>
+                <label>$PARAM[label]</label>
+            </control>
+        </definition>
+    </include>
+
+    <include name="Object_ShadowSpot_Grouplist">
+        <control type="grouplist">
+            <orientation>vertical</orientation>
+            <left>view_pad</left>
+            <top>view_pad</top>
+            <itemgap>0</itemgap>
+            <usecontrolcoords>true</usecontrolcoords>
+            <nested />
+        </control>
+    </include>
+
+    <include name="Object_ShadowSpot_Group">
+        <param name="width" default="1000" />
+        <param name="height" default="300" />
+        <param name="left" default="0" />
+        <definition>
+            <control type="group" id="$PARAM[id]">
+                <include>Animation_FadeIn</include>
+                <left>$PARAM[left]</left>
+                <top>0</top>
+                <width>$PARAM[width]</width>
+                <height>$PARAM[height]</height>
+                <control type="image">
+                    <left>-500</left>
+                    <right>-500</right>
+                    <top>-300</top>
+                    <bottom>-300</bottom>
+                    <aspectratio>stretch</aspectratio>
+                    <texture>common/shadowspot.png</texture>
+                </control>
+                <control type="image">
+                    <left>-500</left>
+                    <right>-500</right>
+                    <top>-300</top>
+                    <bottom>-300</bottom>
+                    <aspectratio>stretch</aspectratio>
+                    <texture>common/shadowspot.png</texture>
+                </control>
+                <control type="image">
+                    <left>-500</left>
+                    <right>-500</right>
+                    <top>-300</top>
+                    <bottom>-300</bottom>
+                    <aspectratio>stretch</aspectratio>
+                    <texture>common/shadowspot.png</texture>
+                </control>
+                <nested />
+            </control>
+        </definition>
+    </include>
+
     <include name="Object_NextAired_Template">
         <definition>
             <include content="View_Cast_Toplabel">

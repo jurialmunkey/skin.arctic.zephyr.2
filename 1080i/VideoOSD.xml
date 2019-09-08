@@ -9,58 +9,61 @@
     <controls>
 
         <control type="group">
-            <include condition="String.IsEmpty(Window(Home).Property(OSDViewMode))">Animation_FadeIn</include>
-            <visible>!Window.IsVisible(DialogSlider.xml)</visible>
-            <visible>!Window.IsVisible(VideoOSDBookmarks.xml)</visible>
-            <animation effect="fade" start="100" end="0" time="200" condition="Control.HasFocus(9605)">Conditional</animation>
-                
-            <control type="grouplist" id="9000">
-                <include condition="!VideoPlayer.Content(musicvideos) + !VideoPlayer.Content(LiveTV)">OSD_VideoPosition</include>
-                <include condition="VideoPlayer.Content(musicvideos) + !VideoPlayer.Content(LiveTV)">OSD_MusicPosition</include>
-                <include condition="VideoPlayer.Content(LiveTV)">OSD_LiveTVPosition</include>
-                <itemgap>32</itemgap>
+            <visible>!Window.IsVisible(DialogPlayerProcessInfo.xml)</visible>
+            <control type="group">
+                <include condition="String.IsEmpty(Window(Home).Property(OSDViewMode))">Animation_FadeIn</include>
+                <visible>!Window.IsVisible(DialogSlider.xml)</visible>
+                <visible>!Window.IsVisible(VideoOSDBookmarks.xml)</visible>
+                <animation effect="fade" start="100" end="0" time="200" condition="Control.HasFocus(9605)">Conditional</animation>
+                    
+                <control type="grouplist" id="9000">
+                    <include condition="!VideoPlayer.Content(musicvideos) + !VideoPlayer.Content(LiveTV)">OSD_VideoPosition</include>
+                    <include condition="VideoPlayer.Content(musicvideos) + !VideoPlayer.Content(LiveTV)">OSD_MusicPosition</include>
+                    <include condition="VideoPlayer.Content(LiveTV)">OSD_LiveTVPosition</include>
+                    <itemgap>32</itemgap>
 
-                <onup condition="!VideoPlayer.Content(LiveTV) + String.IsEmpty(Window(Home).Property(OSDInfo))">SetProperty(OSDInfo,1,Home)</onup>
-                <onup condition="!VideoPlayer.Content(LiveTV) + !String.IsEmpty(Window(Home).Property(OSDInfo))">ClearProperty(OSDInfo,Home)</onup>
-                <ondown condition="!VideoPlayer.Content(LiveTV) + String.IsEmpty(Window(Home).Property(OSDInfo))">Close</ondown>
-                <ondown condition="!VideoPlayer.Content(LiveTV) + !String.IsEmpty(Window(Home).Property(OSDInfo))">ClearProperty(OSDInfo,Home)</ondown>
+                    <onup condition="!VideoPlayer.Content(LiveTV) + String.IsEmpty(Window(Home).Property(OSDInfo))">SetProperty(OSDInfo,1,Home)</onup>
+                    <onup condition="!VideoPlayer.Content(LiveTV) + !String.IsEmpty(Window(Home).Property(OSDInfo))">ClearProperty(OSDInfo,Home)</onup>
+                    <ondown condition="!VideoPlayer.Content(LiveTV) + String.IsEmpty(Window(Home).Property(OSDInfo))">Close</ondown>
+                    <ondown condition="!VideoPlayer.Content(LiveTV) + !String.IsEmpty(Window(Home).Property(OSDInfo))">ClearProperty(OSDInfo,Home)</ondown>
 
-                <onup condition="VideoPlayer.Content(LiveTV)">Close</onup>
-                <onup condition="VideoPlayer.Content(LiveTV)">ActivateWindow(1139)</onup>
-                <ondown condition="VideoPlayer.Content(LiveTV)">Close</ondown>
-                <ondown condition="VideoPlayer.Content(LiveTV)">ActivateWindow(1139)</ondown>
+                    <onup condition="VideoPlayer.Content(LiveTV)">Close</onup>
+                    <onup condition="VideoPlayer.Content(LiveTV)">ActivateWindow(1139)</onup>
+                    <ondown condition="VideoPlayer.Content(LiveTV)">Close</ondown>
+                    <ondown condition="VideoPlayer.Content(LiveTV)">ActivateWindow(1139)</ondown>
 
-                <orientation>horizontal</orientation>
-                <usecontrolcoords>true</usecontrolcoords>
-                <include>OSD_Controls</include>
+                    <orientation>horizontal</orientation>
+                    <usecontrolcoords>true</usecontrolcoords>
+                    <include>OSD_Controls</include>
+                </control>
             </control>
-        </control>
 
-        <include content="OSD_Menu_List">
-            <param name="content" value="Items_OSD_Settings" />
-            <param name="height" value="578" />
-            <param name="id" value="3112" />
-            <param name="label" value="$LOCALIZE[33063]" />
-            <param name="position" value="330,116" />
-        </include>
+            <include content="OSD_Menu_List">
+                <param name="content" value="Items_OSD_Settings" />
+                <param name="height" value="578" />
+                <param name="id" value="3112" />
+                <param name="label" value="$LOCALIZE[33063]" />
+                <param name="position" value="330,116" />
+            </include>
 
-        <control type="group">
-            <include condition="String.IsEmpty(Window(Home).Property(OSDViewMode))">Animation_FadeIn</include>
-            <visible>Window.IsVisible(DialogVideoInfo.xml)</visible>
-            <include>Global_Background</include>
-            <include>Topbar</include>
-        </control>
+            <control type="group">
+                <include condition="String.IsEmpty(Window(Home).Property(OSDViewMode))">Animation_FadeIn</include>
+                <visible>Window.IsVisible(DialogVideoInfo.xml)</visible>
+                <include>Global_Background</include>
+                <include>Topbar</include>
+            </control>
 
-        <control type="slider">
-            <bottom>112</bottom>
-            <height>32</height>
-            <left>view_pad</left>
-            <width>1800</width>
-            <texturesliderbar/>
-            <textureslidernib/>
-            <textureslidernibfocus/>
-            <info>Player.Progress</info>
-            <action>seek</action>
+            <control type="slider">
+                <bottom>112</bottom>
+                <height>32</height>
+                <left>view_pad</left>
+                <width>1800</width>
+                <texturesliderbar/>
+                <textureslidernib/>
+                <textureslidernibfocus/>
+                <info>Player.Progress</info>
+                <action>seek</action>
+            </control>
         </control>
 
     </controls>
