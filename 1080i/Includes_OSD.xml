@@ -702,6 +702,7 @@
             <width>500</width>
             <right>0</right>
             <include>Animation_FadeInOut</include>
+            <visible>String.IsEmpty(Player.SeekNumeric) + String.IsEmpty(PVR.ChannelNumberInput)</visible>
             <visible>!Skin.HasSetting(DisableClock)</visible>
             <control type="image">
                 <left>-400</left>
