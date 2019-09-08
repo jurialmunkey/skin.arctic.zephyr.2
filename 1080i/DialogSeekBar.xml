@@ -3,7 +3,7 @@
 <window id="115">
     <defaultcontrol always="true">901</defaultcontrol>
     <zorder>0</zorder>
-    <visible>!Player.HasGame + !Window.IsVisible(DialogPlayerProcessInfo.xml) + [VideoPlayer.IsFullscreen | Window.IsVisible(MusicVisualisation.xml)] + [Window.IsVisible(videoosd) | Window.IsVisible(musicosd) | Player.Caching | Player.ShowInfo | Player.Seeking | Player.DisplayAfterSeek | Player.Paused | Player.Forwarding | Player.Rewinding | Window.IsActive(DialogFullScreenInfo.xml) | !String.IsEmpty(Window(Home).Property(OSDInfo)) | !String.IsEmpty(Player.SeekNumeric) | !String.IsEmpty(PVR.ChannelNumberInput) | [!Skin.HasSetting(DisableMusicVideoAutoInfo) + Window.IsVisible(VideoFullScreen.xml) + VideoPlayer.Content(musicvideos)]]</visible>
+    <visible>!Player.HasGame + !Window.IsVisible(DialogPlayerProcessInfo.xml) + !Window.IsVisible(DialogSlider.xml) + [VideoPlayer.IsFullscreen | Window.IsVisible(MusicVisualisation.xml)] + [Window.IsVisible(videoosd) | Window.IsVisible(musicosd) | Player.Caching | Player.ShowInfo | Player.Seeking | Player.DisplayAfterSeek | Player.Paused | Player.Forwarding | Player.Rewinding | Window.IsActive(DialogFullScreenInfo.xml) | !String.IsEmpty(Window(Home).Property(OSDInfo)) | !String.IsEmpty(Player.SeekNumeric) | !String.IsEmpty(PVR.ChannelNumberInput) | [!Skin.HasSetting(DisableMusicVideoAutoInfo) + Window.IsVisible(VideoFullScreen.xml) + VideoPlayer.Content(musicvideos)]]</visible>
     <animation effect="fade" start="0" end="100" time="300">WindowOpen</animation>
     <animation effect="fade" end="0" start="100" time="300">WindowClose</animation>
     <animation effect="fade" start="0" end="100" time="300">VisibleChange</animation>
