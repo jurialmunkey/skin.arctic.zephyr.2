@@ -82,11 +82,13 @@
                                 </control>
                                 <control type="grouplist">
                                     <visible>!Integer.IsGreater(Container(50).NumItems,0)</visible>
-                                    <height>560</height>
+                                    <height>600</height>
                                     <orientation>vertical</orientation>
                                     <usecontrolcoords>true</usecontrolcoords>
                                     <itemgap>0</itemgap>
-                                    <include>Object_Info_Plot</include>
+                                    <include content="Object_Info_Plot">
+                                        <param name="maxheight" value="400" />
+                                    </include>
                                     <include>Object_Info_Details_Addons</include>
                                 </control>
                             </control>
