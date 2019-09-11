@@ -77,7 +77,8 @@
                 <top>$PARAM[icononlyheight]</top>
                 <left>20</left>
                 <right>20</right>
-                <animation effect="fade" start="$PARAM[textfade_start]" end="$PARAM[textfade_end]" condition="Control.HasFocus($PARAM[id])">Conditional</animation>
+                <animation effect="fade" end="$PARAM[textfade_start]" start="$PARAM[textfade_end]" condition="!Control.HasFocus($PARAM[id]) + $PARAM[selectbox]">Conditional</animation>
+                <animation effect="fade" end="$PARAM[textfade_end]" start="$PARAM[textfade_end]" condition="!$PARAM[selectbox]">Conditional</animation>
                 <control type="label">
                     <left>15</left>
                     <right>15</right>
@@ -112,7 +113,8 @@
         <definition>
             <control type="group">
                 <top>$PARAM[icononlyheight]</top>
-                <animation effect="fade" start="$PARAM[textfade_start]" end="$PARAM[textfade_end]" condition="Control.HasFocus($PARAM[id])">Conditional</animation>
+                <animation effect="fade" end="$PARAM[textfade_start]" start="$PARAM[textfade_end]" condition="!Control.HasFocus($PARAM[id]) + $PARAM[selectbox]">Conditional</animation>
+                <animation effect="fade" end="$PARAM[textfade_end]" start="$PARAM[textfade_end]" condition="!$PARAM[selectbox]">Conditional</animation>
                 <control type="label">
                     <left>35</left>
                     <right>45</right>
@@ -233,6 +235,7 @@
                     <param name="textfade_end" value="$PARAM[textfade_end]" />
                     <param name="textfade_start" value="$PARAM[textfade_start]" />
                     <param name="id" value="$PARAM[id]" />
+                    <param name="selectbox" value="$PARAM[selectbox]" />
                 </include>
 
                 <control type="group">
@@ -365,6 +368,7 @@
                 <param name="textfade_end" value="$PARAM[textfade_end]" />
                 <param name="textfade_start" value="$PARAM[textfade_start]" />
                 <param name="id" value="$PARAM[id]" />
+                <param name="selectbox" value="$PARAM[selectbox]" />
             </include>
         </definition>
     </include>
