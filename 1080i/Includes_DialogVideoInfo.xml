@@ -83,7 +83,7 @@
                                 <onclick condition="Skin.HasSetting(DisableExtendedInfo)">SetFocus(50)</onclick>
                                 <onclick>SetFocus(5000)</onclick>
                                 <onclick>SetFocus(300)</onclick>
-                                <onclick>RunScript(plugin.video.themoviedb.helper,add_path=plugin://plugin.video.themoviedb.helper/?info=details&amp;type=person&amp;query=$INFO[Container(50).ListItem.Label],call_id=1137,prevent_del,delay=0.35)</onclick>
+                                <onclick>RunScript(plugin.video.themoviedb.helper,add_query=$INFO[Container(50).ListItem.Label],type=person,call_id=1137,prevent_del,delay=0.35)</onclick>
                                 <onback>300</onback>
                                 <onup>300</onup>
                                 <ondown>5001</ondown>
@@ -133,7 +133,7 @@
                             <onclick condition="Skin.HasSetting(DisableExtendedInfo)">SetFocus(50)</onclick>
                             <onclick>SetFocus(5000)</onclick>
                             <onclick>SetFocus(300)</onclick>
-                            <onclick>RunScript(plugin.video.themoviedb.helper,add_path=plugin://plugin.video.themoviedb.helper/?info=details&amp;type=person&amp;query=$INFO[Container(5077).ListItem.Label],call_id=1137,prevent_del,delay=0.35)</onclick>
+                            <onclick>RunScript(plugin.video.themoviedb.helper,add_query=$INFO[Container(5077).ListItem.Label],type=person,call_id=1137,prevent_del,delay=0.35)</onclick>
                             <include>Defs_InfoList_OnBack</include>
                             <visible>!String.IsEmpty(Container(5001).ListItem.Property(tmdb_id)) + !Container(5001).IsUpdating</visible>
                             <content limit="25" target="videos">plugin://plugin.video.themoviedb.helper/?info=cast&amp;type=movie&amp;tmdb_id=$INFO[Container(5001).ListItem.Property(tmdb_id)]</content>
