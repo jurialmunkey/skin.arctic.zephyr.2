@@ -129,6 +129,12 @@
                         <param name="label" value="$INFO[Container($PARAM[id]).ListItem.MPAA]" />
                         <param name="container" value="Container($PARAM[id])." />
                     </include>
+                    <include content="Object_Info_Ratings">
+                        <param name="top" value="-25" />
+                        <param name="imdbvotes" value="false" />
+                        <param name="top250" value="false" />
+                        <param name="oscars" value="false" />
+                    </include>
                     <control type="textbox">
                         <top>25</top>
                         <font>font_plotbox</font>
