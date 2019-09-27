@@ -107,7 +107,7 @@
                     <visible>[!String.IsEmpty(ListItem.Art(clearlogo)) | !String.IsEmpty(ListItem.Art(tvshow.clearlogo))] + [[String.IsEmpty(ListItem.Art(landscape)) + String.IsEmpty(ListItem.Art(tvshow.landscape))] | [[!String.IsEmpty(ListItem.Art(tvshow.landscape)) | !String.IsEmpty(ListItem.Art(landscape))] + !Skin.HasSetting(LandscapeArt)] | [!String.IsEmpty(ListItem.Art(thumb)) + [String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,video)] + String.IsEmpty(ListItem.Property(airday))]]</visible>
                 </control>
                 <control type="grouplist">
-                    <top>451.435</top>
+                    <top>420</top>
                     <left>0</left>
                     <right>30</right>
                     <orientation>vertical</orientation>
