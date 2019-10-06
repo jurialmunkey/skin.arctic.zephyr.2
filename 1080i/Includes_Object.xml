@@ -617,7 +617,7 @@
             <height>24</height>
             <width>24</width>
             <texture colordiffuse="main_fg_90">flags/studio.png</texture>
-            <visible>!String.IsEmpty(ListItem.Studio) | !String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Studio))</visible>
+            <visible>!String.IsEmpty(ListItem.Studio)</visible>
         </control>
         <control type="label">
             <left>-20</left>
@@ -627,9 +627,9 @@
             <width>auto</width>
             <font>font_mini</font>
             <textcolor>main_fg_70</textcolor>
-            <label>$VAR[Label_Studio]</label>
+            <label>$INFO[ListItem.Studio]</label>
             <height>32</height>
-            <visible>!String.IsEmpty(ListItem.Studio) | !String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Studio))</visible>
+            <visible>!String.IsEmpty(ListItem.Studio)</visible>
         </control>
         <control type="image">
             <top>5</top>
