@@ -1022,7 +1022,7 @@
             <texturenofocus colordiffuse="panel_fg_70">osd/info.png</texturenofocus>
             <onclick>SetProperty(OSDExtendedInfo,1,Home)</onclick>
             <onclick condition="!Player.Paused + !Skin.HasSetting(DontPauseOSD)">Pause</onclick>
-            
+            <onclick>Action(Close)</onclick>
             <onclick condition="String.IsEmpty(VideoPlayer.DBID) + VideoPlayer.Content(movies) + !String.IsEmpty(VideoPlayer.IMDBNumber)">RunScript(plugin.video.themoviedb.helper,add_path=plugin://plugin.video.themoviedb.helper/?info=find&amp;type=movie&amp;imdb_id=$INFO[VideoPlayer.IMDBNumber],call_id=1137,delay=0.35)</onclick>
             <onclick condition="String.IsEmpty(VideoPlayer.DBID) + VideoPlayer.Content(movies) + String.IsEmpty(VideoPlayer.IMDBNumber)">RunScript(plugin.video.themoviedb.helper,add_path=plugin://plugin.video.themoviedb.helper/?info=details&amp;type=movie&amp;query=$INFO[Player.Title],call_id=1137,delay=0.35)</onclick>
             <onclick condition="String.IsEmpty(VideoPlayer.DBID) + [VideoPlayer.Content(tvshows) | VideoPlayer.Content(episodes)]">RunScript(plugin.video.themoviedb.helper,add_path=plugin://plugin.video.themoviedb.helper/?info=details&amp;type=tv&amp;query=$INFO[VideoPlayer.TvShowTitle],call_id=1137,delay=0.35)</onclick>
