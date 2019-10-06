@@ -152,6 +152,7 @@
                 <include>Animation_FadeOut</include>
                 <visible>!Window.IsVisible(DialogNotification.xml)</visible>
                 <visible>!Window.IsVisible(DialogExtendedProgressBar.xml)</visible>
+                <include condition="!Skin.HasSetting(DisableCodecs)">Object_Languages_Right</include>
                 <control type="image">
                     <centertop>50%</centertop>
                     <width>24</width>
@@ -624,7 +625,7 @@
             <top>0</top>
             <align>left</align>
             <aligny>center</aligny>
-            <width>auto</width>
+            <width max="1000">auto</width>
             <font>font_mini</font>
             <textcolor>main_fg_70</textcolor>
             <label>$INFO[ListItem.Studio]</label>
@@ -646,7 +647,7 @@
             <width>auto</width>
             <font>font_mini</font>
             <textcolor>main_fg_70</textcolor>
-            <label>$INFO[ListItem.Country]</label>
+            <label max="1000">$INFO[ListItem.Country]</label>
             <height>32</height>
             <visible>!String.IsEmpty(ListItem.Country)</visible>
         </control>
@@ -665,7 +666,7 @@
             <width>auto</width>
             <font>font_mini</font>
             <textcolor>main_fg_70</textcolor>
-            <label>$INFO[ListItem.Property(AudioLanguage.1)]$INFO[ListItem.Property(AudioLanguage.2), / ,]$INFO[ListItem.Property(AudioLanguage.3), / ,]$INFO[ListItem.Property(AudioLanguage.4), / ,]$INFO[ListItem.Property(AudioLanguage.5), / ,]</label>
+            <label max="1000">$INFO[ListItem.Property(AudioLanguage.1)]$INFO[ListItem.Property(AudioLanguage.2), / ,]$INFO[ListItem.Property(AudioLanguage.3), / ,]$INFO[ListItem.Property(AudioLanguage.4), / ,]$INFO[ListItem.Property(AudioLanguage.5), / ,]</label>
             <visible>!String.IsEmpty(ListItem.Property(AudioLanguage.1))</visible>
             <height>32</height>
         </control>
@@ -684,7 +685,7 @@
             <width>auto</width>
             <font>font_mini</font>
             <textcolor>main_fg_70</textcolor>
-            <label>$INFO[ListItem.Property(SubtitleLanguage.1)]$INFO[ListItem.Property(SubtitleLanguage.2), / ,]$INFO[ListItem.Property(SubtitleLanguage.3), / ,]$INFO[ListItem.Property(SubtitleLanguage.4), / ,]$INFO[ListItem.Property(SubtitleLanguage.5), / ,]</label>
+            <label max="1000">$INFO[ListItem.Property(SubtitleLanguage.1)]$INFO[ListItem.Property(SubtitleLanguage.2), / ,]$INFO[ListItem.Property(SubtitleLanguage.3), / ,]$INFO[ListItem.Property(SubtitleLanguage.4), / ,]$INFO[ListItem.Property(SubtitleLanguage.5), / ,]</label>
             <height>32</height>
             <visible>!String.IsEmpty(ListItem.Property(SubtitleLanguage.1))</visible>
         </control>
@@ -705,7 +706,7 @@
             <width>auto</width>
             <font>font_mini</font>
             <textcolor>main_fg_70</textcolor>
-            <label>$INFO[ListItem.VideoCodec]$INFO[ListItem.VideoResolution,  •  ,]$INFO[ListItem.VideoAspect,  •  ,]</label>
+            <label max="1000">$INFO[ListItem.VideoCodec]$INFO[ListItem.VideoResolution,  •  ,]$INFO[ListItem.VideoAspect,  •  ,]</label>
             <height>32</height>
             <visible>Skin.HasSetting(DisableCodecs)</visible>
         </control>
@@ -725,7 +726,7 @@
             <width>auto</width>
             <font>font_mini</font>
             <textcolor>main_fg_70</textcolor>
-            <label>$INFO[ListItem.AudioCodec]$VAR[Label_AudioChannels,  •  ,]</label>
+            <label max="1000">$INFO[ListItem.AudioCodec]$VAR[Label_AudioChannels,  •  ,]</label>
             <height>32</height>
             <visible>Skin.HasSetting(DisableCodecs)</visible>
         </control>
@@ -743,6 +744,8 @@
             <nested />
         </control>
     </include>
+
+    <include name="Object_Languages_Right"><right>600</right></include>
 
     <include name="Object_Languages">
         <param name="infohide" default="true" />
@@ -765,6 +768,7 @@
                     <height>32</height>
                     <align>left</align>
                     <itemgap>40</itemgap>
+                    <include condition="!Skin.HasSetting(DisableCodecs)">Object_Languages_Right</include>
                     <orientation>horizontal</orientation>
                     <usecontrolcoords>true</usecontrolcoords>
                     <include>Object_Languages_Items</include>
