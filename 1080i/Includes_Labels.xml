@@ -44,6 +44,11 @@
         <value>Basic</value>
     </variable>
 
+    <variable name="Label_SkinSettings_WidgetMovement">
+        <value condition="Skin.HasSetting(FixedWidgets)">Fixed</value>
+        <value>Default</value>
+    </variable>
+
     <variable name="Label_SkinSettings_CornerIcon">
         <value condition="!String.IsEmpty(Skin.String(CornerIcon))">$INFO[Skin.String(CornerIcon)]</value>
         <value>Search</value>
