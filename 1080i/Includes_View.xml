@@ -365,7 +365,7 @@
                         <param name="label" value="$LOCALIZE[31428]..." />
                         <param name="textcolor" value="main_fg_100" />
                     </include>
-                    <visible>Container($PARAM[id]).IsUpdating</visible>
+                    <visible>Container($PARAM[id]).IsUpdating + !Integer.IsGreater(Container($PARAM[id]).NumItems,0)</visible>
                 </control>
                 <control type="grouplist">
                     <height>52</height>
