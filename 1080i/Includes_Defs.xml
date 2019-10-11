@@ -13,6 +13,16 @@
     <variable name="Defs_ThemeSwitcher_StartTime">
         <value>06:00</value>
     </variable>
+    
+    <include name="Defs_PauseAtEnd_Value">
+        <pauseatend>$PARAM[time]</pauseatend>
+    </include>
+
+    <include name="Defs_PauseAtEnd">
+        <include content="Defs_AutoScroll">
+            <param name="include" value="Defs_PauseAtEnd_Value" />
+        </include>
+    </include>
 
     <include name="Defs_TimePerImage_Value">
         <timeperimage>$PARAM[time]</timeperimage>
