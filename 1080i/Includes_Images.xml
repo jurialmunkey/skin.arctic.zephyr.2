@@ -98,6 +98,13 @@
         <value condition="String.EndsWith(ListItem.Icon,icon.png)">$INFO[ListItem.Icon]</value>
     </variable>
 
+    <variable name="Image_Player_Clearart">
+    <value condition="!String.IsEmpty(Player.Art(tvshow.clearart))">$INFO[Player.Art(tvshow.clearart)]</value>
+    <value condition="!String.IsEmpty(Player.Art(clearart))">$INFO[Player.Art(clearart)]</value>
+    <value condition="!String.IsEmpty(Player.Art(tvshow.clearlogo))">$INFO[Player.Art(tvshow.clearlogo)]</value>
+    <value condition="!String.IsEmpty(Player.Art(clearlogo))">$INFO[Player.Art(clearlogo)]</value>
+    </variable>
+
     <variable name="Image_ClearLogo">
         <value condition="!String.IsEmpty(ListItem.Art(clearlogo))">$INFO[ListItem.Art(clearlogo)]</value>
         <value condition="!String.IsEmpty(ListItem.Art(tvshow.clearlogo)) + !String.IsEqual(Container.ShowTitle,ListItem.TvShowTitle)">$INFO[ListItem.Art(tvshow.clearlogo)]</value>
@@ -182,7 +189,7 @@
         <value condition="!String.IsEmpty(ListItem.Art(fanart))">$INFO[ListItem.Art(fanart)]</value>
         <value>$INFO[ListItem.Icon]</value>
     </variable>
-    
+
     <variable name="Image_Landscape">
         <value condition="!String.IsEmpty(ListItem.Art(thumb)) + [String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,video)] + String.IsEmpty(ListItem.Property(airday))">$INFO[ListItem.Art(thumb)]</value>
         <value condition="Skin.HasSetting(SkinHelper.EnableAnimatedPosters) + !String.IsEmpty(ListItem.Art(animatedfanart))">$INFO[ListItem.Art(animatedfanart)]</value>

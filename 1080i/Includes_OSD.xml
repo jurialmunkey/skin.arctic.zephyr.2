@@ -83,7 +83,7 @@
                     <animation effect="fade" start="0" end="100" time="300">VisibleChange</animation>
                     <include>Animation_FadeIn</include>
                     <include>Animation_FadeOut</include>
-                    
+
                     <!-- Album Cover -->
                     <include content="OSD_Music_Info_Image_Square">
                         <param name="artwork" value="$PARAM[artwork]" />
@@ -202,12 +202,12 @@
 
     <include name="OSD_VideoPosition">
         <align>center</align>
-        <height>48</height>        
+        <height>48</height>
         <centerbottom>95</centerbottom>
     </include>
     <include name="OSD_LiveTVPosition">
         <align>center</align>
-        <height>48</height>        
+        <height>48</height>
         <centerbottom>121</centerbottom>
         <left>331</left>
         <width>723</width>
@@ -219,7 +219,7 @@
         <include condition="!Skin.HasSetting(DisableMusicOSDArtistImage) + !Skin.HasSetting(DisableMusicOSDClearLogo)">OSD_Right340</include>
         <include condition="Skin.HasSetting(DisableMusicOSDArtistImage) + !Skin.HasSetting(DisableMusicOSDClearLogo)">OSD_RightSide</include>
         <align>center</align>
-        <height>48</height>        
+        <height>48</height>
         <centerbottom>95</centerbottom>
     </include>
 
@@ -421,7 +421,7 @@
                     <texture>common/dim-gradient.png</texture>
                 </control>
 
-                
+
 
                 <control type="group" description="info">
                     <left>view_pad</left>
@@ -630,6 +630,18 @@
                     </control>
                 </control>
             </control>
+            <control type="image">
+                <bottom>150</bottom>
+                <right>view_pad</right>
+                <width>500</width>
+                <height>281</height>
+                <texture background="true">$VAR[Image_Player_Clearart]</texture>
+                <visible>![!String.IsEmpty(Window(Home).Property(OSDInfo)) | Player.ShowInfo | Window.IsActive(DialogFullScreenInfo.xml) | [Player.Paused + Skin.HasSetting(ShowInfoPaused)]]</visible>
+                <visible>!Window.IsVisible(DialogPlayerProcessInfo.xml)</visible>
+                <visible>Skin.HasSetting(ShowOSDClearArt)</visible>
+                <aspectratio>keep</aspectratio>
+                <animation effect="fade" start="0" end="100" delay="200" time="300">Visible</animation>
+            </control>            
 
             <!-- Small Info OSD -->
             <control type="group">
@@ -695,7 +707,7 @@
     </include>
 
     <include name="OSD_Progress_Text">
-        <!-- Clock -->  
+        <!-- Clock -->
         <control type="group">
             <top>30</top>
             <height>120</height>
@@ -1010,7 +1022,7 @@
             <visible>Window.IsVisible(videoosd)</visible>
             <visible>!VideoPlayer.Content(musicvideos)</visible>
         </control>
-        
+
         <control type="button" id="32">
             <centertop>50%</centertop>
             <description>extrainfo</description>
@@ -1022,7 +1034,7 @@
             <texturenofocus colordiffuse="panel_fg_70">osd/info.png</texturenofocus>
             <onclick>SetProperty(OSDExtendedInfo,1,Home)</onclick>
             <onclick condition="!Player.Paused + !Skin.HasSetting(DontPauseOSD)">Pause</onclick>
-            
+
             <onclick condition="String.IsEmpty(VideoPlayer.DBID) + VideoPlayer.Content(movies) + !String.IsEmpty(VideoPlayer.IMDBNumber)">RunScript(plugin.video.themoviedb.helper,add_path=plugin://plugin.video.themoviedb.helper/?info=find&amp;type=movie&amp;imdb_id=$INFO[VideoPlayer.IMDBNumber],call_id=1137,delay=0.35)</onclick>
             <onclick condition="String.IsEmpty(VideoPlayer.DBID) + VideoPlayer.Content(movies) + String.IsEmpty(VideoPlayer.IMDBNumber)">RunScript(plugin.video.themoviedb.helper,add_path=plugin://plugin.video.themoviedb.helper/?info=details&amp;type=movie&amp;query=$INFO[Player.Title],call_id=1137,delay=0.35)</onclick>
             <onclick condition="String.IsEmpty(VideoPlayer.DBID) + [VideoPlayer.Content(tvshows) | VideoPlayer.Content(episodes)]">RunScript(plugin.video.themoviedb.helper,add_path=plugin://plugin.video.themoviedb.helper/?info=details&amp;type=tv&amp;query=$INFO[VideoPlayer.TvShowTitle],call_id=1137,delay=0.35)</onclick>
