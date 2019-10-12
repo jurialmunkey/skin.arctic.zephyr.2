@@ -637,7 +637,7 @@
                 <width>500</width>
                 <height>281</height>
                 <texture background="true">$VAR[Image_Player_Clearart]</texture>
-                <visible>![!String.IsEmpty(Window(Home).Property(OSDInfo)) | Player.ShowInfo | Window.IsActive(DialogFullScreenInfo.xml) | [Player.Paused + Skin.HasSetting(ShowInfoPaused)]]</visible>
+                <visible>![!String.IsEmpty(Window(Home).Property(OSDInfo)) | Player.ShowInfo | Window.IsActive(DialogFullScreenInfo.xml) | Skin.HasSetting(ShowInfoPaused)]</visible>
                 <visible>!Window.IsVisible(DialogPlayerProcessInfo.xml)</visible>
                 <visible>Skin.HasSetting(ShowOSDClearArt)</visible>
                 <aspectratio>keep</aspectratio>
