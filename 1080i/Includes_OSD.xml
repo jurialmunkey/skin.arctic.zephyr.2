@@ -631,6 +631,19 @@
                 </control>
             </control>
 
+            <control type="image">
+                <bottom>150</bottom>
+                <right>view_pad</right>
+                <width>500</width>
+                <height>281</height>
+                <texture background="true">$VAR[Image_Player_Clearart]</texture>
+                <visible>![!String.IsEmpty(Window(Home).Property(OSDInfo)) | Player.ShowInfo | Window.IsActive(DialogFullScreenInfo.xml) | [Player.Paused + Skin.HasSetting(ShowInfoPaused)]]</visible>
+                <visible>!Window.IsVisible(DialogPlayerProcessInfo.xml)</visible>
+                <visible>Skin.HasSetting(ShowOSDClearArt)</visible>
+                <aspectratio>keep</aspectratio>
+                <animation effect="fade" start="0" end="100" delay="200" time="300">Visible</animation>
+                <include>Statusbar_Info_Clock</include>
+            </control>
             <!-- Small Info OSD -->
             <control type="group">
                 <visible>!String.IsEmpty(Window(Home).Property(OSDInfo)) | Player.ShowInfo | Window.IsActive(DialogFullScreenInfo.xml) | Skin.HasSetting(ShowInfoPaused)</visible>

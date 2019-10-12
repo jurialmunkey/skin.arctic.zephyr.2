@@ -790,6 +790,14 @@
                         <onclick>Skin.ToggleSetting(DisableCenter)</onclick>
                     </control>
 
+                    <control type="radiobutton" id="19709" description="Clearlogo">
+                        <visible>Integer.IsEqual(Window.Property(CurrentFocus),9007)</visible>
+                        <include>Defs_Settings_Button</include>
+                        <label>$LOCALIZE[31170]</label>
+                        <selected>Skin.HasSetting(EnableClearlogo)</selected>
+                        <onclick>Skin.ToggleSetting(EnableClearlogo)</onclick>
+                    </control>
+
                     <control type="radiobutton" id="19703" description="Clock">
                         <visible>Integer.IsEqual(Window.Property(CurrentFocus),9007)</visible>
                         <include>Defs_Settings_Button</include>
