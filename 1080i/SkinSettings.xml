@@ -601,6 +601,15 @@
                         <onclick condition="String.IsEmpty(SkinHelper.AutoCloseVideoOSD)">Skin.SetNumeric(SkinHelper.AutoCloseVideoOSD)</onclick>
                     </control>
 
+                    <control type="radiobutton" id="19521" description="Show clearart">
+                        <visible>Integer.IsEqual(Window.Property(CurrentFocus),9005)</visible>
+                        <include>Defs_Settings_Button</include>
+                        <label>$LOCALIZE[31434]</label>
+                        <selected>Skin.HasSetting(ShowOSDClearArt)</selected>
+                        <onclick>Skin.ToggleSetting(ShowOSDClearArt)</onclick>
+                        <enable>!Skin.HasSetting(ShowInfoPaused)</enable>
+                    </control>
+
                     <control type="label" id="19507" description="LABEL MUSIC OSD">
                         <visible>Integer.IsEqual(Window.Property(CurrentFocus),9005)</visible>
                         <include>Dialog_Standard_HintLabel</include>
@@ -790,20 +799,20 @@
                         <onclick>Skin.ToggleSetting(DisableCenter)</onclick>
                     </control>
 
-                    <control type="radiobutton" id="19703" description="Clock">
-                        <visible>Integer.IsEqual(Window.Property(CurrentFocus),9007)</visible>
-                        <include>Defs_Settings_Button</include>
-                        <label>$LOCALIZE[31149]</label>
-                        <selected>!Skin.HasSetting(DisableClock)</selected>
-                        <onclick>Skin.ToggleSetting(DisableClock)</onclick>
-                    </control>
-
                     <control type="radiobutton" id="19709" description="Clearlogo">
                         <visible>Integer.IsEqual(Window.Property(CurrentFocus),9007)</visible>
                         <include>Defs_Settings_Button</include>
                         <label>$LOCALIZE[31170]</label>
                         <selected>Skin.HasSetting(EnableClearlogo)</selected>
                         <onclick>Skin.ToggleSetting(EnableClearlogo)</onclick>
+                    </control>
+
+                    <control type="radiobutton" id="19703" description="Clock">
+                        <visible>Integer.IsEqual(Window.Property(CurrentFocus),9007)</visible>
+                        <include>Defs_Settings_Button</include>
+                        <label>$LOCALIZE[31149]</label>
+                        <selected>!Skin.HasSetting(DisableClock)</selected>
+                        <onclick>Skin.ToggleSetting(DisableClock)</onclick>
                     </control>
 
                     <control type="label" id="19782" description="LABEL">
