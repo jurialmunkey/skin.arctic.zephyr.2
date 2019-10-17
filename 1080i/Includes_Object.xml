@@ -372,7 +372,61 @@
                         <param name="id" value="$PARAM[id]" />
                     </include>
                 </focusedlayout>
-
+                
+                <itemlayout width="item_poster_width" height="item_row_height" condition="![$PARAM[iconcondition] | $PARAM[squarecondition]] + $PARAM[landscapepostercondition]">
+                    <include content="View_51_Wall_Itemlayout">
+                        <param name="selectbox" value="false" />
+                        <param name="icon" value="$VAR[Image_Poster]" />
+                        <param name="id" value="$PARAM[id]" />
+                        <param name="labelinclude" value="$PARAM[labelinclude]" />
+                    </include>
+                </itemlayout>
+                <focusedlayout width="item_poster_width" height="item_row_height" condition="![$PARAM[iconcondition] | $PARAM[squarecondition]] + $PARAM[landscapepostercondition] + !Control.HasFocus($PARAM[id])">
+                    <control type="group">
+                        <include content="View_51_Wall_Itemlayout">
+                            <param name="selectbox" value="false" />
+                            <param name="icon" value="$VAR[Image_Poster]" />
+                            <param name="id" value="$PARAM[id]" />
+                            <param name="labelinclude" value="$PARAM[labelinclude]" />
+                        </include>
+                    </control>
+                </focusedlayout>
+                <focusedlayout width="item_landscape_width" height="item_row_height" condition="![$PARAM[iconcondition] | $PARAM[squarecondition]] + $PARAM[landscapepostercondition] + Control.HasFocus($PARAM[id])">
+                    <control type="group">
+                        <include content="View_51_Wall_Itemlayout">
+                            <param name="selectbox" value="true" />
+                            <param name="iconheight" value="item_icon_height" />
+                            <param name="icon" value="$VAR[Image_Landscape]" />
+                            <param name="diffuse" value="diffuse/landscape-wall.png" />
+                            <param name="labelinclude" value="Defs_Null" />
+                            <param name="clearlogo" value="[!String.IsEmpty(ListItem.Art(clearlogo)) | !String.IsEmpty(ListItem.Art(tvshow.clearlogo))] + [[String.IsEmpty(ListItem.Art(landscape)) + String.IsEmpty(ListItem.Art(tvshow.landscape))] | [[!String.IsEmpty(ListItem.Art(tvshow.landscape)) | !String.IsEmpty(ListItem.Art(landscape))] + !Skin.HasSetting(LandscapeArt)] | [!String.IsEmpty(ListItem.Art(thumb)) + [String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,video)] + String.IsEmpty(ListItem.Property(airday))]]" />
+                            <param name="id" value="$PARAM[id]" />
+                            <param name="label2" value="$PARAM[label2]" />
+                        </include>
+                        
+                        <animation type="Focus" tween="quadratic" easing="in">
+                            <effect type="zoom" center="left" start="42, 100" end="100, 100" delay="250" time="200" />
+                            <effect type="fade" start="0" end="100" delay="150" time="200" />
+                        </animation>
+                    </control>
+                    
+                    <control type="group">
+                        <width>item_poster_width</width>
+                        
+                        <include content="View_51_Wall_Itemlayout">
+                            <param name="selectbox" value="true" />
+                            <param name="icon" value="$VAR[Image_Poster]" />
+                            <param name="id" value="$PARAM[id]" />
+                            <param name="labelinclude" value="$PARAM[labelinclude]" />
+                        </include>
+                        
+                        <animation type="Focus" tween="quadratic" easing="in">
+                            <effect type="zoom" center="left" start="100, 100" end="233, 100" delay="250" time="200" />
+                            <effect type="fade" start="100" end="0" delay="150" time="200" />
+                        </animation>
+                    </control>
+                </focusedlayout>
+                
                 <itemlayout width="item_landscape_width" height="item_row_height" condition="$PARAM[landscapecondition]">
                     <include content="View_51_Wall_Itemlayout">
                         <param name="iconheight" value="item_icon_height" />
