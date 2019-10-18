@@ -204,19 +204,19 @@
             <include content="Object_Info_Button">
                 <param name="id" value="8" />
                 <param name="groupid" value="8008" />
-                <param name="label" value="$VAR[Label_Info_PlayButton]" />
-                <param name="icon" value="$VAR[Image_Info_PlayButton]" />
-                <param name="visible" value="Control.IsEnabled(8) + String.IsEmpty(Container.PluginName)" />
+                <param name="label" value="$LOCALIZE[208]" />
+                <param name="icon" value="special://skin/extras/icons/play3.png" />
+                <param name="visible" value="Control.IsEnabled(8) + !ListItem.IsFolder" />
             </include>
             <include content="Object_Info_Button">
                 <param name="id" value="8888" />
                 <param name="groupid" value="8808" />
-                <param name="label" value="$VAR[Label_Info_PlayButton]" />
-                <param name="icon" value="$VAR[Image_Info_PlayButton]" />
-                <param name="visible" value="Control.IsEnabled(8) + !String.IsEmpty(Container.PluginName)" />
-                <onclick>Dialog.Close(all,force)</onclick>
-                <onclick>Container.Update($INFO[ListItem.FolderPath])</onclick>
-                <!-- <onclick>AlarmClock(launchit, Action(select), 00:01, silent, false)</onclick> -->
+                <param name="label" value="$LOCALIZE[1024]" />
+                <param name="icon" value="special://skin/extras/icons/folder.png" />
+                <param name="visible" value="Control.IsEnabled(8) + ListItem.IsFolder" />
+                <onclick>Dialog.Close(12003)</onclick>
+                <onclick condition="Window.IsVisible(MyVideoNav.xml)">Container.Update($INFO[ListItem.FolderPath])</onclick>
+                <onclick condition="!Window.IsVisible(MyVideoNav.xml)">ActivateWindow(videos,$INFO[ListItem.FolderPath],return)</onclick>
             </include>
             <include content="Object_Info_Button">
                 <param name="id" value="8115" />
@@ -224,7 +224,7 @@
                 <param name="label" value="Search" />
                 <param name="icon" value="special://skin/extras/icons/search.png" />
                 <param name="visible" value="!String.IsEmpty(ListItem.Property(tmdb_id))" />
-                <onclick>Dialog.Close(all,force)</onclick>
+                <onclick>Dialog.Close(12003)</onclick>
                 <onclick>Skin.Reset(SearchTerm)</onclick>
                 <onclick>Skin.SetString(SearchTerm, $INFO[ListItem.Title])</onclick>
                 <onclick>ActivateWindow(1138)</onclick>
