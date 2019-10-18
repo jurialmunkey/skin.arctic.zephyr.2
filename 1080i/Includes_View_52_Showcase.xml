@@ -226,7 +226,7 @@
                 <param name="labelinclude" value="Defs_Null" />
                 <param name="controltype" value="fixedlist" />
                 <param name="controllayout" value="View_52_Showcase_Layout" />
-                <param name="visible" value="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons)" />
+                <param name="visible" value="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | $EXP[Exp_IsPluginAdvancedLauncher]" />
                 <param name="viewtype" value="$LOCALIZE[31040]" />
                 <param name="viewtypename" value="wrap" />
                 <param name="forced" value="true" />
@@ -271,7 +271,7 @@
                 <param name="orientation" value="horizontal" />
                 <param name="controltype" value="fixedlist" />
                 <param name="controllayout" value="View_520_Showcase_Layout" />
-                <param name="visible" value="Container.Content(artists) | Container.Content(albums)" />
+                <param name="visible" value="Container.Content(artists) | Container.Content(albums) | $EXP[Exp_IsPluginAdvancedLauncher]" />
                 <param name="viewtype" value="$LOCALIZE[31362]" />
                 <param name="viewtypename" value="wrap" />
                 <param name="forced" value="true" />
@@ -296,7 +296,7 @@
                 <param name="orientation" value="horizontal" />
                 <param name="controltype" value="fixedlist" />
                 <param name="controllayout" value="View_52_Showcase_Aura_Layout" />
-                <param name="visible" value="Container.Content(artists) | Container.Content(albums) | Container.Content(addons)" />
+                <param name="visible" value="Container.Content(artists) | Container.Content(albums) | Container.Content(addons) | $EXP[Exp_IsPluginAdvancedLauncher]" />
                 <param name="viewtype" value="$LOCALIZE[31362]" />
                 <param name="viewtypename" value="wrap" />
                 <param name="forced" value="true" />
@@ -324,7 +324,7 @@
                 <param name="icon" value="$VAR[Image_Landscape]" />
                 <param name="clearlogo" value="[!String.IsEmpty(ListItem.Art(clearlogo)) | !String.IsEmpty(ListItem.Art(tvshow.clearlogo))] + [[String.IsEmpty(ListItem.Art(landscape)) + String.IsEmpty(ListItem.Art(tvshow.landscape))] | [[!String.IsEmpty(ListItem.Art(tvshow.landscape)) | !String.IsEmpty(ListItem.Art(landscape))] + !Skin.HasSetting(LandscapeArt)] | [!String.IsEmpty(ListItem.Art(thumb)) + [String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,video)] + String.IsEmpty(ListItem.Property(airday))]]" />
                 <param name="iconheight" value="item_icon_height" />
-                <param name="visible" value="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(videos)" />
+                <param name="visible" value="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(videos) | $EXP[Exp_IsPluginAdvancedLauncher]" />
                 <param name="viewtype" value="$LOCALIZE[31361]" />
                 <param name="viewtypename" value="wrap" />
                 <param name="forced" value="true" />
@@ -350,7 +350,7 @@
                 <param name="icon" value="$VAR[Image_Landscape]" />
                 <param name="clearlogo" value="[!String.IsEmpty(ListItem.Art(clearlogo)) | !String.IsEmpty(ListItem.Art(tvshow.clearlogo))] + [[String.IsEmpty(ListItem.Art(landscape)) + String.IsEmpty(ListItem.Art(tvshow.landscape))] | [[!String.IsEmpty(ListItem.Art(tvshow.landscape)) | !String.IsEmpty(ListItem.Art(landscape))] + !Skin.HasSetting(LandscapeArt)] | [!String.IsEmpty(ListItem.Art(thumb)) + [String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,video)] + String.IsEmpty(ListItem.Property(airday))]]" />
                 <param name="iconheight" value="item_icon_height" />
-                <param name="visible" value="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(videos)" />
+                <param name="visible" value="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(videos) | $EXP[Exp_IsPluginAdvancedLauncher]" />
                 <param name="viewtype" value="$LOCALIZE[31361]" />
                 <param name="viewtypename" value="wrap" />
                 <param name="forced" value="true" />

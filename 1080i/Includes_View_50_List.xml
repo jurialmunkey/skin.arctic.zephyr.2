@@ -16,7 +16,7 @@
                 <param name="viewtype" value="$LOCALIZE[535]" />
                 <param name="viewtypename" value="list" />
                 <param name="forced" value="true" />
-                <param name="visible" value="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(actors) | [Container.Content(files) + Window.IsVisible(MyVideoNav.xml) + !String.IsEqual(Container.FolderPath,plugin://plugin.video.youtube/) + !String.IsEmpty(Container.PluginName)] | Window.IsVisible(videoplaylist)" />
+                <param name="visible" value="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(actors) | [Container.Content(files) + Window.IsVisible(MyVideoNav.xml) + !String.IsEqual(Container.FolderPath,plugin://plugin.video.youtube/) + !String.IsEmpty(Container.PluginName)] | Window.IsVisible(videoplaylist) | $EXP[Exp_IsPluginAdvancedLauncher]" />
             </include>
         </control>
     </include>
@@ -40,7 +40,7 @@
                     <param name="viewtype" value="$LOCALIZE[535]" />
                     <param name="viewtypename" value="list" />
                     <param name="forced" value="true" />
-                    <param name="visible" value="![Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(actors) | [Container.Content(files) + Window.IsVisible(MyVideoNav.xml) + !String.IsEqual(Container.FolderPath,plugin://plugin.video.youtube/) + !String.IsEmpty(Container.PluginName)] | Window.IsVisible(videoplaylist)]" />
+                    <param name="visible" value="![Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(actors) | [Container.Content(files) + Window.IsVisible(MyVideoNav.xml) + !String.IsEqual(Container.FolderPath,plugin://plugin.video.youtube/) + !String.IsEmpty(Container.PluginName)] | Window.IsVisible(videoplaylist)] | $EXP[Exp_IsPluginAdvancedLauncher]" />
                 </include>
             </control>
         </control>
@@ -58,7 +58,7 @@
                 <param name="viewtypename" value="info" />
                 <param name="forced" value="true" />
                 <param name="flipsides" value="Skin.HasSetting(FlipSide)" />
-                <param name="visible" value="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(videos)" />
+                <param name="visible" value="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(videos) | $EXP[Exp_IsPluginAdvancedLauncher]" />
             </include>
             <include content="View_522_Showcase_Seasons_Info">
                 <param name="visible" value="true" />
@@ -81,7 +81,7 @@
                 <param name="viewtypename" value="biginfo" />
                 <param name="forced" value="true" />
                 <param name="flipsides" value="Skin.HasSetting(FlipSide)" />
-                <param name="visible" value="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(episodes)" />
+                <param name="visible" value="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(episodes) | $EXP[Exp_IsPluginAdvancedLauncher]" />
             </include>
             <include>View_502_List_Info</include>
         </control>
@@ -97,7 +97,7 @@
                 <width>1790</width>
                 <top>-15</top>
                 <left>-15</left>
-                <visible>Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)</visible>
+                <visible>Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | $EXP[Exp_IsPluginAdvancedLauncher]</visible>
                 <height>840</height>
                 <include>View_Vertical</include>
                 <movement>2</movement>
@@ -323,7 +323,7 @@
                         <param name="forced" value="true" />
                         <param name="itemlayout" value="View_504_Itemlayout" />
                         <param name="flipsides" value="Skin.HasSetting(FlipSide)" />
-                        <param name="visible" value="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(episodes)" />
+                        <param name="visible" value="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(episodes) | $EXP[Exp_IsPluginAdvancedLauncher]" />
                     </include>
                     <include content="View_504_Info">
                         <param name="visible" value="true" />
