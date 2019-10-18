@@ -411,7 +411,7 @@
 
             <!-- Large Info OSD -->
             <control type="group">
-                <visible>!String.IsEmpty(Window(Home).Property(OSDInfo)) | Player.ShowInfo | Window.IsActive(DialogFullScreenInfo.xml) | Skin.HasSetting(ShowInfoPaused)</visible>
+                <visible>!String.IsEmpty(Window(Home).Property(OSDInfo)) | Player.ShowInfo | Window.IsActive(DialogFullScreenInfo.xml) | [Skin.HasSetting(ShowInfoPaused) + [Player.Paused | Window.IsVisible(videoosd)]]</visible>
                 <visible>!Window.IsVisible(DialogPlayerProcessInfo.xml)</visible>
                 <visible>!Skin.HasSetting(DisableOSDInfo)</visible>
                 <include>Animation_FadeIn</include>
