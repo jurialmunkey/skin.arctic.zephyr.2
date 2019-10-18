@@ -389,12 +389,19 @@
                     </control>
                 </itemlayout>
                 <focusedlayout width="item_poster_width" height="item_row_height" condition="![$PARAM[iconcondition] | $PARAM[squarecondition]] + $PARAM[landscapepostercondition] + !Control.HasFocus($PARAM[id])">
-                    <include content="View_51_Wall_Itemlayout">
-                        <param name="selectbox" value="false" />
-                        <param name="icon" value="$VAR[Image_Poster]" />
-                        <param name="id" value="$PARAM[id]" />
-                        <param name="labelinclude" value="$PARAM[labelinclude]" />
-                    </include>
+                    <control type="group">
+                        <include content="View_51_Wall_Itemlayout">
+                            <param name="selectbox" value="false" />
+                            <param name="icon" value="$VAR[Image_Poster]" />
+                            <param name="id" value="$PARAM[id]" />
+                            <param name="labelinclude" value="$PARAM[labelinclude]" />
+                        </include>
+                    
+                        <animation type="Conditional" tween="quadratic" easing="in" condition="!Control.HasFocus($PARAM[id])">
+                            <effect type="slide" end="-342.86" delay="0" time="0" />
+                            <effect type="slide" end="342.86" delay="250" time="200" />
+                        </animation>
+                    </control>
                 </focusedlayout>
                 <focusedlayout width="item_landscape_width" height="item_row_height" condition="![$PARAM[iconcondition] | $PARAM[squarecondition]] + $PARAM[landscapepostercondition] + Control.HasFocus($PARAM[id])">
                     <control type="group">
