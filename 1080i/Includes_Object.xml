@@ -662,7 +662,7 @@
             <top>0</top>
             <align>left</align>
             <aligny>center</aligny>
-            <width max="1000">auto</width>
+            <width max="350">auto</width>
             <font>font_mini</font>
             <textcolor>main_fg_70</textcolor>
             <label>$INFO[ListItem.Studio]</label>
@@ -684,7 +684,7 @@
             <width>auto</width>
             <font>font_mini</font>
             <textcolor>main_fg_70</textcolor>
-            <label max="1000">$INFO[ListItem.Country]</label>
+            <label max="350">$INFO[ListItem.Country]</label>
             <height>32</height>
             <visible>!String.IsEmpty(ListItem.Country)</visible>
         </control>
@@ -703,7 +703,7 @@
             <width>auto</width>
             <font>font_mini</font>
             <textcolor>main_fg_70</textcolor>
-            <label max="1000">$INFO[ListItem.Property(AudioLanguage.1)]$INFO[ListItem.Property(AudioLanguage.2), / ,]$INFO[ListItem.Property(AudioLanguage.3), / ,]$INFO[ListItem.Property(AudioLanguage.4), / ,]$INFO[ListItem.Property(AudioLanguage.5), / ,]</label>
+            <label max="350">$INFO[ListItem.Property(AudioLanguage.1)]$INFO[ListItem.Property(AudioLanguage.2), / ,]$INFO[ListItem.Property(AudioLanguage.3), / ,]$INFO[ListItem.Property(AudioLanguage.4), / ,]$INFO[ListItem.Property(AudioLanguage.5), / ,]</label>
             <visible>!String.IsEmpty(ListItem.Property(AudioLanguage.1))</visible>
             <height>32</height>
         </control>
@@ -722,7 +722,7 @@
             <width>auto</width>
             <font>font_mini</font>
             <textcolor>main_fg_70</textcolor>
-            <label max="1000">$INFO[ListItem.Property(SubtitleLanguage.1)]$INFO[ListItem.Property(SubtitleLanguage.2), / ,]$INFO[ListItem.Property(SubtitleLanguage.3), / ,]$INFO[ListItem.Property(SubtitleLanguage.4), / ,]$INFO[ListItem.Property(SubtitleLanguage.5), / ,]</label>
+            <label max="350">$INFO[ListItem.Property(SubtitleLanguage.1)]$INFO[ListItem.Property(SubtitleLanguage.2), / ,]$INFO[ListItem.Property(SubtitleLanguage.3), / ,]$INFO[ListItem.Property(SubtitleLanguage.4), / ,]$INFO[ListItem.Property(SubtitleLanguage.5), / ,]</label>
             <height>32</height>
             <visible>!String.IsEmpty(ListItem.Property(SubtitleLanguage.1))</visible>
         </control>
@@ -743,7 +743,7 @@
             <width>auto</width>
             <font>font_mini</font>
             <textcolor>main_fg_70</textcolor>
-            <label max="1000">$INFO[ListItem.VideoCodec]$INFO[ListItem.VideoResolution,  •  ,]$INFO[ListItem.VideoAspect,  •  ,]</label>
+            <label max="350">$INFO[ListItem.VideoCodec]$INFO[ListItem.VideoResolution,  •  ,]$INFO[ListItem.VideoAspect,  •  ,]</label>
             <height>32</height>
             <visible>Skin.HasSetting(DisableCodecs)</visible>
         </control>
@@ -763,7 +763,7 @@
             <width>auto</width>
             <font>font_mini</font>
             <textcolor>main_fg_70</textcolor>
-            <label max="1000">$INFO[ListItem.AudioCodec]$VAR[Label_AudioChannels,  •  ,]</label>
+            <label max="350">$INFO[ListItem.AudioCodec]$VAR[Label_AudioChannels,  •  ,]</label>
             <height>32</height>
             <visible>Skin.HasSetting(DisableCodecs)</visible>
         </control>
