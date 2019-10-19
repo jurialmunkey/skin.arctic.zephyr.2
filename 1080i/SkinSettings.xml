@@ -842,7 +842,8 @@
                         <include>Defs_Settings_Button</include>
                         <label>$LOCALIZE[31151]</label>
                         <selected>Skin.HasSetting(EnableLanguages)</selected>
-                        <onclick>Skin.ToggleSetting(EnableLanguages)</onclick>
+                        <onclick>Skin.SetBool(EnableLanguages)</onclick>
+                        <onclick>ActivateWindow(1141)</onclick>
                     </control>
 
                     <control type="radiobutton" id="19798" description="Minimal Busy Loader">
