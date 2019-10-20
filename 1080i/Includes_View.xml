@@ -352,6 +352,7 @@
     <include name="View_Cast_Toplabel">
         <param name="altid" default="999999" />
         <param name="uselabel2" default="false" />
+        <param name="spinner-visible" default="true" />
         <definition>
             <control type="group" id="$PARAM[groupid]">
                 <top>52</top>
@@ -365,7 +366,8 @@
                         <param name="label" value="$LOCALIZE[31428]..." />
                         <param name="textcolor" value="main_fg_100" />
                     </include>
-                    <visible>Container($PARAM[id]).IsUpdating + !Integer.IsGreater(Container($PARAM[id]).NumItems,0)</visible>
+                    <visible>Container($PARAM[id]).IsUpdating</visible>
+                    <visible>$PARAM[spinner-visible]</visible>
                 </control>
                 <control type="grouplist">
                     <height>52</height>
