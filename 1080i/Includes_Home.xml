@@ -223,8 +223,9 @@
             <animation effect="slide" start="0" end="0,-625" time="300" tween="quadratic" easing="out" condition="Control.HasFocus(5600) + $EXP[Exp_InfoVisible]">Conditional</animation>
 
 
-            <animation effect="slide" start="0" end="0,-900" time="300" tween="quadratic" condition="![Control.HasFocus(5610) | Control.HasFocus(302) | Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(DialogAddonInfo.xml)] + ![Window.Next(VideoFullScreen.xml) | Window.Next(MusicVisualisation.xml)]">WindowClose</animation>
+            <animation effect="slide" start="0" end="0,-900" time="300" tween="quadratic" condition="!Control.HasFocus(5610) + !Control.HasFocus(5600) + !Control.HasFocus(302) + !Window.IsVisible(DialogVideoInfo.xml) + !Window.IsVisible(DialogMusicInfo.xml) + !Window.IsVisible(DialogAddonInfo.xml) + !Window.Next(VideoFullScreen.xml) + !Window.Next(MusicVisualisation.xml)">WindowClose</animation>
             <animation effect="slide" start="0" end="0,-615" time="300" tween="quadratic" condition="Control.HasFocus(302) + !String.IsEqual(Window(Home).Property(WidgetFocus),5610) + ![Window.Next(VideoFullScreen.xml) | Window.Next(MusicVisualisation.xml)]">WindowClose</animation>
+            <animation effect="slide" start="0" end="0,-625" time="300" tween="quadratic" condition="Control.HasFocus(5600) + ![Window.Next(VideoFullScreen.xml) | Window.Next(MusicVisualisation.xml)]">WindowClose</animation>
 
             <animation effect="slide" start="0" end="0,180" time="300" tween="quadratic" condition="![Control.HasFocus(5610) | Control.HasFocus(302) | Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(DialogAddonInfo.xml)] + [Window.Next(VideoFullScreen.xml) | Window.Next(MusicVisualisation.xml)]">WindowClose</animation>
             <animation effect="slide" start="0" end="0,465" time="300" tween="quadratic" condition="Control.HasFocus(302) + !String.IsEqual(Window(Home).Property(WidgetFocus),5610) + [Window.Next(VideoFullScreen.xml) | Window.Next(MusicVisualisation.xml)]">WindowClose</animation>
