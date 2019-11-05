@@ -654,50 +654,6 @@
             <top>5</top>
             <height>24</height>
             <width>24</width>
-            <texture colordiffuse="main_fg_90">flags/studio.png</texture>
-            <visible>!String.IsEmpty(ListItem.Studio)</visible>
-            <visible>!Skin.HasSetting(Tags.DisableStudios)</visible>
-        </control>
-        <control type="label">
-            <left>-20</left>
-            <top>0</top>
-            <align>left</align>
-            <aligny>center</aligny>
-            <width max="350">auto</width>
-            <font>font_mini</font>
-            <textcolor>main_fg_70</textcolor>
-            <label>$INFO[ListItem.Studio]</label>
-            <height>32</height>
-            <visible>!String.IsEmpty(ListItem.Studio)</visible>
-            <visible>!Skin.HasSetting(Tags.DisableStudios)</visible>
-        </control>
-        <control type="image">
-            <top>5</top>
-            <height>24</height>
-            <width>24</width>
-            <texture colordiffuse="main_fg_90">flags/lang.png</texture>
-            <visible>!String.IsEmpty(ListItem.Country)</visible>
-            <visible>!Skin.HasSetting(Tags.DisableCountries)</visible>
-        </control>
-        <control type="label">
-            <left>-20</left>
-            <top>0</top>
-            <align>left</align>
-            <aligny>center</aligny>
-            <width>auto</width>
-            <font>font_mini</font>
-            <textcolor>main_fg_70</textcolor>
-            <label max="350">$INFO[ListItem.Country]</label>
-            <height>32</height>
-            <visible>!String.IsEmpty(ListItem.Country)</visible>
-            <visible>!Skin.HasSetting(Tags.DisableCountries)</visible>
-        </control>
-        
-
-        <control type="image">
-            <top>5</top>
-            <height>24</height>
-            <width>24</width>
             <texture colordiffuse="main_fg_90">flags/video.png</texture>
             <visible>Skin.HasSetting(DisableCodecs)</visible>
             <visible>!String.IsEmpty(ListItem.VideoCodec)</visible>
@@ -780,6 +736,48 @@
             <height>32</height>
             <visible>!String.IsEmpty(ListItem.Property(SubtitleLanguage.1))</visible>
             <visible>!Skin.HasSetting(Tags.DisableLanguages)</visible>
+        </control>
+        <control type="image">
+            <top>5</top>
+            <height>24</height>
+            <width>24</width>
+            <texture colordiffuse="main_fg_90">flags/lang.png</texture>
+            <visible>!String.IsEmpty(ListItem.Country)</visible>
+            <visible>!Skin.HasSetting(Tags.DisableCountries)</visible>
+        </control>
+        <control type="label">
+            <left>-20</left>
+            <top>0</top>
+            <align>left</align>
+            <aligny>center</aligny>
+            <width>auto</width>
+            <font>font_mini</font>
+            <textcolor>main_fg_70</textcolor>
+            <label>$INFO[ListItem.Country]</label>
+            <height>32</height>
+            <visible>!String.IsEmpty(ListItem.Country)</visible>
+            <visible>!Skin.HasSetting(Tags.DisableCountries)</visible>
+        </control>
+        <control type="image">
+            <top>5</top>
+            <height>24</height>
+            <width>24</width>
+            <texture colordiffuse="main_fg_90">flags/studio.png</texture>
+            <visible>!String.IsEmpty(ListItem.Studio)</visible>
+            <visible>!Skin.HasSetting(Tags.DisableStudios)</visible>
+        </control>
+        <control type="label">
+            <left>-20</left>
+            <top>0</top>
+            <align>left</align>
+            <aligny>center</aligny>
+            <width>auto</width>
+            <font>font_mini</font>
+            <textcolor>main_fg_70</textcolor>
+            <label>$INFO[ListItem.Studio]</label>
+            <height>32</height>
+            <visible>!String.IsEmpty(ListItem.Studio)</visible>
+            <visible>!Skin.HasSetting(Tags.DisableStudios)</visible>
         </control>
     </include>
 
