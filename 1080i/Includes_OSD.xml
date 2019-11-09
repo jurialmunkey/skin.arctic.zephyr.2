@@ -1232,6 +1232,26 @@
             <visible>!VideoPlayer.Content(livetv)</visible>
         </control>
 
+        <control type="button" id="38">
+            <centertop>50%</centertop>
+            <description>Lyrics</description>
+            <width>48</width>
+            <height>48</height>
+            <label/>
+            <font/>
+            <texturefocus colordiffuse="$VAR[ColorHighlight]">osd/subs.png</texturefocus>
+            <texturenofocus colordiffuse="panel_fg_70">osd/subs.png</texturenofocus>
+            <onfocus condition="!String.IsEmpty(Window(Home).Property(OSDExtendedInfo)) + Player.Paused + !Skin.HasSetting(DontPauseOSD)">Play</onfocus>
+            <onfocus condition="!String.IsEmpty(Window(Home).Property(OSDExtendedInfo))">ClearProperty(OSDExtendedInfo,Home)</onfocus>
+            <onfocus>ClearProperty(OSD_Menu,Home)</onfocus>
+            <visible>Window.IsVisible(musicosd)</visible>
+            <visible>!VideoPlayer.Content(livetv)</visible>
+            <visible>String.IsEmpty(Window(Home).Property(culrc.running))</visible>
+            <onclick>Close</onclick>
+            <onclick>RunScript(script.cu.lrclyrics)</onclick>
+
+        </control>
+
     </include>
 
     <include name="OSD_Menu_List">
