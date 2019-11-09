@@ -7,6 +7,16 @@
     <onload condition="!String.IsEmpty(Window(Home).Property(OSDViewMode))">ClearProperty(OSDViewMode,Home)</onload>
     <onunload>ClearProperty(OSDInfo,Home)</onunload>
     <controls>
+        <control type="button">
+            <description>background close area</description>
+            <left>0</left>
+            <top>0</top>
+            <width>100%</width>
+            <bottom>200</bottom>
+            <texturefocus />
+            <texturenofocus />
+            <onclick>Action(close)</onclick>
+        </control>
 
         <control type="group">
             <visible>!Window.IsVisible(DialogPlayerProcessInfo.xml)</visible>
