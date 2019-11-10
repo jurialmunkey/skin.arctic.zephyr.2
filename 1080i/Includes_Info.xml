@@ -204,16 +204,16 @@
             <include content="Object_Info_Button">
                 <param name="id" value="8" />
                 <param name="groupid" value="8008" />
-                <param name="label" value="$LOCALIZE[208]" />
-                <param name="icon" value="special://skin/extras/icons/play3.png" />
-                <param name="visible" value="Control.IsEnabled(8) + !ListItem.IsFolder" />
+                <param name="label" value="$VAR[Label_Info_PlayButton]" />
+                <param name="icon" value="$VAR[Image_Info_PlayButton]" />
+                <param name="visible" value="Control.IsEnabled(8) + [!ListItem.IsFolder | !String.IsEmpty(ListItem.DBID)]" />
             </include>
             <include content="Object_Info_Button">
                 <param name="id" value="8888" />
                 <param name="groupid" value="8808" />
                 <param name="label" value="$LOCALIZE[1024]" />
                 <param name="icon" value="special://skin/extras/icons/folder.png" />
-                <param name="visible" value="Control.IsEnabled(8) + ListItem.IsFolder" />
+                <param name="visible" value="Control.IsEnabled(8) + ListItem.IsFolder + String.IsEmpty(ListItem.DBID)" />
                 <onclick>Dialog.Close(12003)</onclick>
                 <onclick condition="Window.IsVisible(MyVideoNav.xml)">Container.Update($INFO[ListItem.FolderPath])</onclick>
                 <onclick condition="!Window.IsVisible(MyVideoNav.xml)">ActivateWindow(videos,$INFO[ListItem.FolderPath],return)</onclick>

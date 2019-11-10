@@ -15,7 +15,7 @@
     </variable>
 
     <variable name="Label_Info_PlayButton">
-        <value condition="String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season)">$LOCALIZE[1024]</value>
+        <value condition="ListItem.IsFolder">$LOCALIZE[1024]</value>
         <value>$LOCALIZE[208]</value>
     </variable>
 
