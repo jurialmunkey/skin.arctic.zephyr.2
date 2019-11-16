@@ -697,8 +697,17 @@
                 <top>5</top>
                 <width>517</width>
                 <height>24</height>
-                <texture>indicator/timer.png</texture>
-                <visible>ListItem.HasTimer</visible>
+                <texture colordiffuse="$PARAM[fgcolor]">indicator/library.png</texture>
+                <visible>ListItem.IsPlayable + !ListItem.IsRecording + !ListItem.HasTimer</visible>
+                <visible>$PARAM[visible]</visible>
+            </control>
+            <control type="image" id="2">
+                <aspectratio align="right">keep</aspectratio>
+                <top>5</top>
+                <width>517</width>
+                <height>24</height>
+                <texture colordiffuse="$PARAM[fgcolor]">indicator/timer.png</texture>
+                <visible>ListItem.HasTimer + !ListItem.IsRecording</visible>
                 <visible>$PARAM[visible]</visible>
             </control>
             <control type="image" id="2">
