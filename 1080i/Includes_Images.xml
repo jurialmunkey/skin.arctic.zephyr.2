@@ -208,4 +208,12 @@
         <value condition="!String.IsEmpty(ListItem.Art(fanart))">$INFO[ListItem.Art(fanart)]</value>
         <value>$INFO[ListItem.Icon]</value>
     </variable>
+
+    <!-- Images for Advanced Emulator Launcher -->
+    <variable name="ROM_Simple_Art_Main">
+		<value condition="!String.IsEmpty(ListItem.Art(3dbox))">$INFO[ListItem.Art(3dbox)]</value>
+		<value condition="!String.IsEqual(ListItem.Property(platform),MAME) + !String.IsEmpty(ListItem.Art(boxfront))">$INFO[ListItem.Art(boxfront)]</value>
+		<value condition="String.IsEqual(ListItem.Property(platform),MAME)  + !String.IsEmpty(ListItem.Art(flyer))">$INFO[ListItem.Art(flyer)]</value>
+		<value condition="String.IsEqual(ListItem.Property(platform),MAME)  + !String.IsEmpty(ListItem.Art(boxfront))">$INFO[ListItem.Art(boxfront)]</value>
+	</variable>
 </includes>
