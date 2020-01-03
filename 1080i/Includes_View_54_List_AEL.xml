@@ -87,7 +87,7 @@
                 </control>
             </control>
             <control type="group">
-                <right>50</right>
+                <right>30</right>
                 <width>723.33</width>
                 <control type="image">
                     <left>120</left>
@@ -111,13 +111,11 @@
                 </control>
             </control>
             <control type="grouplist">
-                <top>480</top>
-                <left>10</left>
-                <right>30</right>
-                <orientation>vertical</orientation>
+                <top>460</top>
                 <usecontrolcoords>true</usecontrolcoords>
-                <itemgap>0</itemgap>
                 <control type="group">
+                    <left>15</left>
+                    <right>15</right>
                     <control type="image">
                         <left>0</left>
                         <top>0</top>
@@ -136,14 +134,25 @@
                         <visible>!ListItem.IsCollection</visible>
                     </control>
                 </control>
-                <control type="textbox">
-                    <top>100</top>
-                    <font>font_plotbox</font>
-                    <textcolor>main_fg_70</textcolor>
-                    <align>left</align>
-                    <aligny>top</aligny>
-                    <height>160</height>
-                    <label>$VAR[Label_Plot]</label>
+                <control type="group">
+                    <top>90</top>
+                    <left>-20</left>
+                    <control type="image">
+                        <left>0</left>
+                        <width>390</width>
+                        <height>240</height>
+						<texture background="true">$VAR[ROM_Simple_Art_Title]</texture>
+						<aspectratio>keep</aspectratio>
+					</control>
+                    <control type="textbox">
+                        <left>400</left>
+                        <right>15</right>
+                        <align>right</align>
+                        <font>font_tiny</font>
+                        <textcolor>main_fg_70</textcolor>
+                        <height>240</height>
+                        <label>$VAR[Label_Plot]</label>
+                    </control>
                 </control>
             </control>
         </control>

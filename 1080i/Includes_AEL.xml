@@ -14,6 +14,10 @@
     <value condition="!String.IsEmpty(ListItem.Art(clearlogo))">$INFO[ListItem.Art(clearlogo)]</value>
     <value condition="!String.IsEmpty(ListItem.Art(banner))">$INFO[ListItem.Art(banner)]</value>
   </variable>
+  <variable name="ROM_Simple_Art_Title">
+		<value condition="!String.IsEmpty(ListItem.Art(title))">$INFO[ListItem.Art(title)]</value>
+		<value condition="!String.IsEmpty(ListItem.Art(boxback))">$INFO[ListItem.Art(boxback)]</value>
+	</variable>
   <variable name="ROM_Details">
     <value>$INFO[ListItem.Property(platform),[COLOR=main_fg_100],[/COLOR]]$INFO[ListItem.Studio,  |  [COLOR=main_fg_100],[/COLOR]]$INFO[ListItem.Year,  |  [COLOR=main_fg_100],[/COLOR]]$INFO[ListItem.Property(nplayers),  |  [COLOR=main_fg_100], [/COLOR]]</value>
   </variable>
