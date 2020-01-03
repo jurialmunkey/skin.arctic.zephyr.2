@@ -126,13 +126,12 @@
                         <aspectratio>keep</aspectratio>
                     </control>
                     <control type="label">
-                        <align>right</align>
+                        <left>110</left>
+                        <height>30</height>
                         <top>30</top>
                         <font>font_tiny</font>
                         <textcolor>main_fg_70</textcolor>
                         <label>$VAR[ROM_Details]</label>
-                        <height>30</height>
-                        <visible>!ListItem.IsCollection</visible>
                     </control>
                 </control>
                 <control type="group">
@@ -148,11 +147,11 @@
                     <control type="textbox">
                         <left>400</left>
                         <right>15</right>
-                        <align>right</align>
+                        <align>justify</align>
                         <font>font_tiny</font>
                         <textcolor>main_fg_70</textcolor>
                         <height>240</height>
-                        <label>$VAR[Label_Plot]</label>
+                        <label>$INFO[ListItem.Plot]</label>
                     </control>
                 </control>
             </control>
