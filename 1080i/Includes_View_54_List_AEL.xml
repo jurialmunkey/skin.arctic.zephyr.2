@@ -1,29 +1,109 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <includes>
+    <include name="View_540_List_Control">
+        <param name="itemlayout" default="View_50_Itemlayout" />
+        <param name="itemheight" default="item_list_height" />
+        <param name="altid" default="999999" />
+        <param name="height" default="view_list_height" />
+        <param name="top" default="0" />
+        <param name="controllayout" default="View_Vertical" />
+        <param name="controltype" default="panel" />
+        <param name="viewtype" default="$LOCALIZE[535]" />
+        <param name="viewtypename" default="list" />
+        <param name="forced" default="false" />
+        <param name="flipsides" default="false" />
+        <definition>
+            <control type="$PARAM[controltype]" id="$PARAM[id]">
+                <nested />
+                <scrolltime tween="quadratic">400</scrolltime>
+                <top>$PARAM[top]</top>
+                <visible>$PARAM[visible]</visible>
+                <include content="View_50_List_Sides" condition="$PARAM[flipsides]">
+                    <param name="left" value="$PARAM[right]" />
+                    <param name="right" value="$PARAM[left]" />
+                </include>
+                <include content="View_50_List_Sides" condition="!$PARAM[flipsides]">
+                    <param name="left" value="$PARAM[left]" />
+                    <param name="right" value="$PARAM[right]" />
+                </include>
+                <height>$PARAM[height]</height>
+                <include>$PARAM[controllayout]</include>
+                <pagecontrol>60</pagecontrol>
+                <viewtype label="$PARAM[viewtype]">$PARAM[viewtypename]</viewtype>
+                <include content="View_Forced" condition="$PARAM[forced]">
+                    <param name="string" value="$PARAM[viewtype]" />
+                </include>
+                <itemlayout height="$PARAM[itemheight]">
+                    <include content="$PARAM[itemlayout]">
+                        <param name="itemheight" value="$PARAM[itemheight]" />
+                    </include>
+                </itemlayout>
+                <focusedlayout height="$PARAM[itemheight]">
+                    <control type="group">
+                        <visible>!Control.HasFocus($PARAM[id]) + !Control.HasFocus($PARAM[altid])</visible>
+                        <include content="$PARAM[itemlayout]">
+                            <param name="itemheight" value="$PARAM[itemheight]" />
+                        </include>
+                    </control>
+                    <control type="group">
+                        <visible>Control.HasFocus($PARAM[id]) | Control.HasFocus($PARAM[altid])</visible>
+                        <include content="$PARAM[itemlayout]">
+                            <param name="fgcolor" value="main_bg" />
+                            <param name="bgcolor" value="main_fg" />
+                            <param name="panelcolor" value="main_fg_100" />
+                            <param name="selectbox" value="true" />
+                            <param name="itemheight" value="$PARAM[itemheight]" />
+                        </include>
+                    </control>
+                    <control type="button">
+                        <left>0</left>
+                        <top>0</top>
+                        <width>1</width>
+                        <height>1</height>
+                        <onload condition="!IsEmpty(ListItem.Trailer)">PlayerControl(Repeat)</onload>
+                        <onfocus condition="!IsEmpty(ListItem.Trailer)">PlayMedia($ESCINFO[ListItem.trailer],1)</onfocus>
+                        <onunfocus condition="Player.HasVideo">PlayerControl(Stop)</onunfocus>
+                        <texturefocus>-</texturefocus>
+                        <texturenofocus>-</texturenofocus>
+                        <animation type="Focus">
+                            <effect type="fade" delay="2000" start="0" end="100" />
+                        </animation>
+                    </control>
+                </focusedlayout>
+            </control>
+        </definition>
+    </include>
     <include name="View_540_List_Info">
         <control type="group">
             <include>View_FlipSides</include>
-            <width>1028.53</width>
+            <width>1048.53</width>
             <control type="group">
-                <include content="View_50_Poster">
-                    <param name="height" value="420" />
-                    <param name="width" value="295.2" />
-                    <param name="diffuse" value="diffuse/poster-mediainfo.png" />
-                    <param name="icon" value="$VAR[ROM_Simple_Art_Main]" />
-                </include>
+                <control type="image">
+                    <left>0</left>
+                    <width>360</width>
+                    <height>460</height>
+                    <texture background="true">$VAR[ROM_Simple_Art_Main]</texture>
+                    <aspectratio>keep</aspectratio>
+                </control>
             </control>
             <control type="group">
-                <right>0</right>
+                <right>50</right>
                 <width>723.33</width>
-                <include content="View_50_Poster">
-                    <param name="height" value="420" />
-                    <param name="width" value="723.33" />
-                    <param name="icon" value="$VAR[ROM_Simple_Art_Snap]" />
-                    <param name="diffuse" value="diffuse/landscape-mediainfo.png" />
-                </include>
+                <control type="image">
+                    <left>120</left>
+                    <width>615</width>
+                    <height>460</height>
+                    <texture background="true">$VAR[ROM_Simple_Art_Snap]</texture>
+                    <aspectratio>keep</aspectratio>
+                </control>
+                <control type="videowindow">
+                    <visible>Player.Playing + !IsEmpty(ListItem.Trailer)</visible>
+                    <left>120</left>
+                    <height>460</height>
+                </control>
                 <control type="image">
                     <top>10</top>
-                    <right>40</right>
+                    <right>0</right>
                     <width>110</width>
                     <height>360</height>
                     <texture background="true">$VAR[ROM_Simple_Art_Logo]</texture>
@@ -31,41 +111,33 @@
                 </control>
             </control>
             <control type="grouplist">
-                <top>430</top>
-                <left>0</left>
+                <top>480</top>
+                <left>10</left>
                 <right>30</right>
                 <orientation>vertical</orientation>
                 <usecontrolcoords>true</usecontrolcoords>
                 <itemgap>0</itemgap>
-                <control type="label">
-                    <font>font_title_small</font>
-                    <textcolor>main_fg_100</textcolor>
-                    <align>left</align>
-                    <aligny>top</aligny>
-                    <height>52</height>
-                    <label>$VAR[Label_List_Title]</label>
+                <control type="group">
+                    <control type="image">
+                        <left>0</left>
+                        <top>0</top>
+                        <width>100</width>
+                        <height>100</height>
+                        <texture>$INFO[ListItem.Property(platform),special://home/addons/plugin.program.advanced.emulator.launcher/media/p_pixel/,.png]</texture>
+                        <aspectratio>keep</aspectratio>
+                    </control>
+                    <control type="label">
+                        <align>right</align>
+                        <top>30</top>
+                        <font>font_tiny</font>
+                        <textcolor>main_fg_70</textcolor>
+                        <label>$VAR[ROM_Details]</label>
+                        <height>30</height>
+                        <visible>!ListItem.IsCollection</visible>
+                    </control>
                 </control>
-                <control type="label">
-                    <align>left</align>
-                    <aligny>top</aligny>
-                    <font>font_tiny</font>
-                    <textcolor>main_fg_70</textcolor>
-                    <label>$VAR[Label_SubTitle]</label>
-                    <height>30</height>
-                    <visible>!ListItem.IsCollection</visible>
-                </control>
-
-                <!-- Platform AEL icon -->
-                <!-- <include content="AEL_Platform_Icon">
-                    <param name="left" value="0" />
-                    <param name="top" value="25" />
-                    <param name="debug_control" value="false" />
-                    <param name="box_width" value="100" />
-                    <param name="box_height" value="100" />
-                </include> -->
-
                 <control type="textbox">
-                    <top>30</top>
+                    <top>100</top>
                     <font>font_plotbox</font>
                     <textcolor>main_fg_70</textcolor>
                     <align>left</align>
@@ -81,7 +153,7 @@
         <control type="group">
             <visible>Control.IsVisible(540)</visible>
             <include>View_Group</include>
-            <include content="View_50_List_Control">
+            <include content="View_540_List_Control">
                 <param name="left" value="-20" />
                 <param name="right" value="1038.53" />
                 <param name="id" value="540" />
