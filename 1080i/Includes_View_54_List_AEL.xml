@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<includes>
+    <include name="View_540_List_Info">
+        <control type="group">
+            <include>View_FlipSides</include>
+            <width>1028.53</width>
+            <control type="group">
+                <include content="View_50_Poster">
+                    <param name="height" value="420" />
+                    <param name="width" value="295.2" />
+                    <param name="diffuse" value="diffuse/poster-mediainfo.png" />
+                    <param name="icon" value="$VAR[ROM_Simple_Art_Main]" />
+                </include>
+            </control>
+            <control type="group">
+                <right>0</right>
+                <width>723.33</width>
+                <include content="View_50_Poster">
+                    <param name="height" value="420" />
+                    <param name="width" value="723.33" />
+                    <param name="icon" value="$VAR[ROM_Simple_Art_Snap]" />
+                    <param name="diffuse" value="diffuse/landscape-mediainfo.png" />
+                </include>
+                <control type="image">
+                    <top>10</top>
+                    <right>40</right>
+                    <width>110</width>
+                    <height>360</height>
+                    <texture background="true">$VAR[ROM_Simple_Art_Logo]</texture>
+                    <aspectratio align="right" aligny="top">keep</aspectratio>
+                </control>
+            </control>
+            <control type="grouplist">
+                <top>430</top>
+                <left>0</left>
+                <right>30</right>
+                <orientation>vertical</orientation>
+                <usecontrolcoords>true</usecontrolcoords>
+                <itemgap>0</itemgap>
+                <control type="label">
+                    <font>font_title_small</font>
+                    <textcolor>main_fg_100</textcolor>
+                    <align>left</align>
+                    <aligny>top</aligny>
+                    <height>52</height>
+                    <label>$VAR[Label_List_Title]</label>
+                </control>
+                <control type="label">
+                    <align>left</align>
+                    <aligny>top</aligny>
+                    <font>font_tiny</font>
+                    <textcolor>main_fg_70</textcolor>
+                    <label>$VAR[Label_SubTitle]</label>
+                    <height>30</height>
+                    <visible>!ListItem.IsCollection</visible>
+                </control>
+
+                <!-- Platform AEL icon -->
+                <!-- <include content="AEL_Platform_Icon">
+                    <param name="left" value="0" />
+                    <param name="top" value="25" />
+                    <param name="debug_control" value="false" />
+                    <param name="box_width" value="100" />
+                    <param name="box_height" value="100" />
+                </include> -->
+
+                <control type="textbox">
+                    <top>30</top>
+                    <font>font_plotbox</font>
+                    <textcolor>main_fg_70</textcolor>
+                    <align>left</align>
+                    <aligny>top</aligny>
+                    <height>160</height>
+                    <label>$VAR[Label_Plot]</label>
+                </control>
+            </control>
+        </control>
+    </include>
+
+    <include name="View_540_List_ROM_Info">
+        <control type="group">
+            <visible>Control.IsVisible(540)</visible>
+            <include>View_Group</include>
+            <include content="View_50_List_Control">
+                <param name="left" value="-20" />
+                <param name="right" value="1038.53" />
+                <param name="id" value="540" />
+                <param name="viewtype" value="$LOCALIZE[31435]" />
+                <param name="viewtypename" value="biginfo" />
+                <param name="forced" value="true" />
+                <param name="flipsides" value="Skin.HasSetting(FlipSide)" />
+                <param name="visible" value="$EXP[Exp_IsPluginAdvancedLauncher]" />
+            </include>
+            <include>View_540_List_Info</include>
+        </control>
+    </include>
+</includes>
