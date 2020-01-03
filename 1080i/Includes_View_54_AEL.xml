@@ -95,6 +95,7 @@
                     <height>460</height>
                     <texture background="true">$VAR[ROM_Simple_Art_Snap]</texture>
                     <aspectratio>keep</aspectratio>
+                    <visible>!Player.Playing</visible>
                 </control>
                 <control type="videowindow">
                     <visible>Player.Playing + !IsEmpty(ListItem.Trailer)</visible>
