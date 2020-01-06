@@ -46,7 +46,7 @@
                     <bottom>30</bottom>
                     <right>30</right>
                     <control type="image">
-                        <visible>[Player.Playing + !IsEmpty(ListItem.Trailer)] | !String.IsEmpty(ListItem.Art(snap))</visible>
+                        <visible>![Player.Playing + !IsEmpty(ListItem.Trailer)]</visible>
                         <texture border="10" colordiffuse="ff000000">diffuse/landscape-mediainfo.png</texture>
                     </control>
                     <control type="image">
