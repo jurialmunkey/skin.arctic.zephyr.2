@@ -474,6 +474,7 @@
         <param name="viewtypename" default="list" />
         <param name="forced" default="false" />
         <param name="flipsides" default="false" />
+        <param name="focustrailer" default="false" />
         <definition>
             <control type="$PARAM[controltype]" id="$PARAM[id]">
                 <nested />
@@ -517,6 +518,7 @@
                             <param name="itemheight" value="$PARAM[itemheight]" />
                         </include>
                     </control>
+                    <include condition="$PARAM[focustrailer]">View_540_Button_Include</include>
                 </focusedlayout>
             </control>
         </definition>
