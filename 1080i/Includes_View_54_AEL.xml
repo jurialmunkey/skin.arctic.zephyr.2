@@ -52,6 +52,7 @@
                     <control type="image">
                         <texture diffuse="diffuse/landscape-mediainfo.png" background="true">$VAR[ROM_Simple_Art_Snap]</texture>
                         <aspectratio scalediffuse="false">keep</aspectratio>
+                        <visible>!Player.Playing</visible>
                     </control>
                     <control type="videowindow">
                         <visible>Player.Playing + !IsEmpty(ListItem.Trailer)</visible>
