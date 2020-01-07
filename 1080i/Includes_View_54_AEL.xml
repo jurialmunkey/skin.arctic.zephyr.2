@@ -46,12 +46,12 @@
                     <bottom>30</bottom>
                     <right>30</right>
                     <control type="image">
-                        <visible>![Player.Playing + !IsEmpty(ListItem.Trailer)]</visible>
                         <texture border="10" colordiffuse="ff000000">diffuse/landscape-mediainfo.png</texture>
                     </control>
                     <control type="image">
                         <texture diffuse="diffuse/landscape-mediainfo.png" background="true">$VAR[ROM_Simple_Art_Snap]</texture>
                         <aspectratio scalediffuse="false">keep</aspectratio>
+                        <visible>![Player.Playing + !IsEmpty(ListItem.Trailer)]</visible>
                     </control>
                     <control type="videowindow">
                         <visible>Player.Playing + !IsEmpty(ListItem.Trailer)</visible>
