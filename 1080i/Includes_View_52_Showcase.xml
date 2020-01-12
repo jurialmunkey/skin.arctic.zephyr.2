@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <includes>
     <include name="View_52_Showcase_Header">
         <param name="itemgap" default="10" />
@@ -78,6 +78,8 @@
                     <param name="oscar_prop" value="Window(Home).Property(ListItemHelper.awards)" />
                 </include>
             </control>
+            <!-- Advanced Emulator Launcher Specific Platform Icon -->
+            <include>View_540_Platform_Icon</include>
         </definition>
     </include>
 
@@ -214,7 +216,7 @@
             </include>
         </control>
     </include>
-    
+
     <include name="View_52_Showcase">
         <control type="group">
             <include>View_Group</include>
@@ -255,7 +257,6 @@
             <include condition="Skin.HasSetting(UseAuraShowcase)">View_52_Showcase_Aura_Info</include>
         </control>
     </include>
-
 
 
     <include name="View_520_Showcase_Square">
@@ -365,7 +366,7 @@
         <control type="group">
             <include>View_Group</include>
             <visible>Control.IsVisible(522)</visible>
-                
+
             <include content="View_51_Wall_Container">
                 <param name="id" value="522" />
                 <param name="height" value="item_row_height" />
@@ -430,7 +431,7 @@
         <control type="group">
             <include>View_Group</include>
             <visible>Control.IsVisible(524)</visible>
-            
+
             <control type="group">
                 <right>761.44</right>
                 <include content="View_51_Wall_Container">
@@ -564,7 +565,7 @@
                     <include>Object_DefaultIcon</include>
                 </control>
             </control>
-            <control type="wraplist" id="523" >
+            <control type="wraplist" id="523">
                 <viewtype label="$LOCALIZE[31231]">bigwrap</viewtype>
                 <include content="View_Forced">
                     <param name="string" value="$LOCALIZE[31231]" />
@@ -612,4 +613,3 @@
     </include>
 
 </includes>
-
