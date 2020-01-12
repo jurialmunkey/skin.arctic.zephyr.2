@@ -6,6 +6,11 @@
         <value condition="String.IsEqual(ListItem.Property(platform),MAME)  + !String.IsEmpty(ListItem.Art(flyer))">$INFO[ListItem.Art(flyer)]</value>
         <value condition="String.IsEqual(ListItem.Property(platform),MAME)  + !String.IsEmpty(ListItem.Art(boxfront))">$INFO[ListItem.Art(boxfront)]</value>
     </variable>
+    <variable name="ROM_Simple_Art_Main_2D">
+        <value condition="!String.IsEqual(ListItem.Property(platform),MAME) + !String.IsEmpty(ListItem.Art(boxfront))">$INFO[ListItem.Art(boxfront)]</value>
+        <value condition="String.IsEqual(ListItem.Property(platform),MAME)  + !String.IsEmpty(ListItem.Art(flyer))">$INFO[ListItem.Art(flyer)]</value>
+        <value condition="String.IsEqual(ListItem.Property(platform),MAME)  + !String.IsEmpty(ListItem.Art(boxfront))">$INFO[ListItem.Art(boxfront)]</value>
+    </variable>
     <variable name="ROM_Simple_Art_Snap">
         <value condition="!String.IsEmpty(ListItem.Art(snap))">$INFO[ListItem.Art(snap)]</value>
         <value condition="!String.IsEmpty(ListItem.Art(cartridge))">$INFO[ListItem.Art(cartridge)]</value>
