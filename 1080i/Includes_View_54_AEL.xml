@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <includes>
+    <include name="View_540_Platform_Icon">
+        <param name="top" default="0" />
+        <param name="right" default="0" />
+        <definition>
+            <control type="image">
+                <right>$PARAM[top]</right>
+                <top>$PARAM[right]</top>
+                <width>90</width>
+                <height>90</height>
+                <texture>$INFO[ListItem.Property(platform),special://home/addons/plugin.program.advanced.emulator.launcher/media/p_pixel/,.png]</texture>
+                <aspectratio>keep</aspectratio>
+            </control>
+        </definition>
+    </include>
     <include name="View_540_Button_Include">
         <control type="button">
             <left>0</left>
@@ -66,14 +80,7 @@
                 <usecontrolcoords>true</usecontrolcoords>
                 <itemgap>0</itemgap>
                 <!-- Platform Image -->
-                <control type="image">
-                    <right>0</right>
-                    <top>0</top>
-                    <width>90</width>
-                    <height>90</height>
-                    <texture>$INFO[ListItem.Property(platform),special://home/addons/plugin.program.advanced.emulator.launcher/media/p_pixel/,.png]</texture>
-                    <aspectratio>keep</aspectratio>
-                </control>
+                <include>View_540_Platform_Icon</include>
                 <!-- Title -->
                 <control type="label">
                     <top>-90</top>
