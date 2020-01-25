@@ -182,12 +182,12 @@
     </variable>
 
     <variable name="Label_Info_NextAired_Status">
-        <value condition="!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Status))">$INFO[Window(Home).Property(SkinHelper.ListItem.Status)]</value>
+        <value condition="!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Status))">$INFO[Window(Home).Property(TMDbHelper.ListItem.Status)]</value>
     </variable>
 
     <variable name="Label_Info_NextAired_Date">
-        <value condition="!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.NextEpisode.Airdate))">$INFO[Window(Home).Property(SkinHelper.ListItem.NextEpisode.Airdate)]</value>
-        <value condition="!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.LastEpisode.Airdate))">$INFO[Window(Home).Property(SkinHelper.ListItem.LastEpisode.Airdate)]</value>
+        <value condition="!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Next_Aired))">$INFO[Window(Home).Property(TMDbHelper.ListItem.Next_Aired)] ($INFO[Window(Home).Property(TMDbHelper.ListItem.Next_Aired.Season)]x$INFO[Window(Home).Property(TMDbHelper.ListItem.Next_Aired.Episode)])</value>
+        <value condition="!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Last_Aired))">$INFO[Window(Home).Property(TMDbHelper.ListItem.Last_Aired)] ($INFO[Window(Home).Property(TMDbHelper.ListItem.Last_Aired.Season)]x$INFO[Window(Home).Property(TMDbHelper.ListItem.Last_Aired.Episode)])</value>
     </variable>
 
     <variable name="Label_ExtraFanart">
