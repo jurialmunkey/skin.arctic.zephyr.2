@@ -274,7 +274,7 @@
         <param name="labelinclude" default="View_512_Wall_Label" />
         <param name="aspectratio" default="scale" />
         <param name="diffuse" default="diffuse/poster-wall.png" /> <!-- FIX ME -->
-        <param name="stretchsides" default="Control.IsVisible(512) + !Window.IsVisible(home)" />
+        <param name="stretchsides" default="Control.IsVisible(512) + !Window.IsVisible(home) + !$EXP[Exp_IsPluginAdvancedLauncher]" />
         <definition>
             <control type="group">
                 <right>10</right>
