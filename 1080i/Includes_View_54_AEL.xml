@@ -5,12 +5,27 @@
         <param name="right" default="0" />
         <definition>
             <control type="image">
-                <right>$PARAM[top]</right>
-                <top>$PARAM[right]</top>
+                <right>$PARAM[right]</right>
+                <top>$PARAM[top]</top>
                 <width>90</width>
                 <height>90</height>
                 <texture>$INFO[ListItem.Property(platform),special://home/addons/plugin.program.advanced.emulator.launcher/media/p_pixel/,.png]</texture>
                 <aspectratio>keep</aspectratio>
+            </control>
+        </definition>
+    </include>
+    <include name="View_540_ROM_Details">
+        <param name="left" default="0" />
+        <param name="right" default="120" />
+        <definition>
+            <control type="label">
+                <left>$PARAM[left]</left>
+                <right>$PARAM[right]</right>
+                <height>40</height>
+                <aligny>top</aligny>
+                <label>$VAR[ROM_Details]</label>
+                <textcolor>$VAR[ColorHighlight]</textcolor>
+                <font>font_small</font>
             </control>
         </definition>
     </include>
@@ -93,15 +108,7 @@
                     <label>$INFO[ListItem.Label]</label>
                 </control>
                 <!-- Info Line -->
-                <control type="label">
-                    <left>0</left>
-                    <right>120</right>
-                    <height>40</height>
-                    <aligny>top</aligny>
-                    <label>$VAR[ROM_Details]</label>
-                    <textcolor>$VAR[ColorHighlight]</textcolor>
-                    <font>font_small</font>
-                </control>
+                <include>View_540_ROM_Details</include>
                 <control type="group">
                     <top>20</top>
                     <height>265</height>
