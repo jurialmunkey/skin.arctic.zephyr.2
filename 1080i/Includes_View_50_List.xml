@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <includes>
     <include name="View_50_List">
         <control type="group">
@@ -359,32 +359,40 @@
                     <aspectratio align="right" aligny="bottom">keep</aspectratio>
                     <visible>[!String.IsEmpty(ListItem.Art(clearlogo)) | !String.IsEmpty(ListItem.Art(tvshow.clearlogo))] + [[String.IsEmpty(ListItem.Art(landscape)) + String.IsEmpty(ListItem.Art(tvshow.landscape))] | [[!String.IsEmpty(ListItem.Art(tvshow.landscape)) | !String.IsEmpty(ListItem.Art(landscape))] + !Skin.HasSetting(LandscapeArt)] | [!String.IsEmpty(ListItem.Art(thumb)) + [String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,video)] + String.IsEmpty(ListItem.Property(airday))]]</visible>
                 </control>
-                <control type="grouplist">
-                    <top>377</top>
-                    <left>0</left>
-                    <right>30</right>
-                    <orientation>vertical</orientation>
-                    <usecontrolcoords>true</usecontrolcoords>
-                    <itemgap>0</itemgap>
-                    <control type="label">
-                        <font>font_title_small</font>
-                        <textcolor>main_fg_100</textcolor>
-                        <align>left</align>
-                        <aligny>top</aligny>
-                        <height>50</height>
-                        <label>$PARAM[title]</label>
-                    </control>
-                    <include content="Object_Info_Line">
-                        <param name="nextaired" value="false" />
+                <control type="group">
+                    <include content="View_540_Platform_Icon">
+                        <param name="top" value="372" />
+                        <param name="right" value="30" />
                     </include>
-                    <control type="textbox">
-                        <top>25</top>
-                        <font>font_plotbox</font>
-                        <textcolor>main_fg_70</textcolor>
-                        <align>left</align>
-                        <aligny>top</aligny>
-                        <height>320</height>
-                        <label>$PARAM[plot]</label>
+                    <control type="grouplist">
+                        <top>377</top>
+                        <left>0</left>
+                        <right>30</right>
+                        <orientation>vertical</orientation>
+                        <usecontrolcoords>true</usecontrolcoords>
+                        <itemgap>0</itemgap>
+                        <control type="label">
+                            <font>font_title_small</font>
+                            <textcolor>main_fg_100</textcolor>
+                            <align>left</align>
+                            <aligny>top</aligny>
+                            <height>50</height>
+                            <width>500</width>
+                            <label>$PARAM[title]</label>
+                        </control>
+                        <include condition="!$EXP[Exp_IsPluginAdvancedLauncher]" content="Object_Info_Line">
+                            <param name="nextaired" value="false" />
+                        </include>
+                        <include condition="$EXP[Exp_IsPluginAdvancedLauncher]">View_540_ROM_Details</include>
+                        <control type="textbox">
+                            <top>25</top>
+                            <font>font_plotbox</font>
+                            <textcolor>main_fg_70</textcolor>
+                            <align>left</align>
+                            <aligny>top</aligny>
+                            <height>320</height>
+                            <label>$PARAM[plot]</label>
+                        </control>
                     </control>
                 </control>
             </control>
@@ -422,36 +430,43 @@
                     <visible>[!String.IsEmpty(ListItem.Art(clearlogo)) | !String.IsEmpty(ListItem.Art(tvshow.clearlogo))] + [[String.IsEmpty(ListItem.Art(landscape)) + String.IsEmpty(ListItem.Art(tvshow.landscape))] | [[!String.IsEmpty(ListItem.Art(tvshow.landscape)) | !String.IsEmpty(ListItem.Art(landscape))] + !Skin.HasSetting(LandscapeArt)] | [!String.IsEmpty(ListItem.Art(thumb)) + [String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,video)] + String.IsEmpty(ListItem.Property(airday))]]</visible>
                 </control>
             </control>
-            <control type="grouplist">
-                <top>430</top>
-                <left>0</left>
-                <right>30</right>
-                <orientation>vertical</orientation>
-                <usecontrolcoords>true</usecontrolcoords>
-                <itemgap>0</itemgap>
-                <control type="label">
-                    <font>font_title_small</font>
-                    <textcolor>main_fg_100</textcolor>
-                    <align>left</align>
-                    <aligny>top</aligny>
-                    <height>52</height>
-                    <label>$VAR[Label_List_Title]</label>
-                </control>
-                <include>Object_Info_Line</include>
-                <include content="Object_Info_Ratings">
-                    <param name="top" value="-10" />
-                    <param name="imdbvotes" value="false" />
-                    <param name="top250" value="false" />
-                    <param name="oscars" value="false" />
+            <control type="group">
+                <include content="View_540_Platform_Icon">
+                    <param name="top" value="440" />
+                    <param name="right" value="30" />
                 </include>
-                <control type="textbox">
-                    <top>25</top>
-                    <font>font_plotbox</font>
-                    <textcolor>main_fg_70</textcolor>
-                    <align>left</align>
-                    <aligny>top</aligny>
-                    <height>160</height>
-                    <label>$VAR[Label_Plot]</label>
+                <control type="grouplist">
+                    <top>430</top>
+                    <left>0</left>
+                    <right>30</right>
+                    <orientation>vertical</orientation>
+                    <usecontrolcoords>true</usecontrolcoords>
+                    <itemgap>0</itemgap>
+                    <control type="label">
+                        <font>font_title_small</font>
+                        <textcolor>main_fg_100</textcolor>
+                        <align>left</align>
+                        <aligny>top</aligny>
+                        <height>52</height>
+                        <label>$VAR[Label_List_Title]</label>
+                    </control>
+                    <include condition="!$EXP[Exp_IsPluginAdvancedLauncher]">Object_Info_Line</include>
+                    <include condition="$EXP[Exp_IsPluginAdvancedLauncher]">View_540_ROM_Details</include>
+                    <include content="Object_Info_Ratings" condition="!$EXP[Exp_IsPluginAdvancedLauncher]">
+                        <param name="top" value="-10" />
+                        <param name="imdbvotes" value="false" />
+                        <param name="top250" value="false" />
+                        <param name="oscars" value="false" />
+                    </include>
+                    <control type="textbox">
+                        <top>25</top>
+                        <font>font_plotbox</font>
+                        <textcolor>main_fg_70</textcolor>
+                        <align>left</align>
+                        <aligny>top</aligny>
+                        <height>160</height>
+                        <label>$VAR[Label_Plot]</label>
+                    </control>
                 </control>
             </control>
         </control>
@@ -554,7 +569,7 @@
                     <width>32</width>
                     <height>32</height>
                     <texture colordiffuse="$PARAM[fgcolor]_90">$VAR[Image_Overlay_List]</texture>
-                </control>                
+                </control>
                 <control type="label">
                     <animation effect="slide" end="-40" condition="!String.IsEqual(ListItem.DBType,episode)">Conditional</animation>
                     <animation effect="slide" end="-30" condition="String.IsEqual(ListItem.DBType,episode) + !Integer.IsGreater(ListItem.Season,999)">Conditional</animation>
@@ -599,7 +614,8 @@
                     <font>font_small_bold</font>
                     <textcolor>$PARAM[fgcolor]_100</textcolor>
                     <selectedcolor>$PARAM[fgcolor]_100</selectedcolor>
-                    <label>$VAR[Label_List_Title]</label>>
+                    <label>$VAR[Label_List_Title]</label>
+                    >
                 </control>
                 <control type="label">
                     <align>right</align>
@@ -1007,4 +1023,3 @@
         </definition>
     </include>
 </includes>
-
