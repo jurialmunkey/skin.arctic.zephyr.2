@@ -27,6 +27,12 @@
                     </control>
                     <include condition="!$EXP[Exp_IsPluginAdvancedLauncher]">Object_Info_Line</include>
                     <include condition="$EXP[Exp_IsPluginAdvancedLauncher]">View_540_ROM_Details</include>
+                    <include content="Object_Info_Ratings" condition="!$EXP[Exp_IsPluginAdvancedLauncher]">
+                        <param name="top" value="-10" />
+                        <param name="imdbvotes" value="false" />
+                        <param name="top250" value="false" />
+                        <param name="oscars" value="false" />
+                    </include>
                     <control type="textbox">
                         <top>20</top>
                         <label fallback="19055">$VAR[Label_Plot]</label>

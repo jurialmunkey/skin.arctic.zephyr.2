@@ -85,6 +85,7 @@
 
     <include name="View_522_Showcase_Seasons_Info">
         <param name="seasons" default="true" />
+        <param name="ratings" default="true" />>
         <param name="id" default="5229" />
         <definition>
             <control type="group">
@@ -139,8 +140,14 @@
                             <param name="label" value="$INFO[Container($PARAM[id]).ListItem.MPAA]" />
                             <param name="container" value="Container($PARAM[id])." />
                         </include>
+                        <include content="Object_Info_Ratings" condition="!$EXP[Exp_IsPluginAdvancedLauncher] + $PARAM[ratings]">
+                            <param name="top" value="-10" />
+                            <param name="imdbvotes" value="false" />
+                            <param name="top250" value="false" />
+                            <param name="oscars" value="false" />
+                        </include>
                         <control type="textbox">
-                            <top>25</top>
+                            <top>20</top>
                             <font>font_plotbox</font>
                             <textcolor>main_fg_70</textcolor>
                             <align>left</align>

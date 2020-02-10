@@ -65,6 +65,7 @@
                 <param name="icon" value="$VAR[Image_Landscape]" />
                 <param name="title" value="$VAR[Label_List_Title]" />
                 <param name="plot" value="$INFO[ListItem.Plot]" />
+                <param name="ratings" value="false" />
             </include>
         </control>
     </include>
@@ -384,6 +385,12 @@
                             <param name="nextaired" value="false" />
                         </include>
                         <include condition="$EXP[Exp_IsPluginAdvancedLauncher]">View_540_ROM_Details</include>
+                        <include content="Object_Info_Ratings" condition="!$EXP[Exp_IsPluginAdvancedLauncher]">
+                            <param name="top" value="-10" />
+                            <param name="imdbvotes" value="false" />
+                            <param name="top250" value="false" />
+                            <param name="oscars" value="false" />
+                        </include>
                         <control type="textbox">
                             <top>25</top>
                             <font>font_plotbox</font>
