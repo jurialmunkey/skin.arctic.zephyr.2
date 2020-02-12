@@ -20,6 +20,7 @@
                     <itemgap>0</itemgap>
                     <control type="label">
                         <label>$VAR[Label_List_Title]</label>
+                        <top>-12</top>
                         <height>60</height>
                         <aligny>top</aligny>
                         <textcolor>main_fg_100</textcolor>
@@ -28,7 +29,7 @@
                     <include condition="!$EXP[Exp_IsPluginAdvancedLauncher]">Object_Info_Line</include>
                     <include condition="$EXP[Exp_IsPluginAdvancedLauncher]">View_540_ROM_Details</include>
                     <include content="Object_Info_Ratings" condition="!$EXP[Exp_IsPluginAdvancedLauncher]">
-                        <param name="top" value="-10" />
+                        <param name="top" value="-30" />
                         <param name="imdbvotes" value="false" />
                         <param name="top250" value="false" />
                         <param name="oscars" value="false" />
