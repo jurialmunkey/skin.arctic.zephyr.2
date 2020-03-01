@@ -168,10 +168,20 @@
                                 <param name="name" value="Director" />
                                 <param name="label" value="ListItem.Director" />
                             </include>
-                            <include content="Object_Info_TextPairs">
-                                <param name="name" value="Tagline" />
-                                <param name="label" value="ListItem.Tagline" />
-                            </include>
+                            <control type="group">
+                                <visible>!String.isEmpty(ListItem.Tagline)</visible>
+                                <include content="Object_Info_TextPairs">
+                                    <param name="name" value="Tagline" />
+                                    <param name="label" value="ListItem.Tagline" />
+                                </include>
+                            </control>
+                            <control type="group">
+                                <visible>String.isEmpty(ListItem.Tagline)</visible>
+                                <include content="Object_Info_TextPairs">
+                                    <param name="name" value="Premiered" />
+                                    <param name="label" value="ListItem.Premiered" />
+                                </include>
+                            </control>
                         </control>
                     </control>
                 </control>
