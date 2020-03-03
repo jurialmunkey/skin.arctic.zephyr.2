@@ -2,5 +2,8 @@
 <smartplaylist type="movies">
     <name>Top Rated Movies</name>
     <match>all</match>
+	<rule field="mpaarating" operator="isnot">
+        <value>XXX</value>
+    </rule>
     <order direction="descending">rating</order>
 </smartplaylist>

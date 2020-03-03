@@ -1,0 +1,239 @@
+<window id="20000">
+    <!-- defaultcontrol>50</defaultcontrol -->
+    <!--views>30050,30051</views-->
+    <allowoverlay>no</allowoverlay>
+    <coordinates>
+        <system>1</system>
+        <posx>0</posx>
+        <posy>0</posy>
+    </coordinates>
+    <controls>
+        <control type="group">
+            <!-- Fake Labels -->
+            <control type="label" id="30001">
+                <posx>-2000</posx>
+                <posy>-2000</posy>
+                <label>-</label>
+                <width>10</width>
+                <height>10</height>
+            </control>
+            <control type="label" id="30002">
+                <posx>-2000</posx>
+                <posy>-2000</posy>
+                <label>-</label>
+                <width>100</width>
+                <height>10</height>
+            </control>
+            <control type="label" id="30003">
+                <posx>-2000</posx>
+                <posy>-2000</posy>
+                <label>-</label>
+                <width>100</width>
+                <height>10</height>
+            </control>
+            <control type="label" id="30009">
+                <posx>-2000</posx>
+                <posy>-2000</posy>
+                <label>-</label>
+                <width>100</width>
+                <height>10</height>
+            </control>
+            
+            <!-- Regular Controls -->
+            <!--<control type="group">
+                <visible>!substring(Control.GetLabel(30002),label2) + !substring(Control.GetLabel(30001),thumb) + !substring(Control.GetLabel(30003),thumb)</visible>
+                <posx>-30</posx>
+                <posy>0</posy>
+                <control type="image">
+                    <posx>0</posx>
+                    <posy>0</posy>
+                    <width>470</width>
+                    <height>730</height>
+                    <texture border="40,30,35,30">panel-default.png</texture>
+                </control>
+                <control type="label" id="30010">
+                    <posx>40</posx>
+                    <posy>20</posy>
+                    <label>32020</label>
+                    <width>400</width>
+                    <height>48</height>
+                    <font>font18</font>
+                    <aligny>center</aligny>
+                    <textcolor>white</textcolor>
+                    <align>left</align>
+                </control>
+                <control type="list" id="30050">
+                    <posx>40</posx>
+                    <posy>24</posy>
+                    <width>540</width>
+                    <height>675</height>
+                    <viewtype label="537">list</viewtype>
+                    <scrolltime>200</scrolltime>
+                    <itemlayout height="25">
+                        <control type="label">
+                            <posx>10</posx>
+                            <posy>1</posy>
+                            <width>380</width>
+                            <height>22</height>
+                            <font>font18</font>
+                            <aligny>center</aligny>
+                            <textcolor>white</textcolor>
+                            <shadowcolor>black</shadowcolor>
+                            <selectedcolor>green</selectedcolor>
+                            <align>left</align>
+                            <info>ListItem.Label</info>
+                        </control>          
+                    </itemlayout>
+                    <focusedlayout height="25">
+                        <control type="image">
+                            <posx>0</posx>
+                            <posy>0</posy>
+                            <width>400</width>
+                            <height>25</height>
+                            <texture border="4">item-focus.png</texture>
+                        </control>
+                        <control type="label">
+                            <posx>10</posx>
+                            <posy>1</posy>
+                            <width>380</width>
+                            <height>22</height>
+                            <font>font18</font>
+                            <aligny>center</aligny>
+                            <textcolor>blue</textcolor>
+                            <shadowcolor>black</shadowcolor>
+                            <selectedcolor>green</selectedcolor>
+                            <align>left</align>
+                            <info>ListItem.Label</info>
+                        </control>          
+                    </focusedlayout>
+                </control>
+            </control>-->
+            
+            <!-- Control for Label2 -->
+            
+            <!-- Control for Thumbs2 -->
+            <control type="group">
+                <posx>0</posx>
+                <posy>730</posy>
+                <control type="image">
+                    <posx>0</posx>
+                    <posy>0</posy>
+                    <width>1920</width>
+                    <height>295</height>
+ 					<texture border="0,10,0,10">underlay.png</texture>
+                </control>
+                <control type="label" id="30010">
+                    <posx>40</posx>
+                    <posy>10</posy>
+                    <label>32020</label>
+                    <width>400</width>
+                    <height>40</height>
+                    <font>font18</font>
+                    <aligny>center</aligny>
+                    <textcolor>white</textcolor>
+                    <align>left</align>
+                </control>
+                <control type="fixedlist" id="30053">
+                    <posx>12</posx>
+                    <posy>0</posy>
+                    <width>1896</width>
+                    <height>300</height>
+					<orientation>horizontal</orientation>
+                    <scrolltime>200</scrolltime>
+                    <viewtype label="list3">list</viewtype>
+					<focusposition>0</focusposition>
+                    <itemlayout height="260" width="380">
+                        <control type="image">
+                            <posx>7</posx>
+                            <posy>0</posy>
+                            <height>260</height>
+							<aspectratio>keep</aspectratio>
+							<bordersize>5</bordersize>
+							<texture background="true">$INFO[ListItem.Thumb]</texture>
+                            <info>Listitem.Thumb</info>
+                        </control>
+						<control type="image">
+                            <posx>7</posx>
+                            <posy>220</posy>
+                            <height>60</height>
+							<width>380</width>
+							<bordersize>5</bordersize>
+							<texture background="true">underlabel.png</texture>
+                        </control>
+						<control type="label">
+                            <posx>7</posx>
+                            <posy>230</posy>
+                            <width>380</width>
+                            <height>30</height>
+                            <font>font_tiny</font>
+							<textcolor>panel_fg_70</textcolor>
+                            <aligny>center</aligny>
+                            <align>left</align>
+                            <info>ListItem.Label</info>
+                        </control>
+						<control type="label">
+                            <posx>7</posx>
+                            <posy>230</posy>
+                            <width>380</width>
+                            <height>30</height>
+                            <font>font_tiny</font>
+                            <aligny>center</aligny>
+                            <textcolor>panel_fg_70</textcolor>
+                            <align>right</align>
+                            <label>$INFO[ListItem.Label2]</label>
+                        </control>
+                    </itemlayout>
+                    <focusedlayout height="260" width="380">
+					    <control type="image">
+                            <posx>7</posx>
+                            <posy>0</posy>
+                            <height>260</height>
+							<bordersize>5</bordersize>
+							<texture background="true">$INFO[ListItem.Thumb]</texture>
+							<aspectratio>keep</aspectratio>
+                            <info>Listitem.Thumb</info>
+                        </control>
+						<control type="image">
+                            <posx>7</posx>
+                            <posy>220</posy>
+                            <height>60</height>
+							<width>380</width>
+							<bordersize>5</bordersize>
+							<texture background="true">underlabel.png</texture>
+                        </control>
+						<control type="group">
+                                <posx>2</posx>
+                                <posy>17</posy>
+                                <height>260</height>
+								<width>383</width>
+                                <visible>Control.HasFocus(30053)</visible>
+                                <include>View_Selectbox</include>
+                        </control>
+                        <control type="label">
+                            <posx>7</posx>
+                            <posy>230</posy>
+                            <width>380</width>
+                            <height>30</height>
+                            <font>font_tiny</font>
+							<textcolor>panel_fg_100</textcolor>
+                            <aligny>top</aligny>
+                            <align>center</align>
+                            <info>ListItem.Label</info>
+                        </control>
+                        <control type="label">
+                            <posx>7</posx>
+                            <posy>230</posy>
+                            <width>380</width>
+                            <height>30</height>
+                            <font>font_tiny</font>
+                            <aligny>center</aligny>
+                            <textcolor>panel_fg_100</textcolor>
+                            <align>right</align>
+                            <label>$INFO[ListItem.Label2]</label>
+                        </control>
+                    </focusedlayout>
+                </control>
+            </control>
+        </control>
+    </controls>
+</window>
