@@ -15,7 +15,7 @@
                 <include condition="$PARAM[info_hide]">Defs_InfoDialog_Visible</include>
                 <control type="group">
                     <height>120</height>
-                    <visible allowhiddenfocus="true">!$EXP[Exp_HideFurniture]</visible>
+                    <visible allowhiddenfocus="true">!$EXP[Exp_ShowPlotOverlay]</visible>
                     <include>Animation_FadeInOut</include>
                     <include content="Topbar_Left">
                         <param name="fgcolor" value="$PARAM[fgcolor]" />
@@ -68,16 +68,43 @@
             <aligny>center</aligny>
             <align>center</align>
             <font>font_byline</font>
+            <width>1200</width>
+            <centerleft>50%</centerleft>
             <textcolor>$PARAM[fgcolor]_70</textcolor>
             <label>$VAR[Label_Header_Center]</label>
             <include>Animation_FadeInOut</include>
+            <visible>!Control.HasFocus(300) | Window.IsVisible(SettingsCategory.xml) | Window.IsVisible(SettingsProfile.xml) | Window.IsVisible(SkinSettings.xml) | Window.IsVisible(eventlog) | Window.IsVisible(SettingsSystemInfo.xml)</visible>
+            <visible>!Skin.HasSetting(EnableClearlogo)</visible>
+        </control>
+        <control type="label">
+            <visible>$PARAM[visible]</visible>
+            <visible>!Skin.HasSetting(DisableCenter)</visible>
+            <aligny>center</aligny>
+            <align>center</align>
+            <font>font_byline</font>
+            <width>1200</width>
+            <centerleft>50%</centerleft>
+            <textcolor>$PARAM[fgcolor]_70</textcolor>
+            <label>$VAR[Label_Header_Center]</label>
+            <visible>!Control.HasFocus(300) | Window.IsVisible(SettingsCategory.xml) | Window.IsVisible(SettingsProfile.xml) | Window.IsVisible(SkinSettings.xml) | Window.IsVisible(eventlog) | Window.IsVisible(SettingsSystemInfo.xml)</visible>
+            <visible>[Skin.HasSetting(EnableClearlogo) + String.IsEmpty(ListItem.Art(clearlogo)) + String.IsEmpty(ListItem.Art(tvshow.clearlogo))]</visible>
+        </control>
+        <control type="image">
+            <visible>$PARAM[visible]</visible>
+            <visible>Skin.HasSetting(EnableClearlogo)</visible>
+            <texture background="true">$VAR[Image_TopBar_ClearLogo]</texture>
+            <aspectratio align="center" aligny="center">keep</aspectratio>
+            <width>350</width>
+            <height>80%</height>
+            <centertop>50%</centertop>
+            <centerleft>50%</centerleft>
             <visible>!Control.HasFocus(300) | Window.IsVisible(SettingsCategory.xml) | Window.IsVisible(SettingsProfile.xml) | Window.IsVisible(SkinSettings.xml) | Window.IsVisible(eventlog) | Window.IsVisible(SettingsSystemInfo.xml)</visible>
         </control>
     </include>
     <include name="Topbar_Right">
         <control type="grouplist">
             <visible>!Skin.HasSetting(DisableClock)</visible>
-            <animation effect="slide" start="0" end="-80" time="200" tween="sine" condition="Window.IsVisible(DialogVolumeBar.xml) + ![Window.IsVisible(Home) + !Skin.HasSetting(VerticalHome)]">Conditional</animation>
+            <animation effect="slide" start="0" end="-80" time="200" tween="sine" condition="Window.IsVisible(DialogVolumeBar.xml) + ![Window.IsVisible(Home) + !Skin.HasSetting(HomeMulti)]">Conditional</animation>
             <right>view_pad</right>
             <align>right</align>
             <orientation>horizontal</orientation>

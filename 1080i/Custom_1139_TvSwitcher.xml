@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window type="dialog" id="1139">
+    <defaultcontrol always="true">9000</defaultcontrol>
+    <controls>
+        <control type="group">
+            <left>view_pad</left>
+            <right>view_pad</right>
+            <top>view_pad</top>
+            <bottom>view_pad</bottom>
+
+            <control type="wraplist" id="9000">
+                <onleft>Close</onleft>
+                <onleft>ActivateWindow(pvrchannelguide)</onleft>
+                <onright>Close</onright>
+                <onright>ActivateWindow(pvrchannelguide)</onright>
+                <left>0</left>
+                <width>1764</width>
+                <top>-4</top>
+                <height>924</height>
+                <orientation>vertical</orientation>
+                <focusposition>2</focusposition>
+                <movement>0</movement>
+                <itemlayout width="1764" height="231">
+                    <control type="group">
+                        <left>0</left>
+                        <width>227</width>
+                        <top>4</top>
+                        <bottom>0</bottom>
+                        <control type="image">
+                            <texture colordiffuse="panel_bg" border="10">diffuse/box.png</texture>
+                            <animation effect="fade" end="85" condition="true">Conditional</animation>
+                        </control>
+                        <control type="image">
+                            <aspectratio>keep</aspectratio>
+                            <bordersize>20</bordersize>
+                            <texture background="true">$INFO[ListItem.Icon]</texture>
+                        </control>
+                    </control>
+                </itemlayout>
+                <focusedlayout width="1764" height="231">
+                    <control type="group">
+                        <left>0</left>
+                        <width>227</width>
+                        <top>4</top>
+                        <bottom>0</bottom>
+                        <control type="image">
+                            <texture colordiffuse="panel_bg" border="10">diffuse/box.png</texture>
+                            <animation effect="fade" end="85" condition="true">Conditional</animation>
+                        </control>
+                        <control type="image">
+                            <aspectratio>keep</aspectratio>
+                            <bordersize>20</bordersize>
+                            <texture background="true">$INFO[ListItem.Icon]</texture>
+                        </control>
+                    </control>
+
+                    <!-- Now Playing -->
+                    <control type="group">
+                        <left>231</left>
+                        <width>762.5</width>
+                        <top>4</top>
+                        <bottom>0</bottom>
+                        <control type="image">
+                            <texture colordiffuse="panel_bg" border="10">diffuse/box.png</texture>
+                            <animation effect="fade" end="85" condition="true">Conditional</animation>
+                        </control>
+                        <control type="group">
+                            <left>30</left>
+                            <right>30</right>
+                            <top>25</top>
+                            <bottom>25</bottom>
+                            <control type="label">
+                                <font>font_button</font>
+                                <aligny>top</aligny>
+                                <textcolor>panel_fg_100</textcolor>
+                                <selectedcolor>panel_fg_100</selectedcolor>
+                                <label>$LOCALIZE[31184]</label>
+                                <visible>!ListItem.IsPlaying</visible>
+                            </control>
+                            <control type="label">
+                                <font>font_button</font>
+                                <aligny>top</aligny>
+                                <textcolor>panel_fg_100</textcolor>
+                                <selectedcolor>panel_fg_100</selectedcolor>
+                                <label>$LOCALIZE[31114]</label>
+                                <visible>ListItem.IsPlaying</visible>
+                            </control>
+                            <control type="label">
+                                <font>font_title_small</font>
+                                <top>40</top>
+                                <aligny>top</aligny>
+                                <textcolor>panel_fg_100</textcolor>
+                                <selectedcolor>panel_fg_100</selectedcolor>
+                                <visible>!String.IsEmpty(ListItem.Title)</visible>
+                                <label>$INFO[ListItem.Title]</label>
+                            </control>
+                            <control type="label">
+                                <font>font_title_small</font>
+                                <top>40</top>
+                                <aligny>top</aligny>
+                                <textcolor>panel_fg_100</textcolor>
+                                <selectedcolor>panel_fg_100</selectedcolor>
+                                <visible>String.IsEmpty(ListItem.Title)</visible>
+                                <label>$INFO[ListItem.Label]</label>
+                            </control>
+                            <control type="progress">
+                                <top>110</top>
+                                <height>12</height>
+                                <visible>ListItem.HasEpg</visible>
+                                <info>ListItem.Progress</info>
+                                <texturebg colordiffuse="panel_fg_12" border="4">diffuse/progress-bg.png</texturebg>
+                            </control>
+                            <control type="label">
+                                <font>font_tiny</font>
+                                <top>140</top>
+                                <aligny>top</aligny>
+                                <textcolor>panel_fg_100</textcolor>
+                                <selectedcolor>panel_fg_100</selectedcolor>
+                                <label>$INFO[ListItem.Genre]</label>
+                            </control>
+                            <control type="label">
+                                <font>font_tiny</font>
+                                <top>140</top>
+                                <aligny>top</aligny>
+                                <align>right</align>
+                                <textcolor>panel_fg_100</textcolor>
+                                <selectedcolor>panel_fg_100</selectedcolor>
+                                <label>$INFO[ListItem.StartTime]$INFO[ListItem.EndTime, - ,]</label>
+                            </control>
+                        </control>
+                    </control>
+                    <control type="group">
+                        <left>997.5</left>
+                        <width>762.5</width>
+                        <top>4</top>
+                        <bottom>0</bottom>
+                        <visible>ListItem.HasEpg</visible>
+                        <control type="image">
+                            <texture colordiffuse="panel_bg" border="10">diffuse/box.png</texture>
+                            <animation effect="fade" end="85" condition="true">Conditional</animation>
+                        </control>
+                        <control type="group">
+                            <left>30</left>
+                            <right>30</right>
+                            <top>25</top>
+                            <bottom>25</bottom>
+                            <control type="label">
+                                <font>font_button</font>
+                                <aligny>top</aligny>
+                                <textcolor>panel_fg_100</textcolor>
+                                <selectedcolor>panel_fg_100</selectedcolor>
+                                <label>$LOCALIZE[31178]</label>
+                            </control>
+                            <control type="label">
+                                <font>font_title_small</font>
+                                <top>40</top>
+                                <aligny>top</aligny>
+                                <textcolor>panel_fg_100</textcolor>
+                                <selectedcolor>panel_fg_100</selectedcolor>
+                                <label>$INFO[ListItem.NextTitle]</label>
+                            </control>
+                            <control type="image">
+                                <top>110</top>
+                                <height>12</height>
+                                <texture colordiffuse="panel_fg_12" border="4">diffuse/progress-bg.png</texture>
+                            </control>
+                            <control type="label">
+                                <font>font_tiny</font>
+                                <top>140</top>
+                                <aligny>top</aligny>
+                                <textcolor>panel_fg_100</textcolor>
+                                <selectedcolor>panel_fg_100</selectedcolor>
+                                <label>$INFO[ListItem.NextGenre]</label>
+                            </control>
+                            <control type="label">
+                                <font>font_tiny</font>
+                                <top>140</top>
+                                <aligny>top</aligny>
+                                <align>right</align>
+                                <textcolor>panel_fg_100</textcolor>
+                                <selectedcolor>panel_fg_100</selectedcolor>
+                                <label>$INFO[ListItem.NextStartTime]$INFO[ListItem.NextEndTime, - ,]</label>
+                            </control>
+                        </control>
+                    </control>
+                </focusedlayout>
+                <content>pvr://channels/tv/*</content>
+            </control>
+        </control>
+    </controls>
+</window>

@@ -3,8 +3,8 @@
 <fonts>
     <fontset id="Default" unicode="true">
 
-        <include condition="!Skin.HasSetting(RobotoFonts)">Defaults_FauneFonts</include>
-        <include condition="Skin.HasSetting(RobotoFonts)">Defaults_RobotoFonts</include>
+        <include condition="Skin.HasSetting(FauneFonts)">Defaults_FauneFonts</include>
+        <include condition="!Skin.HasSetting(FauneFonts)">Defaults_RobotoFonts</include>
 
         <!-- Standard Fonts -->
         <font>
@@ -58,6 +58,11 @@
             <name>font_fps</name>
             <filename>RobotoCondensed-Regular.ttf</filename>
             <size>16</size>
+        </font>
+        <font>
+            <name>font_osd_lang</name>
+            <filename>RobotoCondensed-Regular.ttf</filename>
+            <size>10</size>
         </font>
         <font>
             <name>font_statusbar_bold</name>
@@ -174,7 +179,7 @@
         </font>
         <font>
             <name>font_topbar_small</name>
-            <filename>RobotoCondensed-Light.ttf</filename>
+            <filename>RobotoCondensed-Regular.ttf</filename>
             <size>30</size>
         </font>
         <font>
@@ -186,7 +191,7 @@
         </font>
         <font>
             <name>font_submenu_small</name>
-            <filename>RobotoCondensed-Light.ttf</filename>
+            <filename>RobotoCondensed-Regular.ttf</filename>
             <size>26</size>
         </font>
         <font>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+    <defaultcontrol always="true">5600</defaultcontrol>
+    <onload condition="!Skin.String(NextAired.View)">Skin.SetString(NextAired.View,Default)</onload>
+    <controls>
+        <include>Global_Background</include>
+        <include>Topbar</include>
+        <control type="list" id="300">
+            <ondown>5600</ondown>
+            <include>Topbar_Menu_Layout</include>
+            <include>Items_NextAired</include>
+        </control>
+        <control type="group">
+            <visible allowhiddenfocus="true">!$EXP[Exp_ShowPlotOverlay]</visible>
+            <include>Animation_FadeInOut</include>
+            <include>View_Group</include>
+            <control type="grouplist" id="5600">
+                <left>-15</left>
+                <top>-20</top>
+                <right>-25</right>
+                <onup>300</onup>
+                <scrolltime tween="quadratic">400</scrolltime>
+                <height>view_height</height>
+                <orientation>vertical</orientation>
+                <itemgap>-52</itemgap>
+                <usecontrolcoords>true</usecontrolcoords>
+                <control type="group" id="5999"><height>0</height></control>
+                <include content="Object_NextAired_Template" description="Monday">
+                    <param name="id" value="200" />
+                    <param name="groupid" value="5200" />
+                    <param name="label" value="$INFO[Container(200).ListItem.Property(NextDay)]" />
+                </include>
+                <include content="Object_NextAired_Template" description="Monday">
+                    <param name="id" value="201" />
+                    <param name="groupid" value="5201" />
+                    <param name="label" value="$INFO[Container(201).ListItem.Property(NextDay)]" />
+                </include>
+                <include content="Object_NextAired_Template" description="Monday">
+                    <param name="id" value="202" />
+                    <param name="groupid" value="5202" />
+                    <param name="label" value="$INFO[Container(202).ListItem.Property(NextDay)]" />
+                </include>
+                <include content="Object_NextAired_Template" description="Monday">
+                    <param name="id" value="203" />
+                    <param name="groupid" value="5203" />
+                    <param name="label" value="$INFO[Container(203).ListItem.Property(NextDay)]" />
+                </include>
+                <include content="Object_NextAired_Template" description="Monday">
+                    <param name="id" value="204" />
+                    <param name="groupid" value="5204" />
+                    <param name="label" value="$INFO[Container(204).ListItem.Property(NextDay)]" />
+                </include>
+                <include content="Object_NextAired_Template" description="Monday">
+                    <param name="id" value="205" />
+                    <param name="groupid" value="5205" />
+                    <param name="label" value="$INFO[Container(205).ListItem.Property(NextDay)]" />
+                </include>
+                <include content="Object_NextAired_Template" description="Monday">
+                    <param name="id" value="206" />
+                    <param name="groupid" value="5206" />
+                    <param name="label" value="$INFO[Container(206).ListItem.Property(NextDay)]" />
+                </include>
+            </control>
+        </control>
+    </controls>
+</window>

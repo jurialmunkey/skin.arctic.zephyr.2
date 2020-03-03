@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+    <include name="DialogVideoInfo">
+        <control type="group">
+            <top>view_top</top>
+            <left>view_pad</left>
+            <right>view_pad</right>
+            <include>Object_Info_Arrows</include>
+            <visible allowhiddenfocus="true">!$EXP[Exp_ShowPlotOverlay]</visible>
+            <include>Animation_FadeInOut</include>
+            <control type="grouplist" id="9000">
+                <top>-15</top>
+                <left>-15</left>
+                <right>-15</right>
+                <height>view_height</height>
+                <orientation>vertical</orientation>
+                <itemgap>0</itemgap>
+                <scrolltime tween="quadratic">400</scrolltime>
+                <control type="group" id="3000">
+                    <height>view_height</height>
+                    <control type="group">
+                        <top>15</top>
+                        <left>15</left>
+                        <right>15</right>
+                        <height>view_list_height</height>
+                        <!-- Poster -->
+                        <include content="View_50_Poster">
+                            <param name="include" value="Animation_Left_Delay" />
+                            <param name="visible" value="true" />
+                            <param name="diffuse" value="diffuse/poster-big.png" />
+                        </include>
+
+                        <!-- Info -->
+                        <control type="group">
+                            <top>-15</top>
+                            <left>580</left>
+                            <include>Animation_Right_Delay</include>
+                            <control type="grouplist">
+                                <orientation>vertical</orientation>
+                                <usecontrolcoords>true</usecontrolcoords>
+                                <itemgap>0</itemgap>
+                                <include>Object_Info_Title</include>
+                                <include>Object_Info_Line</include>
+                                <include>Object_Info_Ratings</include>
+                                <include>Object_Info_Plot</include>
+                                <include condition="!Skin.HasSetting(EnableLanguages)">Object_Info_Languages</include>
+                                <include condition="!Window.IsVisible(1140)">Object_Info_Details</include>
+                                <include condition="Window.IsVisible(1140)">Object_InfoSets_Details</include>
+                            </control>
+                            <include condition="!ListItem.IsCollection">Info_Button_Grouplist</include>
+                            <include condition="ListItem.IsCollection">Info_Button_300</include>
+                        </control>
+                    </control>
+                </control>
+
+                <control type="group" id="4000">
+                    <height>view_height</height>
+                    <control type="grouplist" id="4100">
+                        <top>-5</top>
+                        <scrolltime tween="quadratic">400</scrolltime>
+                        <onup>300</onup>
+                        <ondown>6000</ondown>
+                        <height>view_height</height>
+                        <orientation>vertical</orientation>
+                        <itemgap>-52</itemgap>
+                        <usecontrolcoords>true</usecontrolcoords>
+                        <control type="group" id="7599"><height>0</height></control>
+                        <include content="View_Cast_Toplabel">
+                            <param name="groupid" value="7500" />
+                            <param name="id" value="50" />
+                            <param name="altid" value="5000" />
+                            <param name="label" value="$INFO[ListItem.Title,$LOCALIZE[31058] ,]" />
+                            <visible>Control.IsVisible(50) | Control.IsVisible(5000)</visible>
+                        </include>
+                        <control type="group" id="5999">
+                            <height>52</height>
+                            <visible>Integer.IsGreater(Container(50).NumItems,0) | Container(50).IsUpdating</visible>
+                            <control type="button" id="5000">
+                                <texturefocus />
+                                <texturenofocus />
+                                <font />
+                                <textcolor />
+                                <onclick condition="Skin.HasSetting(DisableExtendedInfo)">SetFocus(50)</onclick>
+                                <onclick>SetFocus(5000)</onclick>
+                                <onclick>SetFocus(300)</onclick>
+                                <onclick>RunScript(plugin.video.themoviedb.helper,add_query=$INFO[Container(50).ListItem.Label],type=person,call_id=1137,prevent_del,delay=0.35)</onclick>
+                                <onback>300</onback>
+                                <onup>300</onup>
+                                <ondown>5001</ondown>
+                                <onleft>SetFocus(50)</onleft>
+                                <onleft>Left</onleft>
+                                <onright>SetFocus(50)</onright>
+                                <onright>Right</onright>
+                                <visible>!Skin.HasSetting(DisableExtendedInfo)</visible>
+                            </control>
+                        </control>
+                        <include content="View_51_Wall_Container">
+                            <param name="controllayout" value="View_Cast" />
+                            <param name="controltype" value="list" />
+                            <param name="id" value="50" />
+                            <param name="altid" value="5000" />
+                            <param name="height" value="item_cast_height" />
+                            <param name="orientation" value="horizontal" />
+                            <param name="labelinclude" value="View_Cast_Label" />
+                            <param name="focusbounce" value="Skin.HasSetting(DisableExtendedInfo)" />
+                            <param name="onleft" value="50" />
+                            <param name="onright" value="50" />
+                            <param name="visible" value="Integer.IsGreater(Container(50).NumItems,0) | Container(50).IsUpdating" />
+                            <onfocus condition="!Skin.HasSetting(DisableExtendedInfo)">SetFocus(5000)</onfocus>
+                            <onback condition="Skin.HasSetting(DisableExtendedInfo)">SetFocus(50)</onback>
+                            <onback>SetFocus(5000)</onback>
+                            <onback>300</onback>
+                        </include>
+                        <!-- Sets -->
+                        <include content="Info_Widget_Poster">
+                            <param name="includecondition" value="true" />
+                            <param name="id" value="5001" />
+                            <param name="groupid" value="7501" />
+                            <param name="label" value="$VAR[Label_SetName,$LOCALIZE[31057] ,]" />
+                            <include>Defs_InfoList_OnClick</include>
+                            <include>Defs_InfoList_OnBack</include>
+                            <visible>!String.IsEmpty(ListItem.Set) | ListItem.IsCollection</visible>
+                            <visible>!Skin.HasSetting(DisableInfoListSets)</visible>
+                            <content limit="25" target="videos" sortby="year" sortorder="ascending">$VAR[Info_Sets]</content>
+                        </include>
+                        <!-- 1140 Set Cast -->
+                        <include content="Info_Widget_Poster">
+                            <param name="includecondition" value="Window.IsVisible(1140)" />
+                            <param name="id" value="5077" />
+                            <param name="groupid" value="7577" />
+                            <param name="labelinclude" value="View_Cast_Label" />
+                            <param name="label" value="$INFO[Container(5001).ListItem.Label,Cast of ,]" />
+                            <onclick condition="Skin.HasSetting(DisableExtendedInfo)">SetFocus(50)</onclick>
+                            <onclick>SetFocus(5000)</onclick>
+                            <onclick>SetFocus(300)</onclick>
+                            <onclick>RunScript(plugin.video.themoviedb.helper,add_query=$INFO[Container(5077).ListItem.Label],type=person,call_id=1137,prevent_del,delay=0.35)</onclick>
+                            <include>Defs_InfoList_OnBack</include>
+                            <visible>!String.IsEmpty(Container(5001).ListItem.Property(tmdb_id)) + !Container(5001).IsUpdating</visible>
+                            <content limit="25" target="videos">plugin://plugin.video.themoviedb.helper/?info=cast&amp;type=movie&amp;tmdb_id=$INFO[Container(5001).ListItem.Property(tmdb_id)]</content>
+                        </include>
+                        <!-- NextUp -->
+                        <include content="Info_Widget_Poster">
+                            <param name="includecondition" value="!Skin.HasSetting(DisableInfoListNextUp)" />
+                            <param name="id" value="5047" />
+                            <param name="groupid" value="7547" />
+                            <param name="label" value="$LOCALIZE[31054]" />
+                            <param name="itemwidth" value="item_landscape_width" />
+                            <param name="iconheight" value="item_icon_height" />
+                            <param name="diffuse" value="diffuse/landscape-wall.png" />
+                            <param name="labelinclude" value="View_Cast_Video_Label" />
+                            <param name="icon" value="$VAR[Image_Landscape]" />
+                            <onclick>SetFocus(50)</onclick>
+                            <onclick>SetFocus(300)</onclick>
+                            <onclick>Dialog.Close(all,force)</onclick>
+                            <onclick>PlayMedia($INFO[Container(5047).ListItem.FileNameAndPath])</onclick>
+                            <include>Defs_InfoList_OnBack</include>
+                            <content limit="3" sortby="playcount" sortorder="ascending">videodb://inprogresstvshows/$INFO[ListItem.DBID]/-2/?tvshowid=$INFO[ListItem.DBID]</content>
+                            <visible>String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season)</visible>
+                        </include>
+                        <!-- Seasons -->
+                        <include content="Info_Widget_Poster">
+                            <param name="includecondition" value="!Skin.HasSetting(DisableInfoListSeasons)" />
+                            <param name="id" value="5008" />
+                            <param name="groupid" value="7508" />
+                            <param name="label" value="Seasons" />
+                            <onclick>SetFocus(50)</onclick>
+                            <onclick>SetFocus(300)</onclick>
+                            <onclick>Dialog.Close(all,force)</onclick>
+                            <onclick>ActivateWindow(videos,$INFO[Container(5008).ListItem.FolderPath])</onclick>
+                            <include>Defs_InfoList_OnBack</include>
+                            <visible>String.IsEqual(ListItem.DBType,tvshow)</visible>
+                            <content limit="25" target="videos">$INFO[ListItem.DBID,videodb://tvshows/titles/,/]</content>
+                        </include>
+                        <!-- Director -->
+                        <include content="Info_Widget_Poster">
+                            <param name="includecondition" value="!Skin.HasSetting(DisableInfoListDirector)" />
+                            <param name="id" value="5004" />
+                            <param name="groupid" value="7504" />
+                            <param name="label" value="$INFO[ListItem.Director,$LOCALIZE[31052] ,]" />
+                            <include>Defs_InfoList_OnClick</include>
+                            <include>Defs_InfoList_OnBack</include>
+                            <visible>!String.IsEmpty(ListItem.Director)</visible>
+                            <content limit="25" target="videos" sortby="year" sortorder="descending">$VAR[Info_FromDirector]</content>
+                        </include>
+                        <!-- Crew -->
+                        <include content="Info_Widget_Poster">
+                            <param name="includecondition" value="!Skin.HasSetting(DisableInfoListCrew)" />
+                            <param name="id" value="5011" />
+                            <param name="groupid" value="7511" />
+                            <param name="label" value="Crew" />
+                            <param name="labelinclude" value="View_Cast_Job_Label" />
+                            <include>Defs_InfoList_OnClick</include>
+                            <include>Defs_InfoList_OnBack</include>
+                            <content limit="25" target="videos">$VAR[Info_CrewMembers]</content>
+                        </include>
+
+                        <!-- Studio -->
+                        <include content="Info_Widget_Poster">
+                            <param name="includecondition" value="!Skin.HasSetting(DisableInfoListStudio)" />
+                            <param name="id" value="5005" />
+                            <param name="groupid" value="7505" />
+                            <param name="label" value="$INFO[ListItem.Studio,$LOCALIZE[31053] ,]" />
+                            <include>Defs_InfoList_OnClick</include>
+                            <include>Defs_InfoList_OnBack</include>
+                            <visible>!String.IsEmpty(ListItem.Studio)</visible>
+                            <content limit="25" target="videos">$VAR[Info_FromStudio]</content>
+                        </include>
+                        
+
+                        <!-- Extras -->
+                        <include content="Info_Widget_Poster">
+                            <param name="includecondition" value="!Skin.HasSetting(DisableInfoListExtras)" />
+                            <param name="id" value="5048" />
+                            <param name="groupid" value="7548" />
+                            <param name="label" value="$LOCALIZE[31056]" />
+                            <param name="itemwidth" value="item_landscape_width" />
+                            <param name="iconheight" value="item_icon_height" />
+                            <param name="diffuse" value="diffuse/landscape-wall.png" />
+                            <param name="labelinclude" value="View_Cast_Video_Label" />
+                            <param name="icon" value="$INFO[ListItem.Icon]" />
+                            <onclick>SetFocus(50)</onclick>
+                            <onclick>SetFocus(300)</onclick>
+                            <onclick>Dialog.Close(all,force)</onclick>
+                            <onclick>PlayMedia($INFO[Container(5048).ListItem.FileNameAndPath])</onclick>
+                            <include>Defs_InfoList_OnBack</include>
+                            <content limit="25" target="videos" sortby="file">$VAR[Defs_VideoInfo_Extras]</content>
+                            <visible>String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season) | String.IsEqual(ListItem.DBType,episode)</visible>
+                        </include>
+
+                        <!-- Recommended -->
+                        <include content="Info_Widget_Poster">
+                            <param name="includecondition" value="!Skin.HasSetting(DisableInfoListRecommended)" />
+                            <param name="id" value="5002" />
+                            <param name="groupid" value="7502" />
+                            <param name="label" value="Recommended" />
+                            <include>Defs_InfoList_OnClick</include>
+                            <include>Defs_InfoList_OnBack</include>
+                            <content limit="25" target="videos">$VAR[Info_Recommended]</content>
+                        </include>
+                        <!-- Similar -->
+                        <include content="Info_Widget_Poster">
+                            <param name="includecondition" value="!Skin.HasSetting(DisableInfoListSimilar)" />
+                            <param name="id" value="5003" />
+                            <param name="groupid" value="7503" />
+                            <param name="label" value="$INFO[ListItem.Title,$LOCALIZE[31051] ,]" />
+                            <include>Defs_InfoList_OnClick</include>
+                            <include>Defs_InfoList_OnBack</include>
+                            <visible>!String.IsEmpty(ListItem.IMDBNumber)</visible>
+                            <content limit="25" target="videos">$VAR[Info_Similar]</content>
+                        </include>
+
+                        <!-- Year -->
+                        <include content="Info_Widget_Poster">
+                            <param name="includecondition" value="!Skin.HasSetting(DisableInfoListYear)" />
+                            <param name="id" value="5006" />
+                            <param name="groupid" value="7506" />
+                            <param name="label" value="$INFO[ListItem.Year,$LOCALIZE[31053] ,]" />
+                            <include>Defs_InfoList_OnClick</include>
+                            <include>Defs_InfoList_OnBack</include>
+                            <visible>!String.IsEmpty(ListItem.Year)</visible>
+                            <content limit="25" target="videos">$VAR[Info_FromYear]</content>
+                        </include>
+                        <!-- Genre -->
+                        <include content="Info_Widget_Poster">
+                            <param name="includecondition" value="!Skin.HasSetting(DisableInfoListGenre)" />
+                            <param name="id" value="5007" />
+                            <param name="groupid" value="7507" />
+                            <param name="label" value="$INFO[ListItem.Genre]" />
+                            <include>Defs_InfoList_OnClick</include>
+                            <include>Defs_InfoList_OnBack</include>
+                            <visible>!String.IsEmpty(ListItem.Genre)</visible>
+                            <content limit="25" target="videos">$VAR[Info_FromGenre]</content>
+                        </include>
+
+                        <!-- Cast Stars In -->
+                        <include content="Info_Widget_Poster">
+                            <param name="includecondition" value="!Skin.HasSetting(DisableInfoListCastFeature)" />
+                            <param name="id" value="5009" />
+                            <param name="groupid" value="7509" />
+                            <param name="label" value="$LOCALIZE[31055]" />
+                            <include>Defs_InfoList_OnClick</include>
+                            <include>Defs_InfoList_OnBack</include>
+                            <visible>String.IsEqual(ListItem.DBType,movie) + Integer.IsGreater(Container(50).NumItems,0)</visible>
+                            <content limit="25" target="videos">$VAR[Info_CastFeature]</content>
+                        </include>
+
+                        <!-- Youtube -->
+                        <include content="Info_Widget_Poster">
+                            <param name="includecondition" value="System.HasAddon(plugin.video.youtube) + !Skin.HasSetting(DisableInfoListYouTube)" />
+                            <param name="id" value="5049" />
+                            <param name="groupid" value="7549" />
+                            <param name="label" value="$LOCALIZE[31141]" />
+                            <param name="itemwidth" value="item_landscape_width" />
+                            <param name="iconheight" value="item_icon_height" />
+                            <param name="diffuse" value="diffuse/landscape-wall.png" />
+                            <param name="labelinclude" value="View_Cast_Video_Label" />
+                            <param name="icon" value="$INFO[ListItem.Icon]" />
+                            <onclick>SetFocus(50)</onclick>
+                            <onclick>SetFocus(300)</onclick>
+                            <onclick>PlayMedia($INFO[Container(5049).ListItem.FileNameAndPath])</onclick>
+                            <include>Defs_InfoList_OnBack</include>
+                            <content limit="25" target="videos" sortby="file">$VAR[Info_Youtube]</content>
+                            <visible>String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season) | String.IsEqual(ListItem.DBType,episode)</visible>
+                        </include>
+                        
+                        <!-- Posters -->
+                        <include content="Info_Widget_Poster">
+                            <param name="includecondition" value="!Skin.HasSetting(DisableInfoListPosters)" />
+                            <param name="id" value="5059" />
+                            <param name="groupid" value="7559" />
+                            <param name="label" value="Posters" />
+                            <onclick>SetFocus(9559)</onclick>
+                            <include>Defs_InfoList_OnBack</include>
+                            <visible>String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow)</visible>
+                            <content target="images">$VAR[Info_Posters]</content>
+                        </include>
+                        
+                    </control>
+                </control>
+
+                <include content="Info_Gallery">
+                    <param name="id" value="6000" />
+                    <onleft>noop</onleft>
+                    <onright>noop</onright>
+                    <onback condition="Skin.HasSetting(DisableExtendedInfo)">SetFocus(50)</onback>
+                    <onback>SetFocus(5000)</onback>
+                    <onback>300</onback>
+                    <onclick>SetFocus(9569)</onclick>
+                    <include condition="String.IsEmpty(ListItem.Property(tmdb_id)) + [!String.IsEmpty(ListItem.Art(fanart1)) | !String.IsEmpty(ListItem.Art(discart))]">Items_Info_Gallery</include>
+                    <include condition="!String.IsEmpty(ListItem.Property(tmdb_id)) | [String.IsEmpty(ListItem.Art(fanart1)) + String.IsEmpty(ListItem.Art(discart))]">Info_Fanart_List</include>
+                    <visible>Integer.IsGreater(Container(6000).NumItems,0) | Container(6000).IsUpdating</visible>
+                </include>
+                <control type="group"></control>
+            </control>
+        </control>
+
+        <control type="group">
+            <visible>ControlGroup(300).HasFocus()</visible>
+            <!-- Codecs -->
+            <include content="Object_Codecs">
+                <param name="infohide" value="false" />
+            </include>
+
+            <!-- Languages -->
+            <control type="group">
+                <visible>!Control.HasFocus(8101)</visible>
+                <include content="Object_Languages">
+                    <param name="infohide" value="false" />
+                </include>
+            </control>
+
+            <!-- File Path -->
+            <include content="Object_Icon_Details">
+                <param name="visible" value="Control.HasFocus(8101)" />
+                <param name="icon" value="buttons/disk.png" />
+                <param name="haspath" value="true" />
+                <param name="label" value="$INFO[ListItem.FileNameAndPath]" />
+            </include>
+        </control>        
+
+        <include content="Info_ImageViewer">
+            <param name="listid" value="5059" />
+            <param name="buttonid" value="9559" />
+        </include>
+        <include content="Info_ImageViewer">
+            <param name="listid" value="6000" />
+            <param name="buttonid" value="9569" />
+            <param name="art" value="Icon" />
+        </include>
+        <include>Object_PlotOverlay</include>
+    </include>
+</includes>

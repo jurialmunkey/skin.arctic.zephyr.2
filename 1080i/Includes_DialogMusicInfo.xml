@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+    <include name="DialogMusicInfo">
+        <control type="group">
+            <top>view_top</top>
+            <left>view_pad</left>
+            <right>view_pad</right>
+            <visible allowhiddenfocus="true">!$EXP[Exp_ShowPlotOverlay]</visible>
+            <include>Animation_FadeInOut</include>
+            <control type="grouplist" id="9000">
+                <top>-15</top>
+                <left>-15</left>
+                <right>-15</right>
+                <height>view_height</height>
+                <orientation>vertical</orientation>
+                <itemgap>0</itemgap>
+                <scrolltime tween="quadratic">400</scrolltime>
+                <control type="group" id="3000">
+                    <height>view_height</height>
+                    <control type="group">
+                        <top>15</top>
+                        <left>15</left>
+                        <right>15</right>
+                        <height>view_list_height</height>
+                        <!-- Poster -->
+                        <control type="group">
+                            <include>Animation_Left_Delay</include>
+                            <include content="View_50_Poster">
+                                <param name="include" value="Defs_Null" />
+                                <param name="visible" value="true" />
+                                <param name="height" value="654" />
+                                <param name="width" value="654" />
+                                <param name="aspectratio" value="keep" />
+                                <param name="diffuse" value="diffuse/square-big.png" />
+                            </include>
+                            <include>View_50_Info</include>
+                        </control>
+
+                        <!-- Info -->
+                        <control type="group">
+                            <top>-15</top>
+                            <left>669</left>
+                            <include>Animation_Right_Delay</include>
+                            <control type="grouplist">
+                                <visible>!String.IsEqual(ListItem.DBType,artist)</visible>
+                                <orientation>vertical</orientation>
+                                <usecontrolcoords>true</usecontrolcoords>
+                                <itemgap>0</itemgap>
+                                <include content="Object_Info_Title">
+                                    <param name="label" value="$INFO[ListItem.TrackNumber,,. ]$INFO[ListItem.Title]" />
+                                </include>
+                                <!-- <include>Object_Info_Line</include> -->
+                                <include content="Object_Info_Plot">
+                                    <param name="maxheight" value="560" />
+                                </include>
+                            </control>
+                            <control type="grouplist">
+                                <visible>String.IsEqual(ListItem.DBType,artist)</visible>
+                                <orientation>vertical</orientation>
+                                <usecontrolcoords>true</usecontrolcoords>
+                                <itemgap>0</itemgap>
+                                <include content="Object_Info_Title">
+                                    <param name="label" value="$INFO[ListItem.Label]" />
+                                </include>
+                                <include content="Object_Info_Plot">
+                                    <param name="maxheight" value="600" />
+                                </include>
+                            </control>
+                            <control type="grouplist" id="300">
+                                <onup>9601</onup>
+                                <ondown>5001</ondown>
+                                <include>Defs_ButtonList</include>
+                                <!-- <include content="Object_Info_Button">
+                                    <param name="id" value="7" />
+                                    <param name="groupid" value="8007" />
+                                    <param name="label" value="Rating" />
+                                    <param name="icon" value="special://skin/extras/icons/userrating.png" />
+                                </include> -->
+                                <include content="Object_Info_Button">
+                                    <param name="id" value="8124" />
+                                    <param name="groupid" value="8024" />
+                                    <param name="label" value="$LOCALIZE[208]" />
+                                    <param name="icon" value="special://skin/extras/icons/play3.png" />
+                                    <onclick condition="String.IsEmpty(ListItem.DBID)">PlayMedia($INFO[ListItem.FilenameAndPath])</onclick>
+                                    <onclick condition="System.HasAddon(script.playalbum) + String.IsEqual(ListItem.DBType,album)">RunScript(script.playalbum,albumid=$INFO[ListItem.DBID])</onclick>
+                                    <onclick condition="System.HasAddon(script.playalbum) + String.IsEqual(ListItem.DBType,song)">RunScript(script.playalbum,songid=$INFO[ListItem.DBID])</onclick>
+                                    <onclick condition="System.HasAddon(script.playalbum)">Action(close)</onclick>
+                                    <onclick condition="!System.HasAddon(script.playalbum) + !String.IsEmpty(ListItem.DBID)">InstallAddon(script.playalbum)</onclick>
+                                    <visible>!String.IsEqual(ListItem.DBType,artist)</visible>
+                                </include>
+                                <include content="Object_Info_Button">
+                                    <param name="id" value="8123" />
+                                    <param name="groupid" value="8023" />
+                                    <param name="label" value="31141" />
+                                    <param name="icon" value="special://skin/extras/icons/youtube.png" />
+                                    <onclick>Close</onclick>
+                                    <onclick>ActivateWindow(videos,plugin://plugin.video.youtube/search/?q=$INFO[ListItem.Artist],return)</onclick>
+                                    <onclick>SetFocus(50)</onclick>
+                                    <visible>System.HasAddon(plugin.video.youtube)</visible>
+                                </include>
+                                <include content="Object_Info_Button">
+                                    <param name="id" value="10" />
+                                    <param name="groupid" value="8010" />
+                                    <param name="label" value="Thumb" />
+                                    <param name="icon" value="special://skin/extras/icons/paintbrush.png" />
+                                    <param name="visible" value="Control.IsEnabled(10)" />
+                                </include>
+                                <include content="Object_Info_Button">
+                                    <param name="id" value="8101" />
+                                    <param name="groupid" value="8001" />
+                                    <param name="label" value="Artwork" />
+                                    <param name="visible" value="[String.IsEqual(ListItem.DBType,artist) | String.IsEqual(ListItem.DBType,album) | String.IsEqual(ListItem.DBType,song)] + system.hasaddon(script.artwork.beef)" />
+                                    <param name="icon" value="special://skin/extras/icons/paintbrush2.png" />
+                                    <onclick condition="String.IsEqual(ListItem.DBType,artist) + System.HasAddon(script.artwork.beef)">XBMC.RunScript(script.artwork.beef, mode=gui, mediatype=artist, dbid=$INFO[ListItem.DBID])</onclick>
+                                    <onclick condition="String.IsEqual(ListItem.DBType,album) + System.HasAddon(script.artwork.beef)">XBMC.RunScript(script.artwork.beef, mode=gui, mediatype=album, dbid=$INFO[ListItem.DBID])</onclick>
+                                    <onclick condition="String.IsEqual(ListItem.DBType,song) + System.HasAddon(script.artwork.beef)">XBMC.RunScript(script.artwork.beef, mode=gui, mediatype=song, dbid=$INFO[ListItem.DBID])</onclick>
+                                </include>
+                                <include content="Object_Info_Button">
+                                    <param name="id" value="8102" />
+                                    <param name="groupid" value="8002" />
+                                    <param name="label" value="All Art" />
+                                    <param name="visible" value="[String.IsEqual(ListItem.DBType,artist) | String.IsEqual(ListItem.DBType,album) | String.IsEqual(ListItem.DBType,song)] + system.hasaddon(script.artwork.beef)" />
+                                    <param name="icon" value="special://skin/extras/icons/paintbucket3.png" />
+                                    <onclick condition="String.IsEqual(ListItem.DBType,artist) + System.HasAddon(script.artwork.beef)">XBMC.RunScript(script.artwork.beef, mode=auto, mediatype=artist, dbid=$INFO[ListItem.DBID])</onclick>
+                                    <onclick condition="String.IsEqual(ListItem.DBType,album) + System.HasAddon(script.artwork.beef)">XBMC.RunScript(script.artwork.beef, mode=auto, mediatype=album, dbid=$INFO[ListItem.DBID])</onclick>
+                                    <onclick condition="String.IsEqual(ListItem.DBType,song) + System.HasAddon(script.artwork.beef)">XBMC.RunScript(script.artwork.beef, mode=auto, mediatype=song, dbid=$INFO[ListItem.DBID])</onclick>
+                                </include>
+                                <include content="Object_Info_Button">
+                                    <param name="id" value="6" />
+                                    <param name="groupid" value="8006" />
+                                    <param name="label" value="Refresh" />
+                                    <param name="icon" value="special://skin/extras/icons/update.png" />
+                                    <param name="visible" value="Control.IsEnabled(6)" />
+                                    <onfocus>SetProperty(FilePath,1,Home)</onfocus>
+                                    <onunfocus>ClearProperty(FilePath,Home)</onunfocus>
+                                </include>
+                            </control>
+                        </control>
+                    </control>
+                </control>
+
+                <control type="group" id="4000">
+                    <height>view_height</height>
+                    <control type="grouplist" id="4100">
+                        <top>-5</top>
+                        <scrolltime tween="quadratic">400</scrolltime>
+                        <onup>300</onup>
+                        <ondown>6000</ondown>
+                        <height>view_height</height>
+                        <orientation>vertical</orientation>
+                        <itemgap>-52</itemgap>
+                        <usecontrolcoords>true</usecontrolcoords>
+                        <control type="group" id="7599"><height>0</height></control>
+                        <include content="View_Cast_Toplabel">
+                            <param name="groupid" value="7501" />
+                            <param name="id" value="5001" />
+                            <param name="label" value="$INFO[ListItem.Artist,$LOCALIZE[31044] ,]" />
+                            <visible>Control.IsVisible(5001)</visible>
+                        </include>
+                        <include content="View_51_Wall_Container">
+                            <param name="controllayout" value="View_Cast" />
+                            <param name="id" value="5001" />
+                            <param name="height" value="item_cast_height" />
+                            <param name="orientation" value="horizontal" />
+                            <param name="itemwidth" value="item_square_width" />
+                            <param name="labelinclude" value="Defs_Null" />
+                            <param name="visible" value="Integer.IsGreater(Container(5001).NumItems,0) | Container(5001).IsUpdating" />
+                            <animation effect="fade" start="100" end="0" condition="!Integer.IsGreater(Container(5001).NumItems,0) | Container(5001).IsUpdating">Conditional</animation>
+                            <onclick>Dialog.Close(all,force)</onclick>
+                            <onclick>ActivateWindow(music,musicdb://albums/$INFO[Container(5001).ListItem.DBID]/,return)</onclick>
+                            <onback condition="Skin.HasSetting(DisableExtendedInfo)">SetFocus(50)</onback>
+                            <onback>SetFocus(5000)</onback>
+                            <onback>300</onback>
+                            <content target="music">musicdb://albums/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22albumartist%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22$INFO[ListItem.Artist]%22%5D%7D%5D%7D%2C%22type%22%3A%22albums%22%7D</content>
+                        </include>
+
+                        <include content="View_Cast_Toplabel">
+                            <param name="groupid" value="7502" />
+                            <param name="id" value="5002" />
+                            <param name="label" value="$INFO[Container(5001).ListItem.Title,Tracks from ,]" />
+                            <visible>Control.IsVisible(5002)</visible>
+                        </include>
+                        <control type="panel" id="5002">
+                            <visible>Integer.IsGreater(Container(5002).NumItems,0) | Container(5002).IsUpdating</visible>
+                            <visible>Integer.IsGreater(Container(5001).NumItems,0)</visible>
+                            <top>74</top>
+                            <left>15</left>
+                            <height>338.5</height>
+                            <orientation>horizontal</orientation>
+                            <itemlayout height="item_list_height" width="586.67">
+                                <control type="group">
+                                    <left>20</left>
+                                    <right>20</right>
+                                    <control type="label">
+                                        <width>30</width>
+                                        <font>font_small</font>
+                                        <textcolor>main_fg_100</textcolor>
+                                        <selectedcolor>main_fg_100</selectedcolor>
+                                        <label>$INFO[ListItem.TrackNumber]</label>
+                                    </control>
+                                    <control type="label">
+                                        <left>50</left>
+                                        <font>font_small_bold</font>
+                                        <textcolor>main_fg_100</textcolor>
+                                        <selectedcolor>main_fg_100</selectedcolor>
+                                        <label>$INFO[ListItem.Label]</label>
+                                    </control>
+                                    <control type="label">
+                                        <align>right</align>
+                                        <font>font_small</font>
+                                        <textcolor>main_fg_100</textcolor>
+                                        <selectedcolor>main_fg_100</selectedcolor>
+                                        <label>$INFO[ListItem.Duration]</label>
+                                    </control>
+                                </control>
+                            </itemlayout>
+                            <focusedlayout height="item_list_height" width="586.67">
+                                <control type="image">
+                                    <texture colordiffuse="main_fg_100" border="10">diffuse/box.png</texture>
+                                </control>
+                                <control type="group">
+                                    <left>20</left>
+                                    <right>20</right>
+                                    <control type="label">
+                                        <width>30</width>
+                                        <font>font_small</font>
+                                        <textcolor>main_bg_100</textcolor>
+                                        <selectedcolor>main_bg_100</selectedcolor>
+                                        <label>$INFO[ListItem.TrackNumber]</label>
+                                    </control>
+                                    <control type="label">
+                                        <left>50</left>
+                                        <font>font_small_bold</font>
+                                        <textcolor>main_bg_100</textcolor>
+                                        <selectedcolor>main_bg_100</selectedcolor>
+                                        <label>$INFO[ListItem.Label]</label>
+                                    </control>
+                                    <control type="label">
+                                        <align>right</align>
+                                        <font>font_small</font>
+                                        <textcolor>main_bg_100</textcolor>
+                                        <selectedcolor>main_bg_100</selectedcolor>
+                                        <label>$INFO[ListItem.Duration]</label>
+                                    </control>
+                                </control>
+                            </focusedlayout>
+                            <content target="music">musicdb://albums/$INFO[Container(5001).ListItem.DBID]/</content>
+                        </control>
+                    </control>
+                </control>
+
+                <include content="Info_Gallery">
+                    <param name="id" value="6000" />
+                    <onleft>noop</onleft>
+                    <onright>noop</onright>
+                    <onback condition="Skin.HasSetting(DisableExtendedInfo)">SetFocus(50)</onback>
+                    <onback>SetFocus(5000)</onback>
+                    <onback>300</onback>
+                    <include>Items_Info_Gallery</include>
+                    <visible>Integer.IsGreater(Container(6000).NumItems,0) | Container(6000).IsUpdating</visible>
+                </include>
+                <control type="group"></control>
+            </control>
+
+            <include>Object_Info_Arrows</include>
+        </control>
+
+        <include>Object_PlotOverlay</include>
+    </include>
+</includes>

@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
 
+    <include name="Defs_Global_Fade_Blur">
+        <fadetime>3000</fadetime>
+    </include>
+
+    <variable name="Defs_SettingsPanel_NF">
+        <!-- <value condition="Skin.HasSetting(DisableGeometric) + !String.IsEqual(Skin.CurrentColorTheme,SKINDEFAULT)">panel_fg_30</value> -->
+        <value>panel_fg_70</value>
+    </variable>
+
+    <variable name="Defs_ThemeSwitcher_StartTime">
+        <value>06:00</value>
+    </variable>
+    
+    <include name="Defs_PauseAtEnd_Value">
+        <pauseatend>$PARAM[time]</pauseatend>
+    </include>
+
+    <include name="Defs_PauseAtEnd">
+        <include content="Defs_AutoScroll">
+            <param name="include" value="Defs_PauseAtEnd_Value" />
+        </include>
+    </include>
+
     <include name="Defs_TimePerImage_Value">
         <timeperimage>$PARAM[time]</timeperimage>
     </include>
@@ -49,62 +72,37 @@
         </definition>
     </include>
 
+    <include name="Defs_UpdateColorbox_Onclick">
+        <onclick>AlarmClock(nms1,SetProperty(NINE_manual_set,"var=main,set=$INFO[Skin.String(colorbox_main)]|var=comp,set=$INFO[Skin.String(colorbox_comp)]|var=quality,set=$INFO[Skin.String(colorbox_quality)]|var=blursize,set=$INFO[Skin.String(colorbox_blursize)]|var=bitsize,set=$INFO[Skin.String(colorbox_bitsize)]|var=pixelsize,set=$INFO[Skin.String(colorbox_pixelsize)]|var=black,set=$INFO[Skin.String(colorbox_black)]|var=white,set=$INFO[Skin.String(colorbox_white)]|var=blend,set=$INFO[Skin.String(colorbox_blend)]|var=desat,set=$INFO[Skin.String(colorbox_desat)]",home),00:00,silent)</onclick>
+        <onclick>AlarmClock(nms2,SetProperty(FIVE_daemon_fire,True,home),00:01,silent)</onclick>
+    </include>
+
     <variable name="Defs_Widget_Target">
         <value condition="String.IsEqual(Skin.String(widgetTarget),video)">videos</value>
         <value>$INFO[Skin.String(widgetTarget)]</value>
     </variable>
 
     <variable name="Defs_Volume_Colordiffuse">
-        <value condition="Window.IsVisible(Home) + !Skin.HasSetting(VerticalHome) + ![Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(DialogAddonInfo.xml)]">panel_fg_100</value>
+        <value condition="Window.IsVisible(Home) + !Skin.HasSetting(HomeMulti) + ![Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(DialogAddonInfo.xml)]">panel_fg_100</value>
         <value>main_fg_100</value>
     </variable>
 
-    <variable name="Defs_InfoTrick_Title">
-        <value condition="!String.IsEmpty(Window(Home).Property(InfoTrick.9.Title))">$INFO[Window(Home).Property(InfoTrick.9.Title),videodb://movies/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22,%22%5D%7D%5D%7D%2C%22type%22%3A%22movies%22%7D]</value>
-        <value condition="!String.IsEmpty(Window(Home).Property(InfoTrick.8.Title))">$INFO[Window(Home).Property(InfoTrick.8.Title),videodb://movies/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22,%22%5D%7D%5D%7D%2C%22type%22%3A%22movies%22%7D]</value>
-        <value condition="!String.IsEmpty(Window(Home).Property(InfoTrick.7.Title))">$INFO[Window(Home).Property(InfoTrick.7.Title),videodb://movies/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22,%22%5D%7D%5D%7D%2C%22type%22%3A%22movies%22%7D]</value>
-        <value condition="!String.IsEmpty(Window(Home).Property(InfoTrick.6.Title))">$INFO[Window(Home).Property(InfoTrick.6.Title),videodb://movies/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22,%22%5D%7D%5D%7D%2C%22type%22%3A%22movies%22%7D]</value>
-        <value condition="!String.IsEmpty(Window(Home).Property(InfoTrick.5.Title))">$INFO[Window(Home).Property(InfoTrick.5.Title),videodb://movies/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22,%22%5D%7D%5D%7D%2C%22type%22%3A%22movies%22%7D]</value>
-        <value condition="!String.IsEmpty(Window(Home).Property(InfoTrick.4.Title))">$INFO[Window(Home).Property(InfoTrick.4.Title),videodb://movies/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22,%22%5D%7D%5D%7D%2C%22type%22%3A%22movies%22%7D]</value>
-        <value condition="!String.IsEmpty(Window(Home).Property(InfoTrick.3.Title))">$INFO[Window(Home).Property(InfoTrick.3.Title),videodb://movies/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22,%22%5D%7D%5D%7D%2C%22type%22%3A%22movies%22%7D]</value>
-        <value condition="!String.IsEmpty(Window(Home).Property(InfoTrick.2.Title))">$INFO[Window(Home).Property(InfoTrick.2.Title),videodb://movies/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22,%22%5D%7D%5D%7D%2C%22type%22%3A%22movies%22%7D]</value>
-        <value condition="!String.IsEmpty(Window(Home).Property(InfoTrick.1.Title))">$INFO[Window(Home).Property(InfoTrick.1.Title),videodb://movies/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22,%22%5D%7D%5D%7D%2C%22type%22%3A%22movies%22%7D]</value>
-        <value condition="!String.IsEmpty(Window(Home).Property(InfoTrick.0.Title))">$INFO[Window(Home).Property(InfoTrick.0.Title),videodb://movies/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22,%22%5D%7D%5D%7D%2C%22type%22%3A%22movies%22%7D]</value>
-    </variable>
+    <include name="Defs_InfoList_OnBack">
+        <onback condition="Skin.HasSetting(DisableExtendedInfo)">SetFocus(50)</onback>
+        <onback>SetFocus(5000)</onback>
+        <onback>300</onback>
+    </include>
 
-    <include name="Defs_InfoTrick">
-        <!-- IF its the first time lets remember the original title so we can get back -->
-        <onclick condition="String.IsEmpty(Container($PARAM[id]).ListItem.TvShowTitle) + !String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + String.IsEmpty(Window(Home).Property(InfoTrick.0.Title))">SetProperty(InfoTrick.0.Title,$INFO[Window(Home).Property(InfoTrick.OriginalTitle)],Home)</onclick>
-
-        <!-- Set The Title for InfoTrick to have history -->
-        <!-- TODO Add more history or recycle properties -->
-        <onclick condition="String.IsEmpty(Container($PARAM[id]).ListItem.TvShowTitle) + !String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + String.IsEmpty(Window(Home).Property(InfoTrick.1.Title))">SetProperty(InfoTrick.1.Title,$INFO[Container($PARAM[id]).ListItem.Title],Home)</onclick>
-        <onclick condition="String.IsEmpty(Container($PARAM[id]).ListItem.TvShowTitle) + !String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + !String.IsEmpty(Window(Home).Property(InfoTrick.1.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.2.Title))">SetProperty(InfoTrick.2.Title,$INFO[Container($PARAM[id]).ListItem.Title],Home)</onclick>
-        <onclick condition="String.IsEmpty(Container($PARAM[id]).ListItem.TvShowTitle) + !String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + !String.IsEmpty(Window(Home).Property(InfoTrick.2.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.3.Title))">SetProperty(InfoTrick.3.Title,$INFO[Container($PARAM[id]).ListItem.Title],Home)</onclick>
-        <onclick condition="String.IsEmpty(Container($PARAM[id]).ListItem.TvShowTitle) + !String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + !String.IsEmpty(Window(Home).Property(InfoTrick.3.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.4.Title))">SetProperty(InfoTrick.4.Title,$INFO[Container($PARAM[id]).ListItem.Title],Home)</onclick>
-        <onclick condition="String.IsEmpty(Container($PARAM[id]).ListItem.TvShowTitle) + !String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + !String.IsEmpty(Window(Home).Property(InfoTrick.4.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.5.Title))">SetProperty(InfoTrick.5.Title,$INFO[Container($PARAM[id]).ListItem.Title],Home)</onclick>
-        <onclick condition="String.IsEmpty(Container($PARAM[id]).ListItem.TvShowTitle) + !String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + !String.IsEmpty(Window(Home).Property(InfoTrick.5.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.6.Title))">SetProperty(InfoTrick.6.Title,$INFO[Container($PARAM[id]).ListItem.Title],Home)</onclick>
-        <onclick condition="String.IsEmpty(Container($PARAM[id]).ListItem.TvShowTitle) + !String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + !String.IsEmpty(Window(Home).Property(InfoTrick.6.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.7.Title))">SetProperty(InfoTrick.7.Title,$INFO[Container($PARAM[id]).ListItem.Title],Home)</onclick>
-        <onclick condition="String.IsEmpty(Container($PARAM[id]).ListItem.TvShowTitle) + !String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + !String.IsEmpty(Window(Home).Property(InfoTrick.7.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.8.Title))">SetProperty(InfoTrick.8.Title,$INFO[Container($PARAM[id]).ListItem.Title],Home)</onclick>
-        <onclick condition="String.IsEmpty(Container($PARAM[id]).ListItem.TvShowTitle) + !String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + !String.IsEmpty(Window(Home).Property(InfoTrick.8.Title)) + String.IsEmpty(Window(Home).Property(InfoTrick.9.Title))">SetProperty(InfoTrick.9.Title,$INFO[Container($PARAM[id]).ListItem.Title],Home)</onclick>
-        <onclick condition="String.IsEmpty(Container($PARAM[id]).ListItem.TvShowTitle) + !String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + !String.IsEmpty(Window(Home).Property(InfoTrick.9.Title))">SetProperty(InfoTrick.9.Title,$INFO[Container($PARAM[id]).ListItem.Title],Home)</onclick>
-
-        <!-- Set the active flag so videoinfo unload conditions don't delete the property we just set -->
-        <onclick condition="String.IsEmpty(Container($PARAM[id]).ListItem.TvShowTitle) + !String.IsEmpty(Container($PARAM[id]).ListItem.DBID)">SetProperty(InfoTrick.Active,1,Home)</onclick>
-
-        <!-- Set videoinfo position back to top -->
-        <onclick condition="String.IsEmpty(Container($PARAM[id]).ListItem.TvShowTitle) + !String.IsEmpty(Container($PARAM[id]).ListItem.DBID) + Skin.HasSetting(DisableExtendedInfo)">SetFocus(50)</onclick>
-        <onclick condition="String.IsEmpty(Container($PARAM[id]).ListItem.TvShowTitle) + !String.IsEmpty(Container($PARAM[id]).ListItem.DBID)">SetFocus(5000)</onclick>
-        <onclick condition="String.IsEmpty(Container($PARAM[id]).ListItem.TvShowTitle) + !String.IsEmpty(Container($PARAM[id]).ListItem.DBID)">SetFocus(300)</onclick>
-
-        <!-- Kill the videoinfo dialog -->
-        <onclick condition="String.IsEmpty(Container($PARAM[id]).ListItem.TvShowTitle) + !String.IsEmpty(Container($PARAM[id]).ListItem.DBID)">Dialog.Close(all,force)</onclick>
-
-        <!-- Reload the InfoTrick Window -->
-        <onclick condition="String.IsEmpty(Container($PARAM[id]).ListItem.TvShowTitle) + !String.IsEmpty(Container($PARAM[id]).ListItem.DBID)">ActivateWindow(1137)</onclick>
-
-        <!-- If not a DBID movie then use extendedinfo instead -->
-        <onclick condition="!String.IsEmpty(Container($PARAM[id]).ListItem.TvShowTitle) | String.IsEmpty(Container($PARAM[id]).ListItem.DBID)">RunScript(script.extendedinfo,info=extendedinfo,name=$INFO[Container($PARAM[id]).ListItem.Title])</onclick>
+    <include name="Defs_InfoList_OnClick">
+        <param name="prevent_del" default="prevent_del" />
+        <definition>
+            <onclick condition="Skin.HasSetting(DisableExtendedInfo)">SetFocus(50)</onclick>
+            <onclick>SetFocus(5000)</onclick>
+            <onclick>SetFocus(300)</onclick>
+            <onclick condition="String.IsEmpty(ListItem.DBID) | [!String.IsEqual(ListItem.DBType,movie) + !String.IsEqual(ListItem.DBType,tvshow)]">RunScript(plugin.video.themoviedb.helper,add_path=$INFO[ListItem.FolderPath],call_id=1137,delay=0.35,$PARAM[prevent_del])</onclick>
+            <onclick condition="!String.IsEmpty(ListItem.DBID) + String.IsEqual(ListItem.DBType,movie)">RunScript(plugin.video.themoviedb.helper,add_path=$INFO[ListItem.Label,videodb://movies/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22,%22%5D%7D%5D%7D%2C%22type%22%3A%22movies%22%7D],call_id=1137,delay=0.35,$PARAM[prevent_del])</onclick>
+            <onclick condition="!String.IsEmpty(ListItem.DBID) + String.IsEqual(ListItem.DBType,tvshow)">RunScript(plugin.video.themoviedb.helper,add_path=$INFO[ListItem.Label,videodb://tvshows/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22,%22%5D%7D%5D%7D%2C%22type%22%3A%22tvshows%22%7D],call_id=1137,delay=0.35,$PARAM[prevent_del])</onclick>
+        </definition>
     </include>
 
     <include name="Defs_Null"><description>Nothing</description></include>
@@ -180,7 +178,7 @@
     </include>
 
     <include name="Defs_InfoDialog_Visible">
-        <visible>!Window.IsVisible(DialogVideoInfo.xml) + !Window.IsVisible(DialogMusicInfo.xml) + !Window.IsVisible(DialogAddonInfo.xml) + !Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) + !Window.IsVisible(script-script.extendedinfo-DialogInfo.xml)</visible>
+        <visible>!Window.IsVisible(DialogVideoInfo.xml) + !Window.IsVisible(DialogMusicInfo.xml) + !Window.IsVisible(DialogAddonInfo.xml) + !Window.IsVisible(1140) + !Window.IsVisible(DialogPVRInfo.xml)</visible>
     </include>
 
     <!-- Options Menu -->

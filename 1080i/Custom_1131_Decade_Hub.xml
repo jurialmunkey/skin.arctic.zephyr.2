@@ -9,7 +9,8 @@
         
         <control type="group">
             <include>View_Group</include>
-        
+            <visible allowhiddenfocus="true">!$EXP[Exp_ShowPlotOverlay]</visible>
+            <include>Animation_FadeInOut</include>
             <control type="panel" id="5600">
                 <ondown>5610</ondown>
                 <include content="View_TopItems">
@@ -18,7 +19,7 @@
                 </include>
                 <content>
                     <item>
-                        <label>2010s</label>
+                        <label>2020s</label>
                         <label2>$INFO[Container(2020).NumItems,, $LOCALIZE[31047]]</label2>
                         <visible>Integer.IsGreater(Container(2020).NumItems,0)</visible>
                         <onclick>ActivateWindow(videos,special://skin/extras/decades/2020s.xsp,return)</onclick>
@@ -98,136 +99,271 @@
                 </content>
             </control>
 
-            <control type="label">
+            <!-- <control type="label">
                 <bottom>402.5</bottom>
                 <height>40</height>
                 <align>center</align>
                 <font>font_byline</font>
                 <textcolor>main_fg_70</textcolor>
                 <label>$INFO[Window.Property(Header_Left_Text)] $LOCALIZE[31048] $INFO[Container(5600).ListItem.Label]</label>
+            </control> -->
+
+            <control type="group">
+                <top>337.5</top>
+                <left>-15</left>
+                <include content="View_Cast_Toplabel">
+                    <param name="groupid" value="7522" />
+                    <param name="id" value="2020" />
+                    <param name="label" value="$INFO[Window.Property(Header_Left_Text)] $LOCALIZE[31048] $INFO[Container(5600).ListItem.Label]" />
+                    <visible>Control.IsVisible(2020)</visible>
+                </include>
+                <include content="View_Cast_Toplabel">
+                    <param name="groupid" value="7523" />
+                    <param name="id" value="2010" />
+                    <param name="label" value="$INFO[Window.Property(Header_Left_Text)] $LOCALIZE[31048] $INFO[Container(5600).ListItem.Label]" />
+                    <visible>Control.IsVisible(2010)</visible>
+                </include>
+                <include content="View_Cast_Toplabel">
+                    <param name="groupid" value="7524" />
+                    <param name="id" value="2000" />
+                    <param name="label" value="$INFO[Window.Property(Header_Left_Text)] $LOCALIZE[31048] $INFO[Container(5600).ListItem.Label]" />
+                    <visible>Control.IsVisible(2000)</visible>
+                </include>
+                <include content="View_Cast_Toplabel">
+                    <param name="groupid" value="7525" />
+                    <param name="id" value="1990" />
+                    <param name="label" value="$INFO[Window.Property(Header_Left_Text)] $LOCALIZE[31048] $INFO[Container(5600).ListItem.Label]" />
+                    <visible>Control.IsVisible(1990)</visible>
+                </include>
+                <include content="View_Cast_Toplabel">
+                    <param name="groupid" value="7526" />
+                    <param name="id" value="1980" />
+                    <param name="label" value="$INFO[Window.Property(Header_Left_Text)] $LOCALIZE[31048] $INFO[Container(5600).ListItem.Label]" />
+                    <visible>Control.IsVisible(1980)</visible>
+                </include>
+                <include content="View_Cast_Toplabel">
+                    <param name="groupid" value="7527" />
+                    <param name="id" value="1970" />
+                    <param name="label" value="$INFO[Window.Property(Header_Left_Text)] $LOCALIZE[31048] $INFO[Container(5600).ListItem.Label]" />
+                    <visible>Control.IsVisible(1970)</visible>
+                </include>
+                <include content="View_Cast_Toplabel">
+                    <param name="groupid" value="7528" />
+                    <param name="id" value="1960" />
+                    <param name="label" value="$INFO[Window.Property(Header_Left_Text)] $LOCALIZE[31048] $INFO[Container(5600).ListItem.Label]" />
+                    <visible>Control.IsVisible(1960)</visible>
+                </include>
+                <include content="View_Cast_Toplabel">
+                    <param name="groupid" value="7529" />
+                    <param name="id" value="1950" />
+                    <param name="label" value="$INFO[Window.Property(Header_Left_Text)] $LOCALIZE[31048] $INFO[Container(5600).ListItem.Label]" />
+                    <visible>Control.IsVisible(1950)</visible>
+                </include>
+                <include content="View_Cast_Toplabel">
+                    <param name="groupid" value="7530" />
+                    <param name="id" value="1940" />
+                    <param name="label" value="$INFO[Window.Property(Header_Left_Text)] $LOCALIZE[31048] $INFO[Container(5600).ListItem.Label]" />
+                    <visible>Control.IsVisible(1940)</visible>
+                </include>
+                <include content="View_Cast_Toplabel">
+                    <param name="groupid" value="7531" />
+                    <param name="id" value="1930" />
+                    <param name="label" value="$INFO[Window.Property(Header_Left_Text)] $LOCALIZE[31048] $INFO[Container(5600).ListItem.Label]" />
+                    <visible>Control.IsVisible(1930)</visible>
+                </include>
+                <include content="View_Cast_Toplabel">
+                    <param name="groupid" value="7532" />
+                    <param name="id" value="1920" />
+                    <param name="label" value="$INFO[Window.Property(Header_Left_Text)] $LOCALIZE[31048] $INFO[Container(5600).ListItem.Label]" />
+                    <visible>Control.IsVisible(1920)</visible>
+                </include>
+                <include content="View_Cast_Toplabel">
+                    <param name="groupid" value="7533" />
+                    <param name="id" value="1910" />
+                    <param name="label" value="$INFO[Window.Property(Header_Left_Text)] $LOCALIZE[31048] $INFO[Container(5600).ListItem.Label]" />
+                    <visible>Control.IsVisible(1910)</visible>
+                </include>
+                <include content="View_Cast_Toplabel">
+                    <param name="groupid" value="7534" />
+                    <param name="id" value="1900" />
+                    <param name="label" value="$INFO[Window.Property(Header_Left_Text)] $LOCALIZE[31048] $INFO[Container(5600).ListItem.Label]" />
+                    <visible>Control.IsVisible(1900)</visible>
+                </include>
             </control>
 
             <control type="group" id="5610">
                 <include content="Object_Widget_Spotlight">
+                    <param name="labelinclude" value="Defs_Null" />
+                    <param name="landscapelabelinclude" value="View_Widget_LandscapeLabel" />
+                    <param name="label2" value="ListItem.TvShowTitle" />
                     <param name="target" value="videos" />
                     <param name="content" value="special://skin/extras/decades/2020s.xsp" />
                     <param name="sortby" value="year" />
                     <param name="sortorder" value="descending" />
+                    <param name="limit" value="99999" />
                     <param name="id" value="2020" />
                     <onup>5600</onup>
                     <visible>Integer.IsEqual(Container(2020).NumItems,0) | String.IsEqual(Container(5600).ListItem.Label,2020s)</visible>
                 </include>
                 <include content="Object_Widget_Spotlight">
+                    <param name="labelinclude" value="Defs_Null" />
+                    <param name="landscapelabelinclude" value="View_Widget_LandscapeLabel" />
+                    <param name="label2" value="ListItem.TvShowTitle" />
                     <param name="target" value="videos" />
                     <param name="content" value="special://skin/extras/decades/2010s.xsp" />
                     <param name="sortby" value="year" />
                     <param name="sortorder" value="descending" />
+                    <param name="limit" value="99999" />
                     <param name="id" value="2010" />
                     <onup>5600</onup>
                     <visible>Integer.IsEqual(Container(2010).NumItems,0) | String.IsEqual(Container(5600).ListItem.Label,2010s)</visible>
                 </include>
                 <include content="Object_Widget_Spotlight">
+                    <param name="labelinclude" value="Defs_Null" />
+                    <param name="landscapelabelinclude" value="View_Widget_LandscapeLabel" />
+                    <param name="label2" value="ListItem.TvShowTitle" />
                     <param name="target" value="videos" />
                     <param name="content" value="special://skin/extras/decades/2000s.xsp" />
                     <param name="sortby" value="year" />
                     <param name="sortorder" value="descending" />
+                    <param name="limit" value="99999" />
                     <param name="id" value="2000" />
                     <onup>5600</onup>
                     <visible>Integer.IsEqual(Container(2000).NumItems,0) | String.IsEqual(Container(5600).ListItem.Label,2000s)</visible>
                 </include>
                 <include content="Object_Widget_Spotlight">
+                    <param name="labelinclude" value="Defs_Null" />
+                    <param name="landscapelabelinclude" value="View_Widget_LandscapeLabel" />
+                    <param name="label2" value="ListItem.TvShowTitle" />
                     <param name="target" value="videos" />
                     <param name="content" value="special://skin/extras/decades/1990s.xsp" />
                     <param name="sortby" value="year" />
                     <param name="sortorder" value="descending" />
+                    <param name="limit" value="99999" />
                     <param name="id" value="1990" />
                     <onup>5600</onup>
                     <visible>Integer.IsEqual(Container(1990).NumItems,0) | String.IsEqual(Container(5600).ListItem.Label,1990s)</visible>
                 </include>
                 <include content="Object_Widget_Spotlight">
+                    <param name="labelinclude" value="Defs_Null" />
+                    <param name="landscapelabelinclude" value="View_Widget_LandscapeLabel" />
+                    <param name="label2" value="ListItem.TvShowTitle" />
                     <param name="target" value="videos" />
                     <param name="content" value="special://skin/extras/decades/1980s.xsp" />
                     <param name="sortby" value="year" />
                     <param name="sortorder" value="descending" />
+                    <param name="limit" value="99999" />
                     <param name="id" value="1980" />
                     <onup>5600</onup>
                     <visible>Integer.IsEqual(Container(1980).NumItems,0) | String.IsEqual(Container(5600).ListItem.Label,1980s)</visible>
                 </include>
                 <include content="Object_Widget_Spotlight">
+                    <param name="labelinclude" value="Defs_Null" />
+                    <param name="landscapelabelinclude" value="View_Widget_LandscapeLabel" />
+                    <param name="label2" value="ListItem.TvShowTitle" />
                     <param name="target" value="videos" />
                     <param name="content" value="special://skin/extras/decades/1970s.xsp" />
                     <param name="sortby" value="year" />
                     <param name="sortorder" value="descending" />
+                    <param name="limit" value="99999" />
                     <param name="id" value="1970" />
                     <onup>5600</onup>
                     <visible>Integer.IsEqual(Container(1970).NumItems,0) | String.IsEqual(Container(5600).ListItem.Label,1970s)</visible>
                 </include>
                 <include content="Object_Widget_Spotlight">
+                    <param name="labelinclude" value="Defs_Null" />
+                    <param name="landscapelabelinclude" value="View_Widget_LandscapeLabel" />
+                    <param name="label2" value="ListItem.TvShowTitle" />
                     <param name="target" value="videos" />
                     <param name="content" value="special://skin/extras/decades/1960s.xsp" />
                     <param name="sortby" value="year" />
                     <param name="sortorder" value="descending" />
+                    <param name="limit" value="99999" />
                     <param name="id" value="1960" />
                     <onup>5600</onup>
                     <visible>Integer.IsEqual(Container(1960).NumItems,0) | String.IsEqual(Container(5600).ListItem.Label,1960s)</visible>
                 </include>
                 <include content="Object_Widget_Spotlight">
+                    <param name="labelinclude" value="Defs_Null" />
+                    <param name="landscapelabelinclude" value="View_Widget_LandscapeLabel" />
+                    <param name="label2" value="ListItem.TvShowTitle" />
                     <param name="target" value="videos" />
                     <param name="content" value="special://skin/extras/decades/1950s.xsp" />
                     <param name="sortby" value="year" />
                     <param name="sortorder" value="descending" />
+                    <param name="limit" value="99999" />
                     <param name="id" value="1950" />
                     <onup>5600</onup>
                     <visible>Integer.IsEqual(Container(1950).NumItems,0) | String.IsEqual(Container(5600).ListItem.Label,1950s)</visible>
                 </include>
                 <include content="Object_Widget_Spotlight">
+                    <param name="labelinclude" value="Defs_Null" />
+                    <param name="landscapelabelinclude" value="View_Widget_LandscapeLabel" />
+                    <param name="label2" value="ListItem.TvShowTitle" />
                     <param name="target" value="videos" />
                     <param name="content" value="special://skin/extras/decades/1940s.xsp" />
                     <param name="sortby" value="year" />
                     <param name="sortorder" value="descending" />
+                    <param name="limit" value="99999" />
                     <param name="id" value="1940" />
                     <onup>5600</onup>
                     <visible>Integer.IsEqual(Container(1940).NumItems,0) | String.IsEqual(Container(5600).ListItem.Label,1940s)</visible>
                 </include>
                 <include content="Object_Widget_Spotlight">
+                    <param name="labelinclude" value="Defs_Null" />
+                    <param name="landscapelabelinclude" value="View_Widget_LandscapeLabel" />
+                    <param name="label2" value="ListItem.TvShowTitle" />
                     <param name="target" value="videos" />
                     <param name="content" value="special://skin/extras/decades/1930s.xsp" />
                     <param name="sortby" value="year" />
                     <param name="sortorder" value="descending" />
+                    <param name="limit" value="99999" />
                     <param name="id" value="1930" />
                     <onup>5600</onup>
                     <visible>Integer.IsEqual(Container(1930).NumItems,0) | String.IsEqual(Container(5600).ListItem.Label,1930s)</visible>
                 </include>
                 <include content="Object_Widget_Spotlight">
+                    <param name="labelinclude" value="Defs_Null" />
+                    <param name="landscapelabelinclude" value="View_Widget_LandscapeLabel" />
+                    <param name="label2" value="ListItem.TvShowTitle" />
                     <param name="target" value="videos" />
                     <param name="content" value="special://skin/extras/decades/1920s.xsp" />
                     <param name="sortby" value="year" />
                     <param name="sortorder" value="descending" />
+                    <param name="limit" value="99999" />
                     <param name="id" value="1920" />
                     <onup>5600</onup>
                     <visible>Integer.IsEqual(Container(1920).NumItems,0) | String.IsEqual(Container(5600).ListItem.Label,1920s)</visible>
                 </include>
                 <include content="Object_Widget_Spotlight">
+                    <param name="labelinclude" value="Defs_Null" />
+                    <param name="landscapelabelinclude" value="View_Widget_LandscapeLabel" />
+                    <param name="label2" value="ListItem.TvShowTitle" />
                     <param name="target" value="videos" />
                     <param name="content" value="special://skin/extras/decades/1910s.xsp" />
                     <param name="sortby" value="year" />
                     <param name="sortorder" value="descending" />
+                    <param name="limit" value="99999" />
                     <param name="id" value="1910" />
                     <onup>5600</onup>
                     <visible>Integer.IsEqual(Container(1910).NumItems,0) | String.IsEqual(Container(5600).ListItem.Label,1910s)</visible>
                 </include>
                 <include content="Object_Widget_Spotlight">
+                    <param name="labelinclude" value="Defs_Null" />
+                    <param name="landscapelabelinclude" value="View_Widget_LandscapeLabel" />
+                    <param name="label2" value="ListItem.TvShowTitle" />
                     <param name="target" value="videos" />
                     <param name="content" value="special://skin/extras/decades/1900s.xsp" />
                     <param name="sortby" value="year" />
                     <param name="sortorder" value="descending" />
+                    <param name="limit" value="99999" />
                     <param name="id" value="1900" />
                     <onup>5600</onup>
                     <visible>Integer.IsEqual(Container(1900).NumItems,0) | String.IsEqual(Container(5600).ListItem.Label,1900s)</visible>
                 </include>
             </control>
-
-
         </control>
+
+        <include>Object_PlotOverlay</include>
     </controls>
 </window>

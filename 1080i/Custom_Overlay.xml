@@ -12,11 +12,6 @@
                 <texture colordiffuse="red">common/white.png</texture>
             </control>
             <control type="image">
-                <left>660</left>
-                <width>1</width>
-                <texture colordiffuse="red">common/white.png</texture>
-            </control>
-            <control type="image">
                 <right>view_pad</right>
                 <width>1</width>
                 <texture colordiffuse="red">common/white.png</texture>
@@ -32,12 +27,7 @@
                 <texture colordiffuse="red">common/white.png</texture>
             </control>
             <control type="image">
-                <bottom>view_pad</bottom>
-                <height>1</height>
-                <texture colordiffuse="red">common/white.png</texture>
-            </control>
-            <control type="image">
-                <bottom>100</bottom>
+                <bottom>60</bottom>
                 <height>1</height>
                 <texture colordiffuse="red">common/white.png</texture>
             </control>
@@ -52,11 +42,6 @@
                 <texture colordiffuse="red">common/white.png</texture>
             </control>
             <!-- <control type="image">
-                <bottom>view_top</bottom>
-                <height>1</height>
-                <texture colordiffuse="red">common/white.png</texture>
-            </control> -->
-            <control type="image">
                 <centertop>50%</centertop>
                 <height>1</height>
                 <texture colordiffuse="red">common/white.png</texture>
@@ -65,7 +50,7 @@
                 <centerleft>50%</centerleft>
                 <width>1</width>
                 <texture colordiffuse="red">common/white.png</texture>
-            </control>
+            </control> -->
         </control>
 
         <!-- Window/Dialog debug -->
@@ -122,6 +107,27 @@
                 <align>left</align>
                 <label>LoginScreen.xml</label>
                 <visible>Window.IsVisible(LoginScreen.xml)</visible>
+            </control>
+
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FF0000FF</textcolor>
+                
+                <font>font13</font>
+                <align>left</align>
+                <label>script-NextAired-TVGuide2.xml</label>
+                <visible>Window.IsVisible(script-NextAired-TVGuide2.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FF0000FF</textcolor>
+                
+                <font>font13</font>
+                <align>left</align>
+                <label>script-NextAired-TVGuide.xml</label>
+                <visible>Window.IsVisible(script-NextAired-TVGuide.xml)</visible>
             </control>
 
             <control type="label">
@@ -951,20 +957,41 @@
                 <visible>Window.IsVisible(VisualisationPresetList.xml)</visible>
             </control>
 
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FFFF0000</textcolor>
+                
+                <font>font13</font>
+                <align>left</align>
+                <label>Custom_1140_SetsInfo.xml</label>
+                <visible>Window.IsVisible(Custom_1140_SetsInfo.xml)</visible>
+            </control>
+
         </control>
 
         <!-- Control label -->
-
         <control type="label">
-            <posx>15r</posx>
-            <posy>15</posy>
+            <right>15</right>
+            <top>15</top>
             <width>780</width>
-            <height>21</height>
+            <height>42</height>
             <textcolor>FF0000FF</textcolor>
-            
             <font>font13</font>
             <align>right</align>
-            <label>$INFO[System.CurrentControl]</label>
+            <label>$INFO[System.CurrentControl][CR][COLOR=FF00FF00]$INFO[System.CurrentWindow][/COLOR]</label>
+            <visible>Skin.HasSetting(DebugInfo)</visible>
+        </control>
+
+        <control type="label">
+            <right>15</right>
+            <posy>80</posy>
+            <height>110</height>
+            <textcolor>FF00FFFF</textcolor>
+            <font>font13</font>
+            <align>right</align>
+            <!-- <label>$INFO[Window(Home).Property(TMDbHelper.Genre)]</label> -->
+            <label>$INFO[Window(Home).Property(TMDbHelper.Locked)]$INFO[Window(Home).Property(TMDbHelper.Path.Current)]</label>
             <visible>Skin.HasSetting(DebugInfo)</visible>
         </control>
 
@@ -979,20 +1006,33 @@
             
             <font>font13</font>
             <align>right</align>
-            <label>[COLOR=FF00FF00]$INFO[System.CurrentControlID,ID: ][/COLOR][CR]$INFO[Container.Content()][CR]$INFO[ListItem.DBType][CR]$INFO[Container.SortMethod][CR]$INFO[ListItem.DBID][CR]$INFO[Window(Home).Property(InfoTrick.0.Title)][CR]$INFO[Window(Home).Property(InfoTrick.1.Title)]</label>
+            <label>[COLOR=FF00FF00]$INFO[System.CurrentControlID,ID: ][/COLOR][CR]$INFO[Container.Content()][CR]$INFO[ListItem.DBType][CR]$INFO[Container.SortMethod][CR]$INFO[ListItem.DBID][CR]$INFO[ListItem.IMDBNumber]</label>
             <visible>Skin.HasSetting(DebugInfo)</visible>
         </control>
 
         <control type="label">
             <left>15</left>
-            <posy>48r</posy>
+            <bottom>0</bottom>
             <right>15</right>
-            <height>21</height>
+            <height>60</height>
             <textcolor>FFFF0000</textcolor>
             <scroll>true</scroll>
             <font>font13</font>
             <align>left</align>
             <label>[COLOR=FF00FF00]$INFO[Container.FolderName,, - ][/COLOR]$INFO[Container.FolderPath]</label>
+            <visible>Skin.HasSetting(DebugInfo)</visible>
+        </control>
+
+        <control type="label">
+            <left>15</left>
+            <bottom>60</bottom>
+            <right>15</right>
+            <height>60</height>
+            <textcolor>FFFF0000</textcolor>
+            <scroll>true</scroll>
+            <font>font13</font>
+            <align>left</align>
+            <label>[COLOR=FFFF00FF]$INFO[ListItem.FolderPath][/COLOR]</label>
             <visible>Skin.HasSetting(DebugInfo)</visible>
         </control>
 

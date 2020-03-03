@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<includes>
+    <include name="View_540_Platform_Icon">
+        <param name="top" default="0" />
+        <param name="right" default="0" />
+        <definition>
+            <control type="image">
+                <right>$PARAM[right]</right>
+                <top>$PARAM[top]</top>
+                <width>90</width>
+                <height>90</height>
+                <texture>$INFO[ListItem.Property(platform),special://home/addons/plugin.program.advanced.emulator.launcher/media/p_pixel/,.png]</texture>
+                <aspectratio>keep</aspectratio>
+            </control>
+        </definition>
+    </include>
+    <include name="View_540_ROM_Details">
+        <param name="left" default="0" />
+        <param name="right" default="120" />
+        <definition>
+            <control type="label">
+                <left>$PARAM[left]</left>
+                <right>$PARAM[right]</right>
+                <height>40</height>
+                <aligny>top</aligny>
+                <label>$VAR[ROM_Details]</label>
+                <textcolor>$VAR[ColorHighlight]</textcolor>
+                <font>font_small</font>
+            </control>
+        </definition>
+    </include>
+    <include name="View_540_Button_Include">
+        <control type="button">
+            <left>0</left>
+            <top>0</top>
+            <width>1</width>
+            <height>1</height>
+            <onload condition="!IsEmpty(ListItem.Trailer)">PlayerControl(Repeat)</onload>
+            <onfocus condition="!IsEmpty(ListItem.Trailer)">PlayMedia($ESCINFO[ListItem.trailer],1)</onfocus>
+            <onunfocus condition="Player.HasVideo">PlayerControl(Stop)</onunfocus>
+            <texturefocus>-</texturefocus>
+            <texturenofocus>-</texturenofocus>
+            <animation type="Focus">
+                <effect type="fade" delay="2000" start="0" end="100" />
+            </animation>
+        </control>
+    </include>
+    <include name="View_540_List_Info">
+        <control type="group">
+            <include>View_FlipSides</include>
+            <width>1028.53</width>
+            <control type="group">
+                <width>295.2</width>
+                <height>420</height>
+                <control type="image">
+                    <bottom>30</bottom>
+                    <right>30</right>
+                    <texture background="true">$VAR[ROM_Simple_Art_Main]</texture>
+                    <aspectratio>keep</aspectratio>
+                </control>
+            </control>
+            <control type="group">
+                <right>0</right>
+                <width>723.33</width>
+                <height>420</height>
+                <!-- Backing Panel -->
+                <include content="View_50_Poster">
+                    <param name="height" value="420" />
+                    <param name="width" value="723.33" />
+                    <param name="icon" value="[Player.Playing + !IsEmpty(ListItem.Trailer)] | !String.IsEmpty(ListItem.Art(snap))" />
+                    <param name="diffuse" value="diffuse/landscape-mediainfo.png" />
+                </include>
+                <!-- Trailer and Snap -->
+                <control type="group">
+                    <bottom>30</bottom>
+                    <right>30</right>
+                    <control type="image">
+                        <texture border="10" colordiffuse="ff000000">diffuse/landscape-mediainfo.png</texture>
+                    </control>
+                    <control type="image">
+                        <texture diffuse="diffuse/landscape-mediainfo.png" background="true">$VAR[ROM_Simple_Art_Snap]</texture>
+                        <aspectratio scalediffuse="false">keep</aspectratio>
+                        <visible>![Player.Playing + !IsEmpty(ListItem.Trailer)]</visible>
+                    </control>
+                    <control type="videowindow">
+                        <visible>Player.Playing + !IsEmpty(ListItem.Trailer)</visible>
+                    </control>
+                </control>
+            </control>
+            <control type="grouplist">
+                <top>430</top>
+                <left>0</left>
+                <right>30</right>
+                <orientation>vertical</orientation>
+                <usecontrolcoords>true</usecontrolcoords>
+                <itemgap>0</itemgap>
+                <!-- Platform Image -->
+                <include>View_540_Platform_Icon</include>
+                <!-- Title -->
+                <control type="label">
+                    <top>-90</top>
+                    <right>120</right>
+                    <font>font_title_small</font>
+                    <textcolor>main_fg_100</textcolor>
+                    <align>left</align>
+                    <aligny>top</aligny>
+                    <height>52</height>
+                    <label>$INFO[ListItem.Label]</label>
+                </control>
+                <!-- Info Line -->
+                <include>View_540_ROM_Details</include>
+                <control type="group">
+                    <top>20</top>
+                    <height>265</height>
+                    <!-- Title Screen Art -->
+                    <control type="group">
+                        <width>448</width>
+                        <include content="View_50_Poster">
+                            <param name="height" value="265" />
+                            <param name="width" value="448" />
+                            <param name="icon" value="" />
+                            <param name="diffuse" value="diffuse/landscape-mediainfo.png" />
+                        </include>
+                        <control type="group">
+                            <visible>!String.IsEmpty(ListItem.Art(title)) | !String.IsEmpty(ListItem.Art(boxback))</visible>
+                            <bottom>30</bottom>
+                            <right>30</right>
+                            <control type="image">
+                                <texture border="10" colordiffuse="ff000000">diffuse/landscape-mediainfo.png</texture>
+                            </control>
+                            <control type="image">
+                                <texture diffuse="diffuse/landscape-mediainfo.png" background="true">$VAR[ROM_Simple_Art_Title]</texture>
+                                <aspectratio scalediffuse="false">keep</aspectratio>
+                            </control>
+                        </control>
+                    </control>
+                    <!-- Plot -->
+                    <control type="textbox">
+                        <left>458</left>
+                        <font>font_plotbox</font>
+                        <textcolor>main_fg_70</textcolor>
+                        <align>left</align>
+                        <aligny>top</aligny>
+                        <height>265</height>
+                        <label>$INFO[ListItem.Plot]</label>
+                    </control>
+                </control>
+            </control>
+        </control>
+    </include>
+
+    <include name="View_540_List_ROM_Info">
+        <control type="group">
+            <visible>Control.IsVisible(540)</visible>
+            <include>View_Group</include>
+            <include content="View_50_List_Control">
+                <param name="left" value="-20" />
+                <param name="right" value="1038.53" />
+                <param name="id" value="540" />
+                <param name="viewtype" value="$LOCALIZE[31435]" />
+                <param name="viewtypename" value="biginfo" />
+                <param name="forced" value="true" />
+                <param name="flipsides" value="Skin.HasSetting(FlipSide)" />
+                <param name="focustrailer" value="true" />
+                <param name="visible" value="$EXP[Exp_IsPluginAdvancedLauncher]" />
+            </include>
+            <include>View_540_List_Info</include>
+        </control>
+    </include>
+</includes>

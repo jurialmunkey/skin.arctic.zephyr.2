@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<includes>
+    <variable name="ROM_Simple_Art_Main">
+        <value condition="!String.IsEqual(ListItem.Property(platform),MAME) + !String.IsEmpty(ListItem.Art(3dbox))">$INFO[ListItem.Art(3dbox)]</value>
+        <value condition="!String.IsEqual(ListItem.Property(platform),MAME) + !String.IsEmpty(ListItem.Art(boxfront))">$INFO[ListItem.Art(boxfront)]</value>
+        <value condition="String.IsEqual(ListItem.Property(platform),MAME)  + !String.IsEmpty(ListItem.Art(flyer))">$INFO[ListItem.Art(flyer)]</value>
+        <value condition="String.IsEqual(ListItem.Property(platform),MAME)  + !String.IsEmpty(ListItem.Art(boxfront))">$INFO[ListItem.Art(boxfront)]</value>
+    </variable>
+    <variable name="ROM_Simple_Art_Main_2D">
+        <value condition="!String.IsEqual(ListItem.Property(platform),MAME) + !String.IsEmpty(ListItem.Art(boxfront))">$INFO[ListItem.Art(boxfront)]</value>
+        <value condition="String.IsEqual(ListItem.Property(platform),MAME)  + !String.IsEmpty(ListItem.Art(flyer))">$INFO[ListItem.Art(flyer)]</value>
+        <value condition="String.IsEqual(ListItem.Property(platform),MAME)  + !String.IsEmpty(ListItem.Art(boxfront))">$INFO[ListItem.Art(boxfront)]</value>
+        <value condition="!String.IsEmpty(ListItem.Art(poster))">$INFO[ListItem.Art(poster)]</value>
+        <value>$INFO[ListItem.Icon]</value>
+    </variable>
+    <variable name="ROM_Simple_Art_Snap">
+        <value condition="!String.IsEmpty(ListItem.Art(snap))">$INFO[ListItem.Art(snap)]</value>
+        <value condition="!String.IsEmpty(ListItem.Art(cartridge))">$INFO[ListItem.Art(cartridge)]</value>
+    </variable>
+    <variable name="ROM_Simple_Art_Logo">
+        <value condition="!String.IsEmpty(ListItem.Art(clearlogo))">$INFO[ListItem.Art(clearlogo)]</value>
+        <value condition="!String.IsEmpty(ListItem.Art(banner))">$INFO[ListItem.Art(banner)]</value>
+    </variable>
+    <variable name="ROM_Simple_Art_Title">
+        <value condition="!String.IsEmpty(ListItem.Art(title))">$INFO[ListItem.Art(title)]</value>
+        <value condition="!String.IsEmpty(ListItem.Art(boxback))">$INFO[ListItem.Art(boxback)]</value>
+    </variable>
+    <variable name="ROM_Details">
+        <value condition="!String.IsEmpty(ListItem.Property(platform))">$INFO[ListItem.Property(platform),[COLOR=main_fg_100],[/COLOR]]$INFO[ListItem.Studio,  |  [COLOR=main_fg_100],[/COLOR]]$INFO[ListItem.Year,  |  [COLOR=main_fg_100],[/COLOR]]$INFO[ListItem.Property(nplayers),  |  [COLOR=main_fg_100], [/COLOR]]</value>
+        <value>[COLOR=main_fg_100]N/A[/COLOR]</value>
+    </variable>
+</includes>

@@ -19,7 +19,7 @@
                 <font>font_small_bold</font>
                 <align>left</align>
                 <textcolor>dialog_fg_70</textcolor>
-                <visible>!String.EndsWith(Window.Property(groupname),.1)</visible>
+                <visible>![String.EndsWith(Window.Property(groupname),.1) | String.IsEqual(Window.Property(groupname),searchmenu)]</visible>
             </control>
             <!-- Widgets Header Label -->
             <control type="label">
@@ -30,7 +30,7 @@
                 <align>left</align>
                 <textcolor>dialog_fg_70</textcolor>
                 <label>Customize Widgets</label>
-                <visible>String.EndsWith(Window.Property(groupname),.1)</visible>
+                <visible>[String.EndsWith(Window.Property(groupname),.1) | String.IsEqual(Window.Property(groupname),searchmenu)]</visible>
             </control>
 
             <!-- Shortcuts List -->
@@ -171,7 +171,7 @@
                 <control type="button" id="401" description="Choose Shortcut">
                     <visible>!String.IsEqual(Container(211).ListItem.Property(skinshortcuts-disabled),True)</visible>
                     <include>Dialog_Standard_Button</include>
-                    <visible>!String.EndsWith(Window.Property(groupname),.1)</visible>
+                    <visible>![String.EndsWith(Window.Property(groupname),.1) | String.IsEqual(Window.Property(groupname),searchmenu)]</visible>
                 </control>
 
                 <control type="button" id="4001" description="Choose Widget">
@@ -215,6 +215,26 @@
                     <visible>!String.IsEqual(Container(211).ListItem.Property(skinshortcuts-disabled),True)</visible>
                     <include>Dialog_Standard_Button</include>
                     <visible>!String.EndsWith(Window.Property(groupname),.1)</visible>
+                    <visible>!String.IsEqual(Window.Property(groupname),searchmenu)</visible>
+                </control>
+
+                <control type="button" id="4101" description="Choose Search Item">
+                    <label>Default search items</label>
+                    <onclick>SetProperty(custom-grouping,customsearchdefaultitems)</onclick>
+                    <onclick>SendClick(401)</onclick>
+                    <visible>!String.IsEqual(Container(211).ListItem.Property(skinshortcuts-disabled),True)</visible>
+                    <include>Dialog_Standard_Button</include>
+                    <visible>String.IsEqual(Window.Property(groupname),searchmenu)</visible>
+                </control>
+
+                <control type="button" id="3007" description="Action">
+                    <label>31267</label>
+                    <label2>$INFO[Container(211).ListItem.Property(Path)]</label2>
+                    <onclick>SetProperty(custom-grouping,customsearch)</onclick>
+                    <onclick>SendClick(307)</onclick>
+                    <visible>!String.IsEqual(Container(211).ListItem.Property(skinshortcuts-disabled),True)</visible>
+                    <include>Dialog_Standard_Button</include>
+                    <visible>String.IsEqual(Window.Property(groupname),searchmenu)</visible>
                 </control>
 
                 <control type="button" id="19312" description="Custom Hub Node">
@@ -234,7 +254,7 @@
                     <onback condition="!String.IsEmpty(Skin.String(1134_Node))">Skin.Reset(1134_Node)</onback>
 
                     <include>Dialog_Standard_Button</include>
-                    <visible>!String.EndsWith(Window.Property(groupname),.1)</visible>
+                    <visible>![String.EndsWith(Window.Property(groupname),.1) | String.IsEqual(Window.Property(groupname),searchmenu)]</visible>
                 </control>
 
                 <control type="button" id="305" description="Label">
@@ -249,16 +269,16 @@
                     <visible>!String.IsEqual(Container(211).ListItem.Property(skinshortcuts-disabled),True)</visible>
                     <include>Dialog_Standard_Button</include>
                     <visible>!String.IsEqual(Window.Property(groupname),powermenu)</visible>
-                    <visible>!String.EndsWith(Window.Property(groupname),.1)</visible>
+                    <visible>![String.EndsWith(Window.Property(groupname),.1) | String.IsEqual(Window.Property(groupname),searchmenu)]</visible>
                 </control>
 
-                <control type="button" id="406" description="Submenu">
+                <control type="button" id="406" description="Widgets">
                     <label>$LOCALIZE[31099]</label>
                     <visible>String.IsEqual(Window.Property(groupname),mainmenu)</visible>
                     <visible>!String.IsEqual(Container(211).ListItem.Property(skinshortcuts-disabled),True)</visible>
                     <include>Dialog_Standard_Button</include>
-                    <visible>!String.EndsWith(Window.Property(groupname),.1)</visible>
-                    <visible>Skin.HasSetting(VerticalHome)</visible>
+                    <visible>![String.EndsWith(Window.Property(groupname),.1) | String.IsEqual(Window.Property(groupname),searchmenu)]</visible>
+                    <visible>Skin.HasSetting(HomeMulti)</visible>
                 </control>
 
                 <control type="button" id="405" description="Submenu">
@@ -266,23 +286,25 @@
                     <visible>String.IsEqual(Window.Property(groupname),mainmenu)</visible>
                     <visible>!String.IsEqual(Container(211).ListItem.Property(skinshortcuts-disabled),True)</visible>
                     <include>Dialog_Standard_Button</include>
-                    <visible>!String.EndsWith(Window.Property(groupname),.1)</visible>
+                    <visible>![String.EndsWith(Window.Property(groupname),.1) | String.IsEqual(Window.Property(groupname),searchmenu)]</visible>
                 </control>
 
                 <control type="button" id="312" description="Widget Submenu Path">
                     <label>$LOCALIZE[31038]</label>
                     <visible>!String.IsEqual(Container(211).ListItem.Property(skinshortcuts-disabled),True)</visible>
                     <label2>$INFO[Container(211).ListItem.Property(widgetName)]</label2>
-                    <visible>String.IsEqual(Container(211).ListItem.Property(path),ActivateWindow(1135)) | !Skin.HasSetting(SubmenuOnly) | !Skin.HasSetting(VerticalHome)</visible>
+                    <visible>String.IsEqual(Container(211).ListItem.Property(path),ActivateWindow(1135)) | !Skin.HasSetting(SubmenuOnly) | !Skin.HasSetting(HomeMulti)</visible>
                     <include>Dialog_Standard_Button</include>
-                    <visible>!String.EndsWith(Window.Property(groupname),.1)</visible>
+                    <visible>![String.EndsWith(Window.Property(groupname),.1) | String.IsEqual(Window.Property(groupname),searchmenu)]</visible>
+                    <visible>!String.IsEqual(Window.Property(groupname),powermenu)</visible>
                 </control>
 
                 <control type="button" id="9901" description="Widget Submenu Aspect">
                     <label>$VAR[Label_SkinShortcuts_SubmenuWidget]</label>
                     <visible>!String.IsEqual(Container(211).ListItem.Property(skinshortcuts-disabled),True)</visible>
                     <label2>$INFO[Container(211).ListItem.Property(widgetAspect)]</label2>
-                    <visible>String.IsEqual(Container(211).ListItem.Property(path),ActivateWindow(1135)) | !Skin.HasSetting(SubmenuOnly) | [Skin.HasSetting(VerticalHome) + String.EndsWith(Window.Property(groupname),.1)] | !Skin.HasSetting(VerticalHome)</visible>
+                    <visible>String.IsEqual(Container(211).ListItem.Property(path),ActivateWindow(1135)) | !Skin.HasSetting(SubmenuOnly) | [Skin.HasSetting(HomeMulti) + [String.EndsWith(Window.Property(groupname),.1) | String.IsEqual(Window.Property(groupname),searchmenu)]] | !Skin.HasSetting(HomeMulti)</visible>
+                    <visible>!String.IsEqual(Window.Property(groupname),powermenu)</visible>
                     <include>Dialog_Standard_Button</include>
                 </control>
 
@@ -290,7 +312,7 @@
                     <label>$LOCALIZE[31100]</label>
                     <visible>!String.IsEqual(Container(211).ListItem.Property(skinshortcuts-disabled),True)</visible>
                     <label2>$INFO[Container(211).ListItem.Property(widgetTarget)]</label2>
-                    <visible>Skin.HasSetting(VerticalHome) + String.EndsWith(Window.Property(groupname),.1)</visible>
+                    <visible>Skin.HasSetting(HomeMulti) + [String.EndsWith(Window.Property(groupname),.1) | String.IsEqual(Window.Property(groupname),searchmenu)]</visible>
                     <include>Dialog_Standard_Button</include>
                 </control>
 
@@ -298,7 +320,7 @@
                     <label>$LOCALIZE[581]</label>
                     <visible>!String.IsEqual(Container(211).ListItem.Property(skinshortcuts-disabled),True)</visible>
                     <label2>$INFO[Container(211).ListItem.Property(widgetSortby)]</label2>
-                    <visible>Skin.HasSetting(VerticalHome) + String.EndsWith(Window.Property(groupname),.1)</visible>
+                    <visible>Skin.HasSetting(HomeMulti) + [String.EndsWith(Window.Property(groupname),.1)]</visible>
                     <include>Dialog_Standard_Button</include>
                 </control>
 
@@ -306,7 +328,7 @@
                     <label>$LOCALIZE[580]</label>
                     <visible>!String.IsEqual(Container(211).ListItem.Property(skinshortcuts-disabled),True)</visible>
                     <label2>$INFO[Container(211).ListItem.Property(widgetSortorder)]</label2>
-                    <visible>Skin.HasSetting(VerticalHome) + String.EndsWith(Window.Property(groupname),.1)</visible>
+                    <visible>Skin.HasSetting(HomeMulti) + [String.EndsWith(Window.Property(groupname),.1)]</visible>
                     <include>Dialog_Standard_Button</include>
                 </control>
 
@@ -314,7 +336,7 @@
                     <label>$LOCALIZE[31107]</label>
                     <visible>!String.IsEqual(Container(211).ListItem.Property(skinshortcuts-disabled),True)</visible>
                     <label2>$INFO[Container(211).ListItem.Property(widgetLimit)]</label2>
-                    <visible>Skin.HasSetting(VerticalHome) + String.EndsWith(Window.Property(groupname),.1)</visible>
+                    <visible>Skin.HasSetting(HomeMulti) + [String.EndsWith(Window.Property(groupname),.1) | String.IsEqual(Window.Property(groupname),searchmenu)]</visible>
                     <include>Dialog_Standard_Button</include>
                 </control>
 
@@ -325,9 +347,9 @@
                     <onclick>SetProperty(widgetID,backgroundWidget)</onclick>
                     <onclick>SendClick(312)</onclick>
                     <visible>String.IsEqual(Window.Property(groupname),mainmenu)</visible>
-                    <visible>!Skin.HasSetting(VerticalHome)</visible>
+                    <visible>!Skin.HasSetting(HomeMulti)</visible>
                     <include>Dialog_Standard_Button</include>
-                    <visible>!String.EndsWith(Window.Property(groupname),.1)</visible>
+                    <visible>![String.EndsWith(Window.Property(groupname),.1) | String.IsEqual(Window.Property(groupname),searchmenu)]</visible>
                 </control>
 
                 <control type="button" id="310" description="Background">
@@ -336,13 +358,13 @@
                     <visible>String.IsEqual(Window.Property(groupname),mainmenu)</visible>
                     <visible>!String.IsEqual(Container(211).ListItem.Property(skinshortcuts-disabled),True)</visible>
                     <include>Dialog_Standard_Button</include>
-                    <visible>!String.EndsWith(Window.Property(groupname),.1)</visible>
+                    <visible>![String.EndsWith(Window.Property(groupname),.1) | String.IsEqual(Window.Property(groupname),searchmenu)]</visible>
                 </control>
 
                 <control type="button" id="308" description="Reset">
                     <visible>!String.IsEqual(Container(211).ListItem.Property(skinshortcuts-disabled),True)</visible>
                     <include>Dialog_Standard_Button</include>
-                    <visible>!String.EndsWith(Window.Property(groupname),.1)</visible>
+                    <visible>![String.EndsWith(Window.Property(groupname),.1)]</visible>
                 </control>
 
             </control>

@@ -2,19 +2,20 @@
 <window>
     <onload>SetProperty(SkinInitStarted,1,home)</onload>
     <onload>ClearProperty(SkinSplashStarted,home)</onload>
+    <onload>Skin.SetBool(TMDbHelper.Service)</onload>
     <onload condition="!Skin.HasSetting(SkinHelper.EnablePVRThumbs)">Skin.SetBool(SkinHelper.EnablePVRThumbs)</onload>
     <onload condition="!Skin.HasSetting(SkinHelper.EnableMusicArt)">Skin.SetBool(SkinHelper.EnableMusicArt)</onload>
-    <onload>Skin.SetString(colorbox_effect,blur)</onload>
-    <onload>Skin.SetString(colorbox_quality,4)</onload>
-    <onload>Skin.SetString(colorbox_blend,100)</onload>
-    <onload>Skin.SetString(colorbox_blursize,30)</onload>
-    <onload>Skin.SetString(colorbox_bitsize,1)</onload>
-    <onload>Skin.SetString(colorbox_pixelsize,12)</onload>
-    <onload>Skin.SetString(colorbox_desat,0.3)</onload>
-    <onload>Skin.SetString(colorbox_black,000000)</onload>
-    <onload>Skin.SetString(colorbox_white,ffffff)</onload>
-    <onload>Skin.SetString(colorbox_main,main:fhls*-;0.45;0.9)</onload>
-    <onload>Skin.SetString(colorbox_comp,main:hls*0.75;0;0@fhls*-;0.45;0.9)</onload>
+    <onload condition="!Skin.String(colorbox_effect)">Skin.SetString(colorbox_effect,blur)</onload>
+    <onload condition="!Skin.String(colorbox_quality)">Skin.SetString(colorbox_quality,4)</onload>
+    <onload condition="!Skin.String(colorbox_blend)">Skin.SetString(colorbox_blend,100)</onload>
+    <onload condition="!Skin.String(colorbox_blursize)">Skin.SetString(colorbox_blursize,30)</onload>
+    <onload condition="!Skin.String(colorbox_bitsize)">Skin.SetString(colorbox_bitsize,1)</onload>
+    <onload condition="!Skin.String(colorbox_pixelsize)">Skin.SetString(colorbox_pixelsize,12)</onload>
+    <onload condition="!Skin.String(colorbox_desat)">Skin.SetString(colorbox_desat,0.3)</onload>
+    <onload condition="!Skin.String(colorbox_black)">Skin.SetString(colorbox_black,000000)</onload>
+    <onload condition="!Skin.String(colorbox_white)">Skin.SetString(colorbox_white,ffffff)</onload>
+    <onload condition="!Skin.String(colorbox_main)">Skin.SetString(colorbox_main,main:fhls*-;0.45;0.9)</onload>
+    <onload condition="!Skin.String(colorbox_comp)">Skin.SetString(colorbox_comp,main:hls*0.75;0;0@fhls*-;0.45;0.9)</onload>
 
     <onload condition="System.HasAddon(script.colorbox) + Skin.HasSetting(EnableBlur)">RunScript(script.colorbox,daemon=True)</onload>
     <onload condition="Skin.HasSetting(EnableBlur)">SetProperty(FIVE_daemon_set,$INFO[Skin.String(colorbox_effect)],home)</onload>

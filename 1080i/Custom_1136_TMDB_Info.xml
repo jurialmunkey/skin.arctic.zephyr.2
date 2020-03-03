@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window type="window" id="1136">
+    <defaultcontrol always="true">9999</defaultcontrol>
+    <onload>SetProperty(Header_Center_Text,$LOCALIZE[14116])</onload>
+    <onload>SetProperty(Header_Left_Text,$LOCALIZE[31050]...)</onload>
+    <controls>
+        <include>Global_Background</include>
+        <include>Topbar</include>
+        <control type="list" id="9999">
+            <width>1</width>
+            <height>1</height>
+            <left>-1000</left>
+            <top>-1000</top>
+            <onfocus condition="!Integer.IsEqual(Container(9999).NumItems,0) + !Container(9999).IsUpdating + !String.IsEmpty(Window(Home).Property(TMDbHelper.Path.Current)) + !String.Contains(Window(Home).Property(TMDbHelper.Path.Current),type=person)">Action(Info)</onfocus>
+            <onfocus condition="!Integer.IsEqual(Container(9999).NumItems,0) + !Container(9999).IsUpdating + !String.IsEmpty(Window(Home).Property(TMDbHelper.Path.Current)) + String.Contains(Window(Home).Property(TMDbHelper.Path.Current),type=person)">SetFocus(3100)</onfocus>
+            <onfocus condition="[Integer.IsEqual(Container(9999).NumItems,0) | Container(9999).IsUpdating] + !String.IsEmpty(Window(Home).Property(TMDbHelper.Path.Current))">AlarmClock(doinfo,SetFocus(9999),00:01,silent)</onfocus>
+            <onfocus condition="String.IsEmpty(Window(Home).Property(TMDbHelper.Path.Current))">Action(Back)</onfocus>
+            <itemlayout />
+            <focusedlayout />
+            <content limit="1" target="videos">$INFO[Window(Home).Property(TMDbHelper.Path.Current)]</content>
+        </control>
+
+        <control type="group">
+            <visible>[!String.Contains(Window(Home).Property(TMDbHelper.Path.Current),type=person) | Control.HasFocus(9999)] + !Window.IsVisible(DialogVideoInfo.xml)</visible>
+            <include>Dialog_Busy</include>
+        </control>
+
+        <!-- Person Info -->
+        <control type="group">
+            <visible>String.Contains(Window(Home).Property(TMDbHelper.Path.Current),type=person) + !Control.HasFocus(9999)</visible>
+            <top>view_top</top>
+            <left>view_pad</left>
+            <right>view_pad</right>
+            <include content="Object_Info_Arrows">
+                <param name="artworkid" value="750" />
+            </include>
+            <visible allowhiddenfocus="true">!$EXP[Exp_ShowPlotOverlay]</visible>
+            <include>Defs_InfoDialog_Visible</include>
+            <include>Animation_FadeInOut</include>
+            <control type="grouplist" id="9000">
+                <top>-15</top>
+                <left>-15</left>
+                <right>-15</right>
+                <height>view_height</height>
+                <orientation>vertical</orientation>
+                <itemgap>0</itemgap>
+                <control type="group" id="3000">
+                    <height>view_height</height>
+                    <control type="group">
+                        <top>15</top>
+                        <left>15</left>
+                        <right>15</right>
+                        <height>view_list_height</height>
+                        <!-- Poster -->
+                        <include content="View_50_Poster">
+                            <param name="include" value="Animation_Left_Delay" />
+                            <param name="defaulticonvisible" value="false" />
+                            <param name="icon" value="$INFO[Container(9999).ListItemAbsolute(0).Art(poster)]" />
+                            <param name="diffuse" value="diffuse/poster-big.png" />
+                        </include>
+
+                        <!-- Info -->
+                        <control type="group" id="300">
+                            <top>-15</top>
+                            <left>580</left>
+                            <include>Animation_Right_Delay</include>
+                            <control type="grouplist">
+                                <orientation>vertical</orientation>
+                                <usecontrolcoords>true</usecontrolcoords>
+                                <itemgap>0</itemgap>
+                                <include content="Object_Info_Title">
+                                    <param name="label" value="$INFO[Container(9999).ListItemAbsolute(0).Label]" />
+                                </include>
+                                <include content="Object_Info_Line_Label">
+                                    <param name="label" value="[CAPITALIZE]$INFO[Container(9999).ListItemAbsolute(0).Property(Birthday),[COLOR=main_fg_100],[/COLOR]]$INFO[Container(9999).ListItemAbsolute(0).Property(Born),  |  [COLOR=main_fg_100],[/COLOR]]$INFO[Container(9999).ListItemAbsolute(0).Property(Age),  |  [COLOR=main_fg_100], $LOCALIZE[31356][/COLOR]]$INFO[Container(9999).ListItemAbsolute(0).Property(Deathday),  |  [COLOR=main_fg_100]$LOCALIZE[21897] ,[/COLOR]][/CAPITALIZE]" />
+                                    <param name="textcolor" value="$VAR[ColorHighlight]" />
+                                    <param name="divider" value="false" />
+                                </include>
+                                <include content="Object_Info_Plot">
+                                    <param name="label" value="$INFO[Container(9999).ListItemAbsolute(0).Property(biography)]" />
+                                    <param name="maxheight" value="600" />
+                                    <param name="height" value="600" />
+                                </include>
+                            </control>
+                            <control type="button" id="3111">
+                                <onfocus>SetFocus(3100)</onfocus>
+                                <include>Defs_Hidden_Button</include>
+                            </control>
+                            <control type="list" id="3100">
+                                <orientation>horizontal</orientation>
+                                <onup>9601</onup>
+                                <ondown>5001</ondown>
+                                <onfocus>SetProperty(Header_Left_Text,Person)</onfocus>
+                                <onback condition="!String.IsEmpty(Window(Home).Property(TMDbHelper.Path.Current))">RunScript(plugin.video.themoviedb.helper,del_path,call_id=1137)</onback>
+                                <onback>3111</onback>
+                                <itemlayout />
+                                <focusedlayout />
+                                <include>Defs_Hidden_Button</include>
+                                <content>$INFO[Window(Home).Property(TMDbHelper.Path.Current)]</content>
+                            </control>
+                        </control>
+                    </control>
+                </control>
+                <control type="group" id="4000">
+                    <height>view_height</height>
+                    <control type="grouplist" id="4100">
+                        <top>-5</top>
+                        <scrolltime tween="quadratic">400</scrolltime>
+                        <onup>3100</onup>
+                        <ondown>6000</ondown>
+                        <height>view_height</height>
+                        <orientation>vertical</orientation>
+                        <itemgap>-52</itemgap>
+                        <usecontrolcoords>true</usecontrolcoords>
+                        <control type="group" id="7599"><height>0</height></control>
+                        <!-- List 01 -->
+                        <include content="Info_Widget_Poster">
+                            <param name="includecondition" value="true" />
+                            <param name="id" value="5001" />
+                            <param name="groupid" value="7501" />
+                            <param name="label" value="$INFO[Container(3100).ListItemAbsolute(1).Label]" />
+                            <param name="labelinclude" value="View_Cast_Character_Label" />
+                            <include content="Defs_InfoList_OnClick">
+                                <param name="prevent_del" value="noop" />
+                            </include>
+                            <include>Defs_InfoList_OnBack</include>
+                            <content limit="25" target="videos">$VAR[Info_Cast_List01]</content>
+                        </include>
+                        <!-- List 02 -->
+                        <include content="Info_Widget_Poster">
+                            <param name="includecondition" value="true" />
+                            <param name="id" value="5002" />
+                            <param name="groupid" value="7502" />
+                            <param name="label" value="$INFO[Container(3100).ListItemAbsolute(2).Label]" />
+                            <param name="labelinclude" value="View_Cast_Character_Label" />
+                            <include content="Defs_InfoList_OnClick">
+                                <param name="prevent_del" value="noop" />
+                            </include>
+                            <include>Defs_InfoList_OnBack</include>
+                            <content limit="25" target="videos">$VAR[Info_Cast_List02]</content>
+                        </include>
+                        <!-- List 03 -->
+                        <include content="Info_Widget_Poster">
+                            <param name="includecondition" value="true" />
+                            <param name="id" value="5003" />
+                            <param name="groupid" value="7503" />
+                            <param name="label" value="$INFO[Container(3100).ListItemAbsolute(3).Label]" />
+                            <param name="labelinclude" value="View_Cast_Job_Label" />
+                            <include content="Defs_InfoList_OnClick">
+                                <param name="prevent_del" value="noop" />
+                            </include>
+                            <include>Defs_InfoList_OnBack</include>
+                            <content limit="25" target="videos">$VAR[Info_Cast_List03]</content>
+                        </include>
+                        <!-- List 05 -->
+                        <include content="Info_Widget_Poster">
+                            <param name="includecondition" value="true" />
+                            <param name="id" value="5005" />
+                            <param name="groupid" value="7505" />
+                            <param name="label" value="$INFO[Container(3100).ListItemAbsolute(4).Label]" />
+                            <param name="labelinclude" value="View_Cast_Job_Label" />
+                            <include content="Defs_InfoList_OnClick">
+                                <param name="prevent_del" value="noop" />
+                            </include>
+                            <include>Defs_InfoList_OnBack</include>
+                            <content limit="25" target="videos">$VAR[Info_Cast_List04]</content>
+                        </include>
+                        <!-- List 06 -->
+                        <include content="Info_Widget_Poster">
+                            <param name="includecondition" value="true" />
+                            <param name="id" value="5006" />
+                            <param name="groupid" value="7506" />
+                            <param name="label" value="$INFO[Container(3100).ListItemAbsolute(5).Label]" />
+                            <onclick>SetFocus(9506)</onclick>
+                            <include>Defs_InfoList_OnBack</include>
+                            <content limit="25" target="videos">$VAR[Info_Cast_List05]</content>
+                        </include>
+                    </control>
+                </control>
+            </control>
+        </control>
+
+        <include>Info_ImageViewer</include>
+    </controls>
+</window>

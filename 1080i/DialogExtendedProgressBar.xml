@@ -11,10 +11,34 @@
             <visible>!Window.IsVisible(fullscreenvideo)</visible>
             <visible>!Window.IsVisible(visualisation)</visible>
             <visible>!Window.IsVisible(Startup.xml)</visible>
-            <visible>!Window.IsVisible(Home.xml) | Skin.HasSetting(VerticalHome) | Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(DialogAddonInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogInfo.xml) | Window.IsVisible(script-script.extendedinfo-DialogVideoInfo.xml) | String.IsEqual(Window(Home).Property(SkinHelper.WidgetContainer),5610)</visible>
+            <visible>!Window.IsVisible(Home.xml) | Skin.HasSetting(HomeMulti) | Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(DialogAddonInfo.xml) | Control.HasFocus(5610) | String.IsEqual(Window(Home).Property(WidgetFocus),5610)</visible>
             <include condition="![Window.IsVisible(SkinSettings.xml) | Window.IsVisible(SettingsCategory.xml) | Window.IsVisible(SettingsProfile.xml) | Window.IsVisible(SettingsSystemInfo.xml)]">Dialog_Notification_Group</include>
             <include content="Dialog_Notification_Group" condition="[Window.IsVisible(SkinSettings.xml) | Window.IsVisible(SettingsCategory.xml) | Window.IsVisible(SettingsProfile.xml) | Window.IsVisible(SettingsSystemInfo.xml)]">
                 <param name="fgcolor" value="panel_fg" />
+            </include>
+        </control>
+
+        <control type="group">
+            <visible>!Window.IsVisible(DialogBusy.xml)</visible>
+            <visible>!Window.IsVisible(DialogNotification.xml)</visible>
+            <visible>!Window.IsVisible(fullscreenvideo)</visible>
+            <visible>!Window.IsVisible(visualisation)</visible>
+            <visible>!Window.IsVisible(Startup.xml)</visible>
+            <visible>Window.IsActive(Home.xml) + !Skin.HasSetting(HomeMulti) + ![Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(DialogAddonInfo.xml) | Control.HasFocus(5610) | String.IsEqual(Window(Home).Property(WidgetFocus),5610)]</visible>
+            <visible>![Window.IsVisible(SkinSettings.xml) | Window.IsVisible(SettingsCategory.xml) | Window.IsVisible(SettingsProfile.xml) | Window.IsVisible(SettingsSystemInfo.xml)]</visible>
+
+            <include content="Object_ShadowSpot_Group">
+                <param name="height" value="50" />
+                <param name="width" value="700" />
+            </include>
+            <include content="Dialog_Notification_Group">
+                <param name="main_id" value="9401" />
+                <param name="sub_id" value="9402" />
+                <param name="label" value="$INFO[Control.GetLabel(30)]" />
+                <param name="label2" value="$INFO[Control.GetLabel(31)]" />
+                <param name="fgcolor" value="panel_fg" />
+                <param name="topalign" value="true" />
+                <param name="height" value="view_top" />
             </include>
         </control>
 

@@ -1,5 +1,155 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <template>
+    <submenu include="search" name="searchmenu">
+        <controls>
+            <skinshortcuts insert="searchlist">items</skinshortcuts>
+        </controls>
+        <items insert="searchlist">
+            <property name="label" tag="label" />
+
+            <property name="path" tag="property" attribute="name|list" value="DefaultSearch-Movies">videodb://movies/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22</property>
+            <property name="path2" tag="property" attribute="name|list" value="DefaultSearch-Movies">%22%5D%7D%5D%7D%2C%22type%22%3A%22movies%22%7D</property>
+
+            <property name="path" tag="property" attribute="name|list" value="DefaultSearch-TvShows">videodb://tvshows/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22</property>
+            <property name="path2" tag="property" attribute="name|list" value="DefaultSearch-TvShows">%22%5D%7D%5D%7D%2C%22type%22%3A%22tvshows%22%7D</property>
+
+            <property name="path" tag="property" attribute="name|list" value="DefaultSearch-Episodes">videodb://tvshows/titles/-1/-1/-1/-1/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22title%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22</property>
+            <property name="path2" tag="property" attribute="name|list" value="DefaultSearch-Episodes">%22%5D%7D%5D%7D%2C%22type%22%3A%22episodes%22%7D</property>
+
+            <property name="path" tag="property" attribute="name|list" value="DefaultSearch-Genres">videodb://movies/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22genre%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22</property>
+            <property name="path2" tag="property" attribute="name|list" value="DefaultSearch-Genres">%22%5D%7D%5D%7D%2C%22type%22%3A%22movies%22%7D</property>
+
+            <property name="path" tag="property" attribute="name|list" value="DefaultSearch-Year">videodb://movies/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22year%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22</property>
+            <property name="path2" tag="property" attribute="name|list" value="DefaultSearch-Year">%22%5D%7D%5D%7D%2C%22type%22%3A%22movies%22%7D</property>
+
+            <property name="path" tag="property" attribute="name|list" value="DefaultSearch-Studio">videodb://movies/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22studio%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22</property>
+            <property name="path2" tag="property" attribute="name|list" value="DefaultSearch-Studio">%22%5D%7D%5D%7D%2C%22type%22%3A%22movies%22%7D</property>
+
+            <property name="path" tag="property" attribute="name|list" value="DefaultSearch-Country">videodb://movies/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22country%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22</property>
+            <property name="path2" tag="property" attribute="name|list" value="DefaultSearch-Country">%22%5D%7D%5D%7D%2C%22type%22%3A%22movies%22%7D</property>
+
+            <property name="path" tag="property" attribute="name|list" value="DefaultSearch-Actor">videodb://movies/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22actor%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22</property>
+            <property name="path2" tag="property" attribute="name|list" value="DefaultSearch-Actor">%22%5D%7D%5D%7D%2C%22type%22%3A%22movies%22%7D</property>
+
+            <property name="path" tag="property" attribute="name|list" value="DefaultSearch-Director">videodb://movies/titles/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22director%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22</property>
+            <property name="path2" tag="property" attribute="name|list" value="DefaultSearch-Director">%22%5D%7D%5D%7D%2C%22type%22%3A%22movies%22%7D</property>
+
+            <property name="path" tag="property" attribute="name|list" value="DefaultSearch-Albums">musicdb://albums/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22album%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22</property>
+            <property name="path2" tag="property" attribute="name|list" value="DefaultSearch-Albums">%22%5D%7D%5D%7D%2C%22type%22%3A%22albums%22%7D</property>
+
+            <property name="path" tag="property" attribute="name|list" value="DefaultSearch-Artists">musicdb://artists/?xsp=%7B%22order%22%3A%7B%22direction%22%3A%22ascending%22%2C%22ignorefolders%22%3A0%2C%22method%22%3A%22sorttitle%22%7D%2C%22rules%22%3A%7B%22and%22%3A%5B%7B%22field%22%3A%22artist%22%2C%22operator%22%3A%22contains%22%2C%22value%22%3A%5B%22</property>
+            <property name="path2" tag="property" attribute="name|list" value="DefaultSearch-Artists">%22%5D%7D%5D%7D%2C%22type%22%3A%22artists%22%7D</property>
+
+            <property name="path" tag="property" attribute="name|list" value="DefaultSearch-MusicVideos">videodb://musicvideos/titles/?xsp=%7b%22order%22%3a%7b%22direction%22%3a%22ascending%22%2c%22ignorefolders%22%3a0%2c%22method%22%3a%22sorttitle%22%7d%2c%22rules%22%3a%7b%22and%22%3a%5b%7b%22field%22%3a%22title%22%2c%22operator%22%3a%22contains%22%2c%22value%22%3a%5b%22</property>
+            <property name="path2" tag="property" attribute="name|list" value="DefaultSearch-MusicVideos">%22%5d%7d%5d%7d%2c%22type%22%3a%22musicvideos%22%7d</property>
+
+            <property name="path" tag="property" attribute="name|list" value="DefaultSearch-MusicVideoArtists">videodb://musicvideos/titles/?xsp=%7b%22order%22%3a%7b%22direction%22%3a%22ascending%22%2c%22ignorefolders%22%3a0%2c%22method%22%3a%22sorttitle%22%7d%2c%22rules%22%3a%7b%22and%22%3a%5b%7b%22field%22%3a%22artist%22%2c%22operator%22%3a%22contains%22%2c%22value%22%3a%5b%22</property>
+            <property name="path2" tag="property" attribute="name|list" value="DefaultSearch-MusicVideoArtists">%22%5d%7d%5d%7d%2c%22type%22%3a%22musicvideos%22%7d</property>
+            <property name="path" tag="property" attribute="name|list" value="DefaultSearch-Youtube">plugin://plugin.video.youtube/search/?q=</property>
+            <property name="path2" tag="property" attribute="name|list" value="DefaultSearch-Youtube">&amp;search_type=notvalid</property>
+
+            <property name="path" tag="property" attribute="name|list" value="DefaultSearch-Netflix">plugin://plugin.video.netflix/directory/search/search/</property>
+            <property name="path2" tag="property" attribute="name|list" value="DefaultSearch-Netflix">/</property>
+
+            <property name="path" tag="property" attribute="name|list" value="DefaultSearch-Addons">addons://search/</property>
+            <property name="path" tag="property" attribute="name|list" value="DefaultSearch-SpotifyArtists">plugin://plugin.audio.spotify/?action=search_artists&amp;artistid=</property>
+            <property name="path" tag="property" attribute="name|list" value="DefaultSearch-SpotifyAlbums">plugin://plugin.audio.spotify/?action=search_albums&amp;albumid=</property>
+            <property name="path" tag="property" attribute="name|list" value="DefaultSearch-SpotifySongs">plugin://plugin.audio.spotify/?action=search_albums&amp;songid=</property>
+            <property name="path" tag="property" attribute="name|list" value="DefaultSearch-SpotifyPlaylists">plugin://plugin.audio.spotify/?action=search_songs&amp;playlistid=</property>
+            <property name="path" tag="property" attribute="name|list" value="DefaultSearch-SpotifyPlaylists">plugin://plugin.audio.spotify/?action=search_playlists&amp;playlistid=</property>
+            
+            <property name="path" tag="property" attribute="name|list" value="DefaultSearch-TMDBMovies">plugin://plugin.video.themoviedb.helper?info=search&amp;type=movie&amp;query=</property>
+            <property name="path" tag="property" attribute="name|list" value="DefaultSearch-TMDBShows">plugin://plugin.video.themoviedb.helper?info=search&amp;type=tv&amp;query=</property>
+            <property name="path" tag="property" attribute="name|list" value="DefaultSearch-TMDBPeople">plugin://plugin.video.themoviedb.helper?info=search&amp;type=person&amp;query=</property>
+            
+            <property name="path" tag="property" attribute="name|list"/>
+
+            <property name="limit" tag="property" attribute="name|widgetLimit" />
+
+            <property name="target" tag="property" attribute="name|list" value="DefaultSearch-Albums">music</property>
+            <property name="target" tag="property" attribute="name|list" value="DefaultSearch-Artists">music</property>
+            <property name="target" tag="property" attribute="name|list" value="DefaultSearch-Addons">addons</property>
+            <property name="target" tag="property" attribute="name|list" value="DefaultSearch-SpotifyArtists">music</property>
+            <property name="target" tag="property" attribute="name|list" value="DefaultSearch-SpotifyAlbums">music</property>
+            <property name="target" tag="property" attribute="name|list" value="DefaultSearch-SpotifySongs">music</property>
+            <property name="target" tag="property" attribute="name|list" value="DefaultSearch-SpotifyPlaylists">music</property>
+            <property name="target" tag="property" attribute="name|widgetTarget" />
+            <property name="target">videos</property>
+
+            <property name="widgetAspect" tag="property" attribute="name|widgetAspect" />
+            <property name="widgetAspect">Poster</property>
+
+            <property name="id" tag="property" attribute="name|id" value="$NUMBER[1]">1</property>
+            <property name="id" tag="property" attribute="name|id" value="$NUMBER[2]">2</property>
+            <property name="id" tag="property" attribute="name|id" value="$NUMBER[3]">3</property>
+            <property name="id" tag="property" attribute="name|id" value="$NUMBER[4]">4</property>
+            <property name="id" tag="property" attribute="name|id" value="$NUMBER[5]">5</property>
+            <property name="id" tag="property" attribute="name|id" value="$NUMBER[6]">6</property>
+            <property name="id" tag="property" attribute="name|id" value="$NUMBER[7]">7</property>
+            <property name="id" tag="property" attribute="name|id" value="$NUMBER[8]">8</property>
+            <property name="id" tag="property" attribute="name|id" value="$NUMBER[9]">9</property>
+            <property name="id" tag="property" attribute="name|id" value="$NUMBER[10]">10</property>
+            <property name="id" tag="property" attribute="name|id" value="$NUMBER[11]">11</property>
+            <property name="id" tag="property" attribute="name|id" value="$NUMBER[12]">12</property>
+            <property name="id" tag="property" attribute="name|id" value="$NUMBER[13]">13</property>
+            <property name="id" tag="property" attribute="name|id" value="$NUMBER[14]">14</property>
+            <property name="id" tag="property" attribute="name|id" value="$NUMBER[15]">15</property>
+            <property name="id" tag="property" attribute="name|id" value="$NUMBER[16]">16</property>
+            <property name="id" tag="property" attribute="name|id" value="$NUMBER[17]">17</property>
+            <property name="id" tag="property" attribute="name|id" value="$NUMBER[18]">18</property>
+            <property name="id" tag="property" attribute="name|id" value="$NUMBER[19]">19</property>
+            <property name="id" tag="property" attribute="name|id" value="$NUMBER[20]">20</property>
+            <property name="id" tag="property" attribute="name|id" value="$NUMBER[21]">21</property>
+            <property name="id" tag="property" attribute="name|id" value="$NUMBER[22]">22</property>
+            <property name="id" tag="property" attribute="name|id" value="$NUMBER[23]">23</property>
+            <property name="id" tag="property" attribute="name|id" value="$NUMBER[24]">24</property>
+            <property name="id" tag="property" attribute="name|id" value="$NUMBER[25]">25</property>
+            <property name="id" tag="property" attribute="name|id" value="$NUMBER[26]">26</property>
+            <property name="id" tag="property" attribute="name|id" value="$NUMBER[27]">27</property>
+            <property name="id" tag="property" attribute="name|id" value="$NUMBER[28]">28</property>
+            <property name="id" tag="property" attribute="name|id" value="$NUMBER[29]">29</property>
+            <property name="id" tag="property" attribute="name|id" value="$NUMBER[30]">30</property>
+            <property name="id" tag="property" attribute="name|id" value="$NUMBER[31]">31</property>
+            <property name="id" tag="property" attribute="name|id" value="$NUMBER[32]">32</property>
+            <property name="id" tag="property" attribute="name|id" value="$NUMBER[33]">33</property>
+            <property name="id" tag="property" attribute="name|id" value="$NUMBER[34]">34</property>
+            <property name="id" tag="property" attribute="name|id" value="$NUMBER[35]">35</property>
+            <property name="id" tag="property" attribute="name|id" value="$NUMBER[36]">36</property>
+            <property name="id" tag="property" attribute="name|id" value="$NUMBER[37]">37</property>
+            <property name="id" tag="property" attribute="name|id" value="$NUMBER[38]">38</property>
+            <property name="id" tag="property" attribute="name|id" value="$NUMBER[39]">39</property>
+            <property name="id" tag="property" attribute="name|id" value="$NUMBER[40]">40</property>
+            <property name="id" tag="property" attribute="name|id" value="$NUMBER[41]">41</property>
+            <property name="id" tag="property" attribute="name|id" value="$NUMBER[42]">42</property>
+            <property name="id" tag="property" attribute="name|id" value="$NUMBER[43]">43</property>
+            <property name="id" tag="property" attribute="name|id" value="$NUMBER[44]">44</property>
+            <property name="id" tag="property" attribute="name|id" value="$NUMBER[45]">45</property>
+            <property name="id" tag="property" attribute="name|id" value="$NUMBER[46]">46</property>
+            <property name="id" tag="property" attribute="name|id" value="$NUMBER[47]">47</property>
+            <property name="id" tag="property" attribute="name|id" value="$NUMBER[48]">48</property>
+            <property name="id" tag="property" attribute="name|id" value="$NUMBER[49]">49</property>
+            <property name="id">50</property>
+            <controls>
+                <include content="Object_SearchList_Template">
+                    <param name="id" value="$PYTHON[int(id) + 5040]" />
+                    <param name="groupid" value="$PYTHON[int(id) + 7540]" />
+                    <param name="path" value="$SKINSHORTCUTS[path]" />
+                    <param name="path2" value="$SKINSHORTCUTS[path2]" />
+                    <param name="label" value="$SKINSHORTCUTS[label]" />
+                    <param name="limit" value="$SKINSHORTCUTS[limit]" />
+                    <param name="target" value="$SKINSHORTCUTS[target]" />
+                    <param name="smallsquarecondition" value="$PYTHON['true' if widgetAspect in 'Small Square' else 'false']" />
+                    <param name="squarecondition" value="$PYTHON['true' if widgetAspect in 'Square' else 'false']" />
+                    <param name="smalllandscapecondition" value="$PYTHON['true' if widgetAspect in 'Small Landscape' else 'false']" />
+                    <param name="landscapecondition" value="$PYTHON['true' if widgetAspect in 'Landscape' else 'false']" />
+                    <param name="iconcondition" value="$PYTHON['true' if widgetAspect in 'Icon' else 'false']" />
+                    <param name="bannercondition" value="$PYTHON['true' if widgetAspect in 'Banner' else 'false']" />
+                </include>
+            </controls>
+        </items>
+    </submenu>
+
+
     <other include="vertical-main">
         <property name="widgetAspect">Poster</property>
         <property name="widgetName">$LOCALIZE[31105]</property>
@@ -10,10 +160,11 @@
                 <param name="groupid" value="997500" />
                 <param name="id" value="993100" />
                 <param name="label" value="$SKINSHORTCUTS[widgetName]" />
+                <param name="spinner-visible" value="String.IsEmpty(Container(993100).ListItem.Label)" />
                 <skinshortcuts>visibility</skinshortcuts>
                 <visible>Integer.IsEqual(Container(9989).NumItems,0)</visible>
             </include>
-            <include content="Object_Widget_Spotlight">
+            <include content="Object_Widget_Spotlight" condition="!Skin.HasSetting(FixedWidgets)">
                 <param name="controltype" value="list" />
                 <param name="id" value="993100" />
                 <param name="top" value="52" />
@@ -22,17 +173,49 @@
                 <param name="height" value="item_cast_height" />
                 <param name="orientation" value="horizontal" />
                 <param name="labelinclude" value="Defs_Null" />
-                <param name="landscapelabelinclude" value="Defs_Null" />
+                <param name="landscapelabelinclude" value="View_Widget_LandscapeLabel" />
+                <param name="label2" value="ListItem.TvShowTitle" />
                 <param name="target" value="$SKINSHORTCUTS[widgetTarget]" />
                 <param name="content" value="$SKINSHORTCUTS[widgetPath]" />
+                <param name="smallsquarecondition" value="$PYTHON['true' if widgetAspect in 'Small Square' else 'false']" />
                 <param name="squarecondition" value="$PYTHON['true' if widgetAspect in 'Square' else 'false']" />
+                <param name="smalllandscapecondition" value="$PYTHON['true' if widgetAspect in 'Small Landscape' else 'false']" />
                 <param name="landscapecondition" value="$PYTHON['true' if widgetAspect in 'Landscape' else 'false']" />
                 <param name="iconcondition" value="$PYTHON['true' if widgetAspect in 'Icon' else 'false']" />
+                <param name="bannercondition" value="$PYTHON['true' if widgetAspect in 'Banner' else 'false']" />
                 <include content="Defs_AutoScroll">
-                    <param name="condition" value="!ControlGroup(3000).HasFocus() + System.IdleTime(1)" />
+                    <param name="condition" value="!ControlGroup(3000).HasFocus() + System.IdleTime(1) + !Skin.HasSetting(DisableAutoScrollWidgets)" />
                 </include>
                 <onback>301</onback>
-                <movement>6</movement>
+                <!-- <movement>6</movement> -->
+                <visible>Integer.IsGreater(Container(993100).NumItems,0) | Container(993100).IsUpdating</visible>
+                <skinshortcuts>visibility</skinshortcuts>
+                <visible>Integer.IsEqual(Container(9989).NumItems,0)</visible>
+            </include>
+            <include content="Object_Widget_Spotlight" condition="Skin.HasSetting(FixedWidgets)">
+                <param name="controltype" value="fixedlist" />
+                <param name="id" value="993100" />
+                <param name="top" value="52" />
+                <param name="left" value="0" />
+                <param name="right" value="-30" />
+                <param name="height" value="item_cast_height" />
+                <param name="orientation" value="horizontal" />
+                <param name="labelinclude" value="Defs_Null" />
+                <param name="landscapelabelinclude" value="View_Widget_LandscapeLabel" />
+                <param name="label2" value="ListItem.TvShowTitle" />
+                <param name="target" value="$SKINSHORTCUTS[widgetTarget]" />
+                <param name="content" value="$SKINSHORTCUTS[widgetPath]" />
+                <param name="smallsquarecondition" value="$PYTHON['true' if widgetAspect in 'Small Square' else 'false']" />
+                <param name="squarecondition" value="$PYTHON['true' if widgetAspect in 'Square' else 'false']" />
+                <param name="smalllandscapecondition" value="$PYTHON['true' if widgetAspect in 'Small Landscape' else 'false']" />
+                <param name="landscapecondition" value="$PYTHON['true' if widgetAspect in 'Landscape' else 'false']" />
+                <param name="iconcondition" value="$PYTHON['true' if widgetAspect in 'Icon' else 'false']" />
+                <param name="bannercondition" value="$PYTHON['true' if widgetAspect in 'Banner' else 'false']" />
+                <include content="Defs_AutoScroll">
+                    <param name="condition" value="!ControlGroup(3000).HasFocus() + System.IdleTime(1) + !Skin.HasSetting(DisableAutoScrollWidgets)" />
+                </include>
+                <onback>301</onback>
+                <!-- <movement>6</movement> -->
                 <visible>Integer.IsGreater(Container(993100).NumItems,0) | Container(993100).IsUpdating</visible>
                 <skinshortcuts>visibility</skinshortcuts>
                 <visible>Integer.IsEqual(Container(9989).NumItems,0)</visible>
@@ -52,7 +235,6 @@
         <property name="widgetSortby" tag="property" attribute="name|widgetSortby" />
         <property name="widgetSortorder" tag="property" attribute="name|widgetSortorder" />
         <property name="widgetLimit" tag="property" attribute="name|widgetLimit" />
-        <property name="widgetLimit">25</property>
         <property name="widgetMovement" tag="property" attribute="name|widgetAspect" value="Square">4</property>
         <property name="widgetMovement" tag="property" attribute="name|widgetAspect" value="Icon">4</property>
         <property name="widgetMovement" tag="property" attribute="name|widgetAspect" value="Landscape">2</property>
@@ -89,15 +271,36 @@
         <property name="id" tag="property" attribute="name|id" value="$NUMBER[27]">27</property>
         <property name="id" tag="property" attribute="name|id" value="$NUMBER[28]">28</property>
         <property name="id" tag="property" attribute="name|id" value="$NUMBER[29]">29</property>
-        <property name="id">30</property>
+        <property name="id" tag="property" attribute="name|id" value="$NUMBER[30]">30</property>
+        <property name="id" tag="property" attribute="name|id" value="$NUMBER[31]">31</property>
+        <property name="id" tag="property" attribute="name|id" value="$NUMBER[32]">32</property>
+        <property name="id" tag="property" attribute="name|id" value="$NUMBER[33]">33</property>
+        <property name="id" tag="property" attribute="name|id" value="$NUMBER[34]">34</property>
+        <property name="id" tag="property" attribute="name|id" value="$NUMBER[35]">35</property>
+        <property name="id" tag="property" attribute="name|id" value="$NUMBER[36]">36</property>
+        <property name="id" tag="property" attribute="name|id" value="$NUMBER[37]">37</property>
+        <property name="id" tag="property" attribute="name|id" value="$NUMBER[38]">38</property>
+        <property name="id" tag="property" attribute="name|id" value="$NUMBER[39]">39</property>
+        <property name="id" tag="property" attribute="name|id" value="$NUMBER[40]">40</property>
+        <property name="id" tag="property" attribute="name|id" value="$NUMBER[41]">41</property>
+        <property name="id" tag="property" attribute="name|id" value="$NUMBER[42]">42</property>
+        <property name="id" tag="property" attribute="name|id" value="$NUMBER[43]">43</property>
+        <property name="id" tag="property" attribute="name|id" value="$NUMBER[44]">44</property>
+        <property name="id" tag="property" attribute="name|id" value="$NUMBER[45]">45</property>
+        <property name="id" tag="property" attribute="name|id" value="$NUMBER[46]">46</property>
+        <property name="id" tag="property" attribute="name|id" value="$NUMBER[47]">47</property>
+        <property name="id" tag="property" attribute="name|id" value="$NUMBER[48]">48</property>
+        <property name="id" tag="property" attribute="name|id" value="$NUMBER[49]">49</property>
+        <property name="id">50</property>
         <controls>
             <include content="View_Cast_Toplabel">
                 <param name="groupid" value="$PYTHON[int(mainmenuid)]$PYTHON[int(id) + 7500]" />
                 <param name="id" value="$PYTHON[int(mainmenuid)]$PYTHON[int(id) + 3100]" />
                 <param name="label" value="$SKINSHORTCUTS[widgetName]" />
+                <param name="spinner-visible" value="String.IsEmpty(Container($PARAM[$PYTHON[int(mainmenuid)]$PYTHON[int(id) + 3100]]).ListItem.Label)" />
                 <visible>String.IsEqual(Container(301).ListItem.Property(id),$SKINSHORTCUTS[mainmenuid])</visible>
             </include>
-            <include content="Object_Widget_Spotlight">
+            <include content="Object_Widget_Spotlight" condition="!Skin.HasSetting(FixedWidgets)">
                 <param name="controltype" value="list" />
                 <param name="id" value="$PYTHON[int(mainmenuid)]$PYTHON[int(id) + 3100]" />
                 <param name="top" value="52" />
@@ -106,20 +309,58 @@
                 <param name="height" value="item_cast_height" />
                 <param name="orientation" value="horizontal" />
                 <param name="labelinclude" value="Defs_Null" />
-                <param name="landscapelabelinclude" value="Defs_Null" />
+                <param name="landscapelabelinclude" value="View_Widget_LandscapeLabel" />
+                <param name="label2" value="ListItem.TvShowTitle" />
                 <param name="target" value="$SKINSHORTCUTS[widgetTarget]" />
                 <param name="content" value="$SKINSHORTCUTS[widgetPath]" />
                 <param name="limit" value="$SKINSHORTCUTS[widgetLimit]" />
                 <param name="sortby" value="$SKINSHORTCUTS[widgetSortby]" />
                 <param name="sortorder" value="$SKINSHORTCUTS[widgetSortorder]" />
+                <param name="smallsquarecondition" value="$PYTHON['true' if widgetAspect in 'Small Square' else 'false']" />
                 <param name="squarecondition" value="$PYTHON['true' if widgetAspect in 'Square' else 'false']" />
+                <param name="smalllandscapecondition" value="$PYTHON['true' if widgetAspect in 'Small Landscape' else 'false']" />
                 <param name="landscapecondition" value="$PYTHON['true' if widgetAspect in 'Landscape' else 'false']" />
                 <param name="iconcondition" value="$PYTHON['true' if widgetAspect in 'Icon' else 'false']" />
+                <param name="bannercondition" value="$PYTHON['true' if widgetAspect in 'Banner' else 'false']" />
                 <onback>SetFocus($PYTHON[int(mainmenuid)]3101)</onback>
                 <onback>301</onback>
                 <visible>Integer.IsGreater(Container($PYTHON[int(mainmenuid)]$PYTHON[int(id) + 3100]).NumItems,0) | Container($PYTHON[int(mainmenuid)]$PYTHON[int(id) + 3100]).IsUpdating</visible>
                 <visible>String.IsEqual(Container(301).ListItem.Property(id),$SKINSHORTCUTS[mainmenuid])</visible>
-                <movement>$SKINSHORTCUTS[widgetMovement]</movement>
+                <!-- <movement>$SKINSHORTCUTS[widgetMovement]</movement> -->
+                <include content="Defs_AutoScroll">
+                    <param name="condition" value="!ControlGroup(3000).HasFocus() + System.IdleTime(1) + !Skin.HasSetting(DisableAutoScrollWidgets) + Integer.IsEqual(Container(3000).NumItems,1)" />
+                </include>
+            </include>
+            <include content="Object_Widget_Spotlight" condition="Skin.HasSetting(FixedWidgets)">
+                <param name="controltype" value="fixedlist" />
+                <param name="id" value="$PYTHON[int(mainmenuid)]$PYTHON[int(id) + 3100]" />
+                <param name="top" value="52" />
+                <param name="left" value="0" />
+                <param name="right" value="-30" />
+                <param name="height" value="item_cast_height" />
+                <param name="orientation" value="horizontal" />
+                <param name="labelinclude" value="Defs_Null" />
+                <param name="landscapelabelinclude" value="View_Widget_LandscapeLabel" />
+                <param name="label2" value="ListItem.TvShowTitle" />
+                <param name="target" value="$SKINSHORTCUTS[widgetTarget]" />
+                <param name="content" value="$SKINSHORTCUTS[widgetPath]" />
+                <param name="limit" value="$SKINSHORTCUTS[widgetLimit]" />
+                <param name="sortby" value="$SKINSHORTCUTS[widgetSortby]" />
+                <param name="sortorder" value="$SKINSHORTCUTS[widgetSortorder]" />
+                <param name="smallsquarecondition" value="$PYTHON['true' if widgetAspect in 'Small Square' else 'false']" />
+                <param name="squarecondition" value="$PYTHON['true' if widgetAspect in 'Square' else 'false']" />
+                <param name="smalllandscapecondition" value="$PYTHON['true' if widgetAspect in 'Small Landscape' else 'false']" />
+                <param name="landscapecondition" value="$PYTHON['true' if widgetAspect in 'Landscape' else 'false']" />
+                <param name="iconcondition" value="$PYTHON['true' if widgetAspect in 'Icon' else 'false']" />
+                <param name="bannercondition" value="$PYTHON['true' if widgetAspect in 'Banner' else 'false']" />
+                <onback>SetFocus($PYTHON[int(mainmenuid)]3101)</onback>
+                <onback>301</onback>
+                <visible>Integer.IsGreater(Container($PYTHON[int(mainmenuid)]$PYTHON[int(id) + 3100]).NumItems,0) | Container($PYTHON[int(mainmenuid)]$PYTHON[int(id) + 3100]).IsUpdating</visible>
+                <visible>String.IsEqual(Container(301).ListItem.Property(id),$SKINSHORTCUTS[mainmenuid])</visible>
+                <!-- <movement>$SKINSHORTCUTS[widgetMovement]</movement> -->
+                <include content="Defs_AutoScroll">
+                    <param name="condition" value="!ControlGroup(3000).HasFocus() + System.IdleTime(1) + !Skin.HasSetting(DisableAutoScrollWidgets) + Integer.IsEqual(Container(3000).NumItems,1)" />
+                </include>
             </include>
         </controls>
     </submenuOther>
@@ -154,13 +395,34 @@
         <property name="mainmenuid" tag="property" attribute="name|id" value="$NUMBER[27]">27</property>
         <property name="mainmenuid" tag="property" attribute="name|id" value="$NUMBER[28]">28</property>
         <property name="mainmenuid" tag="property" attribute="name|id" value="$NUMBER[29]">29</property>
-        <property name="mainmenuid">30</property>
+        <property name="mainmenuid" tag="property" attribute="name|id" value="$NUMBER[30]">30</property>
+        <property name="mainmenuid" tag="property" attribute="name|id" value="$NUMBER[31]">31</property>
+        <property name="mainmenuid" tag="property" attribute="name|id" value="$NUMBER[32]">32</property>
+        <property name="mainmenuid" tag="property" attribute="name|id" value="$NUMBER[33]">33</property>
+        <property name="mainmenuid" tag="property" attribute="name|id" value="$NUMBER[34]">34</property>
+        <property name="mainmenuid" tag="property" attribute="name|id" value="$NUMBER[35]">35</property>
+        <property name="mainmenuid" tag="property" attribute="name|id" value="$NUMBER[36]">36</property>
+        <property name="mainmenuid" tag="property" attribute="name|id" value="$NUMBER[37]">37</property>
+        <property name="mainmenuid" tag="property" attribute="name|id" value="$NUMBER[38]">38</property>
+        <property name="mainmenuid" tag="property" attribute="name|id" value="$NUMBER[39]">39</property>
+        <property name="mainmenuid" tag="property" attribute="name|id" value="$NUMBER[40]">40</property>
+        <property name="mainmenuid" tag="property" attribute="name|id" value="$NUMBER[41]">41</property>
+        <property name="mainmenuid" tag="property" attribute="name|id" value="$NUMBER[42]">42</property>
+        <property name="mainmenuid" tag="property" attribute="name|id" value="$NUMBER[43]">43</property>
+        <property name="mainmenuid" tag="property" attribute="name|id" value="$NUMBER[44]">44</property>
+        <property name="mainmenuid" tag="property" attribute="name|id" value="$NUMBER[45]">45</property>
+        <property name="mainmenuid" tag="property" attribute="name|id" value="$NUMBER[46]">46</property>
+        <property name="mainmenuid" tag="property" attribute="name|id" value="$NUMBER[47]">47</property>
+        <property name="mainmenuid" tag="property" attribute="name|id" value="$NUMBER[48]">48</property>
+        <property name="mainmenuid" tag="property" attribute="name|id" value="$NUMBER[49]">49</property>
+        <property name="mainmenuid">50</property>
         <controls>
             <include content="Home_Vertical_Info">
                 <param name="font" value="font_title" />
                 <param name="plotheight" value="160" />
                 <param name="titleheight" value="60" />
                 <param name="id" value="$PYTHON[int(mainmenuid)]3101" />
+                <param name="uid" value="9$PYTHON[int(mainmenuid)]" />
                 <skinshortcuts>visibility</skinshortcuts>
             </include>
         </controls>
@@ -168,6 +430,7 @@
 
     <submenuOther include="spotlight-submenu" container="302">
         <property name="widgetAspect" tag="property" attribute="name|widgetAspect" />
+        <property name="widgetAspect">Poster</property>
         <property name="widgetTarget" tag="property" attribute="name|widgetTarget" />
         <property name="widgetName" tag="property" attribute="name|widgetName" />
         <property name="widgetPath" tag="property" attribute="name|widgetPath" />
@@ -176,8 +439,17 @@
         <property name="id" tag="property" attribute="name|id" />
         <controls>
             <include content="Object_Widget_Spotlight">
+                <param name="labelinclude" value="Defs_Null" />
+                <param name="landscapelabelinclude" value="View_Widget_LandscapeLabel" />
+                <param name="label2" value="ListItem.TvShowTitle" />
                 <param name="target" value="$SKINSHORTCUTS[widgetTarget]" />
                 <param name="content" value="$SKINSHORTCUTS[widgetPath]" />
+                <param name="smallsquarecondition" value="$PYTHON['true' if widgetAspect in 'Small Square' else 'false']" />
+                <param name="squarecondition" value="$PYTHON['true' if widgetAspect in 'Square' else 'false']" />
+                <param name="smalllandscapecondition" value="$PYTHON['true' if widgetAspect in 'Small Landscape' else 'false']" />
+                <param name="landscapecondition" value="$PYTHON['true' if widgetAspect in 'Landscape' else 'false']" />
+                <param name="iconcondition" value="$PYTHON['true' if widgetAspect in 'Icon' else 'false']" />
+                <param name="bannercondition" value="$PYTHON['true' if widgetAspect in 'Banner' else 'false']" />
                 <visible>String.IsEqual(Container(301).ListItem.Property(submenuVisibility),num-$SKINSHORTCUTS[submenuVisibility]) | String.IsEqual(Container(301).ListItem.Property(submenuVisibility),$SKINSHORTCUTS[submenuVisibility])</visible>
                 <visible>String.IsEqual(Container(302).ListItem.Property(id),$SKINSHORTCUTS[id])</visible>
                 <onup>302</onup>
@@ -188,6 +460,7 @@
     </submenuOther>
     <other include="spotlight-mainmenu">
         <property name="widgetAspect" tag="property" attribute="name|widgetAspect" />
+        <property name="widgetAspect">Poster</property>
         <property name="widgetTarget" tag="property" attribute="name|widgetTarget" />
         <property name="widgetName" tag="property" attribute="name|widgetName" />
         <property name="widgetPath" tag="property" attribute="name|widgetPath" />
@@ -195,8 +468,17 @@
         <property name="widgetPath">$INFO[Skin.String(widgetPath)]</property>
         <controls>
             <include content="Object_Widget_Spotlight">
+                <param name="labelinclude" value="Defs_Null" />
+                <param name="landscapelabelinclude" value="View_Widget_LandscapeLabel" />
+                <param name="label2" value="ListItem.TvShowTitle" />
                 <param name="target" value="$SKINSHORTCUTS[widgetTarget]" />
                 <param name="content" value="$SKINSHORTCUTS[widgetPath]" />
+                <param name="smallsquarecondition" value="$PYTHON['true' if widgetAspect in 'Small Square' else 'false']" />
+                <param name="squarecondition" value="$PYTHON['true' if widgetAspect in 'Square' else 'false']" />
+                <param name="smalllandscapecondition" value="$PYTHON['true' if widgetAspect in 'Small Landscape' else 'false']" />
+                <param name="landscapecondition" value="$PYTHON['true' if widgetAspect in 'Landscape' else 'false']" />
+                <param name="iconcondition" value="$PYTHON['true' if widgetAspect in 'Icon' else 'false']" />
+                <param name="bannercondition" value="$PYTHON['true' if widgetAspect in 'Banner' else 'false']" />
                 <skinshortcuts>visibility</skinshortcuts>
                 <onup>302</onup>
                 <onback condition="Window.IsVisible(Home)">301</onback>
@@ -221,7 +503,7 @@
                 <ondown>301</ondown>
                 <onback>301</onback>
                 <include content="Defs_AutoScroll">
-                    <param name="condition" value="[Control.HasFocus(301) | Control.HasFocus(302)] + System.IdleTime(1)" />
+                    <param name="condition" value="[Control.HasFocus(301) | Control.HasFocus(302)] + System.IdleTime(1) + !Skin.HasSetting(DisableAutoScrollWidgets)" />
                 </include>
                 <orientation>horizontal</orientation>
                 <itemlayout />
