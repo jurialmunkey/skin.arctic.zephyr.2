@@ -86,6 +86,7 @@
     <include name="View_522_Showcase_Seasons_Info">
         <param name="seasons" default="true" />
         <param name="id" default="5229" />
+        <param name="isView2" default="false" />
         <definition>
             <control type="group">
                 <include>View_FlipSides</include>
@@ -139,7 +140,14 @@
                             <param name="label" value="$INFO[Container($PARAM[id]).ListItem.MPAA]" />
                             <param name="container" value="Container($PARAM[id])." />
                         </include>
+                        <include content="Object_Info_Ratings" condition="$PARAM[isView2]">
+                            <param name="top" value="-15" />
+                            <param name="imdbvotes" value="false" />
+                            <param name="top250" value="false" />
+                            <param name="oscars" value="false" />
+                        </include>
                         <control type="textbox">
+                            <visible>!$PARAM[isView2]</visible>
                             <top>25</top>
                             <font>font_plotbox</font>
                             <textcolor>main_fg_70</textcolor>
@@ -147,6 +155,33 @@
                             <aligny>top</aligny>
                             <height>200</height>
                             <label>$PARAM[plot]</label>
+                        </control>
+                        <control type="grouplist">
+                            <visible>$PARAM[isView2]</visible>
+                            <top>25</top>
+                            <itemgap>14</itemgap>
+                            <include content="Object_Info_TextPairs">
+                                <param name="name" value="Genre" />
+                                <param name="label" value="ListItem.Genre" />
+                            </include>
+                            <include content="Object_Info_TextPairs">
+                                <param name="name" value="Director" />
+                                <param name="label" value="ListItem.Director" />
+                            </include>
+                            <control type="group">
+                                <visible>!String.isEmpty(ListItem.Tagline)</visible>
+                                <include content="Object_Info_TextPairs">
+                                    <param name="name" value="Tagline" />
+                                    <param name="label" value="ListItem.Tagline" />
+                                </include>
+                            </control>
+                            <control type="group">
+                                <visible>String.isEmpty(ListItem.Tagline)</visible>
+                                <include content="Object_Info_TextPairs">
+                                    <param name="name" value="Premiered" />
+                                    <param name="label" value="ListItem.Premiered" />
+                                </include>
+                            </control>
                         </control>
                     </control>
                 </control>

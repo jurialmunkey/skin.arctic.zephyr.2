@@ -459,12 +459,23 @@
                         <param name="oscars" value="false" />
                     </include>
                     <control type="textbox">
+                        <visible>!$EXP[Exp_IsPluginAdvancedLauncher]</visible>
                         <top>25</top>
                         <font>font_plotbox</font>
                         <textcolor>main_fg_70</textcolor>
                         <align>left</align>
                         <aligny>top</aligny>
                         <height>160</height>
+                        <label>$VAR[Label_Plot]</label>
+                    </control>
+                    <control type="textbox">
+                        <visible>$EXP[Exp_IsPluginAdvancedLauncher]</visible>
+                        <top>25</top>
+                        <font>font_plotbox</font>
+                        <textcolor>main_fg_70</textcolor>
+                        <align>left</align>
+                        <aligny>top</aligny>
+                        <height>208</height>
                         <label>$VAR[Label_Plot]</label>
                     </control>
                 </control>
