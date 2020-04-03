@@ -164,7 +164,8 @@
         <onfocus>SetProperty(ListItemHelper.WidgetContainerId,5600,Home)</onfocus>
         <onfocus>ClearProperty(WidgetFocus)</onfocus>
 
-        <onleft condition="!Skin.HasSetting(HomeIcons) + !Skin.HasSetting(HomeTextAutoWidth)">9999</onleft>
+        <onleft condition="!Skin.HasSetting(HomeIcons) + !Skin.HasSetting(HomeTextAutoWidth) + Control.IsVisible(9999)">9999</onleft>
+        <onleft condition="!Skin.HasSetting(HomeIcons) + !Skin.HasSetting(HomeTextAutoWidth) + !Control.IsVisible(9999)">301</onleft>
         <onright condition="!Skin.HasSetting(HomeIcons) + !Skin.HasSetting(HomeTextAutoWidth) + Control.IsVisible(9999)">9999</onright>
         <onright condition="!Skin.HasSetting(HomeIcons) + !Skin.HasSetting(HomeTextAutoWidth) + !Control.IsVisible(9999)">301</onright>
     </include>
@@ -222,8 +223,9 @@
             <animation effect="slide" start="0" end="0,-625" time="300" tween="quadratic" easing="out" condition="Control.HasFocus(5600) + $EXP[Exp_InfoVisible]">Conditional</animation>
 
 
-            <animation effect="slide" start="0" end="0,-900" time="300" tween="quadratic" condition="![Control.HasFocus(5610) | Control.HasFocus(302) | Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(DialogAddonInfo.xml)] + ![Window.Next(VideoFullScreen.xml) | Window.Next(MusicVisualisation.xml)]">WindowClose</animation>
+            <animation effect="slide" start="0" end="0,-900" time="300" tween="quadratic" condition="!Control.HasFocus(5610) + !Control.HasFocus(5600) + !Control.HasFocus(302) + !Window.IsVisible(DialogVideoInfo.xml) + !Window.IsVisible(DialogMusicInfo.xml) + !Window.IsVisible(DialogAddonInfo.xml) + !Window.Next(VideoFullScreen.xml) + !Window.Next(MusicVisualisation.xml)">WindowClose</animation>
             <animation effect="slide" start="0" end="0,-615" time="300" tween="quadratic" condition="Control.HasFocus(302) + !String.IsEqual(Window(Home).Property(WidgetFocus),5610) + ![Window.Next(VideoFullScreen.xml) | Window.Next(MusicVisualisation.xml)]">WindowClose</animation>
+            <animation effect="slide" start="0" end="0,-625" time="300" tween="quadratic" condition="Control.HasFocus(5600) + ![Window.Next(VideoFullScreen.xml) | Window.Next(MusicVisualisation.xml)]">WindowClose</animation>
 
             <animation effect="slide" start="0" end="0,180" time="300" tween="quadratic" condition="![Control.HasFocus(5610) | Control.HasFocus(302) | Window.IsVisible(DialogVideoInfo.xml) | Window.IsVisible(DialogMusicInfo.xml) | Window.IsVisible(DialogAddonInfo.xml)] + [Window.Next(VideoFullScreen.xml) | Window.Next(MusicVisualisation.xml)]">WindowClose</animation>
             <animation effect="slide" start="0" end="0,465" time="300" tween="quadratic" condition="Control.HasFocus(302) + !String.IsEqual(Window(Home).Property(WidgetFocus),5610) + [Window.Next(VideoFullScreen.xml) | Window.Next(MusicVisualisation.xml)]">WindowClose</animation>
@@ -365,15 +367,6 @@
 
             <control type="group">
                 <animation effect="fade" start="100" end="0" delay="200" time="200" condition="!$PARAM[widgetvisibility]">Conditional</animation>
-                <!-- <control type="label">
-                    <bottom>357.5</bottom>
-                    <height>40</height>
-                    <align>center</align>
-                    <font>font_byline</font>
-                    <textcolor>main_fg_70</textcolor>
-                    <label>$VAR[Label_WidgetName]</label>
-                    <visible>$PARAM[widget]</visible>
-                </control> -->
                 <control type="group">
                     <top>337.5</top>
                     <left>-15</left>
@@ -722,39 +715,72 @@
         </control>
     </include>
 
+    <include name="Home_CornerIcon_Template">
+        <control type="button" id="9999">
+            <left>-18</left>
+            <height>70</height>
+            <width>70</width>
+            <onleft>SetFocus(301,9999,absolute)</onleft>
+            <onright>SetFocus(301,0,absolute)</onright>
+            <aspectratio>keep</aspectratio>
+            <texturenofocus colordiffuse="main_fg_30">$PARAM[icon]</texturenofocus>
+            <texturefocus colordiffuse="main_fg_100">$PARAM[icon]</texturefocus>
+            <onfocus>ClearProperty(WidgetFocus,Home)</onfocus>
+            <visible>![[!Control.HasFocus(302) + Container(301).HasPrevious] | [Control.HasFocus(302) + Container(302).HasPrevious]]</visible>
+            <visible>!Control.HasFocus(302)</visible>
+            <nested />
+        </control>
+    </include>
+
+    <include name="Home_CornerIcon">
+        <include content="Home_CornerIcon_Template" condition="String.IsEmpty(Skin.String(CornerIcon))">
+            <param name="icon" value="special://skin/extras/icons/search.png" />
+            <onclick>Skin.Reset(SearchTerm)</onclick>
+            <onclick>Skin.SetString(SearchTerm)</onclick>
+            <onclick>ActivateWindow(1138)</onclick>
+        </include>
+        <include content="Home_CornerIcon_Template" condition="String.IsEqual(Skin.String(CornerIcon),Settings)">
+            <param name="icon" value="special://skin/extras/icons/settings.png" />
+            <onclick>ActivateWindow(settings)</onclick>
+        </include>
+        <include content="Home_CornerIcon_Template" condition="String.IsEqual(Skin.String(CornerIcon),Power)">
+            <param name="icon" value="special://skin/extras/icons/power.png" />
+            <onclick>ActivateWindow(shutdownmenu)</onclick>
+        </include>
+        <control type="image">
+            <left>-18</left>
+            <height>70</height>
+            <width>70</width>
+            <aspectratio>keep</aspectratio>
+            <texture colordiffuse="main_fg_30">special://skin/extras/icons/home.png</texture>
+            <visible>![[!Control.HasFocus(302) + Container(301).HasPrevious] | [Control.HasFocus(302) + Container(302).HasPrevious]]</visible>
+            <visible>!Control.HasFocus(302)</visible>
+            <visible>String.IsEqual(Skin.String(CornerIcon),Home)</visible>
+        </control>
+        <control type="image">
+            <left>-18</left>
+            <height>70</height>
+            <width>70</width>
+            <aspectratio>keep</aspectratio>
+            <texture colordiffuse="main_fg_30">$INFO[Container(301).ListItem.Icon]</texture>
+            <visible>![[!Control.HasFocus(302) + Container(301).HasPrevious] | [Control.HasFocus(302) + Container(302).HasPrevious]]</visible>
+            <visible>Control.HasFocus(302)</visible>
+        </control>
+    </include>
+
+    <include name="Home_Width_Clock"><width>1200</width></include>
+    <include name="Home_Width_NoClock"><width>1620</width></include>
+
     <include name="Home_Horizontal_Fixed">
         <control type="group">
             <top>55</top>
             <left>view_pad</left>
             <control type="group">
                 <height>70</height>
-                <width>1200</width>
+                <include condition="!Skin.HasSetting(DisableClock)">Home_Width_Clock</include>
+                <include condition="Skin.HasSetting(DisableClock)">Home_Width_NoClock</include>
                 <visible>!$EXP[Exp_InfoVisible]</visible>
-                <control type="button" id="9999">
-                    <left>-18</left>
-                    <height>70</height>
-                    <width>70</width>
-                    <onleft>SetFocus(301,9999,absolute)</onleft>
-                    <onright>SetFocus(301,0,absolute)</onright>
-                    <aspectratio>keep</aspectratio>
-                    <texturenofocus colordiffuse="main_fg_30">special://skin/extras/icons/search.png</texturenofocus>
-                    <texturefocus colordiffuse="main_fg_100">special://skin/extras/icons/search.png</texturefocus>
-                    <onfocus>ClearProperty(WidgetFocus,Home)</onfocus>
-                    <onclick>Skin.Reset(SearchTerm)</onclick>
-                    <onclick>Skin.SetString(SearchTerm)</onclick>
-                    <onclick>ActivateWindow(1138)</onclick>
-                    <visible>![[!Control.HasFocus(302) + Container(301).HasPrevious] | [Control.HasFocus(302) + Container(302).HasPrevious]]</visible>
-                    <visible>!Control.HasFocus(302)</visible>
-                </control>
-                <control type="image">
-                    <left>-18</left>
-                    <height>70</height>
-                    <width>70</width>
-                    <aspectratio>keep</aspectratio>
-                    <texture colordiffuse="main_fg_30">$INFO[Container(301).ListItem.Icon]</texture>
-                    <visible>![[!Control.HasFocus(302) + Container(301).HasPrevious] | [Control.HasFocus(302) + Container(302).HasPrevious]]</visible>
-                    <visible>Control.HasFocus(302)</visible>
-                </control>
+                <include>Home_CornerIcon</include>
                 <control type="image">
                     <left>3</left>
                     <visible>[!Control.HasFocus(302) + Container(301).HasPrevious] | [Control.HasFocus(302) + Container(302).HasPrevious]</visible>
@@ -875,7 +901,8 @@
         <ondown condition="String.IsEqual(Container(9989).ListItemAbsolute(0).Property(list),Weather)">6000</ondown>
         <onfocus>ClearProperty(WidgetFocus,Home)</onfocus>
 
-        <onleft condition="!Skin.HasSetting(HomeIcons) + !Skin.HasSetting(HomeTextAutoWidth)">9999</onleft>
+        <onleft condition="!Skin.HasSetting(HomeIcons) + !Skin.HasSetting(HomeTextAutoWidth) + Control.IsVisible(9999)">9999</onleft>
+        <onleft condition="!Skin.HasSetting(HomeIcons) + !Skin.HasSetting(HomeTextAutoWidth) + !Control.IsVisible(9999)">301</onleft>
         <onright condition="!Skin.HasSetting(HomeIcons) + !Skin.HasSetting(HomeTextAutoWidth) + Control.IsVisible(9999)">9999</onright>
         <onright condition="!Skin.HasSetting(HomeIcons) + !Skin.HasSetting(HomeTextAutoWidth) + !Control.IsVisible(9999)">301</onright>
     </include>

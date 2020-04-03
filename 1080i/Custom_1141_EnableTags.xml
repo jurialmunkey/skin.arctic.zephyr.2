@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Foundation -->
+<window type="dialog" id="1141">
+    <defaultcontrol always="true">9000</defaultcontrol>
+    <controls>
+        <include>Global_Overlay</include>
+        <control type="group">
+            <include content="Dialog_Standard_Group">
+                <param name="width" value="1180" />
+                <param name="height" value="520" />
+            </include>
+
+            <control type="label">
+                <description>Header Label</description>
+                <label>Choose displayed information tags</label>
+                <include>Dialog_Standard_Header</include>
+            </control>
+
+            <control type="grouplist" id="9000">
+                <onright>61</onright>
+                <description>Control Area</description>
+                <width>780</width>
+                <top>dialog_top</top>
+                <height>390</height>
+                <itemgap>0</itemgap>
+                <pagecontrol>61</pagecontrol>
+                <orientation>vertical</orientation>
+                <usecontrolcoords>true</usecontrolcoords>
+                <control type="button" id="9001">
+                    <label>Disable all tags</label>
+                    <radioposx>730</radioposx>
+                    <include>Dialog_Standard_Button</include>
+                    <onclick>Skin.Reset(EnableLanguages)</onclick>
+                    <onclick>Close</onclick>
+                </control>
+                <control type="radiobutton" id="9002">
+                    <label>Studios</label>
+                    <radioposx>730</radioposx>
+                    <include>Dialog_Standard_Button</include>
+                    <onclick>Skin.ToggleSetting(Tags.DisableStudios)</onclick>
+                    <selected>!Skin.HasSetting(Tags.DisableStudios)</selected>
+                    <enable>Skin.HasSetting(EnableLanguages)</enable>
+                </control>
+                <control type="radiobutton" id="9003">
+                    <label>Countries</label>
+                    <radioposx>730</radioposx>
+                    <include>Dialog_Standard_Button</include>
+                    <onclick>Skin.ToggleSetting(Tags.DisableCountries)</onclick>
+                    <selected>!Skin.HasSetting(Tags.DisableCountries)</selected>
+                    <enable>Skin.HasSetting(EnableLanguages)</enable>
+                </control>
+                <control type="radiobutton" id="9004">
+                    <label>Languages</label>
+                    <radioposx>730</radioposx>
+                    <include>Dialog_Standard_Button</include>
+                    <onclick>Skin.ToggleSetting(Tags.DisableLanguages)</onclick>
+                    <selected>!Skin.HasSetting(Tags.DisableLanguages)</selected>
+                    <enable>Skin.HasSetting(EnableLanguages)</enable>
+                </control>
+                <control type="radiobutton" id="9005">
+                    <label>Codecs</label>
+                    <radioposx>730</radioposx>
+                    <include>Dialog_Standard_Button</include>
+                    <onclick>Skin.ToggleSetting(Tags.DisableCodecs)</onclick>
+                    <selected>!Skin.HasSetting(Tags.DisableCodecs)</selected>
+                    <enable>Skin.HasSetting(DisableCodecs) + Skin.HasSetting(EnableLanguages)</enable>
+                </control>
+            </control>
+
+            <include content="Dialog_Scrollbar">
+                <param name="onleft" value="9000" />
+            </include>
+            
+           
+            <control type="group">
+                <include>Dialog_Standard_Right_Group</include>
+                <control type="grouplist" id="8000">
+                    <onleft>61</onleft>
+                    <orientation>vertical</orientation>
+                    <itemgap>0</itemgap>
+                    <control type="button" id="8001" description="Close">
+                        <label>$LOCALIZE[15067]</label>
+                        <onclick>Close</onclick>
+                        <include>Dialog_Standard_Right_Buttons</include>
+                    </control>
+                </control>
+            </control>
+        </control>
+    </controls>
+</window>

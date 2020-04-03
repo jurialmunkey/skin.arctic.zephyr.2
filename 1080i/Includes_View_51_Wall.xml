@@ -77,7 +77,8 @@
                 <top>$PARAM[icononlyheight]</top>
                 <left>20</left>
                 <right>20</right>
-                <animation effect="fade" start="$PARAM[textfade_start]" end="$PARAM[textfade_end]" condition="Control.HasFocus($PARAM[id])">Conditional</animation>
+                <animation effect="fade" end="$PARAM[textfade_start]" start="$PARAM[textfade_end]" condition="!Control.HasFocus($PARAM[id]) + $PARAM[selectbox]">Conditional</animation>
+                <animation effect="fade" end="$PARAM[textfade_end]" start="$PARAM[textfade_end]" condition="!$PARAM[selectbox]">Conditional</animation>
                 <control type="label">
                     <left>15</left>
                     <right>15</right>
@@ -112,7 +113,8 @@
         <definition>
             <control type="group">
                 <top>$PARAM[icononlyheight]</top>
-                <animation effect="fade" start="$PARAM[textfade_start]" end="$PARAM[textfade_end]" condition="Control.HasFocus($PARAM[id])">Conditional</animation>
+                <animation effect="fade" end="$PARAM[textfade_start]" start="$PARAM[textfade_end]" condition="!Control.HasFocus($PARAM[id]) + $PARAM[selectbox]">Conditional</animation>
+                <animation effect="fade" end="$PARAM[textfade_end]" start="$PARAM[textfade_end]" condition="!$PARAM[selectbox]">Conditional</animation>
                 <control type="label">
                     <left>35</left>
                     <right>45</right>
@@ -183,6 +185,7 @@
                     </include>
                     
                     <control type="group">
+                        <visible>!String.StartsWith(ListItem.FolderPath,pvr://)</visible>
                         <height>$PARAM[icononlyheight]</height>
                         <include>Object_DefaultIcon</include>
 
@@ -190,6 +193,18 @@
                             <param name="icon" value="$PARAM[icon]" />
                             <param name="aspectratio" value="$PARAM[aspectratio]" />
                             <param name="bordersize" value="$PARAM[bordersize]" />
+                            <param name="diffuse" value="$PARAM[diffuse]" />
+                        </include>
+                    </control>
+
+                    <control type="group">
+                        <visible>String.StartsWith(ListItem.FolderPath,pvr://)</visible>
+                        <height>$PARAM[icononlyheight]</height>
+                        <include>Object_DefaultIcon</include>
+                        <include content="Object_Poster">
+                            <param name="icon" value="$PARAM[icon]" />
+                            <param name="aspectratio" value="keep" />
+                            <param name="bordersize" value="60" />
                             <param name="diffuse" value="$PARAM[diffuse]" />
                         </include>
                     </control>
@@ -220,6 +235,7 @@
                     <param name="textfade_end" value="$PARAM[textfade_end]" />
                     <param name="textfade_start" value="$PARAM[textfade_start]" />
                     <param name="id" value="$PARAM[id]" />
+                    <param name="selectbox" value="$PARAM[selectbox]" />
                 </include>
 
                 <control type="group">
@@ -258,7 +274,7 @@
         <param name="labelinclude" default="View_512_Wall_Label" />
         <param name="aspectratio" default="scale" />
         <param name="diffuse" default="diffuse/poster-wall.png" /> <!-- FIX ME -->
-        <param name="stretchsides" default="Control.IsVisible(512) + !Window.IsVisible(home)" />
+        <param name="stretchsides" default="Control.IsVisible(512) + !Window.IsVisible(home) + !$EXP[Exp_IsPluginAdvancedLauncher]" />
         <definition>
             <control type="group">
                 <right>10</right>
@@ -352,6 +368,7 @@
                 <param name="textfade_end" value="$PARAM[textfade_end]" />
                 <param name="textfade_start" value="$PARAM[textfade_start]" />
                 <param name="id" value="$PARAM[id]" />
+                <param name="selectbox" value="$PARAM[selectbox]" />
             </include>
         </definition>
     </include>
@@ -429,7 +446,7 @@
                 <param name="viewtype" value="$LOCALIZE[31358]" />
                 <param name="viewtypename" value="icon" />
                 <param name="forced" value="true" />
-                <param name="visible" value="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(actors)" />
+                <param name="visible" value="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(actors) | $EXP[Exp_IsPluginAdvancedLauncher]" />
                 <include>View_Vertical_Movement</include>
             </include>
         </control>
@@ -448,7 +465,7 @@
                 <param name="viewtypename" value="icon" />
                 <param name="diffuse" value="diffuse/square-wall.png" />
                 <param name="forced" value="true" />
-                <param name="visible" value="Container.Content(artists) | Container.Content(albums) | Container.Content(games) | Container.Content(programs) | Container.Content(addons) | Container.Content(images) | Container.Content() | Container.Content(files)" />
+                <param name="visible" value="Container.Content(artists) | Container.Content(albums) | Container.Content(games) | Container.Content(programs) | Container.Content(addons) | Container.Content(images) | Container.Content() | Container.Content(files) | $EXP[Exp_IsPluginAdvancedLauncher]" />
                 <include>View_Vertical_Movement</include>
             </include>
         </control>
@@ -471,7 +488,7 @@
                 <param name="viewtypename" value="wide" />
                 <param name="forced" value="true" />
                 <param name="labelinclude" value="View_51_Wall_Landscape_Label" />
-                <param name="visible" value="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(videos) | Container.Content(images)" />
+                <param name="visible" value="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(videos) | Container.Content(images) | $EXP[Exp_IsPluginAdvancedLauncher]" />
                 <include>View_Vertical_Movement</include>
             </include>
         </control>
@@ -537,7 +554,7 @@
                 <param name="viewtypename" value="icon" />
                 <param name="controllayout" value="View_514_Wall_Info_Layout" />
                 <param name="forced" value="true" />
-                <param name="visible" value="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons)" />
+                <param name="visible" value="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | $EXP[Exp_IsPluginAdvancedLauncher]" />
                 <width>1028.56</width>
                 <include>View_Vertical_Movement</include>
             </include>
@@ -546,6 +563,31 @@
                 <param name="icon" value="$VAR[Image_Landscape]" />
                 <param name="title" value="$VAR[Label_List_Title]" />
                 <param name="plot" value="$INFO[ListItem.Plot]" />
+            </include>
+        </control>
+    </include>
+
+    <include name="View_516_Wall_Info_2">
+        <control type="group">
+            <include>View_Group</include>
+            <visible>Control.IsVisible(516)</visible>
+            <include content="View_51_Wall_Container">
+                <param name="id" value="516" />
+                <param name="height" value="view_height" />
+                <param name="viewtype" value="$LOCALIZE[31436]" />
+                <param name="viewtypename" value="icon" />
+                <param name="controllayout" value="View_514_Wall_Info_Layout" />
+                <param name="forced" value="true" />
+                <param name="visible" value="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | !$EXP[Exp_IsPluginAdvancedLauncher]" />
+                <width>1028.56</width>
+                <include>View_Vertical_Movement</include>
+            </include>
+            <include content="View_522_Showcase_Seasons_Info">
+                <param name="visible" value="true" />
+                <param name="icon" value="$VAR[Image_Landscape]" />
+                <param name="title" value="$VAR[Label_List_Title]" />
+                <param name="plot" value="$INFO[ListItem.Plot]" />
+                <param name="isView2" value="true" />>
             </include>
         </control>
     </include>
@@ -568,7 +610,7 @@
                 <param name="viewtypename" value="wide" />
                 <param name="forced" value="true" />
                 <param name="labelinclude" value="Defs_Null" />
-                <param name="visible" value="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(videos) | Container.Content(images)" />
+                <param name="visible" value="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(episodes) | Container.Content(videos) | Container.Content(images) | $EXP[Exp_IsPluginAdvancedLauncher]" />
                 <include>View_Vertical_Movement</include>
             </include>
         </control>

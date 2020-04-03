@@ -14,40 +14,50 @@
             <control type="group">
                 <visible>Control.IsVisible(10)</visible>
                 <include>View_Group</include>
-
-                <control type="panel" id="11">
-                    <height>item_list_height</height>
-                    <orientation>horizontal</orientation>
-                    <ondown>10</ondown>
-                    <onup>10</onup>
-                    <itemlayout width="210" height="item_list_height">
-                        <control type="label">
-                            <align>left</align>
-                            <aligny>top</aligny>
-                            <textcolor>main_fg_30</textcolor>
-                            <font>font_tiny_bold</font>
-                            <label>$INFO[ListItem.Label]</label>
-                        </control>
-                    </itemlayout>
-                    <focusedlayout width="210" height="item_list_height">
-                        <control type="label">
-                            <align>left</align>
-                            <aligny>top</aligny>
-                            <textcolor>main_fg_100</textcolor>
-                            <font>font_tiny_bold</font>
-                            <label>$INFO[ListItem.Label]</label>
-                        </control>
-                    </focusedlayout>
+                <control type="group">
+                    <include condition="Skin.HasSetting(PVRGuide.Info)">View_PVR_Guide_Top</include>
+                    <control type="panel" id="11">
+                        <height>item_list_height</height>
+                        <orientation>horizontal</orientation>
+                        <ondown>10</ondown>
+                        <onup>10</onup>
+                        <itemlayout width="210" height="item_list_height">
+                            <control type="label">
+                                <align>left</align>
+                                <aligny>top</aligny>
+                                <textcolor>main_fg_30</textcolor>
+                                <font>font_tiny_bold</font>
+                                <label>$INFO[ListItem.Label]</label>
+                            </control>
+                        </itemlayout>
+                        <focusedlayout width="210" height="item_list_height">
+                            <control type="label">
+                                <align>left</align>
+                                <aligny>top</aligny>
+                                <textcolor>main_fg_100</textcolor>
+                                <font>font_tiny_bold</font>
+                                <label>$INFO[ListItem.Label]</label>
+                            </control>
+                        </focusedlayout>
+                    </control>
+                    <include condition="!Skin.HasSetting(PVRGuide.DisableSlimMode)">View_PVR_Guide_List</include>
+                    <include condition="Skin.HasSetting(PVRGuide.DisableSlimMode)">View_PVR_Guide_Icon</include>
                 </control>
-
-                <include condition="Skin.HasSetting(PVRGuide.SlimMode)">View_PVR_Guide_List</include>
-                <include condition="!Skin.HasSetting(PVRGuide.SlimMode)">View_PVR_Guide_Icon</include>
+                <include condition="Skin.HasSetting(PVRGuide.Info)">View_PVR_Guide_Info</include>
             </control>
         </control>
 
         <control type="label" id="30">
             <description>Groups</description>
             <include>Defs_Hidden_Button</include>
+        </control>
+
+        <control type="list" id="300">
+            <onup>11</onup>
+            <ondown>11</ondown>
+            <include>Topbar_Menu_Layout</include>
+            <include>Items_PVRQuickJump</include>
+            <include>Items_PVRGuide</include>
         </control>
 
     </controls>

@@ -57,6 +57,11 @@
             <property name="path" tag="property" attribute="name|list" value="DefaultSearch-SpotifySongs">plugin://plugin.audio.spotify/?action=search_albums&amp;songid=</property>
             <property name="path" tag="property" attribute="name|list" value="DefaultSearch-SpotifyPlaylists">plugin://plugin.audio.spotify/?action=search_songs&amp;playlistid=</property>
             <property name="path" tag="property" attribute="name|list" value="DefaultSearch-SpotifyPlaylists">plugin://plugin.audio.spotify/?action=search_playlists&amp;playlistid=</property>
+            
+            <property name="path" tag="property" attribute="name|list" value="DefaultSearch-TMDBMovies">plugin://plugin.video.themoviedb.helper?info=search&amp;type=movie&amp;query=</property>
+            <property name="path" tag="property" attribute="name|list" value="DefaultSearch-TMDBShows">plugin://plugin.video.themoviedb.helper?info=search&amp;type=tv&amp;query=</property>
+            <property name="path" tag="property" attribute="name|list" value="DefaultSearch-TMDBPeople">plugin://plugin.video.themoviedb.helper?info=search&amp;type=person&amp;query=</property>
+            
             <property name="path" tag="property" attribute="name|list"/>
 
             <property name="limit" tag="property" attribute="name|widgetLimit" />
@@ -138,6 +143,7 @@
                     <param name="smalllandscapecondition" value="$PYTHON['true' if widgetAspect in 'Small Landscape' else 'false']" />
                     <param name="landscapecondition" value="$PYTHON['true' if widgetAspect in 'Landscape' else 'false']" />
                     <param name="iconcondition" value="$PYTHON['true' if widgetAspect in 'Icon' else 'false']" />
+                    <param name="bannercondition" value="$PYTHON['true' if widgetAspect in 'Banner' else 'false']" />
                 </include>
             </controls>
         </items>
@@ -154,10 +160,11 @@
                 <param name="groupid" value="997500" />
                 <param name="id" value="993100" />
                 <param name="label" value="$SKINSHORTCUTS[widgetName]" />
+                <param name="spinner-visible" value="String.IsEmpty(Container(993100).ListItem.Label)" />
                 <skinshortcuts>visibility</skinshortcuts>
                 <visible>Integer.IsEqual(Container(9989).NumItems,0)</visible>
             </include>
-            <include content="Object_Widget_Spotlight">
+            <include content="Object_Widget_Spotlight" condition="!Skin.HasSetting(FixedWidgets)">
                 <param name="controltype" value="list" />
                 <param name="id" value="993100" />
                 <param name="top" value="52" />
@@ -175,11 +182,40 @@
                 <param name="smalllandscapecondition" value="$PYTHON['true' if widgetAspect in 'Small Landscape' else 'false']" />
                 <param name="landscapecondition" value="$PYTHON['true' if widgetAspect in 'Landscape' else 'false']" />
                 <param name="iconcondition" value="$PYTHON['true' if widgetAspect in 'Icon' else 'false']" />
+                <param name="bannercondition" value="$PYTHON['true' if widgetAspect in 'Banner' else 'false']" />
                 <include content="Defs_AutoScroll">
                     <param name="condition" value="!ControlGroup(3000).HasFocus() + System.IdleTime(1) + !Skin.HasSetting(DisableAutoScrollWidgets)" />
                 </include>
                 <onback>301</onback>
-                <movement>6</movement>
+                <!-- <movement>6</movement> -->
+                <visible>Integer.IsGreater(Container(993100).NumItems,0) | Container(993100).IsUpdating</visible>
+                <skinshortcuts>visibility</skinshortcuts>
+                <visible>Integer.IsEqual(Container(9989).NumItems,0)</visible>
+            </include>
+            <include content="Object_Widget_Spotlight" condition="Skin.HasSetting(FixedWidgets)">
+                <param name="controltype" value="fixedlist" />
+                <param name="id" value="993100" />
+                <param name="top" value="52" />
+                <param name="left" value="0" />
+                <param name="right" value="-30" />
+                <param name="height" value="item_cast_height" />
+                <param name="orientation" value="horizontal" />
+                <param name="labelinclude" value="Defs_Null" />
+                <param name="landscapelabelinclude" value="View_Widget_LandscapeLabel" />
+                <param name="label2" value="ListItem.TvShowTitle" />
+                <param name="target" value="$SKINSHORTCUTS[widgetTarget]" />
+                <param name="content" value="$SKINSHORTCUTS[widgetPath]" />
+                <param name="smallsquarecondition" value="$PYTHON['true' if widgetAspect in 'Small Square' else 'false']" />
+                <param name="squarecondition" value="$PYTHON['true' if widgetAspect in 'Square' else 'false']" />
+                <param name="smalllandscapecondition" value="$PYTHON['true' if widgetAspect in 'Small Landscape' else 'false']" />
+                <param name="landscapecondition" value="$PYTHON['true' if widgetAspect in 'Landscape' else 'false']" />
+                <param name="iconcondition" value="$PYTHON['true' if widgetAspect in 'Icon' else 'false']" />
+                <param name="bannercondition" value="$PYTHON['true' if widgetAspect in 'Banner' else 'false']" />
+                <include content="Defs_AutoScroll">
+                    <param name="condition" value="!ControlGroup(3000).HasFocus() + System.IdleTime(1) + !Skin.HasSetting(DisableAutoScrollWidgets)" />
+                </include>
+                <onback>301</onback>
+                <!-- <movement>6</movement> -->
                 <visible>Integer.IsGreater(Container(993100).NumItems,0) | Container(993100).IsUpdating</visible>
                 <skinshortcuts>visibility</skinshortcuts>
                 <visible>Integer.IsEqual(Container(9989).NumItems,0)</visible>
@@ -261,9 +297,10 @@
                 <param name="groupid" value="$PYTHON[int(mainmenuid)]$PYTHON[int(id) + 7500]" />
                 <param name="id" value="$PYTHON[int(mainmenuid)]$PYTHON[int(id) + 3100]" />
                 <param name="label" value="$SKINSHORTCUTS[widgetName]" />
+                <param name="spinner-visible" value="String.IsEmpty(Container($PARAM[$PYTHON[int(mainmenuid)]$PYTHON[int(id) + 3100]]).ListItem.Label)" />
                 <visible>String.IsEqual(Container(301).ListItem.Property(id),$SKINSHORTCUTS[mainmenuid])</visible>
             </include>
-            <include content="Object_Widget_Spotlight">
+            <include content="Object_Widget_Spotlight" condition="!Skin.HasSetting(FixedWidgets)">
                 <param name="controltype" value="list" />
                 <param name="id" value="$PYTHON[int(mainmenuid)]$PYTHON[int(id) + 3100]" />
                 <param name="top" value="52" />
@@ -284,11 +321,43 @@
                 <param name="smalllandscapecondition" value="$PYTHON['true' if widgetAspect in 'Small Landscape' else 'false']" />
                 <param name="landscapecondition" value="$PYTHON['true' if widgetAspect in 'Landscape' else 'false']" />
                 <param name="iconcondition" value="$PYTHON['true' if widgetAspect in 'Icon' else 'false']" />
+                <param name="bannercondition" value="$PYTHON['true' if widgetAspect in 'Banner' else 'false']" />
                 <onback>SetFocus($PYTHON[int(mainmenuid)]3101)</onback>
                 <onback>301</onback>
                 <visible>Integer.IsGreater(Container($PYTHON[int(mainmenuid)]$PYTHON[int(id) + 3100]).NumItems,0) | Container($PYTHON[int(mainmenuid)]$PYTHON[int(id) + 3100]).IsUpdating</visible>
                 <visible>String.IsEqual(Container(301).ListItem.Property(id),$SKINSHORTCUTS[mainmenuid])</visible>
-                <movement>$SKINSHORTCUTS[widgetMovement]</movement>
+                <!-- <movement>$SKINSHORTCUTS[widgetMovement]</movement> -->
+                <include content="Defs_AutoScroll">
+                    <param name="condition" value="!ControlGroup(3000).HasFocus() + System.IdleTime(1) + !Skin.HasSetting(DisableAutoScrollWidgets) + Integer.IsEqual(Container(3000).NumItems,1)" />
+                </include>
+            </include>
+            <include content="Object_Widget_Spotlight" condition="Skin.HasSetting(FixedWidgets)">
+                <param name="controltype" value="fixedlist" />
+                <param name="id" value="$PYTHON[int(mainmenuid)]$PYTHON[int(id) + 3100]" />
+                <param name="top" value="52" />
+                <param name="left" value="0" />
+                <param name="right" value="-30" />
+                <param name="height" value="item_cast_height" />
+                <param name="orientation" value="horizontal" />
+                <param name="labelinclude" value="Defs_Null" />
+                <param name="landscapelabelinclude" value="View_Widget_LandscapeLabel" />
+                <param name="label2" value="ListItem.TvShowTitle" />
+                <param name="target" value="$SKINSHORTCUTS[widgetTarget]" />
+                <param name="content" value="$SKINSHORTCUTS[widgetPath]" />
+                <param name="limit" value="$SKINSHORTCUTS[widgetLimit]" />
+                <param name="sortby" value="$SKINSHORTCUTS[widgetSortby]" />
+                <param name="sortorder" value="$SKINSHORTCUTS[widgetSortorder]" />
+                <param name="smallsquarecondition" value="$PYTHON['true' if widgetAspect in 'Small Square' else 'false']" />
+                <param name="squarecondition" value="$PYTHON['true' if widgetAspect in 'Square' else 'false']" />
+                <param name="smalllandscapecondition" value="$PYTHON['true' if widgetAspect in 'Small Landscape' else 'false']" />
+                <param name="landscapecondition" value="$PYTHON['true' if widgetAspect in 'Landscape' else 'false']" />
+                <param name="iconcondition" value="$PYTHON['true' if widgetAspect in 'Icon' else 'false']" />
+                <param name="bannercondition" value="$PYTHON['true' if widgetAspect in 'Banner' else 'false']" />
+                <onback>SetFocus($PYTHON[int(mainmenuid)]3101)</onback>
+                <onback>301</onback>
+                <visible>Integer.IsGreater(Container($PYTHON[int(mainmenuid)]$PYTHON[int(id) + 3100]).NumItems,0) | Container($PYTHON[int(mainmenuid)]$PYTHON[int(id) + 3100]).IsUpdating</visible>
+                <visible>String.IsEqual(Container(301).ListItem.Property(id),$SKINSHORTCUTS[mainmenuid])</visible>
+                <!-- <movement>$SKINSHORTCUTS[widgetMovement]</movement> -->
                 <include content="Defs_AutoScroll">
                     <param name="condition" value="!ControlGroup(3000).HasFocus() + System.IdleTime(1) + !Skin.HasSetting(DisableAutoScrollWidgets) + Integer.IsEqual(Container(3000).NumItems,1)" />
                 </include>
@@ -380,6 +449,7 @@
                 <param name="smalllandscapecondition" value="$PYTHON['true' if widgetAspect in 'Small Landscape' else 'false']" />
                 <param name="landscapecondition" value="$PYTHON['true' if widgetAspect in 'Landscape' else 'false']" />
                 <param name="iconcondition" value="$PYTHON['true' if widgetAspect in 'Icon' else 'false']" />
+                <param name="bannercondition" value="$PYTHON['true' if widgetAspect in 'Banner' else 'false']" />
                 <visible>String.IsEqual(Container(301).ListItem.Property(submenuVisibility),num-$SKINSHORTCUTS[submenuVisibility]) | String.IsEqual(Container(301).ListItem.Property(submenuVisibility),$SKINSHORTCUTS[submenuVisibility])</visible>
                 <visible>String.IsEqual(Container(302).ListItem.Property(id),$SKINSHORTCUTS[id])</visible>
                 <onup>302</onup>
@@ -408,6 +478,7 @@
                 <param name="smalllandscapecondition" value="$PYTHON['true' if widgetAspect in 'Small Landscape' else 'false']" />
                 <param name="landscapecondition" value="$PYTHON['true' if widgetAspect in 'Landscape' else 'false']" />
                 <param name="iconcondition" value="$PYTHON['true' if widgetAspect in 'Icon' else 'false']" />
+                <param name="bannercondition" value="$PYTHON['true' if widgetAspect in 'Banner' else 'false']" />
                 <skinshortcuts>visibility</skinshortcuts>
                 <onup>302</onup>
                 <onback condition="Window.IsVisible(Home)">301</onback>

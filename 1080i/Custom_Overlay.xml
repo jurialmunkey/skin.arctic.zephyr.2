@@ -116,6 +116,27 @@
                 
                 <font>font13</font>
                 <align>left</align>
+                <label>script-NextAired-TVGuide2.xml</label>
+                <visible>Window.IsVisible(script-NextAired-TVGuide2.xml)</visible>
+            </control>
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FF0000FF</textcolor>
+                
+                <font>font13</font>
+                <align>left</align>
+                <label>script-NextAired-TVGuide.xml</label>
+                <visible>Window.IsVisible(script-NextAired-TVGuide.xml)</visible>
+            </control>
+
+            <control type="label">
+                <width>780</width>
+                <height>21</height>
+                <textcolor>FF0000FF</textcolor>
+                
+                <font>font13</font>
+                <align>left</align>
                 <label>MyMusicNav.xml</label>
                 <visible>Window.IsVisible(MyMusicNav.xml)</visible>
             </control>
@@ -969,6 +990,7 @@
             <textcolor>FF00FFFF</textcolor>
             <font>font13</font>
             <align>right</align>
+            <!-- <label>$INFO[Window(Home).Property(TMDbHelper.Genre)]</label> -->
             <label>$INFO[Window(Home).Property(TMDbHelper.Locked)]$INFO[Window(Home).Property(TMDbHelper.Path.Current)]</label>
             <visible>Skin.HasSetting(DebugInfo)</visible>
         </control>

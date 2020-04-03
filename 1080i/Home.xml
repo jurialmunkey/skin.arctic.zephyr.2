@@ -2,7 +2,6 @@
 <!-- Foundation -->
 <window id="0">
     <defaultcontrol always="false">301</defaultcontrol>
-    <onload>RunScript(plugin.video.themoviedb.helper,reset_path)</onload>
     <onload condition="Skin.HasSetting(ThemeSwitcher) + System.Time(06:00,18:00) + !String.IsEqual(Skin.CurrentColourTheme,SKINDEFAULT)">XBMC.RunScript(script.skin.helper.service,action=setkodisetting,setting=lookandfeel.skincolors,value=SKINDEFAULT)</onload>
     <onload condition="Skin.HasSetting(ThemeSwitcher) + !System.Time(06:00,18:00) + !String.IsEqual(Skin.CurrentColourTheme,Dark)">XBMC.RunScript(script.skin.helper.service,action=setkodisetting,setting=lookandfeel.skincolors,value=Dark)</onload>
 

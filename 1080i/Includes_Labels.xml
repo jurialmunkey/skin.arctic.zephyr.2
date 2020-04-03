@@ -1,17 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
 
-    <variable name="Label_Studio">
-        <value condition="!String.IsEmpty(ListItem.Studio)">$INFO[ListItem.Studio]</value>
-        <value condition="!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Studio))">$INFO[Window(Home).Property(SkinHelper.ListItem.Studio)]</value>
+    <variable name="Label_PVRGuide_Title">
+        <value condition="!String.IsEmpty(ListItem.Title)">$INFO[ListItem.Title]</value>
+        <value condition="!String.IsEmpty(ListItem.ChannelName)">$INFO[ListItem.ChannelName]</value>
+    </variable>
+
+    <variable name="Label_PVRGuide_SubTitle">
+        <value condition="!String.IsEmpty(ListItem.Genre)">$INFO[ListItem.StartTime,[COLOR main_fg_100],[/COLOR]]$INFO[ListItem.EndTime,[COLOR main_fg_100]  -  ,[/COLOR]]$INFO[ListItem.Genre,  |  [COLOR main_fg_100],[/COLOR]]</value>
+    </variable>
+
+    <variable name="Label_PVRGuide_ChannelNumber">
+        <value condition="Skin.HasSetting(PVRGuide.ChannelNumber)">$INFO[ListItem.ChannelNumberLabel]</value>
     </variable>
 
     <variable name="Label_Info_PlayButton">
-        <value condition="String.IsEqual(ListItem.DBType,tvshow) | String.IsEqual(ListItem.DBType,season)">$LOCALIZE[1024]</value>
+        <value condition="ListItem.IsFolder">$LOCALIZE[1024]</value>
         <value>$LOCALIZE[208]</value>
     </variable>
 
     <variable name="Label_SmallLandscapeWidget_Sublabel">
+        <value condition="!String.IsEmpty(ListItem.ChannelName)">$INFO[ListItem.Title]</value>
+        <value condition="!String.IsEmpty(ListItem.Property(NextDay))">$INFO[ListItem.Property(NextDay)]$INFO[ListItem.Property(ShortTime), @ ,]</value>
         <value condition="!String.IsEmpty(ListItem.TvShowTitle) + !String.IsEqual(ListItem.Label,ListItem.TvShowTitle)">$INFO[ListItem.TvShowTitle]</value>
         <value condition="!String.IsEmpty(ListItem.Studio) + [String.IsEqual(ListItem.DBType,video) | [String.IsEmpty(ListItem.DBType) + String.IsEmpty(ListItem.Genre)]]">$INFO[ListItem.Studio]$VAR[Label_Duration, - ,]</value>
         <value condition="!String.IsEmpty(ListItem.Artist) + !String.IsEqual(ListItem.Label,ListItem.Artist)">$INFO[ListItem.Artist]</value>
@@ -32,6 +42,16 @@
         <value condition="Skin.HasSetting(HomeMulti) + !Skin.HasSetting(HomeMultiHorizontal)">Vertical menu | Multiple widgets</value>
         <value condition="Skin.HasSetting(HomeMulti) + Skin.HasSetting(HomeMultiHorizontal)">Horizontal menu | Multiple widgets</value>
         <value>Basic</value>
+    </variable>
+
+    <variable name="Label_SkinSettings_WidgetMovement">
+        <value condition="Skin.HasSetting(FixedWidgets)">Fixed</value>
+        <value>Default</value>
+    </variable>
+
+    <variable name="Label_SkinSettings_CornerIcon">
+        <value condition="!String.IsEmpty(Skin.String(CornerIcon))">$INFO[Skin.String(CornerIcon)]</value>
+        <value>Search</value>
     </variable>
 
     <variable name="Label_SkinSettings_MenuStyle">
@@ -102,7 +122,8 @@
         <value condition="Window.IsVisible(Home)">$LOCALIZE[1034]</value>
         <value condition="Container.Content() + String.StartsWith(Container.FolderPath,library://video/movies/)">$LOCALIZE[14022]</value>
         <value condition="[Container.Content(seasons) | Container.Content(episodes)] + !String.IsEmpty(Container.ShowTitle)">$INFO[Container.ShowTitle]</value>
-        <value condition="!String.IsEmpty(Container.FolderName)">$INFO[Container.FolderName]</value>"
+        <value condition="!String.IsEmpty(Container.FolderName)">$INFO[Container.FolderName]</value>
+        <value condition="Window.IsVisible(script-NextAired-TVGuide.xml) | Window.IsVisible(script-NextAired-TVGuide2.xml)">$INFO[System.Date]</value>
     </variable>
 
     <variable name="Label_Header_Content">
@@ -132,6 +153,7 @@
         <value condition="Window.IsVisible(FileManager.xml)">[CAPITALIZE]$LOCALIZE[7][/CAPITALIZE]</value>
         <value condition="Window.IsVisible(Home.xml)">$LOCALIZE[10000]</value>
         <value condition="Window.IsVisible(DialogPVRInfo.xml)">$LOCALIZE[19180]</value>
+        <value condition="Window.IsVisible(script-NextAired-TVGuide.xml) | Window.IsVisible(script-NextAired-TVGuide2.xml)">Next Aired</value>
     </variable>
 
     <variable name="Label_OSD_Time">
@@ -145,8 +167,8 @@
     </variable>
     
     <variable name="Label_OSD_FinishTime">
-        <value condition="VideoPlayer.Content(livetv)">$INFO[System.Time,$LOCALIZE[555]  ,]$INFO[VideoPlayer.EndTime,[COLOR=panel_fg_100]  •  $LOCALIZE[31106] ,[/COLOR]]</value>
-        <value>$INFO[System.Time,$LOCALIZE[555]  ,]$INFO[Player.FinishTime,[COLOR=panel_fg_100]  •  $LOCALIZE[31106] ,[/COLOR]]</value>
+        <value condition="VideoPlayer.Content(livetv)">$INFO[VideoPlayer.EndTime]</value>
+        <value condition="!String.IsEmpty(Player.FinishTime)">$INFO[Player.FinishTime]</value>
     </variable>
 
     <variable name="Label_OSD_Title">
@@ -160,12 +182,12 @@
     </variable>
 
     <variable name="Label_Info_NextAired_Status">
-        <value condition="!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Status))">$INFO[Window(Home).Property(SkinHelper.ListItem.Status)]</value>
+        <value condition="!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Status))">$INFO[Window(Home).Property(TMDbHelper.ListItem.Status)]</value>
     </variable>
 
     <variable name="Label_Info_NextAired_Date">
-        <value condition="!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.NextEpisode.Airdate))">$INFO[Window(Home).Property(SkinHelper.ListItem.NextEpisode.Airdate)]</value>
-        <value condition="!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.LastEpisode.Airdate))">$INFO[Window(Home).Property(SkinHelper.ListItem.LastEpisode.Airdate)]</value>
+        <value condition="!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Next_Aired))">$INFO[Window(Home).Property(TMDbHelper.ListItem.Next_Aired)] ($INFO[Window(Home).Property(TMDbHelper.ListItem.Next_Aired.Season)]x$INFO[Window(Home).Property(TMDbHelper.ListItem.Next_Aired.Episode)])</value>
+        <value condition="!String.IsEmpty(Window(Home).Property(TMDbHelper.ListItem.Last_Aired))">$INFO[Window(Home).Property(TMDbHelper.ListItem.Last_Aired)] ($INFO[Window(Home).Property(TMDbHelper.ListItem.Last_Aired.Season)]x$INFO[Window(Home).Property(TMDbHelper.ListItem.Last_Aired.Episode)])</value>
     </variable>
 
     <variable name="Label_ExtraFanart">
@@ -366,7 +388,8 @@
     <variable name="Label_Plot">
         <value condition="!String.IsEmpty(ListItem.Property(Artist_Description))">$INFO[ListItem.Property(Artist_Description)]</value>
         <value condition="!String.IsEmpty(ListItem.Property(Album_Description))">$INFO[ListItem.Property(Album_Description)]</value>
-        <value condition="!String.IsEmpty(ListItem.AddonDescription)">$INFO[ListItem.AddonDescription]</value>
+        <value condition="!String.IsEmpty(ListItem.AddonDescription)">$INFO[ListItem.AddonDescription]$INFO[ListItem.AddonNews,[CR],]</value>
+        <value condition="!String.IsEmpty(ListItem.AddonNews)">$INFO[ListItem.AddonNews]</value>
         <value condition="!String.IsEmpty(ListItem.PlotOutline) + Skin.HasSetting(PlotOutline)">$INFO[ListItem.PlotOutline]</value>
         <value condition="!String.IsEmpty(ListItem.Plot)">$INFO[ListItem.Plot]</value>
         <value condition="!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Plot))">$INFO[Window(Home).Property(SkinHelper.ListItem.Plot)]</value>
@@ -389,6 +412,7 @@
         <value condition="Player.Seeking + String.IsEmpty(Player.SeekOffset)">$LOCALIZE[773]$INFO[Player.SeekStepSize, ,]</value>
         <value condition="Player.Caching">$LOCALIZE[439] $INFO[Player.CacheLevel,,%]</value>
         <value condition="Player.Paused">$LOCALIZE[112]</value>
+        <value condition="Player.IsTempo">$LOCALIZE[31236] $INFO[Player.PlaySpeed]x</value>
         <value condition="Player.Playing">$LOCALIZE[31236]</value>
         <!-- <value>$INFO[System.Time,Time  ,]$INFO[Player.FinishTime,[COLOR=main_fg_70]  •  $LOCALIZE[31106] ,[/COLOR]]</value> -->
     </variable>

@@ -36,7 +36,7 @@
     </variable>
 
     <variable name="Info_CastFeature">
-        <value condition="String.IsEqual(ListItem.DBType,movie) + !Skin.HasSetting(DisableExtendedInfo) + System.HasAddon(plugin.video.themoviedb.helper)">plugin://plugin.video.themoviedb.helper/?info=discover&amp;type=movie&amp;with_cast=$INFO[Container(50).ListItemAbsolute(0).Label]$INFO[Container(50).ListItemAbsolute(1).Label, / ,]$INFO[Container(50).ListItemAbsolute(2).Label, / ,]&amp;with_separator=OR</value>
+        <value condition="String.IsEqual(ListItem.DBType,movie) + !Skin.HasSetting(DisableExtendedInfo) + System.HasAddon(plugin.video.themoviedb.helper)">plugin://plugin.video.themoviedb.helper/?info=discover&amp;type=movie&amp;with_cast=$INFO[Container(50).ListItemAbsolute(0).Label]$INFO[Container(50).ListItemAbsolute(1).Label, / ,]$INFO[Container(50).ListItemAbsolute(2).Label, / ,]&amp;with_separator=OR&amp;exclude_key=title&amp;exclude_value=$INFO[ListItem.Title]</value>
         <value condition="String.IsEqual(ListItem.DBType,movie)">videodb://movies/titles/?xsp=%7B%22rules%22%3A%7B%22or%22%3A%5B%7B%22field%22%3A%22actor%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22$INFO[Container(50).ListItemAbsolute(0).Label]%22%5D%7D%2C%7B%22field%22%3A%22actor%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22$INFO[Container(50).ListItemAbsolute(1).Label]%22%5D%7D%2C%7B%22field%22%3A%22actor%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22$INFO[Container(50).ListItemAbsolute(2).Label]%22%5D%7D%2C%7B%22field%22%3A%22actor%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22$INFO[Container(50).ListItemAbsolute(3).Label]%22%5D%7D%2C%7B%22field%22%3A%22actor%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22$INFO[Container(50).ListItemAbsolute(4).Label]%22%5D%7D%2C%7B%22field%22%3A%22actor%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22$INFO[Container(50).ListItemAbsolute(5).Label]%22%5D%7D%2C%7B%22field%22%3A%22actor%22%2C%22operator%22%3A%22is%22%2C%22value%22%3A%5B%22$INFO[Container(50).ListItemAbsolute(6).Label]%22%5D%7D%5D%7D%2C%22type%22%3A%22movies%22%7D</value>
     </variable>
 
@@ -52,21 +52,22 @@
     </variable>
 
     <variable name="Info_FromDirector">
-        <value condition="String.IsEqual(ListItem.DBType,movie) + !Skin.HasSetting(DisableExtendedInfo) + System.HasAddon(plugin.video.themoviedb.helper)">plugin://plugin.video.themoviedb.helper/?info=crew_in_movies&amp;type=person&amp;filter_key=job&amp;filter_value=Director&amp;query=$INFO[ListItem.Director]</value>
+        <value condition="String.IsEqual(ListItem.DBType,movie) + !Skin.HasSetting(DisableExtendedInfo) + System.HasAddon(plugin.video.themoviedb.helper)">plugin://plugin.video.themoviedb.helper/?info=crew_in_movies&amp;type=person&amp;filter_key=job&amp;filter_value=Director&amp;query=$INFO[ListItem.Director]&amp;exclude_key=title&amp;exclude_value=$INFO[ListItem.Title]</value>
         <value condition="String.IsEqual(ListItem.DBType,movie)">videodb://movies/titles/?xsp=%7b%22rules%22%3a%7b%22and%22%3a%5b%7b%22field%22%3a%22director%22%2c%22operator%22%3a%22is%22%2c%22value%22%3a%5b%22$INFO[ListItem.Director]%22%5d%7d%5d%7d%2c%22type%22%3a%22movies%22%7d</value>
     </variable>
 
     <variable name="Info_FromStudio">
-        <value condition="String.IsEqual(ListItem.DBType,movie) + !Skin.HasSetting(DisableExtendedInfo) + System.HasAddon(plugin.video.themoviedb.helper)">plugin://plugin.video.themoviedb.helper?info=discover&amp;type=movie&amp;with_companies=$INFO[ListItem.Studio]</value>
+        <value condition="String.IsEqual(ListItem.DBType,movie) + !Skin.HasSetting(DisableExtendedInfo) + System.HasAddon(plugin.video.themoviedb.helper)">plugin://plugin.video.themoviedb.helper?info=discover&amp;type=movie&amp;with_companies=$INFO[ListItem.Studio]&amp;exclude_key=title&amp;exclude_value=$INFO[ListItem.Title]</value>
         <value condition="String.IsEqual(ListItem.DBType,movie)">videodb://movies/titles/?xsp=%7b%22rules%22%3a%7b%22and%22%3a%5b%7b%22field%22%3a%22studio%22%2c%22operator%22%3a%22is%22%2c%22value%22%3a%5b%22$INFO[ListItem.Studio]%22%5d%7d%5d%7d%2c%22type%22%3a%22movies%22%7d</value>
     </variable>
 
     <variable name="Info_FromYear">
-        <value condition="String.IsEqual(ListItem.DBType,movie) + !Skin.HasSetting(DisableExtendedInfo) + System.HasAddon(plugin.video.themoviedb.helper)">plugin://plugin.video.themoviedb.helper?info=discover&amp;type=movie&amp;year=$INFO[ListItem.Year]</value>
+        <value condition="String.IsEqual(ListItem.DBType,movie) + !Skin.HasSetting(DisableExtendedInfo) + System.HasAddon(plugin.video.themoviedb.helper)">plugin://plugin.video.themoviedb.helper?info=discover&amp;type=movie&amp;primary_release_year=$INFO[ListItem.Year]&amp;exclude_key=title&amp;exclude_value=$INFO[ListItem.Title]</value>
+        <!-- <value condition="String.IsEqual(ListItem.DBType,tvshow) + !Skin.HasSetting(DisableExtendedInfo) + System.HasAddon(plugin.video.themoviedb.helper)">plugin://plugin.video.themoviedb.helper?info=discover&amp;type=tv&amp;first_air_date_year=$INFO[ListItem.Year]</value> -->
     </variable>
 
     <variable name="Info_FromGenre">
-        <value condition="[String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow)] + !Skin.HasSetting(DisableExtendedInfo) + System.HasAddon(plugin.video.themoviedb.helper)">plugin://plugin.video.themoviedb.helper?info=discover&amp;$VAR[Info_Param_Type]&amp;with_genres=$INFO[ListItem.Genre]</value>
+        <value condition="[String.IsEqual(ListItem.DBType,movie) | String.IsEqual(ListItem.DBType,tvshow)] + !Skin.HasSetting(DisableExtendedInfo) + System.HasAddon(plugin.video.themoviedb.helper)">plugin://plugin.video.themoviedb.helper?info=discover&amp;$VAR[Info_Param_Type]&amp;with_genres=$INFO[ListItem.Genre]&amp;exclude_key=title&amp;exclude_value=$INFO[ListItem.Title]</value>
     </variable>
 
     <variable name="Info_Recommended">
@@ -205,7 +206,17 @@
                 <param name="groupid" value="8008" />
                 <param name="label" value="$VAR[Label_Info_PlayButton]" />
                 <param name="icon" value="$VAR[Image_Info_PlayButton]" />
-                <param name="visible" value="Control.IsEnabled(8) + String.IsEmpty(ListItem.Property(tmdb_id))" />
+                <param name="visible" value="Control.IsEnabled(8) + [!ListItem.IsFolder | !String.IsEmpty(ListItem.DBID)]" />
+            </include>
+            <include content="Object_Info_Button">
+                <param name="id" value="8888" />
+                <param name="groupid" value="8808" />
+                <param name="label" value="$LOCALIZE[1024]" />
+                <param name="icon" value="special://skin/extras/icons/folder.png" />
+                <param name="visible" value="Control.IsEnabled(8) + ListItem.IsFolder + String.IsEmpty(ListItem.DBID)" />
+                <onclick>Dialog.Close(12003)</onclick>
+                <onclick condition="Window.IsVisible(MyVideoNav.xml)">Container.Update($INFO[ListItem.FolderPath])</onclick>
+                <onclick condition="!Window.IsVisible(MyVideoNav.xml)">ActivateWindow(videos,$INFO[ListItem.FolderPath],return)</onclick>
             </include>
             <include content="Object_Info_Button">
                 <param name="id" value="8115" />
@@ -213,7 +224,7 @@
                 <param name="label" value="Search" />
                 <param name="icon" value="special://skin/extras/icons/search.png" />
                 <param name="visible" value="!String.IsEmpty(ListItem.Property(tmdb_id))" />
-                <onclick>Dialog.Close(all,force)</onclick>
+                <onclick>Dialog.Close(12003)</onclick>
                 <onclick>Skin.Reset(SearchTerm)</onclick>
                 <onclick>Skin.SetString(SearchTerm, $INFO[ListItem.Title])</onclick>
                 <onclick>ActivateWindow(1138)</onclick>
@@ -245,7 +256,7 @@
                 <param name="groupid" value="8001" />
                 <param name="label" value="Manage" />
                 <param name="icon" value="special://skin/extras/icons/settings.png" />
-                <param name="visible" value="Control.IsEnabled(6)" />
+                <param name="visible" value="Control.IsEnabled(6) + !Skin.HasSetting(KioskMode)" />
                 <onfocus>SetProperty(FilePath,1,Home)</onfocus>
                 <onunfocus>ClearProperty(FilePath,Home)</onunfocus>
                 <onclick>SetFocus(8111)</onclick>
