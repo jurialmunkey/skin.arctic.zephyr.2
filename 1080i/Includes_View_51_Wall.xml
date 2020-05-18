@@ -388,6 +388,7 @@
         <param name="circle" default="false" />
         <param name="diffuse" default="diffuse/poster-wall.png" />
         <param name="altid" default="999999" />
+        <param name="focustrailer" default="false" />
         <definition>
             <control type="$PARAM[controltype]" id="$PARAM[id]">
                 <nested />
@@ -431,6 +432,7 @@
                         <param name="label2" value="$PARAM[label2]" />
                         <param name="colordiffuse" value="$PARAM[colordiffuse_fo]" />
                     </include>
+                    <include condition="$PARAM[focustrailer]">View_540_Button_Include</include>
                 </focusedlayout>
             </control>
         </definition>
