@@ -87,18 +87,25 @@
         <param name="seasons" default="true" />
         <param name="id" default="5229" />
         <param name="isView2" default="false" />
+        <param name="isRomTrailer" default="false" />
         <definition>
             <control type="group">
                 <include>View_FlipSides</include>
                 <top>0</top>
                 <width>761.44</width>
                 <visible>$PARAM[visible]</visible>
-                <include content="View_50_Poster">
+                <include content="View_50_Poster" condition="!$PARAM[isRomTrailer]">
                     <param name="height" value="441.435" />
                     <param name="width" value="761.44" />
                     <param name="icon" value="$PARAM[icon]" />
                     <param name="diffuse" value="diffuse/landscape-info.png" />
                     <param name="iconvisible" value="$PARAM[iconvisible]" />
+                </include>
+                <include content="View_540_Poster" condition="$PARAM[isRomTrailer]">
+                    <param name="height" value="441.435" />
+                    <param name="width" value="761.44" />
+                    <param name="icon" value="$PARAM[icon]" />
+                    <param name="diffuse" value="diffuse/landscape-info.png" />
                 </include>
                 <control type="image">
                     <top>0</top>
@@ -107,7 +114,7 @@
                     <height>390</height>
                     <texture background="true">$VAR[Image_ClearLogo]</texture>
                     <aspectratio align="right" aligny="bottom">keep</aspectratio>
-                    <visible>[!String.IsEmpty(ListItem.Art(clearlogo)) | !String.IsEmpty(ListItem.Art(tvshow.clearlogo))] + [[String.IsEmpty(ListItem.Art(landscape)) + String.IsEmpty(ListItem.Art(tvshow.landscape))] | [[!String.IsEmpty(ListItem.Art(tvshow.landscape)) | !String.IsEmpty(ListItem.Art(landscape))] + !Skin.HasSetting(LandscapeArt)] | [!String.IsEmpty(ListItem.Art(thumb)) + [String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,video)] + String.IsEmpty(ListItem.Property(airday))]]</visible>
+                    <visible>!$EXP[Exp_IsPluginAdvancedLauncher] + [!String.IsEmpty(ListItem.Art(clearlogo)) | !String.IsEmpty(ListItem.Art(tvshow.clearlogo))] + [[String.IsEmpty(ListItem.Art(landscape)) + String.IsEmpty(ListItem.Art(tvshow.landscape))] | [[!String.IsEmpty(ListItem.Art(tvshow.landscape)) | !String.IsEmpty(ListItem.Art(landscape))] + !Skin.HasSetting(LandscapeArt)] | [!String.IsEmpty(ListItem.Art(thumb)) + [String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,video)] + String.IsEmpty(ListItem.Property(airday))]]</visible>
                 </control>
                 <control type="group">
                     <include content="View_540_Platform_Icon">
