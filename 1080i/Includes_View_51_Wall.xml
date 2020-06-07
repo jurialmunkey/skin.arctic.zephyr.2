@@ -183,7 +183,7 @@
                     <include content="Object_Geometric" condition="!$PARAM[circle]">
                         <param name="diffuse" value="$PARAM[diffuse]" />
                     </include>
-                    
+
                     <control type="group">
                         <visible>!String.StartsWith(ListItem.FolderPath,pvr://)</visible>
                         <height>$PARAM[icononlyheight]</height>
@@ -217,7 +217,7 @@
                     </control>
 
                     <include condition="!$PARAM[circle]">View_WatchedOverlay</include>
-                    
+
                     <control type="group">
                         <visible>!$PARAM[circle]</visible>
                         <visible>Control.HasFocus($PARAM[id]) | Control.HasFocus($PARAM[altid])</visible>
@@ -589,7 +589,38 @@
                 <param name="icon" value="$VAR[Image_Landscape]" />
                 <param name="title" value="$VAR[Label_List_Title]" />
                 <param name="plot" value="$INFO[ListItem.Plot]" />
-                <param name="isView2" value="true" />>
+                <param name="isView2" value="true" />
+            </include>
+        </control>
+    </include>
+
+    <include name="View_517_Wall_Info_3">
+        <control type="group">
+            <include>View_Group</include>
+            <visible>Control.IsVisible(517)</visible>
+            <include content="View_51_Wall_Container">
+                <param name="id" value="517" />
+                <param name="height" value="view_height" />
+                <param name="itemwidth" value="340" />
+                <param name="itemheight" value="240" />
+                <param name="icon" value="$VAR[Image_Landscape]" />
+                <param name="aspectratio" value="scale" />
+                <param name="clearlogo" value="[!String.IsEmpty(ListItem.Art(clearlogo)) | !String.IsEmpty(ListItem.Art(tvshow.clearlogo))] + [[String.IsEmpty(ListItem.Art(landscape)) + String.IsEmpty(ListItem.Art(tvshow.landscape))] | [[!String.IsEmpty(ListItem.Art(tvshow.landscape)) | !String.IsEmpty(ListItem.Art(landscape))] + !Skin.HasSetting(LandscapeArt)] | [!String.IsEmpty(ListItem.Art(thumb)) + [String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,video)] + String.IsEmpty(ListItem.Property(airday))]]" />
+                <param name="iconheight" value="202.708" />
+                <param name="diffuse" value="diffuse/landscape-small-wall.png" />
+                <param name="viewtype" value="$LOCALIZE[31438]" />
+                <param name="viewtypename" value="wide" />
+                <param name="forced" value="true" />
+                <param name="visible" value="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | !$EXP[Exp_IsPluginAdvancedLauncher]" />
+                <param name="labelinclude" value="View_51_Wall_Landscape_Label" />
+                <width>1028.56</width>
+                <include>View_Vertical_Movement</include>
+            </include>
+            <include content="View_522_Showcase_Seasons_Info">
+                <param name="visible" value="true" />
+                <param name="icon" value="$VAR[Image_Landscape]" />
+                <param name="title" value="$VAR[Label_List_Title]" />
+                <param name="plot" value="$INFO[ListItem.Plot]" />
             </include>
         </control>
     </include>
