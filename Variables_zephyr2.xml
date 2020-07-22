@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+	<variable name="ListItemSongDiscart">
+		<value condition="!String.IsEmpty(Window(Home).Property(SkinHelper.Player.Art.DiscArt))">$INFO[Window(Home).Property(SkinHelper.Player.Art.DiscArt)]</value>
+		<value condition="!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Art.DiscArt))">$INFO[Window(Home).Property(SkinHelper.ListItem.Art.DiscArt)]</value>
+	</variable>
+	<variable name="RadioPlayerCover2Var">
+		<value condition="!String.IsEmpty(Window(Home).Property(SkinHelper.Player.Art.AlbumThumb))">$INFO[Window(Home).Property(SkinHelper.Player.Art.AlbumThumb)]</value>
+		<value condition="!String.IsEmpty(Window(Home).Property(SkinHelper.Player.Art.Thumb))">$INFO[Window(Home).Property(SkinHelper.Player.Art.Thumb)]</value>
+		<value condition="!String.IsEmpty(Player.Art(thumb))">DefaultCover.jpg</value>
+		<value>$INFO[Player.Art(thumb)]</value>
+	</variable>
+	<variable name="PVRClearArtVar">
+		<value condition="!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Art.ClearArt))">$INFO[Window(Home).Property(SkinHelper.ListItem.Art.ClearArt)]</value>
+		<value condition="!String.IsEmpty(Window(Home).Property(SkinHelper.Player.Art.ClearArt))">$INFO[Window(Home).Property(SkinHelper.Player.Art.ClearArt)]</value>
+		<value condition="!String.IsEmpty(Window(Home).Property(SkinHelper.ListItem.Art.tvshow.clearart))">$INFO[Window(Home).Property(SkinHelper.ListItem.Art.tvshow.clearart)]</value>
+		<value condition="!String.IsEmpty(Window(Home).Property(SkinHelper.Player.Art.tvshow.clearart))">$INFO[Window(Home).Property(SkinHelper.Player.Art.tvshow.clearart)]</value>
+		<value condition="!String.IsEmpty(ListItem.Art(tvshow.clearart))">$INFO[ListItem.Art(tvshow.clearart)]</value>
+		<value condition="!String.IsEmpty(Player.Art(tvshow.clearart))">$INFO[Player.Art(tvshow.clearart)]</value>
+		<value condition="!String.IsEmpty(ListItem.Art(clearart))">$INFO[ListItem.Art(clearart)]</value>
+		<value condition="!String.IsEmpty(Player.Art(clearart))">$INFO[Player.Art(clearart)]</value>
+	</variable>
+	<variable name="PlayerInfoClearLogoVar">
+		<value condition="!String.IsEmpty(Player.Art(tvshow.clearlogo))">$INFO[Player.Art(tvshow.clearlogo)]</value>
+		<value condition="!String.IsEmpty(Player.Art(clearlogo))">$INFO[Player.Art(clearlogo)]</value>
+		<value condition="!String.IsEmpty(Player.Art(artist.clearlogo))">$INFO[Player.Art(artist.clearlogo)]</value>
+		<value>$INFO[Window(Home).Property(SkinHelper.Player.Art.Clearlogo)]</value>
+	</variable>
+	<variable name="MusicPlayerAtistTitleVar">
+		<value condition="!Pvr.IsPlayingRadio + !Player.IsInternetStream">$INFO[Window(Home).Property(SkinHelper.Player.Artist)]</value>
+		<value condition="!Pvr.IsPlayingRadio + !Player.IsInternetStream">$INFO[Window(Home).Property(SkinHelper.ListItem.Artist)]</value>
+		<value condition="Player.IsInternetStream">$INFO[Window(Home).Property(SkinHelper.Player.Artist)]</value>
+		<value condition="!String.IsEmpty(MusicPlayer.Artist)">$INFO[MusicPlayer.Artist]</value>
+		<value>$INFO[MusicPlayer.Artist]</value>
+	</variable>
+	<variable name="PlayerAllTitlesVar">
+		<value condition="Pvr.IsPlayingRadio + Player.IsInternetStream">$INFO[Window(Home).Property(SkinHelper.Player.Title)]</value>
+		<value condition="!Pvr.IsPlayingRadio + !Player.IsInternetStream">$INFO[Window(Home).Property(SkinHelper.Player.Title)]</value>
+		<value condition="!Pvr.IsPlayingRadio + !Player.IsInternetStream">$INFO[Window(Home).Property(SkinHelper.ListItem.Title)]</value>
+		<value condition="!String.IsEmpty(MusicPlayer.Title)">$INFO[MusicPlayer.Title]</value>
+		<value>$INFO[MusicPlayer.Title]</value>
+	</variable>
+	<variable name="PlayerAllAlbumsVar">
+		<!--  String.IsEmpty(Window(Home).Property(SkinHelper.Player.Title)) -->
+		<value condition="Pvr.IsPlayingRadio + Player.IsInternetStream + !String.IsEmpty(Window(Home).Property(SkinHelper.Player.Title))">$INFO[Window(Home).Property(SkinHelper.Player.Album)]</value>
+		<value condition="!Pvr.IsPlayingRadio + !Player.IsInternetStream">$INFO[Window(Home).Property(SkinHelper.Player.Album)]</value>
+		<value condition="!Pvr.IsPlayingRadio + !Player.IsInternetStream">$INFO[Window(Home).Property(SkinHelper.ListItem.Album)]</value>
+		<value condition="!String.IsEmpty(MusicPlayer.Genre)">$INFO[MusicPlayer.Album]</value>
+		<value>$INFO[MusicPlayer.Album]</value>
+	</variable>
+	<variable name="PlayerAllGenresVar">
+		<value condition="Pvr.IsPlayingRadio + Player.IsInternetStream">$INFO[Window(Home).Property(SkinHelper.Player.Genre)]</value>
+		<value condition="!Pvr.IsPlayingRadio + !Player.IsInternetStream">$INFO[Window(Home).Property(SkinHelper.Player.Genre)]</value>
+		<value condition="!Pvr.IsPlayingRadio + !Player.IsInternetStream">$INFO[Window(Home).Property(SkinHelper.ListItem.Genre)]</value>
+		<value condition="!String.IsEmpty(MusicPlayer.Genre)">$INFO[MusicPlayer.Genre]</value>
+		<!--<value condition="!String.IsEmpty(VideoPlayer.ChannelName)">$INFO[VideoPlayer.ChannelName]</value> -->
+		<value>$INFO[MusicPlayer.Genre]</value>
+	</variable>
+</includes>
