@@ -1107,7 +1107,7 @@
             <onfocus condition="!String.IsEmpty(Window(Home).Property(OSDExtendedInfo)) + Player.Paused + !Skin.HasSetting(DontPauseOSD)">Play</onfocus>
             <onfocus condition="!String.IsEmpty(Window(Home).Property(OSDExtendedInfo))">ClearProperty(OSDExtendedInfo,Home)</onfocus>
             <onfocus>ClearProperty(OSD_Menu,Home)</onfocus>
-            <onclick>XBMC.PlayerControl(Repeat)</onclick>
+            <onclick>PlayerControl(Repeat)</onclick>
             <visible>Window.IsVisible(musicosd)</visible>
             <visible>!Playlist.IsRepeatOne + !Playlist.IsRepeat</visible>
         </control>
@@ -1126,7 +1126,7 @@
             <onfocus condition="!String.IsEmpty(Window(Home).Property(OSDExtendedInfo)) + Player.Paused + !Skin.HasSetting(DontPauseOSD)">Play</onfocus>
             <onfocus condition="!String.IsEmpty(Window(Home).Property(OSDExtendedInfo))">ClearProperty(OSDExtendedInfo,Home)</onfocus>
             <onfocus>ClearProperty(OSD_Menu,Home)</onfocus>
-            <onclick>XBMC.PlayerControl(Repeat)</onclick>
+            <onclick>PlayerControl(Repeat)</onclick>
             <visible>Window.IsVisible(musicosd)</visible>
             <visible>Playlist.IsRepeatOne</visible>
         </control>
@@ -1145,7 +1145,7 @@
             <onfocus condition="!String.IsEmpty(Window(Home).Property(OSDExtendedInfo)) + Player.Paused + !Skin.HasSetting(DontPauseOSD)">Play</onfocus>
             <onfocus condition="!String.IsEmpty(Window(Home).Property(OSDExtendedInfo))">ClearProperty(OSDExtendedInfo,Home)</onfocus>
             <onfocus>ClearProperty(OSD_Menu,Home)</onfocus>
-            <onclick>XBMC.PlayerControl(Repeat)</onclick>
+            <onclick>PlayerControl(Repeat)</onclick>
             <visible>Window.IsVisible(musicosd)</visible>
             <visible>Playlist.IsRepeat</visible>
         </control>
@@ -1164,7 +1164,7 @@
             <onfocus condition="!String.IsEmpty(Window(Home).Property(OSDExtendedInfo)) + Player.Paused + !Skin.HasSetting(DontPauseOSD)">Play</onfocus>
             <onfocus condition="!String.IsEmpty(Window(Home).Property(OSDExtendedInfo))">ClearProperty(OSDExtendedInfo,Home)</onfocus>
             <onfocus>ClearProperty(OSD_Menu,Home)</onfocus>
-            <onclick>XBMC.PlayerControl(Random)</onclick>
+            <onclick>PlayerControl(Random)</onclick>
             <visible>Window.IsVisible(musicosd)</visible>
         </control>
         <control type="button" id="24">
