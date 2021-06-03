@@ -1194,26 +1194,10 @@
         <texture colordiffuse="$PARAM[colordiffuse]" diffuse="$PARAM[diffuse]">$PARAM[texture]</texture>
     </include>
 
-    <include name="Object_DefaultIcon">
-        <param name="icon" default="$INFO[ListItem.Icon]" />
-        <param name="visible" default="String.StartsWith(ListItem.Icon,Default)" />
-        <param name="fallback" default="$INFO[ListItem.Icon]" />
-        <definition>
-            <control type="image">
-                <centertop>50%</centertop>
-                <centerleft>50%</centerleft>
-                <width>160</width>
-                <height>160</height>
-                <texture background="true" fallback="$PARAM[fallback]">$PARAM[icon]</texture>
-                <visible>$PARAM[visible]</visible>
-            </control>
-        </definition>
-    </include>
-
     <include name="Object_Poster">
         <param name="icon" default="$VAR[Image_Poster]" />
         <param name="aspectratio" default="scale" />
-        <param name="visible" default="!String.StartsWith(ListItem.Icon,Default)" />
+        <param name="visible" default="true" />
         <param name="bordersize" default="15" />
         <param name="fadetime" default="0" />
         <definition>
