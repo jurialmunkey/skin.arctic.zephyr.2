@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <includes>
     <include name="View_52_Showcase_Header">
         <param name="itemgap" default="10" />
@@ -78,24 +78,34 @@
                     <param name="oscar_prop" value="Window(Home).Property(ListItemHelper.awards)" />
                 </include>
             </control>
+            <!-- Advanced Emulator Launcher Specific Platform Icon -->
+            <include>View_540_Platform_Icon</include>
         </definition>
     </include>
 
     <include name="View_522_Showcase_Seasons_Info">
         <param name="seasons" default="true" />
         <param name="id" default="5229" />
+        <param name="isView2" default="false" />
+        <param name="isRomTrailer" default="false" />
         <definition>
             <control type="group">
                 <include>View_FlipSides</include>
                 <top>0</top>
                 <width>761.44</width>
                 <visible>$PARAM[visible]</visible>
-                <include content="View_50_Poster">
+                <include content="View_50_Poster" condition="!$PARAM[isRomTrailer]">
                     <param name="height" value="441.435" />
                     <param name="width" value="761.44" />
                     <param name="icon" value="$PARAM[icon]" />
                     <param name="diffuse" value="diffuse/landscape-info.png" />
                     <param name="iconvisible" value="$PARAM[iconvisible]" />
+                </include>
+                <include content="View_540_Poster" condition="$PARAM[isRomTrailer]">
+                    <param name="height" value="441.435" />
+                    <param name="width" value="761.44" />
+                    <param name="icon" value="$PARAM[icon]" />
+                    <param name="diffuse" value="diffuse/landscape-info.png" />
                 </include>
                 <control type="image">
                     <top>0</top>
@@ -104,39 +114,82 @@
                     <height>390</height>
                     <texture background="true">$VAR[Image_ClearLogo]</texture>
                     <aspectratio align="right" aligny="bottom">keep</aspectratio>
-                    <visible>[!String.IsEmpty(ListItem.Art(clearlogo)) | !String.IsEmpty(ListItem.Art(tvshow.clearlogo))] + [[String.IsEmpty(ListItem.Art(landscape)) + String.IsEmpty(ListItem.Art(tvshow.landscape))] | [[!String.IsEmpty(ListItem.Art(tvshow.landscape)) | !String.IsEmpty(ListItem.Art(landscape))] + !Skin.HasSetting(LandscapeArt)] | [!String.IsEmpty(ListItem.Art(thumb)) + [String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,video)] + String.IsEmpty(ListItem.Property(airday))]]</visible>
+                    <visible>!$EXP[Exp_IsPluginAdvancedLauncher] + [!String.IsEmpty(ListItem.Art(clearlogo)) | !String.IsEmpty(ListItem.Art(tvshow.clearlogo))] + [[String.IsEmpty(ListItem.Art(landscape)) + String.IsEmpty(ListItem.Art(tvshow.landscape))] | [[!String.IsEmpty(ListItem.Art(tvshow.landscape)) | !String.IsEmpty(ListItem.Art(landscape))] + !Skin.HasSetting(LandscapeArt)] | [!String.IsEmpty(ListItem.Art(thumb)) + [String.IsEqual(ListItem.DBType,episode) | String.IsEqual(ListItem.DBType,video)] + String.IsEmpty(ListItem.Property(airday))]]</visible>
                 </control>
-                <control type="grouplist">
-                    <top>451.435</top>
-                    <left>0</left>
-                    <right>30</right>
-                    <orientation>vertical</orientation>
-                    <usecontrolcoords>true</usecontrolcoords>
-                    <itemgap>0</itemgap>
-                    <control type="label">
-                        <font>font_title_small</font>
-                        <textcolor>main_fg_100</textcolor>
-                        <align>left</align>
-                        <aligny>top</aligny>
-                        <height>50</height>
-                        <label>$PARAM[title]</label>
-                    </control>
-                    <include condition="$PARAM[seasons]" content="Object_Info_Line">
-                        <param name="nextaired" value="false" />
+                <control type="group">
+                    <include content="View_540_Platform_Icon">
+                        <param name="top" value="440" />
+                        <param name="right" value="30" />
                     </include>
-                    <include condition="!$PARAM[seasons]" content="Object_Info_Line">
-                        <param name="nextaired" value="false" />
-                        <param name="label" value="$INFO[Container($PARAM[id]).ListItem.MPAA]" />
-                        <param name="container" value="Container($PARAM[id])." />
-                    </include>
-                    <control type="textbox">
-                        <top>25</top>
-                        <font>font_plotbox</font>
-                        <textcolor>main_fg_70</textcolor>
-                        <align>left</align>
-                        <aligny>top</aligny>
-                        <height>200</height>
-                        <label>$PARAM[plot]</label>
+                    <control type="grouplist">
+                        <top>451.435</top>
+                        <left>0</left>
+                        <right>30</right>
+                        <orientation>vertical</orientation>
+                        <usecontrolcoords>true</usecontrolcoords>
+                        <itemgap>0</itemgap>
+                        <control type="label">
+                            <font>font_title_small</font>
+                            <textcolor>main_fg_100</textcolor>
+                            <align>left</align>
+                            <aligny>top</aligny>
+                            <height>50</height>
+                            <width>630</width>
+                            <label>$PARAM[title]</label>
+                        </control>
+                        <include condition="$EXP[Exp_IsPluginAdvancedLauncher]" content="View_540_ROM_Details">
+                        </include>
+                        <include condition="$PARAM[seasons] + !$EXP[Exp_IsPluginAdvancedLauncher]" content="Object_Info_Line">
+                            <param name="nextaired" value="false" />
+                        </include>
+                        <include condition="!$PARAM[seasons] + !$EXP[Exp_IsPluginAdvancedLauncher]" content="Object_Info_Line">
+                            <param name="nextaired" value="false" />
+                            <param name="label" value="$INFO[Container($PARAM[id]).ListItem.MPAA]" />
+                            <param name="container" value="Container($PARAM[id])." />
+                        </include>
+                        <include content="Object_Info_Ratings" condition="$PARAM[isView2]">
+                            <param name="top" value="-15" />
+                            <param name="imdbvotes" value="false" />
+                            <param name="top250" value="false" />
+                            <param name="oscars" value="false" />
+                        </include>
+                        <control type="textbox">
+                            <visible>!$PARAM[isView2]</visible>
+                            <top>25</top>
+                            <font>font_plotbox</font>
+                            <textcolor>main_fg_70</textcolor>
+                            <align>left</align>
+                            <aligny>top</aligny>
+                            <height>200</height>
+                            <label>$PARAM[plot]</label>
+                        </control>
+                        <control type="grouplist">
+                            <visible>$PARAM[isView2]</visible>
+                            <top>25</top>
+                            <itemgap>14</itemgap>
+                            <include content="Object_Info_TextPairs">
+                                <param name="name" value="Genre" />
+                                <param name="label" value="ListItem.Genre" />
+                            </include>
+                            <include content="Object_Info_TextPairs">
+                                <param name="name" value="Director" />
+                                <param name="label" value="ListItem.Director" />
+                            </include>
+                            <control type="group">
+                                <visible>!String.isEmpty(ListItem.Tagline)</visible>
+                                <include content="Object_Info_TextPairs">
+                                    <param name="name" value="Tagline" />
+                                    <param name="label" value="ListItem.Tagline" />
+                                </include>
+                            </control>
+                            <control type="group">
+                                <visible>String.isEmpty(ListItem.Tagline)</visible>
+                                <include content="Object_Info_TextPairs">
+                                    <param name="name" value="Premiered" />
+                                    <param name="label" value="ListItem.Premiered" />
+                                </include>
+                            </control>
+                        </control>
                     </control>
                 </control>
             </control>
@@ -214,7 +267,7 @@
             </include>
         </control>
     </include>
-    
+
     <include name="View_52_Showcase">
         <control type="group">
             <include>View_Group</include>
@@ -255,7 +308,6 @@
             <include condition="Skin.HasSetting(UseAuraShowcase)">View_52_Showcase_Aura_Info</include>
         </control>
     </include>
-
 
 
     <include name="View_520_Showcase_Square">
@@ -365,7 +417,7 @@
         <control type="group">
             <include>View_Group</include>
             <visible>Control.IsVisible(522)</visible>
-                
+
             <include content="View_51_Wall_Container">
                 <param name="id" value="522" />
                 <param name="height" value="item_row_height" />
@@ -430,7 +482,7 @@
         <control type="group">
             <include>View_Group</include>
             <visible>Control.IsVisible(524)</visible>
-            
+
             <control type="group">
                 <right>761.44</right>
                 <include content="View_51_Wall_Container">
@@ -564,7 +616,7 @@
                     <include>Object_DefaultIcon</include>
                 </control>
             </control>
-            <control type="wraplist" id="523" >
+            <control type="wraplist" id="523">
                 <viewtype label="$LOCALIZE[31231]">bigwrap</viewtype>
                 <include content="View_Forced">
                     <param name="string" value="$LOCALIZE[31231]" />
@@ -612,4 +664,3 @@
     </include>
 
 </includes>
-

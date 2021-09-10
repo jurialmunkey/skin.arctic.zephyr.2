@@ -7,7 +7,6 @@
     <onload>ClearProperty(OSD_Menu,Home)</onload>
     <onunload>ClearProperty(FilePath,home)</onunload>
     <onunload>ClearProperty(OSD_Menu,Home)</onunload>
-    <onunload condition="Window.IsVisible(1136)">RunScript(plugin.video.themoviedb.helper,del_path,call_id=1137)</onunload>
     <controls>
 
         <!-- Top Info -->
@@ -19,7 +18,8 @@
         </control>
 
         <!-- Main Group -->
-        <include condition="!String.IsEqual(ListItem.DBType,musicvideo)">DialogVideoInfo</include>
+        <include condition="!String.IsEqual(ListItem.DBType,musicvideo) + !String.Contains(ListItem.FolderPath,type=person)">DialogVideoInfo</include>
+        <include condition="!String.IsEqual(ListItem.DBType,musicvideo) + String.Contains(ListItem.FolderPath,type=person)">DialogPersonInfo</include>
         <include condition="String.IsEqual(ListItem.DBType,musicvideo)">DialogMusicInfo</include>
 
         <control type="group">

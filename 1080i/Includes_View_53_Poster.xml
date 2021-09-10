@@ -5,29 +5,36 @@
             <visible>Control.IsVisible(53)</visible>
             <include>Defs_InfoDialog_Visible</include>
             <include>Animation_Common</include>
-            <control type="grouplist">
-                <visible>!ListItem.IsParentFolder</visible>
-                <left>660</left>
-                <top>690</top>
-                <right>view_pad</right>
-                <orientation>vertical</orientation>
-                <usecontrolcoords>true</usecontrolcoords>
-                <itemgap>0</itemgap>
-                <control type="label">
-                    <label>$VAR[Label_List_Title]</label>>
-                    <height>60</height>
-                    <aligny>top</aligny>
-                    <textcolor>main_fg_100</textcolor>
-                    <font>font_title</font>
-                </control>
-                <include>Object_Info_Line</include>
-                <control type="textbox">
-                    <top>20</top>
-                    <label fallback="19055">$VAR[Label_Plot]</label>
-                    <height>120</height>
-                    <aligny>top</aligny>
-                    <textcolor>main_fg_70</textcolor>
-                    <font>font_plotbox</font>
+            <control type="group">
+                <include content="View_540_Platform_Icon">
+                    <param name="top" value="690" />
+                    <param name="right" value="80" />
+                </include>
+                <control type="grouplist">
+                    <visible>!ListItem.IsParentFolder</visible>
+                    <left>660</left>
+                    <top>690</top>
+                    <right>view_pad</right>
+                    <orientation>vertical</orientation>
+                    <usecontrolcoords>true</usecontrolcoords>
+                    <itemgap>0</itemgap>
+                    <control type="label">
+                        <label>$VAR[Label_List_Title]</label>
+                        <height>60</height>
+                        <aligny>top</aligny>
+                        <textcolor>main_fg_100</textcolor>
+                        <font>font_title</font>
+                    </control>
+                    <include condition="!$EXP[Exp_IsPluginAdvancedLauncher]">Object_Info_Line</include>
+                    <include condition="$EXP[Exp_IsPluginAdvancedLauncher]">View_540_ROM_Details</include>
+                    <control type="textbox">
+                        <top>20</top>
+                        <label fallback="19055">$VAR[Label_Plot]</label>
+                        <height>120</height>
+                        <aligny>top</aligny>
+                        <textcolor>main_fg_70</textcolor>
+                        <font>font_plotbox</font>
+                    </control>
                 </control>
             </control>
             

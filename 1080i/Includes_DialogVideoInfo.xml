@@ -83,7 +83,7 @@
                                 <onclick condition="Skin.HasSetting(DisableExtendedInfo)">SetFocus(50)</onclick>
                                 <onclick>SetFocus(5000)</onclick>
                                 <onclick>SetFocus(300)</onclick>
-                                <onclick>RunScript(plugin.video.themoviedb.helper,add_query=$INFO[Container(50).ListItem.Label],type=person,call_id=1137,prevent_del,delay=0.35)</onclick>
+                                <onclick>RunScript(plugin.video.themoviedb.helper,add_query=$INFO[Container(50).ListItem.Label],type=person,call_auto=1136)</onclick>
                                 <onback>300</onback>
                                 <onup>300</onup>
                                 <ondown>5001</ondown>
@@ -133,7 +133,7 @@
                             <onclick condition="Skin.HasSetting(DisableExtendedInfo)">SetFocus(50)</onclick>
                             <onclick>SetFocus(5000)</onclick>
                             <onclick>SetFocus(300)</onclick>
-                            <onclick>RunScript(plugin.video.themoviedb.helper,add_query=$INFO[Container(5077).ListItem.Label],type=person,call_id=1137,prevent_del,delay=0.35)</onclick>
+                            <onclick>RunScript(plugin.video.themoviedb.helper,add_query=$INFO[Container(5077).ListItem.Label],type=person,call_auto=1136)</onclick>
                             <include>Defs_InfoList_OnBack</include>
                             <visible>!String.IsEmpty(Container(5001).ListItem.Property(tmdb_id)) + !Container(5001).IsUpdating</visible>
                             <content limit="25" target="videos">plugin://plugin.video.themoviedb.helper/?info=cast&amp;type=movie&amp;tmdb_id=$INFO[Container(5001).ListItem.Property(tmdb_id)]</content>
@@ -368,5 +368,152 @@
             <param name="art" value="Icon" />
         </include>
         <include>Object_PlotOverlay</include>
+    </include>
+
+    <include name="DialogPersonInfo">
+
+        <!-- Person Info -->
+        <control type="group">
+            <top>view_top</top>
+            <left>view_pad</left>
+            <right>view_pad</right>
+            <include content="Object_Info_Arrows">
+                <param name="artworkid" value="750" />
+            </include>
+            <include>Animation_FadeInOut</include>
+            <control type="grouplist" id="9000">
+                <top>-15</top>
+                <left>-15</left>
+                <right>-15</right>
+                <height>view_height</height>
+                <orientation>vertical</orientation>
+                <itemgap>0</itemgap>
+                <control type="group" id="3000">
+                    <height>view_height</height>
+                    <control type="group">
+                        <top>15</top>
+                        <left>15</left>
+                        <right>15</right>
+                        <height>view_list_height</height>
+                        <!-- Poster -->
+                        <include content="View_50_Poster">
+                            <param name="include" value="Animation_Left_Delay" />
+                            <param name="defaulticonvisible" value="false" />
+                            <param name="icon" value="$INFO[ListItem.Art(poster)]" />
+                            <param name="diffuse" value="diffuse/poster-big.png" />
+                        </include>
+
+                        <!-- Info -->
+                        <control type="group" id="300">
+                            <top>-15</top>
+                            <left>580</left>
+                            <include>Animation_Right_Delay</include>
+                            <control type="grouplist">
+                                <orientation>vertical</orientation>
+                                <usecontrolcoords>true</usecontrolcoords>
+                                <itemgap>0</itemgap>
+                                <include content="Object_Info_Title">
+                                    <param name="label" value="$INFO[ListItem.Label]" />
+                                </include>
+                                <include content="Object_Info_Line_Label">
+                                    <param name="label" value="[CAPITALIZE]$INFO[ListItem.Property(Birthday),[COLOR=main_fg_100],[/COLOR]]$INFO[ListItem.Property(Born),  |  [COLOR=main_fg_100],[/COLOR]]$INFO[ListItem.Property(Age),  |  [COLOR=main_fg_100], $LOCALIZE[31356][/COLOR]]$INFO[ListItem.Property(Deathday),  |  [COLOR=main_fg_100]$LOCALIZE[21897] ,[/COLOR]][/CAPITALIZE]" />
+                                    <param name="textcolor" value="$VAR[ColorHighlight]" />
+                                    <param name="divider" value="false" />
+                                </include>
+                                <include content="Object_Info_Plot">
+                                    <param name="label" value="$INFO[ListItem.Property(biography)]" />
+                                    <param name="maxheight" value="600" />
+                                    <param name="height" value="600" />
+                                </include>
+                            </control>
+                            <control type="button" id="3100">
+                                <onup>9601</onup>
+                                <ondown>5001</ondown>
+                                <onfocus>SetProperty(Header_Left_Text,Person)</onfocus>
+                                <include>Defs_Hidden_Button</include>
+                            </control>
+                        </control>
+                    </control>
+                </control>
+                <control type="group" id="4000">
+                    <height>view_height</height>
+                    <control type="grouplist" id="4100">
+                        <top>-5</top>
+                        <scrolltime tween="quadratic">400</scrolltime>
+                        <onup>3100</onup>
+                        <ondown>6000</ondown>
+                        <height>view_height</height>
+                        <orientation>vertical</orientation>
+                        <itemgap>-52</itemgap>
+                        <usecontrolcoords>true</usecontrolcoords>
+                        <control type="group" id="7599"><height>0</height></control>
+                        <!-- List 01 -->
+                        <include content="Info_Widget_Poster">
+                            <param name="includecondition" value="true" />
+                            <param name="id" value="5001" />
+                            <param name="groupid" value="7501" />
+                            <param name="label" value="Movies as Cast Member" />
+                            <param name="labelinclude" value="View_Cast_Character_Label" />
+                            <include content="Defs_InfoList_OnClick">
+                                <param name="prevent_del" value="noop" />
+                            </include>
+                            <include>Defs_InfoList_OnBack</include>
+                            <content limit="25" target="videos">plugin://plugin.video.themoviedb.helper?info=stars_in_movies&amp;type=person&amp;tmdb_id=$INFO[ListItem.Property(tmdb_id)]</content>
+                        </include>
+                        <!-- List 02 -->
+                        <include content="Info_Widget_Poster">
+                            <param name="includecondition" value="true" />
+                            <param name="id" value="5002" />
+                            <param name="groupid" value="7502" />
+                            <param name="label" value="TV Shows as Cast Member" />
+                            <param name="labelinclude" value="View_Cast_Character_Label" />
+                            <include content="Defs_InfoList_OnClick">
+                                <param name="prevent_del" value="noop" />
+                            </include>
+                            <include>Defs_InfoList_OnBack</include>
+                            <content limit="25" target="videos">plugin://plugin.video.themoviedb.helper?info=stars_in_tvshows&amp;type=person&amp;tmdb_id=$INFO[ListItem.Property(tmdb_id)]</content>
+                        </include>
+                        <!-- List 03 -->
+                        <include content="Info_Widget_Poster">
+                            <param name="includecondition" value="true" />
+                            <param name="id" value="5003" />
+                            <param name="groupid" value="7503" />
+                            <param name="label" value="Movies as Crew Member" />
+                            <param name="labelinclude" value="View_Cast_Job_Label" />
+                            <include content="Defs_InfoList_OnClick">
+                                <param name="prevent_del" value="noop" />
+                            </include>
+                            <include>Defs_InfoList_OnBack</include>
+                            <content limit="25" target="videos">plugin://plugin.video.themoviedb.helper?info=crew_in_movies&amp;type=person&amp;tmdb_id=$INFO[ListItem.Property(tmdb_id)]</content>
+                        </include>
+                        <!-- List 05 -->
+                        <include content="Info_Widget_Poster">
+                            <param name="includecondition" value="true" />
+                            <param name="id" value="5005" />
+                            <param name="groupid" value="7505" />
+                            <param name="label" value="TV Shows as Crew Member" />
+                            <param name="labelinclude" value="View_Cast_Job_Label" />
+                            <include content="Defs_InfoList_OnClick">
+                                <param name="prevent_del" value="noop" />
+                            </include>
+                            <include>Defs_InfoList_OnBack</include>
+                            <content limit="25" target="videos">plugin://plugin.video.themoviedb.helper?info=crew_in_tvshows&amp;type=person&amp;tmdb_id=$INFO[ListItem.Property(tmdb_id)]</content>
+                        </include>
+                        <!-- List 06 -->
+                        <include content="Info_Widget_Poster">
+                            <param name="includecondition" value="true" />
+                            <param name="id" value="5006" />
+                            <param name="groupid" value="7506" />
+                            <param name="label" value="Images" />
+                            <onclick>SetFocus(9506)</onclick>
+                            <include>Defs_InfoList_OnBack</include>
+                            <content limit="25" target="videos">plugin://plugin.video.themoviedb.helper?info=images&amp;type=person&amp;tmdb_id=$INFO[ListItem.Property(tmdb_id)]</content>
+                        </include>
+                    </control>
+                </control>
+            </control>
+        </control>
+
+        <include>Info_ImageViewer</include>
     </include>
 </includes>
